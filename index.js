@@ -609,9 +609,10 @@ const CRISIS_ENDS={
 };
 
 // ===== 60 SENARYO HAVUZU =====
-function buildScenePool(n,sn,yr,stype){
+function buildScenePool(n,sn,yr,stype,startPort=selectedStartPort,startScenario=selectedStartScenario){
   const era=ERA_TECH[yr]||ERA_TECH[2018];
   const st=STYPES.find(x=>x.key===stype)||STYPES[0];
+  const startSub=`${startScenario.subPrefix} - ${yr}`;
 
   // Sahneler: her biri bağımsız, next kullanılmayacak (rastgele sıra sistemi)
   // next:null → sistem sonrakini kendisi seçecek
@@ -620,8 +621,8 @@ function buildScenePool(n,sn,yr,stype){
 
   return [
 // ---- GÜN 1 SAHNELERİ ----
-{id:"s01",gfx:"harbor",alert:false,day:"Gün 1",time:"05:30",loc:"İzmir Limanı — İskele",sub:`Sabah sisi — ${yr}`,who:"anlatici",
-text:`İzmir Limanı, ${yr} yılı, sabah erken.\n\nÇantan sırtında, staj belgelerin avucunda iskeleye geldin. Önünde ${sn} — ${st.ton} ${st.nm} gemisi.\n\nRampadan biri indi:\n"Sen stajyer ${n} misin? 1. Zabiti köprüde bekliyor."`,
+{id:"s01",gfx:"harbor",alert:false,day:"Gun 1",time:startScenario.time,loc:startPort.dock,sub:startSub,who:"anlatici",
+text:`${startPort.name}, ${yr} yili.\n\n${startScenario.intro}\n\nCantan sirtinda, staj belgelerin avucunda iskeleye geldin. Onunde ${sn} - ${st.ton} ${st.nm} gemisi.\n\n${startScenario.bridgeCall.replace('${n}',n)}`,
 choices:[
 {text:"Düzgünce selamlayıp kendini tanıt",tag:"akilli",effect:{sayginlik:5,bilgi:3}},
 {text:"Heyecanla 'Evet!' deyip içeri gir",tag:"cesur",effect:{cesaret:5,sayginlik:-2}},
@@ -707,7 +708,7 @@ choices:[
 {text:"Lostromo onay verince 'Kıç hazır!' de",tag:"cesur",effect:{cesaret:8,sayginlik:5,bilgi:5}},
 {text:"Her detayı kaydet",tag:"akilli",effect:{bilgi:10,sayginlik:3}}]},
 
-{id:"s13",gfx:"sea",alert:false,day:"Gün 2",time:"16:00",loc:"Açık Deniz",sub:"İzmir Körfezi geride kaldı",who:"hasan",
+{id:"s13",gfx:"sea",alert:false,day:"Gün 2",time:"16:00",loc:"Açık Deniz",sub:startPort.departureLine,who:"hasan",
 text:`Gemi açık denize çıktı. Tayfa Hasan yanına geldi:\n\n"${n}, deniz tutması var mı? ${sn} gibi ${st.nm} gemisi limanda ağır görünür ama dalgaya farklı davranır."`,
 choices:[
 {text:"'Yok, deneme seferinde geçtim' de",tag:"akilli",effect:{sayginlik:5,bilgi:3}},
@@ -1163,7 +1164,7 @@ choices:[
 {text:"'Süvari bilmeli, bildir' de",tag:"itaatkar",effect:{sayginlik:7,bilgi:5}},
 {text:"'Hafif yatış normal' de",tag:"korkak",effect:{sayginlik:-8,bilgi:-5}}]},
 
-{id:"s61",gfx:"harbor",alert:false,day:"Gün 1",time:"11:00",loc:"İzmir Limanı — Limancı Ofisi",sub:"ISPS güvenlik kodu — giriş prosedürü",who:"z3",
+{id:"s61",gfx:"harbor",alert:false,day:"Gün 1",time:"11:00",loc:startPort.office,sub:"ISPS güvenlik kodu — giriş prosedürü",who:"z3",
 text:`3. Zabiti ${n}'yi limancı ofisine götürdü:\n\n"ISPS kodu. Her gemi Güvenlik Düzeyi 1, 2 veya 3'te çalışır. Şu an Düzey 1 — normal. Düzey 3 acil durum demek.\n\nSen stajyer olarak hangi ISPS belgesini taşımalısın?"`,
 choices:[
 {text:"'Continuous Synopsis Record ve SSAS bilinci' de",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
@@ -1246,6 +1247,50 @@ choices:[
 {text:"Bildirmek profesyonelliktir; emniyet yönetimi sessizlikle yürümez de",tag:"kritik",effect:{bilgi:14,sayginlik:12,cesaret:7}},
 {text:"Önce arkadaşını korumak gerekir de",tag:"korkak",effect:{bilgi:-7,sayginlik:-8}},
 {text:"Önce amire söyler, prosedürle ilerlerim de",tag:"itaatkar",effect:{bilgi:8,sayginlik:8}}]},
+
+{id:"s74",gfx:"harbor",alert:false,day:"Gun 12",time:"06:30",loc:"Kuru Havuz Girisi",sub:"Geminin suyu bosaltiliyor",who:"z1",
+text:`1. Zabiti seni kuru havuz planina goturdu.
+
+"Bugun gemi karaya oturacak gibi gorunecek ama kontrollu bir operasyon bu. Bloklarin ustune tam oturmazsa govde zarar gorur.
+
+Stajyer gozlem yapar, not alir, acele etmez. Ilk neye bakarsin?"`,
+choices:[
+{text:"Iskele-sancak oturusunu, draft farkini ve blok hizasini izlerim",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
+{text:"Fotograf cekip sadece uzaktan izlerim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Bu sadece tersane isi diye dusunur gecerim",tag:"korkak",effect:{bilgi:-6,sayginlik:-5}}]},
+
+{id:"s75",gfx:"cargo",alert:false,day:"Gun 12",time:"10:00",loc:"Kuru Havuz - Karina Alti",sub:"Sac kalinligi ve deniz sandigi kontrolu",who:"lostromo",
+text:`Kuru havuzda geminin karinasini ilk kez tam goruyorsun. Lostromo saci tokmakla yokladi.
+
+"Boya ustu guzel olabilir ama asil hikaye burada. Pitting, sac incelmesi, deniz sandigi izgara durumu, anot erimesi.
+
+Neyi once rapora yazarsin?"`,
+choices:[
+{text:"Anot, deniz sandigi, pas cepleri ve sac incelmesini onceliklendiririm",tag:"akilli",effect:{bilgi:15,sayginlik:11}},
+{text:"Boya rengini ve genel gorunusu yazarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:3}},
+{text:"Govde saglam gorunuyor deyip gecistiririm",tag:"korkak",effect:{bilgi:-7,sayginlik:-6}}]},
+
+{id:"s76",gfx:"engine",alert:false,day:"Gun 12",time:"13:30",loc:"Kuru Havuz - Pervane ve Dumen",sub:"Pervane kanadi ve rudder clearence olcumu",who:"carkci",
+text:`Carkcibasi seni pervane tarafina cagirdi.
+
+"Denizdeyken bunu bu kadar net goremezsin. Pervane kanadinda deformasyon, rudder boslugu, stern tube sizintisi izi... hepsi burada ortaya cikar.
+
+Bir anormallik gorursen ne yaparsin?"`,
+choices:[
+{text:"Olcuyu teyit eder, fotografla kayda alir, amire bildiririm",tag:"kritik",effect:{bilgi:14,sayginlik:12,cesaret:5}},
+{text:"Once ustalara sorar, sonra not alirim",tag:"itaatkar",effect:{bilgi:8,sayginlik:6}},
+{text:"Kucuk bir izdir deyip onemsemem",tag:"korkak",effect:{bilgi:-8,sayginlik:-7}}]},
+
+{id:"s77",gfx:"bridge",alert:false,day:"Gun 12",time:"16:00",loc:"Kuru Havuz - Tersane Toplantisi",sub:"Hot work permit ve emniyet zinciri",who:"z3",
+text:`3. Zabiti tersane ekibiyle permit toplantisinda.
+
+"Kuru havuzda en buyuk hata, tersane calismasini normal liman isi sanmaktir. Sicak is izni, gaz olcumu, izole hatlar, confined space kontrolu... biri atlanirsa yangin cikar.
+
+Sana permit dosyasini uzatsam ilk neyi kontrol edersin?"`,
+choices:[
+{text:"Gaz olcumu, izolasyon, yangin nobetcisi ve izin saatini kontrol ederim",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:4}},
+{text:"Imzalar tam mi diye ustten bakarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:5}},
+{text:"Tersane ekibi biliyordur deyip karismam",tag:"korkak",effect:{bilgi:-7,sayginlik:-8}}]},
 
 {id:"s65",gfx:"sea",alert:false,day:"Gün 13",time:"10:00",loc:"Açık Deniz — Son Seyir",sub:"Silici ile veda sohbeti",who:"silici",
 text:`Silici Ramazan güverteyi son kez siliyordu.\n\n"${n}, yarın İzmir'e giriyoruz. Sen de ineceksin.\n\nSana şunu söyleyeyim: Gemide en zor şey ayrılmak. Her seferinde yeni insanlar, yeni gemi. Ama bir şey değişmez — deniz aynı deniz.\n\nTekrar gelecek misin?"`,
@@ -1330,6 +1375,22 @@ let stats={cesaret:40,bilgi:22,sayginlik:32,dinclik:68};
 let scenes=[], currentIdx=0, choicesMade=[];
 let contractDays=0, contractTotal=6;
 let sceneQueue=[], usedScenes=new Set();
+const START_PORTS=[
+  {name:"İzmir", dock:"İzmir Limanı — İskele", office:"İzmir Limanı — Limancı Ofisi", departureLine:"İzmir Körfezi geride kaldı", x:85, y:130},
+  {name:"İstanbul", dock:"İstanbul Limanı — Rıhtım", office:"İstanbul Limanı — Limancı Ofisi", departureLine:"Marmara ufku geride kaldı", x:180, y:85},
+  {name:"Çanakkale", dock:"Çanakkale Limanı — Rıhtım", office:"Çanakkale Limanı — Limancı Ofisi", departureLine:"Boğaz geride kaldı", x:130, y:100},
+  {name:"Pire", dock:"Pire Limanı — Terminal", office:"Pire Limanı — Limancı Ofisi", departureLine:"Pire rıhtımı geride kaldı", x:120, y:160},
+  {name:"İskenderiye", dock:"İskenderiye Limanı — Yük İskelesi", office:"İskenderiye Limanı — Limancı Ofisi", departureLine:"İskenderiye mendireği geride kaldı", x:200, y:210},
+  {name:"Cenova", dock:"Cenova Limanı — Konteyner Rıhtımı", office:"Cenova Limanı — Limancı Ofisi", departureLine:"Ligurya kıyısı geride kaldı", x:60, y:80},
+];
+const START_SCENARIOS=[
+  {time:"05:30", subPrefix:"Sabah sisi", intro:"Sabah erken, rıhtımın üstünde ince sis var.", bridgeCall:"Rampadan biri indi: \"Sen stajyer ${n} misin? 1. Zabiti köprüde bekliyor.\""},
+  {time:"06:10", subPrefix:"Yağmurlu vardiya", intro:"Çiseliyor. Rıhtım ıslak, halatlar koyu renk kesilmiş gibi parlıyor.", bridgeCall:"Vardiya devrinden çıkan bir tayfa seni görünce bağırdı: \"Stajyer sensen çabuk ol, köprü seni bekliyor.\""},
+  {time:"04:50", subPrefix:"Gece sonu telaşı", intro:"Gece daha tam dağılmamış. Projektörler güverteyi beyaz kesiyor, liman yarı uykuda.", bridgeCall:"Nöbetçi zabit merdiven ağzından seslendi: \"Geç kalmadın. Belgelerinle yukarı çık.\""},
+  {time:"07:00", subPrefix:"Liman uğultusu", intro:"Forklift sesleri, vinç alarmları ve martı çığlıkları birbirine karışıyor.", bridgeCall:"Ajans görevlisi seni gemiye teslim ederken fısıldadı: \"İlk günün sert geçer, dikkatli ol.\""},
+];
+let selectedStartPort=START_PORTS[0];
+let selectedStartScenario=START_SCENARIOS[0];
 const DIFFICULTY={
   positiveGainMult:0.72,
   negativeLossMult:1.18,
@@ -1776,7 +1837,9 @@ function beginGame(){
   contractDays=0;
 
   // Kontrat uzunluğuna göre sahne pool'u oluştur
-  const pool=buildScenePool(pn,sn,selYear,selType);
+  selectedStartPort=START_PORTS[Math.floor(Math.random()*START_PORTS.length)];
+  selectedStartScenario=START_SCENARIOS[Math.floor(Math.random()*START_SCENARIOS.length)];
+  const pool=buildScenePool(pn,sn,selYear,selType,selectedStartPort,selectedStartScenario);
   sceneQueue=buildSceneQueue(pool, contractTotal);
   currentIdx=0;
 
@@ -1789,9 +1852,9 @@ function beginGame(){
   seenColregHints.clear();
   journalEntries=[];
   photos=[];
-  routeHistory=[{x:85,y:130}];
-  visitedPorts=new Set(['İzmir']);
-  shipPosition={x:85,y:130};
+  routeHistory=[{x:selectedStartPort.x,y:selectedStartPort.y}];
+  visitedPorts=new Set([selectedStartPort.name]);
+  shipPosition={x:selectedStartPort.x,y:selectedStartPort.y};
   scenesSinceEvent=0;
   nextEventAt=5+Math.floor(Math.random()*4);
   initCrewSystem();
