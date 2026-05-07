@@ -1800,6 +1800,83 @@ choices:[
 {text:"Koridora cikip sessizce bir amire ya da tayfaya gorunmeyi denerim",tag:"sosyal",effect:{sayginlik:6,dinclik:4}},
 {text:"Sabaha kadar doner durur, zihnimi daha da yorarim",tag:"korkak",effect:{dinclik:-10,cesaret:-4}}]},
 
+{id:"s131",gfx:"harbor",alert:false,day:"Gun 10",time:"05:40",loc:"Liman Yaklasmasi - Römorkör İstasyonu",sub:"Römorkör alma hazirligi",who:"suvari",
+text:`Liman yaklasirken suvari disari bakip kisa kesti.
+
+"Birazdan romorkor alacagiz. Bu is sadece halat vermek degil; hangi taraftan gelecek, hangi bitt'e alinacak, itme mi cekme mi yapacak, ne zaman komut verilecek hepsi duzen ister."
+
+Sana ilk gorevi verdi. Ne yaparsin?`,
+choices:[
+{text:"Romorkorun gelecegi taraf, messenger line, bitt hazirligi ve haberlesme zincirini teyit ederim",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:4}},
+{text:"Lostromo ne derse onu tekrarlar, pozisyonumu korurum",tag:"itaatkar",effect:{bilgi:7,sayginlik:6}},
+{text:"Romorkor yanaşınca bakarız diye rahat davranirim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+
+{id:"s132",gfx:"harbor",alert:true,day:"Gun 10",time:"06:05",loc:"Pruva - Römorkör Hatti",sub:"Heaving line ve tow line aktarimi",who:"lostromo",
+text:`Romorkor bordaya geldi. Heaving line suya dustu, tayfa gerildi.
+
+Lostromo bagirdi: "Acele eden elini halata verir. Hat gerginlesmeden yerini, kimin ne tutacagini ve stop komutunu bileceksin."
+
+O an neye odaklanirsin?`,
+choices:[
+{text:"Personelin güvenli durusu, heaving line yolu ve tow line gerginlesme anini izlerim",tag:"kritik",effect:{bilgi:14,sayginlik:12,cesaret:5}},
+{text:"Yardim ederim ama surekli lostromoya bakarim",tag:"itaatkar",effect:{bilgi:7,sayginlik:5}},
+{text:"Halata fazla yaklasip hizli davranmaya calisirim",tag:"korkak",effect:{bilgi:-10,sayginlik:-10}}]},
+
+{id:"s133",gfx:"bogaz",alert:false,day:"Gun 6",time:"07:10",loc:"Kanal Girisi - Pilot Merdiveni",sub:"Bogaz/kanal icin pilot kaptan alma",who:"z2",
+text:`Kanal girisinde pilot botu pruvasindan yukseliyor.
+
+2. Zabiti sessiz ama net: "Pilot ladder, manrope, can simidi, ışık, VHF irtibati, freeboard. Pilot alma rutini boğazda hata kabul etmez."
+
+Sana kontrol listesi uzatti. Ilk bakacagin?`,
+choices:[
+{text:"Pilot ladder baglari, spreader, aydinlatma ve standby personeli kontrol ederim",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:4}},
+{text:"Sadece ladder inmis mi ona bakarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Pilot profesyonel, sorun cikmaz diye dusunurum",tag:"korkak",effect:{bilgi:-9,sayginlik:-9}}]},
+
+{id:"s134",gfx:"bridge",alert:false,day:"Gun 6",time:"07:35",loc:"Köprüüstü - Pilot Brifingi",sub:"Master-pilot information exchange",who:"suvari",
+text:`Pilot kopruustu'ne cikti. Suvari chart'i ve passage plan'i acip kisa bir brifing baslatti.
+
+"Pilot gemiyi yerel olarak bilir; kaptan ise geminin nihai sorumlusudur. Draft, ariza, manevra karakteri, rota ve cekinceler acik konusulur."
+
+Sana soruldu: bu degisimde ne eksik kalmamali?`,
+choices:[
+{text:"Draft, manevra sinirlari, rota, yerel risk ve haberlesme dili net paylasilmali derim",tag:"kritik",effect:{bilgi:14,sayginlik:11}},
+{text:"Pilot geldiyse artik o bilir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Brifinge gerek yok, rota zaten belli diye dusunurum",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+
+{id:"s135",gfx:"bridge",alert:false,day:"Gun 4",time:"09:00",loc:"Köprüüstü - GMDSS Konsolu",sub:"Gunluk haberlesme cihazi bakimi",who:"z3",
+text:`3. Zabiti paneli gosterdi.
+
+"Gunluk bakim sadece tuslara bakmak degil. VHF CH16 dinleme, DSC self-test durumu, el telsizlerinin sarji, printer kağıdi ve alarm paneli gorunurlugu kontrol edilir."
+
+Gunluk turda neyi once yaparsin?`,
+choices:[
+{text:"VHF/DSC panel durumu, el telsiz sarjlari ve alarm gorunurlugunu birlikte kontrol ederim",tag:"kritik",effect:{bilgi:14,sayginlik:11}},
+{text:"Sadece VHF'nin acik olduguna bakarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Cihazlar dunden calisiyordu diye gecistiririm",tag:"korkak",effect:{bilgi:-8,sayginlik:-8}}]},
+
+{id:"s136",gfx:"compass",alert:false,day:"Gun 4",time:"16:10",loc:"Köprüüstü - Haftalik Test",sub:"Haftalik haberlesme cihazi bakimi",who:"z3",
+text:`Haftalik test gunu. 3. Zabiti check-list'i acmis.
+
+"DSC routine test kaydi, NAVTEX kontrolu, EPIRB goz muayenesi, SART durum gosterge kontrolu, VHF kontrol cagrisi ve emergency battery logu haftalik disiplin ister."
+
+Ilk adimin ne olur?`,
+choices:[
+{text:"DSC test kaydi ve emergency battery logunu acip diger ekipman durumlariyla karsilastiririm",tag:"kritik",effect:{bilgi:15,sayginlik:12}},
+{text:"Sadece test satirini doldurup kalanini sonra dusunurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Kayit yaziliysa cihazlari tek tek gormeye gerek yok derim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+
+{id:"s137",gfx:"bridge",alert:false,day:"Gun 12",time:"14:30",loc:"Köprüüstü - Aylik Bakim",sub:"Aylik GMDSS ve acil haberlesme bakimi",who:"z3",
+text:`Aylik bakimda is biraz daha agir.
+
+"Reserve battery kapasite kontrolu, el telsizi pil durumu, can filikasi VHF setleri, anten baglantilari, Inmarsat/uydu terminal durumu ve test sertlarinin kaydi aylik ciddiyet ister."
+
+Bu seviyede en buyuk hata nedir?`,
+choices:[
+{text:"Kayit var diye fiziksel durumu gormeden onay vermek derim",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:3}},
+{text:"Aylik isi sadece zabit yapar diye uzakta kalirim",tag:"itaatkar",effect:{bilgi:6,sayginlik:5}},
+{text:"Batarya ve can filikasi setleri aylarca degismez diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
 {id:"FINAL",gfx:"bridge",alert:false,day:"Son Gün",time:"15:00",loc:"Konferans Salonu",sub:"Staj değerlendirme — kontrat sona erdi",who:"z1",
 text:`Son değerlendirme toplantısı.\n\n1. Zabiti, 2. Zabiti, Lostromo. Önlerinde staj formu.\n\n"${n}. ${yr} yılında, ${sn}'de. Fırtına, yük denetimi, gece nöbetleri, yangın tatbikatı, liman operasyonları, krizler.\n\nRaporun birinci satırına ne yazayım?"`,
 choices:[
