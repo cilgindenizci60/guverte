@@ -1621,6 +1621,141 @@ choices:[
 {text:"Sadece rota cizgisine bakarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
 {text:"Resmi rapora gerek yok, herkes goruyor diye dusunurum",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
+{id:"s115",gfx:"cabin",alert:false,day:"Gun 12",time:"00:40",loc:"Stajyer Kabini",sub:"Aile ozlemi ve ic ses",who:"anlatici",
+text:`Gece ilerledikce gemi sesi buyuyor, oda ise kuculuyor gibi.
+
+Telefon ekrani karanlik. Mesaj yok. Bir an icinde kendi sesinle bas basa kaldin:
+
+"Dayan diye geldin. Peki ne kadar dayanacaksin? Herkes uyuyor, sen neden bu kadar uzaksin?"
+
+Icinden kendine ne dersin?`,
+choices:[
+{text:"'Bu da gecer. Sabah olunca isime tutunacagim' der, nefesimi duzenlerim",tag:"akilli",effect:{dinclik:8,cesaret:4}},
+{text:"Musa'ya yazmayi dusunur, sonra vazgecmeden iki kelime atarim",tag:"sosyal",effect:{sayginlik:7,dinclik:5}},
+{text:"'Burada ne isim var?' diye icime kapanirim",tag:"korkak",effect:{dinclik:-10,cesaret:-6}}]},
+
+{id:"s116",gfx:"cabin",alert:false,day:"Gun 12",time:"23:55",loc:"Stajyer Kabini",sub:"Derin yalnizlik ve ic monolog",who:"anlatici",
+text:`Aile fotogrfina uzun uzun baktin. Gemi bir yere gidiyor ama sen sanki icinde sabit kalmissin.
+
+Ic sesin yine geldi:
+
+"Herkes seni calisirken goruyor ama kimse ne kadar yoruldugunu bilmiyor. Eve donsen rahatlar misin, yoksa bunu yarim birakmak daha mi agir gelir?"
+
+Bu gece o sesle nasil konusursun?`,
+choices:[
+{text:"'Bitirmeden donmeyecegim, ama yardim istemeyi de ogrenecegim' derim",tag:"kritik",effect:{cesaret:6,dinclik:6,sayginlik:4}},
+{text:"Sessizce gunluk yazar, icimdekini kagida dokerim",tag:"akilli",effect:{bilgi:5,dinclik:7}},
+{text:"Battaniyeyi cekip kimseyle konusmadan kapanirim",tag:"korkak",effect:{dinclik:-9,sayginlik:-5}}]},
+
+{id:"s117",gfx:"cargo",alert:false,day:"Gun 7",time:"13:50",loc:"Ambar 3",sub:"Ambar temizleme isine talip olmak",who:"lostromo",
+text:`Lostromo ambar agzinda asagi bakti.
+
+"Yuk bosaldi ama is bitmedi. Toz, kirik palet parcasi, bag, pas, su birikintisi... biri inip el atacak."
+
+Bir an sessizlik oldu. Sen one cikarsan herkes duyacak.`,
+choices:[
+{text:"'Ben inerim usta, ama once havalandirma ve emniyet kontrolunu yapalim' derim",tag:"kritik",effect:{cesaret:9,sayginlik:13,bilgi:8}},
+{text:"Gorev verilirse yaparim diyerek beklerim",tag:"itaatkar",effect:{sayginlik:5,bilgi:4}},
+{text:"Ses cikarmayip goz kaciririm",tag:"korkak",effect:{sayginlik:-8,cesaret:-6}}]},
+
+{id:"s118",gfx:"pirate",alert:true,day:"Gun 8",time:"01:10",loc:"Yuksek Riskli Bolge Girisi",sub:"Savas/korsan bolgesi tedbirleri",who:"suvari",
+text:`Suvari gece brifinginde kapilari gosterdi.
+
+"Yuksek riskli bolgeye giriyoruz. ISPS seviyesi, citadel hazirligi, dis aydinlatma, razor wire, yangin hortumu, ekstra gozcü, AIS kullanimi... hepsi yeniden gozden gececek."
+
+Sana gore ilk odak ne olmali?`,
+choices:[
+{text:"Citadel, erisim kontrolu, vardiya takviyesi ve acil haberlesme zincirini birlikte teyit ederim",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:5}},
+{text:"Kapilar kapaliysa yeterli sanirim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Tehlike ciktiginda bakariz diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s119",gfx:"pirate",alert:true,day:"Gun 8",time:"02:40",loc:"Ana GÃ¼verte - Aksaklik",sub:"Tedbir sirasinda ekipman sorunu",who:"z3",
+text:`Ekstra tedbirler kurulurken sorun cikti: sancak taraftaki projektor biri acik kalmis, bir yangin hortumunun baglantisi da tam oturmamis.
+
+3. Zabiti sertce dondu: "Tehdit bazen saldiran degil, hazirliktaki bosluktur."
+
+Ne yaparsin?`,
+choices:[
+{text:"Aksakligi aninda rapor eder, dogru ekibi cagirir ve not alirim",tag:"kritik",effect:{bilgi:14,sayginlik:12,cesaret:4}},
+{text:"Once kendi basima duzeltmeye calisir, sonra haber veririm",tag:"cesur",effect:{cesaret:5,sayginlik:4,bilgi:5}},
+{text:"Baska biri gormustur diye karismam",tag:"korkak",effect:{bilgi:-8,sayginlik:-8}}]},
+
+{id:"s120",gfx:"bridge",alert:false,day:"Gun 7",time:"10:05",loc:"Suvari Kamarasi - Evrak Kontrolu",sub:"Evrak hatasini fark edip bildirmek",who:"suvari",
+text:`Klasor tasirken bir ayrinti gozune takildi: Statement of Facts saatleri ile logbook girislerinden biri uyusmuyor.
+
+Bu kucuk gibi gorunen sey yarin ciddi soruya donebilir. Suvari baska evraga bakiyor; fark etmemis olabilir.
+
+Ne yaparsin?`,
+choices:[
+{text:"Hemen sakin bir dille uyumsuzlugu gosterir, duzeltme prosedurunu sorarim",tag:"kritik",effect:{bilgi:15,sayginlik:13,cesaret:5}},
+{text:"Once 1. Zabiti'ye soyleyip onunla suvariye cikarim",tag:"akilli",effect:{bilgi:10,sayginlik:9}},
+{text:"Gormemis gibi davranirim",tag:"korkak",effect:{bilgi:-9,sayginlik:-10}}]},
+
+{id:"s121",gfx:"harbor",alert:false,day:"Gun 6",time:"09:15",loc:"Gangway - ISPS Kontrol Noktasi",sub:"ISPS Code ziyaretci ve erisim kontrolu",who:"z3",
+text:`Gangway'de bir karisiklik var. Liman iscilerinden biri ziyaretci listesinde yok ama aceleyle iceri girmek istiyor.
+
+3. Zabiti seni durdurdu: "ISPS kodu bazen kibarca hayir diyebilmektir. Kimlik, liste, refakat ve kayit olmadan gecis olmaz."
+
+Sen nasil hareket edersin?`,
+choices:[
+{text:"Kimlik ve liste kontrolu yapar, amire haber verir, kayitsiz gecise izin vermem",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:4}},
+{text:"Bir ust gelene kadar sahsi gangway'de bekletirim",tag:"itaatkar",effect:{bilgi:8,sayginlik:7}},
+{text:"Liman iscisi diye gecmesine goz yumarim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s122",gfx:"harbor",alert:true,day:"Gun 6",time:"18:10",loc:"Kic GÃ¼verte",sub:"ISPS seviyesi yukseliyor",who:"z3",
+text:`Aksam uzeri limandan bildirim geldi: bolgede guvenlik olayi var, ISPS seviyesi gecici olarak yukseltiliyor.
+
+Ekstra devriye, kisitli erisim ve ekipman sayimi isteniyor. Gemide hava hemen degisti.
+
+Sana verilen ilk gorev?`,
+choices:[
+{text:"Erisim noktalarini, anahtar/kilit durumunu ve kritik alan sayimini kontrol ederim",tag:"kritik",effect:{bilgi:14,sayginlik:12,cesaret:4}},
+{text:"Devriyeye katilir, ne dendigse onu not alirim",tag:"itaatkar",effect:{bilgi:7,sayginlik:6}},
+{text:"Bu kadarina gerek yok diye soylenirim",tag:"korkak",effect:{bilgi:-7,sayginlik:-8}}]},
+
+{id:"s123",gfx:"compass",alert:false,day:"Gun 5",time:"06:15",loc:"Kopruustu - Sabah Ufku",sub:"Sextant okuma pratiği",who:"z2",
+text:`Gunes yeni dogarken 2. Zabiti sextant'i eline verdi.
+
+"GPS var diye gokyuzu degersiz olmadi. Ufku sabit tut, aynayi indir, aciyi al, sonra saati not et. Hata burada aceleden dogar."
+
+Ilk tavrin ne olur?`,
+choices:[
+{text:"Ufku sakin sabitler, aciyi tekrar alip zamanla birlikte kaydederim",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
+{text:"Bir kez okur, sonucu zabite teyit ettiririm",tag:"itaatkar",effect:{bilgi:7,sayginlik:5}},
+{text:"Bu devirde buna gerek yok derim",tag:"korkak",effect:{bilgi:-8,sayginlik:-7}}]},
+
+{id:"s124",gfx:"cargo",alert:false,day:"Gun 9",time:"16:20",loc:"VinÃ§ Operasyonu",sub:"Yuk ellecleme ve isaretlesme",who:"lostromo",
+text:`VinÃ§ operasyonda. Sapanlar gergin, isaretler net olmak zorunda.
+
+Lostromo sert ama sakindi: "Elleclemede en buyuk hata yarim bilgiyle el hareketi vermektir. Tag line, sling acisi, altina girmeme, stop komutu... hepsi bir dil."
+
+Sana isaret istiyor.`,
+choices:[
+{text:"Yuku durdurur, alanin bos oldugunu teyit edip net ve dogru isaret veririm",tag:"kritik",effect:{bilgi:14,sayginlik:12,cesaret:4}},
+{text:"Tecrübeli tayfayi izleyip aynisini tekrarlarim",tag:"itaatkar",effect:{bilgi:8,sayginlik:6}},
+{text:"Emin olmadan el hareketi veririm",tag:"korkak",effect:{bilgi:-10,sayginlik:-10}}]},
+
+{id:"s125",gfx:"bogaz",alert:false,day:"Gun 6",time:"21:40",loc:"Çanakkale Boğazı - Jurnal Masasi",sub:"Jurnale not dusmek",who:"z2",
+text:`Bogaz geride kalirken kopruustu ilk kez biraz gevsedi. 2. Zabiti jurnal defterini sana uzatti.
+
+"Saat, mevki, rota tamam. Bir satir da denizcinin kalbinden duser bazen."
+
+Kalemi eline aldiginda icinden sadece bir cümle geldi: "Çanakkale Geçilmez."
+
+Ne yaparsin?`,
+choices:[
+{text:"Resmi kaydi bozmadan jurnal notuna 'Çanakkale Geçilmez' diye duserim",tag:"sosyal",effect:{sayginlik:10,dinclik:4,bilgi:3}},
+{text:"Sadece resmi seyir kaydini yazar, icimde tutarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Boyle seyler gereksiz deyip gecistiririm",tag:"korkak",effect:{sayginlik:-5,dinclik:-3}}]},
+
+(()=>{const alt=58+Math.floor(Math.random()*9);const dec=16+Math.floor(Math.random()*7);const lat=(90-alt)+dec;return {id:"s126",gfx:"compass",alert:false,day:"Gun 5",time:"12:05",loc:"Kopruustu - Noon Sight",sub:"Sextant ile yaklasik enlem hesabi",who:"z2",
+text:`2. Zabiti noon sight notunu onune koydu.\n\n"Gunes meridyen gecisinde sextant altitude ${alt}°. Gunluk deklinasyon ${dec}° Kuzey.\n\nBasit yaklasimla latitude = 90 - altitude + declination. Bana yaklasik enlemi soyle."\n\nKagit sende.`,
+choices:[
+{text:`Yaklasik ${lat}° Kuzey`,tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:`Yaklasik ${lat+8}° Kuzey`,tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"GPS varken bu hesapla ugrasmaya gerek yok",tag:"korkak",effect:{bilgi:-10,sayginlik:-8}}
+]};})(),
+
 {id:"FINAL",gfx:"bridge",alert:false,day:"Son Gün",time:"15:00",loc:"Konferans Salonu",sub:"Staj değerlendirme — kontrat sona erdi",who:"z1",
 text:`Son değerlendirme toplantısı.\n\n1. Zabiti, 2. Zabiti, Lostromo. Önlerinde staj formu.\n\n"${n}. ${yr} yılında, ${sn}'de. Fırtına, yük denetimi, gece nöbetleri, yangın tatbikatı, liman operasyonları, krizler.\n\nRaporun birinci satırına ne yazayım?"`,
 choices:[
@@ -1681,6 +1816,74 @@ const SYSTEM_STATE={
   triggeredChains:new Set(),
 };
 const tagL={cesur:"Cesur",akilli:"Akıllı",itaatkar:"İtaatkar",korkak:"Korkak",sosyal:"Sosyal",kritik:"KRİTİK"};
+let mood=58;
+let delayedConsequences=[];
+let playerFlags={securityBreach:0,nearMiss:0,sextantGood:0};
+
+function clampMood(v){return Math.max(0,Math.min(100,Math.round(v)));}
+function adjustMood(delta,reason=''){
+  const old=mood;
+  mood=clampMood(mood+delta);
+  if(reason&&old!==mood){
+    setTimeout(()=>showNotif(delta>=0?':)':'...','Ruh Hali',reason+' ('+mood+')'),250);
+    addJournalEntry(`[RUH HALI] ${reason} (${mood})`);
+  }
+  if(mood<=25&&old>25){
+    stats.dinclik=clamp(stats.dinclik-4);
+    stats.sayginlik=clamp(stats.sayginlik-2);
+    setTimeout(()=>showNotif('!','Icine Kapaniyorsun','Dusuk moral vardiyada dikkatini ve enerjini zorluyor.'),400);
+    updateStats({});
+  }
+}
+function queueDelayedConsequence(effect,title,body,delayScenes=2,moodDelta=0){
+  delayedConsequences.push({effect,title,body,delayScenes,moodDelta});
+}
+function resolveDelayedConsequences(sc){
+  if(!delayedConsequences.length) return null;
+  const keep=[];
+  let crisisKey=null;
+  delayedConsequences.forEach(item=>{
+    item.delayScenes--;
+    if(item.delayScenes<=0){
+      const crisis=applyEffect(item.effect||{},{skipContractTick:true});
+      if(item.moodDelta) adjustMood(item.moodDelta,item.title);
+      showNotif('! ',item.title,item.body);
+      addJournalEntry(`[GECIKMELI] ${item.body}`, sc.day, sc.time);
+      if(crisis&&!crisisKey) crisisKey=crisis;
+    }else keep.push(item);
+  });
+  delayedConsequences=keep;
+  return crisisKey;
+}
+function scheduleAdvancedConsequences(sc,c2){
+  const id=sc.id||'';
+  const tag=c2.tag||'akilli';
+  if(id==='s115'){
+    if(tag==='korkak') adjustMood(-12,'Aile ozlemi icine coktu');
+    else if(tag==='sosyal') adjustMood(6,'Birine yazmak iyi geldi');
+    else adjustMood(4,'Kendini toparlamaya calistin');
+  }
+  if(id==='s116'){
+    if(tag==='korkak'){
+      adjustMood(-14,'Yalnizlik agirlasti');
+      queueDelayedConsequence({dinclik:-5,sayginlik:-3},'Yorgun Sabah','Geceki dusuk moral ertesi gun vardiyasina da sindi.',2,-2);
+    }else if(tag==='kritik') adjustMood(8,'Kendine karsi daha durust oldun');
+    else adjustMood(5,'Icindekini kagida dokmek iyi geldi');
+  }
+  if(id==='s121'&&tag==='korkak'){
+    playerFlags.securityBreach++;
+    queueDelayedConsequence({sayginlik:-8,bilgi:-6},'Security Breach','Kayitsiz gecis sonrasi ISPS sorgusu buyudu.',2,-4);
+  }
+  if(id==='s122'&&tag==='korkak'){
+    playerFlags.securityBreach++;
+    queueDelayedConsequence({sayginlik:-9,dinclik:-4},'Guvenlik Ihlali','Yuksek ISPS seviyesinde gevseklik ekipte ciddi rahatsizlik yaratti.',2,-3);
+  }
+  if(id==='s124'&&tag==='korkak'){
+    playerFlags.nearMiss++;
+    queueDelayedConsequence({sayginlik:-10,cesaret:-4,dinclik:-4},'Near-Miss','Yanlis ellecleme isareti yuzunden yuk son anda durduruldu.',1,-3);
+  }
+  if(id==='s126'&&tag==='kritik') playerFlags.sextantGood++;
+}
 
 // ===== GİRİŞ EKRANI =====
 function buildIntro(){
@@ -1819,7 +2022,7 @@ function evaluateDecisionPressure(sc,c2){
   return {extra,notes};
 }
 
-function applyEffect(e){
+function applyEffect(e,opts={}){
   const old={...stats};
   Object.keys(e).forEach(k=>{
     if(k==='yorgunluk'){
@@ -1839,7 +2042,7 @@ function applyEffect(e){
   if(choicesMade.length>0&&choicesMade.length%DIFFICULTY.periodicStressEvery===0){
     stats.sayginlik=clamp(stats.sayginlik-DIFFICULTY.periodicStressLoss);
   }
-  updateStats(old);
+  updateStats(old,opts);
   // Tehlike bolgesi bildirimi
   const dangerChecks = [
     {val:stats.cesaret, name:'Cesaret', prev:old.cesaret},
@@ -1855,7 +2058,7 @@ function applyEffect(e){
   return checkCrisis();
 }
 
-function updateStats(old){
+function updateStats(old,opts={}){
   // Tehlike bölgesi uyarısı
   const dangerStats = [
     {key:'cesaret', elId:'s-cesaret', val:stats.cesaret, name:'Cesaret'},
@@ -1960,6 +2163,8 @@ function renderScene(idx){
   if(idx>='end'||currentIdx>=sceneQueue.length){showEnd();return;}
   const sc=sceneQueue[currentIdx];
   if(!sc){showEnd();return;}
+  const delayedCrisis=resolveDelayedConsequences(sc);
+  if(delayedCrisis){showCrisis(delayedCrisis);return;}
   if(sc.id==='FINAL'&&currentIdx<sceneQueue.length-1){
     // Henüz son değilse atla, yoksa göster
   }
@@ -2004,6 +2209,7 @@ function renderScene(idx){
       const resolvedEffect={...(c2.effect||{})};
       Object.entries(pressure.extra).forEach(([k,v])=>{resolvedEffect[k]=(resolvedEffect[k]||0)+v;});
       choicesMade.push({tag:c2.tag,domain:getSceneDomain(sc),extraPressure:Object.keys(pressure.extra).length>0});
+      scheduleAdvancedConsequences(sc,c2);
       applyCrewEffect(sc.who, c2.tag);
       const crisis=applyEffect(resolvedEffect);
 
@@ -2085,6 +2291,11 @@ function showEnd(){
     verdict=`<strong>Staj Raporu (${selYear}):</strong> Potansiyel mevcut. ${kont.ay}+${kont.izin} aylık kontrat tamamlandı.`;
   }
 
+  const moodLabel=mood>=75?'Saglam durdu':mood>=50?'Dalgalandi ama tuttu':mood>=30?'Zorlandi':'Icine kapandi';
+  if(playerFlags.securityBreach>0) verdict+=` Security breach riski ${playerFlags.securityBreach} kez buyudu.`;
+  if(playerFlags.nearMiss>0) verdict+=` Yuk elleclemede ${playerFlags.nearMiss} near-miss kaydi olustu.`;
+  if(playerFlags.sextantGood>0) verdict+=` Sextant disiplininde de kendini gosterdi.`;
+  verdict+=` <br><strong>Ruh Hali:</strong> ${mood}/100 - ${moodLabel}.`;
   document.getElementById('ende').textContent=emoji;
   document.getElementById('endt').textContent=title;
   document.getElementById('endf').textContent=flavor;
@@ -2116,6 +2327,9 @@ function beginGame(){
   currentIdx=0;
 
   stats={cesaret:40,bilgi:22,sayginlik:32,dinclik:68};
+  mood=58;
+  delayedConsequences=[];
+  playerFlags={securityBreach:0,nearMiss:0,sextantGood:0};
   choicesMade=[];
   SYSTEM_STATE.consecutiveMistakes=0;
   SYSTEM_STATE.totalMistakes=0;
