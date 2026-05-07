@@ -1489,6 +1489,138 @@ choices:[
 
 ...createStabilityScenes(n,sn),
 
+{id:"s103",gfx:"bridge",alert:false,day:"Gun 8",time:"10:40",loc:"Suvari Kamarasi - Evrak Masasi",sub:"Notice of Readiness nedir?",who:"suvari",
+text:`Suvari dosyayi kapatip sana baktı.
+
+"Stajyer, Notice of Readiness nedir? Limana geldik diye her zaman kendiliginden sayilmaz. Yuk operasyonu ve laytime burada baslar."
+
+Kaptan bekliyor. Cevabin?"`,
+choices:[
+{text:"Geminin yuklemeye veya tahliyeye hazir oldugunu charter tarafa resmi bildiren evraktir derim",tag:"kritik",effect:{bilgi:15,sayginlik:12}},
+{text:"Limanin gemiye pilot verdigini gosteren kagittir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Sadece acentenin ic yazismasidir diye gecistiririm",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+
+{id:"s104",gfx:"cargo",alert:false,day:"Gun 8",time:"11:25",loc:"Yuk Ofisi",sub:"Konisimento / Bill of Lading sorgusu",who:"suvari",
+text:`Suvari bu kez konisimentoyu masaya koydu.
+
+"Peki konisimento nedir? Sadece bir kagit dersen olmaz. Yuk makbuzu mudur, tasima sozlesmesi midir, mulkiyetle iliskisi var midir?"
+
+Tek cümlede kurtaramazsin; ozunu soyle."`,
+choices:[
+{text:"Yuk makbuzu, tasima sozlesmesinin delili ve ciroyla devredilebilen belge niteliği tasir derim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"Sadece gumruk kagididir derim",tag:"itaatkar",effect:{bilgi:4,sayginlik:3}},
+{text:"Manifestoyla ayni seydir diye cevaplarim",tag:"korkak",effect:{bilgi:-10,sayginlik:-8}}]},
+
+{id:"s105",gfx:"bridge",alert:false,day:"Gun 8",time:"12:10",loc:"Suvari Kamarasi - Evrak Dersi",sub:"Mate's Receipt, manifest ve NOR farklari",who:"suvari",
+text:`Kaptan kalemiyle uc belgeyi ayirdi.
+
+"Mate's Receipt, cargo manifest ve Notice of Readiness. Bunlari birbirine karistiran adam limanda kendi ayagina kursun sikar."
+
+Hangisini nasil ayirirsin?"`,
+choices:[
+{text:"Mate's Receipt teslim alinan yuk kaydi, manifest toplu yuk listesi, NOR ise operasyon hazirlik bildirimi derim",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
+{text:"Manifest ile NOR ayni, Mate's Receipt ise gemi ici not derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Hepsi yuk evraki, fark etmez diye gecistiririm",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+
+{id:"s106",gfx:"galley",alert:true,day:"Gun 9",time:"20:15",loc:"Yemekhane",sub:"Gemide kavga cikti",who:"asci",
+text:`Yemekte bir anda sandalye geriye surttü. Guverte tayfasindan biri ile yagci sert sekilde tartismaya girdi.
+
+Sesler buyuyor. Asci bile kasigini birakti. Herkes birbirine bakiyor.
+
+Gemide kavga sadece gurultu degil; vardiya emniyetini de bozar. Ne yaparsin?"`,
+choices:[
+{text:"Taraf olmayip amire haber verir, ortamı sakince ayirmaya yardim ederim",tag:"kritik",effect:{sayginlik:14,cesaret:5,bilgi:6}},
+{text:"Kendi bolumumden olana sessizce destek veririm",tag:"itaatkar",effect:{sayginlik:4}},
+{text:"Laf atip kavgayi buyuturum",tag:"korkak",effect:{sayginlik:-12,dinclik:-5}}]},
+
+{id:"s107",gfx:"cabin",alert:false,day:"Gun 9",time:"22:30",loc:"Koridor - Kamaralar",sub:"Kavga sonrasi ifade ve disiplin",who:"z1",
+text:`Kavga dagildi ama is bitmedi. 1. Zabiti ifadeleri topluyor.
+
+"Gemide huzur bozulursa yarin vardiyada bunun bedelini hepimiz oderiz. Goren ne gorduyse net soyleyecek."
+
+Sana da ne gordugunu sordu."`,
+choices:[
+{text:"Abartmadan, tarafsiz ve kronolojik anlatirim",tag:"akilli",effect:{bilgi:10,sayginlik:12}},
+{text:"Amir ne derse onu tekrar ederim",tag:"itaatkar",effect:{sayginlik:5,bilgi:4}},
+{text:"Arkadasimi korumak icin gercegi egerim",tag:"korkak",effect:{sayginlik:-10,bilgi:-6}}]},
+
+{id:"s108",gfx:"harbor",alert:true,day:"Gun 6",time:"13:20",loc:"Gangway - PSC Reinspection",sub:"Eksikler buyudu, detention ihtimali",who:"suvari",
+text:`PSC memuru ikinci turda daha sert geldi.
+
+"Drill kayitlari tutarsiz, bir emniyet ekipmani etiketsiz, bir prosedur personel tarafindan bilinmiyor. Bu haliyle detention degerlendirmesi masada."
+
+Suvari sakin ama yuzü tas gibi. Senden ne ister?"`,
+choices:[
+{text:"Eksikleri ve duzeltici adimlari dosya halinde toparlar, memura net sirayla sunarim",tag:"kritik",effect:{bilgi:15,sayginlik:13,cesaret:4}},
+{text:"Sadece istenen klasoru getirir, arka planda kalirim",tag:"itaatkar",effect:{bilgi:7,sayginlik:6}},
+{text:"Memurun gozunden kacmasini umar, daginik davranirim",tag:"korkak",effect:{bilgi:-9,sayginlik:-10}}]},
+
+{id:"s109",gfx:"harbor",alert:true,day:"Gun 6",time:"15:00",loc:"Rıhtım - Detention",sub:"Gemi limanda baglandi",who:"suvari",
+text:`Karar aciklandi: detention.
+
+Sefer durdu. Acentenin telefonu susmuyor. Sirket mail istiyor, liman bekliyor, herkesin omzuna agirlik bindi.
+
+Suvari sana kisa baktı: "Bugun denizciligin sadece deniz olmadigini ogreniyorsun."`,
+choices:[
+{text:"Eksik listesi, sorumlu kisimlar ve kapanis sirasini not edip ekibe dagitirim",tag:"kritik",effect:{bilgi:14,sayginlik:12,cesaret:4}},
+{text:"Verilen isi yapar, sessizce kosustururum",tag:"itaatkar",effect:{sayginlik:6,bilgi:5}},
+{text:"Moral bozup kenara cekilirim",tag:"korkak",effect:{sayginlik:-8,dinclik:-6}}]},
+
+{id:"s110",gfx:"compass",alert:false,day:"Gun 7",time:"09:20",loc:"Kopruustu - ECDIS Konsolu",sub:"Route check ve safety contour",who:"z2",
+text:`2. Zabiti ECDIS route check ekranini acti.
+
+"GPS nokta verir; ama seyri ECDIS ustunde akilla kurarsin. Safety depth, safety contour, no-go area ve isolated danger ayarlari bos is degil."
+
+Sana sordu: route check'te once neye bakarsin?"`,
+choices:[
+{text:"Safety contour, cross track limit ve chart warning listesini birlikte kontrol ederim",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
+{text:"Sadece rotanin cizili olmasina bakarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"GPS cizgisi varsa kalanina gerek yok derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-8}}]},
+
+{id:"s111",gfx:"compass",alert:false,day:"Gun 7",time:"17:10",loc:"Kopruustu - GPS Alarmi",sub:"GPS ile kağıt/visual cross-check",who:"z2",
+text:`Bir anda GPS quality alarmi geldi. Pozisyon akiyor gibi.
+
+2. Zabiti derin bir nefes aldi: "Iste simdi elektronik rahatlik bitti. Radar range, visual mark, echo sounder ve kagit harita dusuncesi geri gelir."
+
+Ilk refleksin?"`,
+choices:[
+{text:"Pozisyonu ikinci kaynaklarla cross-check eder, ECDIS'e kor gibi guvenmem",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"GPS duzelir diye biraz beklerim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Alarmi susturup rota ayni diye devam ederim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s112",gfx:"bridge",alert:false,day:"Gun 10",time:"18:40",loc:"Kopruustu - Harita Duzeltmesi",sub:"Weekly chart correction",who:"z2",
+text:`Masa kagit haritalarla dolu. 2. Zabiti elindeki Notice to Mariners'i salladi.
+
+"Elektronik var diye kâğıt harita disiplini olmez. Duzeltme tarihi, correction number, yeni tehlike, yeni sığlık... hepsi tek tek islenir."
+
+Sana bir not verdi. Ne yaparsin?"`,
+choices:[
+{text:"Notu ilgili haritaya isler, correction numarasini ve tarihi kayda gecerim",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
+{text:"Sadece haritanin kenarina ufak not dusup birakirim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"ECDIS varken buna gerek yok derim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+
+{id:"s113",gfx:"sea",alert:false,day:"Gun 10",time:"06:50",loc:"Valensiya Aciklari",sub:"Farkli rota ve trafik plani",who:"suvari",
+text:`Suvari yeni rotayi acikladı.
+
+"Bu sefer Barselona yerine Valensiya aciklarindan asagi inip sonra Malta rotasina kiracagiz. Hava, trafik ve yakit bunu gerektiriyor."
+
+Farkli rota, farkli risk demek. Ilk dusuncen ne olur?"`,
+choices:[
+{text:"Weather routing, trafik yogunlugu ve ETA etkisini birlikte degerlendiririm",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
+{text:"Suvari cizdiyse tamamdir derim",tag:"itaatkar",effect:{sayginlik:5,bilgi:4}},
+{text:"Eski rotadan gitsek daha kolay olur diye diretirirm",tag:"korkak",effect:{sayginlik:-6,bilgi:-4}}]},
+
+{id:"s114",gfx:"sea",alert:false,day:"Gun 11",time:"08:30",loc:"Malta Gecisi",sub:"Yeni rota, yeni raporlama disiplini",who:"z2",
+text:`Malta gecisinde trafik yogun ama duzenli.
+
+2. Zabiti plotter'a dokundu: "Her rota degisikligi sadece cizgi degildir; logbook, noon report, ECDIS annotation ve bazen charter bilgilendirmesi ister."
+
+Bu degisiklikte neyi unutmazsin?"`,
+choices:[
+{text:"Logbook, rota degisikligi saati ve ilgili raporlamayi birlikte guncellerim",tag:"kritik",effect:{bilgi:14,sayginlik:11}},
+{text:"Sadece rota cizgisine bakarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Resmi rapora gerek yok, herkes goruyor diye dusunurum",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+
 {id:"FINAL",gfx:"bridge",alert:false,day:"Son Gün",time:"15:00",loc:"Konferans Salonu",sub:"Staj değerlendirme — kontrat sona erdi",who:"z1",
 text:`Son değerlendirme toplantısı.\n\n1. Zabiti, 2. Zabiti, Lostromo. Önlerinde staj formu.\n\n"${n}. ${yr} yılında, ${sn}'de. Fırtına, yük denetimi, gece nöbetleri, yangın tatbikatı, liman operasyonları, krizler.\n\nRaporun birinci satırına ne yazayım?"`,
 choices:[
@@ -2143,9 +2275,14 @@ const ROUTE_PORTS = [
   {name:"Çanakkale", x:130, y:100, visited:false},
   {name:"İstanbul", x:180, y:85, visited:false},
   {name:"Pire", x:120, y:160, visited:false},
+  {name:"Malta", x:95, y:175, visited:false},
+  {name:"Valensiya", x:22, y:108, visited:false},
   {name:"İskenderiye", x:200, y:210, visited:false},
+  {name:"Port Said", x:228, y:200, visited:false},
   {name:"Cenova", x:60, y:80, visited:false},
   {name:"Barselona", x:30, y:100, visited:false},
+  {name:"Rotterdam", x:25, y:18, visited:false},
+  {name:"Mersin", x:180, y:180, visited:false},
 ];
 
 let shipPosition = {x:85, y:130};
@@ -2162,7 +2299,10 @@ function updateShipPosition(sceneLoc){
   const locMap = {
     'İzmir':{x:85,y:130}, 'Çanakkale Boğazı':{x:130,y:100},
     'İstanbul Boğazı':{x:180,y:85}, 'Pire':{x:120,y:160},
-    'İskenderiye':{x:200,y:210}, 'Cenova':{x:60,y:80},
+    'Malta':{x:95,y:175}, 'Valensiya':{x:22,y:108},
+    'İskenderiye':{x:200,y:210}, 'Port Said':{x:228,y:200},
+    'Cenova':{x:60,y:80}, 'Barselona':{x:30,y:100},
+    'Rotterdam':{x:25,y:18}, 'Mersin':{x:180,y:180},
     'Aden':{x:300,y:230}, 'Süveyş':{x:250,y:195},
   };
   for(const [key,pos] of Object.entries(locMap)){
