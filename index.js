@@ -2108,6 +2108,83 @@ choices:[
 {text:"Eski waypoint düzenini olduğu gibi taşırım",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
 {text:"Deniz açıksa detay gerekmez derim",tag:"korkak",effect:{bilgi:-8,sayginlik:-8}}]},
 
+{id:"s159",gfx:"engine",alert:false,day:"Gun 9",time:"08:40",loc:"Ballast Kontrol Paneli",sub:"Ballast / deballast operasyon zinciri",who:"carkci",
+text:`Çarkçıbaşı ballast panelini açtı.
+
+"Bu gemi bazen yükten çok suyla düzeltilir. Ama hangi tanktan ne zaman alıp ne zaman basacağını bilmezsen listeyi düzeltirken başka sorunu doğurursun. Sounding, valf sırası, pompa yükü, serbest yüzey... hepsi birlikte düşünülür."
+
+İlk kontrolün ne olur?`,
+choices:[
+{text:"Tank planı, mevcut sounding, valf hattı ve hedef trim/list durumunu birlikte kontrol ederim",tag:"kritik",effect:{bilgi:15,sayginlik:12}},
+{text:"Sadece pompaları çalıştırmaya odaklanırım",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Hangi tanka su gittiği çok fark etmez diye düşünürüm",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s160",gfx:"cargo",alert:false,day:"Gun 9",time:"09:30",loc:"Yük Ofisi - Trim/List Hesabi",sub:"Trim-list correction mini hesap",who:"z1",
+text:`1. Zabiti hesabı önüne itti.
+
+"Gemi sancağa 1.2 derece yatık. Çift dip tanklardan birine 60 ton ballast alırsak listedeki farkı azaltabiliriz; ama serbest yüzey ve trim etkisini de unutmayacaksın."
+
+Sana göre doğru yaklaşım ne?`,
+choices:[
+{text:"Balastı karşı tarafa kontrollü alır, listeyi soundingle ve serbest yüzey etkisiyle birlikte izlerim",tag:"kritik",effect:{bilgi:16,sayginlik:11}},
+{text:"Yatıklığı görünce en yakın tanka hemen su basarım",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Gözle düzelmiş gibi görünüyorsa hesabı bırakırım",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+
+{id:"s161",gfx:"cargo",alert:false,day:"Gun 10",time:"14:15",loc:"Ana Güverte - Lashing Turu",sub:"Cargo securing / lashing kararları",who:"lostromo",
+text:`Lostromo lashing turnbucklelere tek tek vurdu.
+
+"Deniz sakinken gevşek lashing fark edilmez. İlk sert havada yük konuşur. Twist-lock, turnbuckle, rod, chock, wedge... hepsi yerinde olacak."
+
+Sana göre en kritik disiplin nedir?`,
+choices:[
+{text:"Lashing gerginliği, kilitlerin oturuşu ve hava öncesi tekrar kontrolü derim",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:3}},
+{text:"Yük yerindeyse lashinge çok dokunmam derim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"İlk gün sağlamlandıysa tekrar bakmaya gerek yok derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s162",gfx:"storm",alert:true,day:"Gun 10",time:"22:10",loc:"Ambar Üstü - Hava Öncesi Kontrol",sub:"Lashing gevşemesi riski",who:"z1",
+text:`Hava sertleşmeden önce 1. Zabiti son bir tur istiyor.
+
+"Bir rod gevşekse, bir kilit yarım oturduysa, bunu limanda değil havada anlarsın. O zaman da seçenek azalır."
+
+Sana hangi işi verdi?`,
+choices:[
+{text:"Kritik sıralardaki lashingi tek tek göz ve el kontrolüyle teyit ederim",tag:"kritik",effect:{bilgi:14,sayginlik:12}},
+{text:"Uzaktan genel görüntüye bakarım",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Bu saatte tura gerek yok diye düşünürüm",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+
+{id:"s163",gfx:"engine",alert:false,day:"Gun 4",time:"07:20",loc:"Makine Dairesi - Sabah Turu",sub:"Günlük tur ve arıza önleme",who:"bas2",
+text:`2. Başmakinist günlük turu başlattı.
+
+"Arıza çoğu zaman alarm çalmadan önce koku, sıcaklık, titreşim, sızıntı veya ses olarak haber verir. Makineci gözü bunu erken yakalarsa gemi rahat eder."
+
+Turda ilk refleksin ne olur?`,
+choices:[
+{text:"Sızıntı, sıcak yüzey, anormal ses ve titreşimi birlikte tararım",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
+{text:"Sadece göstergelere bakarım",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Alarm yoksa sorun da yok diye düşünürüm",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s164",gfx:"engine",alert:false,day:"Gun 4",time:"08:10",loc:"Makine Dairesi - Yardımcı Sistemler",sub:"Separator, bilge ve cooling water kontrolü",who:"yagci",
+text:`Yağcı Mehmet Ali seni yardımcı sistemlere çekti.
+
+"Ana makine kadar separator, bilge, cooling water ve günlük yağ seviyeleri de hayatidir. Küçük ihmal büyük arızaya çıkar."
+
+İlk neyi not alırsın?`,
+choices:[
+{text:"Yağ seviyeleri, soğutma suyu durumu, separator sesi ve bilge temizliğini birlikte not ederim",tag:"kritik",effect:{bilgi:14,sayginlik:11}},
+{text:"Sadece yağ seviyesine bakarım",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Hepsi dönüyorsa ayrıntıya girmem",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+
+{id:"s165",gfx:"engine_fault",alert:true,day:"Gun 4",time:"10:30",loc:"Makine Dairesi - Önleyici Müdahale",sub:"Küçük belirtiyi erken yakalamak",who:"carkci",
+text:`Kontrol turunda hafif bir yanık kokusu fark edildi. Henüz alarm yok.
+
+Çarkçıbaşı durup baktı: "İşte arıza önleme burada başlar. Küçük belirtiyi ciddiye alırsan gemi seni sonra ödüllendirir."
+
+Ne önerirsin?`,
+choices:[
+{text:"Kaynağı izole eder, sıcaklık/ yük durumu ile birlikte kontrollü inceleme isterim",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:4}},
+{text:"Bir süre daha izleyip sonra bakarız derim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Koku geçer diye önemsemem",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
 {id:"FINAL",gfx:"bridge",alert:false,day:"Son Gün",time:"15:00",loc:"Konferans Salonu",sub:"Staj değerlendirme — kontrat sona erdi",who:"z1",
 text:`Son değerlendirme toplantısı.\n\n1. Zabiti, 2. Zabiti, Lostromo. Önlerinde staj formu.\n\n"${n}. ${yr} yılında, ${sn}'de. Fırtına, yük denetimi, gece nöbetleri, yangın tatbikatı, liman operasyonları, krizler.\n\nRaporun birinci satırına ne yazayım?"`,
 choices:[
