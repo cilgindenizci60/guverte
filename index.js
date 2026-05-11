@@ -2752,7 +2752,531 @@ const SYSTEM_STATE={
   triggeredChains:new Set(),
 };
 
-function getSceneOverlay(gfx){
+const ECDIS_ROUTE_PLANS={
+  izmir_messina_south:{
+    label:'IZMIR-MESSINA GUNEY',
+    line:'118,92 156,86 198,90 238,80 278,84 318,74 354,78',
+    waypoints:[
+      {x:118,y:92,name:'WP1'},
+      {x:156,y:86,name:'WP2'},
+      {x:198,y:90,name:'TSS'},
+      {x:238,y:80,name:'WP3'},
+      {x:278,y:84,name:'MALTA'},
+      {x:318,y:74,name:'WP4'},
+      {x:354,y:78,name:'MSN'}
+    ],
+    warning:'SAFETY 30m'
+  },
+  canakkale_pire_direct:{
+    label:'CANAKKALE-PIRE DIRECT',
+    line:'102,86 146,74 188,70 228,78 266,90 304,102 344,106',
+    waypoints:[
+      {x:102,y:86,name:'CNK'},
+      {x:146,y:74,name:'WP1'},
+      {x:188,y:70,name:'TSS'},
+      {x:228,y:78,name:'WP2'},
+      {x:266,y:90,name:'WP3'},
+      {x:304,y:102,name:'AEG'},
+      {x:344,y:106,name:'PIR'}
+    ],
+    warning:'XTD 0.50'
+  },
+  iskenderiye_suveys_north:{
+    label:'ISKENDERIYE-SUVEYS',
+    line:'120,108 156,98 188,92 222,88 262,82 304,76 346,66',
+    waypoints:[
+      {x:120,y:108,name:'ALX'},
+      {x:156,y:98,name:'WP1'},
+      {x:188,y:92,name:'TIDE'},
+      {x:222,y:88,name:'WP2'},
+      {x:262,y:82,name:'SEP'},
+      {x:304,y:76,name:'WP3'},
+      {x:346,y:66,name:'SUE'}
+    ],
+    warning:'UKC MON'
+  }
+};
+let activeEcdisPlanKey='izmir_messina_south';
+const RADAR_TRAINING_MODES={
+  cpa_watch:{
+    label:'RADAR WATCH',
+    targets:[
+      {x:266,y:48,r:3.2,color:'#1aff50',tag:'TGT A',meta:'CPA 1.2'},
+      {x:282,y:86,r:2.8,color:'#d4a017',tag:'TGT B',meta:'TCPA 14'},
+      {x:208,y:60,r:2.3,color:'#6fa8dc',tag:'ECHO',meta:'2.8 NM'},
+      {x:252,y:106,r:2.1,color:'#1aff50',tag:'AFT',meta:'3.6 NM'}
+    ],
+    vector:'240,72 266,48',
+    footer:'RNG 6 NM  RM UP'
+  },
+  parallel_index:{
+    label:'PARALLEL INDEX',
+    targets:[
+      {x:258,y:58,r:3,color:'#1aff50',tag:'SAFE',meta:'PI'},
+      {x:286,y:77,r:2.7,color:'#d4a017',tag:'COAST',meta:'0.6'},
+      {x:216,y:82,r:2.2,color:'#6fa8dc',tag:'XTD',meta:'0.3'}
+    ],
+    vector:'240,72 286,77',
+    piLine:'188,92 292,54',
+    footer:'PI SET 0.8 NM'
+  },
+  xtd_alarm:{
+    label:'XTD MONITOR',
+    targets:[
+      {x:272,y:56,r:3.2,color:'#c93030',tag:'ALM',meta:'XTD'},
+      {x:290,y:84,r:2.8,color:'#d4a017',tag:'SET',meta:'1.8 KT'},
+      {x:222,y:50,r:2.1,color:'#1aff50',tag:'WP',meta:'ACT'}
+    ],
+    vector:'240,72 272,56',
+    footer:'ALARM 0.52 NM'
+  },
+  arpa_acquire:{
+    label:'ARPA ACQUIRE',
+    targets:[
+      {x:270,y:52,r:3.1,color:'#1aff50',tag:'ACQ',meta:'TGT 01'},
+      {x:286,y:88,r:2.7,color:'#d4a017',tag:'MAN',meta:'TGT 02'},
+      {x:222,y:64,r:2.2,color:'#6fa8dc',tag:'RAW',meta:'ECHO'}
+    ],
+    vector:'240,72 270,52',
+    footer:'ARPA 2/10 TRK'
+  },
+  arpa_lost:{
+    label:'LOST TARGET',
+    targets:[
+      {x:274,y:54,r:3.1,color:'#c93030',tag:'LOST',meta:'ARPA'},
+      {x:292,y:92,r:2.7,color:'#d4a017',tag:'SET',meta:'2.1 KT'},
+      {x:218,y:66,r:2.2,color:'#6fa8dc',tag:'RAW',meta:'ECHO'}
+    ],
+    vector:'240,72 274,54',
+    footer:'TRACK DROP'
+  },
+  trial_maneuver:{
+    label:'TRIAL MANEUVER',
+    targets:[
+      {x:268,y:52,r:3,color:'#1aff50',tag:'CPA',meta:'SIM'},
+      {x:286,y:86,r:2.6,color:'#d4a017',tag:'ALT',meta:'1.8 NM'},
+      {x:226,y:88,r:2.1,color:'#6fa8dc',tag:'NOW',meta:'LIVE'}
+    ],
+    vector:'240,72 268,52',
+    piLine:'220,96 292,48',
+    footer:'TRIAL STBD 20'
+  },
+  clutter_tune:{
+    label:'CLUTTER TUNE',
+    targets:[
+      {x:262,y:56,r:2.8,color:'#1aff50',tag:'ECHO',meta:'CLEAR'},
+      {x:302,y:78,r:2.4,color:'#8ab0c8',tag:'RAIN',meta:'NOISE'},
+      {x:226,y:94,r:2.4,color:'#8ab0c8',tag:'SEA',meta:'NOISE'}
+    ],
+    vector:'240,72 262,56',
+    footer:'SEA 42  RAIN 18'
+  },
+  guard_zone:{
+    label:'GUARD ZONE',
+    targets:[
+      {x:271,y:59,r:3.1,color:'#c93030',tag:'GZ',meta:'INBOUND'},
+      {x:297,y:84,r:2.5,color:'#d4a017',tag:'EDGE',meta:'1.4 NM'},
+      {x:226,y:70,r:2.1,color:'#6fa8dc',tag:'SAFE',meta:'OUT'}
+    ],
+    vector:'240,72 271,59',
+    footer:'GUARD 0.8-2.0 NM'
+  },
+  ebl_vrm:{
+    label:'EBL / VRM',
+    targets:[
+      {x:274,y:58,r:3,color:'#1aff50',tag:'TGT',meta:'045'},
+      {x:246,y:36,r:2.3,color:'#8ab0c8',tag:'VRM',meta:'1.6 NM'},
+      {x:300,y:74,r:2.2,color:'#d4a017',tag:'ALT',meta:'3.1 NM'}
+    ],
+    vector:'240,72 274,58',
+    footer:'EBL 045  VRM 1.6'
+  },
+  display_mode:{
+    label:'DISPLAY MODES',
+    targets:[
+      {x:268,y:54,r:3,color:'#1aff50',tag:'N-UP',meta:'TRUE'},
+      {x:292,y:88,r:2.5,color:'#d4a017',tag:'H-UP',meta:'REL'},
+      {x:226,y:88,r:2.3,color:'#6fa8dc',tag:'C-UP',meta:'ROUTE'}
+    ],
+    vector:'240,72 268,54',
+    footer:'MODE COMPARE'
+  },
+  blind_sector:{
+    label:'BLIND SECTOR',
+    targets:[
+      {x:274,y:52,r:2.9,color:'#d4a017',tag:'EDGE',meta:'SEEN'},
+      {x:314,y:70,r:2.4,color:'#c93030',tag:'MASK',meta:'LOST'},
+      {x:226,y:94,r:2.1,color:'#6fa8dc',tag:'SAFE',meta:'CLEAR'}
+    ],
+    vector:'240,72 274,52',
+    footer:'MAST SHADOW'
+  },
+  interference:{
+    label:'INTERFERENCE',
+    targets:[
+      {x:268,y:56,r:2.8,color:'#1aff50',tag:'REAL',meta:'TRACK'},
+      {x:302,y:56,r:2.4,color:'#8ab0c8',tag:'INTF',meta:'FALSE'},
+      {x:302,y:88,r:2.4,color:'#8ab0c8',tag:'INTF',meta:'FALSE'}
+    ],
+    vector:'240,72 268,56',
+    footer:'RADAR INT'
+  },
+  shadow_sector:{
+    label:'SHADOW SECTOR',
+    targets:[
+      {x:270,y:52,r:2.9,color:'#1aff50',tag:'OPEN',meta:'CLEAR'},
+      {x:320,y:72,r:2.1,color:'#c93030',tag:'SHDW',meta:'WEAK'},
+      {x:236,y:102,r:2.2,color:'#d4a017',tag:'AFT',meta:'2.4 NM'}
+    ],
+    vector:'240,72 270,52',
+    footer:'FUNNEL SHDW'
+  },
+  rain_small_target:{
+    label:'SMALL TARGET',
+    targets:[
+      {x:258,y:58,r:2.1,color:'#1aff50',tag:'SMALL',meta:'WEAK'},
+      {x:300,y:82,r:2.5,color:'#8ab0c8',tag:'RAIN',meta:'CLUTTER'},
+      {x:220,y:84,r:2.3,color:'#8ab0c8',tag:'SEA',meta:'NOISE'}
+    ],
+    vector:'240,72 258,58',
+    footer:'RAIN CELL'
+  },
+  ais_mismatch:{
+    label:'AIS / RADAR',
+    targets:[
+      {x:270,y:54,r:3,color:'#1aff50',tag:'RAD',meta:'2.2 NM'},
+      {x:286,y:62,r:2.6,color:'#d4a017',tag:'AIS',meta:'OFFSET'},
+      {x:226,y:90,r:2.2,color:'#6fa8dc',tag:'RAW',meta:'LIVE'}
+    ],
+    vector:'240,72 270,54',
+    footer:'AIS OFF 0.3 NM'
+  },
+  target_swap:{
+    label:'TARGET SWAP',
+    targets:[
+      {x:266,y:52,r:2.9,color:'#1aff50',tag:'TGT 01',meta:'SWAP?'},
+      {x:286,y:76,r:2.8,color:'#d4a017',tag:'TGT 02',meta:'CROSS'},
+      {x:250,y:98,r:2.3,color:'#6fa8dc',tag:'ARPA',meta:'TRACK'}
+    ],
+    vector:'240,72 286,76',
+    footer:'TRACK MIX'
+  },
+  false_echo:{
+    label:'FALSE ECHO',
+    targets:[
+      {x:268,y:54,r:2.9,color:'#1aff50',tag:'REAL',meta:'CPA 1.4'},
+      {x:314,y:54,r:2.5,color:'#8ab0c8',tag:'FALSE',meta:'MIRROR'},
+      {x:314,y:90,r:2.5,color:'#8ab0c8',tag:'FALSE',meta:'MIRROR'}
+    ],
+    vector:'240,72 268,54',
+    footer:'MULTI ECHO'
+  },
+  multi_crossing:{
+    label:'MULTI CROSSING',
+    targets:[
+      {x:268,y:52,r:3,color:'#c93030',tag:'CROSS A',meta:'CPA 0.8'},
+      {x:296,y:74,r:2.8,color:'#d4a017',tag:'CROSS B',meta:'TCPA 12'},
+      {x:250,y:102,r:2.5,color:'#1aff50',tag:'OVTK',meta:'AFT'},
+      {x:214,y:70,r:2.2,color:'#6fa8dc',tag:'SAFE',meta:'PASS'}
+    ],
+    vector:'240,72 268,52',
+    footer:'4 TGT WATCH'
+  }
+};
+let activeRadarMode='cpa_watch';
+const EXTRA_ROUTE_SCENES=[
+  {id:"s204",gfx:"compass",alert:false,day:"Gun 11",time:"20:05",loc:"Koprustu - ECDIS Planning Station",sub:"Seyir plani cizimi ve waypoint secimi",who:"z2",
+  text:`2. Zabiti ECDIS planning ekranini acti.
+
+"Bu kez sadece cizgi cekmeyeceksin. Rota; waypoint, wheel-over mantigi, TSS saygisi, emniyet konturu ve raporlama noktasi ister. Yanlis bir donus acisi kagit ustunde guzel gorunse de denizde bela cikarir.
+
+Simdi bana bu gecis icin hangi seyir planini cizecegini soyle."`,
+  choices:[
+  {text:"Trafik ayirim duzenini ve emniyetli suyu koruyan guneyli plani cizerim",tag:"kritik",effect:{bilgi:17,sayginlik:12},routePlanKey:"izmir_messina_south"},
+  {text:"Canakkale-Pire direct gibi daha kisa ama trafik baskili bir plan denerim",tag:"akilli",effect:{bilgi:12,sayginlik:8},routePlanKey:"canakkale_pire_direct"},
+  {text:"Iskenderiye-Suveys hattina benzer raporlama agirlikli bir plan kurarim",tag:"sosyal",effect:{bilgi:11,sayginlik:9},routePlanKey:"iskenderiye_suveys_north"}]},
+  {id:"s205",gfx:"compass",alert:false,day:"Gun 11",time:"20:40",loc:"Koprustu - Route Check",sub:"ECDIS uzerinde cizilen rotayi dogrulama",who:"z2",
+  text:`Cizdigin rota artik ekranda. 2. Zabiti parmagiyla waypoint hattini takip etti.
+
+"Route planning'in yarisi cizmekse diger yarisi route check'tir. Safety contour, no-go alanlar, wheel-over noktasi, XTD ve reporting point'ler kontrol edilmeden bu rota canli sayilmaz."
+
+Hangi kontrolden baslarsin?"`,
+  choices:[
+  {text:"Safety contour, no-go area ve wheel-over noktalarini birlikte kontrol ederim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+  {text:"Way-pointler gorunuyorsa route hazirdir diye dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Sadece varis limanina uzaniyor olmasi yeter derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+  {id:"s206",gfx:"bridge",alert:false,day:"Gun 12",time:"06:20",loc:"Koprustu - Sabah Seyir Brifingi",sub:"Seyir planini ekibe anlatma ve ECDIS briefing",who:"suvari",
+  text:`Sabah brifinginde suvari seni ekrana cagirdi.
+
+"Plani cizmek kadar anlatmak da zabitliktir. ECDIS'te aktif rotayi gostereceksin; hangi waypoint'te donus var, hangi noktada reporting yapilacak, hangi kesimde emniyet payi daraliyor, hepsini ekibe net aktaracaksin."
+
+Brifingi nasil acarsin?"`,
+  choices:[
+  {text:"Way-point sirasi, riskli donusler, safety contour ve reporting pointleri net anlatirim",tag:"kritik",effect:{bilgi:16,sayginlik:13,cesaret:4}},
+  {text:"Rotayi acip ekip ekrandan kendi anlar diye birakirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"ECDIS'te ciziliyse sozlu brifinge gerek yok derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-10}}]},
+  {id:"s207",gfx:"compass",alert:false,day:"Gun 12",time:"07:10",loc:"Koprustu - Turn Planning",sub:"Wheel-over point mantigi",who:"z2",
+  text:`2. Zabiti rota donus noktasini buyuttu.
+
+"Waypoint tek basina donus emri degildir. Wheel-over point; hiz, donus acisi, dumen karakteri ve emniyet payiyla dusunulur. Gec kalirsan rotayi kesersin, erken donersen baska riske girersin."
+
+Ilk zabit refleksin ne olur?"`,
+  choices:[
+  {text:"Donusu waypoint ustunde degil, geminin donus davranisina gore wheel-over mantigiyla planlarim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Waypoint gorununce direkt dumen basmak yeterlidir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Donusleri goz karariyla aliriz diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+  {id:"s208",gfx:"bridge",alert:false,day:"Gun 12",time:"07:45",loc:"Koprustu - Kiyiya Paralel Seyir",sub:"Parallel indexing ile emniyet takibi",who:"suvari",
+  text:`Suvari radar ve ECDIS'i ayni anda acik tuttu.
+
+"Parallel indexing sadece sinav konusu degil; bogazda, liman yaklasmasinda ve kiyidan geciste gozunun ikinci emniyet cizgisidir. Ekrana bakarken kiyiyla aran aciliyor mu, daraliyor mu hemen anlarsin."
+
+Bu teknigi nasil kullanirsin?"`,
+  choices:[
+  {text:"Tehlikeli kiyi veya izobata paralel emniyet cizgisi kurup sapmayi onunla izlerim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+  {text:"Sadece merkez rota cizgisini izlemek yeter derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Parallel indexing eski usuldur diye onemsemem",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+  {id:"s209",gfx:"compass",alert:true,day:"Gun 12",time:"08:20",loc:"Koprustu - ECDIS Alarmi",sub:"XTD alarmi ve rota disina tasma riski",who:"z2",
+  text:`ECDIS kisa bir alarm verdi. Cross Track Distance sinirina yaklasiyorsun.
+
+2. Zabiti hemen sordu: "Bu sadece sesi susturup gecilecek bir alarm degil. Akinti, gec donus, yanlis heading ya da sensor kaymasi olabilir. Once sebebi anlarsin, sonra duzeltirsin."
+
+Ne yaparsin?"`,
+  choices:[
+  {text:"XTD nedenini akinti, heading ve aktif waypoint ile birlikte kontrol eder, sonra rota duzeltirim",tag:"kritik",effect:{bilgi:17,sayginlik:12,cesaret:3}},
+  {text:"Alarmi susturup biraz izlerim, sonra bakarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Kisa tasmalar normaldir diye dusunup devam ederim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s210",gfx:"radar",alert:false,day:"Gun 12",time:"08:50",loc:"Koprustu - Radar Konsolu",sub:"Radar hedef takibi ve CPA/TCPA okuma",who:"z2",radarMode:"cpa_watch",
+  text:`2. Zabiti radar ekranini buyuttu.
+
+"AIS faydali ama radar zabitin kendi gozudur. Hedefi acquire edersin, relative movement'i okursun, CPA/TCPA'yi yorumlarsin. Sayi gorup gecmek degil; tehdidi erken fark etmek onemlidir."
+
+Ilk neye bakarsin?"`,
+  choices:[
+  {text:"Relative movement, vector ve CPA/TCPA bilgisini birlikte yorumlarim",tag:"kritik",effect:{bilgi:17,sayginlik:12},radarMode:"cpa_watch"},
+  {text:"Sadece en buyuk parlak hedefe bakarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"cpa_watch"},
+  {text:"AIS varsa radar detayina gerek yok derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-10},radarMode:"cpa_watch"}]},
+  {id:"s211",gfx:"radar",alert:false,day:"Gun 12",time:"09:20",loc:"Koprustu - Radar/PI",sub:"Parallel indexing radar uzerinde nasil okunur?",who:"suvari",radarMode:"parallel_index",
+  text:`Suvari radar ekranina paralel bir emniyet cizgisi acti.
+
+"Parallel indexing ECDIS'te de olur ama radar ustunde ayri bir guven hissi verir. Kiyi ya da tehlike bu cizgiye gore sana yaklasiyorsa erken anlarsin. Ozellikle gece ve dusuk goruste cok ise yarar."
+
+Hangi yorum dogruya daha yakindir?"`,
+  choices:[
+  {text:"PI cizgisini emniyet mesafesi olarak kurup hedeflerin ona gore acilip daralmasini izlerim",tag:"kritik",effect:{bilgi:16,sayginlik:12},radarMode:"parallel_index"},
+  {text:"Sadece merkez sweep'i izlemek yeterlidir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"parallel_index"},
+  {text:"PI sadece kagit ustu bir teoridir diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9},radarMode:"parallel_index"}]},
+  {id:"s212",gfx:"radar",alert:true,day:"Gun 12",time:"09:55",loc:"Koprustu - Radar Alarmi",sub:"XTD sonrasi radar capraz kontrolu",who:"z2",radarMode:"xtd_alarm",
+  text:`ECDIS alarmindan sonra 2. Zabiti radar capraz kontrolu istedi.
+
+"Sadece tek ekrana bakarsan kayarsin. Akinti seni disari itiyorsa radar echo'su, PI hattin ve aktif hedef vektoru da bunu soyler. Simdi ayni sapmayi radar ustunde de okumani istiyorum."
+
+Ne yaparsin?"`,
+  choices:[
+  {text:"Radar vector, PI hatti ve echo mesafesini birlikte okuyup sapmanin dogrulugunu teyit ederim",tag:"kritik",effect:{bilgi:17,sayginlik:12,cesaret:3},radarMode:"xtd_alarm"},
+  {text:"ECDIS alarmi varsa radar bakmadan da yeter derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"xtd_alarm"},
+  {text:"Radar ile ECDIS ayni seydir diye dusunup capraz kontrol etmem",tag:"korkak",effect:{bilgi:-11,sayginlik:-10},radarMode:"xtd_alarm"}]},
+  {id:"s213",gfx:"radar",alert:false,day:"Gun 12",time:"10:20",loc:"Koprustu - ARPA Konsolu",sub:"ARPA acquire ve target tracking",who:"z2",radarMode:"arpa_acquire",
+  text:`2. Zabiti hedeflerden birini isaretledi.
+
+"Ham echo gormek bir seydir, ARPA ile hedefi acquire edip takip etmek baska bir sey. Dogru hedefi sectiginde CPA/TCPA yorumun da guclenir. Ama her parlak hedefe de sorgusuz yapisilmaz."
+
+Ilk refleksin ne olur?"`,
+  choices:[
+  {text:"Tehlikeli gorunen hedefi acquire eder, raw echo ile ARPA verisini birlikte izlerim",tag:"kritik",effect:{bilgi:17,sayginlik:12},radarMode:"arpa_acquire"},
+  {text:"ARPA secilince gerisini sistem halleder diye dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"arpa_acquire"},
+  {text:"Acquire islemini gereksiz bulur sadece ekrana bakarim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9},radarMode:"arpa_acquire"}]},
+  {id:"s214",gfx:"radar",alert:true,day:"Gun 12",time:"10:55",loc:"Koprustu - Radar Uyarisi",sub:"Lost target ve track dusmesi",who:"z2",radarMode:"arpa_lost",
+  text:`Takipteki hedeflerden biri bir anda kararsizlasti. ARPA hedefi kaybetmeye basladi.
+
+2. Zabiti hemen uyardi: "Lost target seni rehavete dusurmesin. Hedef yok olmadi; sadece takip zinciri koptu olabilir. Raw echo, sweep ve ikinci sensorlerle yeniden degerlendirmen gerekir."
+
+Ne yaparsin?"`,
+  choices:[
+  {text:"Lost target'i raw echo, sweep ve diger seyir araclariyla yeniden teyit ederim",tag:"kritik",effect:{bilgi:17,sayginlik:12,cesaret:3},radarMode:"arpa_lost"},
+  {text:"ARPA dusurdiyse tehdit de kalmamistir diye dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"arpa_lost"},
+  {text:"Alarmi kapatip ekrandaki diger hedeflere dalarim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10},radarMode:"arpa_lost"}]},
+  {id:"s215",gfx:"radar",alert:false,day:"Gun 12",time:"11:20",loc:"Koprustu - Trial Maneuver",sub:"Manevra denemesi ve CPA etkisi",who:"suvari",radarMode:"trial_maneuver",
+  text:`Suvari trial maneuver penceresini acti.
+
+"Gercekte dumen basmadan once bazen ekranda deneriz. 20 derece sancak versem CPA nasil degisir, hizi dusersem hedefle mesafe acilir mi? Trial maneuver dogru kullanilirsa son dakika telasini azaltir."
+
+Burada en dogru yaklasim hangisi?"`,
+  choices:[
+  {text:"Manevra secenegini simule edip yeni CPA/TCPA sonucuna gore karar veririm",tag:"kritik",effect:{bilgi:16,sayginlik:12},radarMode:"trial_maneuver"},
+  {text:"Trial ekranini gorup yine de denemeden ayni planla devam ederim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"trial_maneuver"},
+  {text:"Boyle seyler vakit kaybi, dogrudan dumen basilir derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9},radarMode:"trial_maneuver"}]},
+  {id:"s216",gfx:"radar",alert:false,day:"Gun 12",time:"11:50",loc:"Koprustu - Radar Ayarlari",sub:"Rain clutter, sea clutter ve gain ayari",who:"z2",radarMode:"clutter_tune",
+  text:`Yagis hafif basladi, deniz yuzeyi de parlama yapiyor. Radar ekrani kirlenmeye basladi.
+
+2. Zabiti eliyle dugmeleri gosterdi: "Gain, sea clutter ve rain clutter ayari ince istir. Fazla acarsan hedefi bogarsin, fazla kisarsan yalanci echo icinde kaybolursun."
+
+Ne yaparsin?"`,
+  choices:[
+  {text:"Sea clutter ve rain clutter'i hedefi oldurmeyecek sekilde ince ayarla, raw echo'yu temizlerim",tag:"kritik",effect:{bilgi:17,sayginlik:12},radarMode:"clutter_tune"},
+  {text:"Parazit azalsin diye clutter'i sonuna kadar acmak isterim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"clutter_tune"},
+  {text:"Gain ayarina hic dokunmadan ayni goruntuyla devam ederim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10},radarMode:"clutter_tune"}]},
+  {id:"s217",gfx:"radar",alert:true,day:"Gun 12",time:"12:20",loc:"Koprustu - Guard Zone Alarmi",sub:"Guard zone alarmi calmaya basladi",who:"z2",radarMode:"guard_zone",
+  text:`Radar paneli kisa ama sert bir alarm verdi. Bir hedef guard zone icine girmeye basladi.
+
+2. Zabiti hemen sordu: "Guard zone sadece sesi susturup unutacagin bir sey degil. Hedef sana mi geliyor, sen ona mi donuyorsun, yalanci echo mu var; bunu ayirman gerekir."
+
+Bu alarm geldiginde ilk refleksin ne olur?"`,
+  choices:[
+  {text:"Hedefi radar vector, CPA/TCPA ve gerçek echo ile teyit eder, guard zone nedenini anlarim",tag:"kritik",effect:{bilgi:17,sayginlik:12,cesaret:3},radarMode:"guard_zone"},
+  {text:"Alarmi susturup biraz daha yaklasmasini beklerim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"guard_zone"},
+  {text:"Guard zone alarmlarinin cogunun gereksiz oldugunu dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10},radarMode:"guard_zone"}]},
+  {id:"s218",gfx:"radar",alert:false,day:"Gun 12",time:"12:45",loc:"Koprustu - Radar Olcumu",sub:"EBL ve VRM ile kerteriz ve mesafe alma",who:"suvari",radarMode:"ebl_vrm",
+  text:`Suvari radar ekraninda bir hedefe EBL ve VRM acti.
+
+"Gozle gordugun hedefi sayiya cevirmedikce takip yarim kalir. EBL sana kerterizi, VRM mesafeyi verir. Bunu dogru okuyabilirsen hedefin zaman icindeki davranisini da daha iyi anlarsin."
+
+En dogru kullanimin hangisi oldugunu dusunursun?"`,
+  choices:[
+  {text:"EBL ile kerterizi, VRM ile mesafeyi olcer; zaman icindeki degisimi ard arda kontrol ederim",tag:"kritik",effect:{bilgi:17,sayginlik:12},radarMode:"ebl_vrm"},
+  {text:"Sadece ekrandaki genel konumdan fikir yurutmeyi yeterli gorurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"ebl_vrm"},
+  {text:"EBL/VRM'yi eski usul bulup hic kullanmam",tag:"korkak",effect:{bilgi:-10,sayginlik:-10},radarMode:"ebl_vrm"}]},
+  {id:"s219",gfx:"radar",alert:false,day:"Gun 12",time:"13:15",loc:"Koprustu - Radar Display Modes",sub:"Head-up, north-up ve course-up farki",who:"z2",radarMode:"display_mode",
+  text:`2. Zabiti radar sunum modlarini birer birer degistirdi.
+
+"Head-up rahat hissettirir ama kuzey referansi kayar. North-up haritaya yakindir ama ilk bakista yabanci gelir. Course-up ise rota dusuncesinde guclu olabilir. Hangi modu ne zaman kullandigini bilirsen yorum hatasi azalir."
+
+Bu uc mod icin en saglam yaklasimin ne olur?"`,
+  choices:[
+  {text:"Duruma gore modu secer; trafik yorumunda north-up, manevra hissinde head-up, rota takibinde course-up dusunurum",tag:"kritik",effect:{bilgi:18,sayginlik:12},radarMode:"display_mode"},
+  {text:"Bir moda alisip hep onu kullanmak yeterlidir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"display_mode"},
+  {text:"Display modlarinin pratikte ciddi fark yaratmadigini dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10},radarMode:"display_mode"}]},
+  {id:"s220",gfx:"radar",alert:false,day:"Gun 12",time:"13:45",loc:"Koprustu - Radar Yorum",sub:"Blind sector ve direk golgesi",who:"z2",radarMode:"blind_sector",
+  text:`2. Zabiti ekranin sancak tarafini isaret etti.
+
+"Her gorunmeyen hedef denizde yok anlamina gelmez. Mast, kreyn, ust bina veya tarama acisi bazen sana blind sector yaratir. Hedef bir an var bir an yoksa once kendi radar geometrinden suphelenirsin."
+
+Ne dersin?"`,
+  choices:[
+  {text:"Gorunmeyen kesiti blind sector ihtimaliyle degerlendirir, sensor geometriisini aklimda tutarim",tag:"kritik",effect:{bilgi:17,sayginlik:12},radarMode:"blind_sector"},
+  {text:"Ekranda yoksa tehdit de yoktur diye dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"blind_sector"},
+  {text:"Hedef kaybolduysa kesin uzaklasmistir derim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10},radarMode:"blind_sector"}]},
+  {id:"s221",gfx:"radar",alert:false,day:"Gun 12",time:"14:10",loc:"Koprustu - Radar Paraziti",sub:"Interference paternini ayirt etmek",who:"suvari",radarMode:"interference",
+  text:`Suvari ekrandaki tekrar eden izleri gosterdi.
+
+"Bazi izler hedef degil, komsu radarlarin veya sistem girisiminin yansimasidir. Interference kendini ritmiyle, duzensizligiyle ve gercek hareket mantigina oturmayan sekliyle ele verir."
+
+Bu durumda hangi yaklasim daha saglamdir?"`,
+  choices:[
+  {text:"Interference paternini gercek hedef hareketinden ayirir, ikinci radar ve sweep mantigiyla teyit ederim",tag:"kritik",effect:{bilgi:17,sayginlik:12},radarMode:"interference"},
+  {text:"Parlak her izi hedef saymak daha guvenlidir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"interference"},
+  {text:"Parazitleri tamamen yok sayip hic yorum yapmam",tag:"korkak",effect:{bilgi:-10,sayginlik:-9},radarMode:"interference"}]},
+  {id:"s222",gfx:"radar",alert:false,day:"Gun 12",time:"14:35",loc:"Koprustu - Radar Gecisleri",sub:"Shadow sector ve baca arkasi kayip",who:"z2",radarMode:"shadow_sector",
+  text:`Bir hedef baca hizasina gelince zayifladi.
+
+2. Zabiti sakince anlatti: "Shadow sector bazen ust yapinin ardinda hedefi inceltir veya gecici dusurur. Bu durumlarda hedefi tamamen silmek yerine kayboldugu aci sektorunu bilmek gerekir."
+
+Ilk yorumun ne olur?"`,
+  choices:[
+  {text:"Zayiflamayi shadow sector ile iliskilendirir, hedefin aci sektorunu kayda alirim",tag:"kritik",effect:{bilgi:17,sayginlik:12},radarMode:"shadow_sector"},
+  {text:"Echo zayifladiysa hedef kucuk ve onemsizdir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"shadow_sector"},
+  {text:"Bir an kaybolan hedefi tamamen listeden cikaririm",tag:"korkak",effect:{bilgi:-11,sayginlik:-10},radarMode:"shadow_sector"}]},
+  {id:"s223",gfx:"radar",alert:true,day:"Gun 12",time:"15:05",loc:"Koprustu - Yagmur Hattı",sub:"Yagmur icinde kucuk hedefi ayirt etmek",who:"suvari",radarMode:"rain_small_target",
+  text:`Yagmur hatti ekranin bir tarafini kirletirken zayif bir echo tik diye belirdi.
+
+"Kucuk balikci, pilot botu ya da isiksiz bir servis teknesi bazen yagmur icinde kaynar gider," dedi suvari. "Asil ustalik clutter ile hedefi birbirinden ayirmakta."
+
+Ne yaparsin?"`,
+  choices:[
+  {text:"Zayif echo'yu clutter ayari, sweep takibi ve diger sensorlerle birlikte ayirmaya calisirim",tag:"kritik",effect:{bilgi:18,sayginlik:12,cesaret:3},radarMode:"rain_small_target"},
+  {text:"Yagmur icindeki zayif izleri guvensiz bulup hepsini kapatirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"rain_small_target"},
+  {text:"Kucuk hedefler bu kadar yagmurda zaten okunmaz diye vazgecerim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10},radarMode:"rain_small_target"}]},
+  {id:"s224",gfx:"radar",alert:true,day:"Gun 12",time:"15:35",loc:"Koprustu - Sensor Capraz Kontrol",sub:"AIS ile radar verisi neden tam otusmuyor?",who:"z2",radarMode:"ais_mismatch",
+  text:`2. Zabiti ayni hedefin AIS ve radar izlerini yanyana gosterdi.
+
+"Bazen AIS ile radar bire bir ust uste oturmaz. Anten ofseti, gecikme, zayif GPS, yanlis sensor kaynagi ya da hedefin kendi verisi problemli olabilir. Bu durumda tek kaynaga asik olmazsin."
+
+Ilk ne yaparsin?"`,
+  choices:[
+  {text:"AIS-radar farkini sensor, ofset ve gerçek echo mantigiyla capraz kontrol ederim",tag:"kritik",effect:{bilgi:18,sayginlik:12},radarMode:"ais_mismatch"},
+  {text:"AIS bilgisi yaziyorsa radardan daha guvenlidir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"ais_mismatch"},
+  {text:"Uyusmazlik varsa iki sistemi de bosveririm",tag:"korkak",effect:{bilgi:-11,sayginlik:-10},radarMode:"ais_mismatch"}]},
+  {id:"s225",gfx:"radar",alert:true,day:"Gun 12",time:"16:00",loc:"Koprustu - ARPA Stresi",sub:"Target swap ve karisan takip zinciri",who:"z2",radarMode:"target_swap",
+  text:`Iki hedef birbirine yaklasirken ARPA tracklerinden biri karismaya basladi.
+
+2. Zabiti hemen uyardi: "Target swap, ekrandaki ismin gercekte baska hedefe atlamasi demektir. Ozellikle yakin crossing'de raw echo ile takip numarasini ayri dusunmezsen yanilirsin."
+
+Ne dersin?"`,
+  choices:[
+  {text:"Track numarasina kor guvenmem; raw echo ve relatif hareketle target swap ihtimalini kontrol ederim",tag:"kritik",effect:{bilgi:18,sayginlik:12,cesaret:3},radarMode:"target_swap"},
+  {text:"ARPA etiketi degismediyse ayni hedef sayarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"target_swap"},
+  {text:"Track karistiysa tum radar takibini birakirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10},radarMode:"target_swap"}]},
+  {id:"s226",gfx:"radar",alert:false,day:"Gun 12",time:"16:25",loc:"Koprustu - Echo Yorumu",sub:"False echo mu, gercek hedef mi?",who:"suvari",radarMode:"false_echo",
+  text:`Suvari ekrandaki simetrik iki izden birini gosterdi.
+
+"Bazi ekolar gercek hedef degildir; multipath ya da yansima ile sahte hedef olusabilir. Yanlis hedefe manevra yaparsan dogru tehlikeyi kacirirsin."
+
+En saglam yaklasim hangisi?"`,
+  choices:[
+  {text:"False echo ihtimalini sweep, aci, tekrar paterni ve diger sensorlerle test ederim",tag:"kritik",effect:{bilgi:17,sayginlik:12},radarMode:"false_echo"},
+  {text:"Parlak olan her izi esit tehdit kabul ederim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"false_echo"},
+  {text:"Sahte olabilir diye hepsini onemsiz sayarim",tag:"korkak",effect:{bilgi:-10,sayginlik:-10},radarMode:"false_echo"}]},
+  {id:"s227",gfx:"radar",alert:true,day:"Gun 12",time:"16:55",loc:"Koprustu - Yogun Trafik",sub:"Multi-target crossing vardiya baskisi",who:"suvari",radarMode:"multi_crossing",
+  text:`Radar bir anda kalabaliklasti. Bir crossing hedefi CPA daraltiyor, biri sancaga aciliyor, kiçtan gelen baska bir hedef de hizla yaklasiyor.
+
+Suvari sesi sert ama sakindi: "Tek hedefli deniz kolaydir. Asil vardiya; birden fazla tehdidi onceliklendirip hangisinin gercek carpışma riski oldugunu ayirdiginda baslar."
+
+Ilk disiplinin ne olur?"`,
+  choices:[
+  {text:"Hedefleri onceliklendirir; en kritik CPA/TCPA tehdidini ayirip digerlerini tablo halinde izlerim",tag:"kritik",effect:{bilgi:19,sayginlik:13,cesaret:4},radarMode:"multi_crossing"},
+  {text:"En parlak hedefe bakip digerlerini ikinci plana atarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"multi_crossing"},
+  {text:"Bu kadar hedefte saglikli yorum yapilmaz diye dagilirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11},radarMode:"multi_crossing"}]}
+];
+
+function getEcdisRouteOverlay(sc){
+  const key=(sc&&sc.ecdisPlanKey)||activeEcdisPlanKey;
+  const plan=ECDIS_ROUTE_PLANS[key];
+  if(!plan) return '';
+  const points=plan.waypoints.map(p=>`
+    <circle cx="${p.x}" cy="${p.y}" r="3" fill="#1aff50" stroke="#b5ffd0" stroke-width=".6"/>
+    <text x="${p.x+5}" y="${p.y-5}" fill="#81f7b8" font-size="6" font-family="monospace">${p.name}</text>`).join('');
+  return `<g opacity=".98">
+    <rect x="282" y="34" width="160" height="78" rx="3" fill="#03111c" stroke="#0d2a48" stroke-width="1.1"/>
+    <path d="M290 44 h144 M290 58 h144 M290 72 h144 M290 86 h144 M290 100 h144" stroke="#10304e" stroke-width=".6" opacity=".45"/>
+    <path d="M302 38 v68 M330 38 v68 M358 38 v68 M386 38 v68 M414 38 v68" stroke="#10304e" stroke-width=".6" opacity=".45"/>
+    <polyline points="${plan.line}" fill="none" stroke="#d4a017" stroke-width="2.2" stroke-dasharray="5,3"/>
+    ${points}
+    <circle cx="294" cy="100" r="4.2" fill="#6fa8dc"/>
+    <path d="M294 100 l10 -5 l-3 9 z" fill="#6fa8dc"/>
+    <text x="290" y="30" fill="#6fa8dc" font-size="6" font-family="monospace">ECDIS ROUTE PLAN</text>
+    <text x="290" y="118" fill="#d4a017" font-size="6" font-family="monospace">${plan.label}</text>
+    <text x="386" y="118" fill="#81f7b8" font-size="6" font-family="monospace">${plan.warning}</text>
+  </g>`;
+}
+
+function getRadarTrainingOverlay(sc){
+  const key=(sc&&sc.radarMode)||activeRadarMode;
+  const mode=RADAR_TRAINING_MODES[key];
+  if(!mode) return '';
+  const targets=mode.targets.map(t=>`
+    <circle cx="${t.x}" cy="${t.y}" r="${t.r}" fill="${t.color}" opacity=".95"/>
+    <circle cx="${t.x}" cy="${t.y}" r="${t.r+3.8}" fill="none" stroke="${t.color}" opacity=".18"/>
+    <text x="${t.x+6}" y="${t.y-4}" fill="${t.color}" font-size="6" font-family="monospace">${t.tag}</text>
+    <text x="${t.x+6}" y="${t.y+7}" fill="#8ab0c8" font-size="5.5" font-family="monospace">${t.meta}</text>`).join('');
+  return `<g opacity=".98">
+    <rect x="286" y="18" width="158" height="110" rx="4" fill="#03110a" stroke="#0d3a18" stroke-width="1"/>
+    <circle cx="365" cy="72" r="42" fill="none" stroke="#0d3a18" stroke-width="1"/>
+    <circle cx="365" cy="72" r="28" fill="none" stroke="#0d3a18" stroke-width=".8" opacity=".8"/>
+    <circle cx="365" cy="72" r="14" fill="none" stroke="#0d3a18" stroke-width=".7" opacity=".6"/>
+    <line x1="323" y1="72" x2="407" y2="72" stroke="#0d3a18" stroke-width=".8" opacity=".7"/>
+    <line x1="365" y1="30" x2="365" y2="114" stroke="#0d3a18" stroke-width=".8" opacity=".7"/>
+    <g class="radar-sweep" style="transform-origin:365px 72px">
+      <line x1="365" y1="72" x2="365" y2="31" stroke="#1aff50" stroke-width="1.3" opacity=".85"/>
+      <path d="M365 72 L365 31 A41 41 0 0 1 398 91 Z" fill="#1aff50" opacity=".06"/>
+    </g>
+    ${mode.piLine?`<line x1="${mode.piLine.split(' ')[0].split(',')[0]}" y1="${mode.piLine.split(' ')[0].split(',')[1]}" x2="${mode.piLine.split(' ')[1].split(',')[0]}" y2="${mode.piLine.split(' ')[1].split(',')[1]}" stroke="#d4a017" stroke-width="1.1" stroke-dasharray="4,3" opacity=".9"/>`:''}
+    ${mode.vector?`<line x1="${mode.vector.split(' ')[0].split(',')[0]}" y1="${mode.vector.split(' ')[0].split(',')[1]}" x2="${mode.vector.split(' ')[1].split(',')[0]}" y2="${mode.vector.split(' ')[1].split(',')[1]}" stroke="#6fa8dc" stroke-width="1.1" stroke-dasharray="3,2" opacity=".85"/>`:''}
+    ${targets}
+    <text x="294" y="27" fill="#81f7b8" font-size="6" font-family="monospace">${mode.label}</text>
+    <text x="294" y="121" fill="#8ab0c8" font-size="6" font-family="monospace">${mode.footer}</text>
+  </g>`;
+}
+
+function getSceneOverlay(gfx,sc){
   const overlays = {
     harbor:`<g opacity=".95">
       <path d="M250 90 h46 l12 5 h18 v4 h-78 z" fill="#0a1526"/>
@@ -2790,7 +3314,14 @@ function getSceneOverlay(gfx){
       <circle cx="352" cy="98" r="1.4" fill="#c93030"/>
     </g>`
   };
-  return overlays[gfx] || '';
+  let extra = overlays[gfx] || '';
+  if((gfx==='compass'||gfx==='bridge') && sc && (sc.ecdisPlanKey || sc.sub?.toLowerCase().includes('ecdis') || sc.sub?.toLowerCase().includes('seyir plani') || sc.loc?.toLowerCase().includes('ecdis'))){
+    extra += getEcdisRouteOverlay(sc);
+  }
+  if(gfx==='radar' && sc){
+    extra += getRadarTrainingOverlay(sc);
+  }
+  return extra;
 }
 const tagL={cesur:"Cesur",akilli:"Akıllı",itaatkar:"İtaatkar",korkak:"Korkak",sosyal:"Sosyal",kritik:"KRİTİK"};
 let mood=58;
@@ -3137,13 +3668,13 @@ function buildSceneQueue(pool, totalDays){
 
   // Düzenli sahneleri karıştır ve totalDays - (başlangıç+kriz+final) kadar seç
   const shuffledRegular=[...regular].sort(()=>Math.random()-0.5);
-  const needed=Math.max(5, totalDays - selectedCrisis.length - 2);
+  const needed=Math.max(5, totalDays - selectedCrisis.length - 2 - EXTRA_ROUTE_SCENES.length);
   const selectedRegular=shuffledRegular.slice(0,needed);
 
   // Sıralamayı oluştur: başlangıç + (karışık regular + kriz) + final
   const middle=[...selectedRegular,...selectedCrisis].sort(()=>Math.random()-0.5);
 
-  return [...mandatory_start, ...middle, ...final];
+  return [...mandatory_start, ...middle, ...EXTRA_ROUTE_SCENES, ...final];
 }
 
 const RECOVERY_SCENE_IDS = new Set(['s146','s147','s148','s149','s150','s183','s184','s185','s186','s187']);
@@ -3217,7 +3748,7 @@ function renderScene(idx){
   else ab.style.display='none';
 
   const svg=document.getElementById('gfx-svg');
-  svg.innerHTML=(GFX[sc.gfx]||GFX.sea)+getSceneOverlay(sc.gfx);
+  svg.innerHTML=(GFX[sc.gfx]||GFX.sea)+getSceneOverlay(sc.gfx,sc);
 
   playSceneAudio(sc);
   updateSceneNoteHints(sc);
@@ -3233,6 +3764,14 @@ function renderScene(idx){
       const pressure=evaluateDecisionPressure(sc,c2);
       const resolvedEffect={...(c2.effect||{})};
       Object.entries(pressure.extra).forEach(([k,v])=>{resolvedEffect[k]=(resolvedEffect[k]||0)+v;});
+      if(c2.routePlanKey&&ECDIS_ROUTE_PLANS[c2.routePlanKey]){
+        activeEcdisPlanKey=c2.routePlanKey;
+        addJournalEntry(`[SEYIR PLANI] ${ECDIS_ROUTE_PLANS[c2.routePlanKey].label} ECDIS uzerinde aktif edildi.`, sc.day, sc.time);
+      }
+      if(c2.radarMode&&RADAR_TRAINING_MODES[c2.radarMode]){
+        activeRadarMode=c2.radarMode;
+        addJournalEntry(`[RADAR] ${RADAR_TRAINING_MODES[c2.radarMode].label} ekran duzeni aktif edildi.`, sc.day, sc.time);
+      }
       choicesMade.push({tag:c2.tag,domain:getSceneDomain(sc),extraPressure:Object.keys(pressure.extra).length>0});
       scheduleAdvancedConsequences(sc,c2);
       applyCrewEffect(sc.who, c2.tag);
@@ -3353,6 +3892,8 @@ function beginGame(){
 
   stats={cesaret:40,bilgi:22,sayginlik:32,dinclik:68};
   mood=58;
+  activeEcdisPlanKey='izmir_messina_south';
+  activeRadarMode='cpa_watch';
   delayedConsequences=[];
   playerFlags={securityBreach:0,nearMiss:0,sextantGood:0};
   choicesMade=[];
