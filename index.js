@@ -3699,6 +3699,56 @@ Ne yaparsin?`,
   {text:"Muster listte kendi gorevimi, toplanma yerimi ve yakindaki LSA/FFA ekipmanlarini birlikte ogrenirim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
   {text:"Sadece kendi can yelegimin yerini bilmem yeter derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
   {text:"Muster listin esasen tatbikat icin oldugunu sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s246b",gfx:"harbor",alert:false,day:"Gun 9",time:"09:10",loc:"Can Sali Mahalli",sub:"Can sali dis muayenesi ve servis takibi",who:"z3",
+  text:`3. Zabiti can salinin yaninda durdu:
+
+"Can sali sadece kutu degil. Hydrostatic release, painter, lash, container condition, embarkation area ve servis tarihi birlikte kontrol edilir. Tarihi gecmis bir can sali acil durumda var sayilmaz."
+
+En dogru kontrol disiplini hangisi?`,
+  choices:[
+  {text:"Servis tarihi, HRU baglantisi, painter, lash ve konteyner kondisyonunu birlikte kontrol ederim",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Disardan temiz gorunuyorsa yeterli sayarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Can sali bakiminin sadece tersanede onemli oldugunu dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s246c",gfx:"harbor",alert:false,day:"Gun 9",time:"10:00",loc:"Can Filikasi Ustu",sub:"Can filikasi haftalik kontrol ve hazirlik",who:"z3",
+  text:`Can filikasi kapagi acildi. 3. Zabiti eliyle tek tek gosterdi:
+
+"Drain plug yerinde mi, inventory tamam mi, engine test mantikli mi, battery, su, ration, release gear ve communication set hazir mi? Filika bakimi liste okumak degil, gercekten kullanilabilir oldugunu anlamaktir."
+
+Sana gore profesyonel yaklasim nedir?`,
+  choices:[
+  {text:"Filika inventory, drain plug, engine readiness, battery ve release gear'i sistemli kontrol ederim",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
+  {text:"Sadece motor bir kez calissin, gerisi sonra bakilir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Filika kapali duruyorsa zaten hazirdir diye dusunurum",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s246d",gfx:"cabin",alert:false,day:"Gun 9",time:"11:20",loc:"Muster Station Locker",sub:"Can yelekleri ve immersion suit kontrolu",who:"z3",
+  text:`Locker acildiginda 3. Zabiti can yeleklerini ve immersion suitleri one cikardi:
+
+"Whistle, light, retro-reflective tape, buddy line, size, donning instructions ve genel kondisyon birlikte okunur. Paket acik, light zayif ya da kemer hasarliysa sorun buyuktur."
+
+Ne yaparsin?`,
+  choices:[
+  {text:"Can yeleklerinin isik, dugun/kemer, duduk ve kondisyonunu; suitlerin de size ve kapanisini kontrol ederim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Sadece sayi tam mi diye bakarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Can yeleklerinde ayrintili kontrole gerek olmadigini sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s246e",gfx:"deck",alert:false,day:"Gun 9",time:"14:30",loc:"Matafora ve Irgat Basi",sub:"Matafora, winch ve launching appliance bakimi",who:"lostromo",
+  text:`Lostromo matafora rayini ve launching winch'i isaret etti:
+
+"Telin gozlemi, grease noktasi, limit switch, brake, sheave, fall condition ve hareketli kisimlar birlikte dusunulur. Burada kucuk ihmal tatbikatta bile buyuk risk olur."
+
+Hangi refleks daha dogru?`,
+  choices:[
+  {text:"Fall condition, sheave, brake, grease noktasi ve limit/serbest hareketi birlikte kontrol ederim",tag:"kritik",effect:{bilgi:18,sayginlik:12,cesaret:3}},
+  {text:"Matafora bir kere asagi yukari hareket etsin, o bana yeter derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Yuk altindaki sistemlerde detayli bakimin gereksiz oldugunu dusunurum",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s246f",gfx:"harbor",alert:false,day:"Gun 9",time:"16:10",loc:"Emergency Equipment Round",sub:"Pyro, line-throwing appliance, EPIRB ve SART kontrolu",who:"z2",
+  text:`Aksamustu emniyet turunda 2. Zabiti dosyayi acip sordu:
+
+"Pyrotechnics expiry, line-throwing appliance inventory, EPIRB bracket durumu, SART self-test, handheld VHF battery ve muster station readiness ayni turun parcasi. Kimi ekipman kullanilmadigi icin unutulur; en tehlikelisi de budur."
+
+En dogru zabit disiplini hangisi?`,
+  choices:[
+  {text:"Expiry tarihleri, bracket/ready durumu, self-test ve inventory kaydini birlikte kontrol ederim",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
+  {text:"Sadece EPIRB'in yerinde olmasi bana yeter",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Kullanilmayan acil ekipmanlarin kontrolunu ertelerim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
   {id:"s247",gfx:"compass",alert:false,day:"Gun 9",time:"19:10",loc:"Koprustu - Gece Seyri",sub:"Fenerler, sekiller ve sis isaretleri",who:"z2",
   text:`Gece vardiyasinda 2. Zabiti disariyi isaret etti:
 
@@ -4859,6 +4909,7 @@ const STUDENT_NOTES = [
   {head:"PILOT / ROMORKOR / LIMAN", body:"Pilot ladder durumu, can simidi ve isik kontrolu, personel konumu ve haberlesme disiplini kritik konulardir.<br>Master-pilot exchange yapilir; snap-back zone bos tutulur.<br>Heaving line, tug line, berthing plan, current-rüzgar etkisi ve mooring team konumlari net olmalidir.", tip:"Mooring station saka kabul etmez."},
   {head:"LIMAN VE EVRAK", body:"Notice of Readiness, Bill of Lading, Mate's Receipt, Statement of Facts, manifest, stowage plan, Oil Record Book ve Garbage Record Book temel evraklardandir.<br>Uyumsuzluk gordugunde amire hemen bildirilir.<br>Laytime, demurrage, dispatch, arrival condition ve sea protest temel kavramlardir.", tip:"Saklanan hata buyur."},
   {head:"PSC / ISPS / SOLAS / STCW", body:"PSC denetiminde evrak, emniyet ekipmani, drill kayitlari, GMDSS testleri ve gemi kondisyonu birlikte incelenir.<br>ISPS tarafinda gangway kontrolu, ziyaretci kaydi ve security level takibi esastir.<br>SOLAS can emniyeti, STCW yeterlilik ve vardiya standartlarini kurar.", tip:"Denetime her gun hazir olunur."},
+  {head:"LSA / FILIKA / MATAFORA BAKIMI", body:"Can salinda servis tarihi, hydrostatic release unit (HRU), painter, lash ve konteyner kondisyonu kontrol edilir.<br>Can filikasinda inventory, drain plug, battery, engine readiness, communication set, water/ration ve release gear gozden gecirilir.<br>Can yeleklerinde light, whistle, tape, buddy line ve genel kondisyon; immersion suitte size, zipper ve sizdirmazlik mantigi okunur.<br>Matafora ve launching appliance tarafinda fall, sheave, brake, grease noktasi, limit switch ve hareket testi birlikte dusunulur.<br>Pyrotechnics, line-throwing appliance, EPIRB, SART ve handheld VHF tarih/kayit/ready durumu unutulmaz.", tip:"Acil durum ekipmani en cok lazim oldugu gun surpriz cikarmamali."},
   {head:"ACIL HABERLESME", body:"MAYDAY distress, PAN-PAN urgency, SECURITE emniyet yayini icindir.<br>Mesajda gemi adi, callsign, pozisyon, tehlikenin cinsi, yardim ihtiyaci ve kisi sayisi acik verilir.<br>GMDSS, EPIRB, SART, NAVTEX, DSC, handheld VHF ve emergency battery kayitlari bilinir.", tip:"Netlik hiz kadar onemlidir."},
   {head:"FORMULLER - HIZ / MESAFE / ZAMAN", body:"Mesafe = Hiz x Zaman<br>Hiz = Mesafe / Zaman<br>Zaman = Mesafe / Hiz<br>1 knot = 1 deniz mili / saat<br>Gece ETA hesaplari icin once kalan mesafe, sonra mevcut SOG kullanilir.<br><br><b>Ornek:</b> 48 mil yol, 12 knot hizla yaklasik 4 saatte biter.", tip:"Basit formuller vardiyada en cok kullanilanlardir."},
   {head:"FORMULLER - SET / DRIFT / CTS", body:"Course to Steer mantigi: istenen COG icin akinti vektorunu hesaba kat.<br>Drift = akintinin hizi<br>Set = akintinin yonu<br>Gercek iz = verilen rota + akinti etkisi<br>Yaklasik kapanis mantigi: Verilen HDG + akinti vektoru = gercek COG/SOG<br>Running fix / DR duzeltmelerinde set-drift sure ile birlikte okunur.<br><b>Yaklasik akis:</b> Akinti mesafesi = drift x zaman<br><b>ETA</b> icin kalan mesafe / gercek SOG mantigi kullanilir.<br><b>Kullanilan tablo / kaynaklar:</b> Tidal stream atlas, current tables, pilot book, chart notlari, ECDIS current overlay, sailing directions.<br><br><b>Ornek:</b> 090 rota tutmak isterken akinti seni kuzeye 2 knot itiyorsa bir miktar guneye pruva verip CTS duzeltmesi yaparsin.", tip:"Pruva baska, iz baska olabilir."},
