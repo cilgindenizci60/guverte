@@ -2372,6 +2372,62 @@ choices:[
 {text:"Eski notlarla idare etmeye calisirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
 {text:"Ayni deniz ayni denizdir diye dusunurum",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
+{id:"s183",gfx:"galley",alert:false,day:"Gun 13",time:"20:10",loc:"Yemekhane",sub:"Sessiz cay molasi",who:"asci",
+text:`Aksam yemegi dagildiktan sonra ortalik ilk kez sakinledi. Asci onune ince belli bardakta cay koydu.
+
+"Bugun herkes yoruldu. Bazen gemide en buyuk luks, kimsenin senden bir sey istemedigi on dakikadir."
+
+Bu kisa molayi nasil degerlendirirsin?`,
+choices:[
+{text:"Cayimi sakin sakin icip kafami toplarim",tag:"akilli",effect:{dinclik:11,sayginlik:4}},
+{text:"Asciyla iki laf eder, sonra kabine gecerim",tag:"sosyal",effect:{dinclik:9,sayginlik:6}},
+{text:"Mola vermeden yeni is ararim",tag:"korkak",effect:{dinclik:-4}}]},
+
+{id:"s184",gfx:"cabin",alert:false,day:"Gun 14",time:"21:35",loc:"Stajyer Kabini",sub:"Duzenli kabin, duzenli zihin",who:"anlatici",
+text:`Kabin daginmis ama gece ilk kez sakin. Yataga oturunca fark ettin: daginiklik bazen yorgunlugu daha da buyutuyor.
+
+Kucuk bir toparlama yapsan hem oda hem zihin rahatlayacak.
+
+Ne yaparsin?`,
+choices:[
+{text:"Kabinimi toparlar, su icip erken uykuya hazirlanirim",tag:"akilli",effect:{dinclik:12,bilgi:3}},
+{text:"Sadece yatagi duzeltip biraz nefes alirim",tag:"itaatkar",effect:{dinclik:8}},
+{text:"Bosverip telefona gomulurum",tag:"korkak",effect:{dinclik:-5}}]},
+
+{id:"s185",gfx:"sea",alert:false,day:"Gun 11",time:"05:55",loc:"Acik Güverte - Gunes Dogarken",sub:"Ufka bakip toparlanmak",who:"hasan",
+text:`Hasan omzunla hafifce dokundu.
+
+"Gel," dedi, "iki dakika sadece ufka bak. Denizde bazen insanin kafasini yine deniz toplar."
+
+Gunes daha yeni cizgiye degiyor. Geminin sesi bile daha yumusak geliyor.
+
+Ne yaparsin?`,
+choices:[
+{text:"Sessizce ufka bakip nefesimi duzenlerim",tag:"akilli",effect:{dinclik:10,cesaret:3}},
+{text:"Hasanla kisa bir sohbet edip rahatlarim",tag:"sosyal",effect:{dinclik:8,sayginlik:5}},
+{text:"Buna vakit yok deyip geri donerim",tag:"korkak",effect:{dinclik:-3}}]},
+
+{id:"s186",gfx:"harbor",alert:false,day:"Gun 12",time:"15:50",loc:"Kic Güverte",sub:"Is bitti, su molasi",who:"lostromo",
+text:`Zor bir isin ardindan lostromo ilk kez acele etmedi. Sadece su uzatti.
+
+"Kahramanlik sonra. Once su ic. Yorgun adam hatayi fark etmez."`
+,
+choices:[
+{text:"Suyu icip kisa mola veririm",tag:"itaatkar",effect:{dinclik:10,sayginlik:5}},
+{text:"Mola sirasinda bugunku isi kafamda toparlarim",tag:"akilli",effect:{dinclik:8,bilgi:4}},
+{text:"Dinlenmeden devam ederim",tag:"korkak",effect:{dinclik:-4,cesaret:2}}]},
+
+{id:"s187",gfx:"cabin",alert:false,day:"Gun 10",time:"13:20",loc:"Stajyer Kabini",sub:"Yirmi dakikalik gercek dinlenme",who:"anlatici",
+text:`Bu kez elinde gercek bir bosluk var: ne alarm bekleniyor ne de hemen cagrilacaksin.
+
+Gemide uzun tatil yok ama dogru kullanilan yirmi dakika bazen yarim gece kadar degerli gelir.
+
+Bu arayi nasil kullanirsin?`,
+choices:[
+{text:"Alarm kurup kisa ama derin bir uyku alirim",tag:"kritik",effect:{dinclik:14,bilgi:2}},
+{text:"Uzanir, gozlerimi kapatip bedenimi dinlendiririm",tag:"itaatkar",effect:{dinclik:9}},
+{text:"Dinlenmek yerine telefonda oyalanirim",tag:"korkak",effect:{dinclik:-5}}]},
+
 {id:"FINAL",gfx:"bridge",alert:false,day:"Son Gün",time:"15:00",loc:"Konferans Salonu",sub:"Staj değerlendirme — kontrat sona erdi",who:"z1",
 text:`Son değerlendirme toplantısı.\n\n1. Zabiti, 2. Zabiti, Lostromo. Önlerinde staj formu.\n\n"${n}. ${yr} yılında, ${sn}'de. Fırtına, yük denetimi, gece nöbetleri, yangın tatbikatı, liman operasyonları, krizler.\n\nRaporun birinci satırına ne yazayım?"`,
 choices:[
