@@ -2659,6 +2659,39 @@ choices:[
 {text:"Alarmi gecici kapatip sonra bakariz derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
 {text:"Loadicator sasirmistir diye dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
 
+{id:"s201",gfx:"compass",alert:false,day:"Gun 10",time:"10:20",loc:"Stability Booklet - Free Surface",sub:"Free surface effect mini hesap",who:"z1",
+text:`1. Zabit onceki notlara bir satir daha ekledi.
+
+"Baslangic GM 1.60 metre. Slack tanklardan gelen free surface correction 0.22 metre. Bunu kafanda duseceksin; cunku serbest yuzey bazen hic gorunmeden stabiliteyi yer."
+
+Bu mini hesapta corrected GM kac olur?`,
+choices:[
+{text:"1.38 metre civari olur derim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+{text:"1.82 metre olur derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Free surface GM'i etkilemez diye dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+
+{id:"s202",gfx:"engine",alert:false,day:"Gun 11",time:"07:45",loc:"Ballast Kontrol Paneli",sub:"Ballast exchange ve MARPOL disiplini",who:"carkci",
+text:`Bascarkci ballast planini acip cizgi cekti.
+
+"Ballast exchange bazen prosedur, bazen zorunluluktur. Ama rastgele yapilmaz. Gemi emniyeti, tank sirasi, deniz durumu ve ilgili MARPOL / ballast water gereklilikleri birlikte okunur. Kayitsiz is, yapilmamis is sayilir."
+
+En dogru zabit refleksi hangisi?`,
+choices:[
+{text:"Exchange planini emniyet, tank sirasi, hava durumu ve resmi kayitlarla birlikte yuruturum",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"Sadece pompalar calissin yeter diye dusunurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Kural kismi ikinci planda, once hizli bitirelim derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-10}}]},
+
+{id:"s203",gfx:"storm",alert:false,day:"Gun 11",time:"19:10",loc:"Koprustu - Heavy Weather Plan",sub:"Agir hava ballast plani karari",who:"suvari",
+text:`Hava raporu sertlesiyor. Suvari ballast planinin uzerine egildi.
+
+"Agir havada sadece rotayi degil, geminin oturusunu da dusunursun. Fazla serbest yuzey istemezsin, gereksiz yuksekte agirlik istemezsin, ama her tanki da kafana gore dolduramazsin. Heavy weather ballast plani denge ile emniyet arasindadir."
+
+Ne dersin?`,
+choices:[
+{text:"Serbest yuzeyi azaltan, emniyetli trim veren ve yapisal sinirlari koruyan bir plan dusunurum",tag:"kritik",effect:{bilgi:17,sayginlik:12,cesaret:3}},
+{text:"Hava sertse rastgele daha cok su almak yeter sanirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Ballast planinin havayla ciddi ilgisi olmadigini dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+
 {id:"FINAL",gfx:"bridge",alert:false,day:"Son Gün",time:"15:00",loc:"Konferans Salonu",sub:"Staj değerlendirme — kontrat sona erdi",who:"z1",
 text:`Son değerlendirme toplantısı.\n\n1. Zabiti, 2. Zabiti, Lostromo. Önlerinde staj formu.\n\n"${n}. ${yr} yılında, ${sn}'de. Fırtına, yük denetimi, gece nöbetleri, yangın tatbikatı, liman operasyonları, krizler.\n\nRaporun birinci satırına ne yazayım?"`,
 choices:[
@@ -3603,13 +3636,14 @@ const STUDENT_NOTES = [
   {head:"PSC / ISPS / SOLAS / STCW", body:"PSC denetiminde evrak, emniyet ekipmani, drill kayitlari, GMDSS testleri ve gemi kondisyonu birlikte incelenir.<br>ISPS tarafinda gangway kontrolu, ziyaretci kaydi ve security level takibi esastir.<br>SOLAS can emniyeti, STCW yeterlilik ve vardiya standartlarini kurar.", tip:"Denetime her gun hazir olunur."},
   {head:"ACIL HABERLESME", body:"MAYDAY distress, PAN-PAN urgency, SECURITE emniyet yayini icindir.<br>Mesajda gemi adi, callsign, pozisyon, tehlikenin cinsi, yardim ihtiyaci ve kisi sayisi acik verilir.<br>GMDSS, EPIRB, SART, NAVTEX, DSC, handheld VHF ve emergency battery kayitlari bilinir.", tip:"Netlik hiz kadar onemlidir."},
   {head:"FORMULLER - HIZ / MESAFE / ZAMAN", body:"Mesafe = Hiz x Zaman<br>Hiz = Mesafe / Zaman<br>Zaman = Mesafe / Hiz<br>1 knot = 1 deniz mili / saat<br>Gece ETA hesaplari icin once kalan mesafe, sonra mevcut SOG kullanilir.", tip:"Basit formuller vardiyada en cok kullanilanlardir."},
-  {head:"FORMULLER - SET / DRIFT / CTS", body:"Course to Steer mantigi: istenen COG icin akinti vektorunu hesaba kat.<br>Drift = akintinin hizi<br>Set = akintinin yonu<br>Gercek iz = verilen rota + akinti etkisi<br>Pratikte radar, ECDIS ve DR karsilastirilir.", tip:"Pruva baska, iz baska olabilir."},
-  {head:"FORMULLER - GEL-GIT / UKC", body:"UKC = Mevcut su derinligi - gemi drafti<br>Mevcut su derinligi = charted depth + tide height<br>Tide height high water ve low water verisiyle bulunur.<br>Dar suda squat de hesaba katilmalidir.", tip:"Kagittaki derinlik her zaman o anki derinlik degildir."},
-  {head:"FORMULLER - STABILITE", body:"tan(theta) = heeling moment / (displacement x GM)<br>Trim change = trimming moment / MCTC<br>Corrected GM = GM - FSC/displacement<br>Shift of G formu: GG1 = (w x d) / Delta", tip:"Stabilite rakam degil, geminin davranisidir."},
+  {head:"FORMULLER - SET / DRIFT / CTS", body:"Course to Steer mantigi: istenen COG icin akinti vektorunu hesaba kat.<br>Drift = akintinin hizi<br>Set = akintinin yonu<br>Gercek iz = verilen rota + akinti etkisi<br>Yaklasik kapanis mantigi: Verilen HDG + akinti vektoru = gercek COG/SOG<br>Pratikte radar, ECDIS ve DR karsilastirilir.", tip:"Pruva baska, iz baska olabilir."},
+  {head:"FORMULLER - GEL-GIT / UKC", body:"UKC = Mevcut su derinligi - gemi drafti<br>Mevcut su derinligi = charted depth + tide height<br>Tide height high water ve low water verisiyle bulunur.<br>Dar suda squat de hesaba katilmalidir.<br>Air draft mantigi: kopru altı acikligi - mevcut air draft = emniyet payi", tip:"Kagittaki derinlik her zaman o anki derinlik degildir."},
+  {head:"FORMULLER - STABILITE", body:"tan(theta) = heeling moment / (displacement x GM)<br>Trim change = trimming moment / MCTC<br>Corrected GM = GM - FSC/displacement veya GM - FSC (metre cinsinden verilmisse)<br>Shift of G formu: GG1 = (w x d) / Delta<br>FWA mantigi: tatli suya girince draft artar; yogunluk dusunce gemi daha fazla batar", tip:"Stabilite rakam degil, geminin davranisidir."},
+  {head:"FORMULLER - YARIM DAIRE SEYRI", body:"Tehlikeli yarim daire / sevk edici yarim daire ayrimi firtina merkezine gore yapilir.<br>Kuzey yarimkurede genel hafiza yardimi: ruzgari yuzune aldiginda dusuk basinc merkezi biraz sancak on tarafta dusunulur.<br>Esas olan ezber degil; merkez, hareket yonu ve senin konumunun birlikte okunmasidir.", tip:"Yarim daire seyri sayidan cok dogru yorum disiplinidir."},
   {head:"FORMULLER - YUK / HESAP", body:"Yukleme miktari = son draft survey - ilk draft survey<br>Density correction, TPC, MCTC ve displacement tablolarla birlikte kullanilir.<br>Yuk merkezi yukseldikce GM dusme egilimindedir.<br>Sounding-ullage tablolarinda tank kalibrasyonu esas alinir.", tip:"Hesap yaparken birimi karistirma."},
   {head:"FORMULLER - SEXTANT / ASTRONOMI", body:"Yaklasik meridian altitude mantigi: Latitude ~ 90 - Ho + Dec (ayni isimdeyse) veya 90 - Ho - Dec (ters isimdeyse).<br>Index error, dip ve refraction duzeltmeleri unutulmaz.<br>Sextant klasik bir alettir ama denizcilik zihnini keskinlestirir.", tip:"Sextant sadece nostalji degil, geometri disiplinidir."},
   {head:"YUK OPERASYONU / LASHING", body:"Yuk ellecleme sirasinda isaretlesme, guvenli alan, vinc altina girmeme ve stop komutunun netligi esastir.<br>Lashing gerginligi, twist lock, turnbuckle, rod ve hava oncesi son kontrol ihmal edilmez.<br>Cargo securing manual referans dokumandir.", tip:"Near-miss de raporlanir."},
-  {head:"STABILITE / BALLAST", body:"GM, trim, list, free surface effect, displacement ve MCTC kavramlari temel bilinmelidir.<br>Ballast operasyonunda sounding, valf sirasi, tank secimi ve hedef trim/list birlikte dusunulur.<br>Slack tank bazen gizli dusmandir.", tip:"Bir tanki duzeltirken baska sorunu yaratma."},
+  {head:"STABILITE / BALLAST", body:"GM, trim, list, free surface effect, displacement ve MCTC kavramlari temel bilinmelidir.<br>Ballast operasyonunda sounding, valf sirasi, tank secimi ve hedef trim/list birlikte dusunulur.<br>Slack tank bazen gizli dusmandir.<br>Ballast exchange ve ilgili MARPOL / ballast water kayit disiplini plansiz yurutulmez.<br>Heavy weather ballast planinda serbest yuzey, yapisal limit ve emniyetli trim birlikte ele alinir.", tip:"Bir tanki duzeltirken baska sorunu yaratma."},
   {head:"RASPA - BOYA / GUVERTELIK", body:"Yuzey hazirligi, pas derecesi, tuz kalintisi, astar secimi, katlar arasi bekleme ve PPE kullanimi boya isin temelidir.<br>Chipping hammer, needle gun, wire brush, primer ve top coat ne icin kullanildigi bilinmelidir.", tip:"Pasin ustunu kapatmak pasi bitirmez."},
   {head:"DENIZCILIK SOZLUGU A-F", body:"Abeam: tam yan omuzluk<br>Abaft: kicin gerisi<br>Aft: kic tarafi<br>Alongside: borda bordaya yanaşık<br>Astern: kıç tarafa dogru / geriye<br>All fast: baglama tamam<br>Air draft: su hattindan en yuksek noktaya kadar yukseklik<br>Freeboard: su hattindan guverteye olan yukseklik", tip:"Terimler kulaga oturdukca vardiya dili hizlanir."},
   {head:"DENIZCILIK SOZLUGU G-M", body:"GM: metasantrik yukseklik<br>Heading: geminin pruvasinin baktigi yon<br>COG: yer uzerindeki gercek gidis istikameti<br>SOG: yer uzerindeki hiz<br>Leeway: ruzgarla yan kayma<br>List: yan yatma<br>Trim: bas-kic oturuş farki<br>Mooring: baglama operasyonu", tip:"Ayni sey sanilan bircok kelime aslinda farkli anlama gelir."},
