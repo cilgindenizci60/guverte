@@ -37,6 +37,68 @@
       cx.lineTo(W,H);cx.lineTo(0,H);cx.closePath();
       cx.fillStyle=col;cx.fill();
     });
+    // Distant ships
+    const shipBob = Math.sin(t*0.02)*2;
+    const drawShip = (x,y,scale,hull,deck,light) => {
+      cx.save();
+      cx.translate(x, y + shipBob*scale*0.2);
+      cx.scale(scale, scale);
+      cx.fillStyle = hull;
+      cx.beginPath();
+      cx.moveTo(0,0); cx.lineTo(44,0); cx.lineTo(56,6); cx.lineTo(68,6); cx.lineTo(68,10); cx.lineTo(-4,10); cx.closePath();
+      cx.fill();
+      cx.fillStyle = deck;
+      cx.fillRect(22,-10,18,10);
+      cx.fillRect(30,-16,8,6);
+      cx.fillRect(35,-26,2,10);
+      cx.strokeStyle = 'rgba(140,180,220,0.35)';
+      cx.lineWidth = 1;
+      cx.beginPath(); cx.moveTo(36,-26); cx.lineTo(46,-18); cx.stroke();
+      cx.fillStyle = light;
+      cx.beginPath(); cx.arc(41,-7,1.5,0,Math.PI*2); cx.fill();
+      cx.restore();
+    };
+    drawShip(W*0.18, H*0.71, 0.8, '#091523', '#15385d', `rgba(111,168,220,${0.55+Math.sin(t*0.03)*0.15})`);
+    drawShip(W*0.64, H*0.78, 1.05, '#08111f', '#133252', `rgba(212,160,23,${0.5+Math.cos(t*0.025)*0.18})`);
+    drawShip(W*0.82, H*0.69, 0.62, '#0a1624', '#163a61', `rgba(201,112,112,${0.45+Math.sin(t*0.04)*0.18})`);
+    // Buoys
+    const drawBuoy = (x,y,body,topLight) => {
+      const bob = Math.sin(t*0.03 + x*0.01)*3;
+      cx.fillStyle = body;
+      cx.beginPath();
+      cx.ellipse(x, y+bob, 6, 8, 0, 0, Math.PI*2);
+      cx.fill();
+      cx.fillStyle = '#0e2238';
+      cx.fillRect(x-1, y-10+bob, 2, 7);
+      cx.fillStyle = topLight;
+      cx.beginPath(); cx.arc(x, y-12+bob, 2.3, 0, Math.PI*2); cx.fill();
+      cx.fillStyle = 'rgba(180,210,230,0.1)';
+      cx.fillRect(x-1, y+bob+7, 2, 10);
+    };
+    drawBuoy(W*0.3, H*0.8, '#c93030', `rgba(255,160,160,${0.5+Math.sin(t*0.05)*0.25})`);
+    drawBuoy(W*0.74, H*0.84, '#d4a017', `rgba(255,230,140,${0.5+Math.cos(t*0.045)*0.22})`);
+    // Lighthouse silhouettes and beams
+    const beamA = 0.12 + (Math.sin(t*0.018)+1)*0.08;
+    cx.fillStyle = '#09111c';
+    cx.fillRect(W*0.06, H*0.55, 10, H*0.11);
+    cx.fillRect(W*0.055, H*0.52, 20, 6);
+    cx.fillStyle = `rgba(255,240,190,${beamA})`;
+    cx.beginPath();
+    cx.moveTo(W*0.07, H*0.525);
+    cx.lineTo(W*0.25, H*0.49);
+    cx.lineTo(W*0.26, H*0.54);
+    cx.closePath();
+    cx.fill();
+    cx.fillStyle = '#09111c';
+    cx.fillRect(W*0.9, H*0.575, 8, H*0.09);
+    cx.fillRect(W*0.892, H*0.548, 18, 6);
+    cx.fillStyle = `rgba(255,220,170,${0.08 + (Math.cos(t*0.02)+1)*0.05})`;
+    cx.beginPath();
+    cx.moveTo(W*0.905, H*0.552);
+    cx.lineTo(W*0.77, H*0.525);
+    cx.lineTo(W*0.765, H*0.565);
+    cx.closePath();
+    cx.fill();
     // Moon reflection
     cx.fillStyle='rgba(180,200,220,.05)';
     cx.fillRect(W*.78,H*.62,W*.08,H*.38);
