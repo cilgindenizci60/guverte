@@ -39,28 +39,97 @@
     });
     // Distant ships
     const shipBob = Math.sin(t*0.02)*2;
-    const drawShip = (x,y,scale,hull,deck,light) => {
+    const drawShip = (cfg) => {
+      const bob = Math.sin(t*0.024 + cfg.x*0.003)*2.2;
       cx.save();
-      cx.translate(x, y + shipBob*scale*0.2);
-      cx.scale(scale, scale);
-      cx.fillStyle = hull;
+      cx.translate(cfg.x, cfg.y + bob);
+      cx.scale(cfg.scale, cfg.scale);
+      cx.fillStyle = cfg.hull;
       cx.beginPath();
-      cx.moveTo(0,0); cx.lineTo(44,0); cx.lineTo(56,6); cx.lineTo(68,6); cx.lineTo(68,10); cx.lineTo(-4,10); cx.closePath();
+      cx.moveTo(-10,8);
+      cx.lineTo(6,2);
+      cx.lineTo(108,2);
+      cx.lineTo(122,6);
+      cx.lineTo(138,6);
+      cx.lineTo(146,12);
+      cx.lineTo(-12,12);
+      cx.closePath();
       cx.fill();
-      cx.fillStyle = deck;
-      cx.fillRect(22,-10,18,10);
-      cx.fillRect(30,-16,8,6);
-      cx.fillRect(35,-26,2,10);
-      cx.strokeStyle = 'rgba(140,180,220,0.35)';
+      cx.fillStyle = cfg.shadow;
+      cx.beginPath();
+      cx.moveTo(18,10);
+      cx.lineTo(136,10);
+      cx.lineTo(143,12);
+      cx.lineTo(6,12);
+      cx.closePath();
+      cx.fill();
+      if(cfg.type==='kont'){
+        const contColors=['#9c3f36','#2d5f96','#c27b2f','#305743'];
+        [18,38,58,78].forEach((sx,i)=>{
+          cx.fillStyle=contColors[i%contColors.length];
+          cx.fillRect(sx,-10,16,12);
+          cx.fillRect(sx,-24,16,12);
+        });
+        cx.fillStyle = cfg.deck;
+        cx.fillRect(102,-18,18,20);
+        cx.fillRect(112,-28,8,10);
+      }else if(cfg.type==='tanker'){
+        cx.fillStyle = '#6f8299';
+        cx.fillRect(18,-4,70,2);
+        cx.fillRect(26,-8,56,2);
+        cx.fillStyle = cfg.deck;
+        cx.fillRect(102,-16,20,18);
+        cx.fillRect(112,-26,7,10);
+        cx.strokeStyle = '#6d7f96';
+        cx.lineWidth = 1;
+        cx.beginPath();
+        cx.moveTo(56,-8); cx.lineTo(56,-18); cx.lineTo(74,-18); cx.lineTo(74,-8);
+        cx.stroke();
+      }else if(cfg.type==='lng'){
+        cx.fillStyle = '#95c7e8';
+        [34,56,78].forEach((sx)=>{ cx.beginPath(); cx.ellipse(sx,-8,10,8,0,0,Math.PI*2); cx.fill(); });
+        cx.fillStyle = cfg.deck;
+        cx.fillRect(104,-18,18,20);
+        cx.fillRect(112,-28,8,10);
+      }else if(cfg.type==='roro'){
+        cx.fillStyle = cfg.deck;
+        cx.beginPath();
+        cx.moveTo(18,-20); cx.lineTo(84,-20); cx.lineTo(94,-14); cx.lineTo(108,-14); cx.lineTo(108,2); cx.lineTo(18,2); cx.closePath();
+        cx.fill();
+        cx.fillStyle = '#d6dde7';
+        cx.fillRect(28,-16,46,6);
+      }else{
+        cx.fillStyle = '#4d6178';
+        [22,46,70].forEach((sx)=>cx.fillRect(sx,-7,16,6));
+        cx.fillStyle = cfg.deck;
+        cx.fillRect(102,-18,18,20);
+        cx.fillRect(112,-28,8,10);
+        cx.strokeStyle = '#70839a';
+        cx.lineWidth = 1;
+        [38,66,94].forEach((sx)=>{
+          cx.beginPath();
+          cx.moveTo(sx,-7); cx.lineTo(sx,-22);
+          cx.lineTo(sx+7,-12);
+          cx.stroke();
+        });
+      }
+      cx.fillStyle = cfg.light;
+      cx.beginPath();
+      cx.arc(118,-9,1.8,0,Math.PI*2);
+      cx.fill();
+      cx.strokeStyle = 'rgba(170,210,240,0.18)';
       cx.lineWidth = 1;
-      cx.beginPath(); cx.moveTo(36,-26); cx.lineTo(46,-18); cx.stroke();
-      cx.fillStyle = light;
-      cx.beginPath(); cx.arc(41,-7,1.5,0,Math.PI*2); cx.fill();
+      cx.beginPath();
+      cx.moveTo(-18,11);
+      cx.quadraticCurveTo(-30,8,-36,13);
+      cx.moveTo(-14,13);
+      cx.quadraticCurveTo(-24,11,-30,15);
+      cx.stroke();
       cx.restore();
     };
-    drawShip(W*0.18, H*0.71, 0.8, '#091523', '#15385d', `rgba(111,168,220,${0.55+Math.sin(t*0.03)*0.15})`);
-    drawShip(W*0.64, H*0.78, 1.05, '#08111f', '#133252', `rgba(212,160,23,${0.5+Math.cos(t*0.025)*0.18})`);
-    drawShip(W*0.82, H*0.69, 0.62, '#0a1624', '#163a61', `rgba(201,112,112,${0.45+Math.sin(t*0.04)*0.18})`);
+    drawShip({x:W*0.16, y:H*0.71 + shipBob*0.16, scale:0.64, type:'tanker', hull:'#0a1523', shadow:'#07111d', deck:'#193957', light:`rgba(111,168,220,${0.55+Math.sin(t*0.03)*0.15})`});
+    drawShip({x:W*0.58, y:H*0.775 + shipBob*0.2, scale:0.96, type:'kont', hull:'#091321', shadow:'#06101b', deck:'#173553', light:`rgba(212,160,23,${0.5+Math.cos(t*0.025)*0.18})`});
+    drawShip({x:W*0.8, y:H*0.695 + shipBob*0.14, scale:0.56, type:'lng', hull:'#0a1624', shadow:'#07121e', deck:'#183d62', light:`rgba(201,112,112,${0.45+Math.sin(t*0.04)*0.18})`});
     // Buoys
     const drawBuoy = (x,y,body,topLight) => {
       const bob = Math.sin(t*0.03 + x*0.01)*3;
@@ -234,19 +303,15 @@ const CREW={
 const GFX={
 harbor:`<rect width="480" height="145" fill="#040d1a"/>
 <rect y="92" width="480" height="53" fill="#06182e"/>
-<path d="M24 88 L182 88 L204 96 L226 96 L226 102 L16 102 L16 95 Z" fill="#0b1728"/>
-<path d="M28 82 L186 82 L200 88 L28 88 Z" fill="#163250"/>
-<rect x="84" y="58" width="74" height="24" rx="3" fill="#d9e3ea"/>
-<rect x="124" y="46" width="28" height="14" rx="2" fill="#d9e3ea"/>
-<rect x="133" y="34" width="10" height="12" rx="1" fill="#173454"/>
-<line x1="138" y1="18" x2="138" y2="34" stroke="#617f9b" stroke-width="1.5"/>
-<line x1="138" y1="22" x2="149" y2="29" stroke="#617f9b" stroke-width="1"/>
-<rect x="92" y="64" width="8" height="6" rx="1" fill="#6fa8dc"/>
-<rect x="104" y="64" width="8" height="6" rx="1" fill="#6fa8dc" opacity=".9"/>
-<rect x="116" y="64" width="8" height="6" rx="1" fill="#6fa8dc"/>
-<rect x="128" y="64" width="8" height="6" rx="1" fill="#6fa8dc" opacity=".85"/>
-<rect x="140" y="64" width="8" height="6" rx="1" fill="#6fa8dc"/>
-<rect x="160" y="88" width="34" height="4" fill="#4b637b" opacity=".5"/>
+<rect x="24" y="80" width="138" height="8" fill="#0a1627"/>
+<rect x="42" y="62" width="32" height="18" fill="#0d2238"/>
+<rect x="78" y="54" width="44" height="26" fill="#102844"/>
+<rect x="126" y="66" width="28" height="14" fill="#14314f"/>
+<line x1="66" y1="30" x2="66" y2="80" stroke="#1b3c5f" stroke-width="2"/>
+<line x1="112" y1="24" x2="112" y2="80" stroke="#1b3c5f" stroke-width="2"/>
+<line x1="66" y1="34" x2="94" y2="48" stroke="#1b3c5f" stroke-width="1.4"/>
+<line x1="112" y1="28" x2="142" y2="42" stroke="#1b3c5f" stroke-width="1.4"/>
+<rect x="34" y="88" width="122" height="2" fill="#35506d" opacity=".35"/>
 <line x1="235" y1="18" x2="235" y2="90" stroke="#1e3a5f" stroke-width="2"/>
 <line x1="210" y1="20" x2="265" y2="20" stroke="#1e3a5f" stroke-width="2"/>
 <line x1="250" y1="20" x2="250" y2="70" stroke="#1e3a5f" stroke-width="1" stroke-dasharray="3,2"/>
@@ -272,16 +337,8 @@ sea:`<rect width="480" height="145" fill="#030d1a"/>
 <circle cx="220" cy="24" r="1.2" fill="#fff" opacity=".5"/>
 <circle cx="310" cy="7" r="1" fill="#fff" opacity=".7"/>
 <circle cx="380" cy="17" r="1" fill="#fff" opacity=".6"/>
-<path d="M292 66 L390 66 L408 72 L424 72 L424 77 L284 77 L284 71 Z" fill="#081320"/>
-<path d="M300 60 L392 60 L404 66 L300 66 Z" fill="#173451"/>
-<rect x="344" y="43" width="28" height="17" rx="2" fill="#d9e3ea"/>
-<rect x="364" y="32" width="16" height="12" rx="2" fill="#d9e3ea"/>
-<rect x="370" y="22" width="8" height="10" rx="1" fill="#173454"/>
-<line x1="374" y1="14" x2="374" y2="22" stroke="#607d99" stroke-width="1.2"/>
-<rect x="350" y="49" width="7" height="5" rx="1" fill="#6fa8dc"/>
-<rect x="360" y="49" width="7" height="5" rx="1" fill="#6fa8dc"/>
-<rect x="370" y="49" width="7" height="5" rx="1" fill="#6fa8dc"/>
-<circle cx="407" cy="69" r="1.8" fill="#d4a017"/>`,
+<path d="M286 67 Q330 61 372 68" fill="none" stroke="#17436f" stroke-width="1" opacity=".22"/>
+<path d="M280 74 Q334 69 392 75" fill="none" stroke="#133a63" stroke-width=".9" opacity=".18"/>`,
 
 night:`<rect width="480" height="145" fill="#020810"/>
 <rect width="480" height="66" fill="#030b18"/>
@@ -302,14 +359,8 @@ night:`<rect width="480" height="145" fill="#020810"/>
 <path d="M0 78 Q40 72 80 78 Q120 84 160 78 Q200 72 240 78 Q280 84 320 78 Q360 72 400 78 Q440 84 480 78" fill="none" stroke="#0a2038" stroke-width="1.5" opacity=".6"/>
 <path d="M0 96 Q50 90 100 96 Q150 102 200 96 Q250 90 300 96 Q350 102 400 96 Q450 90 500 96" fill="none" stroke="#081828" stroke-width="1.2" opacity=".5"/>
 </g>
-<path d="M196 70 L286 70 L302 76 L314 76 L314 80 L188 80 L188 75 Z" fill="#050b14"/>
-<path d="M204 64 L286 64 L296 70 L204 70 Z" fill="#112844"/>
-<rect x="240" y="49" width="22" height="15" rx="2" fill="#d9e3ea"/>
-<rect x="254" y="40" width="12" height="10" rx="2" fill="#d9e3ea"/>
-<line x1="260" y1="30" x2="260" y2="40" stroke="#5c7895" stroke-width="1"/>
-<circle cx="230" cy="68" r="2" fill="#c93030" opacity=".95"/>
-<circle cx="290" cy="68" r="2" fill="#5dbf8a" opacity=".9"/>
-<circle cx="260" cy="45" r="1.6" fill="#6fa8dc" opacity=".85"/>`,
+<path d="M184 73 Q238 67 294 74" fill="none" stroke="#12304f" stroke-width="1" opacity=".22"/>
+<path d="M204 82 Q246 78 306 84" fill="none" stroke="#0c2238" stroke-width="1" opacity=".16"/>`,
 
 storm:`<rect width="480" height="145" fill="#020a14"/>
 <ellipse cx="100" cy="18" rx="80" ry="24" fill="#0a1828" opacity=".95"/>
@@ -762,9 +813,8 @@ port_arrival:`<rect width="480" height="145" fill="#04111f"/>
 <path d="M0 80 Q60 76 120 80 Q180 84 240 80 Q300 76 360 80 Q420 84 480 80" fill="none" stroke="#0d3060" stroke-width="1.2" opacity=".5"/>
 <path d="M0 96 Q70 92 140 96 Q210 100 280 96 Q350 92 420 96 Q450 100 480 96" fill="none" stroke="#0a2448" stroke-width="1" opacity=".4"/>
 </g>
-<rect x="185" y="54" width="110" height="18" rx="3" fill="#0a1e30"/>
-<rect x="245" y="42" width="30" height="14" rx="2" fill="#081828"/>
-<line x1="260" y1="32" x2="260" y2="42" stroke="#0a1828" stroke-width="1.5"/>
+<rect x="170" y="62" width="126" height="6" rx="3" fill="#0b2239" opacity=".55"/>
+<rect x="210" y="54" width="42" height="8" rx="2" fill="#0a1c2f" opacity=".5"/>
 <line x1="418" y1="70" x2="418" y2="18" stroke="#0a1828" stroke-width="3"/>
 <line x1="393" y1="23" x2="448" y2="23" stroke="#0a1828" stroke-width="2"/>
 <line x1="433" y1="23" x2="433" y2="53" stroke="#0a1828" stroke-width="1" stroke-dasharray="3,2"/>`,
@@ -783,12 +833,8 @@ sunrise:`<rect width="480" height="145" fill="#040e1c"/>
 <path d="M0 83 Q60 79 120 83 Q180 87 240 83 Q300 79 360 83 Q420 87 480 83" fill="none" stroke="#0d3060" stroke-width="1" opacity=".5"/>
 <path d="M0 98 Q70 94 140 98 Q210 102 280 98 Q350 94 420 98 Q455 102 480 98" fill="none" stroke="#0a2440" stroke-width="1" opacity=".4"/>
 </g>
-<path d="M20 68 L112 68 L126 73 L138 73 L138 77 L14 77 L14 72 Z" fill="#08111d"/>
-<path d="M28 62 L112 62 L121 68 L28 68 Z" fill="#16314c"/>
-<rect x="70" y="49" width="20" height="13" rx="2" fill="#d9e3ea"/>
-<rect x="84" y="39" width="10" height="10" rx="1" fill="#173454"/>
-<line x1="89" y1="30" x2="89" y2="39" stroke="#607d99" stroke-width="1"/>
-<circle cx="118" cy="70" r="1.6" fill="#d4a017"/>`,
+<path d="M14 73 Q70 69 134 75" fill="none" stroke="#1b456d" stroke-width="1" opacity=".2"/>
+<path d="M22 80 Q78 77 142 82" fill="none" stroke="#143555" stroke-width=".9" opacity=".16"/>`,
 
 dolphins:`<rect width="480" height="145" fill="#05111d"/>
 <rect width="480" height="56" fill="#081c30"/>
@@ -3552,45 +3598,170 @@ function getRadarTrainingOverlay(sc){
   </g>`;
 }
 
-function getSceneOverlay(gfx,sc){
-  const overlays = {
-    harbor:`<g opacity=".95">
-      <path d="M250 90 h46 l12 5 h18 v4 h-78 z" fill="#0a1526"/>
-      <rect x="266" y="78" width="26" height="12" rx="1.5" fill="#102948"/>
-      <rect x="272" y="72" width="9" height="8" rx="1" fill="#143459"/>
-      <circle cx="332" cy="98" r="1.6" fill="#d4a017"/>
-      <path d="M388 100 h34 l9 4 h10 v3 h-53 z" fill="#101a2a" opacity=".8"/>
-      <rect x="398" y="91" width="16" height="9" rx="1" fill="#16365f" opacity=".9"/>
-    </g>`,
-    sea:`<g opacity=".88">
-      <path d="M300 95 h72 l16 6 h18 v5 h-106 z" fill="#081422"/>
-      <rect x="332" y="81" width="26" height="14" rx="2" fill="#14365e"/>
-      <rect x="338" y="74" width="11" height="8" rx="1" fill="#1a4a7f"/>
-      <circle cx="357" cy="89" r="1.2" fill="#6fa8dc"/>
-      <path d="M52 108 h38 l9 4 h12 v3 h-59 z" fill="#0a1422" opacity=".7"/>
-      <rect x="63" y="100" width="14" height="8" rx="1" fill="#0f2c4c" opacity=".8"/>
-    </g>`,
-    night:`<g opacity=".9">
-      <path d="M286 102 h84 l14 6 h14 v5 h-112 z" fill="#040b14"/>
-      <rect x="322" y="89" width="22" height="13" rx="2" fill="#112746"/>
-      <circle cx="347" cy="93" r="1.5" fill="#6fa8dc"/>
-      <circle cx="354" cy="93" r="1.5" fill="#d4a017"/>
-      <circle cx="360" cy="93" r="1.5" fill="#c93030"/>
-      <path d="M72 112 h24 l7 3 h8 v2 h-39 z" fill="#060d18" opacity=".6"/>
-    </g>`,
-    storm:`<g opacity=".72">
-      <path d="M312 108 h52 l12 5 h12 v4 h-76 z" fill="#091220"/>
-      <rect x="328" y="97" width="18" height="11" rx="1.5" fill="#113050"/>
-      <line x1="382" y1="90" x2="390" y2="108" stroke="#9bb0c8" stroke-width="1" opacity=".6"/>
-    </g>`,
-    bogaz:`<g opacity=".9">
-      <path d="M276 96 h68 l13 5 h16 v4 h-97 z" fill="#091523"/>
-      <rect x="304" y="83" width="22" height="13" rx="2" fill="#163457"/>
-      <circle cx="348" cy="98" r="1.4" fill="#d4a017"/>
-      <circle cx="352" cy="98" r="1.4" fill="#c93030"/>
-    </g>`
+function getShipVisualType(type){
+  if(type==='bulk') return 'kuru';
+  return type || 'kuru';
+}
+
+function getShipPalette(type){
+  const shipType=getShipVisualType(type);
+  const palettes={
+    kuru:{hull:'#0a1727', hullEdge:'#183656', deck:'#d8dee6', glass:'#8fc6ef', accent:'#c9952a', shadow:'#07111d', funnel:'#d17a24', funnelBand:'#203754'},
+    tanker:{hull:'#101a28', hullEdge:'#8b2e2e', deck:'#d8dee6', glass:'#9cc8ef', accent:'#d48e2a', shadow:'#08111b', funnel:'#a3362d', funnelBand:'#e5d7ba'},
+    kont:{hull:'#0c1726', hullEdge:'#205890', deck:'#dae2ea', glass:'#97c8f0', accent:'#d4a017', shadow:'#08121e', funnel:'#1f5f94', funnelBand:'#f2cc4d'},
+    roro:{hull:'#0f1b2a', hullEdge:'#2d6f8d', deck:'#e3e8ee', glass:'#9ac9ef', accent:'#d4a017', shadow:'#09121c', funnel:'#2e7f96', funnelBand:'#f1f4f7'},
+    lng:{hull:'#0c1523', hullEdge:'#28728e', deck:'#e2e8ef', glass:'#9fd6ff', accent:'#9ed4f4', shadow:'#09111b', funnel:'#35a3b8', funnelBand:'#dff8ff'}
   };
-  let extra = overlays[gfx] || '';
+  return palettes[shipType] || palettes.kuru;
+}
+
+function getShipDeckDetails(type){
+  const shipType=getShipVisualType(type);
+  if(shipType==='kont'){
+    return `
+      <rect x="20" y="-6" width="104" height="3" rx="1" fill="#5c6d82" opacity=".7"/>
+      <rect x="18" y="-20" width="16" height="14" rx="1.5" fill="#8f3d34"/>
+      <rect x="36" y="-20" width="16" height="14" rx="1.5" fill="#295f93"/>
+      <rect x="54" y="-20" width="16" height="14" rx="1.5" fill="#3a6f47"/>
+      <rect x="72" y="-20" width="16" height="14" rx="1.5" fill="#b16d2d"/>
+      <rect x="90" y="-20" width="16" height="14" rx="1.5" fill="#7a485d"/>
+      <rect x="108" y="-20" width="16" height="14" rx="1.5" fill="#3f667f"/>
+      <rect x="18" y="-36" width="16" height="14" rx="1.5" fill="#6f2f28"/>
+      <rect x="36" y="-36" width="16" height="14" rx="1.5" fill="#224b74"/>
+      <rect x="54" y="-36" width="16" height="14" rx="1.5" fill="#315f3e"/>
+      <rect x="72" y="-36" width="16" height="14" rx="1.5" fill="#935821"/>
+      <rect x="90" y="-36" width="16" height="14" rx="1.5" fill="#663c4d"/>
+      <rect x="108" y="-36" width="16" height="14" rx="1.5" fill="#33536a"/>
+      <rect x="134" y="-28" width="28" height="28" rx="2.5" fill="#dce4eb"/>
+      <rect x="146" y="-42" width="14" height="14" rx="2" fill="#dce4eb"/>
+      <rect x="140" y="-18" width="7" height="6" rx="1" fill="#8fc6ef"/>
+      <rect x="148" y="-18" width="7" height="6" rx="1" fill="#8fc6ef"/>
+      <rect x="154" y="-34" width="10" height="18" rx="1.5" fill="#3a4758"/>
+      <rect x="154" y="-29" width="10" height="3" fill="#f2cc4d"/>
+      <line x1="153" y1="-54" x2="153" y2="-42" stroke="#7994ae" stroke-width="1.3"/>
+      <line x1="153" y1="-50" x2="165" y2="-44" stroke="#7994ae" stroke-width="1"/>
+    `;
+  }
+  if(shipType==='tanker'){
+    return `
+      <rect x="18" y="-8" width="88" height="3" rx="1.5" fill="#8190a1"/>
+      <rect x="28" y="-12" width="70" height="2" rx="1" fill="#677789"/>
+      <rect x="26" y="-4" width="76" height="1.6" rx=".8" fill="#92a2b0" opacity=".75"/>
+      <line x1="54" y1="-12" x2="54" y2="-26" stroke="#6a7a8d" stroke-width="1.2"/>
+      <line x1="76" y1="-12" x2="76" y2="-24" stroke="#6a7a8d" stroke-width="1.2"/>
+      <line x1="54" y1="-26" x2="76" y2="-26" stroke="#6a7a8d" stroke-width="1.2"/>
+      <rect x="132" y="-24" width="26" height="24" rx="2.5" fill="#dde5ec"/>
+      <rect x="143" y="-38" width="13" height="14" rx="2" fill="#dde5ec"/>
+      <rect x="138" y="-15" width="6" height="5" rx="1" fill="#9cc8ef"/>
+      <rect x="145" y="-15" width="6" height="5" rx="1" fill="#9cc8ef"/>
+      <rect x="145" y="-34" width="10" height="17" rx="1.5" fill="#a3362d"/>
+      <rect x="145" y="-28" width="10" height="3" fill="#e5d7ba"/>
+      <line x1="149" y1="-50" x2="149" y2="-38" stroke="#7a92a8" stroke-width="1.2"/>
+      <circle cx="110" cy="-7" r="2.1" fill="#d48e2a"/>
+    `;
+  }
+  if(shipType==='lng'){
+    return `
+      <ellipse cx="42" cy="-10" rx="12" ry="9" fill="#8fc6ef"/>
+      <ellipse cx="66" cy="-10" rx="12" ry="9" fill="#a8dafd"/>
+      <ellipse cx="90" cy="-10" rx="12" ry="9" fill="#8fc6ef"/>
+      <rect x="130" y="-24" width="26" height="24" rx="2.5" fill="#e3e9ef"/>
+      <rect x="142" y="-38" width="13" height="14" rx="2" fill="#e3e9ef"/>
+      <rect x="136" y="-15" width="6" height="5" rx="1" fill="#9fd6ff"/>
+      <rect x="144" y="-15" width="6" height="5" rx="1" fill="#9fd6ff"/>
+      <rect x="144" y="-34" width="10" height="17" rx="1.5" fill="#35a3b8"/>
+      <rect x="144" y="-28" width="10" height="3" fill="#dff8ff"/>
+      <line x1="149" y1="-50" x2="149" y2="-38" stroke="#7ea2bc" stroke-width="1.2"/>
+    `;
+  }
+  if(shipType==='roro'){
+    return `
+      <path d="M18 -30 L106 -30 L122 -18 L136 -18 L136 0 L18 0 Z" fill="#dfe6ed"/>
+      <rect x="28" y="-24" width="48" height="7" rx="1.5" fill="#95a7b8"/>
+      <rect x="28" y="-14" width="84" height="5" rx="1.5" fill="#7f90a2"/>
+      <path d="M146 -6 L162 -6 L162 5 L148 5 Z" fill="#7e3b34"/>
+      <path d="M148 5 L162 5 L158 10 L148 10 Z" fill="#5c2420"/>
+      <rect x="142" y="-30" width="10" height="14" rx="1.5" fill="#2e7f96"/>
+      <rect x="142" y="-25" width="10" height="3" fill="#f1f4f7"/>
+      <line x1="146" y1="-34" x2="146" y2="-18" stroke="#7a92a8" stroke-width="1.1"/>
+    `;
+  }
+  return `
+    <rect x="16" y="-12" width="24" height="9" rx="1.5" fill="#52687c"/>
+    <rect x="48" y="-12" width="24" height="9" rx="1.5" fill="#52687c"/>
+    <rect x="80" y="-12" width="24" height="9" rx="1.5" fill="#52687c"/>
+    <rect x="112" y="-12" width="24" height="9" rx="1.5" fill="#52687c"/>
+    <rect x="20" y="-4" width="118" height="2" rx="1" fill="#728597" opacity=".7"/>
+    <line x1="44" y1="-12" x2="44" y2="-28" stroke="#7a8ea2" stroke-width="1.2"/>
+    <line x1="76" y1="-12" x2="76" y2="-28" stroke="#7a8ea2" stroke-width="1.2"/>
+    <line x1="108" y1="-12" x2="108" y2="-28" stroke="#7a8ea2" stroke-width="1.2"/>
+    <line x1="44" y1="-28" x2="52" y2="-18" stroke="#7a8ea2" stroke-width="1.2"/>
+    <line x1="76" y1="-28" x2="84" y2="-18" stroke="#7a8ea2" stroke-width="1.2"/>
+    <line x1="108" y1="-28" x2="116" y2="-18" stroke="#7a8ea2" stroke-width="1.2"/>
+    <rect x="138" y="-26" width="24" height="26" rx="2.5" fill="#dbe3ea"/>
+    <rect x="148" y="-40" width="12" height="14" rx="2" fill="#dbe3ea"/>
+    <rect x="144" y="-17" width="6" height="5" rx="1" fill="#8fc6ef"/>
+    <rect x="151" y="-17" width="6" height="5" rx="1" fill="#8fc6ef"/>
+    <rect x="150" y="-34" width="10" height="17" rx="1.5" fill="#d17a24"/>
+    <rect x="150" y="-28" width="10" height="3" fill="#203754"/>
+    <line x1="154" y1="-52" x2="154" y2="-40" stroke="#7994ae" stroke-width="1.2"/>
+  `;
+}
+
+function getModernShipSvg(type, opts={}){
+  const p=getShipPalette(type);
+  const x=opts.x ?? 280;
+  const y=opts.y ?? 98;
+  const scale=opts.scale ?? 1;
+  const opacity=opts.opacity ?? 1;
+  const light=opts.light || p.accent;
+  const wakeOpacity=opts.wakeOpacity ?? 0.18;
+  const portLight=opts.portLight ?? '#c93030';
+  const starboardLight=opts.starboardLight ?? '#5dbf8a';
+  const mastLight=opts.mastLight ?? '#f2d889';
+  const details=getShipDeckDetails(type);
+  return `<g transform="translate(${x} ${y}) scale(${scale})" opacity="${opacity}">
+    <path d="M-10 8 L10 0 L124 0 L144 5 L166 5 L176 12 L-14 12 L-18 7 Z" fill="${p.hull}"/>
+    <path d="M12 7 L168 7 L174 11 L4 11 Z" fill="${p.shadow}" opacity=".9"/>
+    <path d="M6 0 L122 0" stroke="${p.hullEdge}" stroke-width="2.2" opacity=".95"/>
+    ${details}
+    <circle cx="12" cy="2.8" r="1.7" fill="${portLight}" opacity=".92"/>
+    <circle cx="164" cy="4" r="1.7" fill="${starboardLight}" opacity=".92"/>
+    <circle cx="146" cy="-20" r="1.9" fill="${mastLight}" opacity=".96"/>
+    <circle cx="152" cy="-42" r="1.5" fill="${light}" opacity=".96"/>
+    <path d="M146 -20 l11 -4" stroke="rgba(242,216,137,.35)" stroke-width="1"/>
+    <path d="M-22 11 q-14 -4 -26 1" fill="none" stroke="rgba(180,220,245,${wakeOpacity})" stroke-width="2"/>
+    <path d="M-12 13 q-18 -2 -30 3" fill="none" stroke="rgba(180,220,245,${wakeOpacity*0.8})" stroke-width="1.6"/>
+  </g>`;
+}
+
+function getSceneFleetOverlay(gfx){
+  const lightColor = gfx==='night' ? '#e7b75e' : (gfx==='storm' ? '#8fb7d8' : '#d4a017');
+  const support = {
+    harbor: getModernShipSvg('tanker',{x:338,y:108,scale:.34,opacity:.58,light:'#9cc8ef',wakeOpacity:.08}),
+    sea: getModernShipSvg('tanker',{x:88,y:116,scale:.26,opacity:.46,light:'#7fb3d8',wakeOpacity:.08}),
+    night: getModernShipSvg('lng',{x:92,y:118,scale:.22,opacity:.35,light:'#9fc8f0',wakeOpacity:.06}),
+    sunrise: getModernShipSvg('kont',{x:92,y:96,scale:.3,opacity:.42,light:'#d4a017',wakeOpacity:.08}),
+    port_arrival: getModernShipSvg('roro',{x:334,y:104,scale:.36,opacity:.56,light:'#d4a017',wakeOpacity:.08}),
+    bogaz: getModernShipSvg('tanker',{x:354,y:110,scale:.3,opacity:.48,light:'#d4a017',wakeOpacity:.08}),
+    storm: ''
+  };
+  const mainMap = {
+    harbor:{x:246,y:102,scale:.52,opacity:.96},
+    sea:{x:292,y:102,scale:.48,opacity:.94},
+    night:{x:284,y:108,scale:.48,opacity:.84},
+    storm:{x:304,y:114,scale:.42,opacity:.74},
+    sunrise:{x:22,y:80,scale:.56,opacity:.95},
+    port_arrival:{x:180,y:88,scale:.56,opacity:.96},
+    bogaz:{x:270,y:102,scale:.46,opacity:.92}
+  };
+  if(!mainMap[gfx]) return '';
+  const main = getModernShipSvg(selType,{...mainMap[gfx], light:lightColor});
+  return `<g>${main}${support[gfx] || ''}</g>`;
+}
+
+function getSceneOverlay(gfx,sc){
+  let extra = getSceneFleetOverlay(gfx);
   if((gfx==='compass'||gfx==='bridge') && sc && (sc.ecdisPlanKey || sc.sub?.toLowerCase().includes('ecdis') || sc.sub?.toLowerCase().includes('seyir plani') || sc.loc?.toLowerCase().includes('ecdis'))){
     extra += getEcdisRouteOverlay(sc);
   }
