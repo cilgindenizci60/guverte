@@ -35,6 +35,13 @@
   </div>
 </div>
 
+<div id="notes-panel">
+  <div id="notes-box">
+    <div id="notes-title"><span>🧭 NOTLARIM</span><button class="journal-close" onclick="closeNotes()">✕ Kapat</button></div>
+    <div id="notes-entries"></div>
+  </div>
+</div>
+
 <!-- FOTOĞRAF ALBÜMİ -->
 <div id="colreg-panel">
   <div id="colreg-box">
@@ -130,6 +137,7 @@
   </div>
   <div id="toolbar">
     <button class="tb-btn" onclick="openColreg()">COLREG</button>
+    <button class="tb-btn" onclick="openNotes()">🧭 NOTLARIM</button>
     <button class="tb-btn" onclick="openMap()">🗺️ HARİTA</button>
     <button class="tb-btn" onclick="openJournal()">📓 GÜNLÜK</button>
     <button class="tb-btn" onclick="openAlbum()">📷 ALBÜM<span id="tb-photos-count">0</span></button>

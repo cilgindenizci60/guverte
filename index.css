@@ -259,6 +259,14 @@ input[type=text]::placeholder{color:var(--text3);}
 .journal-entry{border-left:2px solid var(--accent);padding:6px 10px;margin-bottom:8px;font-family:'Crimson Pro',serif;font-size:13px;color:var(--text2);}
 .journal-entry-day{font-size:9px;color:var(--text3);font-family:'Share Tech Mono',monospace;margin-bottom:2px;}
 .journal-close{background:none;border:1px solid var(--border);border-radius:5px;padding:3px 8px;color:var(--text2);font-size:11px;cursor:pointer;}
+#notes-panel{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:60;align-items:center;justify-content:center;}
+#notes-panel.show{display:flex;}
+#notes-box{background:var(--navy2);border:1px solid var(--border);border-radius:12px;width:calc(100% - 20px);max-width:460px;max-height:80vh;padding:14px;overflow-y:auto;}
+#notes-title{font-size:11px;letter-spacing:2px;color:var(--text3);text-transform:uppercase;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;}
+.notes-section{border:1px solid var(--border2);border-radius:8px;background:rgba(7,19,36,0.45);padding:9px 10px;margin-bottom:8px;}
+.notes-head{font-size:10px;color:var(--gold);font-family:'Share Tech Mono',monospace;margin-bottom:5px;}
+.notes-body{font-family:'Crimson Pro',serif;font-size:13px;color:var(--text2);line-height:1.65;}
+.notes-tip{font-size:10px;color:var(--text3);margin-top:5px;line-height:1.5;}
 .colreg-rule{border-left:2px solid var(--gold);padding:8px 10px;margin-bottom:8px;background:rgba(7,19,36,0.45);}
 .colreg-rule-no{font-size:9px;color:var(--gold);font-family:'Share Tech Mono',monospace;margin-bottom:3px;}
 .colreg-rule-text{font-family:'Crimson Pro',serif;font-size:13px;color:var(--text2);line-height:1.6;}
