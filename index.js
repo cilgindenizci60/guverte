@@ -2882,9 +2882,45 @@ function buildSceneQueue(pool, totalDays){
   return [...mandatory_start, ...middle, ...final];
 }
 
+const RECOVERY_SCENE_IDS = new Set(['s146','s147','s148','s149','s150','s183','s184','s185','s186','s187']);
+
+function maybePrioritizeRecoveryScene(){
+  if(currentIdx >= sceneQueue.length-1) return;
+  if(stats.dinclik > 40) return;
+  const nextScene = sceneQueue[currentIdx];
+  if(nextScene && RECOVERY_SCENE_IDS.has(nextScene.id)) return;
+
+  let foundIdx = -1;
+  const nearLimit = Math.min(sceneQueue.length - 2, currentIdx + (stats.dinclik <= 25 ? 12 : 8));
+
+  for(let i=currentIdx+1; i<=nearLimit; i++){
+    const sc = sceneQueue[i];
+    if(sc && RECOVERY_SCENE_IDS.has(sc.id)){
+      foundIdx = i;
+      break;
+    }
+  }
+
+  if(foundIdx === -1){
+    for(let i=nearLimit+1; i<sceneQueue.length-1; i++){
+      const sc = sceneQueue[i];
+      if(sc && RECOVERY_SCENE_IDS.has(sc.id)){
+        foundIdx = i;
+        break;
+      }
+    }
+  }
+
+  if(foundIdx > currentIdx){
+    const [recoveryScene] = sceneQueue.splice(foundIdx, 1);
+    sceneQueue.splice(currentIdx, 0, recoveryScene);
+  }
+}
+
 // ===== SAHNE RENDER =====
 function renderScene(idx){
   if(idx>='end'||currentIdx>=sceneQueue.length){showEnd();return;}
+  maybePrioritizeRecoveryScene();
   const sc=sceneQueue[currentIdx];
   if(!sc){showEnd();return;}
   const delayedCrisis=resolveDelayedConsequences(sc);
