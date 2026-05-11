@@ -38,7 +38,16 @@
 <div id="notes-panel">
   <div id="notes-box">
     <div id="notes-title"><span>🧭 NOTLARIM</span><button class="journal-close" onclick="closeNotes()">✕ Kapat</button></div>
+    <div id="notes-toolbar">
+      <input id="notes-search" type="text" placeholder="Notlarda ara..." oninput="filterNotes(this.value)">
+      <div id="notes-tabs">
+        <button class="notes-tab active" onclick="setNotesTab('kurallar')">Kurallar</button>
+        <button class="notes-tab" onclick="setNotesTab('formuller')">Formuller</button>
+        <button class="notes-tab" onclick="setNotesTab('sozluk')">Sozluk</button>
+      </div>
+    </div>
     <div id="notes-entries"></div>
+    <div id="notes-glossary-detail"></div>
   </div>
 </div>
 

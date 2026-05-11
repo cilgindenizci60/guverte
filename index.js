@@ -2757,6 +2757,7 @@ function renderScene(idx){
   svg.innerHTML=GFX[sc.gfx]||GFX.sea;
 
   playSceneAudio(sc);
+  updateSceneNoteHints(sc);
   onSceneRender(sc);
 
   const ch=document.getElementById('choices');ch.innerHTML='';
@@ -3171,6 +3172,62 @@ const STUDENT_NOTES = [
   {head:"DENIZCILIK SOZLUGU G-M", body:"GM: metasantrik yukseklik<br>Heading: geminin pruvasinin baktigi yon<br>COG: yer uzerindeki gercek gidis istikameti<br>SOG: yer uzerindeki hiz<br>Leeway: ruzgarla yan kayma<br>List: yan yatma<br>Trim: bas-kic oturuş farki<br>Mooring: baglama operasyonu", tip:"Ayni sey sanilan bircok kelime aslinda farkli anlama gelir."},
   {head:"DENIZCILIK SOZLUGU N-Z", body:"NOR: Notice of Readiness<br>PSC: Port State Control<br>SOF: Statement of Facts<br>ETA: Tahmini varis zamani<br>ETD: Tahmini kalkis zamani<br>UKC: Under Keel Clearance<br>Waypoint: rota uzerindeki donus / referans noktasi<br>Watchkeeping: vardiya tutma", tip:"Kisaltmalar denizciligin ikinci dilidir."}
 ];
+const GLOSSARY_TERMS = [
+  {term:"Abeam", meaning:"Bir cismin geminin tam yan omuzlugunda kalmasi.", example:"Pilot botu bir sure sancak abeam seyretti."},
+  {term:"All Fast", meaning:"Geminin tum halatlarla emniyetli sekilde baglanmis olmasi.", example:"Son spring de alindiktan sonra lostromo 'all fast' dedi."},
+  {term:"COG", meaning:"Course Over Ground; geminin yer uzerindeki gercek gidis istikameti.", example:"Akinti sebebiyle heading farkli ama COG rota hattina yakin olabilir."},
+  {term:"SOG", meaning:"Speed Over Ground; geminin yer uzerindeki hizi.", example:"ETA hesaplarken SOG genelde ilk baktigin degerdir."},
+  {term:"GM", meaning:"Metasantrik yukseklik; ilk stabiliteyi gosteren temel deger.", example:"Slack tank arttiginda GM dusup gemi daha yumusak yatabilir."},
+  {term:"Trim", meaning:"Basin ve kicin suya oturus farki.", example:"Balast transferinden sonra gemi hafif kica trimli kaldi."},
+  {term:"List", meaning:"Geminin iskele veya sancaga surekli yatik durmasi.", example:"Yuk kaymasi list yaratabilir."},
+  {term:"UKC", meaning:"Under Keel Clearance; omurga alti su payi.", example:"Dar suya girmeden once UKC mutlaka hesaplanir."},
+  {term:"NOR", meaning:"Notice of Readiness; geminin yuke hazir oldugunu bildiren resmi ihbar.", example:"Charter taraftan laytime tartismasi cikarsa NOR saati kritik olur."},
+  {term:"SOF", meaning:"Statement of Facts; liman operasyon zamanlarini kaydeden belge.", example:"SOF ile logbook uyumsuzsa PSC veya charter sorusu dogabilir."},
+  {term:"Waypoint", meaning:"Seyir planindaki donus veya referans noktasi.", example:"Yanlis waypoint aktif olursa rota butununden sapma baslar."},
+  {term:"Watchkeeping", meaning:"Vardiya tutma disiplini ve sorumluluklari.", example:"Watchkeeping sadece ayakta durmak degil, surekli degerlendirmedir."}
+];
+let notesTab = 'kurallar';
+let notesSearch = '';
+let selectedGlossaryTerm = GLOSSARY_TERMS[0]?.term || '';
+let currentNoteTopics = new Set();
+
+function getNoteCategory(note){
+  if(note.head.includes('FORMULLER')) return 'formuller';
+  if(note.head.includes('SOZLUGU')) return 'sozluk';
+  return 'kurallar';
+}
+
+function getRelevantNoteTopics(sc){
+  const hay = `${sc.sub||''} ${sc.loc||''} ${sc.text||''} ${sc.gfx||''}`.toLowerCase();
+  const topics = new Set();
+  if(/colreg|crossing|head-on|dar kanal|look-?out/.test(hay)) topics.add('COLREG OZETI');
+  if(/ecdis|harita|radar|waypoint|gps|route/.test(hay)) topics.add('ECDIS / HARITA');
+  if(/fener|isik|samandira|iala|sector/.test(hay)) topics.add('FENER VE SAMANDIRA');
+  if(/pilot|romorkor|mooring|snap-back|heaving line|berthing/.test(hay)) topics.add('PILOT / ROMORKOR / LIMAN');
+  if(/psc|isps|solas|stcw|security|gangway/.test(hay)) topics.add('PSC / ISPS / SOLAS / STCW');
+  if(/mayday|pan-pan|securite|vhf|gmdss|navtex|epirb|sart/.test(hay)) topics.add('ACIL HABERLESME');
+  if(/stabil|gm|trim|list|ballast|heel|fsc|mctc/.test(hay)) topics.add('STABILITE / BALLAST');
+  if(/gel-git|tidal|ukc|under keel|draft/.test(hay)) topics.add('FORMULLER - GEL-GIT / UKC');
+  if(/set|drift|course to steer|cog|sog|seyir/.test(hay)) topics.add('FORMULLER - SET / DRIFT / CTS');
+  if(/mesafe|hiz|eta|zaman/.test(hay)) topics.add('FORMULLER - HIZ / MESAFE / ZAMAN');
+  if(/sextant|latitude|meridian altitude|astronomi/.test(hay)) topics.add('FORMULLER - SEXTANT / ASTRONOMI');
+  if(/raspa|boya|primer|pas/.test(hay)) topics.add('RASPA - BOYA / GUVERTELIK');
+  if(/lashing|cargo|yuk|ambar|stowage|vinc/.test(hay)) topics.add('YUK OPERASYONU / LASHING');
+  if(/evrak|bill of lading|notice of readiness|sof|manifest|oil record/.test(hay)) topics.add('LIMAN VE EVRAK');
+  if(/vardiya|watch|kopru/.test(hay)) topics.add('KOPRUUSTU VARDIYASI');
+  return topics;
+}
+
+function updateSceneNoteHints(sc){
+  currentNoteTopics = getRelevantNoteTopics(sc);
+  const btn = document.querySelector('#toolbar button[onclick="openNotes()"]');
+  if(btn){
+    btn.style.borderColor = currentNoteTopics.size ? 'var(--gold)' : '';
+    btn.style.color = currentNoteTopics.size ? 'var(--text)' : '';
+  }
+  const panel = document.getElementById('notes-panel');
+  if(panel && panel.classList.contains('show')) renderNotes();
+}
 
 function addJournalEntry(text, day, time){
   journalEntries.push({text, day: day||'—', time: time||'—', ts: Date.now()});
@@ -3186,6 +3243,14 @@ function openNotes(){
   renderNotes();
 }
 function closeNotes(){ document.getElementById('notes-panel').classList.remove('show'); }
+function setNotesTab(tab){
+  notesTab = tab;
+  renderNotes();
+}
+function filterNotes(value){
+  notesSearch = (value||'').toLowerCase();
+  renderNotes();
+}
 function openColreg(){ document.getElementById('colreg-panel').classList.add('show'); }
 function closeColreg(){ document.getElementById('colreg-panel').classList.remove('show'); }
 
@@ -3204,13 +3269,48 @@ function renderJournal(){
 
 function renderNotes(){
   const c = document.getElementById('notes-entries');
-  if(!c) return;
-  c.innerHTML = STUDENT_NOTES.map(n => `
-    <div class="notes-section">
-      <div class="notes-head">${n.head}</div>
+  const detail = document.getElementById('notes-glossary-detail');
+  const search = document.getElementById('notes-search');
+  if(!c || !detail) return;
+  if(search && search.value !== notesSearch) search.value = notesSearch;
+  document.querySelectorAll('.notes-tab').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.toLowerCase() === notesTab);
+  });
+  if(notesTab === 'sozluk'){
+    const terms = GLOSSARY_TERMS.filter(g => (`${g.term} ${g.meaning} ${g.example}`).toLowerCase().includes(notesSearch));
+    c.innerHTML = terms.length ? `<div class="glossary-list">${terms.map(g => `<button class="glossary-term ${g.term===selectedGlossaryTerm?'active':''}" onclick="selectGlossaryTerm('${g.term.replace(/'/g,"\\'")}')">${g.term}</button>`).join('')}</div>` : '<div class="notes-empty">Aramana uyan sozluk terimi bulunamadi.</div>';
+    renderGlossaryDetail(terms);
+    return;
+  }
+  detail.innerHTML = '';
+  const notes = STUDENT_NOTES.filter(n => getNoteCategory(n) === notesTab).filter(n => (`${n.head} ${n.body} ${n.tip}`).toLowerCase().includes(notesSearch));
+  c.innerHTML = notes.length ? notes.map(n => `
+    <div class="notes-section ${currentNoteTopics.has(n.head)?'related':''}">
+      <div class="notes-head">${n.head}${currentNoteTopics.has(n.head)?' · ILGILI':''}</div>
       <div class="notes-body">${n.body}</div>
       <div class="notes-tip">${n.tip}</div>
-    </div>`).join('');
+    </div>`).join('') : '<div class="notes-empty">Bu sekmede aramana uyan not bulunamadi.</div>';
+}
+
+function selectGlossaryTerm(term){
+  selectedGlossaryTerm = term;
+  renderNotes();
+}
+
+function renderGlossaryDetail(visibleTerms){
+  const detail = document.getElementById('notes-glossary-detail');
+  if(!detail) return;
+  const active = visibleTerms.find(g => g.term === selectedGlossaryTerm) || visibleTerms[0];
+  if(!active){
+    detail.innerHTML = '';
+    return;
+  }
+  selectedGlossaryTerm = active.term;
+  detail.innerHTML = `<div class="glossary-detail">
+    <div class="glossary-detail-head">${active.term}</div>
+    <div class="glossary-detail-body">${active.meaning}</div>
+    <div class="glossary-detail-example">Ornek: ${active.example}</div>
+  </div>`;
 }
 
 // ===== HAVA SİSTEMİ =====

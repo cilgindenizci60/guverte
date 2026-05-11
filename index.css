@@ -263,10 +263,26 @@ input[type=text]::placeholder{color:var(--text3);}
 #notes-panel.show{display:flex;}
 #notes-box{background:var(--navy2);border:1px solid var(--border);border-radius:12px;width:calc(100% - 20px);max-width:460px;max-height:80vh;padding:14px;overflow-y:auto;}
 #notes-title{font-size:11px;letter-spacing:2px;color:var(--text3);text-transform:uppercase;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;}
+#notes-toolbar{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;}
+#notes-search{background:rgba(7,19,36,0.9);border:1px solid var(--border2);border-radius:7px;padding:8px 10px;color:var(--text);font-size:12px;font-family:'Barlow',sans-serif;outline:none;}
+#notes-search:focus{border-color:var(--accent);}
+#notes-tabs{display:flex;gap:6px;flex-wrap:wrap;}
+.notes-tab{background:var(--navy3);border:1px solid var(--border2);border-radius:6px;padding:5px 8px;font-size:10px;color:var(--text3);cursor:pointer;font-family:'Share Tech Mono',monospace;}
+.notes-tab.active,.notes-tab:hover{border-color:var(--gold);color:var(--text);background:rgba(24,48,76,0.95);}
 .notes-section{border:1px solid var(--border2);border-radius:8px;background:rgba(7,19,36,0.45);padding:9px 10px;margin-bottom:8px;}
+.notes-section.related{border-color:var(--gold);box-shadow:0 0 0 1px rgba(212,160,23,0.25) inset;}
 .notes-head{font-size:10px;color:var(--gold);font-family:'Share Tech Mono',monospace;margin-bottom:5px;}
 .notes-body{font-family:'Crimson Pro',serif;font-size:13px;color:var(--text2);line-height:1.65;}
 .notes-tip{font-size:10px;color:var(--text3);margin-top:5px;line-height:1.5;}
+.notes-empty{color:var(--text3);font-size:12px;padding:10px;border:1px dashed var(--border2);border-radius:8px;text-align:center;}
+.glossary-list{display:flex;flex-wrap:wrap;gap:6px;}
+.glossary-term{background:rgba(7,19,36,0.9);border:1px solid var(--border2);border-radius:999px;padding:6px 10px;color:var(--text2);font-size:11px;cursor:pointer;font-family:'Share Tech Mono',monospace;}
+.glossary-term:hover,.glossary-term.active{border-color:var(--accent);color:var(--text);background:rgba(20,44,70,0.95);}
+#notes-glossary-detail{margin-top:10px;}
+.glossary-detail{border:1px solid var(--border2);border-radius:8px;background:rgba(7,19,36,0.52);padding:10px;}
+.glossary-detail-head{font-size:11px;color:var(--gold);font-family:'Share Tech Mono',monospace;margin-bottom:4px;}
+.glossary-detail-body{font-family:'Crimson Pro',serif;font-size:13px;color:var(--text2);line-height:1.65;}
+.glossary-detail-example{font-size:10px;color:var(--text3);margin-top:6px;line-height:1.5;}
 .colreg-rule{border-left:2px solid var(--gold);padding:8px 10px;margin-bottom:8px;background:rgba(7,19,36,0.45);}
 .colreg-rule-no{font-size:9px;color:var(--gold);font-family:'Share Tech Mono',monospace;margin-bottom:3px;}
 .colreg-rule-text{font-family:'Crimson Pro',serif;font-size:13px;color:var(--text2);line-height:1.6;}
