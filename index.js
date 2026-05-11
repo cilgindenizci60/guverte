@@ -3664,17 +3664,303 @@ const GLOSSARY_TERMS = [
   {term:"NOR", meaning:"Notice of Readiness; geminin yuke hazir oldugunu bildiren resmi ihbar.", example:"Charter taraftan laytime tartismasi cikarsa NOR saati kritik olur."},
   {term:"SOF", meaning:"Statement of Facts; liman operasyon zamanlarini kaydeden belge.", example:"SOF ile logbook uyumsuzsa PSC veya charter sorusu dogabilir."},
   {term:"Waypoint", meaning:"Seyir planindaki donus veya referans noktasi.", example:"Yanlis waypoint aktif olursa rota butununden sapma baslar."},
-  {term:"Watchkeeping", meaning:"Vardiya tutma disiplini ve sorumluluklari.", example:"Watchkeeping sadece ayakta durmak degil, surekli degerlendirmedir."}
+  {term:"Watchkeeping", meaning:"Vardiya tutma disiplini ve sorumluluklari.", example:"Watchkeeping sadece ayakta durmak degil, surekli degerlendirmedir."},
+  {term:"A (Alfa-Aydin)", meaning:"Uluslararasi isaret sancaklarinda A harfi; dalgicim var, agir yolla ve neta bulununuz anlamindadir.", example:"Su alti calismasi varken A sanca gi gosterilir."},
+  {term:"Abaso", meaning:"Asagi veya alt anlaminda kullanilan sozcuk.", example:"Lostromo abasodaki gabyayi gosterdi."},
+  {term:"Abaso Babafingo", meaning:"Cift babafingolardan altta olan babafingo.", example:"Eski arma tarifinde abaso babafingo geciyordu."},
+  {term:"Abaso Gabya Yelkeni", meaning:"Cift gabyalardan alttaki gabya uzerindeki yelken.", example:"Yelken planinda abaso gabya yelkeni ayri isaretlenir."},
+  {term:"Abaso Yakasi", meaning:"Yelkenin alt yakasi.", example:"Abaso yakasi gergin degilse yelken duzgun acmaz."},
+  {term:"Abis", meaning:"Denizlerin buyuk derinligi.", example:"Chartta abis bolgesi daha koyu tonla gosterildi."},
+  {term:"Abli", meaning:"Bumba veya yarim serenleri iki yana cevirmeye ve tutmaya yarayan donanim.", example:"Abli iyi ayarlanmazsa bumba kontrolsuz kalir."},
+  {term:"Abli Palangasi", meaning:"Palanga seklindeki abli donanimi.", example:"Abli palangasi yuk altinda daha kontrollu calisir."},
+  {term:"Abluka", meaning:"Bir liman veya kiyinin ustun kuvvetlerle kusatilarak dis baglantisinin kesilmesi.", example:"Tarih dersinde abluka uygulamalari incelenirdi."},
+  {term:"Aborda", meaning:"Bir teknenin digerine ya da iskeleye bordasini tamamen vererek yanasmasi.", example:"Rıhtıma aborda olduktan sonra halatlar verildi."},
+  {term:"Abosa", meaning:"Dur, tut veya gecici olarak durdur kumandasi.", example:"Irgatta zincir hizlaninca 'abosa' komutu geldi."},
+  {term:"Abramak", meaning:"Tekneyi zor hava sartlarinda en iyi sekilde kontrol altinda tutmak.", example:"Firtinada iyi abrayan serdumen cok sey degistirir."},
+  {term:"Acenta", meaning:"Gemi veya yuk sahibinin islerini takip eden yetkili araci kisi.", example:"Liman formalitelerinde acenta sureci hizlandirdi."},
+  {term:"Acentelik", meaning:"Acentanin gemi ve yuk sahibi adina yaptigi isler.", example:"Acentelik hizmeti olmadan liman islemleri aksar."},
+  {term:"Acevele", meaning:"Bir cismin carpmasini onlemek icin yapilan donanim ya da serenleri iyice pirasya etme hali.", example:"Botu yanas tirirken acevele tuttular."},
+  {term:"Aci Sekstanti", meaning:"Yatay aci olcmek icin kullanilan ozel sekstant.", example:"Sörvey ekibi aci sekstanti ile olcu aldi."},
+  {term:"Aciga Cikmak", meaning:"Bulundugu yerden ayrilip daha aciga gitmek.", example:"Sahil guvenlik teknesi mendirekten aciga cikti."},
+  {term:"Acik Barinakli Gemi", meaning:"Barinak guverte acikliklari nedeniyle alt hacmi tonaja tam girmeyen gemi tipi.", example:"Tonaj hesabinda acik barinakli gemi fark yaratir."},
+  {term:"Acik Demir Yeri", meaning:"Bazi ruzgarlara acik olan demir yeri.", example:"Acik demir yerinde hava bozarsa rahat edilmez."},
+  {term:"Acik Deniz", meaning:"Ulke karasulari disindaki serbest deniz alanlari.", example:"Acik denizde seyir kurallari yine dikkat ister."},
+  {term:"Acik Deniz Gemisi", meaning:"Acik denizde calisabilecek sekilde yapilmis ve donatilmis gemi.", example:"Bu tekne acik deniz gemisi klasinda degil."},
+  {term:"Acik Deniz Platformu", meaning:"Deniz dibi petrol veya dogal gaz arastirmalari icin kullanilan platform.", example:"ECDIS uzerinde offshore platform tehlike gibi izlenir."},
+  {term:"Acik Dusmek", meaning:"Istenen yerden veya mevkiden daha uzakta kalmak.", example:"Akinti yuzunden rota hattinin disina acik dustuk."},
+  {term:"Acik Gecmek", meaning:"Bir sahil, samandira veya deniz aracindan neta gecmek.", example:"Seli kayaligini acik gectik."},
+  {term:"Acik Kira Anlasmasi", meaning:"Yukun cinsi ya da varis limani tam yazilmamis charter party.", example:"Acik kira anlasmasi ticari risk tasir."},
+  {term:"Acikta Eglenmek", meaning:"Demir atmadan sahil aciginda beklemek.", example:"Pilot saati gelene kadar acikta eglendik."},
+  {term:"Acilmak", meaning:"Sahilden veya bir yerden uzaklasmak.", example:"Kiyidan acildikca deniz kabarmaya basladi."},
+  {term:"Ada", meaning:"Sularla cevrili dogal kara parcasi.", example:"Rota plani adanin sancagindan geciyordu."},
+  {term:"Adi Iskarmoz", meaning:"Kurekleri kayisliklariyla tutmaya yarayan iskarmoz.", example:"Filikadaki adi iskarmoz gevsemisti."},
+  {term:"Admiralti Demiri", meaning:"Ciposu kollara dik eski tip demir cinsi.", example:"Egitimde admiralti demirinin yapisini gosterdiler."},
+  {term:"Aganta", meaning:"Halat veya zinciri kisa sure elde tut, birakma komutu.", example:"Aganta iskota denince herkes halati tuttu."},
+  {term:"Agiz Kusagi", meaning:"Borda kaplamasinin en ustteki siras i.", example:"Agiz kusagi darbe alinca hemen kontrol edildi."},
+  {term:"Alabanda", meaning:"Dumenin bir tarafa sonuna kadar basilmasi veya borda ic yuzeyi.", example:"Kaptan 'iskele alabanda' diye bagirdi."},
+  {term:"Alabura", meaning:"Teknenin yan yatip devrilmesi.", example:"Asiri list alabura riskini buyuttu."},
+  {term:"Alama Kurek", meaning:"Kurek cekmeyi durdurma emri.", example:"Komutla birlikte alama kurek yapildi."},
+  {term:"Alarga", meaning:"Bir yere yanasmadan acikta bulunma hali.", example:"Römorkor alarga bekliyordu."},
+  {term:"Alesta", meaning:"Hazir ol, stand by komutu.", example:"Pilot laddere alesta bekledik."},
+  {term:"Altabaso", meaning:"Bir yelkenin alt yakasi; alt kisim.", example:"Altabaso yakasi toplanirken kumas kiristi."},
+  {term:"Ana Guverte", meaning:"Uzerinde yurutulen en ust ana guverte.", example:"Ana guvertede raspa-boya isi vardi."},
+  {term:"Ana Omurga", meaning:"Postalarin baglandigi, bastan kica uzanan ana omurga.", example:"Ana omurga geminin belkemigidir."},
+  {term:"Anele", meaning:"Hareketli demir halka veya goz.", example:"Can halatini aneleye bagladilar."},
+  {term:"Anele Bagi", meaning:"Halati demir ya da samandira anelesine baglamakta kullanilan bag.", example:"Anele bagi filikada tekrar calisildi."},
+  {term:"Apazlama", meaning:"Teknenin bordasina dik esen ruzgar ve bu ruzgarla yapilan seyir.", example:"Apazlamada yelken dengesi farkli olur."},
+  {term:"Apiko", meaning:"Demirin deniz dibinden kurtulup zincir ustune geldig i durum; hazir bekleme hali.", example:"Demir apiko olunca vira daha dikkatli surdu."},
+  {term:"Arma", meaning:"Geminin direk, seren, yelken ve bunlara ait donaniminin butunu.", example:"Okul gemisinin armasi oldukca karmasikti."},
+  {term:"Armuz", meaning:"Kaplama tahtalari veya levhalari arasindaki birlesim cizgisi.", example:"Armuz kaciriyorsa kalafat ister."},
+  {term:"Arya", meaning:"Sancak, yelken veya serenin asagi indirilmesi.", example:"Gun batiminda arya sancak yapildi."},
+  {term:"Asirtma Yelken", meaning:"Ruzgara gore bir taraftan digerine kavanca ettirilebilen yelken.", example:"Asirtma yelken eski teknelerde gorulur."},
+  {term:"Avara", meaning:"Yanasik olunan yerden ayrilmak; bunun icin verilen komut.", example:"Avara komutuyla halatlar sira ile alindi."},
+  {term:"Avarya", meaning:"Kaza sonucu gemi veya yukte olusan hasar ve ilgili giderler.", example:"Avarya dosyasi icin belgeler toplandi."},
+  {term:"Ayberi", meaning:"Ayin dunyaya en cok yaklastigi nokta.", example:"Astronomi notunda ayberi de geciyordu."},
+  {term:"Aybocu", meaning:"Demir irgatini geri calistirarak zinciri bosaltmak.", example:"Demir manevrasinda aybocu verildi."},
+  {term:"Ayi Bacagi", meaning:"Pupadan ruzgarla iki yan yelken acilarak yapilan seyir.", example:"Ayi bacaginda yelken dengesi hassastir."},
+  {term:"Aynalik", meaning:"Kic bodoslama uzerindeki tahta levha; ayna kic yapidaki parca.", example:"Aynalikta dumen ignesinin oturusu kontrol edildi."},
+  {term:"B (Bravo-Burak)", meaning:"Uluslararasi isaret sancaklarinda B harfi; tehlikeli yuk yukluyorum, tahliye ediyorum veya tasiyorum.", example:"B sancagi iskeledeyken bunker veya tehlikeli yuk akla gelir."},
+  {term:"Baba", meaning:"Halat volta etmek icin gemide veya rıhtımda bulunan silindirik donanim.", example:"Spring halati babaya iki volta edildi."},
+  {term:"Badarna Etmek", meaning:"Bir halati asinmaya karsi koruyucu malzemeyle sarmak.", example:"Surtunme noktasi icin halat badarna edildi."},
+  {term:"Bakla", meaning:"Zinciri olusturan her bir halka.", example:"Bir baklada catlak gorulurse zincir degisir."},
+  {term:"Bandira", meaning:"Geminin milliyetini gosteren milli sancak.", example:"Bandira cekimi gunluk rutinin parcasi."},
+  {term:"Barbariska", meaning:"Halati tutmak icin yapilan stopper tipi bosa.", example:"Yuk altinda barbariska cok is gorur."},
+  {term:"Bas Bodoslama", meaning:"Omurganin bas tarafta yukselen dikey veya egik kismi.", example:"Bas bodoslama vuruk kontrolunde incelendi."},
+  {term:"Bas Kasara", meaning:"Geminin bas tarafindaki yuksek kisim; irgat ve baglama donanimi burada bulunur.", example:"Bas kasarada demir vardiyasi tutuldu."},
+  {term:"Bas Omuzluk", meaning:"Borda kaplamasinin bas bodoslamaya dogru egilmeye basladigi kisim.", example:"Bas omuzlukta boya asindi."},
+  {term:"Bas Ustu", meaning:"Bas kasaradaki ust platform veya guverte.", example:"Bas ustunde demir kuresi hazirlandi."},
+  {term:"Basa Trimli", meaning:"Basi kica gore daha fazla su ceken gemi durumu.", example:"Basa trimli gemi kanalda dikkat ister."},
+  {term:"Bindirme Kaplama", meaning:"Ahsap teknelerde kaplamalarin ust uste bindirilerek yapilmasi.", example:"Bindirme kaplama geleneksel teknelerde sik gorulur."},
+  {term:"Bita", meaning:"Kucuk madeni baba ya da eski tip irgatta zinciri kontrol eden silindir.", example:"El incesi bitaya volta edildi."},
+  {term:"Bocurum", meaning:"Yelkenli teknelerde kicta acilan dort kose yelken.", example:"Bocurum acilinca tekne daha dengeli surdu."},
+  {term:"Borda", meaning:"Geminin yan tarafi.", example:"Borda fenerleri gece seyri icin hayati."},
+  {term:"Borda Fenerleri", meaning:"Sancakta yesil, iskelede kirmizi olan 112.5 derecelik seyir fenerleri.", example:"Borda fenerleri arizaliysa geceye cikilmaz."},
+  {term:"Borda Iskelesi", meaning:"Gemiden inip cikmak icin bordadan indirilen merdiven.", example:"Borda iskelesinin emniyeti vardiya defterine yazildi."},
+  {term:"Bosa Tutmak", meaning:"Halat veya zinciri durdurmak ve emniyete almak.", example:"Bosa tutmayan ekip halati kacirabilir."},
+  {term:"Bos Alamak", meaning:"Gevsemis halatin fazlasini alip germek.", example:"Mooring esnasinda spring biraz bos alandi."},
+  {term:"Bos Koymak", meaning:"Halati kontrollu sekilde laska etmek.", example:"Komutla birlikte biraz bos koyduk."},
+  {term:"Branda", meaning:"Makine ve esyalari korumak icin kullanilan ortu; yelken bezine de denir.", example:"Raspa sonrasi alan brandayla kapatildi."},
+  {term:"Bumba", meaning:"Yuk operasyonu veya yelken kontrolu icin kullanilan seren/dikme.", example:"Eski general cargolarda bumba cok onemliydi."},
+  {term:"Burgata", meaning:"Halat cevresi icin kullanilan olcu birimi.", example:"Halatin burgatasi raporda yaziyordu."},
+  {term:"Bukum", meaning:"Bir halatin kollarinin saga veya sola bukulmus hali.", example:"Ters bukum halatta gamba yaratabilir."},
+  {term:"C (Charlie-Cemal)", meaning:"Uluslararasi isaret sancaklarinda C harfi; onceki grubun anlami olumlu okunacaktir.", example:"Signal kitabi acik olmadan C sancagini yorumlamak zordur."},
+  {term:"Camadan", meaning:"Yelken alanini kucultmek icin yelkeni bogma islemi.", example:"Ruzgar artinca camadana vuruldu."},
+  {term:"Can Filikasi", meaning:"Tehlikede gemidekileri kurtarmak icin bulundurulan can kurtarma araci.", example:"Can filikasi drillinde personel sayimi yapildi."},
+  {term:"Can Halati", meaning:"Emniyet ve kurtarma amacli donatilan halat.", example:"Can halati iskele ustunde hazir tutuldu."},
+  {term:"Can Kurtarma Araclari", meaning:"Can filikasi, can sallari, can simitleri gibi tum life saving appliances.", example:"PSC once can kurtarma araclarini kontrol etti."},
+  {term:"Can Simidi", meaning:"Denize dusen kisiyi yuzdurmek ve kurtarmak icin kullanilan halka bicimli arac.", example:"Can simidinin isik ve savlosu tamdi."},
+  {term:"Cayro Pusula", meaning:"Dunyanin manyetik yapisindan etkilenmeyen elektrikli pusula.", example:"Gyro arizalaninca manyetik pusulayla cross-check yapildi."},
+  {term:"Ceviz", meaning:"Halat uclarina yapilan dugum veya agirlikli el incesi basi.", example:"El incesinin cevizli ucu rıhtıma atildi."},
+  {term:"Civadra", meaning:"Yelkenli teknede bas bodoslama ustunden one uzanan sabit seren.", example:"Floklar civadra uzerine acilir."},
+  {term:"Cunda", meaning:"Seren, gonder veya bumbanin serbest ucu.", example:"Cunda donanimi zorlaninca ekip geri cekildi."},
+  {term:"Capa riz", meaning:"Manevra veya isin engellenmesi; zincirlerin birbirine dolanmasi.", example:"Demirlerde capariz olursa is uzar."},
+  {term:"Carmik", meaning:"Direkleri yanlardan tutan kalin sabit arma.", example:"Carmiklarin gerginligi tek tek kontrol edildi."},
+  {term:"Cima", meaning:"Halatin ucu.", example:"Cima yipranmissa selvis gerekir."},
+  {term:"Cimaci", meaning:"Rıhtıma yanasan geminin halatini alip volta eden kisi.", example:"Cimaci springi babaya iyi aldi."},
+  {term:"Cipo", meaning:"Ozellikle admiralti demirinde kollara dik baglanan kol parca.", example:"Cipolu demir egitimlerde anlatilir."},
+  {term:"Curuk Su", meaning:"Geminin dumenine yakin olusan ve pervanenin icinde calistigi bozuk su.", example:"Curuk su bazen dumen etkisini degistirir."},
+  {term:"D (Delta-Deniz)", meaning:"Uluslararasi isaret sancaklarinda D harfi; benden acik bulununuz, manevra yapmakta gucluk cekiyorum.", example:"Dar manevrada D sancagi anlamlidir."},
+  {term:"Double Bottom", meaning:"Geminin karinasi yirtilsa da su almamasi icin yapilan ikinci dip bolmesi.", example:"Double bottom tanklari yakit veya ballast tutabilir."},
+  {term:"Dalgakiran", meaning:"Limanlari dalga ve akintidan koruyan yapi.", example:"Mendirek disinda deniz sertti ama dalgakiran ici sakindi."},
+  {term:"Dalgic", meaning:"Deniz dibinde arastirma ve is yapabilen kisi.", example:"A sancagi cekiliyse dalgic vardir."},
+  {term:"Datum", meaning:"Harita uzerindeki derinlik referans seviyesi.", example:"Chart datum bilinmeden UKC yorumu eksik kalir."},
+  {term:"Dedveyt", meaning:"Geminin tasiyabilecegi toplam agirlik kapasitesi.", example:"Yuk planinda dedveyt siniri asilmadi."},
+  {term:"Demir Almak", meaning:"Demirli geminin demirini ve zincirini gemiye almak.", example:"Pilot saati yaklasinca demir alma basladi."},
+  {term:"Demir Kaloma", meaning:"Demir zincirini bos birakma komutu veya verilen zincir miktari.", example:"Bir sancak daha demir kaloma edildi."},
+  {term:"Demir Kampanasi", meaning:"Demirleme ve sis isaretlerinde kullanilan bas taraftaki can.", example:"Demir kampanasi anchor watchta duyuldu."},
+  {term:"Demir Kuresi", meaning:"Demirli geminin gunduz gosterdigi siyah kure.", example:"Limanda demir kuresi gunduz cekildi."},
+  {term:"Demir Locasi", meaning:"Demir zincirinin ve demirin gectigi boru.", example:"Demir locasi cevresi pas icin kontrol edildi."},
+  {term:"Demir Taramasi", meaning:"Demirin iyi tutmayip deniz dibinde suruklenmesi.", example:"GPS izinde demir taramasi fark edildi."},
+  {term:"Demir Yeri", meaning:"Geminin guvenle demirleyebilecegi alan.", example:"Haritada anchorage isaretli demir yeri secildi."},
+  {term:"Demirde Yatmak", meaning:"Geminin demirli durumda bulunmasi.", example:"Geceyi dis limanda demirde yattik."},
+  {term:"Demiri Fundo Etmek", meaning:"Demiri kendi agirligi ile denize birakmak.", example:"Kaptan uygun mevkide demiri fundo ettirdi."},
+  {term:"Demiri Vira Etmek", meaning:"Demir ve zinciri irgatla iceri almak.", example:"Demiri vira etmeden once bas ustu hazirlandi."},
+  {term:"Demuraj", meaning:"Starya asimi nedeniyle dogan gecikme ucreti; surastarya.", example:"Tahliye gecikirse demuraj tartismasi cikar."},
+  {term:"Deniz Demiri", meaning:"Teknenin dalgaya borda vermesini azaltmak icin denize atilan konik duzenek.", example:"Makine arizasinda deniz demiri hayat kurtarabilir."},
+  {term:"Deniz Raporu", meaning:"Sea protest.", example:"Firtina sonrasi deniz raporu hazirlandi."},
+  {term:"Deniz Sigortasi", meaning:"Marine insurance.", example:"Hasar dosyasinda deniz sigortasi klozlari acildi."},
+  {term:"Denize Elverisli", meaning:"Bir geminin deniz tehlikelerine karsi sefere uygun durumda olmasi.", example:"Denize elverisli olmayan gemi sefere cikamaz."},
+  {term:"Denize Elverislilik Belgesi", meaning:"Geminin ilgili seyir ve hizmete uygun oldugunu gosteren belge.", example:"Denize elverislilik belgesinin suresi kontrol edildi."},
+  {term:"Deplasman", meaning:"Geminin yuzdurdugu suyun agirligina esit toplam agirligi.", example:"Stabilite hesabinda deplasman temel girdidir."},
+  {term:"Dese Etmek", meaning:"Halat veya zincirin iyice gerilmesi.", example:"Spring bir anda dese oldu."},
+  {term:"Dingi", meaning:"Kucuk filika veya servis teknesi.", example:"Dingi iskeleye personel tasidi."},
+  {term:"Dirisa", meaning:"Yon degistirmek; ruzgarin yon degistirmesi.", example:"Ruzgar dirisa ettigi icin rota duzeltildi."},
+  {term:"Dispacor", meaning:"Avaryada taraflara dusen payi hesaplayan kisi.", example:"Dispacor belgeleri istemeye basladi."},
+  {term:"Dispec", meaning:"Starya suresinin tamaminin kullanilmamasiyla kazanilan zaman.", example:"Kiraci dispec bekliyordu."},
+  {term:"Doblin", meaning:"Halatin iki cimas i arasindaki bight.", example:"Volta atmadan once halatta dobline aldik."},
+  {term:"Dokuz Oturak Oturmak", meaning:"Geminin sert sekilde karaya oturmasi.", example:"Yanlis yaklaşmada gemi dokuz oturak oturdu."},
+  {term:"Dosek", meaning:"Geminin en alt kisminda postalari baglayan taban elemani.", example:"Havuzda dosek bolgesi de incelendi."},
+  {term:"Draft Survey", meaning:"Yukleme markalari ve draftlar uzerinden yapilan yuk miktari denetimi/hesabi.", example:"Draft survey sonucu tahmini tonaj netlesti."},
+  {term:"Dumen", meaning:"Gemiyi istenen yone cevirmeye yarayan parca.", example:"Dumen cevaplari kanalda cok kritik hale geldi."},
+  {term:"Dumen Donanimi", meaning:"Dumen dolabi ile dumen arasindaki steering gear sistemi.", example:"Steering gear drillinde dumen donanimi test edildi."},
+  {term:"Dumen Zaviyesi", meaning:"Dumen yelpazesinin omurgayla yaptigi aci.", example:"35 derece dumen zaviyesi manevrayi degistirir."},
+  {term:"Dumenci Pusulasi", meaning:"Serdumenin komut verirken baktigi pusula.", example:"Manyetik hata dumenci pusulasinda not edildi."},
+  {term:"E (Echo-Engin)", meaning:"Uluslararasi isaret sancaklarinda E harfi; rotami sancaga degistiriyorum.", example:"Karsidan gelen trafik icin E sanca gi acik bir niyettir."},
+  {term:"Eglenmek", meaning:"Bas rüzgari alarak ayni yerde kalmaya veya cok agir yol gitmeye calismak.", example:"Hava sertlesince bir sure eglendik."},
+  {term:"El Incesi", meaning:"Bir tekneden digerine veya sahile atilan ince halat.", example:"Ilk once el incesi cimaciya atildi."},
+  {term:"El Iskandili", meaning:"Elektrikli cihaz olmayan teknelerde derinlik olcmek icin kullanilan kursunlu salvo.", example:"El iskandili klasik ama ogreticidir."},
+  {term:"Ellecleme", meaning:"Yukun yuklenmesi, istifi ve bosaltilmasi islemleri.", example:"Ellecleme sirasinda guvenli alan korunur."},
+  {term:"Enspektor", meaning:"Geminin sefere hazirligini takip eden armatör gorevlisi.", example:"Enspektor PSC oncesi gemiye cikti."},
+  {term:"ETA", meaning:"Estimated Time of Arrival; tahmini varis zamani.", example:"ETA degisirse acenta hemen haberdar edilir."},
+  {term:"ETD", meaning:"Estimated Time of Departure; tahmini kalkis zamani.", example:"Pilot saati ETD'yi etkiledi."},
+  {term:"ETS", meaning:"Estimated Time of Sailing; tahmini seyire baslama zamani.", example:"Kanal gecisi ertelenince ETS kaydi degisti."},
+  {term:"Evaporator", meaning:"Deniz suyundan tatli su elde etmeye yarayan aygit.", example:"Evaporator devrede degilse freshwater kısıtlanir."},
+  {term:"F (Foxtrot-Felenk)", meaning:"Uluslararasi isaret sancaklarinda F harfi; hareket kabiliyetine sahip degilim, benimle irtibat kurunuz.", example:"Ariza halinde F sancagi cok sey anlatir."},
+  {term:"Faca", meaning:"Yelkenin ters kuntradan dolmasi; boot top bolgesi.", example:"Faca alan yelken kontrol kaybettirebilir."},
+  {term:"Facuna Etmek", meaning:"Badarnanin tel veya murnel ile siki sarilmasi.", example:"Tel halatin korunan yeri facuna edildi."},
+  {term:"Farsa Tahtalari", meaning:"Ahsap teknede sintine ustundeki aralikli tahtalar.", example:"Fars tahtalari kaldirilinca alt kısım temizlendi."},
+  {term:"Feeder", meaning:"500 TEU'dan az kapasitedeki konteyner gemisi tipi.", example:"Bu hatta feeder tipi gemiler calisiyor."},
+  {term:"Feedermax", meaning:"Yaklasik 500-999 TEU arasi konteyner gemisi tipi.", example:"Feedermax liman kisitlarina daha rahat uyar."},
+  {term:"Feribot", meaning:"Arac ve bazen vagon tasiyan gemi.", example:"Feribot trafigi bogaz planini etkileyebilir."},
+  {term:"Fersah", meaning:"Uc deniz mili civarinda eski mesafe birimi.", example:"Eski kayitlarda mesafe fersahla geciyor."},
+  {term:"Firdondu", meaning:"Zincirin gamba almamasi icin araya konan doner baglanti.", example:"Firdondu donmuyorsa zincir toplanir."},
+  {term:"Firishka", meaning:"Cok hafif ruzgar.", example:"Firishkada yelkenler tam dolmaz."},
+  {term:"Filika", meaning:"Gemide bulunan kucuk servis veya can kurtarma teknesi.", example:"Filika donanimi haftalik kontrol edildi."},
+  {term:"Filo", meaning:"Ayni hizmette veya ayni sahiplikte toplanmis gemi grubu.", example:"Sirketin kuru yuk filosu buyudu."},
+  {term:"Fribord", meaning:"Su yuzeyinden ana guverte cizgisine kadar olan yukseklik.", example:"Yuk arttikca fribord azalir."},
+  {term:"Fribord Markasi", meaning:"Geminin bordasindaki yukleme sinir isaretleri; Plimsoll mark.", example:"Yaz yukleme hattini gecmek yasaktir."},
+  {term:"Fundo", meaning:"Demirlemek icin demiri birakma komutu.", example:"Kaptan uygun anda 'fundo' dedi."},
+  {term:"G (Golf-Gabya)", meaning:"Uluslararasi isaret sancaklarinda G harfi; kilavuz istiyorum.", example:"Pilot ihtiyacinda G sancagi anlamlidir."},
+  {term:"Gabya", meaning:"Ana direk ile babafingo arasindaki parca veya yelken.", example:"Eski arma planinda gabya ayri gosterilir."},
+  {term:"Gabyar", meaning:"Yelken ve seren bakimindan sorumlu usta gemici.", example:"Okul gemisinde gabyar herkesin saygi duydugu kisiydi."},
+  {term:"Gamba", meaning:"Halatin ters bukulmesi veya zincirin dolasmasi.", example:"Virada gamba oldugunu hemen fark ettik."},
+  {term:"Genova", meaning:"Buyuk flok tipi yelken.", example:"Apazda genova cok guzel cekiyordu."},
+  {term:"Giriva", meaning:"Goz demirini yatagina oturtmak icin kullanilan donanim.", example:"Demir vira sonunda giriva kontrol edildi."},
+  {term:"Giz", meaning:"Yan yelkenlerin ust yakasini baglayan yarim seren.", example:"Giz acisi bozulunca yelken verimi dustu."},
+  {term:"Gladora", meaning:"Kuru yuk gemisinde ara kat veya tweendeck.", example:"Gladora seviyesinde kargo ayirimi yapildi."},
+  {term:"Gomina", meaning:"Bir deniz milinin onda biri; 185.2 metre.", example:"Mesafe hesabinda gomina eski kayitlarda gecer."},
+  {term:"Gonder", meaning:"Bayrak cekilen kucuk direk ya da cubuk.", example:"Kic gondere bandira cekildi."},
+  {term:"Goz Demiri", meaning:"Geminin sancak ve iskele bas omuzlugundaki ana demir.", example:"Iskele goz demiri bakimdaydi."},
+  {term:"Grandi Diregi", meaning:"Birden fazla direkli gemide en yuksek direk.", example:"Grandi diregi uzaktan hemen seciliyordu."},
+  {term:"GRT/GT", meaning:"Geminin kapali hacmine dayali gross tonaj birimi.", example:"GT liman ucretlerini etkileyebilir."},
+  {term:"Gurcata", meaning:"Direkte crosstree/spreader gorevi yapan kollar.", example:"Gurcata gerginligi sabit armayi acar."},
+  {term:"Gucvertenin Hatti", meaning:"Guvertenin bordadaki izdusumu olan deck line.", example:"Load line markasi guverte hattiyla birlikte okunur."},
+  {term:"Guverte", meaning:"Gemide bastan kica uzanan platform.", example:"Guvertede calisirken PPE zorunlu."},
+  {term:"Guverte Lostromosu", meaning:"Ticaret gemisinde gemicilerin basi; boatswain.", example:"Guverte lostromosu is dagitimini yapti."},
+  {term:"Guverte Zabiti", meaning:"Kaptandan sonra gelen zabitler grubu.", example:"Guverte zabiti vardiya planini duzenledi."},
+  {term:"H (Hotel-Halat)", meaning:"Uluslararasi isaret sancaklarinda H harfi; gemide kilavuz kaptan var.", example:"Pilot ciktiktan sonra H sancagi anlam kazanir."},
+  {term:"Halat", meaning:"Bitkisel, sentetik veya celikten yapilan cekmeye uygun urgan.", example:"Halatin cimasinda asinma vardi."},
+  {term:"Halat Bosa", meaning:"Volta edilecek halati tutmakta kullanilan kisa stopper.", example:"Halat bosa olmadan yuk altina girilmedi."},
+  {term:"Handy", meaning:"Yaklasik 1000-1999 TEU arasi konteyner gemisi tipi.", example:"Bu terminal handy segmentini iyi ceviriyor."},
+  {term:"Handymax", meaning:"Yaklasik 35.000-49.999 DWT arasi gemi segmenti.", example:"Handymax drafti bu limana sınırda uyuyor."},
+  {term:"Handysize", meaning:"Yaklasik 20.000-34.999 DWT arasi gemi segmenti.", example:"Handysize kuru yuk gemileri cok yaygindir."},
+  {term:"Havuz Sorveyi", meaning:"Geminin havuza alinarak su alti kisimlarinin kontrol edilmesi.", example:"Havuz sorveyinde deniz sandigi da incelendi."},
+  {term:"Hazirlik Mektubu", meaning:"Notice of Readiness; geminin yuklemeye veya tahliyeye hazir oldugunu bildiren mektup.", example:"NOR zamani laytime hesabini etkiler."},
+  {term:"Hedefe", meaning:"Pusula ustune takilarak kerteriz almaya yarayan alet.", example:"Hedefe ile fener kerterizi alindi."},
+  {term:"Hirca", meaning:"Zincirin zincirlikteki ucu; bitter end.", example:"Hirca baglantisi emniyet kontrolunden gecti."},
+  {term:"Hisa Etmek", meaning:"Bir seyi yukariya veya karsi tarafa kuvvetle cekmek.", example:"Mataforayi biraz daha hisa ettiler."},
+  {term:"IMO", meaning:"International Maritime Organization.", example:"SOLAS ve MARPOL gibi kurallar IMO catisinda yurur."},
+  {term:"ILO", meaning:"International Labour Organization.", example:"MLC tarafinda ILO belgeleri de onemlidir."},
+  {term:"Irgat", meaning:"Demir alma ve baglama islerinde kullanilan mekanizma; windlass.", example:"Irgat freni kontrol edilmeden demir verilmez."},
+  {term:"Iskandil", meaning:"Deniz derinligini olcmek icin kullanilan alet.", example:"Pilot oncesi iskandil verisi tekrar alindi."},
+  {term:"Iskandil Kursunu", meaning:"Iskandil savlosunun ucundaki agir kursun.", example:"El iskandilinde kursun dibin cinsini de hissettirir."},
+  {term:"ISM", meaning:"International Safety Management Code.", example:"ISM kulturu sadece evrak degil, emniyet davranisidir."},
+  {term:"India (Istif)", meaning:"Uluslararasi isaret sancaklarinda I harfi; rotami iskeleye degistiriyorum.", example:"Manevrada India sancagi niyet bildirir."},
+  {term:"Iskele", meaning:"Geminin sol tarafi veya giris-cikis merdiveni/jetty.", example:"Iskele bordada trafik daha yogundu."},
+  {term:"Iskota", meaning:"Yelkenin iskota yakasini kullanmaya yarayan halat donanimi.", example:"Iskota bosalinca yelken guc kaybetti."},
+  {term:"J (Juliet-Jale)", meaning:"Uluslararasi isaret sancaklarinda J harfi; yaniyorum ve gemide tehlikeli yuk var, benden neta bulununuz.", example:"Yangin senaryolarinda J sancagi anlatilir."},
+  {term:"Jurnal", meaning:"Gemiyle ilgili bilgilerin yazildigi seyir defteri.", example:"Bogaz gecisinde jurnale saat saat not dusuldu."},
+  {term:"K (Kilo-Kalyon)", meaning:"Uluslararasi isaret sancaklarinda K harfi; sizinle haberlesmek istiyorum.", example:"Isaret sancagiyla K gosterildiginde telsiz de acik tutulur."},
+  {term:"Kabotaj", meaning:"Bir ulkenin kendi karasularinda kendi bayrakli gemilerine tanidigi tasimacilik hakki.", example:"Kabotaj kurallari hatta gore degisir."},
+  {term:"Kalafat", meaning:"Kaplama ve doseme aralarini ustupu ve ziftle sizdirmaz yapma islemi.", example:"Ahsap teknede kalafat iyi degilse armuzdan su alir."},
+  {term:"Kaloma", meaning:"Demirdeki zincir mesafesi; bosluk veya tolerans.", example:"Ruzgar artinca biraz daha kaloma verildi."},
+  {term:"Kamara", meaning:"Gemiadami veya yolcularin kaldigi oda.", example:"Uzun vardiyadan sonra kamaraya cekildik."},
+  {term:"Kamarot", meaning:"Servis ve kamara duzeniyle ilgilenen gemiadami.", example:"Kamarot mesaide salona cay getirdi."},
+  {term:"Kana Rakamlar i", meaning:"Geminin draftini gosteren draft marks.", example:"Kana rakamlari dalga arasinda dikkatle okunur."},
+  {term:"Kancello", meaning:"Geminin yuklemeye hazir olmasi gereken son tarih.", example:"Kancello kacarsa charter feshe gidebilir."},
+  {term:"Kandilisa", meaning:"Yelkenleri yukariya kaldirmakta kullanilan halat.", example:"Flok kandilisasi asindiysa yenilenir."},
+  {term:"Kaplama", meaning:"Postalar uzerine boyuna kaplanan sac veya tahta.", example:"Kaplama sacinda ezik goruldu."},
+  {term:"Kaporta", meaning:"Guverteden asagi inis cikisin uzerindeki kapali kisim; skylight/companionway.", example:"Yagmur baslayinca kaportalar kapatildi."},
+  {term:"Lashing", meaning:"Yuku yerinde tutmak icin kullanilan baglama ve sabitleme duzeni.", example:"Agir hava oncesi lashing gerginligi yeniden kontrol edildi."},
+  {term:"Laytime", meaning:"Yukleme veya tahliye icin charter party ile verilen sure.", example:"NOR saati laytime hesabinda baslangic noktasi olabilir."},
+  {term:"Leeway", meaning:"Ruzgar etkisiyle geminin yan kaymasi.", example:"Kuvvetli ruzgarda leeway rota hattini bozmaya basladi."},
+  {term:"Loadicator", meaning:"Geminin yukleme ve stabilite bilgisini hesaplayan yazilim veya sistem.", example:"Loadicator alarm verince veri girisi tekrar kontrol edildi."},
+  {term:"Load Line", meaning:"Geminin mevsim ve su yogunluguna gore yukleme sinirini gosteren isaret.", example:"Tropical mark ustune cikmak ciddi ihlaldir."},
+  {term:"Logbook", meaning:"Seyir, olay ve vardiya kayitlarinin tutuldugu resmi defter.", example:"Kaptan jurnal ve logbook kayitlarini birlikte kontrol etti."},
+  {term:"Lostromo", meaning:"Guverte tayfasinin basi olan boatswain.", example:"Lostromo mooring station dagilimini net verdi."},
+  {term:"Lumboz", meaning:"Gemilerdeki yuvarlak veya oval pencere acikligi.", example:"Lumbozlar agir havada tam kapali tutuldu."},
+  {term:"Magnetic Compass", meaning:"Manyetik kuzeye gore yon gosteren klasik pusula.", example:"Gyro saptiginda magnetic compass ile capraz kontrol yapildi."},
+  {term:"Mapa", meaning:"Halat, sapan veya donanim baglamak icin kullanilan metal goz.", example:"Sapan mapasi yuk altina girmeden kontrol edildi."},
+  {term:"Matafora", meaning:"Filika veya bot indirip kaldirmada kullanilan kol sistemi.", example:"Matafora pimi drill oncesi kontrol edildi."},
+  {term:"Mayday", meaning:"Hayati tehlike veya ciddi tehlikede kullanilan distress cagrisi.", example:"Yangin yayilsa MAYDAY mesaji gecilmesi gerekirdi."},
+  {term:"Mevki", meaning:"Geminin o anki pozisyonu.", example:"Mevki raporu verilmeden trafik yorumlanmaz."},
+  {term:"Mizana", meaning:"Kic tarafa yakin direk veya ona ait yelken.", example:"Mizana acisi teknenin dengesini etkiledi."},
+  {term:"Mooring", meaning:"Geminin iskeleye, rıhtıma veya babalara halatlarla baglanmasi.", example:"Mooring station snap-back zone konusunda uyarildi."},
+  {term:"Mors", meaning:"Nokta ve cizgilerle yapilan isaretlesme sistemi.", example:"SOS mors kodu hala temel bilgi sayilir."},
+  {term:"NAVTEX", meaning:"Seyir uyarilari, hava ve emniyet mesajlarini alan otomatik sistem.", example:"Yeni NAVTEX mesaji warning mi safety mi diye yorumlandi."},
+  {term:"No-Go Area", meaning:"Girilmesi emniyetsiz veya yasak kabul edilen harita alani.", example:"ECDIS route check no-go area uyarisi verdi."},
+  {term:"Oil Record Book", meaning:"Yagli operasyon ve transferlerin kaydedildigi resmi defter.", example:"PSC once Oil Record Book satirlarini inceledi."},
+  {term:"Omurga", meaning:"Geminin ana tasiyici ekseni olan keel.", example:"Omurga hattindaki hasar cok ciddiye alinir."},
+  {term:"ORB", meaning:"Oil Record Book kisaltmasi.", example:"ORB ile tank operasyon saatleri uyusmaliydi."},
+  {term:"PAN-PAN", meaning:"Acil ama hayati tehlike seviyesine cikmamis durumlar icin urgency cagrisi.", example:"Tibbi danisma ihtiyacinda PAN-PAN tercih edilebilir."},
+  {term:"Parakete", meaning:"Hiz veya derinlik gibi bilgileri olcmekte kullanilan hat/duzenek; geleneksel seyir araci.", example:"Eski denizcilikte parakete ile hiz tutulurdu."},
+  {term:"Pilot Card", meaning:"Pilota verilen, geminin manevra ve teknik ozelliklerini ozetleyen kart.", example:"Pilot card guncel draft ve makine bilgisini icermelidir."},
+  {term:"Pruva", meaning:"Geminin on tarafi, baktigi yon.", example:"Pruvadan gelen deniz guverteyi islatmaya basladi."},
+  {term:"Pruva Hatti", meaning:"Geminin bas eksen cizgisi.", example:"Hedef pru va hattina yakin gorunuyorsa dikkat artar."},
+  {term:"Radar Conning", meaning:"Radar yardimiyla seyir ve trafik degerlendirmesi yapma disiplini.", example:"Sis bastiginda radar conning daha kritik hale geldi."},
+  {term:"Rota", meaning:"Geminin takip edecegi planli gidis hatti.", example:"Yeni rota ECDIS ve kagit haritada ayni mantikla kontrol edildi."},
+  {term:"Ruzgaralti", meaning:"Ruzgarin geldigi yonun tersi tarafta kalan kisim.", example:"Can filikasi ruzgaralti tarafta daha rahat hazirlandi."},
+  {term:"Safety Contour", meaning:"ECDIS uzerinde gemi draftina gore emniyetli derinlik siniri.", example:"Safety contour yanlis girilirse gereksiz ya da eksik alarm alirsin."},
+  {term:"Salpa", meaning:"Demirin deniz dibinden kurtulup zincire bindigi veya denizde serbest durumda oldugu hal.", example:"Demir salpa olunca zincir dogruldu."},
+  {term:"Samandira", meaning:"Seyir veya isaret amaciyla denizde bulunan yuzer isaret.", example:"Iskele sancak lateral samandiralari dogru okumak gerekir."},
+  {term:"Sancak", meaning:"Geminin sag tarafi.", example:"Sancak bordada yesil seyir feneri yanar."},
+  {term:"Sancak Alabanda", meaning:"Dumenin tam sancaga basilmasi.", example:"Kaptan sancak alabanda komutunu net verdi."},
+  {term:"SART", meaning:"Search and Rescue Transponder; arama kurtarmada radar hedefi veren cihaz.", example:"SART test tarihi can kurtarma denetiminde sorulabilir."},
+  {term:"SECURITE", meaning:"Seyir veya hava emniyetiyle ilgili mesajlari duyurmakta kullanilan emniyet cagrisi.", example:"Firtina uyarisi yayinlanirken SECURITE on eki kullanilir."},
+  {term:"Sekstant", meaning:"Gok cisimleri veya cisimler arasi aci olcmeye yarayan seyir aleti.", example:"Sekstantla meridian altitude denemesi yaptik."},
+  {term:"Serbest Yuzey Etkisi", meaning:"Slack tanklardaki serbest sivinin stabiliteyi azaltan etkisi.", example:"Serbest yuzey etkisi corrected GM degerini dusurdu."},
+  {term:"SOPEP", meaning:"Shipboard Oil Pollution Emergency Plan.", example:"Bunker oncesi SOPEP ekipmani hazir edildi."},
+  {term:"Spring", meaning:"Geminin ileri-geri hareketini tutmak icin capraz verilen baglama halati.", example:"Son spring gergin degilse gemi kayabilir."},
+  {term:"STCW", meaning:"Standards of Training, Certification and Watchkeeping sozlesmesi.", example:"STCW vardiya ve yeterlilik tarafini belirler."},
+  {term:"Statement of Facts", meaning:"Liman operasyon saatlerini ve olaylarini kaydeden belge.", example:"SOF ile logbook saatleri birbirini desteklemelidir."},
+  {term:"Twist Lock", meaning:"Konteynerleri yerinde kilitleyen baglanti parcasi.", example:"Twist lock eksigi lashing kadar kritik olabilir."},
+  {term:"Ullage", meaning:"Tankta sivi seviyesinin tavana olan bos mesafesi.", example:"Ullage tablosu sounding kadar dikkat ister."},
+  {term:"Vardiya", meaning:"Belirli saat araliginda gemi gorev ve nobet duzeni.", example:"00-04 vardiyasi yorgunluk yonetimi ister."},
+  {term:"VHF", meaning:"Cok kullanilan deniz telsizi haberlesme sistemi.", example:"Pilotla ilk temas genelde VHF uzerinden kurulur."},
+  {term:"Vira", meaning:"Halat, zincir veya demiri iceri alma, yukari cekme komutu.", example:"Demiri vira ederken fren sicakligi izlendi."},
+  {term:"Volta", meaning:"Halati baba veya mapaya uygun sekilde dolama ve emniyete alma.", example:"Yanlis volta altinda halat kayabilir."},
+  {term:"Weather Routing", meaning:"Hava durumuna gore rota optimizasyonu yapma.", example:"Agir hava oncesi weather routing tavsiyesi dikkate alindi."},
+  {term:"X-Band Radar", meaning:"Kisa dalga boylu, detayli hedef gosterebilen radar tipi.", example:"Yakin trafik icin X-band radar daha net goruntu verdi."},
+  {term:"Yeke", meaning:"Dumeni elle cevirmeye yarayan kol veya duzenek.", example:"Acil durumda yeke kontrolu anlatildi."},
+  {term:"Yukleme Hatti", meaning:"Geminin mevsim ve su yogunluguna gore yukleme siniri.", example:"Yukleme hatti asilmadan operasyon durduruldu."},
+  {term:"Zabit", meaning:"Gemide zabit sinifindaki gorevli denizci.", example:"Vardiya zabiti rota degisikligini kaptana aktardi."},
+  {term:"Zincirlik", meaning:"Demir zincirinin toplandigi bolme.", example:"Zincirlik temiz ve neta tutulmazsa sorun cikar."}
 ];
 let notesTab = 'kurallar';
 let notesSearch = '';
 let selectedGlossaryTerm = GLOSSARY_TERMS[0]?.term || '';
+let selectedGlossaryCategory = 'tum';
 let currentNoteTopics = new Set();
+const GLOSSARY_CATEGORIES = ['tum','seyir','demirleme','yelken','evrak','emniyet','yapi','yuk'];
 
 function getNoteCategory(note){
   if(note.head.includes('FORMULLER')) return 'formuller';
   if(note.head.includes('SOZLUGU')) return 'sozluk';
   return 'kurallar';
+}
+
+function getGlossaryCategory(entry){
+  const hay = `${entry.term} ${entry.meaning} ${entry.example}`.toLowerCase();
+  if(/nor|sof|statement of facts|laytime|demuraj|oil record book|orb|stcw|imo|ilo|load line|pilot card|jurnal|logbook|evrak|kancello/.test(hay)) return 'evrak';
+  if(/mayday|pan-pan|securite|sart|sopep|can |life |emniyet|yangin|tehlike|dalgic|f harfi|j harfi/.test(hay)) return 'emniyet';
+  if(/demir|zincir|kaloma|fundo|vira|anchor|anchorage|mooring|spring|baba|bosa|volta|samandira|aborda|alarga|salpa|zincirlik|matafora/.test(hay)) return 'demirleme';
+  if(/yelken|seren|gabya|babafingo|civadra|mizana|iskota|kandilisa|camadan|apazlama|ayi bacagi|genova|bocurum|giz|arma|cunda/.test(hay)) return 'yelken';
+  if(/cargo|yuk|draft survey|lashing|twist lock|ullage|loadicator|stowage|dedveyt|ellecleme/.test(hay)) return 'yuk';
+  if(/omurga|borda|guverte|kaplama|lumboz|kaporta|dumen|yeke|double bottom|bodoslama|yapi|zincirlik|mapa/.test(hay)) return 'yapi';
+  return 'seyir';
+}
+
+function getGlossaryCategoryLabel(cat){
+  return ({
+    tum:'Tum',
+    seyir:'Seyir',
+    demirleme:'Demirleme',
+    yelken:'Yelken',
+    evrak:'Evrak',
+    emniyet:'Emniyet',
+    yapi:'Yapi',
+    yuk:'Yuk'
+  })[cat] || cat;
 }
 
 function getRelevantNoteTopics(sc){
@@ -3732,6 +4018,10 @@ function filterNotes(value){
   notesSearch = (value||'').toLowerCase();
   renderNotes();
 }
+function setGlossaryCategory(cat){
+  selectedGlossaryCategory = cat;
+  renderNotes();
+}
 function openColreg(){ document.getElementById('colreg-panel').classList.add('show'); }
 function closeColreg(){ document.getElementById('colreg-panel').classList.remove('show'); }
 
@@ -3752,13 +4042,22 @@ function renderNotes(){
   const c = document.getElementById('notes-entries');
   const detail = document.getElementById('notes-glossary-detail');
   const search = document.getElementById('notes-search');
+  const glossaryFilters = document.getElementById('notes-glossary-filters');
   if(!c || !detail) return;
   if(search && search.value !== notesSearch) search.value = notesSearch;
   document.querySelectorAll('.notes-tab').forEach(btn => {
     btn.classList.toggle('active', btn.textContent.toLowerCase() === notesTab);
   });
+  if(glossaryFilters){
+    glossaryFilters.classList.toggle('show', notesTab === 'sozluk');
+    glossaryFilters.innerHTML = notesTab === 'sozluk'
+      ? GLOSSARY_CATEGORIES.map(cat => `<button class="glossary-filter ${cat===selectedGlossaryCategory?'active':''}" onclick="setGlossaryCategory('${cat}')">${getGlossaryCategoryLabel(cat)}</button>`).join('')
+      : '';
+  }
   if(notesTab === 'sozluk'){
-    const terms = GLOSSARY_TERMS.filter(g => (`${g.term} ${g.meaning} ${g.example}`).toLowerCase().includes(notesSearch));
+    const terms = GLOSSARY_TERMS
+      .filter(g => selectedGlossaryCategory === 'tum' || getGlossaryCategory(g) === selectedGlossaryCategory)
+      .filter(g => (`${g.term} ${g.meaning} ${g.example}`).toLowerCase().includes(notesSearch));
     c.innerHTML = terms.length ? `<div class="glossary-list">${terms.map(g => `<button class="glossary-term ${g.term===selectedGlossaryTerm?'active':''}" onclick="selectGlossaryTerm('${g.term.replace(/'/g,"\\'")}')">${g.term}</button>`).join('')}</div>` : '<div class="notes-empty">Aramana uyan sozluk terimi bulunamadi.</div>';
     renderGlossaryDetail(terms);
     return;
