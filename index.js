@@ -391,6 +391,112 @@ compass:`<rect width="480" height="145" fill="#040d1a"/>
 <text x="368" y="96" fill="#d4a017" font-size="7" font-family="monospace">ETA: 06:42</text>
 <text x="368" y="107" fill="#5dbf8a" font-size="7" font-family="monospace">RNG: 38nm</text>`,
 
+ecdis_panel:`<rect width="480" height="145" fill="#04101b"/>
+<rect x="24" y="18" width="432" height="108" rx="6" fill="#03111c" stroke="#10304e" stroke-width="2"/>
+<path d="M42 38 h392 M42 58 h392 M42 78 h392 M42 98 h392" stroke="#0d2a48" stroke-width=".8" opacity=".5"/>
+<path d="M72 26 v92 M120 26 v92 M168 26 v92 M216 26 v92 M264 26 v92 M312 26 v92 M360 26 v92 M408 26 v92" stroke="#0d2a48" stroke-width=".8" opacity=".45"/>
+<polyline points="76,94 118,88 164,90 208,76 250,72 286,68 322,60 364,52 406,42" fill="none" stroke="#d4a017" stroke-width="2.4" stroke-dasharray="6,3"/>
+<circle cx="76" cy="94" r="3" fill="#1aff50"/><circle cx="164" cy="90" r="3" fill="#1aff50"/><circle cx="250" cy="72" r="3" fill="#1aff50"/><circle cx="364" cy="52" r="3" fill="#1aff50"/>
+<path d="M78 102 l10 -5 l-3 9 z" fill="#6fa8dc"/>
+<circle cx="78" cy="102" r="4" fill="#6fa8dc"/>
+<text x="36" y="14" fill="#81f7b8" font-size="8" font-family="monospace">ECDIS ROUTE MONITOR</text>
+<text x="40" y="134" fill="#d4a017" font-size="7" font-family="monospace">SAFETY CONTOUR 30m</text>
+<text x="216" y="134" fill="#6fa8dc" font-size="7" font-family="monospace">XTD 0.24 nm</text>
+<text x="334" y="134" fill="#5dbf8a" font-size="7" font-family="monospace">WP NEXT 042</text>`,
+
+ais_panel:`<rect width="480" height="145" fill="#07121d"/>
+<rect x="30" y="18" width="420" height="108" rx="6" fill="#03111c" stroke="#0d2a48" stroke-width="2"/>
+<rect x="42" y="30" width="176" height="84" rx="4" fill="#051522"/>
+<circle cx="130" cy="72" r="32" fill="none" stroke="#0d3a18" stroke-width="1.2"/>
+<circle cx="130" cy="72" r="20" fill="none" stroke="#0d3a18" stroke-width=".9"/>
+<circle cx="154" cy="56" r="3" fill="#1aff50"/><circle cx="112" cy="86" r="2.6" fill="#d4a017"/><circle cx="142" cy="88" r="2.4" fill="#6fa8dc"/>
+<path d="M130 72 L154 56" stroke="#6fa8dc" stroke-width="1" stroke-dasharray="3,2"/>
+<rect x="236" y="30" width="200" height="84" rx="4" fill="#051522"/>
+<text x="248" y="44" fill="#81f7b8" font-size="7" font-family="monospace">AIS TARGET LIST</text>
+<text x="248" y="60" fill="#d4a017" font-size="7" font-family="monospace">MV AEGEAN STAR   CPA 1.2</text>
+<text x="248" y="74" fill="#6fa8dc" font-size="7" font-family="monospace">TANKER LARA      TCPA 14</text>
+<text x="248" y="88" fill="#5dbf8a" font-size="7" font-family="monospace">PILOT BOAT       2.4 NM</text>
+<text x="248" y="102" fill="#c97070" font-size="7" font-family="monospace">DATA OFFSET ?</text>
+<text x="34" y="14" fill="#81f7b8" font-size="8" font-family="monospace">AIS TERMINAL</text>`,
+
+gyro_panel:`<rect width="480" height="145" fill="#06101a"/>
+<circle cx="138" cy="74" r="48" fill="#071828" stroke="#1a3a5f" stroke-width="2"/>
+<circle cx="138" cy="74" r="36" fill="none" stroke="#0d2a48" stroke-width="1"/>
+<circle cx="138" cy="74" r="8" fill="#0d1f3c"/>
+<g class="compass-needle" style="transform-origin:138px 74px">
+<polygon points="138,30 132,74 138,80 144,74" fill="#c93030"/>
+<polygon points="138,118 132,74 138,68 144,74" fill="#d9e3ea"/>
+</g>
+<text x="132" y="22" fill="#6fa8dc" font-size="9" font-family="monospace">N</text>
+<rect x="236" y="24" width="190" height="94" rx="6" fill="#071828" stroke="#10304e" stroke-width="1.5"/>
+<text x="250" y="44" fill="#81f7b8" font-size="8" font-family="monospace">GYRO COMPASS</text>
+<text x="250" y="64" fill="#d4a017" font-size="18" font-family="monospace">247°</text>
+<text x="250" y="84" fill="#6fa8dc" font-size="7" font-family="monospace">SETTLING: OK</text>
+<text x="250" y="98" fill="#5dbf8a" font-size="7" font-family="monospace">ERROR < 0.5°</text>
+<text x="36" y="18" fill="#81f7b8" font-size="8" font-family="monospace">MASTER GYRO</text>`,
+
+magnetic_panel:`<rect width="480" height="145" fill="#08131e"/>
+<circle cx="150" cy="74" r="50" fill="#101820" stroke="#8a6a2f" stroke-width="3"/>
+<circle cx="150" cy="74" r="38" fill="#f0e0b8" stroke="#8a6a2f" stroke-width="1.5"/>
+<text x="146" y="38" fill="#714d18" font-size="8" font-family="monospace">N</text>
+<text x="146" y="112" fill="#714d18" font-size="8" font-family="monospace">S</text>
+<text x="112" y="78" fill="#714d18" font-size="8" font-family="monospace">W</text>
+<text x="188" y="78" fill="#714d18" font-size="8" font-family="monospace">E</text>
+<g class="compass-needle" style="transform-origin:150px 74px">
+<polygon points="150,40 146,74 150,78 154,74" fill="#c93030"/>
+<polygon points="150,108 146,74 150,70 154,74" fill="#222"/>
+</g>
+<rect x="250" y="28" width="166" height="88" rx="8" fill="#15110d" stroke="#8a6a2f" stroke-width="1.5"/>
+<text x="264" y="46" fill="#d4a017" font-size="8" font-family="monospace">MAGNETIC COMPASS</text>
+<text x="264" y="68" fill="#f2e1b0" font-size="16" font-family="monospace">246° M</text>
+<text x="264" y="90" fill="#c8b070" font-size="7" font-family="monospace">DEVIATION CARD</text>
+<text x="264" y="102" fill="#c8b070" font-size="7" font-family="monospace">STANDBY STEERING</text>`,
+
+echo_panel:`<rect width="480" height="145" fill="#05111b"/>
+<rect x="42" y="24" width="396" height="96" rx="6" fill="#03111c" stroke="#0d2a48" stroke-width="2"/>
+<path d="M58 38 h360 M58 56 h360 M58 74 h360 M58 92 h360" stroke="#0d2a48" stroke-width=".8" opacity=".5"/>
+<path d="M96 30 v84 M144 30 v84 M192 30 v84 M240 30 v84 M288 30 v84 M336 30 v84 M384 30 v84" stroke="#0d2a48" stroke-width=".8" opacity=".45"/>
+<polyline points="60,100 92,98 124,96 156,94 188,92 220,88 252,82 284,78 316,76 348,74 380,72 412,70" fill="none" stroke="#d4a017" stroke-width="2"/>
+<rect x="300" y="40" width="116" height="48" rx="4" fill="#071828"/>
+<text x="312" y="56" fill="#81f7b8" font-size="8" font-family="monospace">ECHO SOUNDER</text>
+<text x="312" y="76" fill="#d4a017" font-size="18" font-family="monospace">18.4 m</text>
+<text x="312" y="90" fill="#6fa8dc" font-size="7" font-family="monospace">UKC TREND STABLE</text>`,
+
+speedlog_panel:`<rect width="480" height="145" fill="#07111d"/>
+<rect x="58" y="28" width="148" height="88" rx="8" fill="#041321" stroke="#0d2a48" stroke-width="1.8"/>
+<text x="76" y="46" fill="#81f7b8" font-size="8" font-family="monospace">SPEED LOG</text>
+<text x="78" y="78" fill="#d4a017" font-size="24" font-family="monospace">14.2</text>
+<text x="152" y="78" fill="#6fa8dc" font-size="10" font-family="monospace">kn</text>
+<text x="76" y="98" fill="#5dbf8a" font-size="7" font-family="monospace">STW 13.8</text>
+<rect x="246" y="28" width="174" height="88" rx="8" fill="#041321" stroke="#0d2a48" stroke-width="1.8"/>
+<text x="262" y="48" fill="#81f7b8" font-size="8" font-family="monospace">LOG HISTORY</text>
+<path d="M262 92 Q292 86 322 88 Q352 90 402 72" fill="none" stroke="#6fa8dc" stroke-width="2"/>
+<text x="262" y="106" fill="#d4a017" font-size="7" font-family="monospace">SOG / STW CROSS-CHECK</text>`,
+
+autopilot_panel:`<rect width="480" height="145" fill="#05111b"/>
+<rect x="82" y="22" width="316" height="100" rx="10" fill="#071828" stroke="#10304e" stroke-width="2"/>
+<text x="104" y="42" fill="#81f7b8" font-size="8" font-family="monospace">AUTOPILOT CONTROL</text>
+<text x="104" y="72" fill="#d4a017" font-size="22" font-family="monospace">HDG 247°</text>
+<text x="104" y="94" fill="#6fa8dc" font-size="10" font-family="monospace">MODE: AUTO</text>
+<rect x="286" y="48" width="84" height="22" rx="4" fill="#0d2840"/><text x="300" y="63" fill="#d9e3ea" font-size="9" font-family="monospace">RUDDER 5°</text>
+<rect x="286" y="80" width="84" height="22" rx="4" fill="#113050"/><text x="302" y="95" fill="#81f7b8" font-size="9" font-family="monospace">TRACK OFF</text>`,
+
+bnwas_panel:`<rect width="480" height="145" fill="#061019"/>
+<rect x="94" y="28" width="292" height="88" rx="8" fill="#071828" stroke="#0d2a48" stroke-width="2"/>
+<text x="112" y="48" fill="#81f7b8" font-size="8" font-family="monospace">BNWAS PANEL</text>
+<rect x="112" y="62" width="110" height="26" rx="4" fill="#113050"/><text x="132" y="79" fill="#d9e3ea" font-size="10" font-family="monospace">WATCH ACTIVE</text>
+<circle cx="278" cy="76" r="10" fill="#d4a017" opacity=".9"/><text x="271" y="80" fill="#05111b" font-size="9" font-family="monospace">ACK</text>
+<text x="112" y="102" fill="#c97070" font-size="8" font-family="monospace">TIMER 02:30</text>
+<text x="248" y="102" fill="#6fa8dc" font-size="8" font-family="monospace">STAGE 1 READY</text>`,
+
+gmdss_panel:`<rect width="480" height="145" fill="#06111c"/>
+<rect x="34" y="22" width="412" height="102" rx="8" fill="#071828" stroke="#10304e" stroke-width="2"/>
+<text x="52" y="42" fill="#81f7b8" font-size="8" font-family="monospace">GMDSS CONSOLE</text>
+<rect x="52" y="54" width="92" height="50" rx="4" fill="#03111c" stroke="#0d2a48" stroke-width="1"/><text x="64" y="74" fill="#d4a017" font-size="8" font-family="monospace">VHF DSC</text><text x="64" y="90" fill="#6fa8dc" font-size="7" font-family="monospace">CH16 READY</text>
+<rect x="160" y="54" width="92" height="50" rx="4" fill="#03111c" stroke="#0d2a48" stroke-width="1"/><text x="176" y="74" fill="#d4a017" font-size="8" font-family="monospace">MF/HF</text><text x="176" y="90" fill="#6fa8dc" font-size="7" font-family="monospace">2187.5 kHz</text>
+<rect x="268" y="54" width="72" height="50" rx="4" fill="#03111c" stroke="#0d2a48" stroke-width="1"/><text x="282" y="74" fill="#d4a017" font-size="8" font-family="monospace">EPIRB</text><text x="282" y="90" fill="#6fa8dc" font-size="7" font-family="monospace">ARMED</text>
+<rect x="354" y="54" width="72" height="50" rx="4" fill="#03111c" stroke="#0d2a48" stroke-width="1"/><text x="370" y="74" fill="#d4a017" font-size="8" font-family="monospace">SART</text><text x="368" y="90" fill="#6fa8dc" font-size="7" font-family="monospace">TEST OK</text>`,
+
 engine:`<rect width="480" height="145" fill="#040c10"/>
 <rect x="60" y="33" width="100" height="82" rx="3" fill="#071828"/>
 <rect x="60" y="33" width="100" height="8" rx="2" fill="#0d2840"/>
@@ -683,6 +789,84 @@ sunrise:`<rect width="480" height="145" fill="#040e1c"/>
 <rect x="84" y="39" width="10" height="10" rx="1" fill="#173454"/>
 <line x1="89" y1="30" x2="89" y2="39" stroke="#607d99" stroke-width="1"/>
 <circle cx="118" cy="70" r="1.6" fill="#d4a017"/>`,
+
+dolphins:`<rect width="480" height="145" fill="#05111d"/>
+<rect width="480" height="56" fill="#081c30"/>
+<ellipse cx="240" cy="58" rx="180" ry="16" fill="#6fa8dc" opacity=".12"/>
+<rect y="56" width="480" height="89" fill="#072038"/>
+<g class="wave-anim">
+<path d="M0 76 Q40 70 80 76 Q120 82 160 76 Q200 70 240 76 Q280 82 320 76 Q360 70 400 76 Q440 82 480 76" fill="none" stroke="#0d3a68" stroke-width="1.4" opacity=".65"/>
+<path d="M0 96 Q55 90 110 96 Q165 102 220 96 Q275 90 330 96 Q385 102 440 96 Q460 94 480 96" fill="none" stroke="#0b2f58" stroke-width="1.1" opacity=".5"/>
+</g>
+<path d="M92 86 q10 -14 22 0 q-8 -2 -12 5 q-4 -3 -10 -5 Z" fill="#9bc9ef"/>
+<path d="M120 92 q12 -16 26 0 q-10 -2 -14 6 q-5 -4 -12 -6 Z" fill="#8fbce4"/>
+<path d="M160 82 q14 -18 30 0 q-11 -3 -16 6 q-6 -4 -14 -6 Z" fill="#a7d6ff"/>
+<path d="M190 88 q12 -15 26 0 q-9 -2 -13 5 q-5 -3 -13 -5 Z" fill="#8fbce4"/>
+<circle cx="106" cy="84" r="1.2" fill="#dff4ff"/>
+<circle cx="172" cy="80" r="1.2" fill="#dff4ff"/>
+<path d="M280 70 L390 70 L408 76 L424 76 L424 81 L272 81 L272 75 Z" fill="#08111d"/>
+<path d="M288 64 L392 64 L404 70 L288 70 Z" fill="#16314c"/>
+<rect x="336" y="48" width="28" height="16" rx="2" fill="#d9e3ea"/>
+<rect x="356" y="36" width="14" height="12" rx="2" fill="#d9e3ea"/>
+<line x1="363" y1="26" x2="363" y2="36" stroke="#607d99" stroke-width="1.1"/>
+<circle cx="405" cy="73" r="1.8" fill="#d4a017"/>`,
+
+whale:`<rect width="480" height="145" fill="#040f1a"/>
+<rect width="480" height="58" fill="#08192c"/>
+<circle cx="392" cy="18" r="12" fill="#c9952a" opacity=".7"/>
+<rect y="58" width="480" height="87" fill="#061d34"/>
+<g class="wave-anim">
+<path d="M0 78 Q50 72 100 78 Q150 84 200 78 Q250 72 300 78 Q350 84 400 78 Q450 72 500 78" fill="none" stroke="#0d3660" stroke-width="1.4" opacity=".6"/>
+<path d="M0 98 Q60 92 120 98 Q180 104 240 98 Q300 92 360 98 Q420 104 480 98" fill="none" stroke="#0b2b4d" stroke-width="1.1" opacity=".5"/>
+</g>
+<path d="M118 94 q42 -28 88 -6 q20 10 38 8 q-10 10 -31 12 q-22 3 -47 -1 q-25 -4 -48 -13 Z" fill="#314c63"/>
+<path d="M244 96 l20 -12 l-6 18 Z" fill="#314c63"/>
+<path d="M164 82 q10 -18 18 -1" fill="none" stroke="#9fd8ff" stroke-width="2" opacity=".7"/>
+<circle cx="168" cy="91" r="1.4" fill="#dff4ff"/>
+<path d="M294 74 L384 74 L396 80 L410 80 L410 84 L286 84 L286 79 Z" fill="#08111d"/>
+<path d="M302 68 L386 68 L394 74 L302 74 Z" fill="#173451"/>
+<rect x="340" y="55" width="22" height="13" rx="2" fill="#d9e3ea"/>
+<rect x="354" y="44" width="12" height="11" rx="1" fill="#d9e3ea"/>
+<circle cx="392" cy="77" r="1.7" fill="#d4a017"/>`,
+
+shark:`<rect width="480" height="145" fill="#04101b"/>
+<rect width="480" height="52" fill="#07192a"/>
+<rect y="52" width="480" height="93" fill="#062038"/>
+<ellipse cx="240" cy="66" rx="180" ry="12" fill="#7cc0f4" opacity=".08"/>
+<g class="wave-anim">
+<path d="M0 76 Q45 70 90 76 Q135 82 180 76 Q225 70 270 76 Q315 82 360 76 Q405 70 450 76 Q465 78 480 76" fill="none" stroke="#0d3866" stroke-width="1.4" opacity=".62"/>
+<path d="M0 98 Q60 92 120 98 Q180 104 240 98 Q300 92 360 98 Q420 104 480 98" fill="none" stroke="#0a2c50" stroke-width="1.1" opacity=".48"/>
+</g>
+<path d="M154 100 q28 -36 58 0 q-18 -2 -26 8 q-10 -8 -32 -8 Z" fill="#29455d"/>
+<path d="M142 108 q25 -14 64 -8 q-21 11 -31 12 q-13 1 -33 -4 Z" fill="#1f384d" opacity=".95"/>
+<circle cx="180" cy="98" r="1.1" fill="#d7eefc" opacity=".75"/>
+<path d="M288 70 L386 70 L404 76 L418 76 L418 80 L280 80 L280 75 Z" fill="#08111d"/>
+<path d="M296 64 L388 64 L400 70 L296 70 Z" fill="#16314c"/>
+<rect x="340" y="49" width="24" height="15" rx="2" fill="#d9e3ea"/>
+<rect x="356" y="38" width="12" height="11" rx="1" fill="#d9e3ea"/>
+<line x1="362" y1="29" x2="362" y2="38" stroke="#607d99" stroke-width="1.1"/>`,
+
+ocean_postcard:`<rect width="480" height="145" fill="#05111c"/>
+<linearGradient id="oceanGlow" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0%" stop-color="#0d2742"/>
+  <stop offset="58%" stop-color="#c87030"/>
+  <stop offset="100%" stop-color="#04111d"/>
+</linearGradient>
+<rect width="480" height="145" fill="url(#oceanGlow)"/>
+<rect y="74" width="480" height="71" fill="#061b31"/>
+<ellipse cx="244" cy="74" rx="120" ry="20" fill="#d99b4b" opacity=".18"/>
+<circle cx="240" cy="58" r="30" fill="#dca24f" opacity=".88"/>
+<circle cx="240" cy="58" r="42" fill="none" stroke="#f2bb72" stroke-width="1" opacity=".28"/>
+<g class="wave-anim">
+<path d="M0 86 Q55 81 110 86 Q165 91 220 86 Q275 81 330 86 Q385 91 440 86 Q460 84 480 86" fill="none" stroke="#0e3967" stroke-width="1.2" opacity=".58"/>
+<path d="M0 103 Q60 98 120 103 Q180 108 240 103 Q300 98 360 103 Q420 108 480 103" fill="none" stroke="#0a294c" stroke-width="1" opacity=".46"/>
+</g>
+<path d="M40 72 L140 72 L154 78 L168 78 L168 82 L34 82 L34 76 Z" fill="#08111d"/>
+<path d="M50 66 L142 66 L150 72 L50 72 Z" fill="#173451"/>
+<rect x="88" y="52" width="22" height="14" rx="2" fill="#d9e3ea"/>
+<rect x="102" y="41" width="12" height="11" rx="1" fill="#d9e3ea"/>
+<line x1="108" y1="31" x2="108" y2="41" stroke="#607d99" stroke-width="1.1"/>
+<circle cx="145" cy="75" r="1.7" fill="#d4a017"/>`,
 };
 
 // ===== KRİZ SONLARI =====
@@ -3226,6 +3410,98 @@ Ilk disiplinin ne olur?"`,
   {text:"En parlak hedefe bakip digerlerini ikinci plana atarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"multi_crossing"},
   {text:"Bu kadar hedefte saglikli yorum yapilmaz diye dagilirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11},radarMode:"multi_crossing"}]}
 ];
+const EXTRA_EQUIPMENT_SCENES=[
+  {id:"s228",gfx:"gyro_panel",alert:false,day:"Gun 4",time:"10:30",loc:"Koprustu - Gyro Repeater",sub:"Gyro compass neyi verir?",who:"z2",
+  text:`2. Zabiti seni gyro repeater'in onune cekti.
+
+"Bu cihaz manyetige bakmaz; gercek kuzey referansi uzerinden yone oturur. Ama her zaman kor guven de istemez. Settling, error ve cross-check disiplini gerekir."
+
+Gyro ile ilgili en dogru yorum hangisi?`,
+  choices:[
+  {text:"Gyro'nun true heading referansi verdigini, ama hata ve cross-check gerektirdigini soylerim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+  {text:"Gyro varsa baska pusulaya hic gerek kalmaz derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Gyro ile magnetic compass ayni seydir diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+  {id:"s229",gfx:"magnetic_panel",alert:false,day:"Gun 4",time:"11:00",loc:"Koprustu - Standard Compass",sub:"Magnetic compass neden hala var?",who:"suvari",
+  text:`Suvari standard pusulayi gosterdikten sonra sordu.
+
+"Elektrik gider, gyro sapar, sensor susar; ama magnetic compass hala konusur. Deviation'i vardir, variation'i vardir, ama denizcilik yedek dusunce ister."
+
+Sana gore magnetic compass'in asil degeri nedir?`,
+  choices:[
+  {text:"Elektronik sistemlere karsi guvenilir bir yedek yon referansi oldugunu soylerim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+  {text:"Sadece eski gemilerde lazimdir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Magnetic compass artik tamamen gereksizdir diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-10}}]},
+  {id:"s230",gfx:"echo_panel",alert:false,day:"Gun 5",time:"08:10",loc:"Koprustu - Echo Sounder",sub:"Echo sounder ile neyi takip ederiz?",who:"z2",
+  text:`2. Zabiti echo sounder trendini acti.
+
+"Bu cihaz sadece anlik rakam vermez; altindaki suyun trendini de soyler. Kanal girisinde, demirde, sığ suda veya beklenmeyen shoal suphelerinde gozun buraya da kayar."
+
+En dogru refleks hangisi?`,
+  choices:[
+  {text:"Anlik derinlik kadar trendi ve chart/UKC ile iliskisini birlikte izlerim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+  {text:"Bir kez rakam gorduysem kalanina bakmam",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Echo sounder'i sadece limanda lazim sanirim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+  {id:"s231",gfx:"speedlog_panel",alert:false,day:"Gun 5",time:"09:00",loc:"Koprustu - Speed Log",sub:"SOG ile STW neden ayni olmayabilir?",who:"z2",
+  text:`Speed log ekraninda iki farkli hiz degeri akiyordu.
+
+"Biri suya gore hiz, biri yere gore hiz. Akinti varsa ayni olmazlar. Seyirci adam burada yanilmaz; farki gorur ve yorumlar."
+
+Ne dersin?`,
+  choices:[
+  {text:"STW ile SOG farkinin akinti ve set-drift yorumunda cok onemli oldugunu soylerim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Iki hiz degeri her zaman ayni sayilir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Speed log varsa akintiyi ayrica dusunmeye gerek yok derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+  {id:"s232",gfx:"autopilot_panel",alert:false,day:"Gun 5",time:"09:35",loc:"Koprustu - Autopilot",sub:"Autopilot ne zaman rahatlik, ne zaman risk?",who:"suvari",
+  text:`Suvari autopilot paneline hafifce vurdu.
+
+"Autopilot yardimcidir ama zabitin yerini almaz. Dar kanal, yogun trafik, boğaz manevrasi veya pilotajda moda ve response ayarina dikkat etmezsen rahatlik sandigin sey risk olur."
+
+En dogru yorum hangisi?`,
+  choices:[
+  {text:"Autopilot modunu trafik ve manevraya gore kullanir, gerektiğinde hand steering'e gecmeye hazir olurum",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"AUTO yaziyorsa her durumda daha emniyetlidir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Autopilot acikken dumen ve rota takibini gevsetirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s233",gfx:"bnwas_panel",alert:false,day:"Gun 5",time:"10:10",loc:"Koprustu - BNWAS",sub:"BNWAS neden var?",who:"z3",
+  text:`3. Zabiti BNWAS panelini gosterdi.
+
+"Bridge Navigational Watch Alarm System, vardiya zabiti cevap vermeyi keserse zinciri buyutur. Once seni uyandirir, sonra gerekirse baskalarina haber verir. Ama bu cihaz konfor degil emniyet dusuncesidir."
+
+Sana gore asil amaci ne?`,
+  choices:[
+  {text:"Nobette dalginlik veya incapacitation halinde kopruustu emniyet zincirini devreye sokmaktir derim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+  {text:"Sadece gereksiz bir sesli hatirlaticidir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"BNWAS varsa gozculuk disiplini ikinci plana duser diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-10}}]},
+  {id:"s234",gfx:"gmdss_panel",alert:false,day:"Gun 5",time:"10:50",loc:"Koprustu - GMDSS Konsolu",sub:"GMDSS cihazlarinin yerini tanimak",who:"z3",
+  text:`3. Zabiti tum GMDSS panelini tek tek gosterdi.
+
+"VHF DSC, MF/HF, EPIRB, SART, handheld VHF... adlarini ezberlemek yetmez. Acil durumda elin nereye gidecek bilmiyorsan bilgi yarim kalir."
+
+Ilk stajyer refleksi ne olmali?`,
+  choices:[
+  {text:"Cihazlari yer, islev ve hangi acilde kullanilacaklariyla birlikte tanirim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Sadece VHF'nin yerini bilsem yeter derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Acil durumda biri nasil olsa gosterir diye dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s235",gfx:"ais_panel",alert:false,day:"Gun 5",time:"11:25",loc:"Koprustu - AIS Terminali",sub:"AIS ekraninda neyi goruyoruz?",who:"z2",
+  text:`2. Zabiti AIS terminalini acip hedef listesini kaydirdi.
+
+"AIS sana isim, rota, hiz, cagrı isareti gibi bir pencere acabilir. Ama bu pencere her zaman tertemiz degildir. Yine de hedef tanimlama ve trafik farkindaligi icin buyuk yardimdir."
+
+Asil zabit disiplini nedir?`,
+  choices:[
+  {text:"AIS'i tanimlama yardimcisi olarak kullanir ama radar ve gorsel teyidi birakmam",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+  {text:"AIS listesi varsa radar yorumuna gerek kalmaz derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"AIS bilgisini tamamen gereksiz bulurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+  {id:"s236",gfx:"ecdis_panel",alert:false,day:"Gun 5",time:"12:00",loc:"Koprustu - ECDIS Ekrani",sub:"ECDIS ekrani ustunde neye bakiyoruz?",who:"z2",
+  text:`ECDIS ekraninda rota, emniyet konturu ve aktif waypoint bir aradaydi.
+
+"Oyuncak gibi gorunebilir ama burada birden fazla katman ayni anda okunur: route line, chart warning, safety contour, XTD ve sensor overlay. Goz sadece sari cizgide kalirsa eksik kalir."
+
+Ilk bakisin nereye dagilir?`,
+  choices:[
+  {text:"Aktif rota kadar warning, safety contour ve aktif waypoint bilgisini birlikte okurum",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Sadece sari rota cizgisine bakmak yeter derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"ECDIS ekrani karmasik diye yorumlamayi birakirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]}
+];
 
 function getEcdisRouteOverlay(sc){
   const key=(sc&&sc.ecdisPlanKey)||activeEcdisPlanKey;
@@ -3668,13 +3944,13 @@ function buildSceneQueue(pool, totalDays){
 
   // Düzenli sahneleri karıştır ve totalDays - (başlangıç+kriz+final) kadar seç
   const shuffledRegular=[...regular].sort(()=>Math.random()-0.5);
-  const needed=Math.max(5, totalDays - selectedCrisis.length - 2 - EXTRA_ROUTE_SCENES.length);
+  const needed=Math.max(5, totalDays - selectedCrisis.length - 2 - EXTRA_ROUTE_SCENES.length - EXTRA_EQUIPMENT_SCENES.length);
   const selectedRegular=shuffledRegular.slice(0,needed);
 
   // Sıralamayı oluştur: başlangıç + (karışık regular + kriz) + final
   const middle=[...selectedRegular,...selectedCrisis].sort(()=>Math.random()-0.5);
 
-  return [...mandatory_start, ...middle, ...EXTRA_ROUTE_SCENES, ...final];
+  return [...mandatory_start, ...middle, ...EXTRA_ROUTE_SCENES, ...EXTRA_EQUIPMENT_SCENES, ...final];
 }
 
 const RECOVERY_SCENE_IDS = new Set(['s146','s147','s148','s149','s150','s183','s184','s185','s186','s187']);
@@ -3904,6 +4180,7 @@ function beginGame(){
   seenColregHints.clear();
   journalEntries=[];
   photos=[];
+  seenPhotoMoments.clear();
   routeHistory=[{x:selectedStartPort.x,y:selectedStartPort.y}];
   visitedPorts=new Set([selectedStartPort.name]);
   shipPosition={x:selectedStartPort.x,y:selectedStartPort.y};
@@ -4671,10 +4948,37 @@ function updateWeather(sceneGfx){
 
 // ===== FOTOĞRAF ALBÜMİ =====
 let photos = [];
+let seenPhotoMoments = new Set();
+
+const OCEAN_PHOTO_EVENTS = [
+  {key:'dolphins', title:'Yunuslar', caption:'Bas omuzluk boyunca bize eslik eden yunuslari cektim.', svgKey:'dolphins', gfx:['sea','sunrise']},
+  {key:'whale', title:'Uzakta Balina', caption:'Ufuk hattinda su atan iri bir balina gorduk.', svgKey:'whale', gfx:['sea','sunrise']},
+  {key:'shark', title:'Kopekbaligi Golgesi', caption:'Sakin suda karinaya yakin dolasan koyu golgeyi hemen cektim.', svgKey:'shark', gfx:['sea']},
+  {key:'ocean_view', title:'Acik Deniz Manzarasi', caption:'Okyanusun tam ortasinda kartpostallik bir goruntu yakaladim.', svgKey:'ocean_postcard', gfx:['sea','sunrise','night']},
+  {key:'moon_watch', title:'Gece Vardiyasi', caption:'Ay isigi altinda deniz cam gibi uzaniyordu.', svgKey:'night', gfx:['night']}
+];
 
 function addPhoto(title, caption, svgKey){
   photos.push({title, caption, svgKey, day: currentDay});
   document.getElementById('tb-photos-count').textContent = photos.length;
+}
+
+function tryAddMomentPhoto(key, title, caption, svgKey){
+  if(seenPhotoMoments.has(key)) return false;
+  seenPhotoMoments.add(key);
+  addPhoto(title, caption, svgKey);
+  return true;
+}
+
+function maybeAddOceanPhoto(sc){
+  if(!sc || !sc.gfx || sc.alert || sc.id==='FINAL') return;
+  const chances = {sea:0.22, sunrise:0.34, night:0.16, storm:0.08};
+  const chance = chances[sc.gfx];
+  if(!chance || Math.random() > chance) return;
+  const available = OCEAN_PHOTO_EVENTS.filter(ev => ev.gfx.includes(sc.gfx) && !seenPhotoMoments.has(`ocean-${ev.key}`));
+  if(!available.length) return;
+  const pick = available[Math.floor(Math.random()*available.length)];
+  tryAddMomentPhoto(`ocean-${pick.key}`, pick.title, pick.caption, pick.svgKey);
 }
 
 function openAlbum(){
@@ -4824,9 +5128,10 @@ function onSceneRender(sc){
   const crewKey = getCrewKeyFromWho(sc.who);
   if(crewKey) updateCrewTrust(crewKey, 1);
   // Önemli anlarda fotoğraf çek
-  if(sc.alert) addPhoto(`ACİL: ${sc.sub}`, sc.day+' · '+sc.time, sc.gfx);
-  else if(sc.id==='s01') addPhoto('İlk Adım', 'İskeleye ilk kez ayak basıyorum...', 'harbor');
-  else if(sc.id==='FINAL') addPhoto('Son Gün', 'Bu yolculuğun son sahnesi.', 'bridge');
+  if(sc.alert) tryAddMomentPhoto(`scene-${sc.id}`, `ACIL: ${sc.sub}`, sc.day+' · '+sc.time, sc.gfx);
+  else if(sc.id==='s01') tryAddMomentPhoto('scene-s01', 'Ilk Adim', 'Iskeleye ilk kez ayak basiyorum...', 'harbor');
+  else if(sc.id==='FINAL') tryAddMomentPhoto('scene-final', 'Son Gun', 'Bu yolculugun son sahnesi.', 'bridge');
+  else maybeAddOceanPhoto(sc);
   const hint = COLREG_HINTS[sc.id];
   if(hint && !seenColregHints.has(sc.id)){
     seenColregHints.add(sc.id);
