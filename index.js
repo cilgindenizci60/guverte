@@ -3666,7 +3666,67 @@ Hangi ozet en dogru?`,
   choices:[
   {text:"Head-on'da iki taraf sanca?a duser; crossing'de sancaginda hedef varsa sen give-way olursun; overtaking yapan gemi yol verir",tag:"kritik",effect:{bilgi:19,sayginlik:13,cesaret:4}},
   {text:"Bu uc durumda da once diger geminin ne yapacagini beklemek yeterlidir",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
-  {text:"Overtaking ile crossing'i pratikte ayirmanin cok da onemli olmadigini dusunurum",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]}
+  {text:"Overtaking ile crossing'i pratikte ayirmanin cok da onemli olmadigini dusunurum",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s249",gfx:"fire",alert:false,day:"Gun 10",time:"10:30",loc:"Hospital Room",sub:"Ilk yardimda ilk oncelik",who:"z3",
+  text:`Tayfalardan biri guvertede kayip dizini ve on kolunu vurdu. 3. Zabiti seni yanina aldi:
+
+"Ilk yardim kahramanlik degil; sahayi emniyete almak, bilinci, solunumu ve kanamayi dogru sirayla degerlendirmektir. Panikle atlanan en basit adim bile buyuk hata olur."
+
+Ilk refleksin ne olur?`,
+  choices:[
+  {text:"Sahayi emniyete alir, bilinc-solunum-kanama sirasiyla kontrol eder ve amire haber veririm",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Yaraliya hemen su icirmeye calisirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Durumu tam anlamadan yaraliyi hizla ayaga kaldiririm",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s250",gfx:"fire",alert:false,day:"Gun 10",time:"14:20",loc:"Muster Station - Fire Party Brief",sub:"Ileri yanginla mucadele dusuncesi",who:"z3",
+  text:`3. Zabiti fire party ekipmanini kontrol ederken acikladi:
+
+"Ileri yanginla mucadele sadece hortum tutmak degil. Siniri kapatirsin, havalandirmayi dusunursun, boundary cooling, entry control, ekip guvenligi ve haberlesme zinciri birlikte yurur."
+
+Bu seviyede en dogru dusunce hangisi?`,
+  choices:[
+  {text:"Yangin sinifini, mahal izolasyonunu, boundary cooling'i ve ekip haberlesmesini birlikte dusunurum",tag:"kritik",effect:{bilgi:18,sayginlik:13,cesaret:3}},
+  {text:"Yangina en hizli kosanin isi bitirecegini dusunurum",tag:"cesur",effect:{cesaret:4,sayginlik:-4,bilgi:-4}},
+  {text:"Sadece sondurucuyu alip iceri dalmanin yeterli oldugunu sanirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s251",gfx:"fire",alert:false,day:"Gun 10",time:"15:10",loc:"Fire Locker",sub:"Hangi yangini ne sondurur?",who:"z3",
+  text:`3. Zabiti fire locker onunde seni sinadi:
+
+"Class A katilar, Class B yanici sivilar, Class C gazlar, Class D metaller, Class F mutfak yagi. Simdi kritik kisim: her yangina ayni ekipman gidemez. Bunu ezber degil mantik olarak oturt."
+
+En dogru secim hangisi?`,
+  choices:[
+  {text:"A sinifinda su/foam dusunur, B'de foam veya uygun kuru kimyevi toz dusunur, elektrikte once enerjiyi ve uygun CO2 mantigini sorgularim",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
+  {text:"Su varsa her yanginda ilk tercih odur derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Yangin siniflari ile sondurucu seciminin cok da bagli olmadigini dusunurum",tag:"korkak",effect:{bilgi:-13,sayginlik:-12}}]},
+  {id:"s252",gfx:"fire",alert:true,day:"Gun 10",time:"16:00",loc:"Galley Girisi",sub:"Yag yangini ve elektrik panosu farki",who:"z3",
+  text:`Ayni gun iki senaryo soruldu:
+
+"Galley'de kizgin yag tavasi alev aldi. Bir baska odada da elektrik panosu duman veriyor. Iyi stajyer bu ikisini ayni gormez; yanlis medyayla yangini buyutmez."
+
+Ne dersin?`,
+  choices:[
+  {text:"Yag yangininda uygun kapatma/blanket veya uygun medyayi dusunur; elektrik panosunda enerjiyi kestirmeden suya kosmam",tag:"kritik",effect:{bilgi:19,sayginlik:13,cesaret:3}},
+  {text:"Ikisinde de en hizli cozum olarak su basarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Pano yanginiyla yag yangininin pratikte ayni oldugunu dusunurum",tag:"korkak",effect:{bilgi:-13,sayginlik:-12}}]},
+  {id:"s253",gfx:"fire",alert:false,day:"Gun 10",time:"16:35",loc:"Fire Locker",sub:"SCBA kullanimi ve kontrolu",who:"z3",
+  text:`3. Zabiti SCBA setini onune koydu:
+
+"Tup var diye hazir sayilmaz. Basinc, maske, demand valve, harness, alarm ve buddy check birlikte dusunulur. SCBA ile kahramanlik degil disiplin yapilir."
+
+En dogru refleksin ne olur?`,
+  choices:[
+  {text:"Basinc, maske sizdirmazligi, alarm, harness ve buddy check'i tamamlayip oyle hazir sayarim",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
+  {text:"Set sirtta duruyorsa ayrintili kontrole gerek olmadigini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Maskeyi hizli takmanin tum emniyet kontrolunden daha onemli oldugunu sanirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s254",gfx:"fire",alert:false,day:"Gun 10",time:"17:05",loc:"Safety Office",sub:"Fire plan okuma ve mahal bulma",who:"z3",
+  text:`Safety office duvarinda fire control plan asiliydi. 3. Zabiti kalemiyle isaretledi:
+
+"Yangin planinda mahal, bulkhead, escape route, hydrant, damper, fire station ve fixed system yerleri okunur. Plani okuyamayan adam gemiyi ezbere arar."
+
+Sence en profesyonel yaklasim hangisi?`,
+  choices:[
+  {text:"Plan ustunde yangin mahallini, en yakin hydrant'i, kacis yolunu ve izolasyon noktalarini birlikte okurum",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
+  {text:"Sadece mahal adini bilmek yeter derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Fire planin gercek olayda cok zaman kazandirmadigini dusunurum",tag:"korkak",effect:{bilgi:-13,sayginlik:-12}}]}
 ];
 
 function getEcdisRouteOverlay(sc){
