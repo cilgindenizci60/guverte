@@ -1177,6 +1177,19 @@ choices:[
 {text:"'Hayır efendim' de",tag:"korkak",effect:{sayginlik:-3}},
 {text:"'Endişeliyim ama ekibe güveniyorum' de",tag:"akilli",effect:{sayginlik:8,bilgi:5}}]},
 
+{id:"kriz05b",gfx:"cabin",alert:false,day:"Gün 5",time:"16:20",loc:"Stajyer Kabini — Fırtına Devam Ederken",sub:"Ilk buyuk firtina — siddetli yalpa — sessiz aglayis",who:"anlatici",
+text:`Kopruden ayrilip kamarana gectiginde gemi bir kez daha sertce yatti. Dolap kapagi vurdu, askidaki tulum savruldu, metal bir bardak zeminde kayip durdu.
+
+Bu kadar buyuk bir firtinayi ilk kez yasiyordun. Gemi sanki her dalgada ikiye ayrilacakmis gibi inleyince bogazin dugumlendi.
+
+Ranzaya oturdun. Kimse gormesin diye yuzunu ellerinin arasina aldin ve istemeden aglamaya basladin.
+
+O anda kendini nasil toparlarsin?`,
+choices:[
+{text:"Derin nefes alip 'Korkmam normal, ama geceyi atlatacagim' diye kendimi sakinlestiririm",tag:"akilli",effect:{dinclik:6,cesaret:5}},
+{text:"Bir sure aglayip sonra kisa bir not alarak yasadigimi anlamlandirmaya calisirim",tag:"duygusal",effect:{bilgi:5,dinclik:4}},
+{text:"Battaniyenin altina girip tamamen icime kapanirim",tag:"korkak",effect:{dinclik:-8,cesaret:-7,sayginlik:-2}}]},
+
 {id:"kriz06",gfx:"galley",alert:false,day:"Gün 5",time:"20:00",loc:"Yemekhane — Fırtına Sonrası",sub:"Fırtına geçti — herkes yorgun",who:"asci",
 text:`Fırtına geçti. Mehmet Usta sahanda yumurta pişirdi: "Basit, pratik, besleyici."\n\nSilici Ramazan:\n"Bugün üç ambar kapısı sızdırıyordu. ${n} hepsini buldu. İyi iş."`,
 choices:[
@@ -4316,7 +4329,7 @@ function buildSceneQueue(pool, totalDays){
   // Kriz sahnelerini grupla
   const crisisGroups=[
     ['kriz01','kriz02','kriz03'], // makine arızası
-    ['kriz04','kriz05','kriz06'], // fırtına
+    ['kriz04','kriz05','kriz05b','kriz06'], // fırtına
     ['kriz07','kriz08','kriz09'], // boğaz
     ['kriz10','kriz11','kriz12'], // korsan
   ];
@@ -5942,7 +5955,7 @@ function sfxDistantEngineHum(){
 
 function playHomesickAmbiance(sc){
   if(!sc) return;
-  const sadScene = ['s115','s116','s130'].includes(sc.id) || /aile ozlemi|yalnizlik|ic ses|uykusuzluk|ozlem|arkadas/.test(`${sc.sub||''} ${sc.text||''}`.toLowerCase());
+  const sadScene = ['s115','s116','s130','kriz05b'].includes(sc.id) || /aile ozlemi|yalnizlik|ic ses|uykusuzluk|ozlem|arkadas|aglamaya basladin|ilk buyuk firtina/.test(`${sc.sub||''} ${sc.text||''}`.toLowerCase());
   if(!sadScene) return;
   sfxDistantEngineHum();
   setTimeout(sfxLonelyShipCreak, 260);
