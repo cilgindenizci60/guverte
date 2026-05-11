@@ -2516,6 +2516,149 @@ choices:[
 {text:"Uzanir, gozlerimi kapatip bedenimi dinlendiririm",tag:"itaatkar",effect:{dinclik:9}},
 {text:"Dinlenmek yerine telefonda oyalanirim",tag:"korkak",effect:{dinclik:-5}}]},
 
+{id:"s188",gfx:"harbor",alert:false,day:"Gun 9",time:"06:25",loc:"Iskele Bordi - Draft Marklari",sub:"Draft okuma disiplini",who:"z1",
+text:`1. Zabit seni bordaya aldi. Su sakin ama markalar gozu aldatiyor.
+
+"Draft okumak sadece rakam gormek degil. Meniskus, dalga, boya izleri ve markanin tam ortasi seni kandirabilir. Forward, aft ve gerekirse midship birlikte okunur."
+
+Sana gore en dogru stajyer yaklasimi nedir?`,
+choices:[
+{text:"Meniskusu dogru yerden okuyup iskele-sancak, bas-kic farklarini karsilastiririm",tag:"kritik",effect:{bilgi:15,sayginlik:12}},
+{text:"Tek taraftaki rakami gorup yeterli sayarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Dalga varken tam okumaya gerek yok derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s189",gfx:"bridge",alert:false,day:"Gun 9",time:"06:50",loc:"Koprustu - Draft Raporu",sub:"Mean draft nasil yorumlanir?",who:"z1",
+text:`Okumayi bitirince 1. Zabit notlarini istedi.
+
+"Sadece sayiyi soylemek yetmez. Forward draft, aft draft ve gerekiyorsa mean draft yorumu gerekir. Bazen ukc, bazen loadicator, bazen PSC icin bu veri hayatidir."
+
+Raporu nasil toparlarsin?`,
+choices:[
+{text:"Bas ve kic drafti net verip trim yorumunu ekler, gerekiyorsa mean draft hesabi dusunurum",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"En buyuk gordugum rakami soyler gecerim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Rakamlar yakin zaten diye ayrinti vermem",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+
+{id:"s190",gfx:"bogaz",alert:false,day:"Gun 7",time:"06:45",loc:"Pilot Station",sub:"Pilot alma oncesi son emniyet kontrolu",who:"z2",
+text:`Pilot botu gorundu ama daha is bitmedi.
+
+2. Zabit tekrar etti: "Pilot ladder acildi diye is tamam sanma. Secured side, spreader kullanimi, manrope, can simidi, can kurtarma isigi, heaving line hazirligi ve freeboard uyumu son kez gozden gecirilir."
+
+En kritik son bakisin ne olur?`,
+choices:[
+{text:"Ladder baglari, spreader duzeni, aydinlatma ve standby personeli birlikte son kez kontrol ederim",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:4}},
+{text:"Bir kez kurulduysa tekrar bakmaya gerek yok derim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Pilot profesyonel, eksigi kendi idare eder diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s191",gfx:"bridge",alert:false,day:"Gun 7",time:"07:20",loc:"Koprustu - Pilot Geldi",sub:"Pilot varken nelere dikkat edilir?",who:"suvari",
+text:`Pilot kopruustu'ne cikti ama suvari sesi sakindi:
+
+"Pilot bordada diye sorumluluk devrolmaz. Bridge team hala aktif olur. Komutlar tekrar edilir, pozisyon izlenir, tug ve VTS haberlesmesi dinlenir, geminin manevrasi capraz kontrol edilir."
+
+Bu anda en dogru tutum hangisi?`,
+choices:[
+{text:"Pilotu izlerken rota, komut tekrar ve bridge team cross-check disiplinini surdururum",tag:"kritik",effect:{bilgi:15,sayginlik:12}},
+{text:"Pilot geldiyse artik sadece izlemek yeter sanirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Pilot varken kopruustunde dikkat dagitacak sekilde rahatlarim",tag:"korkak",effect:{bilgi:-9,sayginlik:-9}}]},
+
+{id:"s192",gfx:"harbor",alert:false,day:"Gun 8",time:"11:15",loc:"Iskele Bordi - Load Line",sub:"Summer mark mi tropical mark mi?",who:"z1",
+text:`1. Zabit load line markasini gosterdikten sonra sordu:
+
+"Plimsoll cizgisi sus olsun diye vurulmaz. Summer mark, tropical mark, winter mark, fresh water mark... hepsi emniyet payinin baska hali. Hangi hatta kadar yukleyebilecegin rota, bolge ve suyun ozelligiyle ilgilidir."
+
+Sana gore burada temel mantik nedir?`,
+choices:[
+{text:"Yukleme hattinin mevsim, bolge ve su yogunluguna gore degistigini; markalarin serbest bordayi korudugunu soylerim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"Gemide tek bir yukleme siniri vardir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Markalar daha cok boyanin parcasi gibi gelir",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s193",gfx:"compass",alert:false,day:"Gun 8",time:"12:05",loc:"Yuk Ofisi - Draft Survey",sub:"Mini draft survey hesabi",who:"z1",
+text:`1. Zabit kagida iki not birakti:
+
+"Ilk survey 12480 ton, son survey 13195 ton deplasmana denk geldi. Basitlestirilmis haliyle aradaki fark bize yuklenen miktarin cekirdegini verir. Tabii gercekte density, ballast, constant ve diger duzeltmeler de girer."
+
+Bu mini hesapta ilk sonuc ne cikar?`,
+choices:[
+{text:"Yaklasik 715 ton fark oldugunu, bunun da temel yukleme farki olarak yorumlanacagini soylerim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+{text:"Rakamlar buyuk diye kafadan kesin yorum yapmam derim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Ikisini toplayip sonuc ararim",tag:"korkak",effect:{bilgi:-11,sayginlik:-8}}]},
+
+{id:"s194",gfx:"bridge",alert:false,day:"Gun 7",time:"06:58",loc:"Koprustu - Pilot Card",sub:"Pilot card doldurma disiplini",who:"z2",
+text:`Pilot station oncesi 2. Zabit pilot card'i onune koydu.
+
+"Pilot card, geminin kendini tanittigi kisa ozettir. LOA, beam, draft, air draft, ana makine tipi, pervane yonu, bow thruster, rudder bilgisi, maneuvering notlari... bunlar pilot icin laf degil emniyettir."
+
+Bu kartta en dogru tavrin ne olur?`,
+choices:[
+{text:"Boyut, draft, manevra karakteri ve mevcut kisitlari net ve guncel bilgilerle doldururum",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"Eski bir pilot card varsa onu degistirmeden kullanmak yeter derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Pilot zaten gemiyi gorur, karta fazla gerek yok diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s195",gfx:"harbor",alert:false,day:"Gun 8",time:"13:10",loc:"Yuk Ofisi - Fresh Water Allowance",sub:"Tatli suya girince draft nasil degisir?",who:"z1",
+text:`1. Zabit loadicator yaninda bir not daha acti.
+
+"Gemi deniz suyundan tatli suya girince biraz daha batar. Fresh Water Allowance dedigimiz fark bu yuzden onemli. Bazen kanal girisinde, bazen nehir limaninda bu payi dusunmeden rapor veremezsin."
+
+Temel mantigi nasil anlatirsin?`,
+choices:[
+{text:"Tatli suyun yogunlugu daha dusuk oldugu icin geminin ayni yukte biraz daha fazla draft yapacagini soylerim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"Su tatliysa draft ayni kalir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Bu farkin pratikte onemsiz oldugunu dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s196",gfx:"bridge",alert:false,day:"Gun 9",time:"17:25",loc:"Koprustu - Alcak Kopru Gecisi",sub:"Air draft ve kopru altı acikligi",who:"suvari",
+text:`Suvari nehir gecisi brifinginde eliyle yukariyi isaret etti.
+
+"Herkes drafti dusunur; iyi zabit air draft'i da dusunur. Mast, anten, crane boom, ballast durumu ve gel-git birlikte okunmadan alcak kopru altina girilmez."
+
+Sana gore en dogru hesap mantigi ne?`,
+choices:[
+{text:"Geminin mevcut air draftini su seviyesi ve kopru altı acikligi ile karsilastirir, emniyet payi birakirim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"Charttaki yukseklik yaziyorsa dogrudan yeter derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Sadece goz karariyla sigar diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s197",gfx:"compass",alert:false,day:"Gun 9",time:"18:05",loc:"Stability Booklet - Trim Correction",sub:"Trim correction ve hog-sag farki",who:"z1",
+text:`1. Zabit cetveli masaya koydu.
+
+"Draft okumak tek basina yetmez. Trim correction, bazen hog-sag etkisi, bazen de ortalama draft yorumunu degistirir. Ozellikle survey'de 'gordugum rakam budur' demek yerine neyi neden duzelttigini bilirsin."
+
+Buradaki temel zabit refleksi ne olmali?`,
+choices:[
+{text:"Gorulen draftlari dogrudan almak yerine trim etkisi ve gerekiyorsa hog-sag farkini dikkate alirim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+{text:"Bas ve kic yakin gorunuyorsa duzeltmeye gerek yok derim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Survey hesaplarinin fazla ayrinti oldugunu dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-9}}]},
+
+{id:"s198",gfx:"compass",alert:false,day:"Gun 9",time:"18:35",loc:"Yuk Ofisi - TPC / MCTC",sub:"Ton basina cokus ve trim momenti",who:"z1",
+text:`1. Zabit kagidin kenarina iki kisaltma yazdi: TPC ve MCTC.
+
+"Bir limanda 120 ton daha yuk alirsan gemi kac santim daha coker, trim ne kadar degisir; bunu hisle degil tabloyla dusunursun. TPC ton basina cokus, MCTC ise 1 cm trim degisimi icin gereken momenttir."
+
+Sana gore bu iki deger neyi saglar?`,
+choices:[
+{text:"Ek yuklemenin draft ve trim etkisini onceden ongormeyi saglar derim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"Sadece survey sonunda lazim olur derim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Pratikte tablolar yerine goz karari yeter derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s199",gfx:"engine",alert:false,day:"Gun 10",time:"08:25",loc:"Tank Sounding Defteri",sub:"Sounding ve ullage tablosu",who:"carkci",
+text:`Bascarkci tank defterini acti.
+
+"Ayni tanki iki kisi farkli gozle okuyabilir; ama tablo bir tanedir. Sounding dipten yuksekligi, ullage ise tank ustunden boslugu anlatir. Kalibrasyon tablosu olmadan hacim yorumu eksik kalir."
+
+En dogru stajyer refleksi hangisi?`,
+choices:[
+{text:"Okumayi tabloyla eslestirip sounding/ullage farkini net ayiririm",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
+{text:"Rakam varsa tabloya her zaman gerek olmadigini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Sounding ile ullage ayni seydir diye gecerim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s200",gfx:"bridge",alert:true,day:"Gun 10",time:"09:40",loc:"Loadicator Terminali",sub:"Yanlis veri girildi alarmi",who:"z1",
+text:`Loadicator ekrani sari uyari verdi. Girilen ballast verilerinden biri rapordaki sounding ile tutusmuyor.
+
+1. Zabit sana bakti: "Loadicator'a güven ama kör güvenme. Yanlis veri girersen en guzel hesap bile seni yaniltir. Alarm susturmak cozum degil; hatayi bulmak gerekir."
+
+Ilk ne yaparsin?`,
+choices:[
+{text:"Girilen sounding, tank secimi ve raporlanan degerleri tek tek capraz kontrol ederim",tag:"kritik",effect:{bilgi:16,sayginlik:12,cesaret:3}},
+{text:"Alarmi gecici kapatip sonra bakariz derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Loadicator sasirmistir diye dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+
 {id:"FINAL",gfx:"bridge",alert:false,day:"Son Gün",time:"15:00",loc:"Konferans Salonu",sub:"Staj değerlendirme — kontrat sona erdi",who:"z1",
 text:`Son değerlendirme toplantısı.\n\n1. Zabiti, 2. Zabiti, Lostromo. Önlerinde staj formu.\n\n"${n}. ${yr} yılında, ${sn}'de. Fırtına, yük denetimi, gece nöbetleri, yangın tatbikatı, liman operasyonları, krizler.\n\nRaporun birinci satırına ne yazayım?"`,
 choices:[
