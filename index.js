@@ -4625,6 +4625,89 @@ function sfxHomesickCry(){
   });
 }
 
+function sfxHomesickSigh(){
+  const ctx = getAudioCtx();
+  if(!ctx) return;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  const filter = ctx.createBiquadFilter();
+  osc.type = 'triangle';
+  osc.frequency.setValueAtTime(210, ctx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(132, ctx.currentTime + 1.25);
+  filter.type = 'lowpass';
+  filter.frequency.value = 540;
+  gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+  gain.gain.linearRampToValueAtTime(0.02, ctx.currentTime + 0.22);
+  gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.4);
+  osc.connect(filter);
+  filter.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start(ctx.currentTime);
+  osc.stop(ctx.currentTime + 1.45);
+  playNoise(0.6, 0.008, 0.05);
+}
+
+function sfxLonelyShipCreak(){
+  const ctx = getAudioCtx();
+  if(!ctx) return;
+  for(let i=0;i<3;i++){
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    const filter = ctx.createBiquadFilter();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(180 + Math.random()*70, ctx.currentTime + i*0.65);
+    osc.frequency.linearRampToValueAtTime(95 + Math.random()*35, ctx.currentTime + i*0.65 + 0.55);
+    filter.type = 'bandpass';
+    filter.frequency.value = 260 + Math.random()*140;
+    filter.Q.value = 0.8;
+    gain.gain.setValueAtTime(0.0001, ctx.currentTime + i*0.65);
+    gain.gain.linearRampToValueAtTime(0.007 + Math.random()*0.004, ctx.currentTime + i*0.65 + 0.08);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + i*0.65 + 0.7);
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(ctx.currentTime + i*0.65);
+    osc.stop(ctx.currentTime + i*0.65 + 0.75);
+  }
+}
+
+function sfxDistantEngineHum(){
+  const ctx = getAudioCtx();
+  if(!ctx) return;
+  const oscA = ctx.createOscillator();
+  const oscB = ctx.createOscillator();
+  const gain = ctx.createGain();
+  const filter = ctx.createBiquadFilter();
+  oscA.type = 'sine';
+  oscB.type = 'triangle';
+  oscA.frequency.value = 46;
+  oscB.frequency.value = 69;
+  filter.type = 'lowpass';
+  filter.frequency.value = 180;
+  gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+  gain.gain.linearRampToValueAtTime(0.014, ctx.currentTime + 0.4);
+  gain.gain.linearRampToValueAtTime(0.009, ctx.currentTime + 1.8);
+  gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 3.4);
+  oscA.connect(filter);
+  oscB.connect(filter);
+  filter.connect(gain);
+  gain.connect(ctx.destination);
+  oscA.start(ctx.currentTime);
+  oscB.start(ctx.currentTime);
+  oscA.stop(ctx.currentTime + 3.5);
+  oscB.stop(ctx.currentTime + 3.5);
+}
+
+function playHomesickAmbiance(sc){
+  if(!sc) return;
+  const sadScene = ['s115','s116','s130'].includes(sc.id) || /aile ozlemi|yalnizlik|ic ses|uykusuzluk|ozlem|arkadas/.test(`${sc.sub||''} ${sc.text||''}`.toLowerCase());
+  if(!sadScene) return;
+  sfxDistantEngineHum();
+  setTimeout(sfxLonelyShipCreak, 260);
+  const sfx = Math.random() > 0.45 ? sfxHomesickCry : sfxHomesickSigh;
+  setTimeout(sfx, 420);
+}
+
 // Sahneye göre ses çal
 function playSceneAudio(sc){
   const gfx = sc.gfx || '';
@@ -4644,7 +4727,7 @@ function playSceneAudio(sc){
     else if(gfx==='sea'||gfx==='night'||gfx==='sunrise'||gfx==='port_arrival') { sfxShipEngine(); sfxOceanAmbiance(); }
     else if(gfx==='cabin'||gfx==='galley') {
       sfxOceanAmbiance();
-      if(sc.id==='s115'||sc.id==='s116') setTimeout(sfxHomesickCry, 450);
+      playHomesickAmbiance(sc);
     }
     else { stopAllMusic(); }
   }
