@@ -3546,7 +3546,127 @@ Ilk bakisin nereye dagilir?`,
   choices:[
   {text:"Aktif rota kadar warning, safety contour ve aktif waypoint bilgisini birlikte okurum",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
   {text:"Sadece sari rota cizgisine bakmak yeter derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
-  {text:"ECDIS ekrani karmasik diye yorumlamayi birakirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]}
+  {text:"ECDIS ekrani karmasik diye yorumlamayi birakirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s237",gfx:"bridge",alert:true,day:"Gun 6",time:"05:55",loc:"Koprustu - Sabah Vardiyasi",sub:"MOB proseduru ilk dakikalar",who:"z2",
+  text:`Sancak taraftan bir cisim denize dustu. 2. Zabiti sesi sertlestirdi:
+
+"MOB diye bagir, tarafi isaretle, goz temasini kaybetme, alarm zincirini baslat. Ilk dakika paniye degil prosedure aittir."
+
+Ilk hareketin ne olur?`,
+  choices:[
+  {text:"MOB diye bagirir, sancak MOB'u isaret eder, goz temasini korur ve nobet zabitine net rapor veririm",tag:"kritik",effect:{bilgi:18,sayginlik:13,cesaret:4}},
+  {text:"Once ne dustugunu anlamaya calisir sonra haber veririm",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Tek basima kosup bordaya egilirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-10,cesaret:-2}}]},
+  {id:"s238",gfx:"fire",alert:true,day:"Gun 6",time:"11:10",loc:"Accommodation - Koridor",sub:"Fire alarm calmaya basladi",who:"z3",
+  text:`Yangin alarmi caldi. 3. Zabiti telsizde kisa konustu:
+
+"Bu bir drill de olabilir, gercek de. Ama ilk refleks hep ayni: muster, rapor, tehlike bolgesine bilincli yaklasim."
+
+Senin ilk davranisin ne olur?`,
+  choices:[
+  {text:"Muster station'ini ve gorevini esas alip alarm yerini teyit ederek rapor zincirine girerim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Dumana bakmak icin tek basima olay yerine yonelirim",tag:"cesur",effect:{cesaret:4,sayginlik:-5,bilgi:-4}},
+  {text:"Gercek mi drill mi diye beklerim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s239",gfx:"engine",alert:false,day:"Gun 7",time:"14:20",loc:"Steering Gear Room",sub:"Emergency steering devreye alma",who:"carkci",
+  text:`Ana kumanda zincirinde ariza varsayimi verildi. Basmuhendis bakisini sana cevirdi:
+
+"Emergency steering oyalanarak acilacak bir sey degil. Haberlesme, yerel kumanda ve kopru-makine koordinasyonu birlikte dusunulur."
+
+En dogru yaklasim hangisi?`,
+  choices:[
+  {text:"Yerel steering kontrolunu hazirlar, haberlesme zincirini kurar ve komut tekrarlarini netlestiririm",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Sadece yerel dumeni acmanin yetecegini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Kopru halleder diye steering room'dan uzak dururum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s240",gfx:"deck",alert:true,day:"Gun 7",time:"16:40",loc:"Ana GÃ¼verte - Bunker Tarafi",sub:"Oil spill response ilk dakikalar",who:"z3",
+  text:`Kucuk bir yag sizintisi scupper'a dogru yuruyor. 3. Zabiti sert bir sesle:
+
+"Spill response gecikirse kucuk olay buyur. Kaynak kesilecek, yayilim sinirlanacak, SOPEP dusuncesi devreye girecek."
+
+Ilk ne yaparsin?`,
+  choices:[
+  {text:"Kaynak akisini durdurmaya calisir, scupper'i korur ve amire spill bilgisi veririm",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Once bez bulup biraz silerim, sonra soylerim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Dalga alir goturur diye onemsemem",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s241",gfx:"cargo",alert:false,day:"Gun 8",time:"00:40",loc:"Ambar Ustu - Cargo Watch",sub:"Gece cargo watch disiplini",who:"z1",
+  text:`Gece yuk operasyonu devam ediyor. 1. Zabiti seni cargo watch'a birakti:
+
+"Stajyer cargo watch sadece bakmak degil; draft, liste, trim, vinÃ§ ritmi, ambar ici emniyet ve evrak akisina kulak vermektir."
+
+Neye odaklanirsin?`,
+  choices:[
+  {text:"Yukleme temposu kadar liste/trim, hatch emniyeti ve operasyon anonslarini birlikte takip ederim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Sadece vincin calisip calismadigina bakarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Cargo watch'i pasif bekleyis sanirim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+  {id:"s242",gfx:"cargo",alert:false,day:"Gun 8",time:"09:25",loc:"Ambar Ustu",sub:"Hatch cover islemleri ve emniyet",who:"lostromo",
+  text:`Lostromo hatch cover operasyonunda seni yanina cekti:
+
+"Burada elini, ayagini, gozunu kaybeden cok oldu. Hatch cover hareket etmeden once alan bos mu, kilitler serbest mi, herkes nerede; bunlar net olacak."
+
+Senin disiplinin ne olur?`,
+  choices:[
+  {text:"Hareket oncesi alan boslugunu, kilitleri ve personel konumunu tek tek teyit ederim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Makine hareket veriyorsa alanin da emniyetli oldugunu varsayarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Daha iyi gormek icin cover'a fazla yaklasirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s243",gfx:"engine",alert:false,day:"Gun 8",time:"10:50",loc:"Tank Table - Sounding Sheet",sub:"Tank sounding mantigi",who:"carkci",
+  text:`Sounding cetveli acildi. Basmuhendis sakin anlatti:
+
+"Sadece rakam okumazsin; hangi tank, hangi referans, bos mu dolu mu, trim etkisi var mi, tabloya nasil cevrilecek bunlari birlikte dusunursun."
+
+En dogru yorum hangisi?`,
+  choices:[
+  {text:"Sounding degerini tablo, tank adi ve gemi durumuyla birlikte yorumlarim",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Cetvelden bir rakam bulunca gerisi otomatik sanirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Sounding ile ullage farkini onemsemem",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s244",gfx:"deck",alert:false,day:"Gun 8",time:"13:15",loc:"Work Permit Board",sub:"Permit to Work mantigi",who:"z3",
+  text:`3. Zabiti permit board onunde durdu:
+
+"Permit to Work kagit degil; isi, riski, izolasyonu, PPE'yi ve sorumluyu ayni cizgide toplar. Permit imzalandi diye risk bitmez, ama izinsiz is baslatmak daha buyuk hatadir."
+
+Sana gore permit'in omurgasi nedir?`,
+  choices:[
+  {text:"Izin, risk degerlendirmesi, izolasyon, gaz/PPE kontrolu ve sorumluluk zincirinin birlikte kurulmasidir",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Imza varsa isi baslatmak icin tek basina yeterlidir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Kucuk islerde permit gereksiz diye dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s245",gfx:"fire",alert:false,day:"Gun 8",time:"17:00",loc:"Muster Station - Emniyet Dersi",sub:"Fire classes ve yangin ekipmanlari",who:"z3",
+  text:`Yangin panosu acildi. 3. Zabiti eliyle isaret etti:
+
+"Class A, B, C, D, F yanginlari ayni degildir. Yanlis sondurucu iyi niyeti de tehlikeye cevirir. Yangin ekipmani sinifla birlikte dusunulur."
+
+Dogru zabit refleksi hangisi?`,
+  choices:[
+  {text:"Yangin sinifini once tanir, sonra uygun ekipman ve medyayi secerim",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"En yakin sondurucuyu alip tum yanginlarda ayni sekilde kullanirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Sondurucu cesitlerini ayirmanin gereksiz oldugunu dusunurum",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s246",gfx:"harbor",alert:false,day:"Gun 9",time:"08:35",loc:"Can Filikasi Mahalli",sub:"LSA / FFA ve muster list okuma",who:"z3",
+  text:`Can kurtarma ve yanginla mucadele ekipmanlari basinda kisa brifing verildi.
+
+"LSA ve FFA sadece sayim listesi degil. Muster listte kimin nereye gidecegi, hangi ekipmani kimin kullanacagi yazar. Gercek karga?a aninda insanlar bu kagida doner."
+
+Ne yaparsin?`,
+  choices:[
+  {text:"Muster listte kendi gorevimi, toplanma yerimi ve yakindaki LSA/FFA ekipmanlarini birlikte ogrenirim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Sadece kendi can yelegimin yerini bilmem yeter derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Muster listin esasen tatbikat icin oldugunu sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s247",gfx:"compass",alert:false,day:"Gun 9",time:"19:10",loc:"Koprustu - Gece Seyri",sub:"Fenerler, sekiller ve sis isaretleri",who:"z2",
+  text:`Gece vardiyasinda 2. Zabiti disariyi isaret etti:
+
+"Fenerler ve sekiller geminin ne yaptigini soyler; sis isaretleri de gormedigin durumda sana onun niyetini hissettirir. Renk, ritim, sekil ve ses birlikte okunur."
+
+Dogru yorum disiplini hangisi?`,
+  choices:[
+  {text:"Renk, isik karakteri, gunduz sekli ve sis isaretini birlikte dusunurum",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Sadece gordugum rengin gemiyi anlamaya yettigini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Sis isaretlerini pratikte gereksiz bulurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s248",gfx:"bridge",alert:false,day:"Gun 10",time:"01:15",loc:"Koprustu - COLREG Sorgusu",sub:"Head-on, crossing ve overtaking ayrimi",who:"suvari",
+  text:`Suvari radar ve dis gorusu birlikte gosterdi:
+
+"Bir hedef tam karsidan geliyorsa head-on, sancaginda riskli acida belirdiyse crossing, kiÃ§ omuzlugundan yetisiyorsa overtaking dusunursun. Karari dogru koymadan manevra dusuncesi kurulmaz."
+
+Hangi ozet en dogru?`,
+  choices:[
+  {text:"Head-on'da iki taraf sanca?a duser; crossing'de sancaginda hedef varsa sen give-way olursun; overtaking yapan gemi yol verir",tag:"kritik",effect:{bilgi:19,sayginlik:13,cesaret:4}},
+  {text:"Bu uc durumda da once diger geminin ne yapacagini beklemek yeterlidir",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Overtaking ile crossing'i pratikte ayirmanin cok da onemli olmadigini dusunurum",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]}
 ];
 
 function getEcdisRouteOverlay(sc){
