@@ -2306,6 +2306,72 @@ choices:[
 {text:"Sadece vardiya gelince duyariz diye beklerim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"Kanal prosedurunu normal liman girisi gibi gorurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
 
+{id:"s177",gfx:"compass",alert:false,day:"Gun 9",time:"05:35",loc:"Koprustu - NAVTEX Printer",sub:"NAVTEX mesajinda hangisi kritik?",who:"z3",
+text:`NAVTEX kagidi bu kez daha uzun. Uyarida hem meteorological warning hem de bir atesleme sahasi notu var.
+
+3. Zabiti kağıdı masaya bıraktı: "Her NAVTEX mesajı aynı ağırlıkta değil. Bazen bir satır rota değiştirir, bazen sadece dosyaya girer."
+
+Ilk neyi ayirirsin?`,
+choices:[
+{text:"Seyir emniyetine dogrudan etkisi olan warning kismini ayirir, rota ile karsilastiririm",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
+{text:"Mesaji genel bilgi sayip sadece dosyalarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"NAVTEX'i vardiya sonuna birakirim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+
+{id:"s178",gfx:"harbor",alert:false,day:"Gun 10",time:"17:10",loc:"Demir Sahasi Yaklasmasi",sub:"Demirlemeden once son kontrol",who:"z2",
+text:`Geminin hizi dusuyor. 2. Zabiti checklisti acmis.
+
+"Demirleme sakin gorunur ama daginik zihin istemez. Derinlik, taban cinsi, ruzgar, akinti, swing circle, diger gemiler, kablo-pipeline alanlari ve makine hazirligi birlikte dusunulur."
+
+Sen olsan ilk sirayi neye verirsin?`,
+choices:[
+{text:"Derinlik, taban cinsi ve swing alani ile chart uyarilarini birlikte kontrol ederim",tag:"kritik",effect:{bilgi:15,sayginlik:12}},
+{text:"Sadece su anki derinlige bakarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Bos yer gorduysem demir atilabilir diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s179",gfx:"harbor",alert:false,day:"Gun 10",time:"17:45",loc:"Demir Sahasi Haritasi",sub:"Nerede demirlenmez?",who:"suvari",
+text:`Suvari parmagini haritada gezdirdi.
+
+"Herkes uygun gorunen suya demir atamaz. Subsea cable, pipeline, TSS kenari, askeri saha, yasak anchorage, dar kanal agzi ve kotu tutan dip ayridir. Demir sahasi secimi denizcilik karakterini belli eder."
+
+Hangi alan seni hemen durdurmali?`,
+choices:[
+{text:"Chartta kablo, pipeline veya yasak anchorage isareti gordugum alan",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"Yakinda gemi yoksa yeter diye dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Trafik disiysa her yerde demir tutar derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s180",gfx:"bogaz",alert:false,day:"Gun 10",time:"18:20",loc:"Pruva Ustu",sub:"Kac kilit ve nasil birakilir?",who:"lostromo",
+text:`Lostromo zincir sesi olmadan once donup sordu:
+
+"Demir sadece suya dusmez; kontrollu verilir. Derinlik, ruzgar ve bekleme suresine gore kac shackles salacagini, gemiyi ne zaman stop edecegini ve zinciri ne kadar frenleyecegini bilmezsen is karisir."
+
+En saglam stajyer refleksi hangisi?`,
+choices:[
+{text:"Derinlik ve saha kosullarina gore zabit komutunu takip eder, zincir davranisini dikkatle izlerim",tag:"kritik",effect:{bilgi:14,sayginlik:11}},
+{text:"Shackle sayisini kabaca tahmin etmenin yetecegini dusunurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Zincir hizini onemsemem, birak gitsin derim",tag:"korkak",effect:{bilgi:-9,sayginlik:-9}}]},
+
+{id:"s181",gfx:"storm",alert:true,day:"Gun 10",time:"22:40",loc:"Demir Sahasi - Ruzgar Dondu",sub:"Holding ground ve suruklenme ihtimali",who:"suvari",
+text:`Gece ruzgar dondu, gemi hafifce baska bir aciya oturdu.
+
+Suvari AIS, radar ve mevki kaydina ayni anda bakti: "Kotu dipte ya da kisa zincirde sorun sessiz baslar. Bearingler akiyorsa, zincir davranisi degisiyorsa ve mevki kayiyorsa anchor dragging'e hazir olursun."
+
+Ne yaparsin?`,
+choices:[
+{text:"Bearing, radar mevki, zincir istikameti ve makine hazirligini birlikte teyit ederim",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:4}},
+{text:"Biraz daha bekleyip farkin buyumesine bakarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Demirdeysek hareket etmez diye varsayarim",tag:"korkak",effect:{bilgi:-10,sayginlik:-10}}]},
+
+{id:"s182",gfx:"sea",alert:false,day:"Gun 12",time:"09:10",loc:"Trieste - Haifa Hatti",sub:"Yeni rota, yeni harita mantigi",who:"z2",
+text:`2. Zabiti yeni rota klasorunu acti.
+
+"Her deniz ayni haritayla dusunulmez. Trieste cikisi ile Haifa yaklaşması aynı dikkatleri istemez. Bir yerde trafik ayırımı, bir yerde askeri saha, bir yerde anchorage limiti öne çıkar."
+
+Bu rota degisikliginde en dogru tavir nedir?`,
+choices:[
+{text:"Yeni bolgenin pilotaj, warning ve chart notlarini bastan okurum",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
+{text:"Eski notlarla idare etmeye calisirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Ayni deniz ayni denizdir diye dusunurum",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+
 {id:"FINAL",gfx:"bridge",alert:false,day:"Son Gün",time:"15:00",loc:"Konferans Salonu",sub:"Staj değerlendirme — kontrat sona erdi",who:"z1",
 text:`Son değerlendirme toplantısı.\n\n1. Zabiti, 2. Zabiti, Lostromo. Önlerinde staj formu.\n\n"${n}. ${yr} yılında, ${sn}'de. Fırtına, yük denetimi, gece nöbetleri, yangın tatbikatı, liman operasyonları, krizler.\n\nRaporun birinci satırına ne yazayım?"`,
 choices:[
@@ -2365,6 +2431,47 @@ const SYSTEM_STATE={
   hiddenFailures:{bridge:0,deck:0,engine:0,compliance:0},
   triggeredChains:new Set(),
 };
+
+function getSceneOverlay(gfx){
+  const overlays = {
+    harbor:`<g opacity=".95">
+      <path d="M250 90 h46 l12 5 h18 v4 h-78 z" fill="#0a1526"/>
+      <rect x="266" y="78" width="26" height="12" rx="1.5" fill="#102948"/>
+      <rect x="272" y="72" width="9" height="8" rx="1" fill="#143459"/>
+      <circle cx="332" cy="98" r="1.6" fill="#d4a017"/>
+      <path d="M388 100 h34 l9 4 h10 v3 h-53 z" fill="#101a2a" opacity=".8"/>
+      <rect x="398" y="91" width="16" height="9" rx="1" fill="#16365f" opacity=".9"/>
+    </g>`,
+    sea:`<g opacity=".88">
+      <path d="M300 95 h72 l16 6 h18 v5 h-106 z" fill="#081422"/>
+      <rect x="332" y="81" width="26" height="14" rx="2" fill="#14365e"/>
+      <rect x="338" y="74" width="11" height="8" rx="1" fill="#1a4a7f"/>
+      <circle cx="357" cy="89" r="1.2" fill="#6fa8dc"/>
+      <path d="M52 108 h38 l9 4 h12 v3 h-59 z" fill="#0a1422" opacity=".7"/>
+      <rect x="63" y="100" width="14" height="8" rx="1" fill="#0f2c4c" opacity=".8"/>
+    </g>`,
+    night:`<g opacity=".9">
+      <path d="M286 102 h84 l14 6 h14 v5 h-112 z" fill="#040b14"/>
+      <rect x="322" y="89" width="22" height="13" rx="2" fill="#112746"/>
+      <circle cx="347" cy="93" r="1.5" fill="#6fa8dc"/>
+      <circle cx="354" cy="93" r="1.5" fill="#d4a017"/>
+      <circle cx="360" cy="93" r="1.5" fill="#c93030"/>
+      <path d="M72 112 h24 l7 3 h8 v2 h-39 z" fill="#060d18" opacity=".6"/>
+    </g>`,
+    storm:`<g opacity=".72">
+      <path d="M312 108 h52 l12 5 h12 v4 h-76 z" fill="#091220"/>
+      <rect x="328" y="97" width="18" height="11" rx="1.5" fill="#113050"/>
+      <line x1="382" y1="90" x2="390" y2="108" stroke="#9bb0c8" stroke-width="1" opacity=".6"/>
+    </g>`,
+    bogaz:`<g opacity=".9">
+      <path d="M276 96 h68 l13 5 h16 v4 h-97 z" fill="#091523"/>
+      <rect x="304" y="83" width="22" height="13" rx="2" fill="#163457"/>
+      <circle cx="348" cy="98" r="1.4" fill="#d4a017"/>
+      <circle cx="352" cy="98" r="1.4" fill="#c93030"/>
+    </g>`
+  };
+  return overlays[gfx] || '';
+}
 const tagL={cesur:"Cesur",akilli:"Akıllı",itaatkar:"İtaatkar",korkak:"Korkak",sosyal:"Sosyal",kritik:"KRİTİK"};
 let mood=58;
 let delayedConsequences=[];
@@ -2754,7 +2861,7 @@ function renderScene(idx){
   else ab.style.display='none';
 
   const svg=document.getElementById('gfx-svg');
-  svg.innerHTML=GFX[sc.gfx]||GFX.sea;
+  svg.innerHTML=(GFX[sc.gfx]||GFX.sea)+getSceneOverlay(sc.gfx);
 
   playSceneAudio(sc);
   updateSceneNoteHints(sc);
@@ -3050,6 +3157,7 @@ const ROUTE_PORTS = [
   {name:"İzmir", x:85, y:130, visited:true},
   {name:"Çanakkale", x:130, y:100, visited:false},
   {name:"İstanbul", x:180, y:85, visited:false},
+  {name:"Ambarli", x:172, y:92, visited:false},
   {name:"Pire", x:120, y:160, visited:false},
   {name:"Malta", x:95, y:175, visited:false},
   {name:"Valensiya", x:22, y:108, visited:false},
@@ -3060,7 +3168,9 @@ const ROUTE_PORTS = [
   {name:"Port Said", x:228, y:200, visited:false},
   {name:"Cenova", x:60, y:80, visited:false},
   {name:"Barselona", x:30, y:100, visited:false},
+  {name:"Trieste", x:102, y:52, visited:false},
   {name:"Messina", x:78, y:145, visited:false},
+  {name:"Haifa", x:212, y:188, visited:false},
   {name:"Suveys", x:245, y:212, visited:false},
   {name:"Rotterdam", x:25, y:18, visited:false},
   {name:"Mersin", x:180, y:180, visited:false},
@@ -3080,12 +3190,12 @@ function updateShipPosition(sceneLoc){
   const locMap = {
     'İzmir':{x:85,y:130}, 'Çanakkale Boğazı':{x:130,y:100},
     'İstanbul Boğazı':{x:180,y:85}, 'Pire':{x:120,y:160},
-    'Malta':{x:95,y:175}, 'Valensiya':{x:22,y:108},
+    'Ambarli':{x:172,y:92}, 'Malta':{x:95,y:175}, 'Valensiya':{x:22,y:108},
     'Cebelitarık':{x:8,y:120}, 'Algeciras':{x:10,y:125},
     'İskenderiye':{x:200,y:210}, 'Port Said':{x:228,y:200},
     'Kıbrıs':{x:170,y:170},
-    'Cenova':{x:60,y:80}, 'Barselona':{x:30,y:100},
-    'Rotterdam':{x:25,y:18}, 'Mersin':{x:180,y:180},
+    'Cenova':{x:60,y:80}, 'Barselona':{x:30,y:100}, 'Trieste':{x:102,y:52},
+    'Haifa':{x:212,y:188}, 'Rotterdam':{x:25,y:18}, 'Mersin':{x:180,y:180},
     'Aden':{x:300,y:230}, 'Süveyş':{x:250,y:195},
   };
   for(const [key,pos] of Object.entries(locMap)){
@@ -3101,8 +3211,9 @@ function updateShipPosition(sceneLoc){
 function renderMap(){
   const svg = document.getElementById('map-svg');
   const legend = document.getElementById('map-legend');
-  // Mediterranean sea background
-  let s = `<rect width="440" height="260" fill="#030d1a" rx="6"/>`;
+  const region = shipPosition.x < 60 ? 'BATI AKDENIZ' : shipPosition.x < 150 ? 'ORTA AKDENIZ' : shipPosition.y < 110 ? 'TURK BOGAZLARI' : 'DOGU AKDENIZ';
+  const regionFill = region==='BATI AKDENIZ' ? '#02111f' : region==='ORTA AKDENIZ' ? '#03101d' : region==='TURK BOGAZLARI' ? '#041320' : '#04111b';
+  let s = `<rect width="440" height="260" fill="${regionFill}" rx="6"/>`;
   // Sea texture
   for(let i=0;i<8;i++){
     s+=`<path d="M${i*60} ${80+i*20} Q${i*60+30} ${75+i*20} ${i*60+60} ${80+i*20}" fill="none" stroke="#0a2448" stroke-width="1" opacity=".4"/>`;
@@ -3113,6 +3224,11 @@ function renderMap(){
   // Italy/Greece simplified
   s+=`<path d="M120 90 Q130 100 125 115 Q120 125 115 120 Q110 110 115 95 Z" fill="#0a1e2e" opacity=".6"/>`;
   s+=`<path d="M80 70 Q95 65 100 75 Q98 85 90 82 Q82 78 80 70 Z" fill="#0a1e2e" opacity=".6"/>`;
+  s+=`<path d="M18 118 Q68 98 132 110 Q210 126 272 120 Q346 112 420 124" fill="none" stroke="#184878" stroke-width="1.2" stroke-dasharray="6,5" opacity=".45"/>`;
+  s+=`<path d="M152 82 Q194 70 236 76 Q286 83 348 78" fill="none" stroke="#1c5a92" stroke-width="1" stroke-dasharray="4,4" opacity=".35"/>`;
+  s+=`<circle cx="${120*4.4}" cy="${160*2.6}" r="11" fill="none" stroke="#d4a017" stroke-width="1" opacity=".18"/>`;
+  s+=`<circle cx="${200*4.4}" cy="${210*2.6}" r="11" fill="none" stroke="#d4a017" stroke-width="1" opacity=".18"/>`;
+  s+=`<circle cx="${95*4.4}" cy="${175*2.6}" r="11" fill="none" stroke="#d4a017" stroke-width="1" opacity=".18"/>`;
 
   // Route line
   if(routeHistory.length > 1){
@@ -3141,6 +3257,10 @@ function renderMap(){
   s+=`<path d="M${sx-4} ${sy} L${sx} ${sy-8} L${sx+4} ${sy} Z" fill="#d4a017"/>`;
   s+=`<circle cx="${sx}" cy="${sy}" r="10" fill="none" stroke="#d4a017" stroke-width="1" opacity=".5" class="blink"/>`;
   s+=`<text x="${sx+12}" y="${sy+4}" fill="#d4a017" font-size="8" font-family="monospace">${sn||'Gemi'}</text>`;
+  s+=`<text x="12" y="16" fill="#8ab0c8" font-size="8" font-family="monospace" opacity=".85">${region}</text>`;
+  s+=`<path d="M28 214 h26 l7 3 h7 v2 h-40 z" fill="#0c1b2d" opacity=".8"/>`;
+  s+=`<rect x="35" y="207" width="10" height="7" rx="1" fill="#184878" opacity=".9"/>`;
+  s+=`<path d="M362 68 h22 l7 3 h6 v2 h-35 z" fill="#0c1b2d" opacity=".65"/>`;
 
   svg.innerHTML = s;
   legend.textContent = `🟢 Uğranan liman  🔵 Planlanan liman  🟡 ${sn||'Gemimiz'}  — ${visitedPorts.size} liman uğrandı`;
@@ -3206,6 +3326,7 @@ function getRelevantNoteTopics(sc){
   if(/pilot|romorkor|mooring|snap-back|heaving line|berthing/.test(hay)) topics.add('PILOT / ROMORKOR / LIMAN');
   if(/psc|isps|solas|stcw|security|gangway/.test(hay)) topics.add('PSC / ISPS / SOLAS / STCW');
   if(/mayday|pan-pan|securite|vhf|gmdss|navtex|epirb|sart/.test(hay)) topics.add('ACIL HABERLESME');
+  if(/demir|anchor|anchorage|holding ground|dragging|shackle/.test(hay)) topics.add('KOPRUUSTU VARDIYASI');
   if(/stabil|gm|trim|list|ballast|heel|fsc|mctc/.test(hay)) topics.add('STABILITE / BALLAST');
   if(/gel-git|tidal|ukc|under keel|draft/.test(hay)) topics.add('FORMULLER - GEL-GIT / UKC');
   if(/set|drift|course to steer|cog|sog|seyir/.test(hay)) topics.add('FORMULLER - SET / DRIFT / CTS');
