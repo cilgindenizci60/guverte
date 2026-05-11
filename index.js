@@ -1862,6 +1862,21 @@ choices:[
 {text:"Amir ne derse onu tekrar ederim",tag:"itaatkar",effect:{sayginlik:5,bilgi:4}},
 {text:"Arkadasimi korumak icin gercegi egerim",tag:"korkak",effect:{sayginlik:-10,bilgi:-6}}]},
 
+{id:"s107b",gfx:"cabin",alert:true,day:"Gun 10",time:"06:50",loc:"Koridor - Kamaralar",sub:"Gemide hirsizlik suphelesi",who:"z1",
+text:`Sabah bir kamaradan sert bir ses geldi. Tayfalardan biri dolabindaki paranin ve kulakliginin kayip oldugunu soyluyor.
+
+Koridorda hava bir anda gerildi. Herkes birbirine bakiyor ama kimse acik acik bir sey demiyor.
+
+1. Zabiti seni gorunce kisik sesle konustu:
+
+"Gemide hirsizlik suphelesi, sadece esya meselesi degil; ekip guveni meselesidir. Kimseyi gelisiguzel suclamayacagiz. Ne gorduysek kayda uygun ilerleyecegiz."
+
+Sen nasil ilerlersin?`,
+choices:[
+{text:"Sakin kalir, gordugum-son duydugum ne varsa tarafsiz aktarir; amirin talimatiyla kontrollu ilerlerim",tag:"kritik",effect:{bilgi:16,sayginlik:14,cesaret:3}},
+{text:"Koridorda duyduklarimi digerlerine de anlatip kimden suphelendigimi soylerim",tag:"itaatkar",effect:{sayginlik:3,bilgi:2}},
+{text:"Hemen birini suclayip ustune giderim",tag:"korkak",effect:{sayginlik:-13,bilgi:-9,cesaret:-3}}]},
+
 {id:"s108",gfx:"harbor",alert:true,day:"Gun 6",time:"13:20",loc:"Gangway - PSC Reinspection",sub:"Eksikler buyudu, detention ihtimali",who:"suvari",
 text:`PSC memuru ikinci turda daha sert geldi.
 
