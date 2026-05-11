@@ -2943,6 +2943,8 @@ const KONTRAT_DEFS={
 
 // ===== OYUN DEĞİŞKENLERİ =====
 let pn="Stajyer", sn="M/V Ege Meltem";
+let playerBirthDate = '';
+let playerBirthLabel = '';
 let selYear=2018, selType="kuru", selKontrat=0;
 let stats={cesaret:40,bilgi:22,sayginlik:32,dinclik:68};
 let scenes=[], currentIdx=0, choicesMade=[];
@@ -2964,6 +2966,38 @@ const START_SCENARIOS=[
 ];
 let selectedStartPort=START_PORTS[0];
 let selectedStartScenario=START_SCENARIOS[0];
+function formatBirthdayLabel(raw){
+  if(!raw) return '';
+  const parts = raw.split('-');
+  if(parts.length !== 3) return raw;
+  return `${parts[2]}.${parts[1]}.${parts[0]}`;
+}
+
+function buildBirthdaySurpriseScene(){
+  if(!playerBirthLabel) return null;
+  return {
+    id:"s_birthday_surprise",
+    gfx:"galley",
+    alert:false,
+    day:"Gun 14",
+    time:"20:40",
+    loc:"Yemekhane",
+    sub:"Murettebattan surpriz dogum gunu",
+    who:"asci",
+    text:`Aksam yemeginden sonra ortalik bir anda sakinlesti. Sonra isiklar kisildi.
+
+Mehmet Usta elinde kucuk ama ciddi emek verilmis bir pasta ile ortaya cikti. Lostromo, 1. Zabiti ve tayfalar bir agizdan gulerek sana bakti.
+
+"Bugun ${playerBirthLabel}. Unutmamisiz stajyer," dedi Asci. "Denizde dogum gunu sessiz gecmez."
+
+Bir anligina gemi, vardiya ve yorgunluk geri cekildi. Bu kez sira sendeydi.`,
+    choices:[
+      {text:"Gulup herkese tesekkur et, pastayi birlikte kes",tag:"sosyal",effect:{sayginlik:16,dinclik:12,cesaret:4}},
+      {text:"Ozellikle emegi gecenleri tek tek anip sakin bir tesekkur konusmasi yap",tag:"kritik",effect:{sayginlik:18,bilgi:4,dinclik:9}},
+      {text:"Utanip kisa bir tesekkurle yerine gec",tag:"itaatkar",effect:{sayginlik:9,dinclik:8}}
+    ]
+  };
+}
 const DIFFICULTY={
   positiveGainMult:0.72,
   negativeLossMult:1.18,
@@ -4503,8 +4537,11 @@ function showEnd(){
 function beginGame(){
   const ni=document.getElementById('nameinp').value.trim();
   const si=document.getElementById('shipnameinp').value.trim();
+  const bi=(document.getElementById('birthinp')?.value||'').trim();
   pn=ni||'Stajyer';
   sn=si||(SNAMES[selType]||['M/V Ege Meltem'])[0];
+  playerBirthDate = bi;
+  playerBirthLabel = formatBirthdayLabel(bi);
 
   const kont=KONTRAT_DEFS[selType]?.[selKontrat]||{ay:6,izin:1};
   contractTotal=(kont.ay+kont.izin)*4; // Her ay ~4 sahne
@@ -4515,6 +4552,11 @@ function beginGame(){
   selectedStartScenario=START_SCENARIOS[Math.floor(Math.random()*START_SCENARIOS.length)];
   const pool=buildScenePool(pn,sn,selYear,selType,selectedStartPort,selectedStartScenario);
   sceneQueue=buildSceneQueue(pool, contractTotal);
+  const birthdayScene = buildBirthdaySurpriseScene();
+  if(birthdayScene){
+    const insertAt = Math.min(sceneQueue.length-1, Math.max(4, 6 + Math.floor(Math.random()*Math.max(2, Math.floor(sceneQueue.length/3)))));
+    sceneQueue.splice(insertAt, 0, birthdayScene);
+  }
   currentIdx=0;
 
   stats={cesaret:40,bilgi:22,sayginlik:32,dinclik:68};
@@ -4560,7 +4602,8 @@ function restartGame(){
   document.getElementById('intro').style.display='flex';
 }
 
-document.getElementById('nameinp').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('shipnameinp').focus();});
+document.getElementById('nameinp').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('birthinp').focus();});
+document.getElementById('birthinp').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('shipnameinp').focus();});
 document.getElementById('shipnameinp').addEventListener('keydown',e=>{if(e.key==='Enter')beginGame();});
 
 // ===== MÜRETTEBAT İLİŞKİ SİSTEMİ =====
@@ -5935,7 +5978,8 @@ function playSceneAudio(sc){
 
 
 // ===== BAŞLATMA =====
-document.getElementById('nameinp').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('shipnameinp').focus();});
+document.getElementById('nameinp').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('birthinp').focus();});
+document.getElementById('birthinp').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('shipnameinp').focus();});
 document.getElementById('shipnameinp').addEventListener('keydown',e=>{if(e.key==='Enter')beginGame();});
 buildIntro();
 
