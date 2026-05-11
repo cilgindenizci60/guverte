@@ -234,15 +234,19 @@ const CREW={
 const GFX={
 harbor:`<rect width="480" height="145" fill="#040d1a"/>
 <rect y="92" width="480" height="53" fill="#06182e"/>
-<rect x="30" y="72" width="180" height="20" fill="#0f2040"/>
-<rect x="30" y="70" width="180" height="4" fill="#1a3a5f"/>
-<rect x="55" y="56" width="130" height="18" rx="3" fill="#0d2040"/>
-<rect x="140" y="40" width="35" height="18" rx="2" fill="#0f2848"/>
-<rect x="148" y="34" width="10" height="8" fill="#0d1f3c"/>
-<line x1="153" y1="18" x2="153" y2="40" stroke="#1a3a5f" stroke-width="1.5"/>
-<rect x="143" y="44" width="5" height="4" rx="1" fill="#6fa8dc" opacity=".7"/>
-<rect x="151" y="44" width="5" height="4" rx="1" fill="#6fa8dc" opacity=".5"/>
-<rect x="159" y="44" width="5" height="4" rx="1" fill="#6fa8dc" opacity=".7"/>
+<path d="M24 88 L182 88 L204 96 L226 96 L226 102 L16 102 L16 95 Z" fill="#0b1728"/>
+<path d="M28 82 L186 82 L200 88 L28 88 Z" fill="#163250"/>
+<rect x="84" y="58" width="74" height="24" rx="3" fill="#d9e3ea"/>
+<rect x="124" y="46" width="28" height="14" rx="2" fill="#d9e3ea"/>
+<rect x="133" y="34" width="10" height="12" rx="1" fill="#173454"/>
+<line x1="138" y1="18" x2="138" y2="34" stroke="#617f9b" stroke-width="1.5"/>
+<line x1="138" y1="22" x2="149" y2="29" stroke="#617f9b" stroke-width="1"/>
+<rect x="92" y="64" width="8" height="6" rx="1" fill="#6fa8dc"/>
+<rect x="104" y="64" width="8" height="6" rx="1" fill="#6fa8dc" opacity=".9"/>
+<rect x="116" y="64" width="8" height="6" rx="1" fill="#6fa8dc"/>
+<rect x="128" y="64" width="8" height="6" rx="1" fill="#6fa8dc" opacity=".85"/>
+<rect x="140" y="64" width="8" height="6" rx="1" fill="#6fa8dc"/>
+<rect x="160" y="88" width="34" height="4" fill="#4b637b" opacity=".5"/>
 <line x1="235" y1="18" x2="235" y2="90" stroke="#1e3a5f" stroke-width="2"/>
 <line x1="210" y1="20" x2="265" y2="20" stroke="#1e3a5f" stroke-width="2"/>
 <line x1="250" y1="20" x2="250" y2="70" stroke="#1e3a5f" stroke-width="1" stroke-dasharray="3,2"/>
@@ -268,8 +272,16 @@ sea:`<rect width="480" height="145" fill="#030d1a"/>
 <circle cx="220" cy="24" r="1.2" fill="#fff" opacity=".5"/>
 <circle cx="310" cy="7" r="1" fill="#fff" opacity=".7"/>
 <circle cx="380" cy="17" r="1" fill="#fff" opacity=".6"/>
-<rect x="340" y="52" width="60" height="10" rx="2" fill="#040e1e"/>
-<rect x="370" y="45" width="15" height="8" rx="1" fill="#040e1e"/>`,
+<path d="M292 66 L390 66 L408 72 L424 72 L424 77 L284 77 L284 71 Z" fill="#081320"/>
+<path d="M300 60 L392 60 L404 66 L300 66 Z" fill="#173451"/>
+<rect x="344" y="43" width="28" height="17" rx="2" fill="#d9e3ea"/>
+<rect x="364" y="32" width="16" height="12" rx="2" fill="#d9e3ea"/>
+<rect x="370" y="22" width="8" height="10" rx="1" fill="#173454"/>
+<line x1="374" y1="14" x2="374" y2="22" stroke="#607d99" stroke-width="1.2"/>
+<rect x="350" y="49" width="7" height="5" rx="1" fill="#6fa8dc"/>
+<rect x="360" y="49" width="7" height="5" rx="1" fill="#6fa8dc"/>
+<rect x="370" y="49" width="7" height="5" rx="1" fill="#6fa8dc"/>
+<circle cx="407" cy="69" r="1.8" fill="#d4a017"/>`,
 
 night:`<rect width="480" height="145" fill="#020810"/>
 <rect width="480" height="66" fill="#030b18"/>
@@ -290,8 +302,14 @@ night:`<rect width="480" height="145" fill="#020810"/>
 <path d="M0 78 Q40 72 80 78 Q120 84 160 78 Q200 72 240 78 Q280 84 320 78 Q360 72 400 78 Q440 84 480 78" fill="none" stroke="#0a2038" stroke-width="1.5" opacity=".6"/>
 <path d="M0 96 Q50 90 100 96 Q150 102 200 96 Q250 90 300 96 Q350 102 400 96 Q450 90 500 96" fill="none" stroke="#081828" stroke-width="1.2" opacity=".5"/>
 </g>
-<circle cx="240" cy="63" r="3" fill="#c93030" opacity=".9"/>
-<circle cx="240" cy="63" r="6" fill="none" stroke="#c93030" stroke-width="1" opacity=".4"/>`,
+<path d="M196 70 L286 70 L302 76 L314 76 L314 80 L188 80 L188 75 Z" fill="#050b14"/>
+<path d="M204 64 L286 64 L296 70 L204 70 Z" fill="#112844"/>
+<rect x="240" y="49" width="22" height="15" rx="2" fill="#d9e3ea"/>
+<rect x="254" y="40" width="12" height="10" rx="2" fill="#d9e3ea"/>
+<line x1="260" y1="30" x2="260" y2="40" stroke="#5c7895" stroke-width="1"/>
+<circle cx="230" cy="68" r="2" fill="#c93030" opacity=".95"/>
+<circle cx="290" cy="68" r="2" fill="#5dbf8a" opacity=".9"/>
+<circle cx="260" cy="45" r="1.6" fill="#6fa8dc" opacity=".85"/>`,
 
 storm:`<rect width="480" height="145" fill="#020a14"/>
 <ellipse cx="100" cy="18" rx="80" ry="24" fill="#0a1828" opacity=".95"/>
@@ -470,9 +488,11 @@ bogaz:`<rect width="480" height="145" fill="#04111f"/>
 <circle cx="110" cy="10" r="3" fill="#c93030" opacity=".7"/>
 <circle cx="395" cy="20" r="3" fill="#d4a017" opacity=".7" class="blink"/>
 <g class="drift" style="transform-origin:240px 66px">
-<rect x="190" y="55" width="100" height="14" rx="3" fill="#0d2040"/>
-<rect x="240" y="44" width="24" height="13" rx="2" fill="#0a1830"/>
-<line x1="252" y1="34" x2="252" y2="44" stroke="#0a1828" stroke-width="1.5"/>
+<path d="M174 60 L286 60 L304 67 L316 67 L316 72 L164 72 L164 66 Z" fill="#0b1522"/>
+<path d="M182 54 L286 54 L299 60 L182 60 Z" fill="#183451"/>
+<rect x="236" y="39" width="24" height="15" rx="2" fill="#d9e3ea"/>
+<rect x="252" y="30" width="10" height="10" rx="1" fill="#173454"/>
+<line x1="257" y1="22" x2="257" y2="30" stroke="#607d99" stroke-width="1.2"/>
 </g>
 <g class="current"><text x="20" y="106" fill="#1a4a7f" font-size="14" opacity=".3">→→→→→→→→→→→→→→→→→→→→→→→→→→→→</text></g>
 <text x="150" y="128" fill="#d4a017" font-size="8" font-family="monospace" class="blink">⚓ DEMİR ATILDI — BOĞAZ AKINTISI</text>
@@ -570,8 +590,11 @@ bridge:`<rect width="480" height="145" fill="#030a14"/>
 <ellipse cx="240" cy="50" rx="35" ry="8" fill="#1a4a7f" opacity=".15"/>
 <rect x="286" y="9" width="88" height="62" fill="#040d18"/>
 <rect x="376" y="9" width="88" height="62" fill="#040d18"/>
-<rect x="220" y="40" width="40" height="8" rx="1" fill="#040d18"/>
-<rect x="246" y="34" width="10" height="8" rx="1" fill="#040d18"/>
+<path d="M194 51 L270 51 L284 56 L294 56 L294 59 L186 59 L186 55 Z" fill="#07111d"/>
+<path d="M200 46 L270 46 L279 51 L200 51 Z" fill="#16314d"/>
+<rect x="232" y="33" width="20" height="13" rx="2" fill="#d9e3ea"/>
+<rect x="246" y="24" width="9" height="10" rx="1" fill="#173454"/>
+<line x1="250" y1="17" x2="250" y2="24" stroke="#607d99" stroke-width="1"/>
 <rect x="80" y="87" width="320" height="48" rx="4" fill="#040e18"/>
 <rect x="80" y="87" width="320" height="48" rx="4" fill="none" stroke="#0d2030" stroke-width="1.5"/>
 <circle cx="240" cy="108" r="18" fill="#030a12"/>
@@ -654,9 +677,12 @@ sunrise:`<rect width="480" height="145" fill="#040e1c"/>
 <path d="M0 83 Q60 79 120 83 Q180 87 240 83 Q300 79 360 83 Q420 87 480 83" fill="none" stroke="#0d3060" stroke-width="1" opacity=".5"/>
 <path d="M0 98 Q70 94 140 98 Q210 102 280 98 Q350 94 420 98 Q455 102 480 98" fill="none" stroke="#0a2440" stroke-width="1" opacity=".4"/>
 </g>
-<rect x="30" y="63" width="70" height="10" rx="2" fill="#030b18"/>
-<rect x="75" y="56" width="18" height="8" rx="1" fill="#030b18"/>
-<line x1="84" y1="46" x2="84" y2="56" stroke="#040d1c" stroke-width="1"/>`,
+<path d="M20 68 L112 68 L126 73 L138 73 L138 77 L14 77 L14 72 Z" fill="#08111d"/>
+<path d="M28 62 L112 62 L121 68 L28 68 Z" fill="#16314c"/>
+<rect x="70" y="49" width="20" height="13" rx="2" fill="#d9e3ea"/>
+<rect x="84" y="39" width="10" height="10" rx="1" fill="#173454"/>
+<line x1="89" y1="30" x2="89" y2="39" stroke="#607d99" stroke-width="1"/>
+<circle cx="118" cy="70" r="1.6" fill="#d4a017"/>`,
 };
 
 // ===== KRİZ SONLARI =====
