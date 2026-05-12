@@ -363,12 +363,13 @@ night:`<rect width="480" height="145" fill="#020810"/>
 <path d="M204 82 Q246 78 306 84" fill="none" stroke="#0c2238" stroke-width="1" opacity=".16"/>`,
 
 storm:`<rect width="480" height="145" fill="#020a14"/>
-<ellipse cx="100" cy="18" rx="80" ry="24" fill="#0a1828" opacity=".95"/>
-<ellipse cx="200" cy="10" rx="100" ry="21" fill="#081420" opacity=".9"/>
-<ellipse cx="320" cy="16" rx="90" ry="23" fill="#0a1828" opacity=".95"/>
-<ellipse cx="430" cy="9" rx="70" ry="19" fill="#060f18"/>
-<polyline points="200,13 190,43 198,43 183,73" fill="none" stroke="#d4d8e0" stroke-width="1.5" opacity=".8"/>
-<polyline points="340,8 330,36 338,36 322,63" fill="none" stroke="#c0c8d8" stroke-width="1" opacity=".5"/>
+<rect width="480" height="145" fill="rgba(235,245,255,.06)" class="storm-flash"/>
+<ellipse cx="92" cy="20" rx="92" ry="26" fill="#0a1828" opacity=".96"/>
+<ellipse cx="212" cy="10" rx="116" ry="24" fill="#081420" opacity=".94"/>
+<ellipse cx="330" cy="18" rx="102" ry="25" fill="#0a1828" opacity=".96"/>
+<ellipse cx="438" cy="10" rx="76" ry="21" fill="#060f18"/>
+<polyline points="198,11 188,38 197,38 181,71 194,56 189,56" fill="none" stroke="#e6ebf5" stroke-width="2" opacity=".92" class="lightning-flash"/>
+<polyline points="342,6 333,30 341,30 324,60 336,48 332,48" fill="none" stroke="#d7deec" stroke-width="1.5" opacity=".72" class="lightning-flash2"/>
 <line x1="40" y1="48" x2="34" y2="68" stroke="#0d3060" stroke-width="1" opacity=".6"/>
 <line x1="80" y1="43" x2="74" y2="63" stroke="#0d3060" stroke-width="1" opacity=".5"/>
 <line x1="130" y1="48" x2="124" y2="68" stroke="#0d3060" stroke-width="1" opacity=".6"/>
@@ -377,12 +378,15 @@ storm:`<rect width="480" height="145" fill="#020a14"/>
 <line x1="360" y1="44" x2="354" y2="64" stroke="#0d3060" stroke-width="1" opacity=".5"/>
 <line x1="430" y1="48" x2="424" y2="68" stroke="#0d3060" stroke-width="1" opacity=".6"/>
 <rect y="70" width="480" height="75" fill="#041020"/>
-<path d="M0 78 Q20 66 40 78 Q60 90 80 78 Q100 66 120 78 Q140 90 160 78 Q180 66 200 78 Q220 90 240 78 Q260 66 280 78 Q300 90 320 78 Q340 66 360 78 Q380 90 400 78 Q420 66 440 78 Q460 90 480 78" fill="none" stroke="#0d3060" stroke-width="2.5" opacity=".8"/>
-<path d="M0 96 Q25 82 50 96 Q75 110 100 96 Q125 82 150 96 Q175 110 200 96 Q225 82 250 96 Q275 110 300 96 Q325 82 350 96 Q375 110 400 96 Q425 82 450 96 Q475 110 480 96" fill="none" stroke="#0a2848" stroke-width="2" opacity=".7"/>
-<path d="M20 80 Q28 76 36 80" fill="none" stroke="#8ab0c8" stroke-width="1.5" opacity=".5"/>
-<path d="M100 76 Q108 72 116 76" fill="none" stroke="#8ab0c8" stroke-width="1.5" opacity=".4"/>
-<path d="M220 82 Q228 78 236 82" fill="none" stroke="#8ab0c8" stroke-width="1.5" opacity=".5"/>
-<path d="M340 78 Q348 74 356 78" fill="none" stroke="#8ab0c8" stroke-width="1.5" opacity=".4"/>`,
+<g class="storm-wave">
+<path d="M0 78 Q18 58 36 78 Q54 98 72 78 Q90 58 108 78 Q126 98 144 78 Q162 58 180 78 Q198 98 216 78 Q234 58 252 78 Q270 98 288 78 Q306 58 324 78 Q342 98 360 78 Q378 58 396 78 Q414 98 432 78 Q450 58 468 78 Q474 86 480 78" fill="none" stroke="#1a477a" stroke-width="3.2" opacity=".92"/>
+<path d="M0 98 Q20 74 40 98 Q60 122 80 98 Q100 74 120 98 Q140 122 160 98 Q180 74 200 98 Q220 122 240 98 Q260 74 280 98 Q300 122 320 98 Q340 74 360 98 Q380 122 400 98 Q420 74 440 98 Q460 122 480 98" fill="none" stroke="#10365d" stroke-width="2.6" opacity=".82"/>
+<path d="M0 116 Q24 98 48 116 Q72 134 96 116 Q120 98 144 116 Q168 134 192 116 Q216 98 240 116 Q264 134 288 116 Q312 98 336 116 Q360 134 384 116 Q408 98 432 116 Q456 134 480 116" fill="none" stroke="#0b2743" stroke-width="2.2" opacity=".72"/>
+</g>
+<path d="M18 82 Q30 76 42 82" fill="none" stroke="#b7d0e2" stroke-width="1.8" opacity=".62"/>
+<path d="M96 76 Q108 70 120 76" fill="none" stroke="#b7d0e2" stroke-width="1.8" opacity=".54"/>
+<path d="M214 84 Q226 78 238 84" fill="none" stroke="#b7d0e2" stroke-width="1.8" opacity=".62"/>
+<path d="M336 78 Q348 72 360 78" fill="none" stroke="#b7d0e2" stroke-width="1.8" opacity=".54"/>`,
 
 radar:`<rect width="480" height="145" fill="#020d08"/>
 <circle cx="240" cy="72" r="66" fill="#030f06"/>
