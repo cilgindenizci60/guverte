@@ -299,28 +299,6 @@ const CREW={
   gazsubay:{name:"Gaz Kontrol Subayı Elif",icon:"🔵",title:"IGF Sertifikalı LNG Sorumlusu"},
 };
 
-const COMPANY_THEMES = {
-  kuru:{name:'Arel Denizcilik', line:'Dry cargo fleet · operational discipline first', color:'#7aa0c0'},
-  tanker:{name:'Marmara Tankers', line:'Cargo integrity · manifold precision', color:'#c9952a'},
-  kont:{name:'Northline Container', line:'Schedule pressure · route discipline', color:'#6fa8dc'},
-  roro:{name:'Transit Ro-Ro', line:'Fast turnaround · deck safety', color:'#5dbf8a'},
-  bulk:{name:'Pelorus Bulk', line:'Draft, ballast, weather thinking', color:'#b8c8d8'},
-  lng:{name:'Blue Flame Gas', line:'IGF culture · zero shortcut mindset', color:'#8bd3ff'}
-};
-
-function getPlayerPortrait(){
-  const iconMap={kuru:'⚓', tanker:'🛢️', kont:'📦', roro:'🚛', bulk:'⛏️', lng:'🔷'};
-  return iconMap[selType] || '⚓';
-}
-
-function getCrewPortraitIcon(who){
-  const map = {
-    anlatici:'📖', suvari:'🎖️', z1:'🧭', z2:'🗺️', z3:'🚨', carkci:'⚙️', bas2:'🔧',
-    lostromo:'🪢', silici:'🧹', yagci:'🛢️', asci:'🍳', hasan:'👷', musa:'🛟', gazsubay:'🔵'
-  };
-  return map[who] || '⚓';
-}
-
 // ===== GRAFİKLER =====
 const GFX={
 harbor:`<rect width="480" height="145" fill="#040d1a"/>
@@ -4909,7 +4887,6 @@ function showEnd(){
   stopAllMusic();
   document.getElementById('game').style.display='none';
   document.getElementById('endscr').style.display='flex';
-  setTimeout(renderCareerSummary, 60);
 
   const avg=(stats.cesaret+stats.bilgi+stats.sayginlik)/3;
   const cesurC=choicesMade.filter(c=>c.tag==='cesur').length;
@@ -4966,46 +4943,6 @@ function showEnd(){
 }
 
 // ===== BAŞLAT =====
-function renderCareerSummary(){
-  const badgesEl = document.getElementById('career-badges');
-  const metaEl = document.getElementById('career-meta');
-  if(!badgesEl || !metaEl) return;
-  const badges = [];
-  if(playerFlags.securityBreach===0) badges.push('ISPS Temiz Sicil');
-  if(playerFlags.nearMiss===0) badges.push('Sessiz Emniyet');
-  if(playerFlags.sextantGood>0) badges.push('Sextant Eli');
-  if(stats.sayginlik>=70) badges.push('Ekip Guveni');
-  if(stats.bilgi>=70) badges.push('Seyir Disiplini');
-  if(stats.cesaret>=70) badges.push('Sogukkanli Vardiya');
-  if(stats.dinclik>=65) badges.push('Dayanikli Tempo');
-  if(choicesMade.filter(c=>c.tag==='kritik').length>=6) badges.push('Karar Kalitesi');
-  if(!badges.length) badges.push('Ilk Kontrat Tamamlandi');
-  badgesEl.innerHTML = badges.map(b=>`<span class="career-badge">${b}</span>`).join('');
-
-  const strongest = [
-    ['Cesaret', stats.cesaret],
-    ['Bilgi', stats.bilgi],
-    ['Sayginlik', stats.sayginlik],
-    ['Dinclik', stats.dinclik]
-  ].sort((a,b)=>b[1]-a[1])[0][0];
-  const branch = stats.bilgi>=stats.cesaret && stats.bilgi>=stats.sayginlik ? 'Kopruustu / planlama' :
-    stats.sayginlik>=stats.cesaret ? 'Ekip koordinasyonu' : 'Kriz ve saha refleksi';
-  const trusted = Object.entries(crewTrust||{}).sort((a,b)=>(b[1]||0)-(a[1]||0)).slice(0,2).map(([k])=>CREW_DEFS[k]?.name).filter(Boolean).join(', ') || 'Ekip seni tanimaya basladi';
-  metaEl.innerHTML = `<strong>En guclu taraf:</strong> ${strongest}<br><strong>YatkÄ±n oldugu hat:</strong> ${branch}<br><strong>En yakin iliskiler:</strong> ${trusted}`;
-}
-
-function showCinematicIntro(){
-  const wrap = document.getElementById('intro-cinematic');
-  if(!wrap) return;
-  const stObj = STYPES.find(x=>x.key===selType) || STYPES[0];
-  const weather = selectedStartScenario?.subPrefix || 'Sessiz sabah';
-  document.getElementById('intro-cinematic-port').textContent = selectedStartPort?.name || 'Ilk Liman';
-  document.getElementById('intro-cinematic-meta').textContent = `${selYear} · ${stObj.nm} · ${selectedStartScenario?.time||'06:00'}`;
-  document.getElementById('intro-cinematic-weather').innerHTML = `${weather}<br>${sn} · ${COMPANY_THEMES[selType]?.name || 'Gemi Sirketi'}<br>Ilk kontrat gunu basliyor.`;
-  wrap.classList.add('show');
-  setTimeout(()=>wrap.classList.remove('show'), 2400);
-}
-
 function beginGame(){
   const ni=document.getElementById('nameinp').value.trim();
   const si=document.getElementById('shipnameinp').value.trim();
@@ -5050,15 +4987,12 @@ function beginGame(){
 
   document.getElementById('intro').style.display='none';
   const g=document.getElementById('game');g.style.display='flex';g.style.flexDirection='column';
-  showCinematicIntro();
   setTimeout(()=>{if(window._drawClock)window._drawClock();},50);
   setTimeout(()=>{if(window._drawClock)window._drawClock();},300);
   setTimeout(()=>{if(window._drawClock)window._drawClock();},600);
   updateStats({});
   document.getElementById('contract-fill').style.width='0%';
   document.getElementById('tb-photos-count').textContent='0';
-  const avatar = document.getElementById('avatar');
-  if(avatar) avatar.textContent = getPlayerPortrait();
   document.getElementById('contract-days').textContent=`0 / ${contractTotal} GÜN`;
   renderScene(0);
   setTimeout(()=>{const cv=document.getElementById('clock-canvas');if(cv){const ev=new Event('resize');window.dispatchEvent(ev);}},100);
@@ -6045,19 +5979,6 @@ const COLREG_HINTS = {
 // ===== SİSTEMLERİ ENTEGRE ET =====
 // Bu fonksiyon mevcut renderScene'e ek olarak çalışır
 function onSceneRender(sc){
-  const speakerPortrait = document.getElementById('speaker-portrait');
-  if(speakerPortrait) speakerPortrait.textContent = getCrewPortraitIcon(sc.who);
-  const avatar = document.getElementById('avatar');
-  if(avatar) avatar.textContent = getPlayerPortrait();
-  const companyLine = document.getElementById('companyline');
-  const company = COMPANY_THEMES[selType] || COMPANY_THEMES.kuru;
-  if(companyLine) companyLine.textContent = company.name+' · '+company.line;
-  const sceneArea = document.getElementById('scene-area');
-  if(sceneArea){
-    sceneArea.classList.remove('scene-fade');
-    void sceneArea.offsetWidth;
-    sceneArea.classList.add('scene-fade');
-  }
   // Hava güncelle
   updateWeather(sc.gfx);
   // Harita pozisyonunu güncelle
@@ -6527,3 +6448,6 @@ function playSceneAudio(sc){
 document.getElementById('nameinp').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('shipnameinp').focus();});
 document.getElementById('shipnameinp').addEventListener('keydown',e=>{if(e.key==='Enter')beginGame();});
 buildIntro();
+
+
+
