@@ -46,145 +46,84 @@
       cx.scale(cfg.scale, cfg.scale);
       cx.fillStyle = cfg.hull;
       cx.beginPath();
-      cx.moveTo(-18,10);
-      cx.quadraticCurveTo(-10,2,8,0);
-      cx.lineTo(124,0);
-      cx.quadraticCurveTo(144,0,158,5);
-      cx.lineTo(176,6);
-      cx.lineTo(188,12);
-      cx.lineTo(180,15);
-      cx.lineTo(-14,15);
-      cx.quadraticCurveTo(-22,14,-24,12);
+      cx.moveTo(-10,8);
+      cx.lineTo(6,2);
+      cx.lineTo(108,2);
+      cx.lineTo(122,6);
+      cx.lineTo(138,6);
+      cx.lineTo(146,12);
+      cx.lineTo(-12,12);
       cx.closePath();
       cx.fill();
       cx.fillStyle = cfg.shadow;
       cx.beginPath();
-      cx.moveTo(6,11);
-      cx.lineTo(180,11);
-      cx.lineTo(184,14);
-      cx.lineTo(-6,14);
+      cx.moveTo(18,10);
+      cx.lineTo(136,10);
+      cx.lineTo(143,12);
+      cx.lineTo(6,12);
       cx.closePath();
       cx.fill();
-      cx.strokeStyle = 'rgba(205,225,240,0.18)';
-      cx.lineWidth = 1.2;
-      cx.beginPath();
-      cx.moveTo(10,1.5);
-      cx.lineTo(132,1.5);
-      cx.stroke();
-      cx.fillStyle = '#0d1826';
-      cx.fillRect(24,-2,96,3);
-
       if(cfg.type==='kont'){
-        const contColors=['#8f3a36','#315f92','#bc7a33','#48674a','#6e434f'];
-        [24,46,68,90].forEach((sx,i)=>{
+        const contColors=['#9c3f36','#2d5f96','#c27b2f','#305743'];
+        [18,38,58,78].forEach((sx,i)=>{
           cx.fillStyle=contColors[i%contColors.length];
-          cx.fillRect(sx,-12,18,12);
-          cx.fillRect(sx,-26,18,12);
-          cx.fillStyle='rgba(230,240,248,.15)';
-          cx.fillRect(sx+1,-25,16,1.5);
+          cx.fillRect(sx,-10,16,12);
+          cx.fillRect(sx,-24,16,12);
         });
         cx.fillStyle = cfg.deck;
-        cx.fillRect(132,-22,28,22);
-        cx.fillRect(145,-38,12,16);
-        cx.fillStyle = '#9ec8ea';
-        cx.fillRect(138,-15,7,5);
-        cx.fillRect(146,-15,7,5);
-        cx.fillRect(154,-15,5,5);
-        cx.fillStyle = '#3d4d60';
-        cx.fillRect(149,-33,10,18);
+        cx.fillRect(102,-18,18,20);
+        cx.fillRect(112,-28,8,10);
       }else if(cfg.type==='tanker'){
-        cx.fillStyle = '#73879d';
-        cx.fillRect(28,-8,78,3);
-        cx.fillRect(32,-13,70,2.4);
-        cx.fillRect(36,-3.5,62,1.6);
-        cx.strokeStyle = '#73879d';
-        cx.lineWidth = 1.2;
+        cx.fillStyle = '#6f8299';
+        cx.fillRect(18,-4,70,2);
+        cx.fillRect(26,-8,56,2);
+        cx.fillStyle = cfg.deck;
+        cx.fillRect(102,-16,20,18);
+        cx.fillRect(112,-26,7,10);
+        cx.strokeStyle = '#6d7f96';
+        cx.lineWidth = 1;
         cx.beginPath();
-        cx.moveTo(58,-13); cx.lineTo(58,-28); cx.lineTo(82,-28); cx.lineTo(82,-13);
-        cx.moveTo(70,-13); cx.lineTo(70,-24);
+        cx.moveTo(56,-8); cx.lineTo(56,-18); cx.lineTo(74,-18); cx.lineTo(74,-8);
         cx.stroke();
-        cx.fillStyle = cfg.deck;
-        cx.fillRect(136,-24,26,24);
-        cx.fillRect(148,-40,12,16);
-        cx.fillStyle = '#9ec8ea';
-        cx.fillRect(141,-16,6,5);
-        cx.fillRect(149,-16,6,5);
-        cx.fillStyle = '#a53a2f';
-        cx.fillRect(150,-35,10,19);
-        cx.fillStyle = '#e7dcc1';
-        cx.fillRect(150,-29,10,3);
       }else if(cfg.type==='lng'){
-        ['#8fc4e4','#a8d8f2','#8fc4e4'].forEach((col,i)=>{
-          const sx = 44 + i*24;
-          cx.fillStyle = col;
-          cx.beginPath(); cx.ellipse(sx,-10,11,9,0,0,Math.PI*2); cx.fill();
-          cx.strokeStyle = 'rgba(215,239,252,.28)';
-          cx.stroke();
-        });
+        cx.fillStyle = '#95c7e8';
+        [34,56,78].forEach((sx)=>{ cx.beginPath(); cx.ellipse(sx,-8,10,8,0,0,Math.PI*2); cx.fill(); });
         cx.fillStyle = cfg.deck;
-        cx.fillRect(136,-24,26,24);
-        cx.fillRect(148,-40,12,16);
-        cx.fillStyle = '#a1d7f8';
-        cx.fillRect(141,-16,6,5);
-        cx.fillRect(149,-16,6,5);
-        cx.fillStyle = '#2f98ae';
-        cx.fillRect(149,-35,10,19);
+        cx.fillRect(104,-18,18,20);
+        cx.fillRect(112,-28,8,10);
       }else if(cfg.type==='roro'){
-        cx.fillStyle = '#dce4eb';
+        cx.fillStyle = cfg.deck;
         cx.beginPath();
-        cx.moveTo(24,-30); cx.lineTo(116,-30); cx.lineTo(132,-18); cx.lineTo(146,-18); cx.lineTo(146,0); cx.lineTo(24,0); cx.closePath();
+        cx.moveTo(18,-20); cx.lineTo(84,-20); cx.lineTo(94,-14); cx.lineTo(108,-14); cx.lineTo(108,2); cx.lineTo(18,2); cx.closePath();
         cx.fill();
-        cx.fillStyle = '#90a3b6';
-        cx.fillRect(34,-24,52,7);
-        cx.fillRect(36,-13,88,5);
-        cx.fillStyle = '#7b3530';
-        cx.fillRect(154,-7,16,11);
-        cx.beginPath();
-        cx.moveTo(154,4); cx.lineTo(170,4); cx.lineTo(166,10); cx.lineTo(154,10); cx.closePath();
-        cx.fill();
-        cx.fillStyle = '#267891';
-        cx.fillRect(145,-30,10,14);
+        cx.fillStyle = '#d6dde7';
+        cx.fillRect(28,-16,46,6);
       }else{
-        cx.fillStyle = '#51697d';
-        [22,46,70,94].forEach((sx)=>cx.fillRect(sx,-12,20,10));
-        cx.fillStyle = '#708496';
-        cx.fillRect(28,-5,110,2);
-        cx.strokeStyle = '#778da1';
-        cx.lineWidth = 1.1;
-        [48,82,116].forEach((sx)=>{
+        cx.fillStyle = '#4d6178';
+        [22,46,70].forEach((sx)=>cx.fillRect(sx,-7,16,6));
+        cx.fillStyle = cfg.deck;
+        cx.fillRect(102,-18,18,20);
+        cx.fillRect(112,-28,8,10);
+        cx.strokeStyle = '#70839a';
+        cx.lineWidth = 1;
+        [38,66,94].forEach((sx)=>{
           cx.beginPath();
-          cx.moveTo(sx,-12); cx.lineTo(sx,-30);
-          cx.lineTo(sx+8,-18);
+          cx.moveTo(sx,-7); cx.lineTo(sx,-22);
+          cx.lineTo(sx+7,-12);
           cx.stroke();
         });
-        cx.fillStyle = cfg.deck;
-        cx.fillRect(142,-26,24,26);
-        cx.fillRect(152,-40,12,14);
-        cx.fillStyle = '#9ec8ea';
-        cx.fillRect(147,-17,6,5);
-        cx.fillRect(154,-17,6,5);
       }
-      cx.strokeStyle = 'rgba(120,146,170,0.45)';
-      cx.lineWidth = .9;
-      cx.beginPath();
-      cx.moveTo(156,-54); cx.lineTo(156,-39);
-      cx.moveTo(156,-47); cx.lineTo(168,-42);
-      cx.stroke();
       cx.fillStyle = cfg.light;
       cx.beginPath();
-      cx.arc(156,-54,1.8,0,Math.PI*2);
+      cx.arc(118,-9,1.8,0,Math.PI*2);
       cx.fill();
-      cx.fillStyle = '#c93030';
-      cx.beginPath(); cx.arc(14,3.2,1.5,0,Math.PI*2); cx.fill();
-      cx.fillStyle = '#5dbf8a';
-      cx.beginPath(); cx.arc(170,5,1.5,0,Math.PI*2); cx.fill();
       cx.strokeStyle = 'rgba(170,210,240,0.18)';
       cx.lineWidth = 1;
       cx.beginPath();
-      cx.moveTo(-22,13);
-      cx.quadraticCurveTo(-36,8,-44,14);
-      cx.moveTo(-15,16);
-      cx.quadraticCurveTo(-28,13,-36,18);
+      cx.moveTo(-18,11);
+      cx.quadraticCurveTo(-30,8,-36,13);
+      cx.moveTo(-14,13);
+      cx.quadraticCurveTo(-24,11,-30,15);
       cx.stroke();
       cx.restore();
     };
@@ -457,11 +396,10 @@ radar:`<rect width="480" height="145" fill="#020d08"/>
 <line x1="240" y1="72" x2="240" y2="8" stroke="#1aff50" stroke-width="1.5" opacity=".8"/>
 <path d="M240 72 L240 8 A64 64 0 0 1 296 102 Z" fill="#1aff50" opacity=".06"/>
 </g>
-<circle cx="240" cy="72" r="60" fill="none" stroke="#1aff50" stroke-width=".8" opacity=".16" class="blink"/>
 <circle cx="266" cy="48" r="3" fill="#1aff50" opacity=".9" class="blink"/>
-<circle cx="280" cy="88" r="2.5" fill="#1aff50" opacity=".7" class="blink"/>
-<circle cx="207" cy="60" r="2" fill="#1aff50" opacity=".5" class="blink"/>
-<circle cx="250" cy="106" r="2" fill="#1aff50" opacity=".6" class="blink"/>
+<circle cx="280" cy="88" r="2.5" fill="#1aff50" opacity=".7"/>
+<circle cx="207" cy="60" r="2" fill="#1aff50" opacity=".5"/>
+<circle cx="250" cy="106" r="2" fill="#1aff50" opacity=".6"/>
 <circle cx="240" cy="72" r="3" fill="#6fa8dc"/>
 <line x1="240" y1="72" x2="266" y2="48" stroke="#d4a017" stroke-width="1" stroke-dasharray="3,2" opacity=".7"/>
 <text x="243" y="10" fill="#0d3a18" font-size="8" font-family="monospace">N</text>
@@ -522,15 +460,14 @@ ais_panel:`<rect width="480" height="145" fill="#07121d"/>
 <rect x="42" y="30" width="176" height="84" rx="4" fill="#051522"/>
 <circle cx="130" cy="72" r="32" fill="none" stroke="#0d3a18" stroke-width="1.2"/>
 <circle cx="130" cy="72" r="20" fill="none" stroke="#0d3a18" stroke-width=".9"/>
-<circle cx="154" cy="56" r="3" fill="#1aff50" class="blink"/><circle cx="112" cy="86" r="2.6" fill="#d4a017" class="blink"/><circle cx="142" cy="88" r="2.4" fill="#6fa8dc" class="blink"/>
-<path d="M130 72 L154 56" stroke="#6fa8dc" stroke-width="1" stroke-dasharray="3,2" class="blink"/>
+<circle cx="154" cy="56" r="3" fill="#1aff50"/><circle cx="112" cy="86" r="2.6" fill="#d4a017"/><circle cx="142" cy="88" r="2.4" fill="#6fa8dc"/>
+<path d="M130 72 L154 56" stroke="#6fa8dc" stroke-width="1" stroke-dasharray="3,2"/>
 <rect x="236" y="30" width="200" height="84" rx="4" fill="#051522"/>
 <text x="248" y="44" fill="#81f7b8" font-size="7" font-family="monospace">AIS TARGET LIST</text>
 <text x="248" y="60" fill="#d4a017" font-size="7" font-family="monospace">MV AEGEAN STAR   CPA 1.2</text>
 <text x="248" y="74" fill="#6fa8dc" font-size="7" font-family="monospace">TANKER LARA      TCPA 14</text>
 <text x="248" y="88" fill="#5dbf8a" font-size="7" font-family="monospace">PILOT BOAT       2.4 NM</text>
-<text x="248" y="102" fill="#c97070" font-size="7" font-family="monospace" class="alarm">DATA OFFSET ?</text>
-<circle cx="428" cy="40" r="2.4" fill="#81f7b8" class="blink"/>
+<text x="248" y="102" fill="#c97070" font-size="7" font-family="monospace">DATA OFFSET ?</text>
 <text x="34" y="14" fill="#81f7b8" font-size="8" font-family="monospace">AIS TERMINAL</text>`,
 
 gyro_panel:`<rect width="480" height="145" fill="#06101a"/>
@@ -599,9 +536,9 @@ bnwas_panel:`<rect width="480" height="145" fill="#061019"/>
 <rect x="94" y="28" width="292" height="88" rx="8" fill="#071828" stroke="#0d2a48" stroke-width="2"/>
 <text x="112" y="48" fill="#81f7b8" font-size="8" font-family="monospace">BNWAS PANEL</text>
 <rect x="112" y="62" width="110" height="26" rx="4" fill="#113050"/><text x="132" y="79" fill="#d9e3ea" font-size="10" font-family="monospace">WATCH ACTIVE</text>
-<circle cx="278" cy="76" r="10" fill="#d4a017" opacity=".9" class="blink"/><text x="271" y="80" fill="#05111b" font-size="9" font-family="monospace">ACK</text>
-<text x="112" y="102" fill="#c97070" font-size="8" font-family="monospace" class="alarm">TIMER 02:30</text>
-<text x="248" y="102" fill="#6fa8dc" font-size="8" font-family="monospace">STAGE 1 READY</text><circle cx="232" cy="98" r="2.2" fill="#6fa8dc" class="blink"/>`,
+<circle cx="278" cy="76" r="10" fill="#d4a017" opacity=".9"/><text x="271" y="80" fill="#05111b" font-size="9" font-family="monospace">ACK</text>
+<text x="112" y="102" fill="#c97070" font-size="8" font-family="monospace">TIMER 02:30</text>
+<text x="248" y="102" fill="#6fa8dc" font-size="8" font-family="monospace">STAGE 1 READY</text>`,
 
 gmdss_panel:`<rect width="480" height="145" fill="#06111c"/>
 <rect x="34" y="22" width="412" height="102" rx="8" fill="#071828" stroke="#10304e" stroke-width="2"/>
@@ -4047,21 +3984,19 @@ function getShipDeckDetails(type){
   const shipType=getShipVisualType(type);
   if(shipType==='kont'){
     return `
-      <rect x="22" y="-6" width="108" height="3" rx="1" fill="#5c6d82" opacity=".7"/>
-      <rect x="20" y="-22" width="17" height="15" rx="1.4" fill="#8f3d34"/>
-      <rect x="39" y="-22" width="17" height="15" rx="1.4" fill="#295f93"/>
-      <rect x="58" y="-22" width="17" height="15" rx="1.4" fill="#3a6f47"/>
-      <rect x="77" y="-22" width="17" height="15" rx="1.4" fill="#b16d2d"/>
-      <rect x="96" y="-22" width="17" height="15" rx="1.4" fill="#7a485d"/>
-      <rect x="115" y="-22" width="17" height="15" rx="1.4" fill="#3f667f"/>
-      <rect x="20" y="-39" width="17" height="15" rx="1.4" fill="#6f2f28"/>
-      <rect x="39" y="-39" width="17" height="15" rx="1.4" fill="#224b74"/>
-      <rect x="58" y="-39" width="17" height="15" rx="1.4" fill="#315f3e"/>
-      <rect x="77" y="-39" width="17" height="15" rx="1.4" fill="#935821"/>
-      <rect x="96" y="-39" width="17" height="15" rx="1.4" fill="#663c4d"/>
-      <rect x="115" y="-39" width="17" height="15" rx="1.4" fill="#33536a"/>
-      <path d="M20 -24 h112" stroke="rgba(235,240,248,.18)" stroke-width=".8"/>
-      <path d="M20 -7 h112" stroke="rgba(235,240,248,.18)" stroke-width=".8"/>
+      <rect x="20" y="-6" width="104" height="3" rx="1" fill="#5c6d82" opacity=".7"/>
+      <rect x="18" y="-20" width="16" height="14" rx="1.5" fill="#8f3d34"/>
+      <rect x="36" y="-20" width="16" height="14" rx="1.5" fill="#295f93"/>
+      <rect x="54" y="-20" width="16" height="14" rx="1.5" fill="#3a6f47"/>
+      <rect x="72" y="-20" width="16" height="14" rx="1.5" fill="#b16d2d"/>
+      <rect x="90" y="-20" width="16" height="14" rx="1.5" fill="#7a485d"/>
+      <rect x="108" y="-20" width="16" height="14" rx="1.5" fill="#3f667f"/>
+      <rect x="18" y="-36" width="16" height="14" rx="1.5" fill="#6f2f28"/>
+      <rect x="36" y="-36" width="16" height="14" rx="1.5" fill="#224b74"/>
+      <rect x="54" y="-36" width="16" height="14" rx="1.5" fill="#315f3e"/>
+      <rect x="72" y="-36" width="16" height="14" rx="1.5" fill="#935821"/>
+      <rect x="90" y="-36" width="16" height="14" rx="1.5" fill="#663c4d"/>
+      <rect x="108" y="-36" width="16" height="14" rx="1.5" fill="#33536a"/>
       <rect x="134" y="-28" width="28" height="28" rx="2.5" fill="#dce4eb"/>
       <rect x="146" y="-42" width="14" height="14" rx="2" fill="#dce4eb"/>
       <rect x="140" y="-18" width="7" height="6" rx="1" fill="#8fc6ef"/>
@@ -4074,16 +4009,12 @@ function getShipDeckDetails(type){
   }
   if(shipType==='tanker'){
     return `
-      <rect x="22" y="-8" width="92" height="3" rx="1.5" fill="#8190a1"/>
-      <rect x="30" y="-13" width="74" height="2.2" rx="1" fill="#677789"/>
-      <rect x="32" y="-4" width="78" height="1.6" rx=".8" fill="#92a2b0" opacity=".75"/>
-      <line x1="56" y1="-13" x2="56" y2="-29" stroke="#6a7a8d" stroke-width="1.2"/>
-      <line x1="80" y1="-13" x2="80" y2="-29" stroke="#6a7a8d" stroke-width="1.2"/>
-      <line x1="56" y1="-29" x2="80" y2="-29" stroke="#6a7a8d" stroke-width="1.2"/>
-      <line x1="68" y1="-13" x2="68" y2="-25" stroke="#6a7a8d" stroke-width="1"/>
-      <circle cx="36" cy="-7" r="1.5" fill="#d48e2a"/>
-      <circle cx="108" cy="-7" r="1.5" fill="#d48e2a"/>
-      <path d="M42 -10 h52" stroke="#a1b0bf" stroke-width="1" opacity=".8"/>
+      <rect x="18" y="-8" width="88" height="3" rx="1.5" fill="#8190a1"/>
+      <rect x="28" y="-12" width="70" height="2" rx="1" fill="#677789"/>
+      <rect x="26" y="-4" width="76" height="1.6" rx=".8" fill="#92a2b0" opacity=".75"/>
+      <line x1="54" y1="-12" x2="54" y2="-26" stroke="#6a7a8d" stroke-width="1.2"/>
+      <line x1="76" y1="-12" x2="76" y2="-24" stroke="#6a7a8d" stroke-width="1.2"/>
+      <line x1="54" y1="-26" x2="76" y2="-26" stroke="#6a7a8d" stroke-width="1.2"/>
       <rect x="132" y="-24" width="26" height="24" rx="2.5" fill="#dde5ec"/>
       <rect x="143" y="-38" width="13" height="14" rx="2" fill="#dde5ec"/>
       <rect x="138" y="-15" width="6" height="5" rx="1" fill="#9cc8ef"/>
@@ -4091,6 +4022,7 @@ function getShipDeckDetails(type){
       <rect x="145" y="-34" width="10" height="17" rx="1.5" fill="#a3362d"/>
       <rect x="145" y="-28" width="10" height="3" fill="#e5d7ba"/>
       <line x1="149" y1="-50" x2="149" y2="-38" stroke="#7a92a8" stroke-width="1.2"/>
+      <circle cx="110" cy="-7" r="2.1" fill="#d48e2a"/>
     `;
   }
   if(shipType==='lng'){
@@ -4098,8 +4030,6 @@ function getShipDeckDetails(type){
       <ellipse cx="42" cy="-10" rx="12" ry="9" fill="#8fc6ef"/>
       <ellipse cx="66" cy="-10" rx="12" ry="9" fill="#a8dafd"/>
       <ellipse cx="90" cy="-10" rx="12" ry="9" fill="#8fc6ef"/>
-      <path d="M30 -10 h72" stroke="rgba(223,248,255,.28)" stroke-width="1"/>
-      <path d="M42 -19 v18 M66 -19 v18 M90 -19 v18" stroke="rgba(223,248,255,.15)" stroke-width=".8"/>
       <rect x="130" y="-24" width="26" height="24" rx="2.5" fill="#e3e9ef"/>
       <rect x="142" y="-38" width="13" height="14" rx="2" fill="#e3e9ef"/>
       <rect x="136" y="-15" width="6" height="5" rx="1" fill="#9fd6ff"/>
@@ -4111,10 +4041,9 @@ function getShipDeckDetails(type){
   }
   if(shipType==='roro'){
     return `
-      <path d="M18 -30 L110 -30 L128 -18 L142 -18 L142 0 L18 0 Z" fill="#dfe6ed"/>
-      <rect x="30" y="-24" width="52" height="7" rx="1.5" fill="#95a7b8"/>
-      <rect x="30" y="-14" width="90" height="5" rx="1.5" fill="#7f90a2"/>
-      <path d="M26 -5 h100" stroke="rgba(120,138,154,.45)" stroke-width="1"/>
+      <path d="M18 -30 L106 -30 L122 -18 L136 -18 L136 0 L18 0 Z" fill="#dfe6ed"/>
+      <rect x="28" y="-24" width="48" height="7" rx="1.5" fill="#95a7b8"/>
+      <rect x="28" y="-14" width="84" height="5" rx="1.5" fill="#7f90a2"/>
       <path d="M146 -6 L162 -6 L162 5 L148 5 Z" fill="#7e3b34"/>
       <path d="M148 5 L162 5 L158 10 L148 10 Z" fill="#5c2420"/>
       <rect x="142" y="-30" width="10" height="14" rx="1.5" fill="#2e7f96"/>
@@ -4123,18 +4052,17 @@ function getShipDeckDetails(type){
     `;
   }
   return `
-    <rect x="18" y="-13" width="24" height="10" rx="1.5" fill="#52687c"/>
-    <rect x="46" y="-13" width="24" height="10" rx="1.5" fill="#52687c"/>
-    <rect x="74" y="-13" width="24" height="10" rx="1.5" fill="#52687c"/>
-    <rect x="102" y="-13" width="24" height="10" rx="1.5" fill="#52687c"/>
-    <rect x="22" y="-4" width="108" height="2" rx="1" fill="#728597" opacity=".7"/>
-    <line x1="46" y1="-13" x2="46" y2="-30" stroke="#7a8ea2" stroke-width="1.2"/>
-    <line x1="78" y1="-13" x2="78" y2="-30" stroke="#7a8ea2" stroke-width="1.2"/>
-    <line x1="110" y1="-13" x2="110" y2="-30" stroke="#7a8ea2" stroke-width="1.2"/>
-    <line x1="46" y1="-30" x2="54" y2="-18" stroke="#7a8ea2" stroke-width="1.2"/>
-    <line x1="78" y1="-30" x2="86" y2="-18" stroke="#7a8ea2" stroke-width="1.2"/>
-    <line x1="110" y1="-30" x2="118" y2="-18" stroke="#7a8ea2" stroke-width="1.2"/>
-    <path d="M18 -1 h116" stroke="rgba(215,226,238,.12)" stroke-width="1"/>
+    <rect x="16" y="-12" width="24" height="9" rx="1.5" fill="#52687c"/>
+    <rect x="48" y="-12" width="24" height="9" rx="1.5" fill="#52687c"/>
+    <rect x="80" y="-12" width="24" height="9" rx="1.5" fill="#52687c"/>
+    <rect x="112" y="-12" width="24" height="9" rx="1.5" fill="#52687c"/>
+    <rect x="20" y="-4" width="118" height="2" rx="1" fill="#728597" opacity=".7"/>
+    <line x1="44" y1="-12" x2="44" y2="-28" stroke="#7a8ea2" stroke-width="1.2"/>
+    <line x1="76" y1="-12" x2="76" y2="-28" stroke="#7a8ea2" stroke-width="1.2"/>
+    <line x1="108" y1="-12" x2="108" y2="-28" stroke="#7a8ea2" stroke-width="1.2"/>
+    <line x1="44" y1="-28" x2="52" y2="-18" stroke="#7a8ea2" stroke-width="1.2"/>
+    <line x1="76" y1="-28" x2="84" y2="-18" stroke="#7a8ea2" stroke-width="1.2"/>
+    <line x1="108" y1="-28" x2="116" y2="-18" stroke="#7a8ea2" stroke-width="1.2"/>
     <rect x="138" y="-26" width="24" height="26" rx="2.5" fill="#dbe3ea"/>
     <rect x="148" y="-40" width="12" height="14" rx="2" fill="#dbe3ea"/>
     <rect x="144" y="-17" width="6" height="5" rx="1" fill="#8fc6ef"/>
@@ -4158,20 +4086,17 @@ function getModernShipSvg(type, opts={}){
   const mastLight=opts.mastLight ?? '#f2d889';
   const details=getShipDeckDetails(type);
   return `<g transform="translate(${x} ${y}) scale(${scale})" opacity="${opacity}">
-    <path d="M-18 10 Q-10 2 8 0 L126 0 Q145 0 160 5 L176 6 L188 12 L180 15 L-14 15 Q-22 14 -24 11 Z" fill="${p.hull}"/>
-    <path d="M6 11 L180 11 L184 14 L-6 14 Z" fill="${p.shadow}" opacity=".9"/>
-    <path d="M10 1.5 L134 1.5" stroke="${p.hullEdge}" stroke-width="2.2" opacity=".95"/>
-    <path d="M24 -1 L120 -1" stroke="rgba(200,220,235,.12)" stroke-width="1.1"/>
+    <path d="M-10 8 L10 0 L124 0 L144 5 L166 5 L176 12 L-14 12 L-18 7 Z" fill="${p.hull}"/>
+    <path d="M12 7 L168 7 L174 11 L4 11 Z" fill="${p.shadow}" opacity=".9"/>
+    <path d="M6 0 L122 0" stroke="${p.hullEdge}" stroke-width="2.2" opacity=".95"/>
     ${details}
-    <circle cx="14" cy="3.4" r="1.6" fill="${portLight}" opacity=".92"/>
-    <circle cx="170" cy="5" r="1.6" fill="${starboardLight}" opacity=".92"/>
-    <circle cx="152" cy="-18" r="1.9" fill="${mastLight}" opacity=".96"/>
-    <circle cx="156" cy="-54" r="1.5" fill="${light}" opacity=".96"/>
-    <path d="M152 -18 l11 -4" stroke="rgba(242,216,137,.35)" stroke-width="1"/>
-    <path d="M156 -54 L156 -40" stroke="rgba(122,146,170,.55)" stroke-width="1.1"/>
-    <path d="M156 -48 L168 -42" stroke="rgba(122,146,170,.45)" stroke-width="1"/>
-    <path d="M-22 13 q-14 -5 -27 1" fill="none" stroke="rgba(180,220,245,${wakeOpacity})" stroke-width="2"/>
-    <path d="M-14 16 q-18 -3 -31 3" fill="none" stroke="rgba(180,220,245,${wakeOpacity*0.8})" stroke-width="1.6"/>
+    <circle cx="12" cy="2.8" r="1.7" fill="${portLight}" opacity=".92"/>
+    <circle cx="164" cy="4" r="1.7" fill="${starboardLight}" opacity=".92"/>
+    <circle cx="146" cy="-20" r="1.9" fill="${mastLight}" opacity=".96"/>
+    <circle cx="152" cy="-42" r="1.5" fill="${light}" opacity=".96"/>
+    <path d="M146 -20 l11 -4" stroke="rgba(242,216,137,.35)" stroke-width="1"/>
+    <path d="M-22 11 q-14 -4 -26 1" fill="none" stroke="rgba(180,220,245,${wakeOpacity})" stroke-width="2"/>
+    <path d="M-12 13 q-18 -2 -30 3" fill="none" stroke="rgba(180,220,245,${wakeOpacity*0.8})" stroke-width="1.6"/>
   </g>`;
 }
 
@@ -4208,13 +4133,12 @@ function getChartWorkOverlay(sc){
       <rect x="246" y="28" width="190" height="86" rx="4" fill="#e6d8ab" stroke="#a89256" stroke-width="1.2"/>
       <path d="M256 44 L424 44 M256 60 L424 60 M256 76 L424 76 M256 92 L424 92" stroke="#b39a5c" stroke-width=".8" opacity=".45"/>
       <path d="M262 96 Q294 80 322 82 Q350 84 380 68 Q398 60 420 58" fill="none" stroke="#c93030" stroke-width="2.2"/>
-      <circle cx="322" cy="82" r="3.2" fill="#c93030" class="blink"/>
-      <circle cx="380" cy="68" r="3.2" fill="#c93030" class="blink"/>
+      <circle cx="322" cy="82" r="3.2" fill="#c93030"/>
+      <circle cx="380" cy="68" r="3.2" fill="#c93030"/>
       <rect x="356" y="94" width="58" height="10" rx="2" fill="#f1e6bf" stroke="#a89256" stroke-width=".8"/>
       <text x="360" y="101" fill="#7d6122" font-size="6" font-family="monospace">NTM 2421/26</text>
       <polygon points="428,102 442,114 437,118 423,107" fill="#c93030"/>
       <rect x="434" y="112" width="10" height="4" rx="1" fill="#f0d3b2"/>
-      <circle cx="430" cy="106" r="2.1" fill="#ffd9d0" opacity=".8" class="blink"/>
       <rect x="252" y="24" width="66" height="10" rx="2" fill="#0f2842"/>
       <text x="258" y="31" fill="#d9e3ea" font-size="6" font-family="monospace">PAPER CHART CORR</text>
     </g>`;
@@ -4227,11 +4151,10 @@ function getChartWorkOverlay(sc){
       <rect x="278" y="52" width="152" height="58" rx="4" fill="#04111b" stroke="#0d2a48" stroke-width="1"/>
       <text x="286" y="66" fill="#81f7b8" font-size="7" font-family="monospace">TR 540122   UPDATED</text>
       <text x="286" y="79" fill="#81f7b8" font-size="7" font-family="monospace">GR 340088   UPDATED</text>
-      <text x="286" y="92" fill="#d4a017" font-size="7" font-family="monospace" class="blink">EG 420551   OVERDUE</text>
-      <text x="286" y="105" fill="#c97070" font-size="7" font-family="monospace" class="alarm">PERMIT CHECK REQUIRED</text>
+      <text x="286" y="92" fill="#d4a017" font-size="7" font-family="monospace">EG 420551   OVERDUE</text>
+      <text x="286" y="105" fill="#c97070" font-size="7" font-family="monospace">PERMIT CHECK REQUIRED</text>
       <rect x="278" y="114" width="68" height="8" rx="2" fill="#113050"/>
       <rect x="278" y="114" width="49" height="8" rx="2" fill="#5dbf8a"/>
-      <circle cx="423" cy="38" r="2.5" fill="#81f7b8" class="blink"/>
       <text x="352" y="121" fill="#6fa8dc" font-size="6" font-family="monospace">PKG 26.5 / CELL STATUS</text>
     </g>`;
   }
@@ -4240,14 +4163,13 @@ function getChartWorkOverlay(sc){
       <rect x="234" y="18" width="102" height="104" rx="6" fill="#08131e" stroke="#113457" stroke-width="1.2"/>
       <rect x="244" y="28" width="82" height="74" rx="4" fill="#e6d8ab" stroke="#a89256" stroke-width="1"/>
       <path d="M250 88 Q268 80 282 82 Q294 84 314 70" fill="none" stroke="#c93030" stroke-width="1.8"/>
-      <circle cx="282" cy="82" r="2.8" fill="#c93030" class="blink"/>
       <text x="248" y="110" fill="#d9e3ea" font-size="6" font-family="monospace">PAPER CHART</text>
       <rect x="344" y="18" width="104" height="104" rx="6" fill="#071828" stroke="#12395b" stroke-width="1.2"/>
       <rect x="354" y="28" width="84" height="74" rx="4" fill="#03111c" stroke="#0d2a48" stroke-width="1"/>
       <polyline points="360,88 380,82 398,78 420,62" fill="none" stroke="#d4a017" stroke-width="2" stroke-dasharray="5,3"/>
-      <circle cx="398" cy="78" r="2.8" fill="#1aff50" class="blink"/>
+      <circle cx="398" cy="78" r="2.8" fill="#1aff50"/>
       <text x="360" y="110" fill="#81f7b8" font-size="6" font-family="monospace">ECDIS ROUTE</text>
-      <path d="M330 70 L350 70" stroke="#6fa8dc" stroke-width="2" stroke-dasharray="3,2" class="blink"/>
+      <path d="M330 70 L350 70" stroke="#6fa8dc" stroke-width="2" stroke-dasharray="3,2"/>
       <polygon points="350,70 344,66 344,74" fill="#6fa8dc"/>
     </g>`;
   }
