@@ -4705,6 +4705,7 @@ function buildSceneQueue(pool, totalDays){
 }
 
 const RECOVERY_SCENE_IDS = new Set(['s146','s147','s148','s149','s150','s183','s184','s185','s186','s187','s187b','s187c','s187d','s187e','s187f']);
+const HARBOR_RECOVERY_SCENE_IDS = new Set(['s147','s150','s186','s187c','s187e']);
 
 function maybePrioritizeRecoveryScene(){
   if(currentIdx >= sceneQueue.length-1) return;
@@ -4712,12 +4713,18 @@ function maybePrioritizeRecoveryScene(){
   const nextScene = sceneQueue[currentIdx];
   if(nextScene && RECOVERY_SCENE_IDS.has(nextScene.id)) return;
 
+  const prevScene = currentIdx > 0 ? sceneQueue[currentIdx-1] : null;
+  const prevBlob = `${prevScene?.id||''} ${prevScene?.gfx||''} ${prevScene?.loc||''} ${prevScene?.sub||''}`.toLowerCase();
+  const afterCrisis = !!(prevScene && (prevScene.alert || prevScene.id?.startsWith('kriz') || /firtina|storm|acil|yangin|korsan|suruklenme|alarm/.test(prevBlob)));
+  const harborWindow = !!(nextScene && /harbor|port_arrival/.test(nextScene.gfx||'')) || /liman|iskele|rihtim|romorkor|pilot station|mooring/.test(prevBlob);
+
   let foundIdx = -1;
-  const nearLimit = Math.min(sceneQueue.length - 2, currentIdx + (stats.dinclik <= 25 ? 14 : 10));
+  const nearSpan = afterCrisis ? (stats.dinclik <= 25 ? 6 : 4) : (harborWindow ? 7 : (stats.dinclik <= 25 ? 14 : 10));
+  const nearLimit = Math.min(sceneQueue.length - 2, currentIdx + nearSpan);
 
   for(let i=currentIdx+1; i<=nearLimit; i++){
     const sc = sceneQueue[i];
-    if(sc && RECOVERY_SCENE_IDS.has(sc.id)){
+    if(sc && RECOVERY_SCENE_IDS.has(sc.id) && (!harborWindow || HARBOR_RECOVERY_SCENE_IDS.has(sc.id))){
       foundIdx = i;
       break;
     }
@@ -4726,7 +4733,7 @@ function maybePrioritizeRecoveryScene(){
   if(foundIdx === -1){
     for(let i=nearLimit+1; i<sceneQueue.length-1; i++){
       const sc = sceneQueue[i];
-      if(sc && RECOVERY_SCENE_IDS.has(sc.id)){
+      if(sc && RECOVERY_SCENE_IDS.has(sc.id) && (!harborWindow || HARBOR_RECOVERY_SCENE_IDS.has(sc.id))){
         foundIdx = i;
         break;
       }
