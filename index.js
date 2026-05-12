@@ -4338,46 +4338,10 @@ function getMeteorologyOverlay(sc){
   <text x="28" y="129" fill="#fff4bf" font-size="8" font-family="monospace">${f.label}</text>`;
 }
 
-function getPremiumPanelOverlay(gfx, sc){
-  if(!gfx) return '';
-  const panelGfx = new Set(['radar','compass','ecdis_panel','ais_panel','gyro_panel','magnetic_panel','echo_panel','speedlog_panel','autopilot_panel','bnwas_panel','gmdss_panel','engine','engine_fault','meteo_panel']);
-  if(!panelGfx.has(gfx)) return '';
-  const title = (sc?.sub || gfx).toUpperCase().replace(/[^A-Z0-9 /.-]/g,'').slice(0,34);
-  return `<rect x="8" y="8" width="464" height="129" rx="10" class="premium-panel"/>
-  <circle cx="20" cy="20" r="2" fill="#5dbf8a" class="blink"/><circle cx="30" cy="20" r="2" fill="#d4a017"/><circle cx="40" cy="20" r="2" fill="#c97070"/>
-  <text x="56" y="22" class="premium-label">${title}</text>
-  <text x="390" y="22" class="premium-label">LIVE</text>`;
-}
-
-function getCriticalSceneOverlay(sc){
-  if(!sc) return '';
-  const key = sc.id || '';
-  if(['kriz05','kriz05b','kriz16'].includes(key)){
-    return `<rect width="480" height="145" fill="url(#stormVignette)" opacity=".18"/>
-    <defs><radialGradient id="stormVignette"><stop offset="45%" stop-color="rgba(255,255,255,0)"/><stop offset="100%" stop-color="rgba(0,0,0,.9)"/></radialGradient></defs>
-    <text x="18" y="128" class="premium-label">HEAVY WEATHER CONDITION</text>`;
-  }
-  if(['kriz10','kriz11','kriz12'].includes(key)){
-    return `<rect width="480" height="145" fill="rgba(0,0,0,.14)"/><text x="18" y="128" class="premium-label">HIGH RISK TRANSIT · SECURITY STATION</text>`;
-  }
-  if(['s139','s181'].includes(key)){
-    return `<rect width="480" height="145" fill="rgba(11,18,28,.12)"/><text x="18" y="128" class="premium-label">ANCHOR WATCH · POSITION UNDER REVIEW</text>`;
-  }
-  if(key.startsWith('s8') && /psc|deficiency|detention/i.test(`${sc.sub||''} ${sc.loc||''}`)){
-    return `<rect width="480" height="145" fill="rgba(60,16,16,.12)"/><text x="18" y="128" class="premium-label">PSC INSPECTION · DOCUMENT & SAFETY REVIEW</text>`;
-  }
-  if(key==='s_birthday_surprise'){
-    return `<rect width="480" height="145" fill="rgba(201,149,42,.07)"/><text x="18" y="128" class="premium-label">CREW MOMENT · QUIET CELEBRATION</text>`;
-  }
-  return '';
-}
-
 function getSceneOverlay(gfx,sc){
   let extra = getSceneFleetOverlay(gfx);
-  extra += getPremiumPanelOverlay(gfx, sc);
   extra += getChartWorkOverlay(sc);
   extra += getMeteorologyOverlay(sc);
-  extra += getCriticalSceneOverlay(sc);
   if((gfx==='compass'||gfx==='bridge') && sc && (sc.ecdisPlanKey || sc.sub?.toLowerCase().includes('ecdis') || sc.sub?.toLowerCase().includes('seyir plani') || sc.loc?.toLowerCase().includes('ecdis'))){
     extra += getEcdisRouteOverlay(sc);
   }
@@ -6448,6 +6412,7 @@ function playSceneAudio(sc){
 document.getElementById('nameinp').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('shipnameinp').focus();});
 document.getElementById('shipnameinp').addEventListener('keydown',e=>{if(e.key==='Enter')beginGame();});
 buildIntro();
+
 
 
 
