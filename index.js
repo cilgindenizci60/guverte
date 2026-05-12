@@ -1,4 +1,4 @@
-
+﻿
 // ===== CANLI ARKA PLAN =====
 (function(){
   const cv=document.getElementById('bg-canvas');
@@ -178,10 +178,10 @@
 })();
 
 
-// ===== DUVAR SAATİ =====
+// ===== DUVAR SAATÄ° =====
 (function(){
-  const days=['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
-  const months=['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
+  const days=['Pazar','Pazartesi','SalÄ±','Ã‡arÅŸamba','PerÅŸembe','Cuma','Cumartesi'];
+  const months=['Oca','Åub','Mar','Nis','May','Haz','Tem','AÄŸu','Eyl','Eki','Kas','Ara'];
   function drawClock(){
     const cv=document.getElementById('clock-canvas');
     if(!cv)return;
@@ -249,79 +249,57 @@
   window._drawClock=drawClock;
 })();
 
-// ===== VERİ =====
+// ===== VERÄ° =====
 const YEARS=[
-  {year:1985,era:"Analog Çağ",note:"GPS yok. Sextant ile navigasyon."},
-  {year:1998,era:"Dijital Geçiş",note:"GPS yaygınlaşıyor."},
+  {year:1985,era:"Analog Ã‡aÄŸ",note:"GPS yok. Sextant ile navigasyon."},
+  {year:1998,era:"Dijital GeÃ§iÅŸ",note:"GPS yaygÄ±nlaÅŸÄ±yor."},
   {year:2008,era:"Modern",note:"ECDIS, AIS, VDR tam kurulu."},
-  {year:2018,era:"Günümüz",note:"Otomasyon ve siber güvenlik."},
+  {year:2018,era:"GÃ¼nÃ¼mÃ¼z",note:"Otomasyon ve siber gÃ¼venlik."},
 ];
 
 const STYPES=[
-  {key:"kuru",  ico:"🏗️",nm:"Kuru Yük",   ds:"Dökme/paket",ton:"22.000 DWT",spd:"14 kn",kontracts:[{ay:6,izin:1,ucret:"Orta"},{ay:9,izin:2,ucret:"Orta+"}]},
-  {key:"tanker",ico:"🛢️",nm:"Tanker",     ds:"Petrol/kimya",ton:"45.000 DWT",spd:"13 kn",kontracts:[{ay:4,izin:1,ucret:"Yüksek"},{ay:6,izin:1,ucret:"Yüksek+"}]},
-  {key:"kont",  ico:"📦",nm:"Konteyner",  ds:"TEU lojistik",ton:"18.000 GT", spd:"20 kn",kontracts:[{ay:4,izin:1,ucret:"Yüksek"},{ay:6,izin:2,ucret:"Çok Yüksek"}]},
-  {key:"roro",  ico:"🚗",nm:"Ro-Ro",      ds:"Araç rampalı",ton:"12.000 GT", spd:"18 kn",kontracts:[{ay:3,izin:1,ucret:"Orta"},{ay:5,izin:1,ucret:"Orta+"}]},
-  {key:"bulk",  ico:"⛏️",nm:"Bulk",        ds:"Maden/tahıl", ton:"55.000 DWT",spd:"13 kn",kontracts:[{ay:6,izin:2,ucret:"Orta"},{ay:9,izin:2,ucret:"Orta+"}]},
-  {key:"lng",   ico:"🔵",nm:"LNG",         ds:"Sıvı gaz",    ton:"75.000 m³", spd:"19 kn",kontracts:[{ay:4,izin:1,ucret:"Çok Yüksek"},{ay:6,izin:2,ucret:"Maksimum"}]},
+  {key:"kuru",  ico:"ğŸ—ï¸",nm:"Kuru YÃ¼k",   ds:"DÃ¶kme/paket",ton:"22.000 DWT",spd:"14 kn",kontracts:[{ay:6,izin:1,ucret:"Orta"},{ay:9,izin:2,ucret:"Orta+"}]},
+  {key:"tanker",ico:"ğŸ›¢ï¸",nm:"Tanker",     ds:"Petrol/kimya",ton:"45.000 DWT",spd:"13 kn",kontracts:[{ay:4,izin:1,ucret:"YÃ¼ksek"},{ay:6,izin:1,ucret:"YÃ¼ksek+"}]},
+  {key:"kont",  ico:"ğŸ“¦",nm:"Konteyner",  ds:"TEU lojistik",ton:"18.000 GT", spd:"20 kn",kontracts:[{ay:4,izin:1,ucret:"YÃ¼ksek"},{ay:6,izin:2,ucret:"Ã‡ok YÃ¼ksek"}]},
+  {key:"roro",  ico:"ğŸš—",nm:"Ro-Ro",      ds:"AraÃ§ rampalÄ±",ton:"12.000 GT", spd:"18 kn",kontracts:[{ay:3,izin:1,ucret:"Orta"},{ay:5,izin:1,ucret:"Orta+"}]},
+  {key:"bulk",  ico:"â›ï¸",nm:"Bulk",        ds:"Maden/tahÄ±l", ton:"55.000 DWT",spd:"13 kn",kontracts:[{ay:6,izin:2,ucret:"Orta"},{ay:9,izin:2,ucret:"Orta+"}]},
+  {key:"lng",   ico:"ğŸ”µ",nm:"LNG",         ds:"SÄ±vÄ± gaz",    ton:"75.000 mÂ³", spd:"19 kn",kontracts:[{ay:4,izin:1,ucret:"Ã‡ok YÃ¼ksek"},{ay:6,izin:2,ucret:"Maksimum"}]},
 ];
 
 const SNAMES={
   kuru:["M/V Ege Meltem","M/V Karadeniz","M/V Bozkurt","M/V Marmara","M/V Toros"],
-  tanker:["MT Boğaziçi","MT Fırat","MT Dicle","MT Akdeniz"],
+  tanker:["MT BoÄŸaziÃ§i","MT FÄ±rat","MT Dicle","MT Akdeniz"],
   kont:["MV Istanbul Express","MV Turkon Bora","MV Bosphorus Star"],
-  roro:["MV Ataşehir","MV Kadıköy","MV Üsküdar"],
+  roro:["MV AtaÅŸehir","MV KadÄ±kÃ¶y","MV ÃœskÃ¼dar"],
   bulk:["M/V Trakya","M/V Anadolu","M/V Kayseri"],
   lng:["LNG Barbaros","LNG Fatih","LNG Yavuz"],
 };
 
 const ERA_TECH={
-  1985:"GPS yok — sextant ve kâğıt harita ile seyir yapılıyor.",
-  1998:"GPS yaygınlaşıyor ama güvenilirliği tartışmalı. Kâğıt harita zorunlu.",
-  2008:"ECDIS var, AIS var, VDR var. Her şey kayıt altında.",
-  2018:"Tam otomasyon, siber güvenlik, IMO 2020 kükürt sınırı geçerli.",
+  1985:"GPS yok â€” sextant ve kÃ¢ÄŸÄ±t harita ile seyir yapÄ±lÄ±yor.",
+  1998:"GPS yaygÄ±nlaÅŸÄ±yor ama gÃ¼venilirliÄŸi tartÄ±ÅŸmalÄ±. KÃ¢ÄŸÄ±t harita zorunlu.",
+  2008:"ECDIS var, AIS var, VDR var. Her ÅŸey kayÄ±t altÄ±nda.",
+  2018:"Tam otomasyon, siber gÃ¼venlik, IMO 2020 kÃ¼kÃ¼rt sÄ±nÄ±rÄ± geÃ§erli.",
 };
 
 const CREW={
-  anlatici:{name:"Anlatıcı",icon:"📖",title:""},
-  suvari:{name:"Kaptan Serra",icon:"🎖️",title:"Süvari"},
-  z1:{name:"1. Zabit Ece",icon:"🧭",title:"Güverte Ops. Sorumlusu"},
-  z2:{name:"2. Zabit Derya",icon:"🗺️",title:"Seyir Subayı"},
-  z3:{name:"3. Zabit Selin",icon:"🚒",title:"Emniyet Subayı — SOLAS"},
-  carkci:{name:"Baş Mühendis Nermin",icon:"⚙️",title:"Çarkçıbaşı"},
-  bas2:{name:"2. Mühendis Aylin",icon:"🔧",title:"Makine 2. Amiri"},
-  lostromo:{name:"Lostromo",icon:"🪢",title:"Güverte Ustası"},
-  silici:{name:"Silici Ramazan",icon:"🧹",title:"Güverte Temizlik Ustası"},
-  yagci:{name:"Yağcı Mehmet Ali",icon:"🛢️",title:"Makine Yağlama Ustası"},
-  asci:{name:"Aşçı Mehmet Usta",icon:"🍳",title:"Yemekhane Sorumlusu"},
-  hasan:{name:"Tayfa Hasan",icon:"👷",title:"Deneyimli Güverte Tayfası"},
-  musa:{name:"Tayfa Musa",icon:"👷",title:"Genç Güverte Tayfası"},
-  gazsubay:{name:"Gaz Kontrol Subayı Elif",icon:"🔵",title:"IGF Sertifikalı LNG Sorumlusu"},
+  anlatici:{name:"AnlatÄ±cÄ±",icon:"ğŸ“–",title:""},
+  suvari:{name:"Kaptan Serra",icon:"ğŸ–ï¸",title:"SÃ¼vari"},
+  z1:{name:"1. Zabit Ece",icon:"ğŸ§­",title:"GÃ¼verte Ops. Sorumlusu"},
+  z2:{name:"2. Zabit Derya",icon:"ğŸ—ºï¸",title:"Seyir SubayÄ±"},
+  z3:{name:"3. Zabit Selin",icon:"ğŸš’",title:"Emniyet SubayÄ± â€” SOLAS"},
+  carkci:{name:"BaÅŸ MÃ¼hendis Nermin",icon:"âš™ï¸",title:"Ã‡arkÃ§Ä±baÅŸÄ±"},
+  bas2:{name:"2. MÃ¼hendis Aylin",icon:"ğŸ”§",title:"Makine 2. Amiri"},
+  lostromo:{name:"Lostromo",icon:"ğŸª¢",title:"GÃ¼verte UstasÄ±"},
+  silici:{name:"Silici Ramazan",icon:"ğŸ§¹",title:"GÃ¼verte Temizlik UstasÄ±"},
+  yagci:{name:"YaÄŸcÄ± Mehmet Ali",icon:"ğŸ›¢ï¸",title:"Makine YaÄŸlama UstasÄ±"},
+  asci:{name:"AÅŸÃ§Ä± Mehmet Usta",icon:"ğŸ³",title:"Yemekhane Sorumlusu"},
+  hasan:{name:"Tayfa Hasan",icon:"ğŸ‘·",title:"Deneyimli GÃ¼verte TayfasÄ±"},
+  musa:{name:"Tayfa Musa",icon:"ğŸ‘·",title:"GenÃ§ GÃ¼verte TayfasÄ±"},
+  gazsubay:{name:"Gaz Kontrol SubayÄ± Elif",icon:"ğŸ”µ",title:"IGF SertifikalÄ± LNG Sorumlusu"},
 };
 
-const COMPANY_THEMES = {
-  kuru:{name:'Arel Denizcilik', line:'Dry cargo fleet · operational discipline first', color:'#7aa0c0'},
-  tanker:{name:'Marmara Tankers', line:'Cargo integrity · manifold precision', color:'#c9952a'},
-  kont:{name:'Northline Container', line:'Schedule pressure · route discipline', color:'#6fa8dc'},
-  roro:{name:'Transit Ro-Ro', line:'Fast turnaround · deck safety', color:'#5dbf8a'},
-  bulk:{name:'Pelorus Bulk', line:'Draft, ballast, weather thinking', color:'#b8c8d8'},
-  lng:{name:'Blue Flame Gas', line:'IGF culture · zero shortcut mindset', color:'#8bd3ff'}
-};
-
-function getPlayerPortrait(){
-  const iconMap={kuru:'⚓', tanker:'🛢️', kont:'📦', roro:'🚛', bulk:'⛏️', lng:'🔷'};
-  return iconMap[selType] || '⚓';
-}
-
-function getCrewPortraitIcon(who){
-  const map = {
-    anlatici:'📖', suvari:'🎖️', z1:'🧭', z2:'🗺️', z3:'🚨', carkci:'⚙️', bas2:'🔧',
-    lostromo:'🪢', silici:'🧹', yagci:'🛢️', asci:'🍳', hasan:'👷', musa:'🛟', gazsubay:'🔵'
-  };
-  return map[who] || '⚓';
-}
-
-// ===== GRAFİKLER =====
+// ===== GRAFÄ°KLER =====
 const GFX={
 harbor:`<rect width="480" height="145" fill="#040d1a"/>
 <rect y="92" width="480" height="53" fill="#06182e"/>
@@ -464,7 +442,7 @@ compass:`<rect width="480" height="145" fill="#040d1a"/>
 <polygon points="360,56 357,64 363,64" fill="#6fa8dc" opacity=".8"/>
 <line x1="360" y1="56" x2="418" y2="30" stroke="#d4a017" stroke-width="1" stroke-dasharray="3,2" opacity=".7"/>
 <text x="286" y="96" fill="#2e6bbf" font-size="7" font-family="monospace">SPD: 14.2 kn</text>
-<text x="286" y="107" fill="#2e6bbf" font-size="7" font-family="monospace">COG: 247°</text>
+<text x="286" y="107" fill="#2e6bbf" font-size="7" font-family="monospace">COG: 247Â°</text>
 <text x="368" y="96" fill="#d4a017" font-size="7" font-family="monospace">ETA: 06:42</text>
 <text x="368" y="107" fill="#5dbf8a" font-size="7" font-family="monospace">RNG: 38nm</text>`,
 
@@ -507,9 +485,9 @@ gyro_panel:`<rect width="480" height="145" fill="#06101a"/>
 <text x="132" y="22" fill="#6fa8dc" font-size="9" font-family="monospace">N</text>
 <rect x="236" y="24" width="190" height="94" rx="6" fill="#071828" stroke="#10304e" stroke-width="1.5"/>
 <text x="250" y="44" fill="#81f7b8" font-size="8" font-family="monospace">GYRO COMPASS</text>
-<text x="250" y="64" fill="#d4a017" font-size="18" font-family="monospace">247°</text>
+<text x="250" y="64" fill="#d4a017" font-size="18" font-family="monospace">247Â°</text>
 <text x="250" y="84" fill="#6fa8dc" font-size="7" font-family="monospace">SETTLING: OK</text>
-<text x="250" y="98" fill="#5dbf8a" font-size="7" font-family="monospace">ERROR < 0.5°</text>
+<text x="250" y="98" fill="#5dbf8a" font-size="7" font-family="monospace">ERROR < 0.5Â°</text>
 <text x="36" y="18" fill="#81f7b8" font-size="8" font-family="monospace">MASTER GYRO</text>`,
 
 magnetic_panel:`<rect width="480" height="145" fill="#08131e"/>
@@ -525,7 +503,7 @@ magnetic_panel:`<rect width="480" height="145" fill="#08131e"/>
 </g>
 <rect x="250" y="28" width="166" height="88" rx="8" fill="#15110d" stroke="#8a6a2f" stroke-width="1.5"/>
 <text x="264" y="46" fill="#d4a017" font-size="8" font-family="monospace">MAGNETIC COMPASS</text>
-<text x="264" y="68" fill="#f2e1b0" font-size="16" font-family="monospace">246° M</text>
+<text x="264" y="68" fill="#f2e1b0" font-size="16" font-family="monospace">246Â° M</text>
 <text x="264" y="90" fill="#c8b070" font-size="7" font-family="monospace">DEVIATION CARD</text>
 <text x="264" y="102" fill="#c8b070" font-size="7" font-family="monospace">STANDBY STEERING</text>`,
 
@@ -553,9 +531,9 @@ speedlog_panel:`<rect width="480" height="145" fill="#07111d"/>
 autopilot_panel:`<rect width="480" height="145" fill="#05111b"/>
 <rect x="82" y="22" width="316" height="100" rx="10" fill="#071828" stroke="#10304e" stroke-width="2"/>
 <text x="104" y="42" fill="#81f7b8" font-size="8" font-family="monospace">AUTOPILOT CONTROL</text>
-<text x="104" y="72" fill="#d4a017" font-size="22" font-family="monospace">HDG 247°</text>
+<text x="104" y="72" fill="#d4a017" font-size="22" font-family="monospace">HDG 247Â°</text>
 <text x="104" y="94" fill="#6fa8dc" font-size="10" font-family="monospace">MODE: AUTO</text>
-<rect x="286" y="48" width="84" height="22" rx="4" fill="#0d2840"/><text x="300" y="63" fill="#d9e3ea" font-size="9" font-family="monospace">RUDDER 5°</text>
+<rect x="286" y="48" width="84" height="22" rx="4" fill="#0d2840"/><text x="300" y="63" fill="#d9e3ea" font-size="9" font-family="monospace">RUDDER 5Â°</text>
 <rect x="286" y="80" width="84" height="22" rx="4" fill="#113050"/><text x="302" y="95" fill="#81f7b8" font-size="9" font-family="monospace">TRACK OFF</text>`,
 
 bnwas_panel:`<rect width="480" height="145" fill="#061019"/>
@@ -644,10 +622,10 @@ pirate:`<rect width="480" height="145" fill="#030810"/>
 <circle cx="80" cy="19" r="1" fill="#fff" opacity=".6"/>
 <circle cx="300" cy="7" r="1" fill="#fff" opacity=".5"/>
 <circle cx="420" cy="17" r="1" fill="#fff" opacity=".6"/>
-<g class="speedboat"><rect x="30" y="60" width="55" height="8" rx="3" fill="#1a0808"/><rect x="50" y="54" width="20" height="8" rx="1" fill="#110505"/><text x="50" y="53" fill="#c93010" font-size="9" opacity=".8">☠</text></g>
-<g class="speedboat" style="animation-delay:.8s"><rect x="30" y="74" width="48" height="7" rx="3" fill="#1a0808"/><rect x="46" y="68" width="18" height="7" rx="1" fill="#110505"/><text x="46" y="66" fill="#c93010" font-size="8" opacity=".7">☠</text></g>
+<g class="speedboat"><rect x="30" y="60" width="55" height="8" rx="3" fill="#1a0808"/><rect x="50" y="54" width="20" height="8" rx="1" fill="#110505"/><text x="50" y="53" fill="#c93010" font-size="9" opacity=".8">â˜ </text></g>
+<g class="speedboat" style="animation-delay:.8s"><rect x="30" y="74" width="48" height="7" rx="3" fill="#1a0808"/><rect x="46" y="68" width="18" height="7" rx="1" fill="#110505"/><text x="46" y="66" fill="#c93010" font-size="8" opacity=".7">â˜ </text></g>
 <line x1="420" y1="60" x2="420" y2="10" stroke="#d4a017" stroke-width="2" opacity=".2" class="searchlight" style="transform-origin:420px 60px"/>
-<text x="145" y="116" fill="#c93010" font-size="8" font-family="monospace" class="blink">TÜYSÜZ TEHDİT — SAHİL GÜVENLIK ARANIYOR</text>
+<text x="145" y="116" fill="#c93010" font-size="8" font-family="monospace" class="blink">TÃœYSÃœZ TEHDÄ°T â€” SAHÄ°L GÃœVENLIK ARANIYOR</text>
 <rect x="10" y="90" width="88" height="46" rx="2" fill="#040e18"/>
 <rect x="10" y="90" width="88" height="46" rx="2" fill="none" stroke="#0d2030" stroke-width="1"/>
 <text x="15" y="102" fill="#c93010" font-size="7" font-family="monospace">VHF CH16</text>
@@ -677,14 +655,14 @@ bogaz:`<rect width="480" height="145" fill="#04111f"/>
 <rect x="252" y="30" width="10" height="10" rx="1" fill="#173454"/>
 <line x1="257" y1="22" x2="257" y2="30" stroke="#607d99" stroke-width="1.2"/>
 </g>
-<g class="current"><text x="20" y="106" fill="#1a4a7f" font-size="14" opacity=".3">→→→→→→→→→→→→→→→→→→→→→→→→→→→→</text></g>
-<text x="150" y="128" fill="#d4a017" font-size="8" font-family="monospace" class="blink">⚓ DEMİR ATILDI — BOĞAZ AKINTISI</text>
+<g class="current"><text x="20" y="106" fill="#1a4a7f" font-size="14" opacity=".3">â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’â†’</text></g>
+<text x="150" y="128" fill="#d4a017" font-size="8" font-family="monospace" class="blink">âš“ DEMÄ°R ATILDI â€” BOÄAZ AKINTISI</text>
 <rect x="355" y="82" width="116" height="54" rx="3" fill="#040d18"/>
 <rect x="355" y="82" width="116" height="54" rx="3" fill="none" stroke="#0d2030" stroke-width="1"/>
-<text x="363" y="95" fill="#c93010" font-size="7" font-family="monospace">⚠ SÜRÜKLENME</text>
-<text x="363" y="106" fill="#d4a017" font-size="7" font-family="monospace">COG: 087° ⚡</text>
+<text x="363" y="95" fill="#c93010" font-size="7" font-family="monospace">âš  SÃœRÃœKLENME</text>
+<text x="363" y="106" fill="#d4a017" font-size="7" font-family="monospace">COG: 087Â° âš¡</text>
 <text x="363" y="117" fill="#c97070" font-size="7" font-family="monospace">SOG: 0.8 kn</text>
-<text x="363" y="128" fill="#5dbf8a" font-size="7" font-family="monospace">DEMİR: DÜŞÜK</text>`,
+<text x="363" y="128" fill="#5dbf8a" font-size="7" font-family="monospace">DEMÄ°R: DÃœÅÃœK</text>`,
 
 fire:`<rect width="480" height="145" fill="#040c10"/>
 <line x1="0" y1="38" x2="480" y2="38" stroke="#0a1820" stroke-width="3"/>
@@ -706,7 +684,7 @@ fire:`<rect width="480" height="145" fill="#040c10"/>
 <polygon points="360,48 340,86 380,86" fill="#d4a017" opacity=".8"/>
 <text x="352" y="78" fill="#030810" font-size="14" font-weight="bold">!</text>
 <circle cx="420" cy="27" r="10" fill="#c93010" opacity=".6" class="alarm"/>
-<text x="20" y="128" fill="#c93010" font-size="8" font-family="monospace" class="blink">YANGIN ALARM — A GÜVERTESİ</text>`,
+<text x="20" y="128" fill="#c93010" font-size="8" font-family="monospace" class="blink">YANGIN ALARM â€” A GÃœVERTESÄ°</text>`,
 
 galley:`<rect width="480" height="145" fill="#050d0a"/>
 <rect x="0" y="92" width="480" height="53" fill="#061410"/>
@@ -726,11 +704,11 @@ galley:`<rect width="480" height="145" fill="#050d0a"/>
 <rect x="190" y="54" width="250" height="4" rx="1" fill="#0a1e18"/>
 <rect x="320" y="8" width="130" height="68" rx="3" fill="#040e0a"/>
 <rect x="320" y="8" width="130" height="68" rx="3" fill="none" stroke="#0d2018" stroke-width="1.5"/>
-<text x="330" y="22" fill="#5dbf8a" font-size="8" font-family="monospace">BUGÜNKÜ MENÜ</text>
-<text x="330" y="36" fill="#2e6bbf" font-size="7" font-family="monospace">Öğle: Levrek buğulama</text>
-<text x="330" y="47" fill="#2e6bbf" font-size="7" font-family="monospace">Çorba: Mercimek</text>
-<text x="330" y="57" fill="#2e6bbf" font-size="7" font-family="monospace">Tatlı: Sütlaç</text>
-<text x="330" y="68" fill="#d4a017" font-size="6" font-family="monospace">Mür. sayısı: 22</text>`,
+<text x="330" y="22" fill="#5dbf8a" font-size="8" font-family="monospace">BUGÃœNKÃœ MENÃœ</text>
+<text x="330" y="36" fill="#2e6bbf" font-size="7" font-family="monospace">Ã–ÄŸle: Levrek buÄŸulama</text>
+<text x="330" y="47" fill="#2e6bbf" font-size="7" font-family="monospace">Ã‡orba: Mercimek</text>
+<text x="330" y="57" fill="#2e6bbf" font-size="7" font-family="monospace">TatlÄ±: SÃ¼tlaÃ§</text>
+<text x="330" y="68" fill="#d4a017" font-size="6" font-family="monospace">MÃ¼r. sayÄ±sÄ±: 22</text>`,
 
 cabin:`<rect width="480" height="145" fill="#03090f"/>
 <circle cx="390" cy="58" r="40" fill="#03090f"/>
@@ -748,10 +726,10 @@ cabin:`<rect width="480" height="145" fill="#03090f"/>
 <rect x="20" y="78" width="300" height="5" rx="1" fill="#0a1e30"/>
 <rect x="30" y="58" width="65" height="44" rx="2" fill="#06152a"/>
 <rect x="30" y="58" width="65" height="44" rx="2" fill="none" stroke="#0d2840" stroke-width="1"/>
-<text x="36" y="72" fill="#2e6bbf" font-size="7" font-family="monospace">NÖBET GÜNLÜĞÜ</text>
+<text x="36" y="72" fill="#2e6bbf" font-size="7" font-family="monospace">NÃ–BET GÃœNLÃœÄÃœ</text>
 <line x1="35" y1="77" x2="88" y2="77" stroke="#0d2040" stroke-width=".8"/>
-<text x="36" y="86" fill="#1a3a5f" font-size="6" font-family="monospace">02:14 — HEDEF</text>
-<text x="36" y="95" fill="#1a3a5f" font-size="6" font-family="monospace">CPA: 1.2 nm ✓</text>
+<text x="36" y="86" fill="#1a3a5f" font-size="6" font-family="monospace">02:14 â€” HEDEF</text>
+<text x="36" y="95" fill="#1a3a5f" font-size="6" font-family="monospace">CPA: 1.2 nm âœ“</text>
 <circle cx="308" cy="53" r="18" fill="#040e18"/>
 <circle cx="308" cy="53" r="18" fill="none" stroke="#0d2840" stroke-width="1.5"/>
 <line x1="308" y1="36" x2="308" y2="45" stroke="#2e6bbf" stroke-width="2"/>
@@ -788,7 +766,7 @@ bridge:`<rect width="480" height="145" fill="#030a14"/>
 <circle cx="240" cy="108" r="4" fill="#0d2030"/>
 <rect x="308" y="94" width="80" height="32" rx="2" fill="#030a12"/>
 <text x="316" y="106" fill="#5dbf8a" font-size="6" font-family="monospace">AUTO PILOT</text>
-<text x="316" y="116" fill="#5dbf8a" font-size="7" font-family="monospace" font-weight="bold">HDG 247°</text>
+<text x="316" y="116" fill="#5dbf8a" font-size="7" font-family="monospace" font-weight="bold">HDG 247Â°</text>
 <circle cx="372" cy="118" r="5" fill="#5dbf8a" opacity=".8"/>`,
 
 cargo:`<rect width="480" height="145" fill="#040c14"/>
@@ -815,10 +793,10 @@ cargo:`<rect width="480" height="145" fill="#040c14"/>
 <line x1="203" y1="14" x2="203" y2="44" stroke="#1a3060" stroke-width="1.5" stroke-dasharray="3,2" class="cargo-swing"/>
 <rect x="388" y="12" width="58" height="74" rx="3" fill="#08182a"/>
 <text x="394" y="24" fill="#2e6bbf" font-size="7" font-family="monospace">MANIFEST</text>
-<text x="394" y="36" fill="#5dbf8a" font-size="6" font-family="monospace">✓ TCKU 1234</text>
-<text x="394" y="47" fill="#5dbf8a" font-size="6" font-family="monospace">✓ MSCU 5678</text>
-<text x="394" y="58" fill="#c97070" font-size="6" font-family="monospace">✗ HLXU 9012</text>
-<text x="394" y="69" fill="#5dbf8a" font-size="6" font-family="monospace">✓ GESU 3456</text>
+<text x="394" y="36" fill="#5dbf8a" font-size="6" font-family="monospace">âœ“ TCKU 1234</text>
+<text x="394" y="47" fill="#5dbf8a" font-size="6" font-family="monospace">âœ“ MSCU 5678</text>
+<text x="394" y="58" fill="#c97070" font-size="6" font-family="monospace">âœ— HLXU 9012</text>
+<text x="394" y="69" fill="#5dbf8a" font-size="6" font-family="monospace">âœ“ GESU 3456</text>
 <text x="394" y="80" fill="#d4a017" font-size="6" font-family="monospace">? CMAU 7890</text>`,
 
 port_arrival:`<rect width="480" height="145" fill="#04111f"/>
@@ -965,15 +943,15 @@ ocean_postcard:`<rect width="480" height="145" fill="#05111c"/>
 <circle cx="145" cy="75" r="1.7" fill="#d4a017"/>`,
 };
 
-// ===== KRİZ SONLARI =====
+// ===== KRÄ°Z SONLARI =====
 const CRISIS_ENDS={
-  cesaret_0:{emoji:"🫀",title:"Korku Seni Yendi",text:n=>`Cesaret puanı sıfıra düştü.\n\n${n} her kritik anda geri adım atmıştı. Fırtınada, krizlerde, zor anlarda hep çekilmişti.\n\nSon straw: Lostromo acil göreve çağırdı. ${n} yeniden çekildi.\n\n1. Zabiti: "Bu iş herkes için değil. Utanma — ama bu gemi için de değilsin."\n\nStaj belgesi "yetersiz" damgasıyla kapandı.`,stat:"CESARET 0 → Korku birikmesi — ihraç"},
-  cesaret_100:{emoji:"💀",title:"Cesaret Seni Öldürdü",text:(n,sn)=>`${n} her tehlikeli işte ilk kalktı.\n\nFırtınada güverte kapatılmıştı. "Hemen hallederim" dedi.\n\nEmniyet halatı yetmedi. Dalga güverteyi süpürdü.\n\n${sn} anma plaketine bir isim daha kazındı.`,stat:"CESARET 100 → Kontrolsüz risk — ölüm"},
-  bilgi_0:{emoji:"⚠️",title:"Bilgisizlik Gemiyi Tehlikeye Attı",text:n=>`Bilgi puanı sıfıra düştü.\n\n${n} not tutmamıştı. Prosedürleri bilmiyordu.\n\nGece nöbetinde radar alarmı çaldı. CPA: 0.4 mil.\n\nNe yapacağını bilmiyordu. Bekledi.\n\n800 tonluk kargo gemisi 60 metre önünden geçti.\n\nSüvari tutanağa yazdı:\n"Stajyer tehlikeli derecede yetersiz."\n\nStaj belgesi "yetersiz" ile kapandı.`,stat:"BİLGİ 0 → Bilgi bitti — ihraç"},
-  bilgi_100:{emoji:"📚",title:"Kitap Adamı, Gemi Değil",text:n=>`${n} her soruya cevap verdi — teoride.\n\nAma halatı hiç tutmadı. Liman yaklaşmasında paralize oldu.\n\nRapor: "Akademik zeka yüksek. Operasyonel yetkinlik sıfır."`,stat:"BİLGİ 100 → Teori-pratik uçurumu"},
-  sayginlik_0:{emoji:"👁️",title:"Mürettebat Seni Terk Etti",text:n=>`Saygınlık puanı sıfıra düştü.\n\nKimse ${n}'ye bakmıyordu artık. Yemekhanede tek oturdu. Lostromo görev listesinden adını sildi. Tayfalar konuşmayı kesti.\n\nSüvari 20. günde çağırdı:\n"Gemide takım ruhu şart. Bu ekiple çalışamazsınız."\n\nLimana yanaşırken kimseler el sallamadı. Kimse üzülmedi.`,stat:"SAYGINLIK 0 → Güven bitti — ihraç"},
-  sayginlik_100:{emoji:"👑",title:"Herkesin Favorisi — Ama Mahvoldu",text:n=>`Herkes ${n}'yi sevdi. Kimseye hayır diyemedi.\n\nGün 25'e DİNÇLİK 5'e düşmüştü. Son nöbette köprüde uyuyakaldı.\n\nSüvari: "Bu çocuğu çok sevdik — mahvettik de."`,stat:"SAYGINLIK 100 → Aşırı talep — tükenme"},
-  dinclik_dusuk:{emoji:"⚰️",title:"Yorgunluk Seni Mahvetti",text:n=>`Dinçlik puanı sıfıra düştü.\n\n${n} dinlenmemişti. Her nöbeti almış, hiç hayır dememişti.\n\nUyku 3 saate düştü. Yemekler atlandı. Gözler yanıyordu.\n\nSon nöbet: Köprüde tek başına. Saat 02:14.\n\nGözler kapandı.\n\nGemi 11 mil saparak Yunan karasularına girdi.\n\nSahil güvenlik müdahale etti. Tutanak:\n"Yorgunluk kaynaklı nöbet ihmali — stajyer görevden uzaklaştırıldı."`,stat:"DİNÇLİK 0 → Tükenmişlik — kaza"},
+  cesaret_0:{emoji:"ğŸ«€",title:"Korku Seni Yendi",text:n=>`Cesaret puanÄ± sÄ±fÄ±ra dÃ¼ÅŸtÃ¼.\n\n${n} her kritik anda geri adÄ±m atmÄ±ÅŸtÄ±. FÄ±rtÄ±nada, krizlerde, zor anlarda hep Ã§ekilmiÅŸti.\n\nSon straw: Lostromo acil gÃ¶reve Ã§aÄŸÄ±rdÄ±. ${n} yeniden Ã§ekildi.\n\n1. Zabiti: "Bu iÅŸ herkes iÃ§in deÄŸil. Utanma â€” ama bu gemi iÃ§in de deÄŸilsin."\n\nStaj belgesi "yetersiz" damgasÄ±yla kapandÄ±.`,stat:"CESARET 0 â†’ Korku birikmesi â€” ihraÃ§"},
+  cesaret_100:{emoji:"ğŸ’€",title:"Cesaret Seni Ã–ldÃ¼rdÃ¼",text:(n,sn)=>`${n} her tehlikeli iÅŸte ilk kalktÄ±.\n\nFÄ±rtÄ±nada gÃ¼verte kapatÄ±lmÄ±ÅŸtÄ±. "Hemen hallederim" dedi.\n\nEmniyet halatÄ± yetmedi. Dalga gÃ¼verteyi sÃ¼pÃ¼rdÃ¼.\n\n${sn} anma plaketine bir isim daha kazÄ±ndÄ±.`,stat:"CESARET 100 â†’ KontrolsÃ¼z risk â€” Ã¶lÃ¼m"},
+  bilgi_0:{emoji:"âš ï¸",title:"Bilgisizlik Gemiyi Tehlikeye AttÄ±",text:n=>`Bilgi puanÄ± sÄ±fÄ±ra dÃ¼ÅŸtÃ¼.\n\n${n} not tutmamÄ±ÅŸtÄ±. ProsedÃ¼rleri bilmiyordu.\n\nGece nÃ¶betinde radar alarmÄ± Ã§aldÄ±. CPA: 0.4 mil.\n\nNe yapacaÄŸÄ±nÄ± bilmiyordu. Bekledi.\n\n800 tonluk kargo gemisi 60 metre Ã¶nÃ¼nden geÃ§ti.\n\nSÃ¼vari tutanaÄŸa yazdÄ±:\n"Stajyer tehlikeli derecede yetersiz."\n\nStaj belgesi "yetersiz" ile kapandÄ±.`,stat:"BÄ°LGÄ° 0 â†’ Bilgi bitti â€” ihraÃ§"},
+  bilgi_100:{emoji:"ğŸ“š",title:"Kitap AdamÄ±, Gemi DeÄŸil",text:n=>`${n} her soruya cevap verdi â€” teoride.\n\nAma halatÄ± hiÃ§ tutmadÄ±. Liman yaklaÅŸmasÄ±nda paralize oldu.\n\nRapor: "Akademik zeka yÃ¼ksek. Operasyonel yetkinlik sÄ±fÄ±r."`,stat:"BÄ°LGÄ° 100 â†’ Teori-pratik uÃ§urumu"},
+  sayginlik_0:{emoji:"ğŸ‘ï¸",title:"MÃ¼rettebat Seni Terk Etti",text:n=>`SaygÄ±nlÄ±k puanÄ± sÄ±fÄ±ra dÃ¼ÅŸtÃ¼.\n\nKimse ${n}'ye bakmÄ±yordu artÄ±k. Yemekhanede tek oturdu. Lostromo gÃ¶rev listesinden adÄ±nÄ± sildi. Tayfalar konuÅŸmayÄ± kesti.\n\nSÃ¼vari 20. gÃ¼nde Ã§aÄŸÄ±rdÄ±:\n"Gemide takÄ±m ruhu ÅŸart. Bu ekiple Ã§alÄ±ÅŸamazsÄ±nÄ±z."\n\nLimana yanaÅŸÄ±rken kimseler el sallamadÄ±. Kimse Ã¼zÃ¼lmedi.`,stat:"SAYGINLIK 0 â†’ GÃ¼ven bitti â€” ihraÃ§"},
+  sayginlik_100:{emoji:"ğŸ‘‘",title:"Herkesin Favorisi â€” Ama Mahvoldu",text:n=>`Herkes ${n}'yi sevdi. Kimseye hayÄ±r diyemedi.\n\nGÃ¼n 25'e DÄ°NÃ‡LÄ°K 5'e dÃ¼ÅŸmÃ¼ÅŸtÃ¼. Son nÃ¶bette kÃ¶prÃ¼de uyuyakaldÄ±.\n\nSÃ¼vari: "Bu Ã§ocuÄŸu Ã§ok sevdik â€” mahvettik de."`,stat:"SAYGINLIK 100 â†’ AÅŸÄ±rÄ± talep â€” tÃ¼kenme"},
+  dinclik_dusuk:{emoji:"âš°ï¸",title:"Yorgunluk Seni Mahvetti",text:n=>`DinÃ§lik puanÄ± sÄ±fÄ±ra dÃ¼ÅŸtÃ¼.\n\n${n} dinlenmemiÅŸti. Her nÃ¶beti almÄ±ÅŸ, hiÃ§ hayÄ±r dememiÅŸti.\n\nUyku 3 saate dÃ¼ÅŸtÃ¼. Yemekler atlandÄ±. GÃ¶zler yanÄ±yordu.\n\nSon nÃ¶bet: KÃ¶prÃ¼de tek baÅŸÄ±na. Saat 02:14.\n\nGÃ¶zler kapandÄ±.\n\nGemi 11 mil saparak Yunan karasularÄ±na girdi.\n\nSahil gÃ¼venlik mÃ¼dahale etti. Tutanak:\n"Yorgunluk kaynaklÄ± nÃ¶bet ihmali â€” stajyer gÃ¶revden uzaklaÅŸtÄ±rÄ±ldÄ±."`,stat:"DÄ°NÃ‡LÄ°K 0 â†’ TÃ¼kenmiÅŸlik â€” kaza"},
 };
 
 function shuffleChoices(arr){
@@ -1041,193 +1019,193 @@ function buildScenePool(n,sn,yr,stype,startPort=selectedStartPort,startScenario=
   const st=STYPES.find(x=>x.key===stype)||STYPES[0];
   const startSub=`${startScenario.subPrefix} - ${yr}`;
 
-  // Sahneler: her biri bağımsız, next kullanılmayacak (rastgele sıra sistemi)
-  // next:null → sistem sonrakini kendisi seçecek
-  // next:'end' → oyun biter
-  // alert:true → ACİL banner + ses efekti
+  // Sahneler: her biri baÄŸÄ±msÄ±z, next kullanÄ±lmayacak (rastgele sÄ±ra sistemi)
+  // next:null â†’ sistem sonrakini kendisi seÃ§ecek
+  // next:'end' â†’ oyun biter
+  // alert:true â†’ ACÄ°L banner + ses efekti
 
   return [
-// ---- GÜN 1 SAHNELERİ ----
+// ---- GÃœN 1 SAHNELERÄ° ----
 {id:"s01",gfx:"harbor",alert:false,day:"Gun 1",time:startScenario.time,loc:startPort.dock,sub:startSub,who:"anlatici",
 text:`${startPort.name}, ${yr} yili.\n\n${startScenario.intro}\n\nCantan sirtinda, staj belgelerin avucunda iskeleye geldin. Onunde ${sn} - ${st.ton} ${st.nm} gemisi.\n\n${startScenario.bridgeCall.replace('${n}',n)}`,
 choices:[
-{text:"Düzgünce selamlayıp kendini tanıt",tag:"akilli",effect:{sayginlik:5,bilgi:3}},
-{text:"Heyecanla 'Evet!' deyip içeri gir",tag:"cesur",effect:{cesaret:5,sayginlik:-2}},
-{text:"Sessizce başını salla, takip et",tag:"itaatkar",effect:{sayginlik:3}}]},
+{text:"DÃ¼zgÃ¼nce selamlayÄ±p kendini tanÄ±t",tag:"akilli",effect:{sayginlik:5,bilgi:3}},
+{text:"Heyecanla 'Evet!' deyip iÃ§eri gir",tag:"cesur",effect:{cesaret:5,sayginlik:-2}},
+{text:"Sessizce baÅŸÄ±nÄ± salla, takip et",tag:"itaatkar",effect:{sayginlik:3}}]},
 
-{id:"s02",gfx:"bridge",alert:false,day:"Gün 1",time:"06:10",loc:"Köprüüstü",sub:"1. Zabiti belgelerini inceliyor",who:"z1",
-text:`"${n}. Tamam."\n\n1. Zabiti Ahmet Bey:\n\n"Burada üç kural var. Bir: Zamanında hazır ol. İki: Bilmediğini söyle — adam ölür. Üç: Lostromo ne derse yap.\n\n${era}"`,
+{id:"s02",gfx:"bridge",alert:false,day:"GÃ¼n 1",time:"06:10",loc:"KÃ¶prÃ¼Ã¼stÃ¼",sub:"1. Zabiti belgelerini inceliyor",who:"z1",
+text:`"${n}. Tamam."\n\n1. Zabiti Ahmet Bey:\n\n"Burada Ã¼Ã§ kural var. Bir: ZamanÄ±nda hazÄ±r ol. Ä°ki: BilmediÄŸini sÃ¶yle â€” adam Ã¶lÃ¼r. ÃœÃ§: Lostromo ne derse yap.\n\n${era}"`,
 choices:[
-{text:"'Anlaşıldı efendim' — net ve sakin",tag:"itaatkar",effect:{sayginlik:6,bilgi:3}},
+{text:"'AnlaÅŸÄ±ldÄ± efendim' â€” net ve sakin",tag:"itaatkar",effect:{sayginlik:6,bilgi:3}},
 {text:"ISM ve STCW bilgini ortaya koy",tag:"cesur",effect:{bilgi:5,sayginlik:-5}},
-{text:"Not defteri çıkarıp kuralları yaz",tag:"akilli",effect:{bilgi:8,sayginlik:5}}]},
+{text:"Not defteri Ã§Ä±karÄ±p kurallarÄ± yaz",tag:"akilli",effect:{bilgi:8,sayginlik:5}}]},
 
-{id:"s03",gfx:"harbor",alert:false,day:"Gün 1",time:"07:00",loc:"Ana Güverte — Pruva",sub:"Lostromo güverteyi tanıtıyor",who:"lostromo",
-text:`Lostromo İbrahim Usta. Elleri nasırlı, gözleri keskin.\n\n"Gel ${n}." Pruvanın ucuna götürdü.\n\n"Şu halat — 52 mm çelik. Koptuğunda kırbaç gibi döner, kolu koparır. Yanlış bağlarsan ${sn} kayar.\n\nBu gemi konuşmaz. Önce dinleyeceksin."`,
+{id:"s03",gfx:"harbor",alert:false,day:"GÃ¼n 1",time:"07:00",loc:"Ana GÃ¼verte â€” Pruva",sub:"Lostromo gÃ¼verteyi tanÄ±tÄ±yor",who:"lostromo",
+text:`Lostromo Ä°brahim Usta. Elleri nasÄ±rlÄ±, gÃ¶zleri keskin.\n\n"Gel ${n}." PruvanÄ±n ucuna gÃ¶tÃ¼rdÃ¼.\n\n"Åu halat â€” 52 mm Ã§elik. KoptuÄŸunda kÄ±rbaÃ§ gibi dÃ¶ner, kolu koparÄ±r. YanlÄ±ÅŸ baÄŸlarsan ${sn} kayar.\n\nBu gemi konuÅŸmaz. Ã–nce dinleyeceksin."`,
 choices:[
 {text:"Dikkatle izle, sonra kendin dene",tag:"akilli",effect:{bilgi:12,sayginlik:8}},
-{text:"'Okulda gördüm zaten' de",tag:"cesur",effect:{sayginlik:-8,cesaret:3}},
-{text:"Her detayı not defterine yaz",tag:"akilli",effect:{bilgi:15,dinclik:-5}}]},
+{text:"'Okulda gÃ¶rdÃ¼m zaten' de",tag:"cesur",effect:{sayginlik:-8,cesaret:3}},
+{text:"Her detayÄ± not defterine yaz",tag:"akilli",effect:{bilgi:15,dinclik:-5}}]},
 
-{id:"s04",gfx:"harbor",alert:false,day:"Gün 1",time:"08:00",loc:"Ana Güverte",sub:"Silici güverteyi temizliyor",who:"silici",
-text:`Silici Ramazan Usta elinde fırça.\n\n"14 yıldır bu gemide siliciyim. Herkes beni görmez — ama güverte pis olunca herkes arar. Kaygan güverte, düşen tayfa demek."`,
+{id:"s04",gfx:"harbor",alert:false,day:"GÃ¼n 1",time:"08:00",loc:"Ana GÃ¼verte",sub:"Silici gÃ¼verteyi temizliyor",who:"silici",
+text:`Silici Ramazan Usta elinde fÄ±rÃ§a.\n\n"14 yÄ±ldÄ±r bu gemide siliciyim. Herkes beni gÃ¶rmez â€” ama gÃ¼verte pis olunca herkes arar. Kaygan gÃ¼verte, dÃ¼ÅŸen tayfa demek."`,
 choices:[
-{text:"'Haklısınız usta, öğrenirim' de",tag:"itaatkar",effect:{sayginlik:5,bilgi:3}},
-{text:"Sevinçle konuş, deneyimlerini sor",tag:"sosyal",effect:{sayginlik:7,bilgi:5}},
-{text:"'Bu benim işim değil' diye düşün",tag:"korkak",effect:{sayginlik:-3}}]},
+{text:"'HaklÄ±sÄ±nÄ±z usta, Ã¶ÄŸrenirim' de",tag:"itaatkar",effect:{sayginlik:5,bilgi:3}},
+{text:"SevinÃ§le konuÅŸ, deneyimlerini sor",tag:"sosyal",effect:{sayginlik:7,bilgi:5}},
+{text:"'Bu benim iÅŸim deÄŸil' diye dÃ¼ÅŸÃ¼n",tag:"korkak",effect:{sayginlik:-3}}]},
 
-{id:"s05",gfx:"harbor",alert:false,day:"Gün 1",time:"09:30",loc:"Kıç Güverte",sub:"Palamar ekipmanı eğitimi",who:"lostromo",
-text:`"Radyo kesilirse el işaretleri var. Dur, çek, bırak, yavaş — bunları bilmeden işin yok.\n\nŞimdi Hasan'a bak. Sen de ver aynı işareti."`,
+{id:"s05",gfx:"harbor",alert:false,day:"GÃ¼n 1",time:"09:30",loc:"KÄ±Ã§ GÃ¼verte",sub:"Palamar ekipmanÄ± eÄŸitimi",who:"lostromo",
+text:`"Radyo kesilirse el iÅŸaretleri var. Dur, Ã§ek, bÄ±rak, yavaÅŸ â€” bunlarÄ± bilmeden iÅŸin yok.\n\nÅimdi Hasan'a bak. Sen de ver aynÄ± iÅŸareti."`,
 choices:[
-{text:"Dikkatle izle, işareti doğru tekrarla",tag:"akilli",effect:{bilgi:10,sayginlik:8}},
-{text:"Hasan'a yürü, doğrudan sor",tag:"cesur",effect:{bilgi:8,sayginlik:7,cesaret:5}},
-{text:"İzle ama katılma",tag:"korkak",effect:{cesaret:-5,sayginlik:-3}}]},
+{text:"Dikkatle izle, iÅŸareti doÄŸru tekrarla",tag:"akilli",effect:{bilgi:10,sayginlik:8}},
+{text:"Hasan'a yÃ¼rÃ¼, doÄŸrudan sor",tag:"cesur",effect:{bilgi:8,sayginlik:7,cesaret:5}},
+{text:"Ä°zle ama katÄ±lma",tag:"korkak",effect:{cesaret:-5,sayginlik:-3}}]},
 
-{id:"s06",gfx:"compass",alert:false,day:"Gün 1",time:"14:00",loc:"Köprüüstü",sub:"Navigasyon eğitimi",who:"z2",
+{id:"s06",gfx:"compass",alert:false,day:"GÃ¼n 1",time:"14:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼",sub:"Navigasyon eÄŸitimi",who:"z2",
 text:yr<=1990
-  ?`2. Zabiti:\n\n"${n}, ${yr}'de GPS yok. Sextant ile seyir yapıyoruz. Güneşi gözle, sextantı konumla."`
-  :`2. Zabiti ECDIS'te:\n\n"${n}, elektronik harita, AIS, VDR — hepsi çalışıyor. Ama siber saldırı riski artıyor. ${era}"`,
+  ?`2. Zabiti:\n\n"${n}, ${yr}'de GPS yok. Sextant ile seyir yapÄ±yoruz. GÃ¼neÅŸi gÃ¶zle, sextantÄ± konumla."`
+  :`2. Zabiti ECDIS'te:\n\n"${n}, elektronik harita, AIS, VDR â€” hepsi Ã§alÄ±ÅŸÄ±yor. Ama siber saldÄ±rÄ± riski artÄ±yor. ${era}"`,
 choices:[
-{text:yr<=1990?"Dikkatle öğren, gözlemi dene":"'GPS bozulunca kâğıt harita açarım' de",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
-{text:"'Bilmiyorum, öğretir misiniz?' de",tag:"itaatkar",effect:{bilgi:8,sayginlik:3}},
-{text:yr<=1990?"'Radar kullanamaz mıyız?' de":"'Bu olmaz' de",tag:"korkak",effect:{sayginlik:-5,bilgi:-3}}]},
+{text:yr<=1990?"Dikkatle Ã¶ÄŸren, gÃ¶zlemi dene":"'GPS bozulunca kÃ¢ÄŸÄ±t harita aÃ§arÄ±m' de",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
+{text:"'Bilmiyorum, Ã¶ÄŸretir misiniz?' de",tag:"itaatkar",effect:{bilgi:8,sayginlik:3}},
+{text:yr<=1990?"'Radar kullanamaz mÄ±yÄ±z?' de":"'Bu olmaz' de",tag:"korkak",effect:{sayginlik:-5,bilgi:-3}}]},
 
-{id:"s07",gfx:"galley",alert:false,day:"Gün 1",time:"19:30",loc:"Yemekhane",sub:"İlk akşam yemeği",who:"asci",
-text:`"Oturun!" Mehmet Usta tombul, bıyıklı ve neşeli.\n\n"Bu gece levrek buğulama. Denizde karnın tok olmazsa beyin çalışmaz."\n\nMusa sana baktı: "${n}, ilk gün nasıldı?"`,
+{id:"s07",gfx:"galley",alert:false,day:"GÃ¼n 1",time:"19:30",loc:"Yemekhane",sub:"Ä°lk akÅŸam yemeÄŸi",who:"asci",
+text:`"Oturun!" Mehmet Usta tombul, bÄ±yÄ±klÄ± ve neÅŸeli.\n\n"Bu gece levrek buÄŸulama. Denizde karnÄ±n tok olmazsa beyin Ã§alÄ±ÅŸmaz."\n\nMusa sana baktÄ±: "${n}, ilk gÃ¼n nasÄ±ldÄ±?"`,
 choices:[
-{text:"Gülerek anlat, Musa ile kaynaş",tag:"sosyal",effect:{sayginlik:10,dinclik:5}},
-{text:"Kısa cevap ver, erken uyu",tag:"itaatkar",effect:{dinclik:12}},
-{text:"Lostromo'ya dön, denizcilik hikayeleri sor",tag:"akilli",effect:{bilgi:8,sayginlik:7}}]},
+{text:"GÃ¼lerek anlat, Musa ile kaynaÅŸ",tag:"sosyal",effect:{sayginlik:10,dinclik:5}},
+{text:"KÄ±sa cevap ver, erken uyu",tag:"itaatkar",effect:{dinclik:12}},
+{text:"Lostromo'ya dÃ¶n, denizcilik hikayeleri sor",tag:"akilli",effect:{bilgi:8,sayginlik:7}}]},
 
-{id:"s08",gfx:"cabin",alert:false,day:"Gün 1",time:"22:00",loc:"Stajyer Kabini",sub:`${yr} — ilk gece, gemi homurtusu`,who:"anlatici",
-text:`Kabin küçük. Gemi homurdanıyor. Motor titreşimi ayaklarından geliyor.\n\nYarın 05:45'te güvertede hazır olman gerekiyor.\n\n${era}`,
+{id:"s08",gfx:"cabin",alert:false,day:"GÃ¼n 1",time:"22:00",loc:"Stajyer Kabini",sub:`${yr} â€” ilk gece, gemi homurtusu`,who:"anlatici",
+text:`Kabin kÃ¼Ã§Ã¼k. Gemi homurdanÄ±yor. Motor titreÅŸimi ayaklarÄ±ndan geliyor.\n\nYarÄ±n 05:45'te gÃ¼vertede hazÄ±r olman gerekiyor.\n\n${era}`,
 choices:[
-{text:"Hemen uyu — dinç olmak şart",tag:"itaatkar",effect:{dinclik:15}},
-{text:"Not defterini aç, öğrendiklerini yaz",tag:"akilli",effect:{bilgi:8,dinclik:-5}},
-{text:"Pencereden denize bak, düşün — geç uyu",tag:"sosyal",effect:{dinclik:-3}}]},
+{text:"Hemen uyu â€” dinÃ§ olmak ÅŸart",tag:"itaatkar",effect:{dinclik:15}},
+{text:"Not defterini aÃ§, Ã¶ÄŸrendiklerini yaz",tag:"akilli",effect:{bilgi:8,dinclik:-5}},
+{text:"Pencereden denize bak, dÃ¼ÅŸÃ¼n â€” geÃ§ uyu",tag:"sosyal",effect:{dinclik:-3}}]},
 
-// ---- RUTIN GÜN SAHNELERİ ----
-{id:"s09",gfx:"harbor",alert:false,day:"Gün 2",time:"05:45",loc:"Ana Güverte — Sabah Turu",sub:"Güverte sabah kontrol turu",who:"lostromo",
-text:`"Her sabah aynı. Güverte kontrol edilir. Bağlantılar, halatlar, ekipman kapakları, ışıklar.\n\nBu gemide liste dışı iş yapılmaz."\n\nSana kontrol listesi uzattı: "Sancak tarafını sen kontrol edeceksin."`,
+// ---- RUTIN GÃœN SAHNELERÄ° ----
+{id:"s09",gfx:"harbor",alert:false,day:"GÃ¼n 2",time:"05:45",loc:"Ana GÃ¼verte â€” Sabah Turu",sub:"GÃ¼verte sabah kontrol turu",who:"lostromo",
+text:`"Her sabah aynÄ±. GÃ¼verte kontrol edilir. BaÄŸlantÄ±lar, halatlar, ekipman kapaklarÄ±, Ä±ÅŸÄ±klar.\n\nBu gemide liste dÄ±ÅŸÄ± iÅŸ yapÄ±lmaz."\n\nSana kontrol listesi uzattÄ±: "Sancak tarafÄ±nÄ± sen kontrol edeceksin."`,
 choices:[
-{text:"Listeyi alıp dikkatle her maddeyi kontrol et",tag:"akilli",effect:{bilgi:10,sayginlik:8}},
-{text:"Hızlıca bak, 'tamam' deyip geri gel",tag:"korkak",effect:{sayginlik:-5,bilgi:-3}},
+{text:"Listeyi alÄ±p dikkatle her maddeyi kontrol et",tag:"akilli",effect:{bilgi:10,sayginlik:8}},
+{text:"HÄ±zlÄ±ca bak, 'tamam' deyip geri gel",tag:"korkak",effect:{sayginlik:-5,bilgi:-3}},
 {text:"Sorular sorarak kontrol et",tag:"akilli",effect:{bilgi:12,sayginlik:7,dinclik:-3}}]},
 
-{id:"s10",gfx:"engine",alert:false,day:"Gün 2",time:"09:00",loc:"Makine Dairesi",sub:"Yağcı yağ kontrolleri yapıyor",who:"yagci",
-text:`Yağcı Mehmet Ali elinde numune şişesi.\n\n"Bu ana makine yağı. Her 250 saatte bir alırız. Rengi, viskozitesi, metal parçacıkları — makine sağlığını söyler.\n\nYağlama olmadan motor 20 dakikada tutuşur."`,
+{id:"s10",gfx:"engine",alert:false,day:"GÃ¼n 2",time:"09:00",loc:"Makine Dairesi",sub:"YaÄŸcÄ± yaÄŸ kontrolleri yapÄ±yor",who:"yagci",
+text:`YaÄŸcÄ± Mehmet Ali elinde numune ÅŸiÅŸesi.\n\n"Bu ana makine yaÄŸÄ±. Her 250 saatte bir alÄ±rÄ±z. Rengi, viskozitesi, metal parÃ§acÄ±klarÄ± â€” makine saÄŸlÄ±ÄŸÄ±nÄ± sÃ¶yler.\n\nYaÄŸlama olmadan motor 20 dakikada tutuÅŸur."`,
 choices:[
-{text:"İlgiyle sor, numune analizi öğren",tag:"akilli",effect:{bilgi:10,sayginlik:5}},
-{text:"'İlginç ama güverte bölümüm' de",tag:"itaatkar",effect:{sayginlik:2}},
+{text:"Ä°lgiyle sor, numune analizi Ã¶ÄŸren",tag:"akilli",effect:{bilgi:10,sayginlik:5}},
+{text:"'Ä°lginÃ§ ama gÃ¼verte bÃ¶lÃ¼mÃ¼m' de",tag:"itaatkar",effect:{sayginlik:2}},
 {text:"Makine dairesini gezdirin de",tag:"sosyal",effect:{bilgi:8,sayginlik:8,dinclik:-3}}]},
 
-{id:"s11",gfx:"engine",alert:false,day:"Gün 2",time:"10:30",loc:"Makine Kontrol Odası",sub:"2. Başmakinist sistem kontrolü",who:"bas2",
-text:`2. Başmakinist Serdar Bey:\n\n"Jeneratör 1 yükte, jeneratör 2 beklemede. Bir jeneratör devre dışı kalırsa ne olur?"`,
+{id:"s11",gfx:"engine",alert:false,day:"GÃ¼n 2",time:"10:30",loc:"Makine Kontrol OdasÄ±",sub:"2. BaÅŸmakinist sistem kontrolÃ¼",who:"bas2",
+text:`2. BaÅŸmakinist Serdar Bey:\n\n"JeneratÃ¶r 1 yÃ¼kte, jeneratÃ¶r 2 beklemede. Bir jeneratÃ¶r devre dÄ±ÅŸÄ± kalÄ±rsa ne olur?"`,
 choices:[
-{text:"'Diğer devreye girer, yük dağılımı değişir' de",tag:"akilli",effect:{bilgi:12,sayginlik:8}},
-{text:"'Bilmiyorum efendim' — dürüst ol",tag:"itaatkar",effect:{bilgi:5,sayginlik:3}},
-{text:"'Güverte stajyeriyim' deyip çekilmeye çalış",tag:"korkak",effect:{sayginlik:-5}}]},
+{text:"'DiÄŸer devreye girer, yÃ¼k daÄŸÄ±lÄ±mÄ± deÄŸiÅŸir' de",tag:"akilli",effect:{bilgi:12,sayginlik:8}},
+{text:"'Bilmiyorum efendim' â€” dÃ¼rÃ¼st ol",tag:"itaatkar",effect:{bilgi:5,sayginlik:3}},
+{text:"'GÃ¼verte stajyeriyim' deyip Ã§ekilmeye Ã§alÄ±ÅŸ",tag:"korkak",effect:{sayginlik:-5}}]},
 
-{id:"s12",gfx:"harbor",alert:false,day:"Gün 2",time:"14:00",loc:"Kıç Güverte",sub:"Liman çıkış prosedürü",who:"lostromo",
-text:`"${n}, bugün palamar operasyonunu izleyeceksin. Sadece izle, dokunma."\n\nSüvari radyoyla: "Tüm istasyonlar, liman çıkış prosedürü başlıyor."\n\nRadyo: "Kıç! Hazır mısınız?"`,
+{id:"s12",gfx:"harbor",alert:false,day:"GÃ¼n 2",time:"14:00",loc:"KÄ±Ã§ GÃ¼verte",sub:"Liman Ã§Ä±kÄ±ÅŸ prosedÃ¼rÃ¼",who:"lostromo",
+text:`"${n}, bugÃ¼n palamar operasyonunu izleyeceksin. Sadece izle, dokunma."\n\nSÃ¼vari radyoyla: "TÃ¼m istasyonlar, liman Ã§Ä±kÄ±ÅŸ prosedÃ¼rÃ¼ baÅŸlÄ±yor."\n\nRadyo: "KÄ±Ã§! HazÄ±r mÄ±sÄ±nÄ±z?"`,
 choices:[
-{text:"Lostromo'nun işaret vermesini bekle",tag:"itaatkar",effect:{sayginlik:5,bilgi:5}},
-{text:"Lostromo onay verince 'Kıç hazır!' de",tag:"cesur",effect:{cesaret:8,sayginlik:5,bilgi:5}},
-{text:"Her detayı kaydet",tag:"akilli",effect:{bilgi:10,sayginlik:3}}]},
+{text:"Lostromo'nun iÅŸaret vermesini bekle",tag:"itaatkar",effect:{sayginlik:5,bilgi:5}},
+{text:"Lostromo onay verince 'KÄ±Ã§ hazÄ±r!' de",tag:"cesur",effect:{cesaret:8,sayginlik:5,bilgi:5}},
+{text:"Her detayÄ± kaydet",tag:"akilli",effect:{bilgi:10,sayginlik:3}}]},
 
-{id:"s13",gfx:"sea",alert:false,day:"Gün 2",time:"16:00",loc:"Açık Deniz",sub:startPort.departureLine,who:"hasan",
-text:`Gemi açık denize çıktı. Tayfa Hasan yanına geldi:\n\n"${n}, deniz tutması var mı? ${sn} gibi ${st.nm} gemisi limanda ağır görünür ama dalgaya farklı davranır."`,
+{id:"s13",gfx:"sea",alert:false,day:"GÃ¼n 2",time:"16:00",loc:"AÃ§Ä±k Deniz",sub:startPort.departureLine,who:"hasan",
+text:`Gemi aÃ§Ä±k denize Ã§Ä±ktÄ±. Tayfa Hasan yanÄ±na geldi:\n\n"${n}, deniz tutmasÄ± var mÄ±? ${sn} gibi ${st.nm} gemisi limanda aÄŸÄ±r gÃ¶rÃ¼nÃ¼r ama dalgaya farklÄ± davranÄ±r."`,
 choices:[
-{text:"'Yok, deneme seferinde geçtim' de",tag:"akilli",effect:{sayginlik:5,bilgi:3}},
-{text:"'Biraz var, ilaç aldım' — dürüst",tag:"itaatkar",effect:{sayginlik:5,dinclik:-3}},
-{text:"'Yok' de ama içinde fırtına",tag:"korkak",effect:{dinclik:-8,sayginlik:-3}}]},
+{text:"'Yok, deneme seferinde geÃ§tim' de",tag:"akilli",effect:{sayginlik:5,bilgi:3}},
+{text:"'Biraz var, ilaÃ§ aldÄ±m' â€” dÃ¼rÃ¼st",tag:"itaatkar",effect:{sayginlik:5,dinclik:-3}},
+{text:"'Yok' de ama iÃ§inde fÄ±rtÄ±na",tag:"korkak",effect:{dinclik:-8,sayginlik:-3}}]},
 
-{id:"s14",gfx:"engine",alert:false,day:"Gün 3",time:"09:00",loc:"Makine Dairesi",sub:"Çarkçıbaşı ile teknik ders",who:"carkci",
-text:`Çarkçıbaşı Fikret Bey:\n\n"${n}. Gel, bir saat ver."\n\n45 derece sıcak. Dev motorlar.\n\n"Şu ana makineler dursa ${sn}'de hiçbir şey çalışmaz. Hangisi aktif, hangisi yedek?"`,
+{id:"s14",gfx:"engine",alert:false,day:"GÃ¼n 3",time:"09:00",loc:"Makine Dairesi",sub:"Ã‡arkÃ§Ä±baÅŸÄ± ile teknik ders",who:"carkci",
+text:`Ã‡arkÃ§Ä±baÅŸÄ± Fikret Bey:\n\n"${n}. Gel, bir saat ver."\n\n45 derece sÄ±cak. Dev motorlar.\n\n"Åu ana makineler dursa ${sn}'de hiÃ§bir ÅŸey Ã§alÄ±ÅŸmaz. Hangisi aktif, hangisi yedek?"`,
 choices:[
-{text:"Paneli incele, doğru makineyi işaret et",tag:"akilli",effect:{bilgi:12,sayginlik:8}},
-{text:"'Bilmiyorum ama öğrenmek istiyorum' de",tag:"itaatkar",effect:{bilgi:8,sayginlik:5}},
-{text:"Konuyu değiştir",tag:"korkak",effect:{sayginlik:-5,bilgi:-3}}]},
+{text:"Paneli incele, doÄŸru makineyi iÅŸaret et",tag:"akilli",effect:{bilgi:12,sayginlik:8}},
+{text:"'Bilmiyorum ama Ã¶ÄŸrenmek istiyorum' de",tag:"itaatkar",effect:{bilgi:8,sayginlik:5}},
+{text:"Konuyu deÄŸiÅŸtir",tag:"korkak",effect:{sayginlik:-5,bilgi:-3}}]},
 
-{id:"s15",gfx:"cargo",alert:false,day:"Gün 3",time:"14:00",loc:"Ambar — Yük Sahası",sub:"Manifesto denetimi",who:"z1",
-text:`"${n}, şu listede yükler var. Manifesto ile fiili yükü karşılaştır. Hata varsa bildir."\n\nSoğuk, karanlık ambar. İki ayrı kalemde eksik buldun.`,
+{id:"s15",gfx:"cargo",alert:false,day:"GÃ¼n 3",time:"14:00",loc:"Ambar â€” YÃ¼k SahasÄ±",sub:"Manifesto denetimi",who:"z1",
+text:`"${n}, ÅŸu listede yÃ¼kler var. Manifesto ile fiili yÃ¼kÃ¼ karÅŸÄ±laÅŸtÄ±r. Hata varsa bildir."\n\nSoÄŸuk, karanlÄ±k ambar. Ä°ki ayrÄ± kalemde eksik buldun.`,
 choices:[
-{text:"İkisini de hemen bildir",tag:"akilli",effect:{bilgi:15,sayginlik:12,cesaret:5}},
-{text:"Üçer kez daha say, eminleş, bildir",tag:"itaatkar",effect:{bilgi:10,sayginlik:8,dinclik:-5}},
-{text:"Geçiştir, liman halleder",tag:"korkak",effect:{sayginlik:-15,bilgi:-5}}]},
+{text:"Ä°kisini de hemen bildir",tag:"akilli",effect:{bilgi:15,sayginlik:12,cesaret:5}},
+{text:"ÃœÃ§er kez daha say, eminleÅŸ, bildir",tag:"itaatkar",effect:{bilgi:10,sayginlik:8,dinclik:-5}},
+{text:"GeÃ§iÅŸtir, liman halleder",tag:"korkak",effect:{sayginlik:-15,bilgi:-5}}]},
 
-{id:"s16",gfx:"bridge",alert:false,day:"Gün 3",time:"19:00",loc:"Toplanma İstasyonu",sub:"SOLAS güvenlik eğitimi",who:"z3",
-text:`3. Zabiti Kemal Bey:\n\n"${n}, SOLAS tatbikatı. Yangın alarmı çalınca ilk üç dakika kritik. Toplanma istasyonunuz nerede?"`,
+{id:"s16",gfx:"bridge",alert:false,day:"GÃ¼n 3",time:"19:00",loc:"Toplanma Ä°stasyonu",sub:"SOLAS gÃ¼venlik eÄŸitimi",who:"z3",
+text:`3. Zabiti Kemal Bey:\n\n"${n}, SOLAS tatbikatÄ±. YangÄ±n alarmÄ± Ã§alÄ±nca ilk Ã¼Ã§ dakika kritik. Toplanma istasyonunuz nerede?"`,
 choices:[
-{text:"Muster listeni okuduysan doğru yeri söyle",tag:"akilli",effect:{bilgi:12,sayginlik:10}},
-{text:"'Hatırlamıyorum, gösterir misiniz?' de",tag:"itaatkar",effect:{bilgi:5,sayginlik:-3}},
-{text:"Yanlış yer söyle",tag:"korkak",effect:{sayginlik:-15,bilgi:-5}}]},
+{text:"Muster listeni okuduysan doÄŸru yeri sÃ¶yle",tag:"akilli",effect:{bilgi:12,sayginlik:10}},
+{text:"'HatÄ±rlamÄ±yorum, gÃ¶sterir misiniz?' de",tag:"itaatkar",effect:{bilgi:5,sayginlik:-3}},
+{text:"YanlÄ±ÅŸ yer sÃ¶yle",tag:"korkak",effect:{sayginlik:-15,bilgi:-5}}]},
 
-{id:"s17",gfx:"galley",alert:false,day:"Gün 3",time:"20:00",loc:"Yemekhane",sub:"Üçüncü akşam",who:"lostromo",
-text:`Lostromo başköşeye kuruldu:\n\n"${n}, üç gündür izliyorum. Güvertede en çok neyi anlamadın?"`,
+{id:"s17",gfx:"galley",alert:false,day:"GÃ¼n 3",time:"20:00",loc:"Yemekhane",sub:"ÃœÃ§Ã¼ncÃ¼ akÅŸam",who:"lostromo",
+text:`Lostromo baÅŸkÃ¶ÅŸeye kuruldu:\n\n"${n}, Ã¼Ã§ gÃ¼ndÃ¼r izliyorum. GÃ¼vertede en Ã§ok neyi anlamadÄ±n?"`,
 choices:[
-{text:"Dürüstçe anlat",tag:"akilli",effect:{bilgi:8,sayginlik:10}},
-{text:"'Her şeyi anladım' de",tag:"cesur",effect:{cesaret:3,sayginlik:-5}},
+{text:"DÃ¼rÃ¼stÃ§e anlat",tag:"akilli",effect:{bilgi:8,sayginlik:10}},
+{text:"'Her ÅŸeyi anladÄ±m' de",tag:"cesur",effect:{cesaret:3,sayginlik:-5}},
 {text:"'Bilmiyorum' de",tag:"korkak",effect:{sayginlik:-5}}]},
 
-{id:"s18",gfx:"compass",alert:false,day:"Gün 4",time:"06:00",loc:"Köprüüstü — Sabah Nöbeti",sub:"İlk yarı-bağımsız nöbet",who:"z2",
-text:`"${n}, bugün Radarı izle. CPA 1.5 milin altına düşerse beni çağır.\n\nHer küçük şeyde çağırırsan güvensizlik mesajı verirsin. Her şeyi kendi başına çözmeye çalışırsan hata yaparsın.\n\nDenge bul."`,
+{id:"s18",gfx:"compass",alert:false,day:"GÃ¼n 4",time:"06:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” Sabah NÃ¶beti",sub:"Ä°lk yarÄ±-baÄŸÄ±msÄ±z nÃ¶bet",who:"z2",
+text:`"${n}, bugÃ¼n RadarÄ± izle. CPA 1.5 milin altÄ±na dÃ¼ÅŸerse beni Ã§aÄŸÄ±r.\n\nHer kÃ¼Ã§Ã¼k ÅŸeyde Ã§aÄŸÄ±rÄ±rsan gÃ¼vensizlik mesajÄ± verirsin. Her ÅŸeyi kendi baÅŸÄ±na Ã§Ã¶zmeye Ã§alÄ±ÅŸÄ±rsan hata yaparsÄ±n.\n\nDenge bul."`,
 choices:[
-{text:"Sakin izle, kritik durumda çağır",tag:"akilli",effect:{bilgi:10,sayginlik:10}},
-{text:"Her küçük şeyi raporla",tag:"itaatkar",effect:{sayginlik:3,bilgi:5}},
-{text:"Her şeyi kendi başına çöz",tag:"cesur",effect:{cesaret:8,sayginlik:-3,bilgi:5}}]},
+{text:"Sakin izle, kritik durumda Ã§aÄŸÄ±r",tag:"akilli",effect:{bilgi:10,sayginlik:10}},
+{text:"Her kÃ¼Ã§Ã¼k ÅŸeyi raporla",tag:"itaatkar",effect:{sayginlik:3,bilgi:5}},
+{text:"Her ÅŸeyi kendi baÅŸÄ±na Ã§Ã¶z",tag:"cesur",effect:{cesaret:8,sayginlik:-3,bilgi:5}}]},
 
-{id:"s19",gfx:"bridge",alert:false,day:"Gün 4",time:"11:00",loc:"Köprüüstü",sub:"Süvari ile ilk sohbet",who:"suvari",
-text:`Süvari Mustafa Kaptan köprüye geldi. Radarı inceledi:\n\n"${n}, dört gündür gemidesin. Lostromo'dan iyi şeyler duydum. Sana bir şey sormak istiyorum: ${sn}'de olmak nasıl?"`,
+{id:"s19",gfx:"bridge",alert:false,day:"GÃ¼n 4",time:"11:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼",sub:"SÃ¼vari ile ilk sohbet",who:"suvari",
+text:`SÃ¼vari Mustafa Kaptan kÃ¶prÃ¼ye geldi. RadarÄ± inceledi:\n\n"${n}, dÃ¶rt gÃ¼ndÃ¼r gemidesin. Lostromo'dan iyi ÅŸeyler duydum. Sana bir ÅŸey sormak istiyorum: ${sn}'de olmak nasÄ±l?"`,
 choices:[
-{text:"Dürüstçe anlat — iyi ve zor yanlarıyla",tag:"sosyal",effect:{sayginlik:10,cesaret:5}},
-{text:"'Her şey harika' de",tag:"itaatkar",effect:{sayginlik:3}},
-{text:"'Beklediğimden farklı ama öğreniyorum' de",tag:"akilli",effect:{sayginlik:8,bilgi:3}}]},
+{text:"DÃ¼rÃ¼stÃ§e anlat â€” iyi ve zor yanlarÄ±yla",tag:"sosyal",effect:{sayginlik:10,cesaret:5}},
+{text:"'Her ÅŸey harika' de",tag:"itaatkar",effect:{sayginlik:3}},
+{text:"'BeklediÄŸimden farklÄ± ama Ã¶ÄŸreniyorum' de",tag:"akilli",effect:{sayginlik:8,bilgi:3}}]},
 
-{id:"s20",gfx:"compass",alert:false,day:"Gün 4",time:"18:00",loc:"Köprüüstü — Brifing",sub:"Fırtına uyarısı alındı",who:"z2",
-text:`"Girit açıklarında alçak basınç. Beaufort 7-8 bekleniyor.\n\nSüvari burada. Karar: Güneye sapıp fırtınadan kaçırız ama geç varırız. Ya da doğrudan devam ederiz."\n\nSüvari ${n}'ye döndü: "Sen olsan?"`,
+{id:"s20",gfx:"compass",alert:false,day:"GÃ¼n 4",time:"18:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” Brifing",sub:"FÄ±rtÄ±na uyarÄ±sÄ± alÄ±ndÄ±",who:"z2",
+text:`"Girit aÃ§Ä±klarÄ±nda alÃ§ak basÄ±nÃ§. Beaufort 7-8 bekleniyor.\n\nSÃ¼vari burada. Karar: GÃ¼neye sapÄ±p fÄ±rtÄ±nadan kaÃ§Ä±rÄ±z ama geÃ§ varÄ±rÄ±z. Ya da doÄŸrudan devam ederiz."\n\nSÃ¼vari ${n}'ye dÃ¶ndÃ¼: "Sen olsan?"`,
 choices:[
-{text:"Haritayı incele, alternatif rotayı gerekçeyle sun",tag:"akilli",effect:{bilgi:12,sayginlik:10,cesaret:8}},
-{text:"'Süvarinin kararı doğru olur' de",tag:"korkak",effect:{sayginlik:-5,cesaret:-5}},
+{text:"HaritayÄ± incele, alternatif rotayÄ± gerekÃ§eyle sun",tag:"akilli",effect:{bilgi:12,sayginlik:10,cesaret:8}},
+{text:"'SÃ¼varinin kararÄ± doÄŸru olur' de",tag:"korkak",effect:{sayginlik:-5,cesaret:-5}},
 {text:"'Devam edelim' de",tag:"cesur",effect:{cesaret:10,sayginlik:3}}]},
 
-// ---- KRİTİK SENARYOLAR ----
-{id:"kriz01",gfx:"engine_fault",alert:true,day:"Gün 4",time:"14:00",loc:"Köprüüstü — ACİL ALARM",sub:"Ana makine arızası — gemi ileri sürme gücünü kaybetti",who:"carkci",
-text:`Alarm çaldı — sert, kesintisiz.\n\nÇarkçıbaşı radyodan:\n"Köprü dikkat! Ana makine yüksek egzoz sıcaklığı alarmı verdi. Makineleri durduruyorum. Tekrar: MAKİNE DURDU."\n\nGemi bir anda yavaşlamaya başladı.\n\nSüvari: "${n}! Git Çarkçıbaşı'na yardım et. Gözlemle ve raporla!"`,
+// ---- KRÄ°TÄ°K SENARYOLAR ----
+{id:"kriz01",gfx:"engine_fault",alert:true,day:"GÃ¼n 4",time:"14:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” ACÄ°L ALARM",sub:"Ana makine arÄ±zasÄ± â€” gemi ileri sÃ¼rme gÃ¼cÃ¼nÃ¼ kaybetti",who:"carkci",
+text:`Alarm Ã§aldÄ± â€” sert, kesintisiz.\n\nÃ‡arkÃ§Ä±baÅŸÄ± radyodan:\n"KÃ¶prÃ¼ dikkat! Ana makine yÃ¼ksek egzoz sÄ±caklÄ±ÄŸÄ± alarmÄ± verdi. Makineleri durduruyorum. Tekrar: MAKÄ°NE DURDU."\n\nGemi bir anda yavaÅŸlamaya baÅŸladÄ±.\n\nSÃ¼vari: "${n}! Git Ã‡arkÃ§Ä±baÅŸÄ±'na yardÄ±m et. GÃ¶zlemle ve raporla!"`,
 choices:[
-{text:"Hemen makineye in, Çarkçıbaşı'nın yanında dur",tag:"kritik",effect:{cesaret:10,sayginlik:12,bilgi:8}},
+{text:"Hemen makineye in, Ã‡arkÃ§Ä±baÅŸÄ±'nÄ±n yanÄ±nda dur",tag:"kritik",effect:{cesaret:10,sayginlik:12,bilgi:8}},
 {text:"'Ne yapabilirim?' diye sor, sonra git",tag:"akilli",effect:{bilgi:8,sayginlik:8}},
-{text:"Köprüde kal, olayı izle",tag:"korkak",effect:{sayginlik:-8,cesaret:-5}}]},
+{text:"KÃ¶prÃ¼de kal, olayÄ± izle",tag:"korkak",effect:{sayginlik:-8,cesaret:-5}}]},
 
-{id:"kriz02",gfx:"engine_fault",alert:true,day:"Gün 4",time:"14:20",loc:"Makine Dairesi — Acil Müdahale",sub:"Egzoz sıcaklığı 480°C — limit 420°C",who:"bas2",
-text:`Makine dairesinde herkes ciddi. Paniksiz ama gergin.\n\n2. Başmakinist:\n"${n}, not al. Soğutma suyu akışı düşmüş. Termostat arızası ya da soğutma suyu pompası kavitasyon.\n\nŞu vanayı manuel açacağım. Basınç değişimini izle ve söyle."`,
+{id:"kriz02",gfx:"engine_fault",alert:true,day:"GÃ¼n 4",time:"14:20",loc:"Makine Dairesi â€” Acil MÃ¼dahale",sub:"Egzoz sÄ±caklÄ±ÄŸÄ± 480Â°C â€” limit 420Â°C",who:"bas2",
+text:`Makine dairesinde herkes ciddi. Paniksiz ama gergin.\n\n2. BaÅŸmakinist:\n"${n}, not al. SoÄŸutma suyu akÄ±ÅŸÄ± dÃ¼ÅŸmÃ¼ÅŸ. Termostat arÄ±zasÄ± ya da soÄŸutma suyu pompasÄ± kavitasyon.\n\nÅu vanayÄ± manuel aÃ§acaÄŸÄ±m. BasÄ±nÃ§ deÄŸiÅŸimini izle ve sÃ¶yle."`,
 choices:[
-{text:"Basınç göstergesini gözünden ayırma, değişimi bildir",tag:"akilli",effect:{bilgi:15,sayginlik:12}},
-{text:"Çarkçıbaşı gelince ona bırak",tag:"korkak",effect:{sayginlik:-8}},
-{text:"Vanayı kendisi de aç diye öner",tag:"cesur",effect:{cesaret:5,sayginlik:-3}}]},
+{text:"BasÄ±nÃ§ gÃ¶stergesini gÃ¶zÃ¼nden ayÄ±rma, deÄŸiÅŸimi bildir",tag:"akilli",effect:{bilgi:15,sayginlik:12}},
+{text:"Ã‡arkÃ§Ä±baÅŸÄ± gelince ona bÄ±rak",tag:"korkak",effect:{sayginlik:-8}},
+{text:"VanayÄ± kendisi de aÃ§ diye Ã¶ner",tag:"cesur",effect:{cesaret:5,sayginlik:-3}}]},
 
-{id:"kriz03",gfx:"engine",alert:false,day:"Gün 4",time:"15:45",loc:"Makine Dairesi — Arıza Giderildi",sub:"Soğutma suyu pompası değiştirildi",who:"carkci",
-text:`Bir saat sonra motor yeniden çalışıyordu.\n\nÇarkçıbaşı ${n}'ye döndü:\n\n"Soğutma suyu pompasının kavitasyon yaptığını gördün mü? Bu arıza denizde olabilir. Sen sağ ol."`,
+{id:"kriz03",gfx:"engine",alert:false,day:"GÃ¼n 4",time:"15:45",loc:"Makine Dairesi â€” ArÄ±za Giderildi",sub:"SoÄŸutma suyu pompasÄ± deÄŸiÅŸtirildi",who:"carkci",
+text:`Bir saat sonra motor yeniden Ã§alÄ±ÅŸÄ±yordu.\n\nÃ‡arkÃ§Ä±baÅŸÄ± ${n}'ye dÃ¶ndÃ¼:\n\n"SoÄŸutma suyu pompasÄ±nÄ±n kavitasyon yaptÄ±ÄŸÄ±nÄ± gÃ¶rdÃ¼n mÃ¼? Bu arÄ±za denizde olabilir. Sen saÄŸ ol."`,
 choices:[
-{text:"Her şeyi not al — bu değerliydi",tag:"akilli",effect:{bilgi:15,sayginlik:8}},
-{text:"'Bir dahaki sefere hazır olacağım' de",tag:"cesur",effect:{cesaret:5,sayginlik:8}},
-{text:"Teşekkür et ve güverteye dön",tag:"itaatkar",effect:{sayginlik:5}}]},
+{text:"Her ÅŸeyi not al â€” bu deÄŸerliydi",tag:"akilli",effect:{bilgi:15,sayginlik:8}},
+{text:"'Bir dahaki sefere hazÄ±r olacaÄŸÄ±m' de",tag:"cesur",effect:{cesaret:5,sayginlik:8}},
+{text:"TeÅŸekkÃ¼r et ve gÃ¼verteye dÃ¶n",tag:"itaatkar",effect:{sayginlik:5}}]},
 
-{id:"kriz04",gfx:"storm",alert:false,day:"Gün 5",time:"07:00",loc:"Ana Güverte — Fırtına",sub:"Beaufort 8 — 18 derece yatış",who:"lostromo",
-text:`Fırtına erken ve sert geldi. ${sn} 18 derece yatıyor.\n\nLostromo:\n"Güverteye çıkmak yasak! Ama kargo bağlantıları gevşedi — kayarsa hasar büyük."\n\nSessizlik. Kimse kımıldamıyordu.`,
+{id:"kriz04",gfx:"storm",alert:false,day:"GÃ¼n 5",time:"07:00",loc:"Ana GÃ¼verte â€” FÄ±rtÄ±na",sub:"Beaufort 8 â€” 18 derece yatÄ±ÅŸ",who:"lostromo",
+text:`FÄ±rtÄ±na erken ve sert geldi. ${sn} 18 derece yatÄ±yor.\n\nLostromo:\n"GÃ¼verteye Ã§Ä±kmak yasak! Ama kargo baÄŸlantÄ±larÄ± gevÅŸedi â€” kayarsa hasar bÃ¼yÃ¼k."\n\nSessizlik. Kimse kÄ±mÄ±ldamÄ±yordu.`,
 choices:[
-{text:"'Ben giderim' — emniyet halatı tak ve çık",tag:"cesur",effect:{cesaret:15,sayginlik:15,dinclik:-12}},
-{text:"'Deneyimli biri daha doğru olur' deyip öner",tag:"akilli",effect:{sayginlik:3,cesaret:-5}},
-{text:"Gözleri kaçır",tag:"korkak",effect:{sayginlik:-15,cesaret:-10}}]},
+{text:"'Ben giderim' â€” emniyet halatÄ± tak ve Ã§Ä±k",tag:"cesur",effect:{cesaret:15,sayginlik:15,dinclik:-12}},
+{text:"'Deneyimli biri daha doÄŸru olur' deyip Ã¶ner",tag:"akilli",effect:{sayginlik:3,cesaret:-5}},
+{text:"GÃ¶zleri kaÃ§Ä±r",tag:"korkak",effect:{sayginlik:-15,cesaret:-10}}]},
 
-{id:"kriz05",gfx:"storm",alert:false,day:"Gün 5",time:"14:00",loc:"Köprüüstü — Fırtına Zirvesi",sub:"Beaufort 9 — dalga 7 metre",who:"suvari",
-text:`Fırtına zirvesinde. Dalga 7 metreye çıktı.\n\nSüvari ${n}'ye:\n"Stajyer. İlk fırtınandaydın. Korkuyor musun?"`,
+{id:"kriz05",gfx:"storm",alert:false,day:"GÃ¼n 5",time:"14:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” FÄ±rtÄ±na Zirvesi",sub:"Beaufort 9 â€” dalga 7 metre",who:"suvari",
+text:`FÄ±rtÄ±na zirvesinde. Dalga 7 metreye Ã§Ä±ktÄ±.\n\nSÃ¼vari ${n}'ye:\n"Stajyer. Ä°lk fÄ±rtÄ±nandaydÄ±n. Korkuyor musun?"`,
 choices:[
-{text:"'Evet, korkuyorum — ama görevimi yapıyorum' de",tag:"cesur",effect:{cesaret:10,sayginlik:10}},
-{text:"'Hayır efendim' de",tag:"korkak",effect:{sayginlik:-3}},
-{text:"'Endişeliyim ama ekibe güveniyorum' de",tag:"akilli",effect:{sayginlik:8,bilgi:5}}]},
+{text:"'Evet, korkuyorum â€” ama gÃ¶revimi yapÄ±yorum' de",tag:"cesur",effect:{cesaret:10,sayginlik:10}},
+{text:"'HayÄ±r efendim' de",tag:"korkak",effect:{sayginlik:-3}},
+{text:"'EndiÅŸeliyim ama ekibe gÃ¼veniyorum' de",tag:"akilli",effect:{sayginlik:8,bilgi:5}}]},
 
-{id:"kriz05b",gfx:"cabin",alert:false,day:"Gün 5",time:"16:20",loc:"Stajyer Kabini — Fırtına Devam Ederken",sub:"Ilk buyuk firtina — siddetli yalpa — sessiz aglayis",who:"anlatici",
+{id:"kriz05b",gfx:"cabin",alert:false,day:"GÃ¼n 5",time:"16:20",loc:"Stajyer Kabini â€” FÄ±rtÄ±na Devam Ederken",sub:"Ilk buyuk firtina â€” siddetli yalpa â€” sessiz aglayis",who:"anlatici",
 text:`Kopruden ayrilip kamarana gectiginde gemi bir kez daha sertce yatti. Dolap kapagi vurdu, askidaki tulum savruldu, metal bir bardak zeminde kayip durdu.
 
 Bu kadar buyuk bir firtinayi ilk kez yasiyordun. Gemi sanki her dalgada ikiye ayrilacakmis gibi inleyince bogazin dugumlendi.
@@ -1240,453 +1218,453 @@ choices:[
 {text:"Bir sure aglayip sonra kisa bir not alarak yasadigimi anlamlandirmaya calisirim",tag:"duygusal",effect:{bilgi:5,dinclik:4}},
 {text:"Battaniyenin altina girip tamamen icime kapanirim",tag:"korkak",effect:{dinclik:-8,cesaret:-7,sayginlik:-2}}]},
 
-{id:"kriz06",gfx:"galley",alert:false,day:"Gün 5",time:"20:00",loc:"Yemekhane — Fırtına Sonrası",sub:"Fırtına geçti — herkes yorgun",who:"asci",
-text:`Fırtına geçti. Mehmet Usta sahanda yumurta pişirdi: "Basit, pratik, besleyici."\n\nSilici Ramazan:\n"Bugün üç ambar kapısı sızdırıyordu. ${n} hepsini buldu. İyi iş."`,
+{id:"kriz06",gfx:"galley",alert:false,day:"GÃ¼n 5",time:"20:00",loc:"Yemekhane â€” FÄ±rtÄ±na SonrasÄ±",sub:"FÄ±rtÄ±na geÃ§ti â€” herkes yorgun",who:"asci",
+text:`FÄ±rtÄ±na geÃ§ti. Mehmet Usta sahanda yumurta piÅŸirdi: "Basit, pratik, besleyici."\n\nSilici Ramazan:\n"BugÃ¼n Ã¼Ã§ ambar kapÄ±sÄ± sÄ±zdÄ±rÄ±yordu. ${n} hepsini buldu. Ä°yi iÅŸ."`,
 choices:[
-{text:"Alçakgönüllüce teşekkür et",tag:"itaatkar",effect:{sayginlik:8}},
-{text:"'Lostromo öğretti' de — krediyi paylaş",tag:"sosyal",effect:{sayginlik:12}},
+{text:"AlÃ§akgÃ¶nÃ¼llÃ¼ce teÅŸekkÃ¼r et",tag:"itaatkar",effect:{sayginlik:8}},
+{text:"'Lostromo Ã¶ÄŸretti' de â€” krediyi paylaÅŸ",tag:"sosyal",effect:{sayginlik:12}},
 {text:"Sessiz kal",tag:"korkak",effect:{sayginlik:2}}]},
 
-{id:"kriz07",gfx:"bogaz",alert:true,day:"Gün 6",time:"03:00",loc:"Çanakkale Boğazı — ACİL",sub:"Demir tutmuyor — akıntı 4 knot — gemi sürükleniyor",who:"suvari",
-text:`Gece 03:00. Çanakkale Boğazı girişi. Rüzgar hızlandı.\n\nSüvari:\n"Demir tutmuyor! SOG 0.8 knot kıyıya doğru. 2 mil mesafe kaldı.\n\n${n}! Sahil güvenliği VHF 16'dan ara, durumu bildir. Hızlı!"`,
+{id:"kriz07",gfx:"bogaz",alert:true,day:"GÃ¼n 6",time:"03:00",loc:"Ã‡anakkale BoÄŸazÄ± â€” ACÄ°L",sub:"Demir tutmuyor â€” akÄ±ntÄ± 4 knot â€” gemi sÃ¼rÃ¼kleniyor",who:"suvari",
+text:`Gece 03:00. Ã‡anakkale BoÄŸazÄ± giriÅŸi. RÃ¼zgar hÄ±zlandÄ±.\n\nSÃ¼vari:\n"Demir tutmuyor! SOG 0.8 knot kÄ±yÄ±ya doÄŸru. 2 mil mesafe kaldÄ±.\n\n${n}! Sahil gÃ¼venliÄŸi VHF 16'dan ara, durumu bildir. HÄ±zlÄ±!"`,
 choices:[
-{text:"Hemen VHF'ye atla: 'SECURITE SECURITE — Türk sularında sürüklenme' de",tag:"kritik",effect:{cesaret:15,sayginlik:15,bilgi:8}},
-{text:"Süvariye 'nasıl yapayım?' diye sor",tag:"korkak",effect:{sayginlik:-10,cesaret:-8}},
-{text:"Yazılı prosedürü bul, sonra ara",tag:"akilli",effect:{bilgi:5,sayginlik:-5}}]},
+{text:"Hemen VHF'ye atla: 'SECURITE SECURITE â€” TÃ¼rk sularÄ±nda sÃ¼rÃ¼klenme' de",tag:"kritik",effect:{cesaret:15,sayginlik:15,bilgi:8}},
+{text:"SÃ¼variye 'nasÄ±l yapayÄ±m?' diye sor",tag:"korkak",effect:{sayginlik:-10,cesaret:-8}},
+{text:"YazÄ±lÄ± prosedÃ¼rÃ¼ bul, sonra ara",tag:"akilli",effect:{bilgi:5,sayginlik:-5}}]},
 
-{id:"kriz08",gfx:"bogaz",alert:true,day:"Gün 6",time:"03:15",loc:"Çanakkale Boğazı — VHF İletişimi",sub:"Sahil güvenlik bağlandı — kurtarma gemisi yolda",who:"z2",
-text:`2. Zabiti:\n\n"${n}, sahil güvenlik bağlandı. Koordinatları ver: 40°12'N 026°24'E.\n\nSonra demir bağlarımızın durumunu sor."`,
+{id:"kriz08",gfx:"bogaz",alert:true,day:"GÃ¼n 6",time:"03:15",loc:"Ã‡anakkale BoÄŸazÄ± â€” VHF Ä°letiÅŸimi",sub:"Sahil gÃ¼venlik baÄŸlandÄ± â€” kurtarma gemisi yolda",who:"z2",
+text:`2. Zabiti:\n\n"${n}, sahil gÃ¼venlik baÄŸlandÄ±. KoordinatlarÄ± ver: 40Â°12'N 026Â°24'E.\n\nSonra demir baÄŸlarÄ±mÄ±zÄ±n durumunu sor."`,
 choices:[
-{text:"Koordinatı doğru oku, demir bağlarını sor",tag:"akilli",effect:{bilgi:15,sayginlik:12,cesaret:5}},
-{text:"2. Zabiti yanında konuş, o düzeltsin",tag:"itaatkar",effect:{sayginlik:5,bilgi:5}},
-{text:"Sesi titredi, hata yaptın",tag:"korkak",effect:{sayginlik:-8,cesaret:-5}}]},
+{text:"KoordinatÄ± doÄŸru oku, demir baÄŸlarÄ±nÄ± sor",tag:"akilli",effect:{bilgi:15,sayginlik:12,cesaret:5}},
+{text:"2. Zabiti yanÄ±nda konuÅŸ, o dÃ¼zeltsin",tag:"itaatkar",effect:{sayginlik:5,bilgi:5}},
+{text:"Sesi titredi, hata yaptÄ±n",tag:"korkak",effect:{sayginlik:-8,cesaret:-5}}]},
 
-{id:"kriz09",gfx:"sea",alert:false,day:"Gün 6",time:"05:30",loc:"Çanakkale Boğazı — Güven Sağlandı",sub:"Sürüklenme durduruldu",who:"suvari",
-text:`Şafak sökerken makine devreye girdi. Kurtarma gemisi yanı başında.\n\nSüvari:\n"Bu gece VHF'ye atlayan senin. İyi yaptın. Boğazda sürüklenme — en kötü senaryo. Ama sen paniklemeden aradın."`,
+{id:"kriz09",gfx:"sea",alert:false,day:"GÃ¼n 6",time:"05:30",loc:"Ã‡anakkale BoÄŸazÄ± â€” GÃ¼ven SaÄŸlandÄ±",sub:"SÃ¼rÃ¼klenme durduruldu",who:"suvari",
+text:`Åafak sÃ¶kerken makine devreye girdi. Kurtarma gemisi yanÄ± baÅŸÄ±nda.\n\nSÃ¼vari:\n"Bu gece VHF'ye atlayan senin. Ä°yi yaptÄ±n. BoÄŸazda sÃ¼rÃ¼klenme â€” en kÃ¶tÃ¼ senaryo. Ama sen paniklemeden aradÄ±n."`,
 choices:[
-{text:"'Eğitim sayesinde' de — teşekkür et",tag:"akilli",effect:{bilgi:8,sayginlik:12}},
+{text:"'EÄŸitim sayesinde' de â€” teÅŸekkÃ¼r et",tag:"akilli",effect:{bilgi:8,sayginlik:12}},
 {text:"'Korktum ama yapmak gerekiyordu' de",tag:"cesur",effect:{cesaret:10,sayginlik:10}},
-{text:"Sessiz gül, başını eğ",tag:"itaatkar",effect:{sayginlik:8}}]},
+{text:"Sessiz gÃ¼l, baÅŸÄ±nÄ± eÄŸ",tag:"itaatkar",effect:{sayginlik:8}}]},
 
-{id:"kriz10",gfx:"pirate",alert:true,day:"Gün 8",time:"04:00",loc:"Aden Körfezi — ACİL — KORSAN UYARISI",sub:"Yüksek hız tekneleri gemiye yaklaşıyor",who:"suvari",
-text:`Gece 04:00. Tüm ışıklar söndürüldü.\n\nSüvari:\n"IMB NAVAREA uyarısı: Aden Körfezi'nde aktif korsan bölgesi. Radarda iki yüksek hız teknesi var — 28 knot, bize doğru geliyor.\n\nBMS prosedürleri başlıyor. ${n}, BMS odasına git — kapıyı içeriden kilitle!"`,
+{id:"kriz10",gfx:"pirate",alert:true,day:"GÃ¼n 8",time:"04:00",loc:"Aden KÃ¶rfezi â€” ACÄ°L â€” KORSAN UYARISI",sub:"YÃ¼ksek hÄ±z tekneleri gemiye yaklaÅŸÄ±yor",who:"suvari",
+text:`Gece 04:00. TÃ¼m Ä±ÅŸÄ±klar sÃ¶ndÃ¼rÃ¼ldÃ¼.\n\nSÃ¼vari:\n"IMB NAVAREA uyarÄ±sÄ±: Aden KÃ¶rfezi'nde aktif korsan bÃ¶lgesi. Radarda iki yÃ¼ksek hÄ±z teknesi var â€” 28 knot, bize doÄŸru geliyor.\n\nBMS prosedÃ¼rleri baÅŸlÄ±yor. ${n}, BMS odasÄ±na git â€” kapÄ±yÄ± iÃ§eriden kilitle!"`,
 choices:[
-{text:"Koş, BMS odasına gir, kapıyı kilitle",tag:"kritik",effect:{cesaret:12,sayginlik:12}},
-{text:"'BMS odası nerede?' diye sor",tag:"korkak",effect:{sayginlik:-8,cesaret:-5}},
-{text:"Köprüde kal, yardım et",tag:"cesur",effect:{cesaret:8,sayginlik:-5}}]},
+{text:"KoÅŸ, BMS odasÄ±na gir, kapÄ±yÄ± kilitle",tag:"kritik",effect:{cesaret:12,sayginlik:12}},
+{text:"'BMS odasÄ± nerede?' diye sor",tag:"korkak",effect:{sayginlik:-8,cesaret:-5}},
+{text:"KÃ¶prÃ¼de kal, yardÄ±m et",tag:"cesur",effect:{cesaret:8,sayginlik:-5}}]},
 
-{id:"kriz11",gfx:"pirate",alert:true,day:"Gün 8",time:"04:20",loc:"BMS Odası — Kilitli",sub:"Süvari makine hızını full'e çekti — kaçış manevrası",who:"anlatici",
-text:`BMS odasının içi karanlık. Demir kapı kilitli.\n\nDışarıdan radyo: "${sn} kaçış manevrası başlıyor!"\n\n20 dakika böyle geçti. Sonra süvarinin sesi:\n\n"BMS — dışarı çıkabilirsiniz. Tekneler geride kaldı."`,
+{id:"kriz11",gfx:"pirate",alert:true,day:"GÃ¼n 8",time:"04:20",loc:"BMS OdasÄ± â€” Kilitli",sub:"SÃ¼vari makine hÄ±zÄ±nÄ± full'e Ã§ekti â€” kaÃ§Ä±ÅŸ manevrasÄ±",who:"anlatici",
+text:`BMS odasÄ±nÄ±n iÃ§i karanlÄ±k. Demir kapÄ± kilitli.\n\nDÄ±ÅŸarÄ±dan radyo: "${sn} kaÃ§Ä±ÅŸ manevrasÄ± baÅŸlÄ±yor!"\n\n20 dakika bÃ¶yle geÃ§ti. Sonra sÃ¼varinin sesi:\n\n"BMS â€” dÄ±ÅŸarÄ± Ã§Ä±kabilirsiniz. Tekneler geride kaldÄ±."`,
 choices:[
-{text:"Dışarı çık, Süvari'ye durumu sor",tag:"akilli",effect:{bilgi:8,sayginlik:8}},
-{text:"Derin nefes al, sakin ol, çık",tag:"itaatkar",effect:{dinclik:5,cesaret:5}},
-{text:"İlk dışarı çıkan sen ol",tag:"cesur",effect:{cesaret:8,sayginlik:5}}]},
+{text:"DÄ±ÅŸarÄ± Ã§Ä±k, SÃ¼vari'ye durumu sor",tag:"akilli",effect:{bilgi:8,sayginlik:8}},
+{text:"Derin nefes al, sakin ol, Ã§Ä±k",tag:"itaatkar",effect:{dinclik:5,cesaret:5}},
+{text:"Ä°lk dÄ±ÅŸarÄ± Ã§Ä±kan sen ol",tag:"cesur",effect:{cesaret:8,sayginlik:5}}]},
 
-{id:"kriz12",gfx:"bridge",alert:false,day:"Gün 8",time:"05:00",loc:"Köprüüstü — Korsan Sonrası",sub:"Değerlendirme toplantısı",who:"suvari",
-text:`Süvari:\n\n"${n}, Aden'de her sefer bu risk var. BMS prosedürünü doğru uyguladın. Panikledin mi?"`,
+{id:"kriz12",gfx:"bridge",alert:false,day:"GÃ¼n 8",time:"05:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” Korsan SonrasÄ±",sub:"DeÄŸerlendirme toplantÄ±sÄ±",who:"suvari",
+text:`SÃ¼vari:\n\n"${n}, Aden'de her sefer bu risk var. BMS prosedÃ¼rÃ¼nÃ¼ doÄŸru uyguladÄ±n. Panikledin mi?"`,
 choices:[
-{text:"'Evet, içimde — ama yaptım' de — dürüst",tag:"cesur",effect:{cesaret:10,sayginlik:12}},
-{text:"'Hayır efendim' de",tag:"korkak",effect:{sayginlik:3}},
-{text:"'BMS odası beni rahatlattı' de",tag:"akilli",effect:{bilgi:5,sayginlik:8}}]},
+{text:"'Evet, iÃ§imde â€” ama yaptÄ±m' de â€” dÃ¼rÃ¼st",tag:"cesur",effect:{cesaret:10,sayginlik:12}},
+{text:"'HayÄ±r efendim' de",tag:"korkak",effect:{sayginlik:3}},
+{text:"'BMS odasÄ± beni rahatlattÄ±' de",tag:"akilli",effect:{bilgi:5,sayginlik:8}}]},
 
-// ---- EK RUTİN SAHNELER ----
-{id:"s21",gfx:"sea",alert:false,day:"Gün 6",time:"06:30",loc:"Pruva — Sabah",sub:"Hasan ile sabah sohbeti",who:"hasan",
-text:`Tayfa Hasan pruva korkuluğuna yaslandı.\n\n"${n}, senin yaşındayken ben de staj yaptım.\n\nBir süvari bana dedi: 'Deniz seni öldürmek istemez. Ama aptallığını affetmez.'"`,
+// ---- EK RUTÄ°N SAHNELER ----
+{id:"s21",gfx:"sea",alert:false,day:"GÃ¼n 6",time:"06:30",loc:"Pruva â€” Sabah",sub:"Hasan ile sabah sohbeti",who:"hasan",
+text:`Tayfa Hasan pruva korkuluÄŸuna yaslandÄ±.\n\n"${n}, senin yaÅŸÄ±ndayken ben de staj yaptÄ±m.\n\nBir sÃ¼vari bana dedi: 'Deniz seni Ã¶ldÃ¼rmek istemez. Ama aptallÄ±ÄŸÄ±nÄ± affetmez.'"`,
 choices:[
-{text:"Dinle ve 'anlıyorum' de",tag:"sosyal",effect:{sayginlik:8,bilgi:5,dinclik:5}},
-{text:"Benzer bir an olup olmadığını sor",tag:"akilli",effect:{bilgi:8,sayginlik:7}},
-{text:"Teşekkür et ve görevine dön",tag:"itaatkar",effect:{dinclik:5}}]},
+{text:"Dinle ve 'anlÄ±yorum' de",tag:"sosyal",effect:{sayginlik:8,bilgi:5,dinclik:5}},
+{text:"Benzer bir an olup olmadÄ±ÄŸÄ±nÄ± sor",tag:"akilli",effect:{bilgi:8,sayginlik:7}},
+{text:"TeÅŸekkÃ¼r et ve gÃ¶revine dÃ¶n",tag:"itaatkar",effect:{dinclik:5}}]},
 
-{id:"s22",gfx:"night",alert:false,day:"Gün 7",time:"22:00",loc:"Köprüüstü — Gece Nöbeti",sub:"İlk gerçek yalnız nöbet",who:"z2",
-text:`"${n}, bu gece nöbette yalnızsın. İlk kez. Alarm çalarsa beni ara.\n\nGece nöbetinin en büyük düşmanı yorgunluktur. Oturma — ayakta kal."`,
+{id:"s22",gfx:"night",alert:false,day:"GÃ¼n 7",time:"22:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” Gece NÃ¶beti",sub:"Ä°lk gerÃ§ek yalnÄ±z nÃ¶bet",who:"z2",
+text:`"${n}, bu gece nÃ¶bette yalnÄ±zsÄ±n. Ä°lk kez. Alarm Ã§alarsa beni ara.\n\nGece nÃ¶betinin en bÃ¼yÃ¼k dÃ¼ÅŸmanÄ± yorgunluktur. Oturma â€” ayakta kal."`,
 choices:[
-{text:"Ayakta kal, radara odaklan, kayıt tut",tag:"akilli",effect:{bilgi:12,sayginlik:10}},
-{text:"Otur ama gözleri açık tut",tag:"korkak",effect:{dinclik:-5,sayginlik:-5}},
-{text:"Küçük turlar at, aktif kal",tag:"cesur",effect:{bilgi:8,sayginlik:8,cesaret:5}}]},
+{text:"Ayakta kal, radara odaklan, kayÄ±t tut",tag:"akilli",effect:{bilgi:12,sayginlik:10}},
+{text:"Otur ama gÃ¶zleri aÃ§Ä±k tut",tag:"korkak",effect:{dinclik:-5,sayginlik:-5}},
+{text:"KÃ¼Ã§Ã¼k turlar at, aktif kal",tag:"cesur",effect:{bilgi:8,sayginlik:8,cesaret:5}}]},
 
-{id:"s23",gfx:"radar",alert:false,day:"Gün 7",time:"23:30",loc:"Köprüüstü — Gece",sub:"Radar hedefi yaklaşıyor",who:"anlatici",
-text:`Saat 23:30. Ekranda kırmızı nokta.\n\nHedef sancak baş omuzluğundan geçiş yapıyor. CPA: 0.8 mil. 12 dakika.\n\nCOLREG'e göre bu crossing durumunda ${sn} give-way gemi. Sen bağımsız manevra veremezsin; ama riski doğru okuyup nöbet zabitini hemen kaldırman gerekir.\n\n2. Zabiti uyuyor. 12 dakika.`,
+{id:"s23",gfx:"radar",alert:false,day:"GÃ¼n 7",time:"23:30",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” Gece",sub:"Radar hedefi yaklaÅŸÄ±yor",who:"anlatici",
+text:`Saat 23:30. Ekranda kÄ±rmÄ±zÄ± nokta.\n\nHedef sancak baÅŸ omuzluÄŸundan geÃ§iÅŸ yapÄ±yor. CPA: 0.8 mil. 12 dakika.\n\nCOLREG'e gÃ¶re bu crossing durumunda ${sn} give-way gemi. Sen baÄŸÄ±msÄ±z manevra veremezsin; ama riski doÄŸru okuyup nÃ¶bet zabitini hemen kaldÄ±rman gerekir.\n\n2. Zabiti uyuyor. 12 dakika.`,
 choices:[
 {text:"Hemen 2. Zabiti'yi ara, 'sancakta crossing hedef, CPA 0.8' diye rapor ver",tag:"akilli",effect:{bilgi:14,sayginlik:12}},
-{text:"Hedefi izlemeye devam et, CPA biraz daha düşerse haber ver",tag:"cesur",effect:{cesaret:6,bilgi:2,dinclik:-5,sayginlik:-4}},
-{text:"Bekle — AIS'te büyük gemi bizi zaten görüyordur",tag:"korkak",effect:{dinclik:-8,sayginlik:-10,bilgi:-8}}]},
+{text:"Hedefi izlemeye devam et, CPA biraz daha dÃ¼ÅŸerse haber ver",tag:"cesur",effect:{cesaret:6,bilgi:2,dinclik:-5,sayginlik:-4}},
+{text:"Bekle â€” AIS'te bÃ¼yÃ¼k gemi bizi zaten gÃ¶rÃ¼yordur",tag:"korkak",effect:{dinclik:-8,sayginlik:-10,bilgi:-8}}]},
 
-{id:"s23b",gfx:"compass",alert:false,day:"Gün 7",time:"23:40",loc:"Köprüüstü — COLREG Dersi",sub:"2. Zabiti ile trafik değerlendirmesi",who:"z2",
-text:`2. Zabiti köprüye geldi, radarı aldı.\n\n"İyi ki kaldırdın. Şimdi söyle: sancakta gemi varsa crossing'de kim give-way olur? Head-on'da ne yaparız? Dar kanalda nerede dururuz?"\n\nKısa kısa cevap vermeni bekliyor.`,
+{id:"s23b",gfx:"compass",alert:false,day:"GÃ¼n 7",time:"23:40",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” COLREG Dersi",sub:"2. Zabiti ile trafik deÄŸerlendirmesi",who:"z2",
+text:`2. Zabiti kÃ¶prÃ¼ye geldi, radarÄ± aldÄ±.\n\n"Ä°yi ki kaldÄ±rdÄ±n. Åimdi sÃ¶yle: sancakta gemi varsa crossing'de kim give-way olur? Head-on'da ne yaparÄ±z? Dar kanalda nerede dururuz?"\n\nKÄ±sa kÄ±sa cevap vermeni bekliyor.`,
 choices:[
-{text:"'Sancaktaki hedef bende ise ben yol veririm; head-on'da sancağa döneriz; dar kanalda sancak sınırına yakın kalırız' de",tag:"kritik",effect:{bilgi:16,sayginlik:12,cesaret:6}},
-{text:"'Önce VHF çağrısı yaparız, sonra bakarız' de",tag:"itaatkar",effect:{bilgi:3,sayginlik:-4}},
-{text:"'Büyük olan geçer, küçük olan kaçar' de",tag:"korkak",effect:{bilgi:-10,sayginlik:-8}}]},
+{text:"'Sancaktaki hedef bende ise ben yol veririm; head-on'da sancaÄŸa dÃ¶neriz; dar kanalda sancak sÄ±nÄ±rÄ±na yakÄ±n kalÄ±rÄ±z' de",tag:"kritik",effect:{bilgi:16,sayginlik:12,cesaret:6}},
+{text:"'Ã–nce VHF Ã§aÄŸrÄ±sÄ± yaparÄ±z, sonra bakarÄ±z' de",tag:"itaatkar",effect:{bilgi:3,sayginlik:-4}},
+{text:"'BÃ¼yÃ¼k olan geÃ§er, kÃ¼Ã§Ã¼k olan kaÃ§ar' de",tag:"korkak",effect:{bilgi:-10,sayginlik:-8}}]},
 
-{id:"s24",gfx:"fire",alert:true,day:"Gün 9",time:"14:00",loc:"Yangın İstasyonu — TATBIKAT",sub:"Gerçekçi yangın tatbikatı — 4 dakika",who:"z3",
-text:`Alarm çaldı.\n\n3. Zabiti:\n"Bu sefer gerçekçi yapıyoruz. ${n}, sen B güvertesi tahliye sorumlusun. Oradaki üç personeli toplanma istasyonuna götür. Süre: 4 dakika."`,
+{id:"s24",gfx:"fire",alert:true,day:"GÃ¼n 9",time:"14:00",loc:"YangÄ±n Ä°stasyonu â€” TATBIKAT",sub:"GerÃ§ekÃ§i yangÄ±n tatbikatÄ± â€” 4 dakika",who:"z3",
+text:`Alarm Ã§aldÄ±.\n\n3. Zabiti:\n"Bu sefer gerÃ§ekÃ§i yapÄ±yoruz. ${n}, sen B gÃ¼vertesi tahliye sorumlusun. Oradaki Ã¼Ã§ personeli toplanma istasyonuna gÃ¶tÃ¼r. SÃ¼re: 4 dakika."`,
 choices:[
-{text:"Hızlıca koş, üç kişiyi bul ve yönlendir",tag:"cesur",effect:{cesaret:12,sayginlik:10,dinclik:-8}},
-{text:"Sakin kal, sırayla kontrol et",tag:"akilli",effect:{bilgi:10,sayginlik:10}},
-{text:"Kafan karışık — biri seni yönlendirsin",tag:"korkak",effect:{sayginlik:-10,cesaret:-8}}]},
+{text:"HÄ±zlÄ±ca koÅŸ, Ã¼Ã§ kiÅŸiyi bul ve yÃ¶nlendir",tag:"cesur",effect:{cesaret:12,sayginlik:10,dinclik:-8}},
+{text:"Sakin kal, sÄ±rayla kontrol et",tag:"akilli",effect:{bilgi:10,sayginlik:10}},
+{text:"Kafan karÄ±ÅŸÄ±k â€” biri seni yÃ¶nlendirsin",tag:"korkak",effect:{sayginlik:-10,cesaret:-8}}]},
 
-{id:"s25",gfx:"sea",alert:false,day:"Gün 9",time:"10:00",loc:"Ana Güverte",sub:"Lostromo ile ileri halat teknikleri",who:"lostromo",
-text:`"${n}, dün iyi iş çıkardın. Bugün daha ileri seviye göstereceğim.\n\nDeniz kelebeği, iki yarım, Fransız bağı — her birinin kullanım yeri farklı.\n\nBana göster: Baba babasına halat bağla."`,
+{id:"s25",gfx:"sea",alert:false,day:"GÃ¼n 9",time:"10:00",loc:"Ana GÃ¼verte",sub:"Lostromo ile ileri halat teknikleri",who:"lostromo",
+text:`"${n}, dÃ¼n iyi iÅŸ Ã§Ä±kardÄ±n. BugÃ¼n daha ileri seviye gÃ¶stereceÄŸim.\n\nDeniz kelebeÄŸi, iki yarÄ±m, FransÄ±z baÄŸÄ± â€” her birinin kullanÄ±m yeri farklÄ±.\n\nBana gÃ¶ster: Baba babasÄ±na halat baÄŸla."`,
 choices:[
-{text:"Dikkatlice dene, doğru yöntemi kullan",tag:"akilli",effect:{bilgi:12,sayginlik:10}},
-{text:"Hızlıca bağla",tag:"cesur",effect:{cesaret:5,bilgi:5,sayginlik:3}},
-{text:"'Bir daha gösterir misiniz?' de",tag:"itaatkar",effect:{bilgi:8,sayginlik:5}}]},
+{text:"Dikkatlice dene, doÄŸru yÃ¶ntemi kullan",tag:"akilli",effect:{bilgi:12,sayginlik:10}},
+{text:"HÄ±zlÄ±ca baÄŸla",tag:"cesur",effect:{cesaret:5,bilgi:5,sayginlik:3}},
+{text:"'Bir daha gÃ¶sterir misiniz?' de",tag:"itaatkar",effect:{bilgi:8,sayginlik:5}}]},
 
-{id:"s26",gfx:"bridge",alert:false,day:"Gün 10",time:"09:00",loc:"Süvari Kamarası",sub:"Özel değerlendirme sohbeti",who:"suvari",
-text:`Süvari seni kahvaltıya çağırdı.\n\n"${n}, otur. Kahve?\n\n${sn}'de en çok kimi sayıyorsun? Kimi model alıyorsun?"`,
+{id:"s26",gfx:"bridge",alert:false,day:"GÃ¼n 10",time:"09:00",loc:"SÃ¼vari KamarasÄ±",sub:"Ã–zel deÄŸerlendirme sohbeti",who:"suvari",
+text:`SÃ¼vari seni kahvaltÄ±ya Ã§aÄŸÄ±rdÄ±.\n\n"${n}, otur. Kahve?\n\n${sn}'de en Ã§ok kimi sayÄ±yorsun? Kimi model alÄ±yorsun?"`,
 choices:[
-{text:"Lostromo'yu söyle — pratik bilgi",tag:"akilli",effect:{sayginlik:10,bilgi:8}},
-{text:"Süvariyi söyle — saygı",tag:"cesur",effect:{sayginlik:8,cesaret:3}},
-{text:"'Herkesten bir şey alıyorum' de",tag:"sosyal",effect:{sayginlik:12,bilgi:5}}]},
+{text:"Lostromo'yu sÃ¶yle â€” pratik bilgi",tag:"akilli",effect:{sayginlik:10,bilgi:8}},
+{text:"SÃ¼variyi sÃ¶yle â€” saygÄ±",tag:"cesur",effect:{sayginlik:8,cesaret:3}},
+{text:"'Herkesten bir ÅŸey alÄ±yorum' de",tag:"sosyal",effect:{sayginlik:12,bilgi:5}}]},
 
-{id:"s27",gfx:"sea",alert:false,day:"Gün 11",time:"15:00",loc:"Pruva — Akşam Üzeri",sub:"Lostromo ile son büyük ders",who:"lostromo",
-text:`Lostromo ${n}'yi pruvanın ucuna götürdü. İlk gün gibi.\n\n"İlk gün seni buraya getirmiştim. Aşağı baktın, korkuyu gizlemeye çalıştın.\n\nŞimdi aynı yere bak."\n\nDenize baktın. Dalga var ama korkuyu hissetmedin.`,
+{id:"s27",gfx:"sea",alert:false,day:"GÃ¼n 11",time:"15:00",loc:"Pruva â€” AkÅŸam Ãœzeri",sub:"Lostromo ile son bÃ¼yÃ¼k ders",who:"lostromo",
+text:`Lostromo ${n}'yi pruvanÄ±n ucuna gÃ¶tÃ¼rdÃ¼. Ä°lk gÃ¼n gibi.\n\n"Ä°lk gÃ¼n seni buraya getirmiÅŸtim. AÅŸaÄŸÄ± baktÄ±n, korkuyu gizlemeye Ã§alÄ±ÅŸtÄ±n.\n\nÅimdi aynÄ± yere bak."\n\nDenize baktÄ±n. Dalga var ama korkuyu hissetmedin.`,
 choices:[
-{text:"'Farkı hissediyorum' de — içten",tag:"sosyal",effect:{sayginlik:12,cesaret:8}},
-{text:"Sessizce gül — sözün gereği yok",tag:"itaatkar",effect:{sayginlik:10,cesaret:5}},
-{text:"'Hâlâ öğreniyorum' de",tag:"akilli",effect:{sayginlik:10,bilgi:5}}]},
+{text:"'FarkÄ± hissediyorum' de â€” iÃ§ten",tag:"sosyal",effect:{sayginlik:12,cesaret:8}},
+{text:"Sessizce gÃ¼l â€” sÃ¶zÃ¼n gereÄŸi yok",tag:"itaatkar",effect:{sayginlik:10,cesaret:5}},
+{text:"'HÃ¢lÃ¢ Ã¶ÄŸreniyorum' de",tag:"akilli",effect:{sayginlik:10,bilgi:5}}]},
 
-{id:"s28",gfx:"galley",alert:false,day:"Gün 12",time:"20:00",loc:"Yemekhane — Veda Yemeği",sub:"Son akşam — herkes masada",who:"asci",
-text:`Mehmet Usta özel menü hazırladı. Kuzu dolma ve baklava.\n\nHerkes masadaydı. Süvari ayağa kalktı:\n\n"${n}. Bu yolculukta bir söz var mı?"`,
+{id:"s28",gfx:"galley",alert:false,day:"GÃ¼n 12",time:"20:00",loc:"Yemekhane â€” Veda YemeÄŸi",sub:"Son akÅŸam â€” herkes masada",who:"asci",
+text:`Mehmet Usta Ã¶zel menÃ¼ hazÄ±rladÄ±. Kuzu dolma ve baklava.\n\nHerkes masadaydÄ±. SÃ¼vari ayaÄŸa kalktÄ±:\n\n"${n}. Bu yolculukta bir sÃ¶z var mÄ±?"`,
 choices:[
-{text:"Herkese tek tek teşekkür et",tag:"sosyal",effect:{sayginlik:15,dinclik:10}},
-{text:"Kısa ve özlü konuş",tag:"itaatkar",effect:{sayginlik:8}},
-{text:"Öğrendiklerini listele",tag:"akilli",effect:{sayginlik:10,bilgi:8}}]},
+{text:"Herkese tek tek teÅŸekkÃ¼r et",tag:"sosyal",effect:{sayginlik:15,dinclik:10}},
+{text:"KÄ±sa ve Ã¶zlÃ¼ konuÅŸ",tag:"itaatkar",effect:{sayginlik:8}},
+{text:"Ã–ÄŸrendiklerini listele",tag:"akilli",effect:{sayginlik:10,bilgi:8}}]},
 
-{id:"s29",gfx:"engine",alert:false,day:"Gün 6",time:"09:00",loc:"Makine Kontrol Odası",sub:"2. Başmakinist paralel jeneratör dersi",who:"bas2",
-text:`"${n}, dün fırtınada iki jeneratör aynı anda çalıştı.\n\nSana soruyorum: İki jeneratör paralel çalışırken en büyük risk ne?"`,
+{id:"s29",gfx:"engine",alert:false,day:"GÃ¼n 6",time:"09:00",loc:"Makine Kontrol OdasÄ±",sub:"2. BaÅŸmakinist paralel jeneratÃ¶r dersi",who:"bas2",
+text:`"${n}, dÃ¼n fÄ±rtÄ±nada iki jeneratÃ¶r aynÄ± anda Ã§alÄ±ÅŸtÄ±.\n\nSana soruyorum: Ä°ki jeneratÃ¶r paralel Ã§alÄ±ÅŸÄ±rken en bÃ¼yÃ¼k risk ne?"`,
 choices:[
-{text:"'Faz senkronizasyonu kaybolursa kısa devre' de",tag:"akilli",effect:{bilgi:15,sayginlik:10}},
-{text:"'Emin değilim, açıklar mısınız?' de",tag:"itaatkar",effect:{bilgi:8,sayginlik:3}},
-{text:"Tahmin et, yanlış olsa da söyle",tag:"cesur",effect:{bilgi:3,sayginlik:-3,cesaret:3}}]},
+{text:"'Faz senkronizasyonu kaybolursa kÄ±sa devre' de",tag:"akilli",effect:{bilgi:15,sayginlik:10}},
+{text:"'Emin deÄŸilim, aÃ§Ä±klar mÄ±sÄ±nÄ±z?' de",tag:"itaatkar",effect:{bilgi:8,sayginlik:3}},
+{text:"Tahmin et, yanlÄ±ÅŸ olsa da sÃ¶yle",tag:"cesur",effect:{bilgi:3,sayginlik:-3,cesaret:3}}]},
 
-{id:"s30",gfx:"cargo",alert:false,day:"Gün 7",time:"14:00",loc:"Yük Sahası",sub:"Yükleme planı hazırlığı",who:"z1",
-text:`"${n}, yükleme planını hazırlamak istiyorum. Denge hesabı, yük yerleşimi, manifesto taslağı.\n\nBu sefer sen yapacaksın. Referans dokümanlar masada."`,
+{id:"s30",gfx:"cargo",alert:false,day:"GÃ¼n 7",time:"14:00",loc:"YÃ¼k SahasÄ±",sub:"YÃ¼kleme planÄ± hazÄ±rlÄ±ÄŸÄ±",who:"z1",
+text:`"${n}, yÃ¼kleme planÄ±nÄ± hazÄ±rlamak istiyorum. Denge hesabÄ±, yÃ¼k yerleÅŸimi, manifesto taslaÄŸÄ±.\n\nBu sefer sen yapacaksÄ±n. Referans dokÃ¼manlar masada."`,
 choices:[
-{text:"'Yapabilirim' de — inisiyatif al",tag:"cesur",effect:{cesaret:12,sayginlik:10}},
-{text:"Referans dokümanlara bak, dikkatli hazırla",tag:"akilli",effect:{bilgi:15,sayginlik:12,dinclik:-8}},
-{text:"'Biraz yardım alabilir miyim?' de",tag:"itaatkar",effect:{sayginlik:7,bilgi:8}}]},
+{text:"'Yapabilirim' de â€” inisiyatif al",tag:"cesur",effect:{cesaret:12,sayginlik:10}},
+{text:"Referans dokÃ¼manlara bak, dikkatli hazÄ±rla",tag:"akilli",effect:{bilgi:15,sayginlik:12,dinclik:-8}},
+{text:"'Biraz yardÄ±m alabilir miyim?' de",tag:"itaatkar",effect:{sayginlik:7,bilgi:8}}]},
 
-{id:"s31",gfx:"port_arrival",alert:false,day:"Gün 7",time:"09:00",loc:"Pire Limanı",sub:"İlk yabancı liman — Yunanistan",who:"anlatici",
-text:`${sn} Pire'ye demirlendi. Yunan güneşi yakıcı. Liman gürültülü.\n\nMehmet Usta: "Bu akşam balık var — kutlama!"`,
+{id:"s31",gfx:"port_arrival",alert:false,day:"GÃ¼n 7",time:"09:00",loc:"Pire LimanÄ±",sub:"Ä°lk yabancÄ± liman â€” Yunanistan",who:"anlatici",
+text:`${sn} Pire'ye demirlendi. Yunan gÃ¼neÅŸi yakÄ±cÄ±. Liman gÃ¼rÃ¼ltÃ¼lÃ¼.\n\nMehmet Usta: "Bu akÅŸam balÄ±k var â€” kutlama!"`,
 choices:[
-{text:"Yükleme operasyonuna odaklan",tag:"akilli",effect:{bilgi:8,sayginlik:10}},
-{text:"Kısa bir tur at Pire'de",tag:"sosyal",effect:{sayginlik:8,dinclik:5}},
-{text:"Mehmet Usta'nın yanına git",tag:"itaatkar",effect:{dinclik:8,sayginlik:5}}]},
+{text:"YÃ¼kleme operasyonuna odaklan",tag:"akilli",effect:{bilgi:8,sayginlik:10}},
+{text:"KÄ±sa bir tur at Pire'de",tag:"sosyal",effect:{sayginlik:8,dinclik:5}},
+{text:"Mehmet Usta'nÄ±n yanÄ±na git",tag:"itaatkar",effect:{dinclik:8,sayginlik:5}}]},
 
-{id:"s32",gfx:"compass",alert:false,day:"Gün 8",time:"10:00",loc:"Açık Deniz — Seyir",sub:"Uzun seyir — 6 saatlik solo nöbet",who:"z2",
-text:`"${n}, bugün sana bağımsız bir görev veriyorum. Öğleden sonra nöbetini tek tutacaksın — 6 saat.\n\nHer saat bir kez kontrole geleceğim. Ama müdahale etmeyeceğim.\n\nHazır mısın?"`,
+{id:"s32",gfx:"compass",alert:false,day:"GÃ¼n 8",time:"10:00",loc:"AÃ§Ä±k Deniz â€” Seyir",sub:"Uzun seyir â€” 6 saatlik solo nÃ¶bet",who:"z2",
+text:`"${n}, bugÃ¼n sana baÄŸÄ±msÄ±z bir gÃ¶rev veriyorum. Ã–ÄŸleden sonra nÃ¶betini tek tutacaksÄ±n â€” 6 saat.\n\nHer saat bir kez kontrole geleceÄŸim. Ama mÃ¼dahale etmeyeceÄŸim.\n\nHazÄ±r mÄ±sÄ±n?"`,
 choices:[
-{text:"'Hazırım efendim' — güvenle",tag:"cesur",effect:{cesaret:10,sayginlik:8}},
-{text:"'Hazırım ama yakında ol' de",tag:"akilli",effect:{sayginlik:5,bilgi:5}},
-{text:"'Emin değilim' de",tag:"korkak",effect:{cesaret:-5,sayginlik:-5}}]},
+{text:"'HazÄ±rÄ±m efendim' â€” gÃ¼venle",tag:"cesur",effect:{cesaret:10,sayginlik:8}},
+{text:"'HazÄ±rÄ±m ama yakÄ±nda ol' de",tag:"akilli",effect:{sayginlik:5,bilgi:5}},
+{text:"'Emin deÄŸilim' de",tag:"korkak",effect:{cesaret:-5,sayginlik:-5}}]},
 
-{id:"s33",gfx:"sea",alert:false,day:"Gün 8",time:"18:30",loc:"Köprüüstü",sub:"Solo nöbet değerlendirmesi",who:"z2",
-text:`2. Zabiti raporu okudu. Sustu. Sonra:\n\n"Üç olayın ikisini doğru hallettın. Sahil muhafaza iletişimi mükemmeldi.\n\nBir eksik: Dümen kararında bilgilendirme zinciri kopmaz. Bağımsız nöbet, bağımsız karar değil.\n\nGenel: Çok iyi." Eli uzattı.`,
+{id:"s33",gfx:"sea",alert:false,day:"GÃ¼n 8",time:"18:30",loc:"KÃ¶prÃ¼Ã¼stÃ¼",sub:"Solo nÃ¶bet deÄŸerlendirmesi",who:"z2",
+text:`2. Zabiti raporu okudu. Sustu. Sonra:\n\n"ÃœÃ§ olayÄ±n ikisini doÄŸru hallettÄ±n. Sahil muhafaza iletiÅŸimi mÃ¼kemmeldi.\n\nBir eksik: DÃ¼men kararÄ±nda bilgilendirme zinciri kopmaz. BaÄŸÄ±msÄ±z nÃ¶bet, baÄŸÄ±msÄ±z karar deÄŸil.\n\nGenel: Ã‡ok iyi." Eli uzattÄ±.`,
 choices:[
-{text:"El sıkış, teşekkür et",tag:"itaatkar",effect:{sayginlik:10,bilgi:5}},
-{text:"'Bilgilendirme konusunu not aldım' de",tag:"akilli",effect:{bilgi:8,sayginlik:8}},
-{text:"İçten gurur duy",tag:"sosyal",effect:{sayginlik:7,cesaret:5}}]},
+{text:"El sÄ±kÄ±ÅŸ, teÅŸekkÃ¼r et",tag:"itaatkar",effect:{sayginlik:10,bilgi:5}},
+{text:"'Bilgilendirme konusunu not aldÄ±m' de",tag:"akilli",effect:{bilgi:8,sayginlik:8}},
+{text:"Ä°Ã§ten gurur duy",tag:"sosyal",effect:{sayginlik:7,cesaret:5}}]},
 
-{id:"s34",gfx:"galley",alert:false,day:"Gün 6",time:"08:00",loc:"Yemekhane — Kahvaltı",sub:"Silici ile sabah sohbeti",who:"silici",
-text:`Silici Ramazan kahvaltıda:\n\n"${n}, sana bir şey soracaktım. Neden denizcilik seçtin?\n\nBen seçmedim. Babam denizciydi, ağabeyim de. Ben de öyle oldum."`,
+{id:"s34",gfx:"galley",alert:false,day:"GÃ¼n 6",time:"08:00",loc:"Yemekhane â€” KahvaltÄ±",sub:"Silici ile sabah sohbeti",who:"silici",
+text:`Silici Ramazan kahvaltÄ±da:\n\n"${n}, sana bir ÅŸey soracaktÄ±m. Neden denizcilik seÃ§tin?\n\nBen seÃ§medim. Babam denizciydi, aÄŸabeyim de. Ben de Ã¶yle oldum."`,
 choices:[
-{text:"Gerçek cevabını ver — içten anlat",tag:"sosyal",effect:{sayginlik:10,bilgi:3}},
-{text:"'Denizi seviyorum' de — sade ama dürüst",tag:"itaatkar",effect:{sayginlik:5}},
-{text:"'Henüz tam bilmiyorum' de",tag:"akilli",effect:{sayginlik:7,bilgi:3}}]},
+{text:"GerÃ§ek cevabÄ±nÄ± ver â€” iÃ§ten anlat",tag:"sosyal",effect:{sayginlik:10,bilgi:3}},
+{text:"'Denizi seviyorum' de â€” sade ama dÃ¼rÃ¼st",tag:"itaatkar",effect:{sayginlik:5}},
+{text:"'HenÃ¼z tam bilmiyorum' de",tag:"akilli",effect:{sayginlik:7,bilgi:3}}]},
 
-{id:"s35",gfx:"engine",alert:false,day:"Gün 10",time:"11:00",loc:"Makine Dairesi",sub:"Son makine ziyareti",who:"bas2",
-text:`2. Başmakinist seni tekrar makine dairesine çağırdı.\n\n"Hatırla mısın — pompa arızasını? Tamir ettik. Titreşim 1.8 mm/s — normalin altında.\n\nSeninle birlikte çözüldü. Ben tesadüfe inanmam."`,
+{id:"s35",gfx:"engine",alert:false,day:"GÃ¼n 10",time:"11:00",loc:"Makine Dairesi",sub:"Son makine ziyareti",who:"bas2",
+text:`2. BaÅŸmakinist seni tekrar makine dairesine Ã§aÄŸÄ±rdÄ±.\n\n"HatÄ±rla mÄ±sÄ±n â€” pompa arÄ±zasÄ±nÄ±? Tamir ettik. TitreÅŸim 1.8 mm/s â€” normalin altÄ±nda.\n\nSeninle birlikte Ã§Ã¶zÃ¼ldÃ¼. Ben tesadÃ¼fe inanmam."`,
 choices:[
-{text:"İn, son bir kez pompaya bak",tag:"sosyal",effect:{sayginlik:10,bilgi:8,dinclik:-3}},
-{text:"Teşekkür et — bir şeyler öğrettiği için",tag:"itaatkar",effect:{sayginlik:12}},
-{text:"'Bu deneyim değerliydi' de",tag:"akilli",effect:{sayginlik:10,bilgi:5}}]},
+{text:"Ä°n, son bir kez pompaya bak",tag:"sosyal",effect:{sayginlik:10,bilgi:8,dinclik:-3}},
+{text:"TeÅŸekkÃ¼r et â€” bir ÅŸeyler Ã¶ÄŸrettiÄŸi iÃ§in",tag:"itaatkar",effect:{sayginlik:12}},
+{text:"'Bu deneyim deÄŸerliydi' de",tag:"akilli",effect:{sayginlik:10,bilgi:5}}]},
 
-// ---- FİNAL SAHNE (her zaman son) ----
+// ---- FÄ°NAL SAHNE (her zaman son) ----
 
-// ---- YENİ SENARYOLAR ----
-{id:"s36",gfx:"sea",alert:false,day:"Gün 5",time:"08:00",loc:"Açık Deniz — Şafak",sub:"Gemi dümen başı vardiyası",who:"z2",
-text:`Şafak söküyor. 2. Zabiti köprüde, seyir günlüğünü kapatıyor.\n\n"${n}, bir şey soracağım. Şimdiye kadar en çok hangi sahneyi aklına kazıdın? Limanda ilk adım, lostromo'nun halatı, gece nöbeti?\n\nGemide her şeyi öğretmek zorundayız — siz stajyerler yarının zabitlerisisiniz."`,
+// ---- YENÄ° SENARYOLAR ----
+{id:"s36",gfx:"sea",alert:false,day:"GÃ¼n 5",time:"08:00",loc:"AÃ§Ä±k Deniz â€” Åafak",sub:"Gemi dÃ¼men baÅŸÄ± vardiyasÄ±",who:"z2",
+text:`Åafak sÃ¶kÃ¼yor. 2. Zabiti kÃ¶prÃ¼de, seyir gÃ¼nlÃ¼ÄŸÃ¼nÃ¼ kapatÄ±yor.\n\n"${n}, bir ÅŸey soracaÄŸÄ±m. Åimdiye kadar en Ã§ok hangi sahneyi aklÄ±na kazÄ±dÄ±n? Limanda ilk adÄ±m, lostromo'nun halatÄ±, gece nÃ¶beti?\n\nGemide her ÅŸeyi Ã¶ÄŸretmek zorundayÄ±z â€” siz stajyerler yarÄ±nÄ±n zabitlerisisiniz."`,
 choices:[
-{text:"'Gece nöbetindeki radar hedefi' de — dürüst",tag:"akilli",effect:{bilgi:8,sayginlik:10}},
+{text:"'Gece nÃ¶betindeki radar hedefi' de â€” dÃ¼rÃ¼st",tag:"akilli",effect:{bilgi:8,sayginlik:10}},
 {text:"'Lostromo'nun pruva dersi' de",tag:"sosyal",effect:{sayginlik:8,bilgi:5}},
-{text:"'Hepsinden bir şey aldım' de",tag:"itaatkar",effect:{sayginlik:7}}]},
+{text:"'Hepsinden bir ÅŸey aldÄ±m' de",tag:"itaatkar",effect:{sayginlik:7}}]},
 
-{id:"s37",gfx:"engine",alert:false,day:"Gün 7",time:"16:00",loc:"Makine Dairesi — Kazan Odası",sub:"Yağcı ile buhar sistemi kontrolü",who:"yagci",
-text:`Yağcı Mehmet Ali seni kazanlar odasına götürdü.\n\n"${n}, şu ısı eşanjörlerine bak. Çelik plakalar arasından sıcak su geçiyor, deniz suyuyla soğutuluyor.\n\nTıkanma olursa ne olur?"`,
+{id:"s37",gfx:"engine",alert:false,day:"GÃ¼n 7",time:"16:00",loc:"Makine Dairesi â€” Kazan OdasÄ±",sub:"YaÄŸcÄ± ile buhar sistemi kontrolÃ¼",who:"yagci",
+text:`YaÄŸcÄ± Mehmet Ali seni kazanlar odasÄ±na gÃ¶tÃ¼rdÃ¼.\n\n"${n}, ÅŸu Ä±sÄ± eÅŸanjÃ¶rlerine bak. Ã‡elik plakalar arasÄ±ndan sÄ±cak su geÃ§iyor, deniz suyuyla soÄŸutuluyor.\n\nTÄ±kanma olursa ne olur?"`,
 choices:[
-{text:"'Soğutma düşer, aşırı ısınma riski artar' de",tag:"akilli",effect:{bilgi:12,sayginlik:8}},
-{text:"'Bilmiyorum ama öğrenmek istiyorum' de",tag:"itaatkar",effect:{bilgi:8,sayginlik:5}},
-{text:"Konuyu değiştir",tag:"korkak",effect:{sayginlik:-3}}]},
+{text:"'SoÄŸutma dÃ¼ÅŸer, aÅŸÄ±rÄ± Ä±sÄ±nma riski artar' de",tag:"akilli",effect:{bilgi:12,sayginlik:8}},
+{text:"'Bilmiyorum ama Ã¶ÄŸrenmek istiyorum' de",tag:"itaatkar",effect:{bilgi:8,sayginlik:5}},
+{text:"Konuyu deÄŸiÅŸtir",tag:"korkak",effect:{sayginlik:-3}}]},
 
-{id:"s38",gfx:"sea",alert:false,day:"Gün 8",time:"14:00",loc:"Açık Deniz — Öğleden Sonra",sub:"Lostromo ile vinç bakımı",who:"lostromo",
-text:`Lostromo kargo vincini bakıma aldı. ${n}'yi yanına çekti.\n\n"Vinç bakımı kimsenin görmek istemediği ama herkesin ihtiyaç duyduğu iş. Gres, yağ, halat kontrolü.\n\nSana öğreteceğim."`,
+{id:"s38",gfx:"sea",alert:false,day:"GÃ¼n 8",time:"14:00",loc:"AÃ§Ä±k Deniz â€” Ã–ÄŸleden Sonra",sub:"Lostromo ile vinÃ§ bakÄ±mÄ±",who:"lostromo",
+text:`Lostromo kargo vincini bakÄ±ma aldÄ±. ${n}'yi yanÄ±na Ã§ekti.\n\n"VinÃ§ bakÄ±mÄ± kimsenin gÃ¶rmek istemediÄŸi ama herkesin ihtiyaÃ§ duyduÄŸu iÅŸ. Gres, yaÄŸ, halat kontrolÃ¼.\n\nSana Ã¶ÄŸreteceÄŸim."`,
 choices:[
-{text:"İstekle katıl, gres tabancasını al",tag:"cesur",effect:{bilgi:10,sayginlik:10,dinclik:-5}},
+{text:"Ä°stekle katÄ±l, gres tabancasÄ±nÄ± al",tag:"cesur",effect:{bilgi:10,sayginlik:10,dinclik:-5}},
 {text:"Dikkatle izle, not al",tag:"akilli",effect:{bilgi:12,sayginlik:7}},
-{text:"'Bu işi yapan ayrı biri değil mi?' de",tag:"korkak",effect:{sayginlik:-8}}]},
+{text:"'Bu iÅŸi yapan ayrÄ± biri deÄŸil mi?' de",tag:"korkak",effect:{sayginlik:-8}}]},
 
-{id:"s39",gfx:"galley",alert:false,day:"Gün 9",time:"07:30",loc:"Yemekhane — Kahvaltı",sub:"Aşçı ile Türk kahvesi",who:"asci",
-text:`Mehmet Usta Türk kahvesi yapıyordu.\n\n"${n}, denizciler çok kahve içer. Ama ölçüyü bil. Fazla kafein, gece nöbetinde uykusuzluk yapar — ama sabah nöbetinde hayat kurtarır.\n\nAl, iç."`,
+{id:"s39",gfx:"galley",alert:false,day:"GÃ¼n 9",time:"07:30",loc:"Yemekhane â€” KahvaltÄ±",sub:"AÅŸÃ§Ä± ile TÃ¼rk kahvesi",who:"asci",
+text:`Mehmet Usta TÃ¼rk kahvesi yapÄ±yordu.\n\n"${n}, denizciler Ã§ok kahve iÃ§er. Ama Ã¶lÃ§Ã¼yÃ¼ bil. Fazla kafein, gece nÃ¶betinde uykusuzluk yapar â€” ama sabah nÃ¶betinde hayat kurtarÄ±r.\n\nAl, iÃ§."`,
 choices:[
-{text:"Al, keyifle iç — güzel bir an",tag:"sosyal",effect:{sayginlik:8,dinclik:5}},
-{text:"Teşekkür et ama içme — kendi programın var",tag:"itaatkar",effect:{sayginlik:3}},
-{text:"İç ve Mehmet Usta'ya gemi hikayeleri sor",tag:"akilli",effect:{sayginlik:10,bilgi:5}}]},
+{text:"Al, keyifle iÃ§ â€” gÃ¼zel bir an",tag:"sosyal",effect:{sayginlik:8,dinclik:5}},
+{text:"TeÅŸekkÃ¼r et ama iÃ§me â€” kendi programÄ±n var",tag:"itaatkar",effect:{sayginlik:3}},
+{text:"Ä°Ã§ ve Mehmet Usta'ya gemi hikayeleri sor",tag:"akilli",effect:{sayginlik:10,bilgi:5}}]},
 
-{id:"s40",gfx:"bridge",alert:false,day:"Gün 10",time:"14:00",loc:"Köprüüstü — Öğleden Sonra Nöbeti",sub:"3. Zabiti ile emniyet denetimi",who:"z3",
-text:`3. Zabiti Kemal Bey nöbet devrine girdi.\n\n"${n}, sana SOLAS'tan bir soru: Gemide dört terk-i sefine bölgesi var. Her birinin birincil ve ikincil tahliye yolu nedir?\n\nBu soruyu bilmeden kaza anında ne yapacaksın?"`,
+{id:"s40",gfx:"bridge",alert:false,day:"GÃ¼n 10",time:"14:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” Ã–ÄŸleden Sonra NÃ¶beti",sub:"3. Zabiti ile emniyet denetimi",who:"z3",
+text:`3. Zabiti Kemal Bey nÃ¶bet devrine girdi.\n\n"${n}, sana SOLAS'tan bir soru: Gemide dÃ¶rt terk-i sefine bÃ¶lgesi var. Her birinin birincil ve ikincil tahliye yolu nedir?\n\nBu soruyu bilmeden kaza anÄ±nda ne yapacaksÄ±n?"`,
 choices:[
-{text:"Hatırladığın kadarını söyle, bilmediğini de söyle",tag:"akilli",effect:{bilgi:10,sayginlik:8}},
-{text:"Muster listeni çıkar, oradan oku",tag:"itaatkar",effect:{bilgi:8,sayginlik:5}},
-{text:"Tahmin et, yanlış olsa da",tag:"cesur",effect:{bilgi:3,sayginlik:-5,cesaret:3}}]},
+{text:"HatÄ±rladÄ±ÄŸÄ±n kadarÄ±nÄ± sÃ¶yle, bilmediÄŸini de sÃ¶yle",tag:"akilli",effect:{bilgi:10,sayginlik:8}},
+{text:"Muster listeni Ã§Ä±kar, oradan oku",tag:"itaatkar",effect:{bilgi:8,sayginlik:5}},
+{text:"Tahmin et, yanlÄ±ÅŸ olsa da",tag:"cesur",effect:{bilgi:3,sayginlik:-5,cesaret:3}}]},
 
-{id:"s41",gfx:"cargo",alert:false,day:"Gün 11",time:"10:00",loc:"Yük Sahası — Ambar Kontrolü",sub:"1. Zabiti ile nem kontrolü",who:"z1",
-text:`1. Zabiti ${n}'yi ambar 3'e götürdü.\n\n"Bak şu nem ölçere — 74%. Tahıl için sınır 65%, paketli yük için 70%. Yüksek nem kargoda küfe, sızdırmaya, ağırlık artışına yol açar.\n\nNe yaparsın?"`,
+{id:"s41",gfx:"cargo",alert:false,day:"GÃ¼n 11",time:"10:00",loc:"YÃ¼k SahasÄ± â€” Ambar KontrolÃ¼",sub:"1. Zabiti ile nem kontrolÃ¼",who:"z1",
+text:`1. Zabiti ${n}'yi ambar 3'e gÃ¶tÃ¼rdÃ¼.\n\n"Bak ÅŸu nem Ã¶lÃ§ere â€” 74%. TahÄ±l iÃ§in sÄ±nÄ±r 65%, paketli yÃ¼k iÃ§in 70%. YÃ¼ksek nem kargoda kÃ¼fe, sÄ±zdÄ±rmaya, aÄŸÄ±rlÄ±k artÄ±ÅŸÄ±na yol aÃ§ar.\n\nNe yaparsÄ±n?"`,
 choices:[
-{text:"'Havalandırma sistemini kontrol ederim, kapı güvertesini incelerim' de",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
-{text:"'Çarkçıbaşı'ya bildiririm, yük sorumluluğu zabitlerin' de",tag:"itaatkar",effect:{bilgi:7,sayginlik:5}},
-{text:"'Yüzde dört fark önemli değil' de",tag:"korkak",effect:{sayginlik:-8,bilgi:-5}}]},
+{text:"'HavalandÄ±rma sistemini kontrol ederim, kapÄ± gÃ¼vertesini incelerim' de",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
+{text:"'Ã‡arkÃ§Ä±baÅŸÄ±'ya bildiririm, yÃ¼k sorumluluÄŸu zabitlerin' de",tag:"itaatkar",effect:{bilgi:7,sayginlik:5}},
+{text:"'YÃ¼zde dÃ¶rt fark Ã¶nemli deÄŸil' de",tag:"korkak",effect:{sayginlik:-8,bilgi:-5}}]},
 
-{id:"s42",gfx:"sea",alert:false,day:"Gün 12",time:"17:00",loc:"Güverte — Akşam Üzeri",sub:"Tayfa Musa ile dertleşme",who:"musa",
-text:`Tayfa Musa güverte korkuluğuna yaslandı, sesi yorgun:\n\n"${n}, ben evleneceğim önümüzdeki yıl. Kız arkadaşım 'ya denizi bırak ya beni' diyor. Sen ne düşünürsün?"`,
+{id:"s42",gfx:"sea",alert:false,day:"GÃ¼n 12",time:"17:00",loc:"GÃ¼verte â€” AkÅŸam Ãœzeri",sub:"Tayfa Musa ile dertleÅŸme",who:"musa",
+text:`Tayfa Musa gÃ¼verte korkuluÄŸuna yaslandÄ±, sesi yorgun:\n\n"${n}, ben evleneceÄŸim Ã¶nÃ¼mÃ¼zdeki yÄ±l. KÄ±z arkadaÅŸÄ±m 'ya denizi bÄ±rak ya beni' diyor. Sen ne dÃ¼ÅŸÃ¼nÃ¼rsÃ¼n?"`,
 choices:[
-{text:"Dürüstçe anlat — denizin fedakarlıklarını da söyle",tag:"sosyal",effect:{sayginlik:10,bilgi:5}},
-{text:"'Seç — iki şeyi de yarım yapamazsın' de",tag:"cesur",effect:{sayginlik:5,cesaret:3}},
-{text:"'Bu çok kişisel, ben karışamam' de",tag:"itaatkar",effect:{sayginlik:3}}]},
+{text:"DÃ¼rÃ¼stÃ§e anlat â€” denizin fedakarlÄ±klarÄ±nÄ± da sÃ¶yle",tag:"sosyal",effect:{sayginlik:10,bilgi:5}},
+{text:"'SeÃ§ â€” iki ÅŸeyi de yarÄ±m yapamazsÄ±n' de",tag:"cesur",effect:{sayginlik:5,cesaret:3}},
+{text:"'Bu Ã§ok kiÅŸisel, ben karÄ±ÅŸamam' de",tag:"itaatkar",effect:{sayginlik:3}}]},
 
-{id:"s43",gfx:"compass",alert:false,day:"Gün 6",time:"11:00",loc:"Köprüüstü — Seyir Dersi",sub:"2. Zabiti ile derinlik ölçümü",who:"z2",
-text:`2. Zabiti ECDIS'te bir noktayı işaret etti.\n\n"${n}, şu kanaldan geçeceğiz. Su derinliği 18 metre. ${sn}'nin maksimum tahliyesi 9.2 metre. Güvenli mi?\n\nHesapla."`,
+{id:"s43",gfx:"compass",alert:false,day:"GÃ¼n 6",time:"11:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” Seyir Dersi",sub:"2. Zabiti ile derinlik Ã¶lÃ§Ã¼mÃ¼",who:"z2",
+text:`2. Zabiti ECDIS'te bir noktayÄ± iÅŸaret etti.\n\n"${n}, ÅŸu kanaldan geÃ§eceÄŸiz. Su derinliÄŸi 18 metre. ${sn}'nin maksimum tahliyesi 9.2 metre. GÃ¼venli mi?\n\nHesapla."`,
 choices:[
-{text:"'18-9.2=8.8m kıç boşluğu, IACS standardı minimum 3.5m, güvenli' de",tag:"akilli",effect:{bilgi:15,sayginlik:12}},
-{text:"'Süvari karar vermeli' de",tag:"korkak",effect:{sayginlik:-5}},
-{text:"Hesabı yap ama yüksek sesle yanlış söyle",tag:"cesur",effect:{bilgi:-3,sayginlik:-5}}]},
+{text:"'18-9.2=8.8m kÄ±Ã§ boÅŸluÄŸu, IACS standardÄ± minimum 3.5m, gÃ¼venli' de",tag:"akilli",effect:{bilgi:15,sayginlik:12}},
+{text:"'SÃ¼vari karar vermeli' de",tag:"korkak",effect:{sayginlik:-5}},
+{text:"HesabÄ± yap ama yÃ¼ksek sesle yanlÄ±ÅŸ sÃ¶yle",tag:"cesur",effect:{bilgi:-3,sayginlik:-5}}]},
 
-{id:"s44",gfx:"night",alert:false,day:"Gün 9",time:"01:00",loc:"Köprüüstü — Gece Seyri",sub:"Yıldızlı gece — huzurlu nöbet",who:"anlatici",
-text:`Saat 01:00. Nöbet sakin geçiyor.\n\nDeniz ışıl ışıl — biyolüminesans. Dalgalar yeşil parlıyor. ${sn}'nin pruvasından akan su her seferinde bir ışık saçıyor.\n\nBu manzaraya hayran kaldın. Hayatında böyle bir şey görmemiştin.`,
+{id:"s44",gfx:"night",alert:false,day:"GÃ¼n 9",time:"01:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” Gece Seyri",sub:"YÄ±ldÄ±zlÄ± gece â€” huzurlu nÃ¶bet",who:"anlatici",
+text:`Saat 01:00. NÃ¶bet sakin geÃ§iyor.\n\nDeniz Ä±ÅŸÄ±l Ä±ÅŸÄ±l â€” biyolÃ¼minesans. Dalgalar yeÅŸil parlÄ±yor. ${sn}'nin pruvasÄ±ndan akan su her seferinde bir Ä±ÅŸÄ±k saÃ§Ä±yor.\n\nBu manzaraya hayran kaldÄ±n. HayatÄ±nda bÃ¶yle bir ÅŸey gÃ¶rmemiÅŸtin.`,
 choices:[
-{text:"Radyodan 2. Zabiti'yi ara, görmesini söyle",tag:"sosyal",effect:{sayginlik:10,dinclik:5}},
-{text:"Nöbet günlüğüne yaz, radarı izlemeyi bırakma",tag:"akilli",effect:{bilgi:5,sayginlik:5}},
-{text:"İzle, içini çek — bu an sadece sana ait",tag:"itaatkar",effect:{dinclik:8,sayginlik:3}}]},
+{text:"Radyodan 2. Zabiti'yi ara, gÃ¶rmesini sÃ¶yle",tag:"sosyal",effect:{sayginlik:10,dinclik:5}},
+{text:"NÃ¶bet gÃ¼nlÃ¼ÄŸÃ¼ne yaz, radarÄ± izlemeyi bÄ±rakma",tag:"akilli",effect:{bilgi:5,sayginlik:5}},
+{text:"Ä°zle, iÃ§ini Ã§ek â€” bu an sadece sana ait",tag:"itaatkar",effect:{dinclik:8,sayginlik:3}}]},
 
-{id:"s45",gfx:"storm",alert:false,day:"Gün 4",time:"16:00",loc:"İç Koridor — Alt Güverte",sub:"Fırtınada iç güverte kontrolü",who:"z1",
-text:`"${n}, dış güverte yasak. Ama ambar kapılarını kontrol edeceksin — su sızdırmazlık. 12 kapı. Her birini tek tek işaretle."`,
+{id:"s45",gfx:"storm",alert:false,day:"GÃ¼n 4",time:"16:00",loc:"Ä°Ã§ Koridor â€” Alt GÃ¼verte",sub:"FÄ±rtÄ±nada iÃ§ gÃ¼verte kontrolÃ¼",who:"z1",
+text:`"${n}, dÄ±ÅŸ gÃ¼verte yasak. Ama ambar kapÄ±larÄ±nÄ± kontrol edeceksin â€” su sÄ±zdÄ±rmazlÄ±k. 12 kapÄ±. Her birini tek tek iÅŸaretle."`,
 choices:[
-{text:"Tüm kapıları titizlikle kontrol et",tag:"akilli",effect:{bilgi:10,sayginlik:10,dinclik:-8}},
-{text:"Hızlıca bak, 'tamam' de",tag:"korkak",effect:{sayginlik:-8,bilgi:-3}},
+{text:"TÃ¼m kapÄ±larÄ± titizlikle kontrol et",tag:"akilli",effect:{bilgi:10,sayginlik:10,dinclik:-8}},
+{text:"HÄ±zlÄ±ca bak, 'tamam' de",tag:"korkak",effect:{sayginlik:-8,bilgi:-3}},
 {text:"Lostromo'yu da al, birlikte kontrol et",tag:"cesur",effect:{sayginlik:7,bilgi:8,dinclik:-5}}]},
 
-{id:"s46",gfx:"harbor",alert:false,day:"Gün 2",time:"11:00",loc:"İskenderiye Limanı — Giriş",sub:"İlk yabancı liman girişi",who:"z2",
-text:`${sn} İskenderiye'ye yaklaşıyor.\n\n2. Zabiti:\n\n"${n}, yabancı limanda gümrük prosedürü farklı. Bayrak idaresi, liman devleti kontrolü, sağlık belgesi, ISPS güvenlik bildirimi.\n\nPilot kalkana geldi. Gözlemle."`,
+{id:"s46",gfx:"harbor",alert:false,day:"GÃ¼n 2",time:"11:00",loc:"Ä°skenderiye LimanÄ± â€” GiriÅŸ",sub:"Ä°lk yabancÄ± liman giriÅŸi",who:"z2",
+text:`${sn} Ä°skenderiye'ye yaklaÅŸÄ±yor.\n\n2. Zabiti:\n\n"${n}, yabancÄ± limanda gÃ¼mrÃ¼k prosedÃ¼rÃ¼ farklÄ±. Bayrak idaresi, liman devleti kontrolÃ¼, saÄŸlÄ±k belgesi, ISPS gÃ¼venlik bildirimi.\n\nPilot kalkana geldi. GÃ¶zlemle."`,
 choices:[
-{text:"Her prosedürü not al",tag:"akilli",effect:{bilgi:14,sayginlik:8}},
-{text:"Pilota yardım et — el işaretleri ver",tag:"cesur",effect:{cesaret:8,sayginlik:10}},
+{text:"Her prosedÃ¼rÃ¼ not al",tag:"akilli",effect:{bilgi:14,sayginlik:8}},
+{text:"Pilota yardÄ±m et â€” el iÅŸaretleri ver",tag:"cesur",effect:{cesaret:8,sayginlik:10}},
 {text:"Arka planda izle",tag:"itaatkar",effect:{bilgi:5}}]},
 
-{id:"s47",gfx:"galley",alert:false,day:"Gün 7",time:"12:00",loc:"Yemekhane — Öğle Arası",sub:"Silici ile felsefe sohbeti",who:"silici",
-text:`Silici Ramazan öğle arasında sessizce yiyor.\n\n"${n}, sana bir şey soracağım. Gemi personeline çok zaman harcadın — kim seni en çok etkiledi?"`,
+{id:"s47",gfx:"galley",alert:false,day:"GÃ¼n 7",time:"12:00",loc:"Yemekhane â€” Ã–ÄŸle ArasÄ±",sub:"Silici ile felsefe sohbeti",who:"silici",
+text:`Silici Ramazan Ã¶ÄŸle arasÄ±nda sessizce yiyor.\n\n"${n}, sana bir ÅŸey soracaÄŸÄ±m. Gemi personeline Ã§ok zaman harcadÄ±n â€” kim seni en Ã§ok etkiledi?"`,
 choices:[
-{text:"Lostromo'yu söyle ve neden etkilendiğini anlat",tag:"sosyal",effect:{sayginlik:10,bilgi:5}},
-{text:"Silici Ramazan'ı söyle — 14 yıl aynı işi yapmak",tag:"sosyal",effect:{sayginlik:12}},
-{text:"Süvariyi söyle — liderlik",tag:"cesur",effect:{sayginlik:8,cesaret:3}}]},
+{text:"Lostromo'yu sÃ¶yle ve neden etkilendiÄŸini anlat",tag:"sosyal",effect:{sayginlik:10,bilgi:5}},
+{text:"Silici Ramazan'Ä± sÃ¶yle â€” 14 yÄ±l aynÄ± iÅŸi yapmak",tag:"sosyal",effect:{sayginlik:12}},
+{text:"SÃ¼variyi sÃ¶yle â€” liderlik",tag:"cesur",effect:{sayginlik:8,cesaret:3}}]},
 
-{id:"kriz13",gfx:"fire",alert:true,day:"Gün 10",time:"11:00",loc:"A Güvertesi — GERÇEK YANGIN",sub:"Elektrik panosu yangını — MAYDAY değil SECURITE",who:"z3",
-text:`Alarm çaldı — bu sefer gerçek.\n\nSiyah duman görünüyor. A güvertesinde elektrik panosu yandı.\n\n3. Zabiti radyoda:\n"Tüm mürettebat muster istasyonlarına! Bu tatbikat değil!\n\n${n}! Sen B tahliye sorumlusun. Oradaki iki kişiyi çıkar. 90 saniye!"`,
+{id:"kriz13",gfx:"fire",alert:true,day:"GÃ¼n 10",time:"11:00",loc:"A GÃ¼vertesi â€” GERÃ‡EK YANGIN",sub:"Elektrik panosu yangÄ±nÄ± â€” MAYDAY deÄŸil SECURITE",who:"z3",
+text:`Alarm Ã§aldÄ± â€” bu sefer gerÃ§ek.\n\nSiyah duman gÃ¶rÃ¼nÃ¼yor. A gÃ¼vertesinde elektrik panosu yandÄ±.\n\n3. Zabiti radyoda:\n"TÃ¼m mÃ¼rettebat muster istasyonlarÄ±na! Bu tatbikat deÄŸil!\n\n${n}! Sen B tahliye sorumlusun. Oradaki iki kiÅŸiyi Ã§Ä±kar. 90 saniye!"`,
 choices:[
-{text:"Koş, B güvertedeki iki kişiyi bul ve yönlendir",tag:"kritik",effect:{cesaret:15,sayginlik:15,dinclik:-10}},
-{text:"3. Zabiti'ye 'B güverte kaç kişi?' diye sor",tag:"akilli",effect:{sayginlik:5,bilgi:5}},
-{text:"Duman göründü — dondun",tag:"korkak",effect:{sayginlik:-15,cesaret:-12}}]},
+{text:"KoÅŸ, B gÃ¼vertedeki iki kiÅŸiyi bul ve yÃ¶nlendir",tag:"kritik",effect:{cesaret:15,sayginlik:15,dinclik:-10}},
+{text:"3. Zabiti'ye 'B gÃ¼verte kaÃ§ kiÅŸi?' diye sor",tag:"akilli",effect:{sayginlik:5,bilgi:5}},
+{text:"Duman gÃ¶rÃ¼ndÃ¼ â€” dondun",tag:"korkak",effect:{sayginlik:-15,cesaret:-12}}]},
 
-{id:"kriz14",gfx:"fire",alert:true,day:"Gün 10",time:"11:05",loc:"Muster İstasyonu — B Güverte",sub:"Tahliye tamamlandı — 87 saniye",who:"z3",
-text:`87 saniyede B güvertedekileri topladın.\n\n3. Zabiti krono baktı:\n\n"87 saniye. İyi. Standart 90 saniye.\n\nBir sorun: Listede 2 kişi yazıyordu ama sen 2 kişi getirdin. Doğru. Ama AMbar 3'ten çıkan Musa nerede?\n\nMuster listeni tam okudun mu?"`,
+{id:"kriz14",gfx:"fire",alert:true,day:"GÃ¼n 10",time:"11:05",loc:"Muster Ä°stasyonu â€” B GÃ¼verte",sub:"Tahliye tamamlandÄ± â€” 87 saniye",who:"z3",
+text:`87 saniyede B gÃ¼vertedekileri topladÄ±n.\n\n3. Zabiti krono baktÄ±:\n\n"87 saniye. Ä°yi. Standart 90 saniye.\n\nBir sorun: Listede 2 kiÅŸi yazÄ±yordu ama sen 2 kiÅŸi getirdin. DoÄŸru. Ama AMbar 3'ten Ã§Ä±kan Musa nerede?\n\nMuster listeni tam okudun mu?"`,
 choices:[
-{text:"'Musa'yı da almalıydım, muster listemde yoktu — hata bende' de",tag:"akilli",effect:{bilgi:12,sayginlik:10}},
-{text:"'Ama listedeki herkesi aldım' de — savun",tag:"cesur",effect:{sayginlik:-3,cesaret:3}},
-{text:"Sessiz kal, ne diyeceğini bil(e)miyorsun",tag:"korkak",effect:{sayginlik:-8}}]},
+{text:"'Musa'yÄ± da almalÄ±ydÄ±m, muster listemde yoktu â€” hata bende' de",tag:"akilli",effect:{bilgi:12,sayginlik:10}},
+{text:"'Ama listedeki herkesi aldÄ±m' de â€” savun",tag:"cesur",effect:{sayginlik:-3,cesaret:3}},
+{text:"Sessiz kal, ne diyeceÄŸini bil(e)miyorsun",tag:"korkak",effect:{sayginlik:-8}}]},
 
-{id:"kriz15",gfx:"sea",alert:false,day:"Gün 3",time:"22:00",loc:"Açık Deniz — Gece",sub:"Gece denizinde adam düştü tatbikatı",who:"suvari",
-text:`Süvari ani bir tatbikat başlattı.\n\n"ADAM DÜŞTÜ — SANCAK TARAF!"
+{id:"kriz15",gfx:"sea",alert:false,day:"GÃ¼n 3",time:"22:00",loc:"AÃ§Ä±k Deniz â€” Gece",sub:"Gece denizinde adam dÃ¼ÅŸtÃ¼ tatbikatÄ±",who:"suvari",
+text:`SÃ¼vari ani bir tatbikat baÅŸlattÄ±.\n\n"ADAM DÃœÅTÃœ â€” SANCAK TARAF!"
 
-Gemi manevra yapıyor. Deniz işaret feneri atıldı. Zabitler positione koştu.\n\nSüvari ${n}'ye:\n"Sen ne yapıyorsun? Söyle!"`,
+Gemi manevra yapÄ±yor. Deniz iÅŸaret feneri atÄ±ldÄ±. Zabitler positione koÅŸtu.\n\nSÃ¼vari ${n}'ye:\n"Sen ne yapÄ±yorsun? SÃ¶yle!"`,
 choices:[
-{text:"'Düşenin yerini gösteririm, gözden ayırmam' de — doğru",tag:"akilli",effect:{bilgi:15,sayginlik:12,cesaret:8}},
-{text:"Bağırarak yardım çağır",tag:"cesur",effect:{cesaret:5,sayginlik:5}},
+{text:"'DÃ¼ÅŸenin yerini gÃ¶steririm, gÃ¶zden ayÄ±rmam' de â€” doÄŸru",tag:"akilli",effect:{bilgi:15,sayginlik:12,cesaret:8}},
+{text:"BaÄŸÄ±rarak yardÄ±m Ã§aÄŸÄ±r",tag:"cesur",effect:{cesaret:5,sayginlik:5}},
 {text:"Dondun",tag:"korkak",effect:{sayginlik:-12,cesaret:-8}}]},
 
 
-{id:"s48",gfx:"bridge",alert:false,day:"Gün 3",time:"10:00",loc:"Köprüüstü — Trafik Ayrım Şeridi",sub:"TSS geçişi — yoğun trafik",who:"z2",
-text:`2. Zabiti radarı işaret etti:\n\n"${n}, şu an Çanakkale TSS'sine giriyoruz. Trafik ayrım şeridi — tek yönlü geçiş zorunlu. Seyir hızı minimum 8 knot.\n\nŞu kırmızı nokta — 3 mil önümüzde, yavaş gemi. CPA hesabı yap."`,
+{id:"s48",gfx:"bridge",alert:false,day:"GÃ¼n 3",time:"10:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” Trafik AyrÄ±m Åeridi",sub:"TSS geÃ§iÅŸi â€” yoÄŸun trafik",who:"z2",
+text:`2. Zabiti radarÄ± iÅŸaret etti:\n\n"${n}, ÅŸu an Ã‡anakkale TSS'sine giriyoruz. Trafik ayrÄ±m ÅŸeridi â€” tek yÃ¶nlÃ¼ geÃ§iÅŸ zorunlu. Seyir hÄ±zÄ± minimum 8 knot.\n\nÅu kÄ±rmÄ±zÄ± nokta â€” 3 mil Ã¶nÃ¼mÃ¼zde, yavaÅŸ gemi. CPA hesabÄ± yap."`,
 choices:[
 {text:"CPA hesapla, yeterli mesafe varsa rahatla bildir",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
-{text:"Süvariyi ara — TSS'de dikkatli olmak şart",tag:"cesur",effect:{cesaret:5,sayginlik:7,bilgi:5}},
-{text:"2. Zabiti halleder diye düşün",tag:"korkak",effect:{sayginlik:-5,bilgi:-3}}]},
+{text:"SÃ¼variyi ara â€” TSS'de dikkatli olmak ÅŸart",tag:"cesur",effect:{cesaret:5,sayginlik:7,bilgi:5}},
+{text:"2. Zabiti halleder diye dÃ¼ÅŸÃ¼n",tag:"korkak",effect:{sayginlik:-5,bilgi:-3}}]},
 
-{id:"s49",gfx:"galley",alert:false,day:"Gün 5",time:"11:30",loc:"Yemekhane — Öğle Arası",sub:"Tayfa Hasan ile uzun denizcilik sohbeti",who:"hasan",
-text:`Tayfa Hasan öğle arasında bira gibi kahvesini yudumluyor:\n\n"${n}, sana bir şey söyleyeyim. Ben 18 yıldır gemideyim. Üç süvari altında çalıştım. Her biri farklıydı.\n\nBirincisi her şeyi ezberletti. İkincisi hiçbir şey öğretmedi. Üçüncüsü — şu andaki — sen ne öğrenmek istersen sorusunu sordu.\n\nHangisi en iyi öğreticiydi sence?"`,
+{id:"s49",gfx:"galley",alert:false,day:"GÃ¼n 5",time:"11:30",loc:"Yemekhane â€” Ã–ÄŸle ArasÄ±",sub:"Tayfa Hasan ile uzun denizcilik sohbeti",who:"hasan",
+text:`Tayfa Hasan Ã¶ÄŸle arasÄ±nda bira gibi kahvesini yudumluyor:\n\n"${n}, sana bir ÅŸey sÃ¶yleyeyim. Ben 18 yÄ±ldÄ±r gemideyim. ÃœÃ§ sÃ¼vari altÄ±nda Ã§alÄ±ÅŸtÄ±m. Her biri farklÄ±ydÄ±.\n\nBirincisi her ÅŸeyi ezberletti. Ä°kincisi hiÃ§bir ÅŸey Ã¶ÄŸretmedi. ÃœÃ§Ã¼ncÃ¼sÃ¼ â€” ÅŸu andaki â€” sen ne Ã¶ÄŸrenmek istersen sorusunu sordu.\n\nHangisi en iyi Ã¶ÄŸreticiydi sence?"`,
 choices:[
-{text:"'Üçüncüsü — merakı öldürmeyen' de",tag:"akilli",effect:{bilgi:8,sayginlik:10}},
-{text:"'Birincisi — temel olmadan ilerlenmez' de",tag:"itaatkar",effect:{sayginlik:5,bilgi:5}},
-{text:"Hepsinden bir şey var deyip dengeli cevap ver",tag:"sosyal",effect:{sayginlik:12,bilgi:5}}]},
+{text:"'ÃœÃ§Ã¼ncÃ¼sÃ¼ â€” merakÄ± Ã¶ldÃ¼rmeyen' de",tag:"akilli",effect:{bilgi:8,sayginlik:10}},
+{text:"'Birincisi â€” temel olmadan ilerlenmez' de",tag:"itaatkar",effect:{sayginlik:5,bilgi:5}},
+{text:"Hepsinden bir ÅŸey var deyip dengeli cevap ver",tag:"sosyal",effect:{sayginlik:12,bilgi:5}}]},
 
-{id:"s50",gfx:"harbor",alert:false,day:"Gün 4",time:"13:00",loc:"Cenova Limanı — Konteyner Sahası",sub:"İtalyan limanda yükleme denetimi",who:"z1",
-text:`Cenova'da yükleme başladı. 1. Zabiti ${n}'ye döndü:\n\n"İtalyan liman yetkilileri gelecek. Portföy denetimi. Belgeleri hazır tut.\n\nBir sorun var — konteyner numarası 14 manifesto ile uyuşmuyor. Yetkili gelecek ve soracak."`,
+{id:"s50",gfx:"harbor",alert:false,day:"GÃ¼n 4",time:"13:00",loc:"Cenova LimanÄ± â€” Konteyner SahasÄ±",sub:"Ä°talyan limanda yÃ¼kleme denetimi",who:"z1",
+text:`Cenova'da yÃ¼kleme baÅŸladÄ±. 1. Zabiti ${n}'ye dÃ¶ndÃ¼:\n\n"Ä°talyan liman yetkilileri gelecek. PortfÃ¶y denetimi. Belgeleri hazÄ±r tut.\n\nBir sorun var â€” konteyner numarasÄ± 14 manifesto ile uyuÅŸmuyor. Yetkili gelecek ve soracak."`,
 choices:[
-{text:"Numarayı yeniden kontrol et, doğruysa bildir, yanlışsa düzelt",tag:"akilli",effect:{bilgi:14,sayginlik:12,cesaret:5}},
-{text:"1. Zabiti'ye bırak, senin işin değil",tag:"korkak",effect:{sayginlik:-8}},
-{text:"Yanlış bile olsa geçiştirilir herhalde de",tag:"korkak",effect:{sayginlik:-12,bilgi:-5}}]},
+{text:"NumarayÄ± yeniden kontrol et, doÄŸruysa bildir, yanlÄ±ÅŸsa dÃ¼zelt",tag:"akilli",effect:{bilgi:14,sayginlik:12,cesaret:5}},
+{text:"1. Zabiti'ye bÄ±rak, senin iÅŸin deÄŸil",tag:"korkak",effect:{sayginlik:-8}},
+{text:"YanlÄ±ÅŸ bile olsa geÃ§iÅŸtirilir herhalde de",tag:"korkak",effect:{sayginlik:-12,bilgi:-5}}]},
 
-{id:"s51",gfx:"night",alert:false,day:"Gün 8",time:"03:00",loc:"Köprüüstü — Derin Gece",sub:"03:00-06:00 nöbeti — en zor saat",who:"anlatici",
-text:`Saat 03:00. Gece nöbetinin en ağır saati.\n\nGöz kapanmak istiyor. Deniz sakin. Radar sessiz. Hiçbir şey olmuyor.\n\nEn tehlikeli an bu — tehlikenin olmadığı an. Dikkat dağılır. Reflex körleşir.\n\nNe yapacaksın?`,
+{id:"s51",gfx:"night",alert:false,day:"GÃ¼n 8",time:"03:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” Derin Gece",sub:"03:00-06:00 nÃ¶beti â€” en zor saat",who:"anlatici",
+text:`Saat 03:00. Gece nÃ¶betinin en aÄŸÄ±r saati.\n\nGÃ¶z kapanmak istiyor. Deniz sakin. Radar sessiz. HiÃ§bir ÅŸey olmuyor.\n\nEn tehlikeli an bu â€” tehlikenin olmadÄ±ÄŸÄ± an. Dikkat daÄŸÄ±lÄ±r. Reflex kÃ¶rleÅŸir.\n\nNe yapacaksÄ±n?`,
 choices:[
-{text:"Ayağa kalk, yüzünü yıka, güverteye çık — aktif kal",tag:"cesur",effect:{dinclik:-5,cesaret:8,bilgi:5}},
-{text:"Radyo kontrolü yap, log yaz, ayakta dur",tag:"akilli",effect:{bilgi:10,sayginlik:8}},
-{text:"Sadece birkaç dakika otururum diyerek otur",tag:"korkak",effect:{dinclik:-10,sayginlik:-8}}]},
+{text:"AyaÄŸa kalk, yÃ¼zÃ¼nÃ¼ yÄ±ka, gÃ¼verteye Ã§Ä±k â€” aktif kal",tag:"cesur",effect:{dinclik:-5,cesaret:8,bilgi:5}},
+{text:"Radyo kontrolÃ¼ yap, log yaz, ayakta dur",tag:"akilli",effect:{bilgi:10,sayginlik:8}},
+{text:"Sadece birkaÃ§ dakika otururum diyerek otur",tag:"korkak",effect:{dinclik:-10,sayginlik:-8}}]},
 
-{id:"s52",gfx:"engine",alert:false,day:"Gün 6",time:"14:00",loc:"Makine Dairesi — Sabo Sistemi",sub:"Çarkçıbaşı ile sintine sistemi",who:"carkci",
-text:`Çarkçıbaşı ${n}'yi sintine pompası odasına götürdü.\n\n"${n}, MARPOL 73/78 biliyor musun? Denize yağlı su boşaltmak yasak. Sintine suyu sistemi var — yağ-su ayırıcı, 15 ppm monitör.\n\nKontrol düzeneği bozulsa bile denize basamayız. Cezası gemi alıkonması."`,
+{id:"s52",gfx:"engine",alert:false,day:"GÃ¼n 6",time:"14:00",loc:"Makine Dairesi â€” Sabo Sistemi",sub:"Ã‡arkÃ§Ä±baÅŸÄ± ile sintine sistemi",who:"carkci",
+text:`Ã‡arkÃ§Ä±baÅŸÄ± ${n}'yi sintine pompasÄ± odasÄ±na gÃ¶tÃ¼rdÃ¼.\n\n"${n}, MARPOL 73/78 biliyor musun? Denize yaÄŸlÄ± su boÅŸaltmak yasak. Sintine suyu sistemi var â€” yaÄŸ-su ayÄ±rÄ±cÄ±, 15 ppm monitÃ¶r.\n\nKontrol dÃ¼zeneÄŸi bozulsa bile denize basamayÄ±z. CezasÄ± gemi alÄ±konmasÄ±."`,
 choices:[
 {text:"MARPOL bilgini ortaya koy, sistemi incele",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
 {text:"'15 ppm ne demek?' diye sor",tag:"itaatkar",effect:{bilgi:10,sayginlik:5}},
-{text:"Anlamadım ama anladım hissini ver",tag:"korkak",effect:{sayginlik:-5,bilgi:-3}}]},
+{text:"AnlamadÄ±m ama anladÄ±m hissini ver",tag:"korkak",effect:{sayginlik:-5,bilgi:-3}}]},
 
-{id:"s53",gfx:"sea",alert:false,day:"Gün 9",time:"16:30",loc:"Ana Güverte — Sancak Bordasında",sub:"Lostromo ile pas sökme",who:"lostromo",
-text:`Lostromo ${n}'yi sancak bordaya götürdü. Elinde çekiç ve paslanmış panel.\n\n"Güvertede bakım bitmez. Pas görmezse gemi çürür. Boya altında ne var biliyor musun?"\n\nÇekiçle vurdu — ses boş geldi. "İşte bu. Pasta boya altında hava boşluğu. Burası çürük."`,
+{id:"s53",gfx:"sea",alert:false,day:"GÃ¼n 9",time:"16:30",loc:"Ana GÃ¼verte â€” Sancak BordasÄ±nda",sub:"Lostromo ile pas sÃ¶kme",who:"lostromo",
+text:`Lostromo ${n}'yi sancak bordaya gÃ¶tÃ¼rdÃ¼. Elinde Ã§ekiÃ§ ve paslanmÄ±ÅŸ panel.\n\n"GÃ¼vertede bakÄ±m bitmez. Pas gÃ¶rmezse gemi Ã§Ã¼rÃ¼r. Boya altÄ±nda ne var biliyor musun?"\n\nÃ‡ekiÃ§le vurdu â€” ses boÅŸ geldi. "Ä°ÅŸte bu. Pasta boya altÄ±nda hava boÅŸluÄŸu. BurasÄ± Ã§Ã¼rÃ¼k."`,
 choices:[
-{text:"Çekiçle dene, ses farkını anlamaya çalış",tag:"akilli",effect:{bilgi:12,sayginlik:10,dinclik:-5}},
-{text:"Not al, tüm gözlemleri kaydet",tag:"itaatkar",effect:{bilgi:10,sayginlik:7}},
-{text:"'Bu çok ağır iş' diye düşün ama söyleme",tag:"korkak",effect:{sayginlik:-3}}]},
+{text:"Ã‡ekiÃ§le dene, ses farkÄ±nÄ± anlamaya Ã§alÄ±ÅŸ",tag:"akilli",effect:{bilgi:12,sayginlik:10,dinclik:-5}},
+{text:"Not al, tÃ¼m gÃ¶zlemleri kaydet",tag:"itaatkar",effect:{bilgi:10,sayginlik:7}},
+{text:"'Bu Ã§ok aÄŸÄ±r iÅŸ' diye dÃ¼ÅŸÃ¼n ama sÃ¶yleme",tag:"korkak",effect:{sayginlik:-3}}]},
 
-{id:"s54",gfx:"compass",alert:false,day:"Gün 7",time:"11:00",loc:"Köprüüstü — AIS Terminali",sub:"2. Zabiti ile AIS ve sahte hedef tartışması",who:"z2",
-text:`2. Zabiti AIS ekranını açtı:\n\n"${n}, şu gemilere bak. Hepsi AIS yayıyor. Ama dikkat — bazı gemiler kasıtlı olarak yanlış pozisyon yayıyor.\n\nNeden böyle yapar bir gemi?"`,
+{id:"s54",gfx:"compass",alert:false,day:"GÃ¼n 7",time:"11:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” AIS Terminali",sub:"2. Zabiti ile AIS ve sahte hedef tartÄ±ÅŸmasÄ±",who:"z2",
+text:`2. Zabiti AIS ekranÄ±nÄ± aÃ§tÄ±:\n\n"${n}, ÅŸu gemilere bak. Hepsi AIS yayÄ±yor. Ama dikkat â€” bazÄ± gemiler kasÄ±tlÄ± olarak yanlÄ±ÅŸ pozisyon yayÄ±yor.\n\nNeden bÃ¶yle yapar bir gemi?"`,
 choices:[
-{text:"'Kaçakçılık, yaptırımlardan kaçma, balık avı gizleme' de",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
-{text:"'Bilmiyorum ama tehlikeli olmalı' de",tag:"itaatkar",effect:{bilgi:7,sayginlik:5}},
-{text:"'AIS kapatmak yasak değil mi?' diye sor",tag:"sosyal",effect:{bilgi:10,sayginlik:7}}]},
+{text:"'KaÃ§akÃ§Ä±lÄ±k, yaptÄ±rÄ±mlardan kaÃ§ma, balÄ±k avÄ± gizleme' de",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
+{text:"'Bilmiyorum ama tehlikeli olmalÄ±' de",tag:"itaatkar",effect:{bilgi:7,sayginlik:5}},
+{text:"'AIS kapatmak yasak deÄŸil mi?' diye sor",tag:"sosyal",effect:{bilgi:10,sayginlik:7}}]},
 
-{id:"s55",gfx:"galley",alert:false,day:"Gün 10",time:"19:00",loc:"Yemekhane — Akşam",sub:"Aşçı ile hamur kültürü",who:"asci",
-text:`Mehmet Usta bugün baklava yapıyor. Hamur açıyor, tereyağı sürüyor.\n\n"${n}, gel yardım et. Gemide baklava yapmak şart mı? Değil. Ama mürettebat moralini ayakta tutar. Ben 25 yıldır gemideyim. Herkes 'aşçı önemsiz' der. Ama mutfak kötüyse gemi kötüdür."`,
+{id:"s55",gfx:"galley",alert:false,day:"GÃ¼n 10",time:"19:00",loc:"Yemekhane â€” AkÅŸam",sub:"AÅŸÃ§Ä± ile hamur kÃ¼ltÃ¼rÃ¼",who:"asci",
+text:`Mehmet Usta bugÃ¼n baklava yapÄ±yor. Hamur aÃ§Ä±yor, tereyaÄŸÄ± sÃ¼rÃ¼yor.\n\n"${n}, gel yardÄ±m et. Gemide baklava yapmak ÅŸart mÄ±? DeÄŸil. Ama mÃ¼rettebat moralini ayakta tutar. Ben 25 yÄ±ldÄ±r gemideyim. Herkes 'aÅŸÃ§Ä± Ã¶nemsiz' der. Ama mutfak kÃ¶tÃ¼yse gemi kÃ¶tÃ¼dÃ¼r."`,
 choices:[
-{text:"Yardım et, hamur aç",tag:"sosyal",effect:{sayginlik:10,dinclik:5}},
-{text:"Sohbet et, Mehmet Usta'nın denizcilik gözlemlerini dinle",tag:"akilli",effect:{bilgi:8,sayginlik:10}},
-{text:"Gülerek otur, izle",tag:"itaatkar",effect:{sayginlik:7,dinclik:5}}]},
+{text:"YardÄ±m et, hamur aÃ§",tag:"sosyal",effect:{sayginlik:10,dinclik:5}},
+{text:"Sohbet et, Mehmet Usta'nÄ±n denizcilik gÃ¶zlemlerini dinle",tag:"akilli",effect:{bilgi:8,sayginlik:10}},
+{text:"GÃ¼lerek otur, izle",tag:"itaatkar",effect:{sayginlik:7,dinclik:5}}]},
 
-{id:"s56",gfx:"storm",alert:false,day:"Gün 6",time:"08:00",loc:"Güverte — Fırtına Sonrası Kontrol",sub:"Her şey yerli yerinde mi?",who:"lostromo",
-text:`Fırtına geçti. Lostromo güverte turuna çıktı, ${n}'yi yanına aldı.\n\n"Fırtına sonrası kontrol rutini. Her halat, her bağlantı, her kapak. Hasarlı varsa not et.\n\nSen kıç tarafını al."`,
+{id:"s56",gfx:"storm",alert:false,day:"GÃ¼n 6",time:"08:00",loc:"GÃ¼verte â€” FÄ±rtÄ±na SonrasÄ± Kontrol",sub:"Her ÅŸey yerli yerinde mi?",who:"lostromo",
+text:`FÄ±rtÄ±na geÃ§ti. Lostromo gÃ¼verte turuna Ã§Ä±ktÄ±, ${n}'yi yanÄ±na aldÄ±.\n\n"FÄ±rtÄ±na sonrasÄ± kontrol rutini. Her halat, her baÄŸlantÄ±, her kapak. HasarlÄ± varsa not et.\n\nSen kÄ±Ã§ tarafÄ±nÄ± al."`,
 choices:[
-{text:"Listeyi al, her noktayı titizce kontrol et",tag:"akilli",effect:{bilgi:10,sayginlik:10,dinclik:-5}},
-{text:"Lostromo ile birlikte git, gözlemle",tag:"itaatkar",effect:{bilgi:8,sayginlik:7}},
-{text:"'Her şey tamam görünüyor' diyip hızlıca geç",tag:"korkak",effect:{sayginlik:-8,bilgi:-5}}]},
+{text:"Listeyi al, her noktayÄ± titizce kontrol et",tag:"akilli",effect:{bilgi:10,sayginlik:10,dinclik:-5}},
+{text:"Lostromo ile birlikte git, gÃ¶zlemle",tag:"itaatkar",effect:{bilgi:8,sayginlik:7}},
+{text:"'Her ÅŸey tamam gÃ¶rÃ¼nÃ¼yor' diyip hÄ±zlÄ±ca geÃ§",tag:"korkak",effect:{sayginlik:-8,bilgi:-5}}]},
 
-{id:"s57",gfx:"sea",alert:false,day:"Gün 11",time:"14:00",loc:"Açık Deniz — Öğleden Sonra",sub:"2. Başmakinist ile karşılaşma",who:"bas2",
-text:`2. Başmakinist Serdar Bey güverte geçidinde seni durdurdu.\n\n"${n}, bir hafta daha geçtik. Makine odasından söylemeliyim — sen güverte stajyeri olarak en meraklısıydın.\n\nSana şunu sorayım: Eğer makine dairesi kariyeri düşünsen, başlangıç noktası ne olurdu?"`,
+{id:"s57",gfx:"sea",alert:false,day:"GÃ¼n 11",time:"14:00",loc:"AÃ§Ä±k Deniz â€” Ã–ÄŸleden Sonra",sub:"2. BaÅŸmakinist ile karÅŸÄ±laÅŸma",who:"bas2",
+text:`2. BaÅŸmakinist Serdar Bey gÃ¼verte geÃ§idinde seni durdurdu.\n\n"${n}, bir hafta daha geÃ§tik. Makine odasÄ±ndan sÃ¶ylemeliyim â€” sen gÃ¼verte stajyeri olarak en meraklÄ±sÄ±ydÄ±n.\n\nSana ÅŸunu sorayÄ±m: EÄŸer makine dairesi kariyeri dÃ¼ÅŸÃ¼nsen, baÅŸlangÄ±Ã§ noktasÄ± ne olurdu?"`,
 choices:[
-{text:"'Yağcı olarak başlardım, sistemi temelden öğrenirim' de",tag:"akilli",effect:{bilgi:10,sayginlik:10}},
-{text:"'Güverte daha ilgimi çekiyor ama teşekkürler' de",tag:"itaatkar",effect:{sayginlik:7}},
-{text:"'Hem güverte hem makineyi öğrenmek istiyorum' de",tag:"sosyal",effect:{sayginlik:10,bilgi:8}}]},
+{text:"'YaÄŸcÄ± olarak baÅŸlardÄ±m, sistemi temelden Ã¶ÄŸrenirim' de",tag:"akilli",effect:{bilgi:10,sayginlik:10}},
+{text:"'GÃ¼verte daha ilgimi Ã§ekiyor ama teÅŸekkÃ¼rler' de",tag:"itaatkar",effect:{sayginlik:7}},
+{text:"'Hem gÃ¼verte hem makineyi Ã¶ÄŸrenmek istiyorum' de",tag:"sosyal",effect:{sayginlik:10,bilgi:8}}]},
 
-{id:"s58",gfx:"bridge",alert:false,day:"Gün 12",time:"09:00",loc:"Köprüüstü — Sabah Brifing",sub:"Süvari ile liderlik dersi",who:"suvari",
-text:`Süvari sabah brifinginde mürettebata döndü:\n\n"Bir süvari gemide en yalnız insandır. Her karar ona aittir. Başarı mürettebatın, hata süvarinin."\n\nSonra ${n}'ye baktı:\n"Sen bunu anlamak için erken. Ama düşün: Bir stajyer en fazla neyle katkı sağlar?"`,
+{id:"s58",gfx:"bridge",alert:false,day:"GÃ¼n 12",time:"09:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” Sabah Brifing",sub:"SÃ¼vari ile liderlik dersi",who:"suvari",
+text:`SÃ¼vari sabah brifinginde mÃ¼rettebata dÃ¶ndÃ¼:\n\n"Bir sÃ¼vari gemide en yalnÄ±z insandÄ±r. Her karar ona aittir. BaÅŸarÄ± mÃ¼rettebatÄ±n, hata sÃ¼varinin."\n\nSonra ${n}'ye baktÄ±:\n"Sen bunu anlamak iÃ§in erken. Ama dÃ¼ÅŸÃ¼n: Bir stajyer en fazla neyle katkÄ± saÄŸlar?"`,
 choices:[
-{text:"'Sormak — her şeyi sormak' de",tag:"akilli",effect:{bilgi:8,sayginlik:10}},
-{text:"'İş yapmak — öğrenmek için çalışmak' de",tag:"cesur",effect:{cesaret:5,sayginlik:8}},
-{text:"'Hata yapmak ve öğrenmek' de",tag:"sosyal",effect:{sayginlik:10,bilgi:5}}]},
+{text:"'Sormak â€” her ÅŸeyi sormak' de",tag:"akilli",effect:{bilgi:8,sayginlik:10}},
+{text:"'Ä°ÅŸ yapmak â€” Ã¶ÄŸrenmek iÃ§in Ã§alÄ±ÅŸmak' de",tag:"cesur",effect:{cesaret:5,sayginlik:8}},
+{text:"'Hata yapmak ve Ã¶ÄŸrenmek' de",tag:"sosyal",effect:{sayginlik:10,bilgi:5}}]},
 
-{id:"s59",gfx:"sea",alert:false,day:"Gün 2",time:"16:00",loc:"Pruva Güverte — Açık Deniz",sub:"İlk açık deniz hissi",who:"anlatici",
-text:`Gemi açık denize çıktı. Kıyılar artık görünmüyor.\n\nSadece su. Her yanda. Ufuk her yönde eşit.\n\nBu his — sonsuzluk hissi — ilk kez görenin içini ürpertir. Küçüklük hissi. Ama bir yandan da özgürlük.\n\nNe hissediyorsun?`,
+{id:"s59",gfx:"sea",alert:false,day:"GÃ¼n 2",time:"16:00",loc:"Pruva GÃ¼verte â€” AÃ§Ä±k Deniz",sub:"Ä°lk aÃ§Ä±k deniz hissi",who:"anlatici",
+text:`Gemi aÃ§Ä±k denize Ã§Ä±ktÄ±. KÄ±yÄ±lar artÄ±k gÃ¶rÃ¼nmÃ¼yor.\n\nSadece su. Her yanda. Ufuk her yÃ¶nde eÅŸit.\n\nBu his â€” sonsuzluk hissi â€” ilk kez gÃ¶renin iÃ§ini Ã¼rpertir. KÃ¼Ã§Ã¼klÃ¼k hissi. Ama bir yandan da Ã¶zgÃ¼rlÃ¼k.\n\nNe hissediyorsun?`,
 choices:[
-{text:"Pruvaya git, rüzgarı hisset",tag:"cesur",effect:{cesaret:8,dinclik:5}},
-{text:"Not defterini aç, bu anı yaz",tag:"akilli",effect:{bilgi:5,sayginlik:3}},
-{text:"Görevi kontrol et — hissedecek vakit yok",tag:"itaatkar",effect:{sayginlik:5,bilgi:3}}]},
+{text:"Pruvaya git, rÃ¼zgarÄ± hisset",tag:"cesur",effect:{cesaret:8,dinclik:5}},
+{text:"Not defterini aÃ§, bu anÄ± yaz",tag:"akilli",effect:{bilgi:5,sayginlik:3}},
+{text:"GÃ¶revi kontrol et â€” hissedecek vakit yok",tag:"itaatkar",effect:{sayginlik:5,bilgi:3}}]},
 
-{id:"s60",gfx:"cargo",alert:false,day:"Gün 8",time:"10:00",loc:"Yük Sahası — Stowage Planı",sub:"Konteyner ağırlık dengesi hesabı",who:"z1",
-text:`1. Zabiti stowage planını açtı:\n\n"${n}, bu gemide 340 konteyner var. Ağır olanlar altta, hafifler üste. Ama sorun: Şu 3 ağır konteyner son anda eklendi, sancak tarafa konuldu.\n\nGemi hafif sancak yatık. Trim hesabı yap — güvenli mi?"`,
+{id:"s60",gfx:"cargo",alert:false,day:"GÃ¼n 8",time:"10:00",loc:"YÃ¼k SahasÄ± â€” Stowage PlanÄ±",sub:"Konteyner aÄŸÄ±rlÄ±k dengesi hesabÄ±",who:"z1",
+text:`1. Zabiti stowage planÄ±nÄ± aÃ§tÄ±:\n\n"${n}, bu gemide 340 konteyner var. AÄŸÄ±r olanlar altta, hafifler Ã¼ste. Ama sorun: Åu 3 aÄŸÄ±r konteyner son anda eklendi, sancak tarafa konuldu.\n\nGemi hafif sancak yatÄ±k. Trim hesabÄ± yap â€” gÃ¼venli mi?"`,
 choices:[
-{text:"Hesabı yap: GM değeri, serbest yüzey, baş/kıç farkı",tag:"akilli",effect:{bilgi:15,sayginlik:12}},
-{text:"'Süvari bilmeli, bildir' de",tag:"itaatkar",effect:{sayginlik:7,bilgi:5}},
-{text:"'Hafif yatış normal' de",tag:"korkak",effect:{sayginlik:-8,bilgi:-5}}]},
+{text:"HesabÄ± yap: GM deÄŸeri, serbest yÃ¼zey, baÅŸ/kÄ±Ã§ farkÄ±",tag:"akilli",effect:{bilgi:15,sayginlik:12}},
+{text:"'SÃ¼vari bilmeli, bildir' de",tag:"itaatkar",effect:{sayginlik:7,bilgi:5}},
+{text:"'Hafif yatÄ±ÅŸ normal' de",tag:"korkak",effect:{sayginlik:-8,bilgi:-5}}]},
 
-{id:"s61",gfx:"harbor",alert:false,day:"Gün 1",time:"11:00",loc:startPort.office,sub:"ISPS güvenlik kodu — giriş prosedürü",who:"z3",
-text:`3. Zabiti ${n}'yi limancı ofisine götürdü:\n\n"ISPS kodu. Her gemi Güvenlik Düzeyi 1, 2 veya 3'te çalışır. Şu an Düzey 1 — normal. Düzey 3 acil durum demek.\n\nSen stajyer olarak hangi ISPS belgesini taşımalısın?"`,
+{id:"s61",gfx:"harbor",alert:false,day:"GÃ¼n 1",time:"11:00",loc:startPort.office,sub:"ISPS gÃ¼venlik kodu â€” giriÅŸ prosedÃ¼rÃ¼",who:"z3",
+text:`3. Zabiti ${n}'yi limancÄ± ofisine gÃ¶tÃ¼rdÃ¼:\n\n"ISPS kodu. Her gemi GÃ¼venlik DÃ¼zeyi 1, 2 veya 3'te Ã§alÄ±ÅŸÄ±r. Åu an DÃ¼zey 1 â€” normal. DÃ¼zey 3 acil durum demek.\n\nSen stajyer olarak hangi ISPS belgesini taÅŸÄ±malÄ±sÄ±n?"`,
 choices:[
 {text:"'Continuous Synopsis Record ve SSAS bilinci' de",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
-{text:"'Bilmiyorum, öğretir misiniz?' de",tag:"itaatkar",effect:{bilgi:8,sayginlik:5}},
-{text:"'Kimlik belgen yeterli değil mi?' de",tag:"korkak",effect:{sayginlik:-5,bilgi:-3}}]},
+{text:"'Bilmiyorum, Ã¶ÄŸretir misiniz?' de",tag:"itaatkar",effect:{bilgi:8,sayginlik:5}},
+{text:"'Kimlik belgen yeterli deÄŸil mi?' de",tag:"korkak",effect:{sayginlik:-5,bilgi:-3}}]},
 
-{id:"s62",gfx:"night",alert:false,day:"Gün 5",time:"00:30",loc:"Köprüüstü — Gece Yarısı",sub:"Lostromo ile tuhaf bir gece",who:"lostromo",
-text:`Lostromo gece nöbet devrini yaparken köprüde durdu.\n\n"${n}. Uyku yok mu?"\n\nOturdu yanına. Denize baktı.\n\n"Ben bu gemide 14 yıldır çalışıyorum. İlk gece nöbetimde sana ne söyleseydim? Deniz seni test eder. Her zaman. Geçmek zorunda değilsin — ama dürüst olmak zorundasın."`,
+{id:"s62",gfx:"night",alert:false,day:"GÃ¼n 5",time:"00:30",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” Gece YarÄ±sÄ±",sub:"Lostromo ile tuhaf bir gece",who:"lostromo",
+text:`Lostromo gece nÃ¶bet devrini yaparken kÃ¶prÃ¼de durdu.\n\n"${n}. Uyku yok mu?"\n\nOturdu yanÄ±na. Denize baktÄ±.\n\n"Ben bu gemide 14 yÄ±ldÄ±r Ã§alÄ±ÅŸÄ±yorum. Ä°lk gece nÃ¶betimde sana ne sÃ¶yleseydim? Deniz seni test eder. Her zaman. GeÃ§mek zorunda deÄŸilsin â€” ama dÃ¼rÃ¼st olmak zorundasÄ±n."`,
 choices:[
-{text:"Sessizce dinle — bu anı hisset",tag:"sosyal",effect:{sayginlik:10,dinclik:5}},
-{text:"'Siz geçtiniz mi tüm testleri?' diye sor",tag:"cesur",effect:{sayginlik:8,bilgi:5,cesaret:5}},
-{text:"'Teşekkürler' de ve göreve dön",tag:"itaatkar",effect:{sayginlik:7}}]},
+{text:"Sessizce dinle â€” bu anÄ± hisset",tag:"sosyal",effect:{sayginlik:10,dinclik:5}},
+{text:"'Siz geÃ§tiniz mi tÃ¼m testleri?' diye sor",tag:"cesur",effect:{sayginlik:8,bilgi:5,cesaret:5}},
+{text:"'TeÅŸekkÃ¼rler' de ve gÃ¶reve dÃ¶n",tag:"itaatkar",effect:{sayginlik:7}}]},
 
-{id:"s63",gfx:"compass",alert:false,day:"Gün 10",time:"15:00",loc:"Köprüüstü — GMDSS Testi",sub:"Telsiz güvenlik sistemi test",who:"z3",
-text:`3. Zabiti ${n}'ye GMDSS panelini gösterdi:\n\n"Global Maritime Distress and Safety System. Bu cihaz kaza anında otomatik distress sinyali gönderir.\n\nTest günü — sinyali test modunda çalıştır. Adım adım."`,
+{id:"s63",gfx:"compass",alert:false,day:"GÃ¼n 10",time:"15:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” GMDSS Testi",sub:"Telsiz gÃ¼venlik sistemi test",who:"z3",
+text:`3. Zabiti ${n}'ye GMDSS panelini gÃ¶sterdi:\n\n"Global Maritime Distress and Safety System. Bu cihaz kaza anÄ±nda otomatik distress sinyali gÃ¶nderir.\n\nTest gÃ¼nÃ¼ â€” sinyali test modunda Ã§alÄ±ÅŸtÄ±r. AdÄ±m adÄ±m."`,
 choices:[
-{text:"Test prosedürünü oku, adım adım uygula",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
-{text:"3. Zabiti'nin yapmasını izle, not al",tag:"itaatkar",effect:{bilgi:10,sayginlik:7}},
-{text:"'Yanlış yaparım, siz yapın' de",tag:"korkak",effect:{sayginlik:-8,cesaret:-5}}]},
+{text:"Test prosedÃ¼rÃ¼nÃ¼ oku, adÄ±m adÄ±m uygula",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
+{text:"3. Zabiti'nin yapmasÄ±nÄ± izle, not al",tag:"itaatkar",effect:{bilgi:10,sayginlik:7}},
+{text:"'YanlÄ±ÅŸ yaparÄ±m, siz yapÄ±n' de",tag:"korkak",effect:{sayginlik:-8,cesaret:-5}}]},
 
-{id:"s64",gfx:"engine_fault",alert:true,day:"Gün 9",time:"22:00",loc:"Makine Dairesi — Gece Arızası",sub:"Jeneratör 2 devre dışı — yük transferi",who:"bas2",
-text:`Gece 22:00. Alarm çaldı.\n\n2. Başmakinist acil radyoda:\n"Jeneratör 2 arıza! Otomatik transfer başarısız. Jeneratör 1'e manuel yük transferi yapıyorum.\n\n${n} makine odasına — gözlemle ve log tut!"`,
+{id:"s64",gfx:"engine_fault",alert:true,day:"GÃ¼n 9",time:"22:00",loc:"Makine Dairesi â€” Gece ArÄ±zasÄ±",sub:"JeneratÃ¶r 2 devre dÄ±ÅŸÄ± â€” yÃ¼k transferi",who:"bas2",
+text:`Gece 22:00. Alarm Ã§aldÄ±.\n\n2. BaÅŸmakinist acil radyoda:\n"JeneratÃ¶r 2 arÄ±za! Otomatik transfer baÅŸarÄ±sÄ±z. JeneratÃ¶r 1'e manuel yÃ¼k transferi yapÄ±yorum.\n\n${n} makine odasÄ±na â€” gÃ¶zlemle ve log tut!"`,
 choices:[
-{text:"Hemen in, log defterini al, her adımı kaydet",tag:"kritik",effect:{bilgi:14,sayginlik:12,cesaret:8}},
-{text:"Köprüdeki 2. Zabiti'yi bilgilendir önce",tag:"akilli",effect:{bilgi:8,sayginlik:10}},
+{text:"Hemen in, log defterini al, her adÄ±mÄ± kaydet",tag:"kritik",effect:{bilgi:14,sayginlik:12,cesaret:8}},
+{text:"KÃ¶prÃ¼deki 2. Zabiti'yi bilgilendir Ã¶nce",tag:"akilli",effect:{bilgi:8,sayginlik:10}},
 {text:"Alarm kesilene kadar bekle",tag:"korkak",effect:{sayginlik:-10,cesaret:-8}}]},
 
-{id:"s66",gfx:"bridge",alert:false,day:"Gün 4",time:"20:30",loc:"Köprüüstü — Vardiya Devri",sub:"STCW vardiya tutma standartları",who:"z2",
-text:`2. Zabiti vardiya devrine hazırlanıyor.\n\n"${n}, STCW sadece diploma işi değil. Vardiya devri eksiksiz bilgi devridir: rota, trafik, hava, arıza, görüş, alarm, seyir cihazları.\n\nŞimdi bana devri sen yapacakmış gibi kısa bir özet ver."`,
+{id:"s66",gfx:"bridge",alert:false,day:"GÃ¼n 4",time:"20:30",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” Vardiya Devri",sub:"STCW vardiya tutma standartlarÄ±",who:"z2",
+text:`2. Zabiti vardiya devrine hazÄ±rlanÄ±yor.\n\n"${n}, STCW sadece diploma iÅŸi deÄŸil. Vardiya devri eksiksiz bilgi devridir: rota, trafik, hava, arÄ±za, gÃ¶rÃ¼ÅŸ, alarm, seyir cihazlarÄ±.\n\nÅimdi bana devri sen yapacakmÄ±ÅŸ gibi kÄ±sa bir Ã¶zet ver."`,
 choices:[
-{text:"Rota, trafik, hava, ekipman ve açık riskleri sırayla özetle",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
-{text:"'Her şey normal' diyerek kısa kes",tag:"korkak",effect:{bilgi:-6,sayginlik:-8}},
-{text:"Önce bilmediklerini söyle, sonra notlardan devret",tag:"itaatkar",effect:{bilgi:9,sayginlik:7}}]},
+{text:"Rota, trafik, hava, ekipman ve aÃ§Ä±k riskleri sÄ±rayla Ã¶zetle",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
+{text:"'Her ÅŸey normal' diyerek kÄ±sa kes",tag:"korkak",effect:{bilgi:-6,sayginlik:-8}},
+{text:"Ã–nce bilmediklerini sÃ¶yle, sonra notlardan devret",tag:"itaatkar",effect:{bilgi:9,sayginlik:7}}]},
 
-{id:"s67",gfx:"harbor",alert:false,day:"Gün 6",time:"09:30",loc:"Serdümen Güvertesi — Borda Hattı",sub:"LOADLINE ve Plimsoll işareti",who:"z1",
-text:`1. Zabiti seni sancak bordaya götürdü.\n\n"Şu daire ve çizgiler var ya, Plimsoll mark. LOADLINE Sözleşmesi burada can bulur.\n\nYaz yükleme hattı ayrı, tropik ayrı, kış ayrı. Deniz suyu yoğunluğu ve mevsim fark eder.\n\nLiman memuru birazdan sorarsa ne dersin?"`,
+{id:"s67",gfx:"harbor",alert:false,day:"GÃ¼n 6",time:"09:30",loc:"SerdÃ¼men GÃ¼vertesi â€” Borda HattÄ±",sub:"LOADLINE ve Plimsoll iÅŸareti",who:"z1",
+text:`1. Zabiti seni sancak bordaya gÃ¶tÃ¼rdÃ¼.\n\n"Åu daire ve Ã§izgiler var ya, Plimsoll mark. LOADLINE SÃ¶zleÅŸmesi burada can bulur.\n\nYaz yÃ¼kleme hattÄ± ayrÄ±, tropik ayrÄ±, kÄ±ÅŸ ayrÄ±. Deniz suyu yoÄŸunluÄŸu ve mevsim fark eder.\n\nLiman memuru birazdan sorarsa ne dersin?"`,
 choices:[
-{text:"'Geminin serbest bordasını ve mevsimsel güvenli yükleme sınırını gösterir' de",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
-{text:"'Aşırı yüklemeyi önler' de — kısa ama doğru",tag:"itaatkar",effect:{bilgi:8,sayginlik:6}},
-{text:"'Sadece boya işareti' de",tag:"korkak",effect:{bilgi:-8,sayginlik:-8}}]},
+{text:"'Geminin serbest bordasÄ±nÄ± ve mevsimsel gÃ¼venli yÃ¼kleme sÄ±nÄ±rÄ±nÄ± gÃ¶sterir' de",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
+{text:"'AÅŸÄ±rÄ± yÃ¼klemeyi Ã¶nler' de â€” kÄ±sa ama doÄŸru",tag:"itaatkar",effect:{bilgi:8,sayginlik:6}},
+{text:"'Sadece boya iÅŸareti' de",tag:"korkak",effect:{bilgi:-8,sayginlik:-8}}]},
 
-{id:"s68",gfx:"engine",alert:false,day:"Gün 8",time:"13:30",loc:"Makine Kontrol Odası — Bunker Planı",sub:"BUNKERS 2001 ve yakıt kirliliği sorumluluğu",who:"carkci",
-text:`Çarkçıbaşı bir dosya açtı.\n\n"${n}, bunker spill olursa sadece temizlik yapmayız; hukuki sorumluluk da doğar. BUNKERS Sözleşmesi tam burada devreye girer.\n\nŞirket sigortası, P&I bildirimi, liman otoritesi raporu. Bir damla denize gitse tutanak tutulur.\n\nİlk refleksin ne olur?"`,
+{id:"s68",gfx:"engine",alert:false,day:"GÃ¼n 8",time:"13:30",loc:"Makine Kontrol OdasÄ± â€” Bunker PlanÄ±",sub:"BUNKERS 2001 ve yakÄ±t kirliliÄŸi sorumluluÄŸu",who:"carkci",
+text:`Ã‡arkÃ§Ä±baÅŸÄ± bir dosya aÃ§tÄ±.\n\n"${n}, bunker spill olursa sadece temizlik yapmayÄ±z; hukuki sorumluluk da doÄŸar. BUNKERS SÃ¶zleÅŸmesi tam burada devreye girer.\n\nÅirket sigortasÄ±, P&I bildirimi, liman otoritesi raporu. Bir damla denize gitse tutanak tutulur.\n\nÄ°lk refleksin ne olur?"`,
 choices:[
-{text:"Sızıntıyı durdur, SOPEP prosedürünü aç, zabit ve makineyi aynı anda haberdar et",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:6}},
-{text:"Önce fotoğraf çeker, sonra birine söylerim",tag:"korkak",effect:{bilgi:-5,sayginlik:-10}},
-{text:"Amire sorar, adım adım ilerlerim",tag:"itaatkar",effect:{bilgi:8,sayginlik:7}}]},
+{text:"SÄ±zÄ±ntÄ±yÄ± durdur, SOPEP prosedÃ¼rÃ¼nÃ¼ aÃ§, zabit ve makineyi aynÄ± anda haberdar et",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:6}},
+{text:"Ã–nce fotoÄŸraf Ã§eker, sonra birine sÃ¶ylerim",tag:"korkak",effect:{bilgi:-5,sayginlik:-10}},
+{text:"Amire sorar, adÄ±m adÄ±m ilerlerim",tag:"itaatkar",effect:{bilgi:8,sayginlik:7}}]},
 
-{id:"s69",gfx:"cargo",alert:false,day:"Gün 11",time:"09:00",loc:"Liman — Kuru Havuz Planı",sub:"AFS ve karina boyası kuralları",who:"suvari",
-text:`Süvari kuru havuz planına baktı.\n\n"Bu sefer sonunda karina boyası yenilenecek. Eskiden kimi boyalarda zararlı organotin vardı; şimdi AFS bunu sınırlandırıyor.\n\nBir boya sadece iyi tuttu diye kullanılmaz. Mevzuata da uygun olacak.\n\nTedarikçi sana 'eski stok ucuz boya' önerse ne dersin?"`,
+{id:"s69",gfx:"cargo",alert:false,day:"GÃ¼n 11",time:"09:00",loc:"Liman â€” Kuru Havuz PlanÄ±",sub:"AFS ve karina boyasÄ± kurallarÄ±",who:"suvari",
+text:`SÃ¼vari kuru havuz planÄ±na baktÄ±.\n\n"Bu sefer sonunda karina boyasÄ± yenilenecek. Eskiden kimi boyalarda zararlÄ± organotin vardÄ±; ÅŸimdi AFS bunu sÄ±nÄ±rlandÄ±rÄ±yor.\n\nBir boya sadece iyi tuttu diye kullanÄ±lmaz. Mevzuata da uygun olacak.\n\nTedarikÃ§i sana 'eski stok ucuz boya' Ã¶nerse ne dersin?"`,
 choices:[
-{text:"AFS uygunluk sertifikasını ve teknik veri sayfasını isterim",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
-{text:"Ucuzsa şirket karar verir der geçerim",tag:"korkak",effect:{bilgi:-6,sayginlik:-7}},
-{text:"Önce 1. Zabiti ve teknik ofisi bilgilendiririm",tag:"itaatkar",effect:{bilgi:8,sayginlik:7}}]},
+{text:"AFS uygunluk sertifikasÄ±nÄ± ve teknik veri sayfasÄ±nÄ± isterim",tag:"akilli",effect:{bilgi:14,sayginlik:10}},
+{text:"Ucuzsa ÅŸirket karar verir der geÃ§erim",tag:"korkak",effect:{bilgi:-6,sayginlik:-7}},
+{text:"Ã–nce 1. Zabiti ve teknik ofisi bilgilendiririm",tag:"itaatkar",effect:{bilgi:8,sayginlik:7}}]},
 
-{id:"s70",gfx:"bridge",alert:false,day:"Gün 9",time:"15:00",loc:"Süvari Kamarası — Evrak Masası",sub:"Charter Party ve işletme modeli",who:"suvari",
-text:`Süvari masadaki dosyaları gösterdi.\n\n"Denizde sadece seyir yok; kontrat da var. Time Charter, Voyage Charter, Bareboat Charter farklı şeyler.\n\nTime Charter'da ticari emir charterer'dan gelir ama geminin nautik emniyeti yine kaptandadır. Bareboat'ta işletme neredeyse tamamen kiracıya geçer.\n\nSana soruyorum: hangisinde ticari kontrol daha yoğundur?"`,
+{id:"s70",gfx:"bridge",alert:false,day:"GÃ¼n 9",time:"15:00",loc:"SÃ¼vari KamarasÄ± â€” Evrak MasasÄ±",sub:"Charter Party ve iÅŸletme modeli",who:"suvari",
+text:`SÃ¼vari masadaki dosyalarÄ± gÃ¶sterdi.\n\n"Denizde sadece seyir yok; kontrat da var. Time Charter, Voyage Charter, Bareboat Charter farklÄ± ÅŸeyler.\n\nTime Charter'da ticari emir charterer'dan gelir ama geminin nautik emniyeti yine kaptandadÄ±r. Bareboat'ta iÅŸletme neredeyse tamamen kiracÄ±ya geÃ§er.\n\nSana soruyorum: hangisinde ticari kontrol daha yoÄŸundur?"`,
 choices:[
-{text:"Time Charter ile Bareboat farkını açıklayıp Bareboat'ta işletme kontrolünün çok daha geniş olduğunu söyle",tag:"akilli",effect:{bilgi:15,sayginlik:10}},
-{text:"'Hepsi aynı kiralama' de",tag:"korkak",effect:{bilgi:-8,sayginlik:-8}},
-{text:"Voyage ile Time Charter'ın yük ve rota etkisini ayırarak cevap ver",tag:"cesur",effect:{bilgi:10,sayginlik:8,cesaret:4}}]},
+{text:"Time Charter ile Bareboat farkÄ±nÄ± aÃ§Ä±klayÄ±p Bareboat'ta iÅŸletme kontrolÃ¼nÃ¼n Ã§ok daha geniÅŸ olduÄŸunu sÃ¶yle",tag:"akilli",effect:{bilgi:15,sayginlik:10}},
+{text:"'Hepsi aynÄ± kiralama' de",tag:"korkak",effect:{bilgi:-8,sayginlik:-8}},
+{text:"Voyage ile Time Charter'Ä±n yÃ¼k ve rota etkisini ayÄ±rarak cevap ver",tag:"cesur",effect:{bilgi:10,sayginlik:8,cesaret:4}}]},
 
-{id:"s71",gfx:"bogaz",alert:false,day:"Gün 6",time:"12:00",loc:"İstanbul Boğazı — Transit",sub:"Montreux ve boğaz geçiş rejimi",who:"z2",
-text:`2. Zabiti boğaz geçiş evraklarını kapattı.\n\n"Montreux deyince herkes savaş gemisini hatırlar. Ama ticaret gemileri için de geçiş rejiminin omurgası odur. Bildirim, pilotaj uygulaması, trafik düzeni, egemenlik alanı.\n\nPeki bu bizim günlük işimize nasıl yansır?"`,
+{id:"s71",gfx:"bogaz",alert:false,day:"GÃ¼n 6",time:"12:00",loc:"Ä°stanbul BoÄŸazÄ± â€” Transit",sub:"Montreux ve boÄŸaz geÃ§iÅŸ rejimi",who:"z2",
+text:`2. Zabiti boÄŸaz geÃ§iÅŸ evraklarÄ±nÄ± kapattÄ±.\n\n"Montreux deyince herkes savaÅŸ gemisini hatÄ±rlar. Ama ticaret gemileri iÃ§in de geÃ§iÅŸ rejiminin omurgasÄ± odur. Bildirim, pilotaj uygulamasÄ±, trafik dÃ¼zeni, egemenlik alanÄ±.\n\nPeki bu bizim gÃ¼nlÃ¼k iÅŸimize nasÄ±l yansÄ±r?"`,
 choices:[
-{text:"'Boğaz geçişinde yerel trafik rejimine ve otorite talimatlarına uymamızı gerektirir' de",tag:"akilli",effect:{bilgi:13,sayginlik:10}},
+{text:"'BoÄŸaz geÃ§iÅŸinde yerel trafik rejimine ve otorite talimatlarÄ±na uymamÄ±zÄ± gerektirir' de",tag:"akilli",effect:{bilgi:13,sayginlik:10}},
 {text:"'Sadece askeri gemileri ilgilendirir' de",tag:"korkak",effect:{bilgi:-7,sayginlik:-7}},
-{text:"'Ticaret gemisi olarak serbest geçiş hakkımız var ama emniyet düzeni devam eder' de",tag:"itaatkar",effect:{bilgi:9,sayginlik:7}}]},
+{text:"'Ticaret gemisi olarak serbest geÃ§iÅŸ hakkÄ±mÄ±z var ama emniyet dÃ¼zeni devam eder' de",tag:"itaatkar",effect:{bilgi:9,sayginlik:7}}]},
 
-{id:"s72",gfx:"harbor",alert:false,day:"Gün 10",time:"08:30",loc:"Ro-Ro Terminali Yanı",sub:"Atina Sözleşmesi ve yolcu bagaj sorumluluğu",who:"z3",
-text:`Limanın yan iskelesinde bir yolcu feribotu yanaşıyor. 3. Zabiti sana işaret etti.\n\n"Biz yük gemisiyiz ama deniz hukukunu parça parça öğreneceksin. Atina Sözleşmesi, yolcu ve bagaj zararında taşıyanın sorumluluğunu düzenler.\n\nFeribotta bir yolcu yaralansa veya bagajı kaybolsa mesele sadece nezaket olmaz; hukuki sorumluluk doğar.\n\nSence bu niye önemli?"`,
+{id:"s72",gfx:"harbor",alert:false,day:"GÃ¼n 10",time:"08:30",loc:"Ro-Ro Terminali YanÄ±",sub:"Atina SÃ¶zleÅŸmesi ve yolcu bagaj sorumluluÄŸu",who:"z3",
+text:`LimanÄ±n yan iskelesinde bir yolcu feribotu yanaÅŸÄ±yor. 3. Zabiti sana iÅŸaret etti.\n\n"Biz yÃ¼k gemisiyiz ama deniz hukukunu parÃ§a parÃ§a Ã¶ÄŸreneceksin. Atina SÃ¶zleÅŸmesi, yolcu ve bagaj zararÄ±nda taÅŸÄ±yanÄ±n sorumluluÄŸunu dÃ¼zenler.\n\nFeribotta bir yolcu yaralansa veya bagajÄ± kaybolsa mesele sadece nezaket olmaz; hukuki sorumluluk doÄŸar.\n\nSence bu niye Ã¶nemli?"`,
 choices:[
-{text:"Taşıyanın sorumluluğu, tazminat ve yolcu haklarını belirlediği için de",tag:"akilli",effect:{bilgi:12,sayginlik:9}},
+{text:"TaÅŸÄ±yanÄ±n sorumluluÄŸu, tazminat ve yolcu haklarÄ±nÄ± belirlediÄŸi iÃ§in de",tag:"akilli",effect:{bilgi:12,sayginlik:9}},
 {text:"'Yolcu gemilerini ilgilendirir, bize uzak' de",tag:"korkak",effect:{bilgi:-5,sayginlik:-4}},
-{text:"'Farklı gemi tiplerinde farklı hukuk rejimlerini bilmek denizciyi güçlendirir' de",tag:"sosyal",effect:{bilgi:9,sayginlik:9}}]},
+{text:"'FarklÄ± gemi tiplerinde farklÄ± hukuk rejimlerini bilmek denizciyi gÃ¼Ã§lendirir' de",tag:"sosyal",effect:{bilgi:9,sayginlik:9}}]},
 
-{id:"s73",gfx:"bridge",alert:false,day:"Gün 11",time:"18:00",loc:"Köprüüstü — Akşam Brifingi",sub:"SOLAS ve ISM ilişkisi",who:"suvari",
-text:`Süvari akşam brifinginde gemi klasörünü açtı.\n\n"SOLAS sana neyi yapman gerektiğini söyler; ISM ise bunun gemide nasıl yönetileceğini düzene koyar. Checklist, raporlama, near-miss, iç tetkik, emniyet kültürü.\n\nBir emniyet aksaklığı gördüğünde susmak mı sadakat, bildirmek mi profesyonellik?"`,
+{id:"s73",gfx:"bridge",alert:false,day:"GÃ¼n 11",time:"18:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” AkÅŸam Brifingi",sub:"SOLAS ve ISM iliÅŸkisi",who:"suvari",
+text:`SÃ¼vari akÅŸam brifinginde gemi klasÃ¶rÃ¼nÃ¼ aÃ§tÄ±.\n\n"SOLAS sana neyi yapman gerektiÄŸini sÃ¶yler; ISM ise bunun gemide nasÄ±l yÃ¶netileceÄŸini dÃ¼zene koyar. Checklist, raporlama, near-miss, iÃ§ tetkik, emniyet kÃ¼ltÃ¼rÃ¼.\n\nBir emniyet aksaklÄ±ÄŸÄ± gÃ¶rdÃ¼ÄŸÃ¼nde susmak mÄ± sadakat, bildirmek mi profesyonellik?"`,
 choices:[
-{text:"Bildirmek profesyonelliktir; emniyet yönetimi sessizlikle yürümez de",tag:"kritik",effect:{bilgi:14,sayginlik:12,cesaret:7}},
-{text:"Önce arkadaşını korumak gerekir de",tag:"korkak",effect:{bilgi:-7,sayginlik:-8}},
-{text:"Önce amire söyler, prosedürle ilerlerim de",tag:"itaatkar",effect:{bilgi:8,sayginlik:8}}]},
+{text:"Bildirmek profesyonelliktir; emniyet yÃ¶netimi sessizlikle yÃ¼rÃ¼mez de",tag:"kritik",effect:{bilgi:14,sayginlik:12,cesaret:7}},
+{text:"Ã–nce arkadaÅŸÄ±nÄ± korumak gerekir de",tag:"korkak",effect:{bilgi:-7,sayginlik:-8}},
+{text:"Ã–nce amire sÃ¶yler, prosedÃ¼rle ilerlerim de",tag:"itaatkar",effect:{bilgi:8,sayginlik:8}}]},
 
 {id:"s74",gfx:"harbor",alert:false,day:"Gun 12",time:"06:30",loc:"Kuru Havuz Girisi",sub:"Geminin suyu bosaltiliyor",who:"z1",
 text:`1. Zabiti seni kuru havuz planina goturdu.
@@ -1811,67 +1789,67 @@ choices:[
 {text:"Once isik gelmesini bekler, sonra not tutarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"Karanlikta afallar, neyi izleyecegimi kaybederim",tag:"korkak",effect:{sayginlik:-9,bilgi:-7}}]},
 
-{id:"s65",gfx:"sea",alert:false,day:"Gün 13",time:"10:00",loc:"Açık Deniz — Son Seyir",sub:"Silici ile veda sohbeti",who:"silici",
-text:`Silici Ramazan güverteyi son kez siliyordu.\n\n"${n}, yarın İzmir'e giriyoruz. Sen de ineceksin.\n\nSana şunu söyleyeyim: Gemide en zor şey ayrılmak. Her seferinde yeni insanlar, yeni gemi. Ama bir şey değişmez — deniz aynı deniz.\n\nTekrar gelecek misin?"`,
+{id:"s65",gfx:"sea",alert:false,day:"GÃ¼n 13",time:"10:00",loc:"AÃ§Ä±k Deniz â€” Son Seyir",sub:"Silici ile veda sohbeti",who:"silici",
+text:`Silici Ramazan gÃ¼verteyi son kez siliyordu.\n\n"${n}, yarÄ±n Ä°zmir'e giriyoruz. Sen de ineceksin.\n\nSana ÅŸunu sÃ¶yleyeyim: Gemide en zor ÅŸey ayrÄ±lmak. Her seferinde yeni insanlar, yeni gemi. Ama bir ÅŸey deÄŸiÅŸmez â€” deniz aynÄ± deniz.\n\nTekrar gelecek misin?"`,
 choices:[
-{text:"'Evet, kesinlikle' de — kararın açık",tag:"cesur",effect:{cesaret:8,sayginlik:10}},
-{text:"'Henüz bilmiyorum ama bu yolculuk beni etkiledi' de",tag:"akilli",effect:{sayginlik:8,bilgi:5}},
-{text:"Gülerek 'Bakacağız' de",tag:"sosyal",effect:{sayginlik:7}}]},
+{text:"'Evet, kesinlikle' de â€” kararÄ±n aÃ§Ä±k",tag:"cesur",effect:{cesaret:8,sayginlik:10}},
+{text:"'HenÃ¼z bilmiyorum ama bu yolculuk beni etkiledi' de",tag:"akilli",effect:{sayginlik:8,bilgi:5}},
+{text:"GÃ¼lerek 'BakacaÄŸÄ±z' de",tag:"sosyal",effect:{sayginlik:7}}]},
 
-{id:"kriz16",gfx:"storm",alert:true,day:"Gün 7",time:"05:00",loc:"Güverte — Fırtınada Halat Kopması",sub:"Beaufort 10 — güverte halatı koptu",who:"lostromo",
-text:`Fırtına doruk noktasında. Lostromo radyoda:\n\n"Pruva sol bağlantı halatı koptu! Konteyner kayma riski var. Güverteye çıkmak yasak ama müdahale şart.\n\n${n} — sen emniyet halatın var. Gönüllü var mı?"\n\nSessizlik.`,
+{id:"kriz16",gfx:"storm",alert:true,day:"GÃ¼n 7",time:"05:00",loc:"GÃ¼verte â€” FÄ±rtÄ±nada Halat KopmasÄ±",sub:"Beaufort 10 â€” gÃ¼verte halatÄ± koptu",who:"lostromo",
+text:`FÄ±rtÄ±na doruk noktasÄ±nda. Lostromo radyoda:\n\n"Pruva sol baÄŸlantÄ± halatÄ± koptu! Konteyner kayma riski var. GÃ¼verteye Ã§Ä±kmak yasak ama mÃ¼dahale ÅŸart.\n\n${n} â€” sen emniyet halatÄ±n var. GÃ¶nÃ¼llÃ¼ var mÄ±?"\n\nSessizlik.`,
 choices:[
-{text:"'Ben giderim' — emniyet halatını tak, güverteye çık",tag:"kritik",effect:{cesaret:18,sayginlik:15,dinclik:-15}},
-{text:"'Deneyimli birisi gitmeli' de — haklısın",tag:"akilli",effect:{sayginlik:5,cesaret:-3}},
-{text:"Gözleri kaçır",tag:"korkak",effect:{sayginlik:-15,cesaret:-12}}]},
+{text:"'Ben giderim' â€” emniyet halatÄ±nÄ± tak, gÃ¼verteye Ã§Ä±k",tag:"kritik",effect:{cesaret:18,sayginlik:15,dinclik:-15}},
+{text:"'Deneyimli birisi gitmeli' de â€” haklÄ±sÄ±n",tag:"akilli",effect:{sayginlik:5,cesaret:-3}},
+{text:"GÃ¶zleri kaÃ§Ä±r",tag:"korkak",effect:{sayginlik:-15,cesaret:-12}}]},
 
-{id:"kriz17",gfx:"bogaz",alert:true,day:"Gün 5",time:"14:00",loc:"İstanbul Boğazı — Karşıdan Gemi",sub:"VHF iletişimi — çarpışma riski",who:"suvari",
-text:`İstanbul Boğazı, en dar nokta. Karşıdan büyük tanker geliyor.\n\nSüvari:\n"Dar kanal. COLREG 9 unutulmayacak: sancak sınırına yakın kal, geçişi engelleme. Tanker VHF 16'dan çağırıyor — İngilizce konuşuyor. Radyoya kim girecek?"\n\nHerkes sessiz. Süvari ${n}'ye baktı.`,
+{id:"kriz17",gfx:"bogaz",alert:true,day:"GÃ¼n 5",time:"14:00",loc:"Ä°stanbul BoÄŸazÄ± â€” KarÅŸÄ±dan Gemi",sub:"VHF iletiÅŸimi â€” Ã§arpÄ±ÅŸma riski",who:"suvari",
+text:`Ä°stanbul BoÄŸazÄ±, en dar nokta. KarÅŸÄ±dan bÃ¼yÃ¼k tanker geliyor.\n\nSÃ¼vari:\n"Dar kanal. COLREG 9 unutulmayacak: sancak sÄ±nÄ±rÄ±na yakÄ±n kal, geÃ§iÅŸi engelleme. Tanker VHF 16'dan Ã§aÄŸÄ±rÄ±yor â€” Ä°ngilizce konuÅŸuyor. Radyoya kim girecek?"\n\nHerkes sessiz. SÃ¼vari ${n}'ye baktÄ±.`,
 choices:[
-{text:"'Ben girerim' — radyoya atla, İngilizce konuş",tag:"kritik",effect:{cesaret:15,sayginlik:15,bilgi:8}},
-{text:"'İngilizcem yeterli değil' de — dürüst",tag:"itaatkar",effect:{sayginlik:3,cesaret:-5}},
-{text:"Süvariye yardım teklif et, o konuşsun",tag:"akilli",effect:{sayginlik:7,bilgi:5}}]},
+{text:"'Ben girerim' â€” radyoya atla, Ä°ngilizce konuÅŸ",tag:"kritik",effect:{cesaret:15,sayginlik:15,bilgi:8}},
+{text:"'Ä°ngilizcem yeterli deÄŸil' de â€” dÃ¼rÃ¼st",tag:"itaatkar",effect:{sayginlik:3,cesaret:-5}},
+{text:"SÃ¼variye yardÄ±m teklif et, o konuÅŸsun",tag:"akilli",effect:{sayginlik:7,bilgi:5}}]},
 
 
-{id:"kriz18",gfx:"cabin",alert:true,day:"Gün 6",time:"02:00",loc:"Tayfa Kabini — ACİL",sub:"Tayfa Musa ciddi hastalandı — gemi doktoru yok",who:"musa",
-text:`Gece 02:00. Kapı çalındı.\n\nTayfa Musa yatakta, yüzü sarı, ateş 39.5.\n\n3. Zabiti:\n"${n}, sen ilk yardım eğitimi gördün. Şüpheli karın ağrısı — apandisit olabilir. En yakın liman 18 saat. Köprüyle radyo bağlantısı var.\n\nSen ne yaparsın?"`,
+{id:"kriz18",gfx:"cabin",alert:true,day:"GÃ¼n 6",time:"02:00",loc:"Tayfa Kabini â€” ACÄ°L",sub:"Tayfa Musa ciddi hastalandÄ± â€” gemi doktoru yok",who:"musa",
+text:`Gece 02:00. KapÄ± Ã§alÄ±ndÄ±.\n\nTayfa Musa yatakta, yÃ¼zÃ¼ sarÄ±, ateÅŸ 39.5.\n\n3. Zabiti:\n"${n}, sen ilk yardÄ±m eÄŸitimi gÃ¶rdÃ¼n. ÅÃ¼pheli karÄ±n aÄŸrÄ±sÄ± â€” apandisit olabilir. En yakÄ±n liman 18 saat. KÃ¶prÃ¼yle radyo baÄŸlantÄ±sÄ± var.\n\nSen ne yaparsÄ±n?"`,
 choices:[
-{text:"Vital bulguları al, köprüdeki tıbbi kit prosedürünü aç, radyoyla kıyı doktorunu ara",tag:"kritik",effect:{cesaret:12,sayginlik:15,bilgi:10}},
+{text:"Vital bulgularÄ± al, kÃ¶prÃ¼deki tÄ±bbi kit prosedÃ¼rÃ¼nÃ¼ aÃ§, radyoyla kÄ±yÄ± doktorunu ara",tag:"kritik",effect:{cesaret:12,sayginlik:15,bilgi:10}},
 {text:"3. Zabiti'yi ara, o halletsin",tag:"itaatkar",effect:{sayginlik:5,bilgi:5}},
-{text:"Ateş düşürücü ver ve bekle",tag:"korkak",effect:{sayginlik:-5,bilgi:-3}}]},
+{text:"AteÅŸ dÃ¼ÅŸÃ¼rÃ¼cÃ¼ ver ve bekle",tag:"korkak",effect:{sayginlik:-5,bilgi:-3}}]},
 
-{id:"kriz19",gfx:"cargo",alert:true,day:"Gün 5",time:"16:30",loc:"Ambar 2 — Kaçak Yolcu",sub:"Ambarda insan bulundu — ISPS ihlali",who:"z1",
-text:`Güverte turu sırasında Tayfa Hasan ambarda birini buldu.\n\nGenç bir adam — Suriyeli, İngilizce bilmiyor. Korkmuş, aç.\n\n1. Zabiti:\n"${n}, sen ISPS eğitimini gördün. Prosedür nedir? Süvariyi habersiz bırakamayız — bu uluslararası suç."`,
+{id:"kriz19",gfx:"cargo",alert:true,day:"GÃ¼n 5",time:"16:30",loc:"Ambar 2 â€” KaÃ§ak Yolcu",sub:"Ambarda insan bulundu â€” ISPS ihlali",who:"z1",
+text:`GÃ¼verte turu sÄ±rasÄ±nda Tayfa Hasan ambarda birini buldu.\n\nGenÃ§ bir adam â€” Suriyeli, Ä°ngilizce bilmiyor. KorkmuÅŸ, aÃ§.\n\n1. Zabiti:\n"${n}, sen ISPS eÄŸitimini gÃ¶rdÃ¼n. ProsedÃ¼r nedir? SÃ¼variyi habersiz bÄ±rakamayÄ±z â€” bu uluslararasÄ± suÃ§."`,
 choices:[
-{text:"Süvariyi ve 1. Zabiti'yi haber ver, ISPS protokolünü başlat",tag:"akilli",effect:{bilgi:14,sayginlik:12,cesaret:5}},
-{text:"Adamı önce dinle, sonra karar ver",tag:"sosyal",effect:{sayginlik:8,bilgi:5}},
-{text:"Görmedim de, devam et",tag:"korkak",effect:{sayginlik:-15,bilgi:-8}}]},
+{text:"SÃ¼variyi ve 1. Zabiti'yi haber ver, ISPS protokolÃ¼nÃ¼ baÅŸlat",tag:"akilli",effect:{bilgi:14,sayginlik:12,cesaret:5}},
+{text:"AdamÄ± Ã¶nce dinle, sonra karar ver",tag:"sosyal",effect:{sayginlik:8,bilgi:5}},
+{text:"GÃ¶rmedim de, devam et",tag:"korkak",effect:{sayginlik:-15,bilgi:-8}}]},
 
-{id:"kriz20",gfx:"engine",alert:true,day:"Gün 9",time:"08:00",loc:"Köprüüstü — Yakıt Krizi",sub:"Yakıt hesabı yanlış — en yakın limana?",who:"suvari",
-text:`Süvari sesi gergin:\n\n"Yakıt hesabı hatası. Mevcut yakıt planlanan rotayı tamamlamaya yetmeyecek — 340 ton açık var.\n\nİki seçenek: Cenova'yı atlayıp doğrudan Barselona'ya git, yakıt al. Ya da Cenova'ya git ama hız düşür — %60 güçte.\n\n${n}, sen ne düşünürsün?"`,
+{id:"kriz20",gfx:"engine",alert:true,day:"GÃ¼n 9",time:"08:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ â€” YakÄ±t Krizi",sub:"YakÄ±t hesabÄ± yanlÄ±ÅŸ â€” en yakÄ±n limana?",who:"suvari",
+text:`SÃ¼vari sesi gergin:\n\n"YakÄ±t hesabÄ± hatasÄ±. Mevcut yakÄ±t planlanan rotayÄ± tamamlamaya yetmeyecek â€” 340 ton aÃ§Ä±k var.\n\nÄ°ki seÃ§enek: Cenova'yÄ± atlayÄ±p doÄŸrudan Barselona'ya git, yakÄ±t al. Ya da Cenova'ya git ama hÄ±z dÃ¼ÅŸÃ¼r â€” %60 gÃ¼Ã§te.\n\n${n}, sen ne dÃ¼ÅŸÃ¼nÃ¼rsÃ¼n?"`,
 choices:[
-{text:"'Her iki rotanın yakıt hesabını yapayım, rakamla konuşalım' de",tag:"akilli",effect:{bilgi:15,sayginlik:12}},
-{text:"'Cenova'yı atlayalım, güvenli' de",tag:"cesur",effect:{cesaret:5,sayginlik:5}},
-{text:"'Süvari bilir en iyisini' de",tag:"korkak",effect:{sayginlik:-5,cesaret:-3}}]},
+{text:"'Her iki rotanÄ±n yakÄ±t hesabÄ±nÄ± yapayÄ±m, rakamla konuÅŸalÄ±m' de",tag:"akilli",effect:{bilgi:15,sayginlik:12}},
+{text:"'Cenova'yÄ± atlayalÄ±m, gÃ¼venli' de",tag:"cesur",effect:{cesaret:5,sayginlik:5}},
+{text:"'SÃ¼vari bilir en iyisini' de",tag:"korkak",effect:{sayginlik:-5,cesaret:-3}}]},
 
-{id:"kriz21",gfx:"storm",alert:true,day:"Gün 7",time:"13:00",loc:"Ambar 3 — Yük Kayması",sub:"Fırtınada ağır konteynerler kaydı — dengesizlik",who:"z1",
-text:`Fırtına sırasında alarm çaldı.\n\n1. Zabiti:\n"Ambar 3'te yük kayması! Gemi 8 derece sancak yatık. Dengesizlik artarsa devrilme riski var.\n\nKarşı tarafa balast suyu basıyoruz — ama ambar 3'ün kapısını da kontrol etmek lazım.\n\n${n}! Seninle gidiyorum. Hazır mısın?"`,
+{id:"kriz21",gfx:"storm",alert:true,day:"GÃ¼n 7",time:"13:00",loc:"Ambar 3 â€” YÃ¼k KaymasÄ±",sub:"FÄ±rtÄ±nada aÄŸÄ±r konteynerler kaydÄ± â€” dengesizlik",who:"z1",
+text:`FÄ±rtÄ±na sÄ±rasÄ±nda alarm Ã§aldÄ±.\n\n1. Zabiti:\n"Ambar 3'te yÃ¼k kaymasÄ±! Gemi 8 derece sancak yatÄ±k. Dengesizlik artarsa devrilme riski var.\n\nKarÅŸÄ± tarafa balast suyu basÄ±yoruz â€” ama ambar 3'Ã¼n kapÄ±sÄ±nÄ± da kontrol etmek lazÄ±m.\n\n${n}! Seninle gidiyorum. HazÄ±r mÄ±sÄ±n?"`,
 choices:[
-{text:"'Hazırım' — emniyet halatını tak ve git",tag:"kritik",effect:{cesaret:15,sayginlik:15,dinclik:-12}},
-{text:"'Deneyimli biri daha güvenli' de",tag:"akilli",effect:{sayginlik:3,cesaret:-5}},
-{text:"Git ama eline geçen şeyi tut",tag:"cesur",effect:{cesaret:10,sayginlik:8,dinclik:-8}}]},
+{text:"'HazÄ±rÄ±m' â€” emniyet halatÄ±nÄ± tak ve git",tag:"kritik",effect:{cesaret:15,sayginlik:15,dinclik:-12}},
+{text:"'Deneyimli biri daha gÃ¼venli' de",tag:"akilli",effect:{sayginlik:3,cesaret:-5}},
+{text:"Git ama eline geÃ§en ÅŸeyi tut",tag:"cesur",effect:{cesaret:10,sayginlik:8,dinclik:-8}}]},
 
-{id:"kriz22",gfx:"sea",alert:true,day:"Gün 10",time:"07:30",loc:"Açık Deniz — SOS Kurtarma",sub:"Yakın mesafede SOS — küçük tekne",who:"suvari",
-text:`Radar alarm verdi. SOS sinyali: 3.2 mil güneyde.\n\nSüvari radarı inceledi:\n"Küçük tekne — 8 metrelik yelkenli. DSC sinyali sürüyor.\n\nBölgeye gittiğimizde tahminen 45 dakika gecikiriz. Şirket onayı lazım ama hayat tehlikesi öncelikli.\n\n${n}, şu an VHF'desin. Deniz Kuvvetleri'ni ara."`,
+{id:"kriz22",gfx:"sea",alert:true,day:"GÃ¼n 10",time:"07:30",loc:"AÃ§Ä±k Deniz â€” SOS Kurtarma",sub:"YakÄ±n mesafede SOS â€” kÃ¼Ã§Ã¼k tekne",who:"suvari",
+text:`Radar alarm verdi. SOS sinyali: 3.2 mil gÃ¼neyde.\n\nSÃ¼vari radarÄ± inceledi:\n"KÃ¼Ã§Ã¼k tekne â€” 8 metrelik yelkenli. DSC sinyali sÃ¼rÃ¼yor.\n\nBÃ¶lgeye gittiÄŸimizde tahminen 45 dakika gecikiriz. Åirket onayÄ± lazÄ±m ama hayat tehlikesi Ã¶ncelikli.\n\n${n}, ÅŸu an VHF'desin. Deniz Kuvvetleri'ni ara."`,
 choices:[
-{text:"VHF'ye atla: 'SECURITE — SAR kurtarma olayı, koordinatlar...' de",tag:"kritik",effect:{cesaret:15,sayginlik:15,bilgi:10}},
-{text:"Süvariyi kaptana bağla, o konuşsun",tag:"itaatkar",effect:{sayginlik:5,bilgi:5}},
-{text:"Sahil güvenlik zaten duymuştur diye devam et",tag:"korkak",effect:{sayginlik:-15,cesaret:-10}}]},
+{text:"VHF'ye atla: 'SECURITE â€” SAR kurtarma olayÄ±, koordinatlar...' de",tag:"kritik",effect:{cesaret:15,sayginlik:15,bilgi:10}},
+{text:"SÃ¼variyi kaptana baÄŸla, o konuÅŸsun",tag:"itaatkar",effect:{sayginlik:5,bilgi:5}},
+{text:"Sahil gÃ¼venlik zaten duymuÅŸtur diye devam et",tag:"korkak",effect:{sayginlik:-15,cesaret:-10}}]},
 
 ...createStabilityScenes(n,sn),
 
 {id:"s103",gfx:"bridge",alert:false,day:"Gun 8",time:"10:40",loc:"Suvari Kamarasi - Evrak Masasi",sub:"Notice of Readiness nedir?",who:"suvari",
-text:`Suvari dosyayi kapatip sana baktı.
+text:`Suvari dosyayi kapatip sana baktÄ±.
 
 "Stajyer, Notice of Readiness nedir? Limana geldik diye her zaman kendiliginden sayilmaz. Yuk operasyonu ve laytime burada baslar."
 
@@ -1886,9 +1864,9 @@ text:`Suvari bu kez konisimentoyu masaya koydu.
 
 "Peki konisimento nedir? Sadece bir kagit dersen olmaz. Yuk makbuzu mudur, tasima sozlesmesi midir, mulkiyetle iliskisi var midir?"
 
-Tek cümlede kurtaramazsin; ozunu soyle."`,
+Tek cÃ¼mlede kurtaramazsin; ozunu soyle."`,
 choices:[
-{text:"Yuk makbuzu, tasima sozlesmesinin delili ve ciroyla devredilebilen belge niteliği tasir derim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"Yuk makbuzu, tasima sozlesmesinin delili ve ciroyla devredilebilen belge niteliÄŸi tasir derim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
 {text:"Sadece gumruk kagididir derim",tag:"itaatkar",effect:{bilgi:4,sayginlik:3}},
 {text:"Manifestoyla ayni seydir diye cevaplarim",tag:"korkak",effect:{bilgi:-10,sayginlik:-8}}]},
 
@@ -1904,13 +1882,13 @@ choices:[
 {text:"Hepsi yuk evraki, fark etmez diye gecistiririm",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
 {id:"s106",gfx:"galley",alert:true,day:"Gun 9",time:"20:15",loc:"Yemekhane",sub:"Gemide kavga cikti",who:"asci",
-text:`Yemekte bir anda sandalye geriye surttü. Guverte tayfasindan biri ile yagci sert sekilde tartismaya girdi.
+text:`Yemekte bir anda sandalye geriye surttÃ¼. Guverte tayfasindan biri ile yagci sert sekilde tartismaya girdi.
 
 Sesler buyuyor. Asci bile kasigini birakti. Herkes birbirine bakiyor.
 
 Gemide kavga sadece gurultu degil; vardiya emniyetini de bozar. Ne yaparsin?"`,
 choices:[
-{text:"Taraf olmayip amire haber verir, ortamı sakince ayirmaya yardim ederim",tag:"kritik",effect:{sayginlik:14,cesaret:5,bilgi:6}},
+{text:"Taraf olmayip amire haber verir, ortamÄ± sakince ayirmaya yardim ederim",tag:"kritik",effect:{sayginlik:14,cesaret:5,bilgi:6}},
 {text:"Kendi bolumumden olana sessizce destek veririm",tag:"itaatkar",effect:{sayginlik:4}},
 {text:"Laf atip kavgayi buyuturum",tag:"korkak",effect:{sayginlik:-12,dinclik:-5}}]},
 
@@ -1945,18 +1923,18 @@ text:`PSC memuru ikinci turda daha sert geldi.
 
 "Drill kayitlari tutarsiz, bir emniyet ekipmani etiketsiz, bir prosedur personel tarafindan bilinmiyor. Bu haliyle detention degerlendirmesi masada."
 
-Suvari sakin ama yuzü tas gibi. Senden ne ister?"`,
+Suvari sakin ama yuzÃ¼ tas gibi. Senden ne ister?"`,
 choices:[
 {text:"Eksikleri ve duzeltici adimlari dosya halinde toparlar, memura net sirayla sunarim",tag:"kritik",effect:{bilgi:15,sayginlik:13,cesaret:4}},
 {text:"Sadece istenen klasoru getirir, arka planda kalirim",tag:"itaatkar",effect:{bilgi:7,sayginlik:6}},
 {text:"Memurun gozunden kacmasini umar, daginik davranirim",tag:"korkak",effect:{bilgi:-9,sayginlik:-10}}]},
 
-{id:"s109",gfx:"harbor",alert:true,day:"Gun 6",time:"15:00",loc:"Rıhtım - Detention",sub:"Gemi limanda baglandi",who:"suvari",
+{id:"s109",gfx:"harbor",alert:true,day:"Gun 6",time:"15:00",loc:"RÄ±htÄ±m - Detention",sub:"Gemi limanda baglandi",who:"suvari",
 text:`Karar aciklandi: detention.
 
 Sefer durdu. Acentenin telefonu susmuyor. Sirket mail istiyor, liman bekliyor, herkesin omzuna agirlik bindi.
 
-Suvari sana kisa baktı: "Bugun denizciligin sadece deniz olmadigini ogreniyorsun."`,
+Suvari sana kisa baktÄ±: "Bugun denizciligin sadece deniz olmadigini ogreniyorsun."`,
 choices:[
 {text:"Eksik listesi, sorumlu kisimlar ve kapanis sirasini not edip ekibe dagitirim",tag:"kritik",effect:{bilgi:14,sayginlik:12,cesaret:4}},
 {text:"Verilen isi yapar, sessizce kosustururum",tag:"itaatkar",effect:{sayginlik:6,bilgi:5}},
@@ -1973,7 +1951,7 @@ choices:[
 {text:"Sadece rotanin cizili olmasina bakarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"GPS cizgisi varsa kalanina gerek yok derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-8}}]},
 
-{id:"s111",gfx:"compass",alert:false,day:"Gun 7",time:"17:10",loc:"Kopruustu - GPS Alarmi",sub:"GPS ile kağıt/visual cross-check",who:"z2",
+{id:"s111",gfx:"compass",alert:false,day:"Gun 7",time:"17:10",loc:"Kopruustu - GPS Alarmi",sub:"GPS ile kaÄŸÄ±t/visual cross-check",who:"z2",
 text:`Bir anda GPS quality alarmi geldi. Pozisyon akiyor gibi.
 
 2. Zabiti derin bir nefes aldi: "Iste simdi elektronik rahatlik bitti. Radar range, visual mark, echo sounder ve kagit harita dusuncesi geri gelir."
@@ -1987,7 +1965,7 @@ choices:[
 {id:"s112",gfx:"bridge",alert:false,day:"Gun 10",time:"18:40",loc:"Kopruustu - Harita Duzeltmesi",sub:"Weekly chart correction",who:"z2",
 text:`Masa kagit haritalarla dolu. 2. Zabiti elindeki Notice to Mariners'i salladi.
 
-"Elektronik var diye kâğıt harita disiplini olmez. Duzeltme tarihi, correction number, yeni tehlike, yeni sığlık... hepsi tek tek islenir."
+"Elektronik var diye kÃ¢ÄŸÄ±t harita disiplini olmez. Duzeltme tarihi, correction number, yeni tehlike, yeni sÄ±ÄŸlÄ±k... hepsi tek tek islenir."
 
 Sana bir not verdi. Ne yaparsin?"`,
 choices:[
@@ -2029,7 +2007,7 @@ choices:[
 {text:"Iki sistemden birinin guncel olmasi yeterlidir diye dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
 
 {id:"s113",gfx:"sea",alert:false,day:"Gun 10",time:"06:50",loc:"Valensiya Aciklari",sub:"Farkli rota ve trafik plani",who:"suvari",
-text:`Suvari yeni rotayi acikladı.
+text:`Suvari yeni rotayi acikladÄ±.
 
 "Bu sefer Barselona yerine Valensiya aciklarindan asagi inip sonra Malta rotasina kiracagiz. Hava, trafik ve yakit bunu gerektiriyor."
 
@@ -2090,7 +2068,7 @@ choices:[
 {id:"s118",gfx:"pirate",alert:true,day:"Gun 8",time:"01:10",loc:"Yuksek Riskli Bolge Girisi",sub:"Savas/korsan bolgesi tedbirleri",who:"suvari",
 text:`Suvari gece brifinginde kapilari gosterdi.
 
-"Yuksek riskli bolgeye giriyoruz. ISPS seviyesi, citadel hazirligi, dis aydinlatma, razor wire, yangin hortumu, ekstra gozcü, AIS kullanimi... hepsi yeniden gozden gececek."
+"Yuksek riskli bolgeye giriyoruz. ISPS seviyesi, citadel hazirligi, dis aydinlatma, razor wire, yangin hortumu, ekstra gozcÃ¼, AIS kullanimi... hepsi yeniden gozden gececek."
 
 Sana gore ilk odak ne olmali?`,
 choices:[
@@ -2098,7 +2076,7 @@ choices:[
 {text:"Kapilar kapaliysa yeterli sanirim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"Tehlike ciktiginda bakariz diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
 
-{id:"s119",gfx:"pirate",alert:true,day:"Gun 8",time:"02:40",loc:"Ana GÃ¼verte - Aksaklik",sub:"Tedbir sirasinda ekipman sorunu",who:"z3",
+{id:"s119",gfx:"pirate",alert:true,day:"Gun 8",time:"02:40",loc:"Ana GÃƒÂ¼verte - Aksaklik",sub:"Tedbir sirasinda ekipman sorunu",who:"z3",
 text:`Ekstra tedbirler kurulurken sorun cikti: sancak taraftaki projektor biri acik kalmis, bir yangin hortumunun baglantisi da tam oturmamis.
 
 3. Zabiti sertce dondu: "Tehdit bazen saldiran degil, hazirliktaki bosluktur."
@@ -2131,7 +2109,7 @@ choices:[
 {text:"Bir ust gelene kadar sahsi gangway'de bekletirim",tag:"itaatkar",effect:{bilgi:8,sayginlik:7}},
 {text:"Liman iscisi diye gecmesine goz yumarim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
 
-{id:"s122",gfx:"harbor",alert:true,day:"Gun 6",time:"18:10",loc:"Kic GÃ¼verte",sub:"ISPS seviyesi yukseliyor",who:"z3",
+{id:"s122",gfx:"harbor",alert:true,day:"Gun 6",time:"18:10",loc:"Kic GÃƒÂ¼verte",sub:"ISPS seviyesi yukseliyor",who:"z3",
 text:`Aksam uzeri limandan bildirim geldi: bolgede guvenlik olayi var, ISPS seviyesi gecici olarak yukseltiliyor.
 
 Ekstra devriye, kisitli erisim ve ekipman sayimi isteniyor. Gemide hava hemen degisti.
@@ -2142,7 +2120,7 @@ choices:[
 {text:"Devriyeye katilir, ne dendigse onu not alirim",tag:"itaatkar",effect:{bilgi:7,sayginlik:6}},
 {text:"Bu kadarina gerek yok diye soylenirim",tag:"korkak",effect:{bilgi:-7,sayginlik:-8}}]},
 
-{id:"s123",gfx:"compass",alert:false,day:"Gun 5",time:"06:15",loc:"Kopruustu - Sabah Ufku",sub:"Sextant okuma pratiği",who:"z2",
+{id:"s123",gfx:"compass",alert:false,day:"Gun 5",time:"06:15",loc:"Kopruustu - Sabah Ufku",sub:"Sextant okuma pratiÄŸi",who:"z2",
 text:`Gunes yeni dogarken 2. Zabiti sextant'i eline verdi.
 
 "GPS var diye gokyuzu degersiz olmadi. Ufku sabit tut, aynayi indir, aciyi al, sonra saati not et. Hata burada aceleden dogar."
@@ -2153,35 +2131,35 @@ choices:[
 {text:"Bir kez okur, sonucu zabite teyit ettiririm",tag:"itaatkar",effect:{bilgi:7,sayginlik:5}},
 {text:"Bu devirde buna gerek yok derim",tag:"korkak",effect:{bilgi:-8,sayginlik:-7}}]},
 
-{id:"s124",gfx:"cargo",alert:false,day:"Gun 9",time:"16:20",loc:"VinÃ§ Operasyonu",sub:"Yuk ellecleme ve isaretlesme",who:"lostromo",
-text:`VinÃ§ operasyonda. Sapanlar gergin, isaretler net olmak zorunda.
+{id:"s124",gfx:"cargo",alert:false,day:"Gun 9",time:"16:20",loc:"VinÃƒÂ§ Operasyonu",sub:"Yuk ellecleme ve isaretlesme",who:"lostromo",
+text:`VinÃƒÂ§ operasyonda. Sapanlar gergin, isaretler net olmak zorunda.
 
 Lostromo sert ama sakindi: "Elleclemede en buyuk hata yarim bilgiyle el hareketi vermektir. Tag line, sling acisi, altina girmeme, stop komutu... hepsi bir dil."
 
 Sana isaret istiyor.`,
 choices:[
 {text:"Yuku durdurur, alanin bos oldugunu teyit edip net ve dogru isaret veririm",tag:"kritik",effect:{bilgi:14,sayginlik:12,cesaret:4}},
-{text:"Tecrübeli tayfayi izleyip aynisini tekrarlarim",tag:"itaatkar",effect:{bilgi:8,sayginlik:6}},
+{text:"TecrÃ¼beli tayfayi izleyip aynisini tekrarlarim",tag:"itaatkar",effect:{bilgi:8,sayginlik:6}},
 {text:"Emin olmadan el hareketi veririm",tag:"korkak",effect:{bilgi:-10,sayginlik:-10}}]},
 
-{id:"s125",gfx:"bogaz",alert:false,day:"Gun 6",time:"21:40",loc:"Çanakkale Boğazı - Jurnal Masasi",sub:"Jurnale not dusmek",who:"z2",
+{id:"s125",gfx:"bogaz",alert:false,day:"Gun 6",time:"21:40",loc:"Ã‡anakkale BoÄŸazÄ± - Jurnal Masasi",sub:"Jurnale not dusmek",who:"z2",
 text:`Bogaz geride kalirken kopruustu ilk kez biraz gevsedi. 2. Zabiti jurnal defterini sana uzatti.
 
 "Saat, mevki, rota tamam. Bir satir da denizcinin kalbinden duser bazen."
 
-Kalemi eline aldiginda icinden sadece bir cümle geldi: "Çanakkale Geçilmez."
+Kalemi eline aldiginda icinden sadece bir cÃ¼mle geldi: "Ã‡anakkale GeÃ§ilmez."
 
 Ne yaparsin?`,
 choices:[
-{text:"Resmi kaydi bozmadan jurnal notuna 'Çanakkale Geçilmez' diye duserim",tag:"sosyal",effect:{sayginlik:10,dinclik:4,bilgi:3}},
+{text:"Resmi kaydi bozmadan jurnal notuna 'Ã‡anakkale GeÃ§ilmez' diye duserim",tag:"sosyal",effect:{sayginlik:10,dinclik:4,bilgi:3}},
 {text:"Sadece resmi seyir kaydini yazar, icimde tutarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"Boyle seyler gereksiz deyip gecistiririm",tag:"korkak",effect:{sayginlik:-5,dinclik:-3}}]},
 
 (()=>{const alt=58+Math.floor(Math.random()*9);const dec=16+Math.floor(Math.random()*7);const lat=(90-alt)+dec;return {id:"s126",gfx:"compass",alert:false,day:"Gun 5",time:"12:05",loc:"Kopruustu - Noon Sight",sub:"Sextant ile yaklasik enlem hesabi",who:"z2",
-text:`2. Zabiti noon sight notunu onune koydu.\n\n"Gunes meridyen gecisinde sextant altitude ${alt}°. Gunluk deklinasyon ${dec}° Kuzey.\n\nBasit yaklasimla latitude = 90 - altitude + declination. Bana yaklasik enlemi soyle."\n\nKagit sende.`,
+text:`2. Zabiti noon sight notunu onune koydu.\n\n"Gunes meridyen gecisinde sextant altitude ${alt}Â°. Gunluk deklinasyon ${dec}Â° Kuzey.\n\nBasit yaklasimla latitude = 90 - altitude + declination. Bana yaklasik enlemi soyle."\n\nKagit sende.`,
 choices:[
-{text:`Yaklasik ${lat}° Kuzey`,tag:"kritik",effect:{bilgi:16,sayginlik:12}},
-{text:`Yaklasik ${lat+8}° Kuzey`,tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:`Yaklasik ${lat}Â° Kuzey`,tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:`Yaklasik ${lat+8}Â° Kuzey`,tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"GPS varken bu hesapla ugrasmaya gerek yok",tag:"korkak",effect:{bilgi:-10,sayginlik:-8}}
 ]};})(),
 
@@ -2229,7 +2207,7 @@ choices:[
 {text:"Koridora cikip sessizce bir amire ya da tayfaya gorunmeyi denerim",tag:"sosyal",effect:{sayginlik:6,dinclik:4}},
 {text:"Sabaha kadar doner durur, zihnimi daha da yorarim",tag:"korkak",effect:{dinclik:-10,cesaret:-4}}]},
 
-{id:"s131",gfx:"harbor",alert:false,day:"Gun 10",time:"05:40",loc:"Liman Yaklasmasi - Römorkör İstasyonu",sub:"Römorkör alma hazirligi",who:"suvari",
+{id:"s131",gfx:"harbor",alert:false,day:"Gun 10",time:"05:40",loc:"Liman Yaklasmasi - RÃ¶morkÃ¶r Ä°stasyonu",sub:"RÃ¶morkÃ¶r alma hazirligi",who:"suvari",
 text:`Liman yaklasirken suvari disari bakip kisa kesti.
 
 "Birazdan romorkor alacagiz. Bu is sadece halat vermek degil; hangi taraftan gelecek, hangi bitt'e alinacak, itme mi cekme mi yapacak, ne zaman komut verilecek hepsi duzen ister."
@@ -2238,23 +2216,23 @@ Sana ilk gorevi verdi. Ne yaparsin?`,
 choices:[
 {text:"Romorkorun gelecegi taraf, messenger line, bitt hazirligi ve haberlesme zincirini teyit ederim",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:4}},
 {text:"Lostromo ne derse onu tekrarlar, pozisyonumu korurum",tag:"itaatkar",effect:{bilgi:7,sayginlik:6}},
-{text:"Romorkor yanaşınca bakarız diye rahat davranirim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+{text:"Romorkor yanaÅŸÄ±nca bakarÄ±z diye rahat davranirim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
-{id:"s132",gfx:"harbor",alert:true,day:"Gun 10",time:"06:05",loc:"Pruva - Römorkör Hatti",sub:"Heaving line ve tow line aktarimi",who:"lostromo",
+{id:"s132",gfx:"harbor",alert:true,day:"Gun 10",time:"06:05",loc:"Pruva - RÃ¶morkÃ¶r Hatti",sub:"Heaving line ve tow line aktarimi",who:"lostromo",
 text:`Romorkor bordaya geldi. Heaving line suya dustu, tayfa gerildi.
 
 Lostromo bagirdi: "Acele eden elini halata verir. Hat gerginlesmeden yerini, kimin ne tutacagini ve stop komutunu bileceksin."
 
 O an neye odaklanirsin?`,
 choices:[
-{text:"Personelin güvenli durusu, heaving line yolu ve tow line gerginlesme anini izlerim",tag:"kritik",effect:{bilgi:14,sayginlik:12,cesaret:5}},
+{text:"Personelin gÃ¼venli durusu, heaving line yolu ve tow line gerginlesme anini izlerim",tag:"kritik",effect:{bilgi:14,sayginlik:12,cesaret:5}},
 {text:"Yardim ederim ama surekli lostromoya bakarim",tag:"itaatkar",effect:{bilgi:7,sayginlik:5}},
 {text:"Halata fazla yaklasip hizli davranmaya calisirim",tag:"korkak",effect:{bilgi:-10,sayginlik:-10}}]},
 
 {id:"s133",gfx:"bogaz",alert:false,day:"Gun 6",time:"07:10",loc:"Kanal Girisi - Pilot Merdiveni",sub:"Bogaz/kanal icin pilot kaptan alma",who:"z2",
 text:`Kanal girisinde pilot botu pruvasindan yukseliyor.
 
-2. Zabiti sessiz ama net: "Pilot ladder, manrope, can simidi, ışık, VHF irtibati, freeboard. Pilot alma rutini boğazda hata kabul etmez."
+2. Zabiti sessiz ama net: "Pilot ladder, manrope, can simidi, Ä±ÅŸÄ±k, VHF irtibati, freeboard. Pilot alma rutini boÄŸazda hata kabul etmez."
 
 Sana kontrol listesi uzatti. Ilk bakacagin?`,
 choices:[
@@ -2262,7 +2240,7 @@ choices:[
 {text:"Sadece ladder inmis mi ona bakarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"Pilot profesyonel, sorun cikmaz diye dusunurum",tag:"korkak",effect:{bilgi:-9,sayginlik:-9}}]},
 
-{id:"s134",gfx:"bridge",alert:false,day:"Gun 6",time:"07:35",loc:"Köprüüstü - Pilot Brifingi",sub:"Master-pilot information exchange",who:"suvari",
+{id:"s134",gfx:"bridge",alert:false,day:"Gun 6",time:"07:35",loc:"KÃ¶prÃ¼Ã¼stÃ¼ - Pilot Brifingi",sub:"Master-pilot information exchange",who:"suvari",
 text:`Pilot kopruustu'ne cikti. Suvari chart'i ve passage plan'i acip kisa bir brifing baslatti.
 
 "Pilot gemiyi yerel olarak bilir; kaptan ise geminin nihai sorumlusudur. Draft, ariza, manevra karakteri, rota ve cekinceler acik konusulur."
@@ -2273,10 +2251,10 @@ choices:[
 {text:"Pilot geldiyse artik o bilir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
 {text:"Brifinge gerek yok, rota zaten belli diye dusunurum",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
-{id:"s135",gfx:"bridge",alert:false,day:"Gun 4",time:"09:00",loc:"Köprüüstü - GMDSS Konsolu",sub:"Gunluk haberlesme cihazi bakimi",who:"z3",
+{id:"s135",gfx:"bridge",alert:false,day:"Gun 4",time:"09:00",loc:"KÃ¶prÃ¼Ã¼stÃ¼ - GMDSS Konsolu",sub:"Gunluk haberlesme cihazi bakimi",who:"z3",
 text:`3. Zabiti paneli gosterdi.
 
-"Gunluk bakim sadece tuslara bakmak degil. VHF CH16 dinleme, DSC self-test durumu, el telsizlerinin sarji, printer kağıdi ve alarm paneli gorunurlugu kontrol edilir."
+"Gunluk bakim sadece tuslara bakmak degil. VHF CH16 dinleme, DSC self-test durumu, el telsizlerinin sarji, printer kaÄŸÄ±di ve alarm paneli gorunurlugu kontrol edilir."
 
 Gunluk turda neyi once yaparsin?`,
 choices:[
@@ -2284,7 +2262,7 @@ choices:[
 {text:"Sadece VHF'nin acik olduguna bakarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"Cihazlar dunden calisiyordu diye gecistiririm",tag:"korkak",effect:{bilgi:-8,sayginlik:-8}}]},
 
-{id:"s136",gfx:"compass",alert:false,day:"Gun 4",time:"16:10",loc:"Köprüüstü - Haftalik Test",sub:"Haftalik haberlesme cihazi bakimi",who:"z3",
+{id:"s136",gfx:"compass",alert:false,day:"Gun 4",time:"16:10",loc:"KÃ¶prÃ¼Ã¼stÃ¼ - Haftalik Test",sub:"Haftalik haberlesme cihazi bakimi",who:"z3",
 text:`Haftalik test gunu. 3. Zabiti check-list'i acmis.
 
 "DSC routine test kaydi, NAVTEX kontrolu, EPIRB goz muayenesi, SART durum gosterge kontrolu, VHF kontrol cagrisi ve emergency battery logu haftalik disiplin ister."
@@ -2295,7 +2273,7 @@ choices:[
 {text:"Sadece test satirini doldurup kalanini sonra dusunurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"Kayit yaziliysa cihazlari tek tek gormeye gerek yok derim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
-{id:"s137",gfx:"bridge",alert:false,day:"Gun 12",time:"14:30",loc:"Köprüüstü - Aylik Bakim",sub:"Aylik GMDSS ve acil haberlesme bakimi",who:"z3",
+{id:"s137",gfx:"bridge",alert:false,day:"Gun 12",time:"14:30",loc:"KÃ¶prÃ¼Ã¼stÃ¼ - Aylik Bakim",sub:"Aylik GMDSS ve acil haberlesme bakimi",who:"z3",
 text:`Aylik bakimda is biraz daha agir.
 
 "Reserve battery kapasite kontrolu, el telsizi pil durumu, can filikasi VHF setleri, anten baglantilari, Inmarsat/uydu terminal durumu ve test sertlarinin kaydi aylik ciddiyet ister."
@@ -2329,13 +2307,13 @@ choices:[
 {text:"Yanlis alarm olabilir diye oyalanirim",tag:"korkak",effect:{bilgi:-10,sayginlik:-10}}]},
 
 {id:"s140",gfx:"harbor",alert:true,day:"Gun 10",time:"06:20",loc:"Mooring Station - Snap-back Hatti",sub:"Halat kopma tehlikesi",who:"lostromo",
-text:`Mooring station kalabalik ama herkes gergin. Bir spring hattı asiri gergin.
+text:`Mooring station kalabalik ama herkes gergin. Bir spring hattÄ± asiri gergin.
 
 Lostromo bagirdi: "Snap-back zone oyuncak degil. Halat koparsa cizdigi hat insan secmez. Kim nerede duruyor, kim hatta fazla yakin, hepsini gormelisin."
 
 Ne yaparsin?`,
 choices:[
-{text:"Snap-back hattini bosalttirir, personeli güvenli alana ceker ve lostromoya bildiririm",tag:"kritik",effect:{bilgi:15,sayginlik:13,cesaret:5}},
+{text:"Snap-back hattini bosalttirir, personeli gÃ¼venli alana ceker ve lostromoya bildiririm",tag:"kritik",effect:{bilgi:15,sayginlik:13,cesaret:5}},
 {text:"Sadece kendim geri cekilir, digerlerini izlerim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"Gergin halata yaklasip yardim etmeye calisirim",tag:"korkak",effect:{bilgi:-10,sayginlik:-10,cesaret:-4}}]},
 
@@ -2350,7 +2328,7 @@ choices:[
 {text:"Pilot cikinca sonra bakariz diye dusunurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"Korkup tamamen geri cekilirim",tag:"korkak",effect:{bilgi:-8,sayginlik:-8,cesaret:-5}}]},
 
-{id:"s142",gfx:"compass",alert:false,day:"Gun 4",time:"16:45",loc:"Köprüüstü - NAVTEX Printer",sub:"Safety mi warning mi?",who:"z3",
+{id:"s142",gfx:"compass",alert:false,day:"Gun 4",time:"16:45",loc:"KÃ¶prÃ¼Ã¼stÃ¼ - NAVTEX Printer",sub:"Safety mi warning mi?",who:"z3",
 text:`NAVTEX printer yeni bir mesaj cikardi. 3. Zabiti kagidi sana uzatti.
 
 "Her mesaj ayni agirlikta degil. Biri navigational warning, biri meteorological warning, biri search and rescue bilgisi olabilir. Olayin seyir emniyetine etkisini anlayacaksin."
@@ -2361,18 +2339,18 @@ choices:[
 {text:"Hepsini sadece genel safety notu gibi gorurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"NAVTEX mesaji gelmis ama rota uzakta diye okumam",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
-{id:"s143",gfx:"bridge",alert:false,day:"Gun 7",time:"11:20",loc:"Köprüüstü - Manevra Brifingi",sub:"Turning circle ve crash stop",who:"suvari",
+{id:"s143",gfx:"bridge",alert:false,day:"Gun 7",time:"11:20",loc:"KÃ¶prÃ¼Ã¼stÃ¼ - Manevra Brifingi",sub:"Turning circle ve crash stop",who:"suvari",
 text:`Suvari manevra kitabini acip kalemiyle iki cizgi cekti.
 
 "Manevra turleri kagitta basit durur: turning circle, crash stop, zig-zag test, Williamson turn, parallel indexing ile donus. Ama her biri geminin karakterini baska yerden yakalar."
 
 Sana sordu: turning circle ile crash stop farkini nasil anlatirsin?`,
 choices:[
-{text:"Biri dönüş karakterini, digeri tam yol sonrası durma mesafesi ve zamanini gosterir derim",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
-{text:"Ikisi de sadece dönme testi derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Biri dÃ¶nÃ¼ÅŸ karakterini, digeri tam yol sonrasÄ± durma mesafesi ve zamanini gosterir derim",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
+{text:"Ikisi de sadece dÃ¶nme testi derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
 {text:"Detay fark etmez, manevra manevradir derim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
-{id:"s144",gfx:"sea",alert:false,day:"Gun 7",time:"12:00",loc:"Açık Deniz - Manevra Uygulamasi",sub:"Williamson turn ne zaman?",who:"z2",
+{id:"s144",gfx:"sea",alert:false,day:"Gun 7",time:"12:00",loc:"AÃ§Ä±k Deniz - Manevra Uygulamasi",sub:"Williamson turn ne zaman?",who:"z2",
 text:`2. Zabiti dumen komutlarini sesli tekrar etti.
 
 "Insan denize dustu senaryosunda bazen ilk refleks panik olur. Oysa uygun manevra tipi zamani kazandirir. Williamson turn, Anderson turn, Scharnow turn farkli kosullarda kullanilir."
@@ -2383,8 +2361,8 @@ choices:[
 {text:"Liman icinde romorkor beklerken yapilan kucuk donus olarak",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
 {text:"Adini duydum ama kullanimi onemsiz diye dusunurum",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
-{id:"s145",gfx:"bridge",alert:false,day:"Gun 7",time:"13:10",loc:"Köprüüstü - Berthing Manevrasi",sub:"Baş-kıç itici, dümen ve makine koordinasyonu",who:"suvari",
-text:`Liman yanaşmasi oncesi suvari son kez anlatti.
+{id:"s145",gfx:"bridge",alert:false,day:"Gun 7",time:"13:10",loc:"KÃ¶prÃ¼Ã¼stÃ¼ - Berthing Manevrasi",sub:"BaÅŸ-kÄ±Ã§ itici, dÃ¼men ve makine koordinasyonu",who:"suvari",
+text:`Liman yanaÅŸmasi oncesi suvari son kez anlatti.
 
 "Berthing manevrasi dumenle tek basina olmaz. Ruzgar, akinti, bas-kic itici varsa onun etkisi, varsa romorkor itisi, makine komutlari ve pilot tavsiyesi birlikte okunur."
 
@@ -2416,7 +2394,7 @@ choices:[
 {text:"Yemegi bitirip erkenden kabine cekilirim",tag:"itaatkar",effect:{dinclik:10}},
 {text:"Aklim baska yerde diye yemegi gecistiririm",tag:"korkak",effect:{dinclik:-4,sayginlik:-2}}]},
 
-{id:"s148",gfx:"sea",alert:false,day:"Gun 10",time:"06:20",loc:"Açık Güverte - Sabah Havası",sub:"Vardiya oncesi kisa toparlanma",who:"hasan",
+{id:"s148",gfx:"sea",alert:false,day:"Gun 10",time:"06:20",loc:"AÃ§Ä±k GÃ¼verte - Sabah HavasÄ±",sub:"Vardiya oncesi kisa toparlanma",who:"hasan",
 text:`Hasan seni vardiya oncesi disari cagirdi.
 
 "Iki dakika temiz hava da denizcinin ilaci bazen. Kafayi acmadan ekrana bakarsan her sey daha zor gelir."
@@ -2438,7 +2416,7 @@ choices:[
 {text:"Uzanir, gozlerimi kapatip bedenimi dinlendiririm",tag:"itaatkar",effect:{dinclik:9}},
 {text:"Uyursam sersem olurum deyip hic dinlenmem",tag:"korkak",effect:{dinclik:-4}}]},
 
-{id:"s150",gfx:"harbor",alert:false,day:"Gun 12",time:"17:20",loc:"Kıç Güverte",sub:"İş bitti, omuzlar düştü",who:"lostromo",
+{id:"s150",gfx:"harbor",alert:false,day:"Gun 12",time:"17:20",loc:"KÄ±Ã§ GÃ¼verte",sub:"Ä°ÅŸ bitti, omuzlar dÃ¼ÅŸtÃ¼",who:"lostromo",
 text:`Uzun bir isin ardindan lostromo ilk kez "tamam" dedi.
 
 "Bugun iyi kosturdun. Simdi bir bardak su ic, omuzlarini birak. Gemi insani sadece zorlamaz; bazen biraktiginda da ogretir."
@@ -2449,7 +2427,7 @@ choices:[
 {text:"Etrafi son kez kontrol edip sonra dinlenirim",tag:"itaatkar",effect:{dinclik:8,bilgi:3}},
 {text:"Dinlenmeden yeni is aramaya devam ederim",tag:"korkak",effect:{dinclik:-5,cesaret:2}}]},
 
-{id:"s151",gfx:"harbor",alert:false,day:"Gun 11",time:"05:50",loc:"Cebelitarık Gecisi",sub:"Gel-git ve tidal set",who:"z2",
+{id:"s151",gfx:"harbor",alert:false,day:"Gun 11",time:"05:50",loc:"CebelitarÄ±k Gecisi",sub:"Gel-git ve tidal set",who:"z2",
 text:`2. Zabiti gel-git cetvelini acip rotayi isaret etti.
 
 "Tidal stream bazen motor kadar etkilidir. Set ve drift'i okumazsan haritadaki rota ile gercekteki iz farkli olur. Dar gecitte bu fark buyur."
@@ -2460,8 +2438,8 @@ choices:[
 {text:"Sadece derinlige bakarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"Akintiyi goz karariyla gecistiririm",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
-{id:"s152",gfx:"compass",alert:false,day:"Gun 11",time:"07:30",loc:"Köprüüstü - Matematiksel Seyir",sub:"Set-drift ile course to steer",who:"z2",
-text:`2. Zabiti kâğıda iki ok cizdi.
+{id:"s152",gfx:"compass",alert:false,day:"Gun 11",time:"07:30",loc:"KÃ¶prÃ¼Ã¼stÃ¼ - Matematiksel Seyir",sub:"Set-drift ile course to steer",who:"z2",
+text:`2. Zabiti kÃ¢ÄŸÄ±da iki ok cizdi.
 
 "Matematiksel seyir bazen bir problem cozmektir: Istenen COG ayridir, verdigin HDG ayridir. Akinti seni doguya itiyorsa rota tutmak icin kurs duzeltirsin."
 
@@ -2469,12 +2447,12 @@ Sana gore burada asil mantik nedir?`,
 choices:[
 {text:"Istenen rota icin akintiyi vektorel dusunup course to steer duzeltmesi yapmak derim",tag:"kritik",effect:{bilgi:16,sayginlik:11}},
 {text:"Pruvayi hedefe cevirmenin her zaman yeterli oldugunu soylerim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
-{text:"Akinti olsa da olmasa da aynı kursu veririm",tag:"korkak",effect:{bilgi:-10,sayginlik:-8}}]},
+{text:"Akinti olsa da olmasa da aynÄ± kursu veririm",tag:"korkak",effect:{bilgi:-10,sayginlik:-8}}]},
 
-{id:"s153",gfx:"sea",alert:false,day:"Gun 8",time:"14:40",loc:"Açık Deniz - Yarım Daire Seyri",sub:"Tehlikeli yarım daire mantigi",who:"suvari",
+{id:"s153",gfx:"sea",alert:false,day:"Gun 8",time:"14:40",loc:"AÃ§Ä±k Deniz - YarÄ±m Daire Seyri",sub:"Tehlikeli yarÄ±m daire mantigi",who:"suvari",
 text:`Suvari hava haritasini acip firtina merkezini isaret etti.
 
-"Yarım daire seyri ezber değil mantiktir. Tehlikeli yarim daire ile sevk edici yarim daire farkli davranir. Ruzgar yonu, alçak basinc merkezi ve geminin hangi tarafta kaldigi birlikte okunur."
+"YarÄ±m daire seyri ezber deÄŸil mantiktir. Tehlikeli yarim daire ile sevk edici yarim daire farkli davranir. Ruzgar yonu, alÃ§ak basinc merkezi ve geminin hangi tarafta kaldigi birlikte okunur."
 
 En temel refleks ne olmali?`,
 choices:[
@@ -2482,8 +2460,8 @@ choices:[
 {text:"Sadece ruzgar siddetine bakarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"Yarim daire ayriminin onemsiz oldugunu dusunurum",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
-{id:"s154",gfx:"compass",alert:true,day:"Gun 7",time:"18:50",loc:"Köprüüstü - Acil Haberleşme",sub:"Distress relay ve urgency cagrisi",who:"z3",
-text:`VHF'de zayif bir acil cagrı duyuldu. Mesaj tam degil ama bir teknenin yardım istedigi belli.
+{id:"s154",gfx:"compass",alert:true,day:"Gun 7",time:"18:50",loc:"KÃ¶prÃ¼Ã¼stÃ¼ - Acil HaberleÅŸme",sub:"Distress relay ve urgency cagrisi",who:"z3",
+text:`VHF'de zayif bir acil cagrÄ± duyuldu. Mesaj tam degil ama bir teknenin yardÄ±m istedigi belli.
 
 3. Zabiti sordu: "MAYDAY relay ne zaman, PAN-PAN ne zaman, hangi bilgi zinciriyle? Acil haberlesmede dogru kategori kadar net tekrar da onemlidir."
 
@@ -2493,126 +2471,126 @@ choices:[
 {text:"Bir ust gelsin diye beklerim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"Anlamadigim mesaji yok sayarim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
 
-{id:"s155",gfx:"cargo",alert:false,day:"Gun 8",time:"09:10",loc:"Ana Güverte - Raspa Hazırlığı",sub:"Raspa-boya isi planlama",who:"lostromo",
-text:`Lostromo pasli bir alanı çizdi.
+{id:"s155",gfx:"cargo",alert:false,day:"Gun 8",time:"09:10",loc:"Ana GÃ¼verte - Raspa HazÄ±rlÄ±ÄŸÄ±",sub:"Raspa-boya isi planlama",who:"lostromo",
+text:`Lostromo pasli bir alanÄ± Ã§izdi.
 
-"Raspa-boya sadece fırça vurmak değil. Yüzey hazırlığı, pas derecesi, maskeleme, kişisel koruyucu, hava durumu ve boya karışım oranı birlikte düşünülür."
+"Raspa-boya sadece fÄ±rÃ§a vurmak deÄŸil. YÃ¼zey hazÄ±rlÄ±ÄŸÄ±, pas derecesi, maskeleme, kiÅŸisel koruyucu, hava durumu ve boya karÄ±ÅŸÄ±m oranÄ± birlikte dÃ¼ÅŸÃ¼nÃ¼lÃ¼r."
 
-İlk doğru adım nedir?`,
+Ä°lk doÄŸru adÄ±m nedir?`,
 choices:[
-{text:"Yüzeyi değerlendirir, raspa seviyesi ve emniyet ekipmanını hazırlayarak işe başlarım",tag:"kritik",effect:{bilgi:14,sayginlik:12}},
-{text:"Boyayı açıp doğrudan üstüne geçerim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
-{text:"Pasın üstüne boya tutar diye acele ederim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+{text:"YÃ¼zeyi deÄŸerlendirir, raspa seviyesi ve emniyet ekipmanÄ±nÄ± hazÄ±rlayarak iÅŸe baÅŸlarÄ±m",tag:"kritik",effect:{bilgi:14,sayginlik:12}},
+{text:"BoyayÄ± aÃ§Ä±p doÄŸrudan Ã¼stÃ¼ne geÃ§erim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"PasÄ±n Ã¼stÃ¼ne boya tutar diye acele ederim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
-{id:"s156",gfx:"cargo",alert:false,day:"Gun 8",time:"16:30",loc:"Ana Güverte - Boya İşi",sub:"Katlar arasi bekleme ve boya disiplini",who:"lostromo",
-text:`İlk kat atildi ama is bitmedi.
+{id:"s156",gfx:"cargo",alert:false,day:"Gun 8",time:"16:30",loc:"Ana GÃ¼verte - Boya Ä°ÅŸi",sub:"Katlar arasi bekleme ve boya disiplini",who:"lostromo",
+text:`Ä°lk kat atildi ama is bitmedi.
 
-Lostromo fırçayı omzuna koydu: "Katlar arası bekleme süresi, yüzey kuruluğu ve tuz kalıntısı görülmeden boya işi bitmiş sayılmaz. Denizcilikte acele pası geri çağırır."
+Lostromo fÄ±rÃ§ayÄ± omzuna koydu: "Katlar arasÄ± bekleme sÃ¼resi, yÃ¼zey kuruluÄŸu ve tuz kalÄ±ntÄ±sÄ± gÃ¶rÃ¼lmeden boya iÅŸi bitmiÅŸ sayÄ±lmaz. Denizcilikte acele pasÄ± geri Ã§aÄŸÄ±rÄ±r."
 
 Ne yaparsin?`,
 choices:[
-{text:"Kuruma süresi, hava durumu ve yüzey temizliğini tekrar kontrol ederim",tag:"kritik",effect:{bilgi:14,sayginlik:11}},
-{text:"İlk kat güzel duruyorsa ikinciyi hemen atmak isterim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
-{text:"Tutar herhalde diye kontrolsüz devam ederim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+{text:"Kuruma sÃ¼resi, hava durumu ve yÃ¼zey temizliÄŸini tekrar kontrol ederim",tag:"kritik",effect:{bilgi:14,sayginlik:11}},
+{text:"Ä°lk kat gÃ¼zel duruyorsa ikinciyi hemen atmak isterim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Tutar herhalde diye kontrolsÃ¼z devam ederim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
-{id:"s157",gfx:"sea",alert:false,day:"Gun 10",time:"10:10",loc:"Algeciras Açıkları",sub:"Yeni rota ve trafik ayırımı",who:"suvari",
-text:`Suvari rotayi bu kez batıya çevirdi.
+{id:"s157",gfx:"sea",alert:false,day:"Gun 10",time:"10:10",loc:"Algeciras AÃ§Ä±klarÄ±",sub:"Yeni rota ve trafik ayÄ±rÄ±mÄ±",who:"suvari",
+text:`Suvari rotayi bu kez batÄ±ya Ã§evirdi.
 
 "Valensiya'dan sonra Algeciras aciklarina iniyoruz. Trafik yogun, akinti farkli, raporlama dili daha sert."
 
 Yeni rotada ilk once neyi hesaba katarsin?`,
 choices:[
-{text:"Trafik ayrim düzeni, tidal set ve VTS haberlesmesini birlikte düşünürüm",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
-{text:"Eski rota mantığıyla devam ederim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
-{text:"Yeni rota ama eski alışkanlıklarla giderim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+{text:"Trafik ayrim dÃ¼zeni, tidal set ve VTS haberlesmesini birlikte dÃ¼ÅŸÃ¼nÃ¼rÃ¼m",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
+{text:"Eski rota mantÄ±ÄŸÄ±yla devam ederim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Yeni rota ama eski alÄ±ÅŸkanlÄ±klarla giderim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
-{id:"s158",gfx:"sea",alert:false,day:"Gun 12",time:"11:25",loc:"Kıbrıs Açıkları",sub:"Doğu Akdeniz yeni seyir hattı",who:"z2",
-text:`Kıbrıs açıklarında deniz sakin ama trafik karisik.
+{id:"s158",gfx:"sea",alert:false,day:"Gun 12",time:"11:25",loc:"KÄ±brÄ±s AÃ§Ä±klarÄ±",sub:"DoÄŸu Akdeniz yeni seyir hattÄ±",who:"z2",
+text:`KÄ±brÄ±s aÃ§Ä±klarÄ±nda deniz sakin ama trafik karisik.
 
-2. Zabiti plotter'a dokundu: "Her yeni rota yeni referans noktası ister. Kıyıdan uzaklık, raporlama noktaları, hava penceresi ve seyir notları baştan düşünülür."
+2. Zabiti plotter'a dokundu: "Her yeni rota yeni referans noktasÄ± ister. KÄ±yÄ±dan uzaklÄ±k, raporlama noktalarÄ±, hava penceresi ve seyir notlarÄ± baÅŸtan dÃ¼ÅŸÃ¼nÃ¼lÃ¼r."
 
-İlk refleksin?`,
+Ä°lk refleksin?`,
 choices:[
-{text:"Referans noktaları ve raporlama geçişlerini yeni hatta göre tekrar kurarım",tag:"kritik",effect:{bilgi:14,sayginlik:11}},
-{text:"Eski waypoint düzenini olduğu gibi taşırım",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
-{text:"Deniz açıksa detay gerekmez derim",tag:"korkak",effect:{bilgi:-8,sayginlik:-8}}]},
+{text:"Referans noktalarÄ± ve raporlama geÃ§iÅŸlerini yeni hatta gÃ¶re tekrar kurarÄ±m",tag:"kritik",effect:{bilgi:14,sayginlik:11}},
+{text:"Eski waypoint dÃ¼zenini olduÄŸu gibi taÅŸÄ±rÄ±m",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Deniz aÃ§Ä±ksa detay gerekmez derim",tag:"korkak",effect:{bilgi:-8,sayginlik:-8}}]},
 
 {id:"s159",gfx:"engine",alert:false,day:"Gun 9",time:"08:40",loc:"Ballast Kontrol Paneli",sub:"Ballast / deballast operasyon zinciri",who:"carkci",
-text:`Çarkçıbaşı ballast panelini açtı.
+text:`Ã‡arkÃ§Ä±baÅŸÄ± ballast panelini aÃ§tÄ±.
 
-"Bu gemi bazen yükten çok suyla düzeltilir. Ama hangi tanktan ne zaman alıp ne zaman basacağını bilmezsen listeyi düzeltirken başka sorunu doğurursun. Sounding, valf sırası, pompa yükü, serbest yüzey... hepsi birlikte düşünülür."
+"Bu gemi bazen yÃ¼kten Ã§ok suyla dÃ¼zeltilir. Ama hangi tanktan ne zaman alÄ±p ne zaman basacaÄŸÄ±nÄ± bilmezsen listeyi dÃ¼zeltirken baÅŸka sorunu doÄŸurursun. Sounding, valf sÄ±rasÄ±, pompa yÃ¼kÃ¼, serbest yÃ¼zey... hepsi birlikte dÃ¼ÅŸÃ¼nÃ¼lÃ¼r."
 
-İlk kontrolün ne olur?`,
+Ä°lk kontrolÃ¼n ne olur?`,
 choices:[
-{text:"Tank planı, mevcut sounding, valf hattı ve hedef trim/list durumunu birlikte kontrol ederim",tag:"kritik",effect:{bilgi:15,sayginlik:12}},
-{text:"Sadece pompaları çalıştırmaya odaklanırım",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
-{text:"Hangi tanka su gittiği çok fark etmez diye düşünürüm",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+{text:"Tank planÄ±, mevcut sounding, valf hattÄ± ve hedef trim/list durumunu birlikte kontrol ederim",tag:"kritik",effect:{bilgi:15,sayginlik:12}},
+{text:"Sadece pompalarÄ± Ã§alÄ±ÅŸtÄ±rmaya odaklanÄ±rÄ±m",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Hangi tanka su gittiÄŸi Ã§ok fark etmez diye dÃ¼ÅŸÃ¼nÃ¼rÃ¼m",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
 
-{id:"s160",gfx:"cargo",alert:false,day:"Gun 9",time:"09:30",loc:"Yük Ofisi - Trim/List Hesabi",sub:"Trim-list correction mini hesap",who:"z1",
-text:`1. Zabiti hesabı önüne itti.
+{id:"s160",gfx:"cargo",alert:false,day:"Gun 9",time:"09:30",loc:"YÃ¼k Ofisi - Trim/List Hesabi",sub:"Trim-list correction mini hesap",who:"z1",
+text:`1. Zabiti hesabÄ± Ã¶nÃ¼ne itti.
 
-"Gemi sancağa 1.2 derece yatık. Çift dip tanklardan birine 60 ton ballast alırsak listedeki farkı azaltabiliriz; ama serbest yüzey ve trim etkisini de unutmayacaksın."
+"Gemi sancaÄŸa 1.2 derece yatÄ±k. Ã‡ift dip tanklardan birine 60 ton ballast alÄ±rsak listedeki farkÄ± azaltabiliriz; ama serbest yÃ¼zey ve trim etkisini de unutmayacaksÄ±n."
 
-Sana göre doğru yaklaşım ne?`,
+Sana gÃ¶re doÄŸru yaklaÅŸÄ±m ne?`,
 choices:[
-{text:"Balastı karşı tarafa kontrollü alır, listeyi soundingle ve serbest yüzey etkisiyle birlikte izlerim",tag:"kritik",effect:{bilgi:16,sayginlik:11}},
-{text:"Yatıklığı görünce en yakın tanka hemen su basarım",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
-{text:"Gözle düzelmiş gibi görünüyorsa hesabı bırakırım",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+{text:"BalastÄ± karÅŸÄ± tarafa kontrollÃ¼ alÄ±r, listeyi soundingle ve serbest yÃ¼zey etkisiyle birlikte izlerim",tag:"kritik",effect:{bilgi:16,sayginlik:11}},
+{text:"YatÄ±klÄ±ÄŸÄ± gÃ¶rÃ¼nce en yakÄ±n tanka hemen su basarÄ±m",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"GÃ¶zle dÃ¼zelmiÅŸ gibi gÃ¶rÃ¼nÃ¼yorsa hesabÄ± bÄ±rakÄ±rÄ±m",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
-{id:"s161",gfx:"cargo",alert:false,day:"Gun 10",time:"14:15",loc:"Ana Güverte - Lashing Turu",sub:"Cargo securing / lashing kararları",who:"lostromo",
+{id:"s161",gfx:"cargo",alert:false,day:"Gun 10",time:"14:15",loc:"Ana GÃ¼verte - Lashing Turu",sub:"Cargo securing / lashing kararlarÄ±",who:"lostromo",
 text:`Lostromo lashing turnbucklelere tek tek vurdu.
 
-"Deniz sakinken gevşek lashing fark edilmez. İlk sert havada yük konuşur. Twist-lock, turnbuckle, rod, chock, wedge... hepsi yerinde olacak."
+"Deniz sakinken gevÅŸek lashing fark edilmez. Ä°lk sert havada yÃ¼k konuÅŸur. Twist-lock, turnbuckle, rod, chock, wedge... hepsi yerinde olacak."
 
-Sana göre en kritik disiplin nedir?`,
+Sana gÃ¶re en kritik disiplin nedir?`,
 choices:[
-{text:"Lashing gerginliği, kilitlerin oturuşu ve hava öncesi tekrar kontrolü derim",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:3}},
-{text:"Yük yerindeyse lashinge çok dokunmam derim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
-{text:"İlk gün sağlamlandıysa tekrar bakmaya gerek yok derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+{text:"Lashing gerginliÄŸi, kilitlerin oturuÅŸu ve hava Ã¶ncesi tekrar kontrolÃ¼ derim",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:3}},
+{text:"YÃ¼k yerindeyse lashinge Ã§ok dokunmam derim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Ä°lk gÃ¼n saÄŸlamlandÄ±ysa tekrar bakmaya gerek yok derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
 
-{id:"s162",gfx:"storm",alert:true,day:"Gun 10",time:"22:10",loc:"Ambar Üstü - Hava Öncesi Kontrol",sub:"Lashing gevşemesi riski",who:"z1",
-text:`Hava sertleşmeden önce 1. Zabiti son bir tur istiyor.
+{id:"s162",gfx:"storm",alert:true,day:"Gun 10",time:"22:10",loc:"Ambar ÃœstÃ¼ - Hava Ã–ncesi Kontrol",sub:"Lashing gevÅŸemesi riski",who:"z1",
+text:`Hava sertleÅŸmeden Ã¶nce 1. Zabiti son bir tur istiyor.
 
-"Bir rod gevşekse, bir kilit yarım oturduysa, bunu limanda değil havada anlarsın. O zaman da seçenek azalır."
+"Bir rod gevÅŸekse, bir kilit yarÄ±m oturduysa, bunu limanda deÄŸil havada anlarsÄ±n. O zaman da seÃ§enek azalÄ±r."
 
-Sana hangi işi verdi?`,
+Sana hangi iÅŸi verdi?`,
 choices:[
-{text:"Kritik sıralardaki lashingi tek tek göz ve el kontrolüyle teyit ederim",tag:"kritik",effect:{bilgi:14,sayginlik:12}},
-{text:"Uzaktan genel görüntüye bakarım",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
-{text:"Bu saatte tura gerek yok diye düşünürüm",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+{text:"Kritik sÄ±ralardaki lashingi tek tek gÃ¶z ve el kontrolÃ¼yle teyit ederim",tag:"kritik",effect:{bilgi:14,sayginlik:12}},
+{text:"Uzaktan genel gÃ¶rÃ¼ntÃ¼ye bakarÄ±m",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Bu saatte tura gerek yok diye dÃ¼ÅŸÃ¼nÃ¼rÃ¼m",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
-{id:"s163",gfx:"engine",alert:false,day:"Gun 4",time:"07:20",loc:"Makine Dairesi - Sabah Turu",sub:"Günlük tur ve arıza önleme",who:"bas2",
-text:`2. Başmakinist günlük turu başlattı.
+{id:"s163",gfx:"engine",alert:false,day:"Gun 4",time:"07:20",loc:"Makine Dairesi - Sabah Turu",sub:"GÃ¼nlÃ¼k tur ve arÄ±za Ã¶nleme",who:"bas2",
+text:`2. BaÅŸmakinist gÃ¼nlÃ¼k turu baÅŸlattÄ±.
 
-"Arıza çoğu zaman alarm çalmadan önce koku, sıcaklık, titreşim, sızıntı veya ses olarak haber verir. Makineci gözü bunu erken yakalarsa gemi rahat eder."
+"ArÄ±za Ã§oÄŸu zaman alarm Ã§almadan Ã¶nce koku, sÄ±caklÄ±k, titreÅŸim, sÄ±zÄ±ntÄ± veya ses olarak haber verir. Makineci gÃ¶zÃ¼ bunu erken yakalarsa gemi rahat eder."
 
 Turda ilk refleksin ne olur?`,
 choices:[
-{text:"Sızıntı, sıcak yüzey, anormal ses ve titreşimi birlikte tararım",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
-{text:"Sadece göstergelere bakarım",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
-{text:"Alarm yoksa sorun da yok diye düşünürüm",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+{text:"SÄ±zÄ±ntÄ±, sÄ±cak yÃ¼zey, anormal ses ve titreÅŸimi birlikte tararÄ±m",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
+{text:"Sadece gÃ¶stergelere bakarÄ±m",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Alarm yoksa sorun da yok diye dÃ¼ÅŸÃ¼nÃ¼rÃ¼m",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
 
-{id:"s164",gfx:"engine",alert:false,day:"Gun 4",time:"08:10",loc:"Makine Dairesi - Yardımcı Sistemler",sub:"Separator, bilge ve cooling water kontrolü",who:"yagci",
-text:`Yağcı Mehmet Ali seni yardımcı sistemlere çekti.
+{id:"s164",gfx:"engine",alert:false,day:"Gun 4",time:"08:10",loc:"Makine Dairesi - YardÄ±mcÄ± Sistemler",sub:"Separator, bilge ve cooling water kontrolÃ¼",who:"yagci",
+text:`YaÄŸcÄ± Mehmet Ali seni yardÄ±mcÄ± sistemlere Ã§ekti.
 
-"Ana makine kadar separator, bilge, cooling water ve günlük yağ seviyeleri de hayatidir. Küçük ihmal büyük arızaya çıkar."
+"Ana makine kadar separator, bilge, cooling water ve gÃ¼nlÃ¼k yaÄŸ seviyeleri de hayatidir. KÃ¼Ã§Ã¼k ihmal bÃ¼yÃ¼k arÄ±zaya Ã§Ä±kar."
 
-İlk neyi not alırsın?`,
+Ä°lk neyi not alÄ±rsÄ±n?`,
 choices:[
-{text:"Yağ seviyeleri, soğutma suyu durumu, separator sesi ve bilge temizliğini birlikte not ederim",tag:"kritik",effect:{bilgi:14,sayginlik:11}},
-{text:"Sadece yağ seviyesine bakarım",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
-{text:"Hepsi dönüyorsa ayrıntıya girmem",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+{text:"YaÄŸ seviyeleri, soÄŸutma suyu durumu, separator sesi ve bilge temizliÄŸini birlikte not ederim",tag:"kritik",effect:{bilgi:14,sayginlik:11}},
+{text:"Sadece yaÄŸ seviyesine bakarÄ±m",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Hepsi dÃ¶nÃ¼yorsa ayrÄ±ntÄ±ya girmem",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
-{id:"s165",gfx:"engine_fault",alert:true,day:"Gun 4",time:"10:30",loc:"Makine Dairesi - Önleyici Müdahale",sub:"Küçük belirtiyi erken yakalamak",who:"carkci",
-text:`Kontrol turunda hafif bir yanık kokusu fark edildi. Henüz alarm yok.
+{id:"s165",gfx:"engine_fault",alert:true,day:"Gun 4",time:"10:30",loc:"Makine Dairesi - Ã–nleyici MÃ¼dahale",sub:"KÃ¼Ã§Ã¼k belirtiyi erken yakalamak",who:"carkci",
+text:`Kontrol turunda hafif bir yanÄ±k kokusu fark edildi. HenÃ¼z alarm yok.
 
-Çarkçıbaşı durup baktı: "İşte arıza önleme burada başlar. Küçük belirtiyi ciddiye alırsan gemi seni sonra ödüllendirir."
+Ã‡arkÃ§Ä±baÅŸÄ± durup baktÄ±: "Ä°ÅŸte arÄ±za Ã¶nleme burada baÅŸlar. KÃ¼Ã§Ã¼k belirtiyi ciddiye alÄ±rsan gemi seni sonra Ã¶dÃ¼llendirir."
 
-Ne önerirsin?`,
+Ne Ã¶nerirsin?`,
 choices:[
-{text:"Kaynağı izole eder, sıcaklık/ yük durumu ile birlikte kontrollü inceleme isterim",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:4}},
-{text:"Bir süre daha izleyip sonra bakarız derim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
-{text:"Koku geçer diye önemsemem",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+{text:"KaynaÄŸÄ± izole eder, sÄ±caklÄ±k/ yÃ¼k durumu ile birlikte kontrollÃ¼ inceleme isterim",tag:"kritik",effect:{bilgi:15,sayginlik:12,cesaret:4}},
+{text:"Bir sÃ¼re daha izleyip sonra bakarÄ±z derim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Koku geÃ§er diye Ã¶nemsemem",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
 
 {id:"s166",gfx:"compass",alert:true,day:"Gun 9",time:"19:35",loc:"Koprustu - Acil Haberlesme Defteri",sub:"MAYDAY cagrisi nasil kurulur?",who:"z3",
 text:`3. Zabiti VHF protokol kartini onune koydu.
@@ -2738,7 +2716,7 @@ choices:[
 {id:"s177",gfx:"compass",alert:false,day:"Gun 9",time:"05:35",loc:"Koprustu - NAVTEX Printer",sub:"NAVTEX mesajinda hangisi kritik?",who:"z3",
 text:`NAVTEX kagidi bu kez daha uzun. Uyarida hem meteorological warning hem de bir atesleme sahasi notu var.
 
-3. Zabiti kağıdı masaya bıraktı: "Her NAVTEX mesajı aynı ağırlıkta değil. Bazen bir satır rota değiştirir, bazen sadece dosyaya girer."
+3. Zabiti kaÄŸÄ±dÄ± masaya bÄ±raktÄ±: "Her NAVTEX mesajÄ± aynÄ± aÄŸÄ±rlÄ±kta deÄŸil. Bazen bir satÄ±r rota deÄŸiÅŸtirir, bazen sadece dosyaya girer."
 
 Ilk neyi ayirirsin?`,
 choices:[
@@ -2815,7 +2793,7 @@ choices:[
 {id:"s182",gfx:"sea",alert:false,day:"Gun 12",time:"09:10",loc:"Trieste - Haifa Hatti",sub:"Yeni rota, yeni harita mantigi",who:"z2",
 text:`2. Zabiti yeni rota klasorunu acti.
 
-"Her deniz ayni haritayla dusunulmez. Trieste cikisi ile Haifa yaklaşması aynı dikkatleri istemez. Bir yerde trafik ayırımı, bir yerde askeri saha, bir yerde anchorage limiti öne çıkar."
+"Her deniz ayni haritayla dusunulmez. Trieste cikisi ile Haifa yaklaÅŸmasÄ± aynÄ± dikkatleri istemez. Bir yerde trafik ayÄ±rÄ±mÄ±, bir yerde askeri saha, bir yerde anchorage limiti Ã¶ne Ã§Ä±kar."
 
 Bu rota degisikliginde en dogru tavir nedir?`,
 choices:[
@@ -2845,7 +2823,7 @@ choices:[
 {text:"Sadece yatagi duzeltip biraz nefes alirim",tag:"itaatkar",effect:{dinclik:8}},
 {text:"Bosverip telefona gomulurum",tag:"korkak",effect:{dinclik:-5}}]},
 
-{id:"s185",gfx:"sea",alert:false,day:"Gun 11",time:"05:55",loc:"Acik Güverte - Gunes Dogarken",sub:"Ufka bakip toparlanmak",who:"hasan",
+{id:"s185",gfx:"sea",alert:false,day:"Gun 11",time:"05:55",loc:"Acik GÃ¼verte - Gunes Dogarken",sub:"Ufka bakip toparlanmak",who:"hasan",
 text:`Hasan omzunla hafifce dokundu.
 
 "Gel," dedi, "iki dakika sadece ufka bak. Denizde bazen insanin kafasini yine deniz toplar."
@@ -2858,7 +2836,7 @@ choices:[
 {text:"Hasanla kisa bir sohbet edip rahatlarim",tag:"sosyal",effect:{dinclik:8,sayginlik:5}},
 {text:"Buna vakit yok deyip geri donerim",tag:"korkak",effect:{dinclik:-3}}]},
 
-{id:"s186",gfx:"harbor",alert:false,day:"Gun 12",time:"15:50",loc:"Kic Güverte",sub:"Is bitti, su molasi",who:"lostromo",
+{id:"s186",gfx:"harbor",alert:false,day:"Gun 12",time:"15:50",loc:"Kic GÃ¼verte",sub:"Is bitti, su molasi",who:"lostromo",
 text:`Zor bir isin ardindan lostromo ilk kez acele etmedi. Sadece su uzatti.
 
 "Kahramanlik sonra. Once su ic. Yorgun adam hatayi fark etmez."`
@@ -2879,8 +2857,8 @@ choices:[
 {text:"Uzanir, gozlerimi kapatip bedenimi dinlendiririm",tag:"itaatkar",effect:{dinclik:9}},
 {text:"Dinlenmek yerine telefonda oyalanirim",tag:"korkak",effect:{dinclik:-5}}]},
 
-{id:"s187b",gfx:"sea",alert:false,day:"Gun 9",time:"07:05",loc:"Acik GÃ¼verte - Serin Sabah",sub:"Vardiya once kisa esneme",who:"hasan",
-text:`Hasan seni korkuluga yaslanmis gorunce guldÃ¼.
+{id:"s187b",gfx:"sea",alert:false,day:"Gun 9",time:"07:05",loc:"Acik GÃƒÂ¼verte - Serin Sabah",sub:"Vardiya once kisa esneme",who:"hasan",
+text:`Hasan seni korkuluga yaslanmis gorunce guldÃƒÂ¼.
 
 "Iki dakika omuz ac, sirtini ac, derin nefes al. Denizde bedenini ihmal edenin dikkati de dagilir."
 
@@ -2910,9 +2888,9 @@ Gece seni yormadan toparlanma sansi veriyor.`,
 choices:[
 {text:"Ilk is dus alip temiz kiyafetle erkenden uzanirim",tag:"kritik",effect:{dinclik:13,sayginlik:3}},
 {text:"Yuzumu yikayip kisa bir toparlanma yaparim",tag:"itaatkar",effect:{dinclik:8}},
-{text:"Ugrasmak istemeyip oldugu gibi yatağa girerim",tag:"korkak",effect:{dinclik:-3}}]},
+{text:"Ugrasmak istemeyip oldugu gibi yataÄŸa girerim",tag:"korkak",effect:{dinclik:-3}}]},
 
-{id:"s187e",gfx:"harbor",alert:false,day:"Gun 12",time:"10:45",loc:"Kic GÃ¼verte",sub:"Golgede on dakikalik nefes",who:"lostromo",
+{id:"s187e",gfx:"harbor",alert:false,day:"Gun 12",time:"10:45",loc:"Kic GÃƒÂ¼verte",sub:"Golgede on dakikalik nefes",who:"lostromo",
 text:`Lostromo bu kez seni daha sert ise surmedi. Sadece eliyle golgeyi isaret etti.
 
 "Gunes tepene bindiginde kafa da agirlasir. On dakika golge, su ve sessizlik bazen ikinci kahve gibidir."
@@ -3022,14 +3000,14 @@ choices:[
 {text:"Su tatliysa draft ayni kalir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
 {text:"Bu farkin pratikte onemsiz oldugunu dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
 
-{id:"s196",gfx:"bridge",alert:false,day:"Gun 9",time:"17:25",loc:"Koprustu - Alcak Kopru Gecisi",sub:"Air draft ve kopru altı acikligi",who:"suvari",
+{id:"s196",gfx:"bridge",alert:false,day:"Gun 9",time:"17:25",loc:"Koprustu - Alcak Kopru Gecisi",sub:"Air draft ve kopru altÄ± acikligi",who:"suvari",
 text:`Suvari nehir gecisi brifinginde eliyle yukariyi isaret etti.
 
 "Herkes drafti dusunur; iyi zabit air draft'i da dusunur. Mast, anten, crane boom, ballast durumu ve gel-git birlikte okunmadan alcak kopru altina girilmez."
 
 Sana gore en dogru hesap mantigi ne?`,
 choices:[
-{text:"Geminin mevcut air draftini su seviyesi ve kopru altı acikligi ile karsilastirir, emniyet payi birakirim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"Geminin mevcut air draftini su seviyesi ve kopru altÄ± acikligi ile karsilastirir, emniyet payi birakirim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
 {text:"Charttaki yukseklik yaziyorsa dogrudan yeter derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
 {text:"Sadece goz karariyla sigar diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
 
@@ -3069,7 +3047,7 @@ choices:[
 {id:"s200",gfx:"bridge",alert:true,day:"Gun 10",time:"09:40",loc:"Loadicator Terminali",sub:"Yanlis veri girildi alarmi",who:"z1",
 text:`Loadicator ekrani sari uyari verdi. Girilen ballast verilerinden biri rapordaki sounding ile tutusmuyor.
 
-1. Zabit sana bakti: "Loadicator'a güven ama kör güvenme. Yanlis veri girersen en guzel hesap bile seni yaniltir. Alarm susturmak cozum degil; hatayi bulmak gerekir."
+1. Zabit sana bakti: "Loadicator'a gÃ¼ven ama kÃ¶r gÃ¼venme. Yanlis veri girersen en guzel hesap bile seni yaniltir. Alarm susturmak cozum degil; hatayi bulmak gerekir."
 
 Ilk ne yaparsin?`,
 choices:[
@@ -3110,26 +3088,26 @@ choices:[
 {text:"Hava sertse rastgele daha cok su almak yeter sanirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
 {text:"Ballast planinin havayla ciddi ilgisi olmadigini dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
 
-{id:"FINAL",gfx:"bridge",alert:false,day:"Son Gün",time:"15:00",loc:"Konferans Salonu",sub:"Staj değerlendirme — kontrat sona erdi",who:"z1",
-text:`Son değerlendirme toplantısı.\n\n1. Zabiti, 2. Zabiti, Lostromo. Önlerinde staj formu.\n\n"${n}. ${yr} yılında, ${sn}'de. Fırtına, yük denetimi, gece nöbetleri, yangın tatbikatı, liman operasyonları, krizler.\n\nRaporun birinci satırına ne yazayım?"`,
+{id:"FINAL",gfx:"bridge",alert:false,day:"Son GÃ¼n",time:"15:00",loc:"Konferans Salonu",sub:"Staj deÄŸerlendirme â€” kontrat sona erdi",who:"z1",
+text:`Son deÄŸerlendirme toplantÄ±sÄ±.\n\n1. Zabiti, 2. Zabiti, Lostromo. Ã–nlerinde staj formu.\n\n"${n}. ${yr} yÄ±lÄ±nda, ${sn}'de. FÄ±rtÄ±na, yÃ¼k denetimi, gece nÃ¶betleri, yangÄ±n tatbikatÄ±, liman operasyonlarÄ±, krizler.\n\nRaporun birinci satÄ±rÄ±na ne yazayÄ±m?"`,
 choices:[
-{text:"'Öğrenmeye hazır bir denizci' — alçakgönüllü",tag:"akilli",effect:{bilgi:10,sayginlik:15},next:'end'},
-{text:"'Bu hayatı seçiyorum — her zorluğuyla'",tag:"cesur",effect:{cesaret:15,sayginlik:12},next:'end'},
-{text:"'Henüz tam emin değilim ama devam edeceğim'",tag:"itaatkar",effect:{sayginlik:8,bilgi:5},next:'end'}]},
+{text:"'Ã–ÄŸrenmeye hazÄ±r bir denizci' â€” alÃ§akgÃ¶nÃ¼llÃ¼",tag:"akilli",effect:{bilgi:10,sayginlik:15},next:'end'},
+{text:"'Bu hayatÄ± seÃ§iyorum â€” her zorluÄŸuyla'",tag:"cesur",effect:{cesaret:15,sayginlik:12},next:'end'},
+{text:"'HenÃ¼z tam emin deÄŸilim ama devam edeceÄŸim'",tag:"itaatkar",effect:{sayginlik:8,bilgi:5},next:'end'}]},
   ];
 }
 
-// ===== KONTRAT SİSTEMİ =====
+// ===== KONTRAT SÄ°STEMÄ° =====
 const KONTRAT_DEFS={
-  kuru:[{ay:6,izin:1,ucret:"Orta",bonus:"Kuru yük sertifikası"},{ay:9,izin:2,ucret:"Orta+",bonus:"Uzun seyir tecrübesi"}],
-  tanker:[{ay:4,izin:1,ucret:"Yüksek",bonus:"Tanker sertifikası (OOW)"},{ay:6,izin:1,ucret:"Yüksek+",bonus:"MARPOL uzmanlığı"}],
-  kont:[{ay:4,izin:1,ucret:"Yüksek",bonus:"Hızlı lojistik deneyimi"},{ay:6,izin:2,ucret:"Çok Yüksek",bonus:"Konteyner planlaması"}],
-  roro:[{ay:3,izin:1,ucret:"Orta",bonus:"Araç operasyon sertifikası"},{ay:5,izin:1,ucret:"Orta+",bonus:"Trim uzmanlığı"}],
-  bulk:[{ay:6,izin:2,ucret:"Orta",bonus:"Dökme yük sertifikası"},{ay:9,izin:2,ucret:"Orta+",bonus:"Trim ve stabilite"}],
-  lng:[{ay:4,izin:1,ucret:"Çok Yüksek",bonus:"IGF temel sertifikası"},{ay:6,izin:2,ucret:"Maksimum",bonus:"LNG uzman sertifikası"}],
+  kuru:[{ay:6,izin:1,ucret:"Orta",bonus:"Kuru yÃ¼k sertifikasÄ±"},{ay:9,izin:2,ucret:"Orta+",bonus:"Uzun seyir tecrÃ¼besi"}],
+  tanker:[{ay:4,izin:1,ucret:"YÃ¼ksek",bonus:"Tanker sertifikasÄ± (OOW)"},{ay:6,izin:1,ucret:"YÃ¼ksek+",bonus:"MARPOL uzmanlÄ±ÄŸÄ±"}],
+  kont:[{ay:4,izin:1,ucret:"YÃ¼ksek",bonus:"HÄ±zlÄ± lojistik deneyimi"},{ay:6,izin:2,ucret:"Ã‡ok YÃ¼ksek",bonus:"Konteyner planlamasÄ±"}],
+  roro:[{ay:3,izin:1,ucret:"Orta",bonus:"AraÃ§ operasyon sertifikasÄ±"},{ay:5,izin:1,ucret:"Orta+",bonus:"Trim uzmanlÄ±ÄŸÄ±"}],
+  bulk:[{ay:6,izin:2,ucret:"Orta",bonus:"DÃ¶kme yÃ¼k sertifikasÄ±"},{ay:9,izin:2,ucret:"Orta+",bonus:"Trim ve stabilite"}],
+  lng:[{ay:4,izin:1,ucret:"Ã‡ok YÃ¼ksek",bonus:"IGF temel sertifikasÄ±"},{ay:6,izin:2,ucret:"Maksimum",bonus:"LNG uzman sertifikasÄ±"}],
 };
 
-// ===== OYUN DEĞİŞKENLERİ =====
+// ===== OYUN DEÄÄ°ÅKENLERÄ° =====
 let pn="Stajyer", sn="M/V Ege Meltem";
 let selYear=2018, selType="kuru", selKontrat=0;
 let stats={cesaret:40,bilgi:22,sayginlik:32,dinclik:68};
@@ -3137,18 +3115,18 @@ let scenes=[], currentIdx=0, choicesMade=[];
 let contractDays=0, contractTotal=6;
 let sceneQueue=[], usedScenes=new Set();
 const START_PORTS=[
-  {name:"İzmir", dock:"İzmir Limanı — İskele", office:"İzmir Limanı — Limancı Ofisi", departureLine:"İzmir Körfezi geride kaldı", x:85, y:130},
-  {name:"İstanbul", dock:"İstanbul Limanı — Rıhtım", office:"İstanbul Limanı — Limancı Ofisi", departureLine:"Marmara ufku geride kaldı", x:180, y:85},
-  {name:"Çanakkale", dock:"Çanakkale Limanı — Rıhtım", office:"Çanakkale Limanı — Limancı Ofisi", departureLine:"Boğaz geride kaldı", x:130, y:100},
-  {name:"Pire", dock:"Pire Limanı — Terminal", office:"Pire Limanı — Limancı Ofisi", departureLine:"Pire rıhtımı geride kaldı", x:120, y:160},
-  {name:"İskenderiye", dock:"İskenderiye Limanı — Yük İskelesi", office:"İskenderiye Limanı — Limancı Ofisi", departureLine:"İskenderiye mendireği geride kaldı", x:200, y:210},
-  {name:"Cenova", dock:"Cenova Limanı — Konteyner Rıhtımı", office:"Cenova Limanı — Limancı Ofisi", departureLine:"Ligurya kıyısı geride kaldı", x:60, y:80},
+  {name:"Ä°zmir", dock:"Ä°zmir LimanÄ± â€” Ä°skele", office:"Ä°zmir LimanÄ± â€” LimancÄ± Ofisi", departureLine:"Ä°zmir KÃ¶rfezi geride kaldÄ±", x:85, y:130},
+  {name:"Ä°stanbul", dock:"Ä°stanbul LimanÄ± â€” RÄ±htÄ±m", office:"Ä°stanbul LimanÄ± â€” LimancÄ± Ofisi", departureLine:"Marmara ufku geride kaldÄ±", x:180, y:85},
+  {name:"Ã‡anakkale", dock:"Ã‡anakkale LimanÄ± â€” RÄ±htÄ±m", office:"Ã‡anakkale LimanÄ± â€” LimancÄ± Ofisi", departureLine:"BoÄŸaz geride kaldÄ±", x:130, y:100},
+  {name:"Pire", dock:"Pire LimanÄ± â€” Terminal", office:"Pire LimanÄ± â€” LimancÄ± Ofisi", departureLine:"Pire rÄ±htÄ±mÄ± geride kaldÄ±", x:120, y:160},
+  {name:"Ä°skenderiye", dock:"Ä°skenderiye LimanÄ± â€” YÃ¼k Ä°skelesi", office:"Ä°skenderiye LimanÄ± â€” LimancÄ± Ofisi", departureLine:"Ä°skenderiye mendireÄŸi geride kaldÄ±", x:200, y:210},
+  {name:"Cenova", dock:"Cenova LimanÄ± â€” Konteyner RÄ±htÄ±mÄ±", office:"Cenova LimanÄ± â€” LimancÄ± Ofisi", departureLine:"Ligurya kÄ±yÄ±sÄ± geride kaldÄ±", x:60, y:80},
 ];
 const START_SCENARIOS=[
-  {time:"05:30", subPrefix:"Sabah sisi", intro:"Sabah erken, rıhtımın üstünde ince sis var.", bridgeCall:"Rampadan biri indi: \"Sen stajyer ${n} misin? 1. Zabiti köprüde bekliyor.\""},
-  {time:"06:10", subPrefix:"Yağmurlu vardiya", intro:"Çiseliyor. Rıhtım ıslak, halatlar koyu renk kesilmiş gibi parlıyor.", bridgeCall:"Vardiya devrinden çıkan bir tayfa seni görünce bağırdı: \"Stajyer sensen çabuk ol, köprü seni bekliyor.\""},
-  {time:"04:50", subPrefix:"Gece sonu telaşı", intro:"Gece daha tam dağılmamış. Projektörler güverteyi beyaz kesiyor, liman yarı uykuda.", bridgeCall:"Nöbetçi zabit merdiven ağzından seslendi: \"Geç kalmadın. Belgelerinle yukarı çık.\""},
-  {time:"07:00", subPrefix:"Liman uğultusu", intro:"Forklift sesleri, vinç alarmları ve martı çığlıkları birbirine karışıyor.", bridgeCall:"Ajans görevlisi seni gemiye teslim ederken fısıldadı: \"İlk günün sert geçer, dikkatli ol.\""},
+  {time:"05:30", subPrefix:"Sabah sisi", intro:"Sabah erken, rÄ±htÄ±mÄ±n Ã¼stÃ¼nde ince sis var.", bridgeCall:"Rampadan biri indi: \"Sen stajyer ${n} misin? 1. Zabiti kÃ¶prÃ¼de bekliyor.\""},
+  {time:"06:10", subPrefix:"YaÄŸmurlu vardiya", intro:"Ã‡iseliyor. RÄ±htÄ±m Ä±slak, halatlar koyu renk kesilmiÅŸ gibi parlÄ±yor.", bridgeCall:"Vardiya devrinden Ã§Ä±kan bir tayfa seni gÃ¶rÃ¼nce baÄŸÄ±rdÄ±: \"Stajyer sensen Ã§abuk ol, kÃ¶prÃ¼ seni bekliyor.\""},
+  {time:"04:50", subPrefix:"Gece sonu telaÅŸÄ±", intro:"Gece daha tam daÄŸÄ±lmamÄ±ÅŸ. ProjektÃ¶rler gÃ¼verteyi beyaz kesiyor, liman yarÄ± uykuda.", bridgeCall:"NÃ¶betÃ§i zabit merdiven aÄŸzÄ±ndan seslendi: \"GeÃ§ kalmadÄ±n. Belgelerinle yukarÄ± Ã§Ä±k.\""},
+  {time:"07:00", subPrefix:"Liman uÄŸultusu", intro:"Forklift sesleri, vinÃ§ alarmlarÄ± ve martÄ± Ã§Ä±ÄŸlÄ±klarÄ± birbirine karÄ±ÅŸÄ±yor.", bridgeCall:"Ajans gÃ¶revlisi seni gemiye teslim ederken fÄ±sÄ±ldadÄ±: \"Ä°lk gÃ¼nÃ¼n sert geÃ§er, dikkatli ol.\""},
 ];
 let selectedStartPort=START_PORTS[0];
 let selectedStartScenario=START_SCENARIOS[0];
@@ -3564,7 +3542,7 @@ Ne yaparsin?"`,
 
 Bu alarm geldiginde ilk refleksin ne olur?"`,
   choices:[
-  {text:"Hedefi radar vector, CPA/TCPA ve gerçek echo ile teyit eder, guard zone nedenini anlarim",tag:"kritik",effect:{bilgi:17,sayginlik:12,cesaret:3},radarMode:"guard_zone"},
+  {text:"Hedefi radar vector, CPA/TCPA ve gerÃ§ek echo ile teyit eder, guard zone nedenini anlarim",tag:"kritik",effect:{bilgi:17,sayginlik:12,cesaret:3},radarMode:"guard_zone"},
   {text:"Alarmi susturup biraz daha yaklasmasini beklerim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"guard_zone"},
   {text:"Guard zone alarmlarinin cogunun gereksiz oldugunu dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10},radarMode:"guard_zone"}]},
   {id:"s218",gfx:"radar",alert:false,day:"Gun 12",time:"12:45",loc:"Koprustu - Radar Olcumu",sub:"EBL ve VRM ile kerteriz ve mesafe alma",who:"suvari",radarMode:"ebl_vrm",
@@ -3617,7 +3595,7 @@ Ilk yorumun ne olur?"`,
   {text:"Zayiflamayi shadow sector ile iliskilendirir, hedefin aci sektorunu kayda alirim",tag:"kritik",effect:{bilgi:17,sayginlik:12},radarMode:"shadow_sector"},
   {text:"Echo zayifladiysa hedef kucuk ve onemsizdir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"shadow_sector"},
   {text:"Bir an kaybolan hedefi tamamen listeden cikaririm",tag:"korkak",effect:{bilgi:-11,sayginlik:-10},radarMode:"shadow_sector"}]},
-  {id:"s223",gfx:"radar",alert:true,day:"Gun 12",time:"15:05",loc:"Koprustu - Yagmur Hattı",sub:"Yagmur icinde kucuk hedefi ayirt etmek",who:"suvari",radarMode:"rain_small_target",
+  {id:"s223",gfx:"radar",alert:true,day:"Gun 12",time:"15:05",loc:"Koprustu - Yagmur HattÄ±",sub:"Yagmur icinde kucuk hedefi ayirt etmek",who:"suvari",radarMode:"rain_small_target",
   text:`Yagmur hatti ekranin bir tarafini kirletirken zayif bir echo tik diye belirdi.
 
 "Kucuk balikci, pilot botu ya da isiksiz bir servis teknesi bazen yagmur icinde kaynar gider," dedi suvari. "Asil ustalik clutter ile hedefi birbirinden ayirmakta."
@@ -3634,7 +3612,7 @@ Ne yaparsin?"`,
 
 Ilk ne yaparsin?"`,
   choices:[
-  {text:"AIS-radar farkini sensor, ofset ve gerçek echo mantigiyla capraz kontrol ederim",tag:"kritik",effect:{bilgi:18,sayginlik:12},radarMode:"ais_mismatch"},
+  {text:"AIS-radar farkini sensor, ofset ve gerÃ§ek echo mantigiyla capraz kontrol ederim",tag:"kritik",effect:{bilgi:18,sayginlik:12},radarMode:"ais_mismatch"},
   {text:"AIS bilgisi yaziyorsa radardan daha guvenlidir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"ais_mismatch"},
   {text:"Uyusmazlik varsa iki sistemi de bosveririm",tag:"korkak",effect:{bilgi:-11,sayginlik:-10},radarMode:"ais_mismatch"}]},
   {id:"s225",gfx:"radar",alert:true,day:"Gun 12",time:"16:00",loc:"Koprustu - ARPA Stresi",sub:"Target swap ve karisan takip zinciri",who:"z2",radarMode:"target_swap",
@@ -3658,9 +3636,9 @@ En saglam yaklasim hangisi?"`,
   {text:"Parlak olan her izi esit tehdit kabul ederim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"false_echo"},
   {text:"Sahte olabilir diye hepsini onemsiz sayarim",tag:"korkak",effect:{bilgi:-10,sayginlik:-10},radarMode:"false_echo"}]},
   {id:"s227",gfx:"radar",alert:true,day:"Gun 12",time:"16:55",loc:"Koprustu - Yogun Trafik",sub:"Multi-target crossing vardiya baskisi",who:"suvari",radarMode:"multi_crossing",
-  text:`Radar bir anda kalabaliklasti. Bir crossing hedefi CPA daraltiyor, biri sancaga aciliyor, kiçtan gelen baska bir hedef de hizla yaklasiyor.
+  text:`Radar bir anda kalabaliklasti. Bir crossing hedefi CPA daraltiyor, biri sancaga aciliyor, kiÃ§tan gelen baska bir hedef de hizla yaklasiyor.
 
-Suvari sesi sert ama sakindi: "Tek hedefli deniz kolaydir. Asil vardiya; birden fazla tehdidi onceliklendirip hangisinin gercek carpışma riski oldugunu ayirdiginda baslar."
+Suvari sesi sert ama sakindi: "Tek hedefli deniz kolaydir. Asil vardiya; birden fazla tehdidi onceliklendirip hangisinin gercek carpÄ±ÅŸma riski oldugunu ayirdiginda baslar."
 
 Ilk disiplinin ne olur?"`,
   choices:[
@@ -3692,7 +3670,7 @@ Sana gore magnetic compass'in asil degeri nedir?`,
   {id:"s230",gfx:"echo_panel",alert:false,day:"Gun 5",time:"08:10",loc:"Koprustu - Echo Sounder",sub:"Echo sounder ile neyi takip ederiz?",who:"z2",
   text:`2. Zabiti echo sounder trendini acti.
 
-"Bu cihaz sadece anlik rakam vermez; altindaki suyun trendini de soyler. Kanal girisinde, demirde, sığ suda veya beklenmeyen shoal suphelerinde gozun buraya da kayar."
+"Bu cihaz sadece anlik rakam vermez; altindaki suyun trendini de soyler. Kanal girisinde, demirde, sÄ±ÄŸ suda veya beklenmeyen shoal suphelerinde gozun buraya da kayar."
 
 En dogru refleks hangisi?`,
   choices:[
@@ -3712,11 +3690,11 @@ Ne dersin?`,
   {id:"s232",gfx:"autopilot_panel",alert:false,day:"Gun 5",time:"09:35",loc:"Koprustu - Autopilot",sub:"Autopilot ne zaman rahatlik, ne zaman risk?",who:"suvari",
   text:`Suvari autopilot paneline hafifce vurdu.
 
-"Autopilot yardimcidir ama zabitin yerini almaz. Dar kanal, yogun trafik, boğaz manevrasi veya pilotajda moda ve response ayarina dikkat etmezsen rahatlik sandigin sey risk olur."
+"Autopilot yardimcidir ama zabitin yerini almaz. Dar kanal, yogun trafik, boÄŸaz manevrasi veya pilotajda moda ve response ayarina dikkat etmezsen rahatlik sandigin sey risk olur."
 
 En dogru yorum hangisi?`,
   choices:[
-  {text:"Autopilot modunu trafik ve manevraya gore kullanir, gerektiğinde hand steering'e gecmeye hazir olurum",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Autopilot modunu trafik ve manevraya gore kullanir, gerektiÄŸinde hand steering'e gecmeye hazir olurum",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
   {text:"AUTO yaziyorsa her durumda daha emniyetlidir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
   {text:"Autopilot acikken dumen ve rota takibini gevsetirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
   {id:"s233",gfx:"bnwas_panel",alert:false,day:"Gun 5",time:"10:10",loc:"Koprustu - BNWAS",sub:"BNWAS neden var?",who:"z3",
@@ -3742,7 +3720,7 @@ Ilk stajyer refleksi ne olmali?`,
   {id:"s235",gfx:"ais_panel",alert:false,day:"Gun 5",time:"11:25",loc:"Koprustu - AIS Terminali",sub:"AIS ekraninda neyi goruyoruz?",who:"z2",
   text:`2. Zabiti AIS terminalini acip hedef listesini kaydirdi.
 
-"AIS sana isim, rota, hiz, cagrı isareti gibi bir pencere acabilir. Ama bu pencere her zaman tertemiz degildir. Yine de hedef tanimlama ve trafik farkindaligi icin buyuk yardimdir."
+"AIS sana isim, rota, hiz, cagrÄ± isareti gibi bir pencere acabilir. Ama bu pencere her zaman tertemiz degildir. Yine de hedef tanimlama ve trafik farkindaligi icin buyuk yardimdir."
 
 Asil zabit disiplini nedir?`,
   choices:[
@@ -3789,7 +3767,7 @@ En dogru yaklasim hangisi?`,
   {text:"Yerel steering kontrolunu hazirlar, haberlesme zincirini kurar ve komut tekrarlarini netlestiririm",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
   {text:"Sadece yerel dumeni acmanin yetecegini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
   {text:"Kopru halleder diye steering room'dan uzak dururum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
-  {id:"s240",gfx:"deck",alert:true,day:"Gun 7",time:"16:40",loc:"Ana GÃ¼verte - Bunker Tarafi",sub:"Oil spill response ilk dakikalar",who:"z3",
+  {id:"s240",gfx:"deck",alert:true,day:"Gun 7",time:"16:40",loc:"Ana GÃƒÂ¼verte - Bunker Tarafi",sub:"Oil spill response ilk dakikalar",who:"z3",
   text:`Kucuk bir yag sizintisi scupper'a dogru yuruyor. 3. Zabiti sert bir sesle:
 
 "Spill response gecikirse kucuk olay buyur. Kaynak kesilecek, yayilim sinirlanacak, SOPEP dusuncesi devreye girecek."
@@ -3802,7 +3780,7 @@ Ilk ne yaparsin?`,
   {id:"s241",gfx:"cargo",alert:false,day:"Gun 8",time:"00:40",loc:"Ambar Ustu - Cargo Watch",sub:"Gece cargo watch disiplini",who:"z1",
   text:`Gece yuk operasyonu devam ediyor. 1. Zabiti seni cargo watch'a birakti:
 
-"Stajyer cargo watch sadece bakmak degil; draft, liste, trim, vinÃ§ ritmi, ambar ici emniyet ve evrak akisina kulak vermektir."
+"Stajyer cargo watch sadece bakmak degil; draft, liste, trim, vinÃƒÂ§ ritmi, ambar ici emniyet ve evrak akisina kulak vermektir."
 
 Neye odaklanirsin?`,
   choices:[
@@ -3922,7 +3900,7 @@ Dogru yorum disiplini hangisi?`,
   {id:"s248",gfx:"bridge",alert:false,day:"Gun 10",time:"01:15",loc:"Koprustu - COLREG Sorgusu",sub:"Head-on, crossing ve overtaking ayrimi",who:"suvari",
   text:`Suvari radar ve dis gorusu birlikte gosterdi:
 
-"Bir hedef tam karsidan geliyorsa head-on, sancaginda riskli acida belirdiyse crossing, kiÃ§ omuzlugundan yetisiyorsa overtaking dusunursun. Karari dogru koymadan manevra dusuncesi kurulmaz."
+"Bir hedef tam karsidan geliyorsa head-on, sancaginda riskli acida belirdiyse crossing, kiÃƒÂ§ omuzlugundan yetisiyorsa overtaking dusunursun. Karari dogru koymadan manevra dusuncesi kurulmaz."
 
 Hangi ozet en dogru?`,
   choices:[
@@ -4360,46 +4338,10 @@ function getMeteorologyOverlay(sc){
   <text x="28" y="129" fill="#fff4bf" font-size="8" font-family="monospace">${f.label}</text>`;
 }
 
-function getPremiumPanelOverlay(gfx, sc){
-  if(!gfx) return '';
-  const panelGfx = new Set(['radar','compass','ecdis_panel','ais_panel','gyro_panel','magnetic_panel','echo_panel','speedlog_panel','autopilot_panel','bnwas_panel','gmdss_panel','engine','engine_fault','meteo_panel']);
-  if(!panelGfx.has(gfx)) return '';
-  const title = (sc?.sub || gfx).toUpperCase().replace(/[^A-Z0-9 /.-]/g,'').slice(0,34);
-  return `<rect x="8" y="8" width="464" height="129" rx="10" class="premium-panel"/>
-  <circle cx="20" cy="20" r="2" fill="#5dbf8a" class="blink"/><circle cx="30" cy="20" r="2" fill="#d4a017"/><circle cx="40" cy="20" r="2" fill="#c97070"/>
-  <text x="56" y="22" class="premium-label">${title}</text>
-  <text x="390" y="22" class="premium-label">LIVE</text>`;
-}
-
-function getCriticalSceneOverlay(sc){
-  if(!sc) return '';
-  const key = sc.id || '';
-  if(['kriz05','kriz05b','kriz16'].includes(key)){
-    return `<rect width="480" height="145" fill="url(#stormVignette)" opacity=".18"/>
-    <defs><radialGradient id="stormVignette"><stop offset="45%" stop-color="rgba(255,255,255,0)"/><stop offset="100%" stop-color="rgba(0,0,0,.9)"/></radialGradient></defs>
-    <text x="18" y="128" class="premium-label">HEAVY WEATHER CONDITION</text>`;
-  }
-  if(['kriz10','kriz11','kriz12'].includes(key)){
-    return `<rect width="480" height="145" fill="rgba(0,0,0,.14)"/><text x="18" y="128" class="premium-label">HIGH RISK TRANSIT · SECURITY STATION</text>`;
-  }
-  if(['s139','s181'].includes(key)){
-    return `<rect width="480" height="145" fill="rgba(11,18,28,.12)"/><text x="18" y="128" class="premium-label">ANCHOR WATCH · POSITION UNDER REVIEW</text>`;
-  }
-  if(key.startsWith('s8') && /psc|deficiency|detention/i.test(`${sc.sub||''} ${sc.loc||''}`)){
-    return `<rect width="480" height="145" fill="rgba(60,16,16,.12)"/><text x="18" y="128" class="premium-label">PSC INSPECTION · DOCUMENT & SAFETY REVIEW</text>`;
-  }
-  if(key==='s_birthday_surprise'){
-    return `<rect width="480" height="145" fill="rgba(201,149,42,.07)"/><text x="18" y="128" class="premium-label">CREW MOMENT · QUIET CELEBRATION</text>`;
-  }
-  return '';
-}
-
 function getSceneOverlay(gfx,sc){
   let extra = getSceneFleetOverlay(gfx);
-  extra += getPremiumPanelOverlay(gfx, sc);
   extra += getChartWorkOverlay(sc);
   extra += getMeteorologyOverlay(sc);
-  extra += getCriticalSceneOverlay(sc);
   if((gfx==='compass'||gfx==='bridge') && sc && (sc.ecdisPlanKey || sc.sub?.toLowerCase().includes('ecdis') || sc.sub?.toLowerCase().includes('seyir plani') || sc.loc?.toLowerCase().includes('ecdis'))){
     extra += getEcdisRouteOverlay(sc);
   }
@@ -4408,7 +4350,7 @@ function getSceneOverlay(gfx,sc){
   }
   return extra;
 }
-const tagL={cesur:"Cesur",akilli:"Akıllı",itaatkar:"İtaatkar",korkak:"Korkak",sosyal:"Sosyal",kritik:"KRİTİK"};
+const tagL={cesur:"Cesur",akilli:"AkÄ±llÄ±",itaatkar:"Ä°taatkar",korkak:"Korkak",sosyal:"Sosyal",kritik:"KRÄ°TÄ°K"};
 let mood=58;
 let delayedConsequences=[];
 let playerFlags={securityBreach:0,nearMiss:0,sextantGood:0,lowMoodSpiral:0};
@@ -4489,9 +4431,9 @@ function scheduleAdvancedConsequences(sc,c2){
   }
 }
 
-// ===== GİRİŞ EKRANI =====
+// ===== GÄ°RÄ°Å EKRANI =====
 function buildIntro(){
-  // Yıl seçimi
+  // YÄ±l seÃ§imi
   const ys=document.getElementById('yearsel');
   YEARS.forEach(y=>{
     const d=document.createElement('div');
@@ -4500,7 +4442,7 @@ function buildIntro(){
     d.onclick=()=>{selYear=y.year;document.querySelectorAll('.ysel').forEach(x=>x.classList.remove('active'));d.classList.add('active');};
     ys.appendChild(d);
   });
-  // Gemi türü
+  // Gemi tÃ¼rÃ¼
   const st=document.getElementById('shiptype');
   STYPES.forEach(t=>{
     const konts=KONTRAT_DEFS[t.key]||[];
@@ -4522,7 +4464,7 @@ function updateKontrat(){
   konts.forEach((k,i)=>{
     const d=document.createElement('div');
     d.className='kont-card'+(i===selKontrat?' active':'');
-    d.innerHTML=`<div class="kc-ay">${k.ay}+1</div><div class="kc-lbl">ay seyir + ${k.izin} ay izin</div><div class="kc-ucret">Ücret: ${k.ucret}</div><div class="kc-izin">✓ ${k.bonus}</div>`;
+    d.innerHTML=`<div class="kc-ay">${k.ay}+1</div><div class="kc-lbl">ay seyir + ${k.izin} ay izin</div><div class="kc-ucret">Ãœcret: ${k.ucret}</div><div class="kc-izin">âœ“ ${k.bonus}</div>`;
     d.onclick=()=>{selKontrat=i;document.querySelectorAll('.kont-card').forEach(x=>x.classList.remove('active'));d.classList.add('active');};
     c.appendChild(d);
   });
@@ -4536,7 +4478,7 @@ function updateSugs(){
     document.getElementById('shipnameinp').value=names[0]||'';
 }
 
-// ===== STAT YÖNETİMİ =====
+// ===== STAT YÃ–NETÄ°MÄ° =====
 function clamp(v){return Math.min(100,Math.max(0,Math.round(v)));}
 
 function tuneDelta(key,current,delta){
@@ -4562,7 +4504,7 @@ function getSceneDomain(sc){
   const blob=`${sc.gfx||''} ${sc.loc||''} ${sc.sub||''} ${sc.who||''}`.toLowerCase();
   if(/engine|makine|carkci|bas2|yagci/.test(blob)) return 'engine';
   if(/solas|marpol|stcw|loadline|bunker|bunkers|afs|atina|montreux|charter|isps|gmdss|compliance/.test(blob)) return 'compliance';
-  if(/bridge|radar|compass|bogaz|tss|köprü|kopru|vhf|night/.test(blob)) return 'bridge';
+  if(/bridge|radar|compass|bogaz|tss|kÃ¶prÃ¼|kopru|vhf|night/.test(blob)) return 'bridge';
   return 'deck';
 }
 
@@ -4663,12 +4605,12 @@ function applyEffect(e,opts={}){
 }
 
 function updateStats(old,opts={}){
-  // Tehlike bölgesi uyarısı
+  // Tehlike bÃ¶lgesi uyarÄ±sÄ±
   const dangerStats = [
     {key:'cesaret', elId:'s-cesaret', val:stats.cesaret, name:'Cesaret'},
     {key:'bilgi',   elId:'s-bilgi',   val:stats.bilgi,   name:'Bilgi'},
-    {key:'sayginlik',elId:'s-sayginlik',val:stats.sayginlik,name:'Saygınlık'},
-    {key:'dinclik', elId:'s-yorgunluk',val:stats.dinclik, name:'Dinçlik'},
+    {key:'sayginlik',elId:'s-sayginlik',val:stats.sayginlik,name:'SaygÄ±nlÄ±k'},
+    {key:'dinclik', elId:'s-yorgunluk',val:stats.dinclik, name:'DinÃ§lik'},
   ];
   dangerStats.forEach(d=>{
     const el = document.getElementById(d.elId);
@@ -4689,7 +4631,7 @@ function updateStats(old,opts={}){
     document.getElementById('s-'+k).style.color=v>=70?'#5dbf8a':v>=40?'#d4a017':'#c97070';
     if(old&&old[k]!==stats[k]){el.classList.add('sf');setTimeout(()=>el.classList.remove('sf'),400);}
   });
-  // Dinçlik (ters — yüksek = iyi)
+  // DinÃ§lik (ters â€” yÃ¼ksek = iyi)
   const dv=Math.round(stats.dinclik);
   document.getElementById('s-yorgunluk').textContent=dv;
   document.getElementById('b-yorgunluk').style.width=dv+'%';
@@ -4697,17 +4639,17 @@ function updateStats(old,opts={}){
   document.getElementById('s-yorgunluk').style.color=dv>=70?'#5dbf8a':dv>=40?'#d4a017':'#c97070';
 
   const s=stats.sayginlik;
-  document.getElementById('repstars').textContent=s>=80?'⭐⭐⭐⭐⭐':s>=60?'⭐⭐⭐⭐':s>=40?'⭐⭐⭐':s>=20?'⭐⭐':'⭐';
+  document.getElementById('repstars').textContent=s>=80?'â­â­â­â­â­':s>=60?'â­â­â­â­':s>=40?'â­â­â­':s>=20?'â­â­':'â­';
 
   // Kontrat bar
   contractDays++;
   const pct=Math.round((contractDays/contractTotal)*100);
-  document.getElementById('contract-days').textContent=`${contractDays} / ${contractTotal} GÜN`;
+  document.getElementById('contract-days').textContent=`${contractDays} / ${contractTotal} GÃœN`;
   document.getElementById('contract-fill').style.width=Math.min(pct,100)+'%';
 }
 
 function checkCrisis(){
-  // Herhangi bir stat 0'a düşünce oyun biter
+  // Herhangi bir stat 0'a dÃ¼ÅŸÃ¼nce oyun biter
   if(stats.cesaret<=0)  return 'cesaret_0';
   if(stats.bilgi<=0)    return 'bilgi_0';
   if(stats.sayginlik<=0)return 'sayginlik_0';
@@ -4726,7 +4668,7 @@ function showNotif(icon,title,body){
 
 // ===== RASTGELE SENARYO SIRASI =====
 function buildSceneQueue(pool, totalDays){
-  // Zorunlu sahneler: s01 (başlangıç), FINAL (son)
+  // Zorunlu sahneler: s01 (baÅŸlangÄ±Ã§), FINAL (son)
   const mandatory_start = pool.filter(s=>s.id==='s01');
   const final = pool.filter(s=>s.id==='FINAL');
   const crisis_scenes = pool.filter(s=>s.id.startsWith('kriz'));
@@ -4734,13 +4676,13 @@ function buildSceneQueue(pool, totalDays){
 
   // Kriz sahnelerini grupla
   const crisisGroups=[
-    ['kriz01','kriz02','kriz03'], // makine arızası
-    ['kriz04','kriz05','kriz05b','kriz06'], // fırtına
-    ['kriz07','kriz08','kriz09'], // boğaz
+    ['kriz01','kriz02','kriz03'], // makine arÄ±zasÄ±
+    ['kriz04','kriz05','kriz05b','kriz06'], // fÄ±rtÄ±na
+    ['kriz07','kriz08','kriz09'], // boÄŸaz
     ['kriz10','kriz11','kriz12'], // korsan
   ];
 
-  // Rastgele 2-3 kriz grubu seç
+  // Rastgele 2-3 kriz grubu seÃ§
   const shuffledGroups=[...crisisGroups].sort(()=>Math.random()-0.5);
   const selectedCrisisGroups=shuffledGroups.slice(0,Math.min(2+Math.floor(Math.random()*2),shuffledGroups.length));
   const selectedCrisis=[];
@@ -4751,12 +4693,12 @@ function buildSceneQueue(pool, totalDays){
     });
   });
 
-  // Düzenli sahneleri karıştır ve totalDays - (başlangıç+kriz+final) kadar seç
+  // DÃ¼zenli sahneleri karÄ±ÅŸtÄ±r ve totalDays - (baÅŸlangÄ±Ã§+kriz+final) kadar seÃ§
   const shuffledRegular=[...regular].sort(()=>Math.random()-0.5);
   const needed=Math.max(5, totalDays - selectedCrisis.length - 2 - EXTRA_ROUTE_SCENES.length - EXTRA_EQUIPMENT_SCENES.length);
   const selectedRegular=shuffledRegular.slice(0,needed);
 
-  // Sıralamayı oluştur: başlangıç + (karışık regular + kriz) + final
+  // SÄ±ralamayÄ± oluÅŸtur: baÅŸlangÄ±Ã§ + (karÄ±ÅŸÄ±k regular + kriz) + final
   const middle=[...selectedRegular,...selectedCrisis].sort(()=>Math.random()-0.5);
 
   return [...mandatory_start, ...middle, ...EXTRA_ROUTE_SCENES, ...EXTRA_EQUIPMENT_SCENES, ...final];
@@ -4813,7 +4755,7 @@ function renderScene(idx){
   const delayedCrisis=resolveDelayedConsequences(sc);
   if(delayedCrisis){showCrisis(delayedCrisis);return;}
   if(sc.id==='FINAL'&&currentIdx<sceneQueue.length-1){
-    // Henüz son değilse atla, yoksa göster
+    // HenÃ¼z son deÄŸilse atla, yoksa gÃ¶ster
   }
 
   const c=CREW[sc.who]||CREW.anlatici;
@@ -4826,9 +4768,9 @@ function renderScene(idx){
   document.getElementById('spktl').textContent=c.title;
   document.getElementById('text').textContent=typeof sc.text==='function'?sc.text(pn,sn):sc.text;
   document.getElementById('charname').textContent=pn;
-  document.getElementById('charrole').textContent='GÜV. STAJYERİ · '+sc.day.toUpperCase();
+  document.getElementById('charrole').textContent='GÃœV. STAJYERÄ° Â· '+sc.day.toUpperCase();
   const stObj=STYPES.find(x=>x.key===selType);
-  document.getElementById('shipinfo').textContent=sn+' · '+stObj.nm+' · '+selYear;
+  document.getElementById('shipinfo').textContent=sn+' Â· '+stObj.nm+' Â· '+selYear;
   document.getElementById('contract-type').textContent=stObj.nm+' '+contractTotal+'+'+(KONTRAT_DEFS[selType]?.[selKontrat]?.izin||1)+'ay';
 
   const pct=Math.round((currentIdx/sceneQueue.length)*100);
@@ -4836,7 +4778,7 @@ function renderScene(idx){
   document.getElementById('chaplbl').textContent='SAHNE '+(currentIdx+1)+'/'+sceneQueue.length;
 
   const ab=document.getElementById('alert-banner');
-  if(sc.alert){ab.style.display='block';ab.textContent='⚠ ACİL DURUM — '+sc.sub;ab.style.color='#ffcccc';}
+  if(sc.alert){ab.style.display='block';ab.textContent='âš  ACÄ°L DURUM â€” '+sc.sub;ab.style.color='#ffcccc';}
   else ab.style.display='none';
 
   const svg=document.getElementById('gfx-svg');
@@ -4891,7 +4833,7 @@ function renderScene(idx){
   });
 }
 
-// ===== KRİZ =====
+// ===== KRÄ°Z =====
 function showCrisis(key){
   stopAllMusic();sfxFail();
   document.getElementById('game').style.display='none';
@@ -4909,43 +4851,42 @@ function showEnd(){
   stopAllMusic();
   document.getElementById('game').style.display='none';
   document.getElementById('endscr').style.display='flex';
-  setTimeout(renderCareerSummary, 60);
 
   const avg=(stats.cesaret+stats.bilgi+stats.sayginlik)/3;
   const cesurC=choicesMade.filter(c=>c.tag==='cesur').length;
   const kritikC=choicesMade.filter(c=>c.tag==='kritik').length;
   const stObj=STYPES.find(x=>x.key===selType);
-  const kont=KONTRAT_DEFS[selType]?.[selKontrat]||{ay:6,bonus:'—'};
+  const kont=KONTRAT_DEFS[selType]?.[selKontrat]||{ay:6,bonus:'â€”'};
 
   let emoji,title,flavor,desc,verdict;
   if(kritikC>=2&&stats.cesaret>=60&&avg>=60){
-    emoji='🛡️';title='Krizlerin Denizcisi';
-    flavor=`"Bu stajyer dört krizde donmadı." — Süvari, ${selYear}`;
-    desc=`${pn}, ${contractTotal} aylık ${stObj.nm} kontratında makine arızası, boğazda sürüklenme ve korsan alarmında doğru kararlar aldı.`;
-    verdict=`<strong>Staj Raporu (${selYear}):</strong> Kriz yönetimi olağanüstü. ${kont.bonus} kazanıldı. İleri kademe eğitim tavsiye edilir.`;
+    emoji='ğŸ›¡ï¸';title='Krizlerin Denizcisi';
+    flavor=`"Bu stajyer dÃ¶rt krizde donmadÄ±." â€” SÃ¼vari, ${selYear}`;
+    desc=`${pn}, ${contractTotal} aylÄ±k ${stObj.nm} kontratÄ±nda makine arÄ±zasÄ±, boÄŸazda sÃ¼rÃ¼klenme ve korsan alarmÄ±nda doÄŸru kararlar aldÄ±.`;
+    verdict=`<strong>Staj Raporu (${selYear}):</strong> Kriz yÃ¶netimi olaÄŸanÃ¼stÃ¼. ${kont.bonus} kazanÄ±ldÄ±. Ä°leri kademe eÄŸitim tavsiye edilir.`;
     setTimeout(sfxSuccess,300);
   }else if(stats.sayginlik>=70&&avg>=65){
-    emoji='🏆';title='Geleceğin Süvarisi';
-    flavor=`"Bu stajyer 10 yıl içinde köprüye çıkar." — Süvari, ${selYear}`;
-    desc=`${pn}, ${sn}'da kendini kanıtladı. Mürettebat seninle gurur duyuyor.`;
-    verdict=`<strong>Staj Raporu (${selYear}):</strong> Teknik bilgi üstün. Mürettebat uyumu mükemmel. ${kont.bonus} kazanıldı.`;
+    emoji='ğŸ†';title='GeleceÄŸin SÃ¼varisi';
+    flavor=`"Bu stajyer 10 yÄ±l iÃ§inde kÃ¶prÃ¼ye Ã§Ä±kar." â€” SÃ¼vari, ${selYear}`;
+    desc=`${pn}, ${sn}'da kendini kanÄ±tladÄ±. MÃ¼rettebat seninle gurur duyuyor.`;
+    verdict=`<strong>Staj Raporu (${selYear}):</strong> Teknik bilgi Ã¼stÃ¼n. MÃ¼rettebat uyumu mÃ¼kemmel. ${kont.bonus} kazanÄ±ldÄ±.`;
     setTimeout(sfxSuccess,300);
   }else if(stats.bilgi>=65&&avg>=55){
-    emoji='🧭';title='Yetenekli Denizci';
-    flavor=`"Teknik kafası güçlü." — 1. Zabiti`;
-    desc=`${pn} bilgi konusunda üstün. Saha gelişiyor.`;
-    verdict=`<strong>Staj Raporu (${selYear}):</strong> Teorik bilgi kuvvetli. ${kont.bonus} kazanıldı.`;
+    emoji='ğŸ§­';title='Yetenekli Denizci';
+    flavor=`"Teknik kafasÄ± gÃ¼Ã§lÃ¼." â€” 1. Zabiti`;
+    desc=`${pn} bilgi konusunda Ã¼stÃ¼n. Saha geliÅŸiyor.`;
+    verdict=`<strong>Staj Raporu (${selYear}):</strong> Teorik bilgi kuvvetli. ${kont.bonus} kazanÄ±ldÄ±.`;
     setTimeout(sfxSuccess,300);
   }else if(cesurC>=5&&stats.cesaret>=60){
-    emoji='⚓';title='Cesur Güverte Adamı';
-    flavor=`"Korkmuyor." — Lostromo`;
-    desc=`${pn} öne çıktı, risk üstlendi.`;
-    verdict=`<strong>Staj Raporu (${selYear}):</strong> Liderlik potansiyeli yüksek. Teknik bilgi geliştirilmeli.`;
+    emoji='âš“';title='Cesur GÃ¼verte AdamÄ±';
+    flavor=`"Korkmuyor." â€” Lostromo`;
+    desc=`${pn} Ã¶ne Ã§Ä±ktÄ±, risk Ã¼stlendi.`;
+    verdict=`<strong>Staj Raporu (${selYear}):</strong> Liderlik potansiyeli yÃ¼ksek. Teknik bilgi geliÅŸtirilmeli.`;
   }else{
-    emoji='📖';title='Öğrenme Yolculuğu';
-    flavor=`"Her büyük süvari ilk seferinde kaybolmuştur."`;
-    desc=`${pn} zor bir ilk seferden geçti. Ama bitirmedi.`;
-    verdict=`<strong>Staj Raporu (${selYear}):</strong> Potansiyel mevcut. ${kont.ay}+${kont.izin} aylık kontrat tamamlandı.`;
+    emoji='ğŸ“–';title='Ã–ÄŸrenme YolculuÄŸu';
+    flavor=`"Her bÃ¼yÃ¼k sÃ¼vari ilk seferinde kaybolmuÅŸtur."`;
+    desc=`${pn} zor bir ilk seferden geÃ§ti. Ama bitirmedi.`;
+    verdict=`<strong>Staj Raporu (${selYear}):</strong> Potansiyel mevcut. ${kont.ay}+${kont.izin} aylÄ±k kontrat tamamlandÄ±.`;
   }
 
   const moodLabel=mood>=75?'Saglam durdu':mood>=50?'Dalgalandi ama tuttu':mood>=30?'Zorlandi':'Icine kapandi';
@@ -4960,52 +4901,12 @@ function showEnd(){
   document.getElementById('endv').innerHTML=verdict;
   document.getElementById('endgrid').innerHTML=
     '<div class="ecard"><div class="ecv" style="color:#6fa8dc;">'+Math.round(stats.cesaret)+'</div><div class="ecl">CESARET</div></div>'+
-    '<div class="ecard"><div class="ecv" style="color:#d4a017;">'+Math.round(stats.bilgi)+'</div><div class="ecl">BİLGİ</div></div>'+
+    '<div class="ecard"><div class="ecv" style="color:#d4a017;">'+Math.round(stats.bilgi)+'</div><div class="ecl">BÄ°LGÄ°</div></div>'+
     '<div class="ecard"><div class="ecv" style="color:#5dbf8a;">'+Math.round(stats.sayginlik)+'</div><div class="ecl">SAYGINLIK</div></div>'+
-    '<div class="ecard"><div class="ecv" style="color:#5dbf8a;">'+Math.round(stats.dinclik)+'</div><div class="ecl">DİNÇLİK</div></div>';
+    '<div class="ecard"><div class="ecv" style="color:#5dbf8a;">'+Math.round(stats.dinclik)+'</div><div class="ecl">DÄ°NÃ‡LÄ°K</div></div>';
 }
 
-// ===== BAŞLAT =====
-function renderCareerSummary(){
-  const badgesEl = document.getElementById('career-badges');
-  const metaEl = document.getElementById('career-meta');
-  if(!badgesEl || !metaEl) return;
-  const badges = [];
-  if(playerFlags.securityBreach===0) badges.push('ISPS Temiz Sicil');
-  if(playerFlags.nearMiss===0) badges.push('Sessiz Emniyet');
-  if(playerFlags.sextantGood>0) badges.push('Sextant Eli');
-  if(stats.sayginlik>=70) badges.push('Ekip Guveni');
-  if(stats.bilgi>=70) badges.push('Seyir Disiplini');
-  if(stats.cesaret>=70) badges.push('Sogukkanli Vardiya');
-  if(stats.dinclik>=65) badges.push('Dayanikli Tempo');
-  if(choicesMade.filter(c=>c.tag==='kritik').length>=6) badges.push('Karar Kalitesi');
-  if(!badges.length) badges.push('Ilk Kontrat Tamamlandi');
-  badgesEl.innerHTML = badges.map(b=>`<span class="career-badge">${b}</span>`).join('');
-
-  const strongest = [
-    ['Cesaret', stats.cesaret],
-    ['Bilgi', stats.bilgi],
-    ['Sayginlik', stats.sayginlik],
-    ['Dinclik', stats.dinclik]
-  ].sort((a,b)=>b[1]-a[1])[0][0];
-  const branch = stats.bilgi>=stats.cesaret && stats.bilgi>=stats.sayginlik ? 'Kopruustu / planlama' :
-    stats.sayginlik>=stats.cesaret ? 'Ekip koordinasyonu' : 'Kriz ve saha refleksi';
-  const trusted = Object.entries(crewTrust||{}).sort((a,b)=>(b[1]||0)-(a[1]||0)).slice(0,2).map(([k])=>CREW_DEFS[k]?.name).filter(Boolean).join(', ') || 'Ekip seni tanimaya basladi';
-  metaEl.innerHTML = `<strong>En guclu taraf:</strong> ${strongest}<br><strong>YatkÄ±n oldugu hat:</strong> ${branch}<br><strong>En yakin iliskiler:</strong> ${trusted}`;
-}
-
-function showCinematicIntro(){
-  const wrap = document.getElementById('intro-cinematic');
-  if(!wrap) return;
-  const stObj = STYPES.find(x=>x.key===selType) || STYPES[0];
-  const weather = selectedStartScenario?.subPrefix || 'Sessiz sabah';
-  document.getElementById('intro-cinematic-port').textContent = selectedStartPort?.name || 'Ilk Liman';
-  document.getElementById('intro-cinematic-meta').textContent = `${selYear} · ${stObj.nm} · ${selectedStartScenario?.time||'06:00'}`;
-  document.getElementById('intro-cinematic-weather').innerHTML = `${weather}<br>${sn} · ${COMPANY_THEMES[selType]?.name || 'Gemi Sirketi'}<br>Ilk kontrat gunu basliyor.`;
-  wrap.classList.add('show');
-  setTimeout(()=>wrap.classList.remove('show'), 2400);
-}
-
+// ===== BAÅLAT =====
 function beginGame(){
   const ni=document.getElementById('nameinp').value.trim();
   const si=document.getElementById('shipnameinp').value.trim();
@@ -5016,7 +4917,7 @@ function beginGame(){
   contractTotal=(kont.ay+kont.izin)*4; // Her ay ~4 sahne
   contractDays=0;
 
-  // Kontrat uzunluğuna göre sahne pool'u oluştur
+  // Kontrat uzunluÄŸuna gÃ¶re sahne pool'u oluÅŸtur
   selectedStartPort=START_PORTS[Math.floor(Math.random()*START_PORTS.length)];
   selectedStartScenario=START_SCENARIOS[Math.floor(Math.random()*START_SCENARIOS.length)];
   const pool=buildScenePool(pn,sn,selYear,selType,selectedStartPort,selectedStartScenario);
@@ -5050,16 +4951,13 @@ function beginGame(){
 
   document.getElementById('intro').style.display='none';
   const g=document.getElementById('game');g.style.display='flex';g.style.flexDirection='column';
-  showCinematicIntro();
   setTimeout(()=>{if(window._drawClock)window._drawClock();},50);
   setTimeout(()=>{if(window._drawClock)window._drawClock();},300);
   setTimeout(()=>{if(window._drawClock)window._drawClock();},600);
   updateStats({});
   document.getElementById('contract-fill').style.width='0%';
   document.getElementById('tb-photos-count').textContent='0';
-  const avatar = document.getElementById('avatar');
-  if(avatar) avatar.textContent = getPlayerPortrait();
-  document.getElementById('contract-days').textContent=`0 / ${contractTotal} GÜN`;
+  document.getElementById('contract-days').textContent=`0 / ${contractTotal} GÃœN`;
   renderScene(0);
   setTimeout(()=>{const cv=document.getElementById('clock-canvas');if(cv){const ev=new Event('resize');window.dispatchEvent(ev);}},100);
 }
@@ -5069,51 +4967,50 @@ function restartGame(){
   document.getElementById('crisis').style.display='none';
   document.getElementById('endscr').style.display='none';
   document.getElementById('game').style.display='none';
-  const cine=document.getElementById('intro-cinematic'); if(cine) cine.classList.remove('show');
   document.getElementById('intro').style.display='flex';
 }
 
 document.getElementById('nameinp').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('shipnameinp').focus();});
 document.getElementById('shipnameinp').addEventListener('keydown',e=>{if(e.key==='Enter')beginGame();});
 
-// ===== MÜRETTEBAT İLİŞKİ SİSTEMİ =====
+// ===== MÃœRETTEBAT Ä°LÄ°ÅKÄ° SÄ°STEMÄ° =====
 const CREW_DEFS = {
-  lostromo: {name:"Lostromo", icon:"🪢", title:"Güverte Ustası", trust:50,
-    secrets:["Denizde 22 yıl. İlk gemisi İzmir'den İskenderiye hattıydı.","Oğlu da denizcilik okulu okuyor — bilmiyor bunu.","Ellerindeki yara izi bir halat kazasından: 1998, Kızıldeniz."],
-    tips:["Güverte kontrol listesini hiç atlamama","Halat bağlama tekniklerini sormaya devam et","Sabah turuna zamanında çık"]},
-  suvari: {name:"Kaptan Serra", icon:"🎖️", title:"Süvari", trust:40,
-    secrets:["Emekliliğine 3 yıl kaldı. Bilmiyor bunu henüz.","Her seferin başında gemisine 5 dakika yalnız bakıyor.","İki dil biliyor — ama İngilizce konuşmayı sevmiyor."],
-    tips:["Zor sorulara dürüst cevap ver","Köprüde konuşmak için izin iste","Sorduğunda görüşünü söyle"]},
-  z1: {name:"1. Zabit Ece", icon:"🧭", title:"Güverte Ops.", trust:45,
-    secrets:["Hukuk okumak istiyordu. Ailesi denizci çıkardı onu.","Her sabah 04:45'te kalkar — kimse bilmez.","Raporlarda her virgülü kontrol eder."],
-    tips:["Belgeleri eksiksiz tut","Hata yaptıysan hemen bildir","Görev devrine zamanında hazır ol"]},
-  z2: {name:"2. Zabit Derya", icon:"🗺️", title:"Seyir Subayı", trust:40,
-    secrets:["Yıldızları tanıyor — eski usul sextant hâlâ masasında.","Mühendislik fonu var, seyire geçiş hikayesi ilginç.","Gece nöbetinde caz müziği dinliyor — sessizce."],
-    tips:["ECDIS notlarını düzenli tut","Radar olaylarını logla","Nöbet devrine eksiksiz brifinle"]},
-  z3: {name:"3. Zabit Selin", icon:"🚒", title:"Emniyet Subayı", trust:45,
-    secrets:["Her tatbikat öncesi 10 dakika hazırlık yapıyor — görmeden.","SOLAS kitabını ezberden biliyor.","İlk gemisinde gerçek yangın yaşadı."],
-    tips:["Muster listeni ezberle","Tatbikatlara ciddi katıl","Emniyet raporlarını atlatma"]},
-  carkci: {name:"Baş Mühendis Nermin", icon:"⚙️", title:"Çarkçıbaşı", trust:35,
-    secrets:["Bu gemide 11 yıldır — şirketi tanıdığından beter tanıyor.","Makine dairesini kapalı gözle dolaşabilir.","İki çocuğunun fotoğrafı kontrol panelinde."],
-    tips:["Makine dairesine meraklı in","Teknik soruları çekinmeden sor","Arıza loglarını takip et"]},
-  bas2: {name:"2. Mühendis Aylin", icon:"🔧", title:"Makine 2. Amiri", trust:40,
-    secrets:["Gece nöbetlerinde şiir yazıyor — kimse bilmiyor.","Jeneratör arızasını bir kez tek başına çözdü — 4 saatte.","İstanbul Teknik mezunu, master yarıda bıraktı."],
-    tips:["Makine loglarını birlikte incele","Pompa sistemlerini öğren","Alarm gelince hemen bildir"]},
-  lostromo2: {name:"Silici Ramazan", icon:"🧹", title:"Güverte Temizlik", trust:50,
-    secrets:["14 yıl aynı gemide. Şirket birkaç kez transfer teklif etti, hep reddetti.","Güverte şemasını yönetimden iyi biliyor.","Her sabah 05:30'da güvertede — hiç gecikmeden."],
-    tips:["Güverte temizliğine katıl","Kimyasal kullanımını öğren","Ramazan'ın gözlemlerine kulak ver"]},
-  yagci: {name:"Yağcı Mehmet Ali", icon:"🛢️", title:"Makine Yağlama", trust:45,
-    secrets:["Yağ analizini kendi kendine öğrendi — kurs almadı.","Ana makineyi 'dinleyerek' sorun tespit edebiliyor.","Üç gemide çalıştı, üçünü de sever ama bu en iyisi der."],
-    tips:["Yağ numune analizini birlikte yap","Titreşim değişimlerine dikkat et","Yağcı'nın günlük kontrollerini izle"]},
-  asci: {name:"Aşçı Mehmet Usta", icon:"🍳", title:"Yemekhane", trust:55,
-    secrets:["25 yıldır gemide. İlk gemisi yelkenliydi.","Sabah 04:00'te kalkar, kahvaltıyı hazırlar.","Ekibin moralini menüyle okur — kötü gün geçirmişlerse et yapar."],
-    tips:["Yemeğe zamanında gel","Teşekkür etmeyi unutma","Ara sıra yardım teklif et"]},
-  hasan: {name:"Tayfa Hasan", icon:"👷", title:"Deneyimli Tayfa", trust:50,
-    secrets:["18 yıl denizde, hiç zam istemedi — şirket her zaman verdi.","İki çocuğu var, ikisi de denizci değil — sevinç mi üzüntü mü bilmiyor.","Fırtınada en sakin o olur."],
-    tips:["Hasan'ın el işaretlerini öğren","Zor anlarda yanında dur","Gözlemlerini paylaş"]},
-  musa: {name:"Tayfa Musa", icon:"👷", title:"Genç Tayfa", trust:55,
-    secrets:["İlk gemisi bu. Sen de ilk stajyersin — benzer his.","Evleneceği kız denizden korkuyor.","Gece vardiyasında yıldız sayıyor."],
-    tips:["Musa ile deneyim paylaş","Zor anlarda yanında dur","Birlikte öğrenin"]},
+  lostromo: {name:"Lostromo", icon:"ğŸª¢", title:"GÃ¼verte UstasÄ±", trust:50,
+    secrets:["Denizde 22 yÄ±l. Ä°lk gemisi Ä°zmir'den Ä°skenderiye hattÄ±ydÄ±.","OÄŸlu da denizcilik okulu okuyor â€” bilmiyor bunu.","Ellerindeki yara izi bir halat kazasÄ±ndan: 1998, KÄ±zÄ±ldeniz."],
+    tips:["GÃ¼verte kontrol listesini hiÃ§ atlamama","Halat baÄŸlama tekniklerini sormaya devam et","Sabah turuna zamanÄ±nda Ã§Ä±k"]},
+  suvari: {name:"Kaptan Serra", icon:"ğŸ–ï¸", title:"SÃ¼vari", trust:40,
+    secrets:["EmekliliÄŸine 3 yÄ±l kaldÄ±. Bilmiyor bunu henÃ¼z.","Her seferin baÅŸÄ±nda gemisine 5 dakika yalnÄ±z bakÄ±yor.","Ä°ki dil biliyor â€” ama Ä°ngilizce konuÅŸmayÄ± sevmiyor."],
+    tips:["Zor sorulara dÃ¼rÃ¼st cevap ver","KÃ¶prÃ¼de konuÅŸmak iÃ§in izin iste","SorduÄŸunda gÃ¶rÃ¼ÅŸÃ¼nÃ¼ sÃ¶yle"]},
+  z1: {name:"1. Zabit Ece", icon:"ğŸ§­", title:"GÃ¼verte Ops.", trust:45,
+    secrets:["Hukuk okumak istiyordu. Ailesi denizci Ã§Ä±kardÄ± onu.","Her sabah 04:45'te kalkar â€” kimse bilmez.","Raporlarda her virgÃ¼lÃ¼ kontrol eder."],
+    tips:["Belgeleri eksiksiz tut","Hata yaptÄ±ysan hemen bildir","GÃ¶rev devrine zamanÄ±nda hazÄ±r ol"]},
+  z2: {name:"2. Zabit Derya", icon:"ğŸ—ºï¸", title:"Seyir SubayÄ±", trust:40,
+    secrets:["YÄ±ldÄ±zlarÄ± tanÄ±yor â€” eski usul sextant hÃ¢lÃ¢ masasÄ±nda.","MÃ¼hendislik fonu var, seyire geÃ§iÅŸ hikayesi ilginÃ§.","Gece nÃ¶betinde caz mÃ¼ziÄŸi dinliyor â€” sessizce."],
+    tips:["ECDIS notlarÄ±nÄ± dÃ¼zenli tut","Radar olaylarÄ±nÄ± logla","NÃ¶bet devrine eksiksiz brifinle"]},
+  z3: {name:"3. Zabit Selin", icon:"ğŸš’", title:"Emniyet SubayÄ±", trust:45,
+    secrets:["Her tatbikat Ã¶ncesi 10 dakika hazÄ±rlÄ±k yapÄ±yor â€” gÃ¶rmeden.","SOLAS kitabÄ±nÄ± ezberden biliyor.","Ä°lk gemisinde gerÃ§ek yangÄ±n yaÅŸadÄ±."],
+    tips:["Muster listeni ezberle","Tatbikatlara ciddi katÄ±l","Emniyet raporlarÄ±nÄ± atlatma"]},
+  carkci: {name:"BaÅŸ MÃ¼hendis Nermin", icon:"âš™ï¸", title:"Ã‡arkÃ§Ä±baÅŸÄ±", trust:35,
+    secrets:["Bu gemide 11 yÄ±ldÄ±r â€” ÅŸirketi tanÄ±dÄ±ÄŸÄ±ndan beter tanÄ±yor.","Makine dairesini kapalÄ± gÃ¶zle dolaÅŸabilir.","Ä°ki Ã§ocuÄŸunun fotoÄŸrafÄ± kontrol panelinde."],
+    tips:["Makine dairesine meraklÄ± in","Teknik sorularÄ± Ã§ekinmeden sor","ArÄ±za loglarÄ±nÄ± takip et"]},
+  bas2: {name:"2. MÃ¼hendis Aylin", icon:"ğŸ”§", title:"Makine 2. Amiri", trust:40,
+    secrets:["Gece nÃ¶betlerinde ÅŸiir yazÄ±yor â€” kimse bilmiyor.","JeneratÃ¶r arÄ±zasÄ±nÄ± bir kez tek baÅŸÄ±na Ã§Ã¶zdÃ¼ â€” 4 saatte.","Ä°stanbul Teknik mezunu, master yarÄ±da bÄ±raktÄ±."],
+    tips:["Makine loglarÄ±nÄ± birlikte incele","Pompa sistemlerini Ã¶ÄŸren","Alarm gelince hemen bildir"]},
+  lostromo2: {name:"Silici Ramazan", icon:"ğŸ§¹", title:"GÃ¼verte Temizlik", trust:50,
+    secrets:["14 yÄ±l aynÄ± gemide. Åirket birkaÃ§ kez transfer teklif etti, hep reddetti.","GÃ¼verte ÅŸemasÄ±nÄ± yÃ¶netimden iyi biliyor.","Her sabah 05:30'da gÃ¼vertede â€” hiÃ§ gecikmeden."],
+    tips:["GÃ¼verte temizliÄŸine katÄ±l","Kimyasal kullanÄ±mÄ±nÄ± Ã¶ÄŸren","Ramazan'Ä±n gÃ¶zlemlerine kulak ver"]},
+  yagci: {name:"YaÄŸcÄ± Mehmet Ali", icon:"ğŸ›¢ï¸", title:"Makine YaÄŸlama", trust:45,
+    secrets:["YaÄŸ analizini kendi kendine Ã¶ÄŸrendi â€” kurs almadÄ±.","Ana makineyi 'dinleyerek' sorun tespit edebiliyor.","ÃœÃ§ gemide Ã§alÄ±ÅŸtÄ±, Ã¼Ã§Ã¼nÃ¼ de sever ama bu en iyisi der."],
+    tips:["YaÄŸ numune analizini birlikte yap","TitreÅŸim deÄŸiÅŸimlerine dikkat et","YaÄŸcÄ±'nÄ±n gÃ¼nlÃ¼k kontrollerini izle"]},
+  asci: {name:"AÅŸÃ§Ä± Mehmet Usta", icon:"ğŸ³", title:"Yemekhane", trust:55,
+    secrets:["25 yÄ±ldÄ±r gemide. Ä°lk gemisi yelkenliydi.","Sabah 04:00'te kalkar, kahvaltÄ±yÄ± hazÄ±rlar.","Ekibin moralini menÃ¼yle okur â€” kÃ¶tÃ¼ gÃ¼n geÃ§irmiÅŸlerse et yapar."],
+    tips:["YemeÄŸe zamanÄ±nda gel","TeÅŸekkÃ¼r etmeyi unutma","Ara sÄ±ra yardÄ±m teklif et"]},
+  hasan: {name:"Tayfa Hasan", icon:"ğŸ‘·", title:"Deneyimli Tayfa", trust:50,
+    secrets:["18 yÄ±l denizde, hiÃ§ zam istemedi â€” ÅŸirket her zaman verdi.","Ä°ki Ã§ocuÄŸu var, ikisi de denizci deÄŸil â€” sevinÃ§ mi Ã¼zÃ¼ntÃ¼ mÃ¼ bilmiyor.","FÄ±rtÄ±nada en sakin o olur."],
+    tips:["Hasan'Ä±n el iÅŸaretlerini Ã¶ÄŸren","Zor anlarda yanÄ±nda dur","GÃ¶zlemlerini paylaÅŸ"]},
+  musa: {name:"Tayfa Musa", icon:"ğŸ‘·", title:"GenÃ§ Tayfa", trust:55,
+    secrets:["Ä°lk gemisi bu. Sen de ilk stajyersin â€” benzer his.","EvleneceÄŸi kÄ±z denizden korkuyor.","Gece vardiyasÄ±nda yÄ±ldÄ±z sayÄ±yor."],
+    tips:["Musa ile deneyim paylaÅŸ","Zor anlarda yanÄ±nda dur","Birlikte Ã¶ÄŸrenin"]},
 };
 
 let crewTrust = {};
@@ -5137,8 +5034,8 @@ function updateCrewTrust(crewKey, delta){
       crewUnlocked[crewKey] = i+1;
       const def = CREW_DEFS[crewKey];
       if(def.secrets[i]){
-        showNotif('🔓', def.name + ' — Güven Kazanıldı', def.secrets[i]);
-        addJournalEntry(`${def.name} hakkında yeni bir şey öğrendim: ${def.secrets[i]}`);
+        showNotif('ğŸ”“', def.name + ' â€” GÃ¼ven KazanÄ±ldÄ±', def.secrets[i]);
+        addJournalEntry(`${def.name} hakkÄ±nda yeni bir ÅŸey Ã¶ÄŸrendim: ${def.secrets[i]}`);
       }
     }
   });
@@ -5162,17 +5059,17 @@ function renderCrewCards(){
     const trust = crewTrust[key] || def.trust;
     const unlocked = crewUnlocked[key] || 0;
     const color = trust>=70?'#5dbf8a':trust>=50?'#d4a017':'#c97070';
-    const label = trust>=70?'Güvenir':'GÜVEN'+trust>=50?'Tanışıyor':'Mesafeli';
+    const label = trust>=70?'GÃ¼venir':'GÃœVEN'+trust>=50?'TanÄ±ÅŸÄ±yor':'Mesafeli';
     const div = document.createElement('div');
     div.className = 'crew-card';
     div.innerHTML = `<div class="crew-card-top">
-      <span class="crew-ico portrait-chip small">${def.icon}</span>
+      <span class="crew-ico">${def.icon}</span>
       <div><div class="crew-name">${def.name}</div><div class="crew-title-small">${def.title}</div></div>
       <span style="margin-left:auto;font-size:11px;font-family:'Share Tech Mono',monospace;color:${color};">${trust}</span>
     </div>
     <div class="crew-trust-bar"><div class="crew-trust-fill" style="width:${trust}%;background:${color};"></div></div>
-    <div class="crew-trust-lbl"><span>${trust>=70?'Güveniyor':trust>=50?'Tanışıyor':'Mesafeli'}</span><span>🔓 ${unlocked}/3</span></div>
-    ${unlocked>0?`<div class="crew-unlocked">💬 "${def.secrets[unlocked-1]?.substring(0,50)}..."</div>`:''}`;
+    <div class="crew-trust-lbl"><span>${trust>=70?'GÃ¼veniyor':trust>=50?'TanÄ±ÅŸÄ±yor':'Mesafeli'}</span><span>ğŸ”“ ${unlocked}/3</span></div>
+    ${unlocked>0?`<div class="crew-unlocked">ğŸ’¬ "${def.secrets[unlocked-1]?.substring(0,50)}..."</div>`:''}`;
     c.appendChild(div);
   });
 }
@@ -5190,19 +5087,19 @@ function applyCrewEffect(who, tag){
   updateCrewTrust(key, delta);
 }
 
-// ===== ROTA HARİTASI =====
+// ===== ROTA HARÄ°TASI =====
 const ROUTE_PORTS = [
-  {name:"İzmir", x:85, y:130, visited:true},
-  {name:"Çanakkale", x:130, y:100, visited:false},
-  {name:"İstanbul", x:180, y:85, visited:false},
+  {name:"Ä°zmir", x:85, y:130, visited:true},
+  {name:"Ã‡anakkale", x:130, y:100, visited:false},
+  {name:"Ä°stanbul", x:180, y:85, visited:false},
   {name:"Ambarli", x:172, y:92, visited:false},
   {name:"Pire", x:120, y:160, visited:false},
   {name:"Malta", x:95, y:175, visited:false},
   {name:"Valensiya", x:22, y:108, visited:false},
-  {name:"Cebelitarık", x:8, y:120, visited:false},
+  {name:"CebelitarÄ±k", x:8, y:120, visited:false},
   {name:"Algeciras", x:10, y:125, visited:false},
-  {name:"İskenderiye", x:200, y:210, visited:false},
-  {name:"Kıbrıs", x:170, y:170, visited:false},
+  {name:"Ä°skenderiye", x:200, y:210, visited:false},
+  {name:"KÄ±brÄ±s", x:170, y:170, visited:false},
   {name:"Port Said", x:228, y:200, visited:false},
   {name:"Cenova", x:60, y:80, visited:false},
   {name:"Barselona", x:30, y:100, visited:false},
@@ -5216,7 +5113,7 @@ const ROUTE_PORTS = [
 
 let shipPosition = {x:85, y:130};
 let routeHistory = [{x:85,y:130}];
-let visitedPorts = new Set(["İzmir"]);
+let visitedPorts = new Set(["Ä°zmir"]);
 
 function openMap(){
   document.getElementById('map-panel').classList.add('show');
@@ -5226,15 +5123,15 @@ function closeMap(){ document.getElementById('map-panel').classList.remove('show
 
 function updateShipPosition(sceneLoc){
   const locMap = {
-    'İzmir':{x:85,y:130}, 'Çanakkale Boğazı':{x:130,y:100},
-    'İstanbul Boğazı':{x:180,y:85}, 'Pire':{x:120,y:160},
+    'Ä°zmir':{x:85,y:130}, 'Ã‡anakkale BoÄŸazÄ±':{x:130,y:100},
+    'Ä°stanbul BoÄŸazÄ±':{x:180,y:85}, 'Pire':{x:120,y:160},
     'Ambarli':{x:172,y:92}, 'Malta':{x:95,y:175}, 'Valensiya':{x:22,y:108},
-    'Cebelitarık':{x:8,y:120}, 'Algeciras':{x:10,y:125},
-    'İskenderiye':{x:200,y:210}, 'Port Said':{x:228,y:200},
-    'Kıbrıs':{x:170,y:170},
+    'CebelitarÄ±k':{x:8,y:120}, 'Algeciras':{x:10,y:125},
+    'Ä°skenderiye':{x:200,y:210}, 'Port Said':{x:228,y:200},
+    'KÄ±brÄ±s':{x:170,y:170},
     'Cenova':{x:60,y:80}, 'Barselona':{x:30,y:100}, 'Trieste':{x:102,y:52},
     'Haifa':{x:212,y:188}, 'Rotterdam':{x:25,y:18}, 'Mersin':{x:180,y:180},
-    'Aden':{x:300,y:230}, 'Süveyş':{x:250,y:195},
+    'Aden':{x:300,y:230}, 'SÃ¼veyÅŸ':{x:250,y:195},
   };
   for(const [key,pos] of Object.entries(locMap)){
     if(sceneLoc && sceneLoc.includes(key)){
@@ -5301,20 +5198,20 @@ function renderMap(){
   s+=`<path d="M362 68 h22 l7 3 h6 v2 h-35 z" fill="#0c1b2d" opacity=".65"/>`;
 
   svg.innerHTML = s;
-  legend.textContent = `🟢 Uğranan liman  🔵 Planlanan liman  🟡 ${sn||'Gemimiz'}  — ${visitedPorts.size} liman uğrandı`;
+  legend.textContent = `ğŸŸ¢ UÄŸranan liman  ğŸ”µ Planlanan liman  ğŸŸ¡ ${sn||'Gemimiz'}  â€” ${visitedPorts.size} liman uÄŸrandÄ±`;
 }
 
-// ===== SEYİR GÜNLÜĞİ =====
+// ===== SEYÄ°R GÃœNLÃœÄÄ° =====
 let journalEntries = [];
 const seenColregHints = new Set();
 const STUDENT_NOTES = [
   {head:"KOPRUUSTU VARDIYASI", body:"Look-out, COLREG, rota takibi, ECDIS kontrolu, radar cross-check ve logbook disiplini vardiyanin omurgasidir.<br>Vardiya devrinde rota, trafik, hava, makina durumu ve beklenen manevra net aktarilir.<br>Master'in standing orders ve night orders'i bilinmeden vardiya tutulmaz.", tip:"Once gozlem, sonra yorum."},
   {head:"ANA KURALLAR", body:"Sormadan varsayma.<br>Gormeden dogru kabul etme.<br>Hata gordugunde saklama, amire bildir.<br>PPE'siz ise baslama.<br>Snap-back zone'a girme.<br>Kapali mahalde permitsiz girme.<br>Stop komutu duyuldugunda herkes durur.<br>Near-miss de raporlanir.", tip:"Denizcilikte disiplin tekrar degil, hayatta kalma bicimidir."},
-  {head:"OLCU BIRIMLERI - DENIZCILIK", body:"<b>1 deniz mili (NM)</b> = 1852 metre<br><b>1 knot (kt)</b> = saatte 1 deniz mili = 1.852 km/saat<br><b>1 kablo (cable)</b> = 0.1 deniz mili = 185.2 metre<br><b>1 kulac (fathom)</b> = 6 feet = 1.8288 metre<br><b>1 feet (ft)</b> = 0.3048 metre<br><b>1 inch</b> = 2.54 cm<br><b>1 metre</b> = 100 cm<br><b>1 santimetre</b> = 10 mm<br><b>1 ton</b> = 1000 kg<br><b>1 long ton</b> = 1016 kg yaklasik<br><b>1 short ton</b> = 907 kg yaklasik<br><b>DWT</b> = Deadweight tonnage; geminin tasiyabilecegi toplam agirlik kapasitesi<br><b>GT</b> = Gross Tonnage; hacim esasli tonaj olcusudur, agirlik degildir<br><b>TEU</b> = 20 feet'lik bir konteyner birimi<br><b>20 ft</b> = 6.096 metre<br><b>40 ft</b> = 12.192 metre<br><b>m3</b> = hacim birimi; tank, ambar ve stowage hesaplarinda kullanilir<br><b>t/m3</b> veya <b>kg/m3</b> = yogunluk birimi; draft survey, ballast ve yakit hesaplarinda gorulur<br><b>ppm</b> = millionda bir; OWS, su kalitesi ve gaz olcumlerinde gorulur<br><b>%LEL</b> = patlayici alt limit yuzdesi; gaz olcumlerinde kullanilir<br><b>bar</b> = basinÃ§ birimi; 1 bar yaklasik 100 kPa'dir<br><b>kW</b> = guc birimi; makine ve jeneratorde kullanilir<br><b>RPM</b> = dakikadaki devir sayisi; ana makine ve pompada gorulur<br><br><b>Pratik not:</b> Seyirde mesafe deniz miliyle, hiz knot ile, draft metre veya feet ile, yuk agirligi ton ile okunur.", tip:"Ayni soruda metre, feet, ton ve deniz mili bir araya gelebilir; birim karisinca hesap da karar da bozulur."},
+  {head:"OLCU BIRIMLERI - DENIZCILIK", body:"<b>1 deniz mili (NM)</b> = 1852 metre<br><b>1 knot (kt)</b> = saatte 1 deniz mili = 1.852 km/saat<br><b>1 kablo (cable)</b> = 0.1 deniz mili = 185.2 metre<br><b>1 kulac (fathom)</b> = 6 feet = 1.8288 metre<br><b>1 feet (ft)</b> = 0.3048 metre<br><b>1 inch</b> = 2.54 cm<br><b>1 metre</b> = 100 cm<br><b>1 santimetre</b> = 10 mm<br><b>1 ton</b> = 1000 kg<br><b>1 long ton</b> = 1016 kg yaklasik<br><b>1 short ton</b> = 907 kg yaklasik<br><b>DWT</b> = Deadweight tonnage; geminin tasiyabilecegi toplam agirlik kapasitesi<br><b>GT</b> = Gross Tonnage; hacim esasli tonaj olcusudur, agirlik degildir<br><b>TEU</b> = 20 feet'lik bir konteyner birimi<br><b>20 ft</b> = 6.096 metre<br><b>40 ft</b> = 12.192 metre<br><b>m3</b> = hacim birimi; tank, ambar ve stowage hesaplarinda kullanilir<br><b>t/m3</b> veya <b>kg/m3</b> = yogunluk birimi; draft survey, ballast ve yakit hesaplarinda gorulur<br><b>ppm</b> = millionda bir; OWS, su kalitesi ve gaz olcumlerinde gorulur<br><b>%LEL</b> = patlayici alt limit yuzdesi; gaz olcumlerinde kullanilir<br><b>bar</b> = basinÃƒÂ§ birimi; 1 bar yaklasik 100 kPa'dir<br><b>kW</b> = guc birimi; makine ve jeneratorde kullanilir<br><b>RPM</b> = dakikadaki devir sayisi; ana makine ve pompada gorulur<br><br><b>Pratik not:</b> Seyirde mesafe deniz miliyle, hiz knot ile, draft metre veya feet ile, yuk agirligi ton ile okunur.", tip:"Ayni soruda metre, feet, ton ve deniz mili bir araya gelebilir; birim karisinca hesap da karar da bozulur."},
   {head:"COLREG OZETI", body:"<b>Rule 5</b> proper look-out: goz, kulak, radar/AIS ve tum mevcut imkanlarla takip yapilir.<br><b>Rule 6</b> safe speed: gorus, trafik, draft, manevra ve sensor sinirlariyla birlikte degerlendirilir.<br><b>Rule 7</b> risk of collision: suphe varsa risk var kabul edilir; sabit kerteriz ve dusen CPA ciddiye alinir.<br><b>Rule 8</b> action to avoid collision: manevra erken, belirgin ve iyi denizcilige uygun olur.<br><b>Rule 9</b> dar kanal: sancak sinirina yakin seyredilir, gecis gereksiz engellenmez.<br><b>Rule 10</b> traffic separation scheme: serit disiplini korunur, akisi bozacak gecislerden kacinilir.<br><b>Rule 13</b> overtaking: yetisen gemi yol verir.<br><b>Rule 14</b> head-on: iki gemi de sancaga duser.<br><b>Rule 15</b> crossing: sancaginda gemi goruyorsan give-way sensin.<br><b>Rule 18</b> sorumluluk hiyerarsisi: NUC, RAM, CBD, fishing, sailing ve power-driven iliskisi birlikte okunur.<br><b>Rule 19</b> restricted visibility: safe speed, radar yorumu ve fog signal disiplini artar.", tip:"COLREG ezber listesi degil; durumu dogru okuyup erken davranma sanatidir."},
   {head:"ECDIS / HARITA", body:"Route check, safety contour, safety depth, no-go area, isolated danger ve alarm ayarlari seyirden once gozden gecirilir.<br>GPS bilgisi radar, gorusel mevki ve diger sensorlerle capraz kontrol edilir.<br>Waypoint'ler, parallel indexing, XTD ve chart correction mantigi bilinmelidir.<br>Kagit haritada NtM, correction number, tracing ve correction record disiplini; ECDIS'te ise ENC permit, cell status, latest update ve overdue area kontrolu birlikte dusunulur.<br>Rota degisikligi varsa passage plan, kagit harita, ECDIS route ve logbook ayni mantikla guncellenir.", tip:"ECDIS yardimcidir; kagit harita dusuncesiyle birlikte kullanildiginda daha guclu olur."},
   {head:"FENER VE SAMANDIRA", body:"IALA lateral markalarda renk, tepe isareti ve isik karakteri birlikte okunur.<br>Fl, Oc, Iso, Q, VQ, LFl ve sektor renkleri fenerleri ayirt etmeyi saglar.<br>Cardinal marklarda kuzey-gu ney-dogu-bati tepe isaretleri ve siyah-sari renk dizilimi ezberlenmelidir.", tip:"Renk kadar ritmi de oku."},
-  {head:"PILOT / ROMORKOR / LIMAN", body:"Pilot ladder durumu, can simidi ve isik kontrolu, personel konumu ve haberlesme disiplini kritik konulardir.<br>Master-pilot exchange yapilir; snap-back zone bos tutulur.<br>Heaving line, tug line, berthing plan, current-rüzgar etkisi ve mooring team konumlari net olmalidir.", tip:"Mooring station saka kabul etmez."},
+  {head:"PILOT / ROMORKOR / LIMAN", body:"Pilot ladder durumu, can simidi ve isik kontrolu, personel konumu ve haberlesme disiplini kritik konulardir.<br>Master-pilot exchange yapilir; snap-back zone bos tutulur.<br>Heaving line, tug line, berthing plan, current-rÃ¼zgar etkisi ve mooring team konumlari net olmalidir.", tip:"Mooring station saka kabul etmez."},
   {head:"LIMAN VE EVRAK", body:"Notice of Readiness, Bill of Lading, Mate's Receipt, Statement of Facts, manifest, stowage plan, Oil Record Book ve Garbage Record Book temel evraklardandir.<br>Uyumsuzluk gordugunde amire hemen bildirilir.<br>Laytime, demurrage, dispatch, arrival condition ve sea protest temel kavramlardir.", tip:"Saklanan hata buyur."},
   {head:"PSC / ISPS / SOLAS / STCW", body:"PSC denetiminde evrak, emniyet ekipmani, drill kayitlari, GMDSS testleri ve gemi kondisyonu birlikte incelenir.<br>ISPS tarafinda gangway kontrolu, ziyaretci kaydi ve security level takibi esastir.<br>SOLAS can emniyeti, STCW yeterlilik ve vardiya standartlarini kurar.", tip:"Denetime her gun hazir olunur."},
   {head:"LSA / FILIKA / MATAFORA BAKIMI", body:"Can salinda servis tarihi, hydrostatic release unit (HRU), painter, lash ve konteyner kondisyonu kontrol edilir.<br>Can filikasinda inventory, drain plug, battery, engine readiness, communication set, water/ration ve release gear gozden gecirilir.<br>Can yeleklerinde light, whistle, tape, buddy line ve genel kondisyon; immersion suitte size, zipper ve sizdirmazlik mantigi okunur.<br>Matafora ve launching appliance tarafinda fall, sheave, brake, grease noktasi, limit switch ve hareket testi birlikte dusunulur.<br>Pyrotechnics, line-throwing appliance, EPIRB, SART ve handheld VHF tarih/kayit/ready durumu unutulmaz.", tip:"Acil durum ekipmani en cok lazim oldugu gun surpriz cikarmamali."},
@@ -5327,15 +5224,15 @@ const STUDENT_NOTES = [
   {head:"FORMULLER - MERCATOR / MIDDLE LATITUDE", body:"<b>Middle Latitude Sailing</b>: D'Long = Departure / cos orta enlem mantigiyla kurulur.<br><b>Mercator Sailing</b>: True course icin meridional parts kullanilir.<br><b>Tan C = D'Long in meridional parts / D'Lat</b> benzeri mantikla rota bulunur.<br><b>Distance = D'Lat / cos C</b> veya uygun trigonometrik yoldan geri cozulur.<br>Yuksek enlemlerde plain plane sailing yerine Mercator dusuncesi daha saglamdir.<br><br><b>Kullanilan tablo / kaynaklar:</b> meridional parts tables, traverse table, chartwork plotting sheet, nautical tables.", tip:"Formul kadar hangi seyir turunu sececegin de onemlidir."},
   {head:"FORMULLER - GREAT CIRCLE / COMPOSITE", body:"<b>Great circle</b> iki nokta arasindaki en kisa mesafeyi verir; ama rota acisi surekli degisir.<br><b>Rhumb line</b> sabit rota ile gider; genelde daha pratiktir ama mesafe biraz uzayabilir.<br><b>Composite sailing</b> yuksek enlem buz/tehlike siniri nedeniyle sinirli enlem uzerinden great circle dusuncesinin parcali uygulanmasidir.<br><b>Vertex</b> great circle rotasinin en yuksek enleme ciktigi noktadir.<br><b>Pratik kullanilan degerler</b>: initial course, final course, vertex latitude, great circle distance.<br><br><b>Kullanilan kaynaklar:</b> great circle sailing tables, routeing software, gnomonic chart, nautical almanac yardimci cetveller, ECDIS route planning tools.<br><br><b>Pratik not:</b> Uzun okyanus gecislerinde 'en kisa rota' her zaman 'en guvenli rota' anlamina gelmez; hava, akinti ve restricted area birlikte okunur.", tip:"Buyuk daire formulu kadar hangi rotanin uygulanabilir oldugu da denizciliktir."},
   {head:"FORMULLER - PUSULA / KERTERIZ DUZELTMELERI", body:"<b>T = M + Var</b> ve <b>M = C + Dev</b> mantigi temel omurgadir.<br><b>True = Compass + Deviation + Variation</b> kisaca <b>T = C + d + v</b> diye tutulabilir; isaretler East/West olarak dogru uygulanir.<br><b>Relative bearing</b> = hedef kerterizi gemi basina gore acidir; <b>True bearing = heading + relative bearing</b> mantigiyle acilir ve 360 icinde normalize edilir.<br><b>Gyro error</b> varsa <b>True = Gyro + Gyro error</b> mantigi kurulur.<br><br><b>Ornek:</b> Compass 072, deviation 2E, variation 3W ise True = 72 + 2 - 3 = 071 bulunur.<br><br><b>Kullanilan tablo / kaynaklar:</b> deviation card, compass observation book, azimuth tables, amplitude tables, pelorus/bearing repeater.", tip:"Hesaptaki en klasik hata dogu-bati isaretini ters okumaktir."},
-  {head:"FORMULLER - MANEVRA / DONUS", body:"<b>ROT (deg/dk)</b> yaklasik donus hizidir; buyudukce donus daha serttir.<br><b>Radyan/saniye</b> cinsinden ROT biliniyorsa <b>Turn radius R ~ V / omega</b> mantigi kullanilir.<br><b>Advance</b>: gemi donuse basladiktan sonra eski rota dogrultusunda ileri gittigi mesafe.<br><b>Transfer</b>: donus sirasinda rota dikine yan otelenme mesafesi.<br><b>Tactical Diameter</b>: gemi 180 dereceye yakin dondugunde ilk rota hattina gore olusan toplam transfer buyuklugu.<br><b>Stopping distance</b> sabit tek sayi degil; hiz, draft, yuk, ruzgar, akinti ve makina cevabina baglidir.<br><b>Squat</b> yaklasik olarak hiz arttikca ve su siglastikca artar; pratikte UKC hesabina ceza gibi eklenir.<br><br><b>Ornek:</b> Ayni gemi 8 knot ile baska, 14 knot ile baska advance ve transfer verir; bu yüzden wheel-over point sabit ezberlenmez.", tip:"Manevra formulu kadar geminin pilot card / turning circle verisi de esastir."},
-  {head:"FORMULLER - RADAR / CPA / TCPA", body:"<b>Yaklasik kapanma hizi</b> = bagil hareketten gelir; sadece senin hizina bakilmaz.<br><b>TCPA</b> hedefin en yakin gecise kac dakika kaldigini verir.<br><b>CPA</b> en yakin gecis mesafesidir.<br>Daha analitik gosteri ile <b>TCPA = - (r.v) / |v|²</b> mantigi, <b>CPA</b> ise bagil vektorun o andaki en yakin uzakligidir.<br>Pratik vardiyada ise ARPA trendi, sabit kerteriz ve dusen CPA birlikte okunur.<br><b>NM/dk</b> icin hiz/60 kullanilabilir; 12 knot = dakikada 0.2 mil gibi.<br><br><b>Ornek:</b> 12 dakikada CPA 0.6 nm ise hedefi 'uzak' sanmak yerine trendi ciddiye almak gerekir.", tip:"Radar formulu kağıtta biter; asıl karar trend yorumunda başlar."},
+  {head:"FORMULLER - MANEVRA / DONUS", body:"<b>ROT (deg/dk)</b> yaklasik donus hizidir; buyudukce donus daha serttir.<br><b>Radyan/saniye</b> cinsinden ROT biliniyorsa <b>Turn radius R ~ V / omega</b> mantigi kullanilir.<br><b>Advance</b>: gemi donuse basladiktan sonra eski rota dogrultusunda ileri gittigi mesafe.<br><b>Transfer</b>: donus sirasinda rota dikine yan otelenme mesafesi.<br><b>Tactical Diameter</b>: gemi 180 dereceye yakin dondugunde ilk rota hattina gore olusan toplam transfer buyuklugu.<br><b>Stopping distance</b> sabit tek sayi degil; hiz, draft, yuk, ruzgar, akinti ve makina cevabina baglidir.<br><b>Squat</b> yaklasik olarak hiz arttikca ve su siglastikca artar; pratikte UKC hesabina ceza gibi eklenir.<br><br><b>Ornek:</b> Ayni gemi 8 knot ile baska, 14 knot ile baska advance ve transfer verir; bu yÃ¼zden wheel-over point sabit ezberlenmez.", tip:"Manevra formulu kadar geminin pilot card / turning circle verisi de esastir."},
+  {head:"FORMULLER - RADAR / CPA / TCPA", body:"<b>Yaklasik kapanma hizi</b> = bagil hareketten gelir; sadece senin hizina bakilmaz.<br><b>TCPA</b> hedefin en yakin gecise kac dakika kaldigini verir.<br><b>CPA</b> en yakin gecis mesafesidir.<br>Daha analitik gosteri ile <b>TCPA = - (r.v) / |v|Â²</b> mantigi, <b>CPA</b> ise bagil vektorun o andaki en yakin uzakligidir.<br>Pratik vardiyada ise ARPA trendi, sabit kerteriz ve dusen CPA birlikte okunur.<br><b>NM/dk</b> icin hiz/60 kullanilabilir; 12 knot = dakikada 0.2 mil gibi.<br><br><b>Ornek:</b> 12 dakikada CPA 0.6 nm ise hedefi 'uzak' sanmak yerine trendi ciddiye almak gerekir.", tip:"Radar formulu kaÄŸÄ±tta biter; asÄ±l karar trend yorumunda baÅŸlar."},
   {head:"FORMULLER - GEL-GIT / UKC", body:"UKC = Mevcut su derinligi - gemi drafti<br>Mevcut su derinligi = charted depth + tide height<br>Tide height high water ve low water verisiyle bulunur.<br>Dar suda squat de hesaba katilmalidir.<br>Air draft mantigi: kopru alti acikligi - mevcut air draft = emniyet payi<br><br><b>Ornek:</b> Harita derinligi 12.0 m, gel-git 1.4 m ve draft 10.2 m ise UKC = 13.4 - 10.2 = 3.2 m olur.", tip:"Kagittaki derinlik her zaman o anki derinlik degildir."},
   {head:"FORMULLER - STABILITE", body:"tan(theta) = heeling moment / (displacement x GM)<br>Trim change = trimming moment / MCTC<br>Corrected GM = GM - FSC/displacement veya GM - FSC (metre cinsinden verilmisse)<br>Shift of G formu: GG1 = (w x d) / Delta<br>FWA mantigi: tatli suya girince draft artar; yogunluk dusunce gemi daha fazla batar<br><br><b>Ornek:</b> 20 ton yuk 4 m kayar, deplasman 8000 ton ve GM 1.0 m ise tan(theta) = 80 / 8000 = 0.01, yani yatma acisi yaklasik 0.57 derece olur.", tip:"Stabilite rakam degil, geminin davranisidir."},
   {head:"FORMULLER - GM", body:"GM = KM - KG<br>KG yuk merkezi yuksekligidir; yuk yukari cikarsa KG artar, GM genelde dusme egilimi gosterir.<br>GG1 = (w x d) / Delta ile agirlik kaydirmasinin G noktasini ne kadar oynattigi bulunur.<br>Kucuk aci yaklasiminda GZ ~ GM x sin(theta) dusunulebilir.<br><br><b>Ornek:</b> KM 7.4 m ve KG 6.1 m ise GM = 1.3 m olur. 10 tonluk bir yuk 5 m kayarsa, deplasman 5000 ton icin GG1 = 50 / 5000 = 0.01 m bulunur.", tip:"GM tek basina her seyi anlatmaz ama ilk stabilitenin kalbidir."},
   {head:"FORMULLER - ILERI STABILITE", body:"Heeling moment = w x d<br>Righting moment = displacement x GZ<br>Trim moment = w x boyuna mesafe<br>Trim change = trimming moment / MCTC<br>Free surface correction buyudukce corrected GM duser.<br><br><b>Ornek:</b> 30 ton yuk 20 m basa alinirsa trimming moment 600 ton-metre olur. MCTC 120 ise trim degisimi yaklasik 5 cm olur.", tip:"Moment dili oturunca stabilite sorulari daha okunur hale gelir."},
   {head:"FORMULLER - HYDROSTATIC / DRAFT", body:"<b>TPC</b> = Tonnes Per Centimetre immersion; 1 cm draft degisimi icin gereken ton miktari.<br><b>Draft degisimi (cm) = yuk miktari / TPC</b><br><b>MCTC</b> = 1 cm trim degisikligi icin gereken trimming moment.<br><b>Trim degisimi (cm) = trimming moment / MCTC</b><br><b>FWA</b> tatli suya girince draft artisini anlatir.<br><b>DWA</b> gercek yogunluk farkina gore FWA'nin oransal uygulanmasidir.<br><b>Parallel rise/fall</b> tum draftlarin birlikte artip azalmasi gibi dusunulur.<br><br><b>Ornek:</b> TPC 18 ise 180 ton yuk drafti yaklasik 10 cm arttirir.", tip:"Draft survey ve loading plan tarafinda bu kart cebinde olmali."},
-  {head:"FORMULLER - YARIM DAIRE SEYRI", body:"Yarim daire seyri, firtina/sirocco/tropical revolving storm merkezinin hareket yonu ile senin goreli konumunu birlikte yorumlama isidir.<br><b>Kuzey yarimkure:</b> ruzgari yuzune aldiginda dusuk basinc merkezi genel olarak sancak on tarafta dusunulur (Buys Ballot mantigi).<br><b>Guney yarimkure:</b> ayni mantik ters yone kayar; merkez daha cok iskele on tarafta dusunulur.<br><b>Tehlikeli yarim daire</b> genelde firtinanin ilerleme hizi ile donus hizinin birbirini besledigi taraftir; ruzgar ve deniz daha siddetli algilanabilir.<br><b>Sevk edici / manageable yarim daire</b> kacis kararinin nispeten daha kontrollu kurulabildigi taraftir.<br><b>Prensip:</b> once merkez yonu, sonra firtinanin hareket yonu, sonra senin DR mevkin ayni kagit ustunde dusunulur.<br><b>Kacis rotasi mantigi:</b> tehlikeli tarafta merkezin hareketine gore gemiyi emniyetli yarim daireye cikaracak pruva dusunulur; sevk edici tarafta ise merkeze gereksiz yaklasmadan denizi uygun acida almak hedeflenir.<br><b>Buys Ballot</b> tek basina formÃ¼l degil; ruzgar yonu + basinÃ§ dususu + deniz davranisinin birlikte yorumudur.<br><br><b>Kucuk tablo:</b><br>Kuzey yarimkure + merkezin saginda kalma -> tehlikeli yarim daire supheli<br>Kuzey yarimkure + merkezin solunda kalma -> sevk edici yarim daire supheli<br>Guney yarimkurede bu genel taraf mantigi ters okunur<br><br><b>Bakilan tablolar / kaynaklar:</b> weather routing chartlari, pilot chart, tropical cyclone warning message, barometer trend kaydi, synoptic weather chart, facsimile weather chart, weather routing / EGC-NAVTEX-METAREA yayinlari.<br><br><b>Ornek:</b> Kuzey yarimkurede firtina merkezi doguya ilerlerken sen merkezin saginda kaliyorsan genelde tehlikeli yarim dairede oldugun varsayilir ve kacis rotasi daha kritik hale gelir.", tip:"Yarim daire seyri ezber cizgisi degil; ruzgar, basinÃ§, merkez ve kendi mevkinin birlikte okunmasidir."},
-  {head:"SEYIRDE KULLANILAN TABLOLAR / YAYINLAR", body:"<b>Nautical Almanac</b> -> goksel seyir, GHA, SHA, declination, sunrise/sunset, meridian passage<br><b>HO 229 / HO 249</b> -> sight reduction, Hc ve Zn bulma<br><b>Increments and Corrections Tables</b> -> dakika/saniye artimi ve goksel duzeltmeler<br><b>Altitude Correction Tables</b> -> dip, refraction, semi-diameter, parallax<br><b>Tide Tables</b> -> high water, low water, tidal height<br><b>Tidal Stream Atlas / Current Tables</b> -> akinti yonu ve hizi<br><b>Pilot Book / Sailing Directions</b> -> bogaz, kanal, liman yaklasma, akinti ve yerel uyarilar<br><b>List of Lights</b> -> fenerlerin karakteri, menzili, sektoru ve kimligi<br><b>Admiralty List of Radio Signals / benzeri yayinlar</b> -> sahil istasyonlari, VTS, reporting, pilotaj ve haberlesme bilgileri<br><b>Chart Catalogue</b> -> hangi harita/yayinin nerede kullanilacagi<br><b>Distance Tables</b> -> limanlar arasi yaklasik mesafeler<br><b>Load line / hydrostatic tables</b> -> draft, displacement, TPC, MCTC, KM, immersion bilgileri<br><b>Tank sounding / ullage tables</b> -> tank hacmi ve agirlik cevirileri<br><b>Stability booklet</b> -> GM, GZ, loading guidance, limitler<br><b>Weather chart / synoptic chart / pilot chart</b> -> basinÃ§ sistemi, mevsimsel ruzgar, yarim daire seyri, rota planlama<br><br><b>Kisa mantik:</b> Seyir zabiti sadece formulu degil, veriyi hangi tablodan cekecegini ve hangi yayina guvenecegini de bilir.", tip:"Dogru tabloyu secmek, dogru formulu secmek kadar onemlidir."},
+  {head:"FORMULLER - YARIM DAIRE SEYRI", body:"Yarim daire seyri, firtina/sirocco/tropical revolving storm merkezinin hareket yonu ile senin goreli konumunu birlikte yorumlama isidir.<br><b>Kuzey yarimkure:</b> ruzgari yuzune aldiginda dusuk basinc merkezi genel olarak sancak on tarafta dusunulur (Buys Ballot mantigi).<br><b>Guney yarimkure:</b> ayni mantik ters yone kayar; merkez daha cok iskele on tarafta dusunulur.<br><b>Tehlikeli yarim daire</b> genelde firtinanin ilerleme hizi ile donus hizinin birbirini besledigi taraftir; ruzgar ve deniz daha siddetli algilanabilir.<br><b>Sevk edici / manageable yarim daire</b> kacis kararinin nispeten daha kontrollu kurulabildigi taraftir.<br><b>Prensip:</b> once merkez yonu, sonra firtinanin hareket yonu, sonra senin DR mevkin ayni kagit ustunde dusunulur.<br><b>Kacis rotasi mantigi:</b> tehlikeli tarafta merkezin hareketine gore gemiyi emniyetli yarim daireye cikaracak pruva dusunulur; sevk edici tarafta ise merkeze gereksiz yaklasmadan denizi uygun acida almak hedeflenir.<br><b>Buys Ballot</b> tek basina formÃƒÂ¼l degil; ruzgar yonu + basinÃƒÂ§ dususu + deniz davranisinin birlikte yorumudur.<br><br><b>Kucuk tablo:</b><br>Kuzey yarimkure + merkezin saginda kalma -> tehlikeli yarim daire supheli<br>Kuzey yarimkure + merkezin solunda kalma -> sevk edici yarim daire supheli<br>Guney yarimkurede bu genel taraf mantigi ters okunur<br><br><b>Bakilan tablolar / kaynaklar:</b> weather routing chartlari, pilot chart, tropical cyclone warning message, barometer trend kaydi, synoptic weather chart, facsimile weather chart, weather routing / EGC-NAVTEX-METAREA yayinlari.<br><br><b>Ornek:</b> Kuzey yarimkurede firtina merkezi doguya ilerlerken sen merkezin saginda kaliyorsan genelde tehlikeli yarim dairede oldugun varsayilir ve kacis rotasi daha kritik hale gelir.", tip:"Yarim daire seyri ezber cizgisi degil; ruzgar, basinÃƒÂ§, merkez ve kendi mevkinin birlikte okunmasidir."},
+  {head:"SEYIRDE KULLANILAN TABLOLAR / YAYINLAR", body:"<b>Nautical Almanac</b> -> goksel seyir, GHA, SHA, declination, sunrise/sunset, meridian passage<br><b>HO 229 / HO 249</b> -> sight reduction, Hc ve Zn bulma<br><b>Increments and Corrections Tables</b> -> dakika/saniye artimi ve goksel duzeltmeler<br><b>Altitude Correction Tables</b> -> dip, refraction, semi-diameter, parallax<br><b>Tide Tables</b> -> high water, low water, tidal height<br><b>Tidal Stream Atlas / Current Tables</b> -> akinti yonu ve hizi<br><b>Pilot Book / Sailing Directions</b> -> bogaz, kanal, liman yaklasma, akinti ve yerel uyarilar<br><b>List of Lights</b> -> fenerlerin karakteri, menzili, sektoru ve kimligi<br><b>Admiralty List of Radio Signals / benzeri yayinlar</b> -> sahil istasyonlari, VTS, reporting, pilotaj ve haberlesme bilgileri<br><b>Chart Catalogue</b> -> hangi harita/yayinin nerede kullanilacagi<br><b>Distance Tables</b> -> limanlar arasi yaklasik mesafeler<br><b>Load line / hydrostatic tables</b> -> draft, displacement, TPC, MCTC, KM, immersion bilgileri<br><b>Tank sounding / ullage tables</b> -> tank hacmi ve agirlik cevirileri<br><b>Stability booklet</b> -> GM, GZ, loading guidance, limitler<br><b>Weather chart / synoptic chart / pilot chart</b> -> basinÃƒÂ§ sistemi, mevsimsel ruzgar, yarim daire seyri, rota planlama<br><br><b>Kisa mantik:</b> Seyir zabiti sadece formulu degil, veriyi hangi tablodan cekecegini ve hangi yayina guvenecegini de bilir.", tip:"Dogru tabloyu secmek, dogru formulu secmek kadar onemlidir."},
   {head:"FORMULLER - YUK / HESAP", body:"Yukleme miktari = son draft survey - ilk draft survey<br>Density correction, TPC, MCTC ve displacement tablolarla birlikte kullanilir.<br>Yuk merkezi yukseldikce GM dusme egilimindedir.<br>Sounding-ullage tablolarinda tank kalibrasyonu esas alinir.<br><br><b>Ornek:</b> Ilk survey 12850 ton, son survey 13620 ton ise yukleme miktari yaklasik 770 ton kabul edilir.", tip:"Hesap yaparken birimi karistirma."},
   {head:"FORMULLER - ISTIF / STOWAGE", body:"Stowage factor = Yuk hacmi / Yuk agirligi<br>Gerekli hacim = Yuk miktari x stowage factor<br>Broken stowage, istifte bosluklardan dogan hacim kaybidir.<br>Uniform load mantigi: bir yuzeye binen toplam yuk / alan.<br>Agir yukte merkez hattina yakinlik ve yapisal limitler birlikte dusunulur.<br><br><b>Ornek:</b> 500 ton yuk ve stowage factor 1.6 m3/ton ise gerekli hacim 800 m3 olur. Ambar 760 m3 ise tam sigmaz.", tip:"Istif hesabi sadece nereye koyariz degil, ne kadar yerlestirebiliriz sorusudur."},
   {head:"FORMULLER - SEXTANT / ASTRONOMI", body:"Yaklasik meridian altitude mantigi: Latitude ~ 90 - Ho + Dec (ayni isimdeyse) veya 90 - Ho - Dec (ters isimdeyse).<br>Temel akis: Hs -> Ic duzeltmesi -> Ha -> dip/refraction vb. ile Ho -> almanactan Dec/GHA -> sight reduction ile Hc ve Zn -> Intercept = Ho - Hc.<br>Local Hour Angle mantigi: LHA = GHA +/- boylam (isim ve yon dogru okunur).<br>Meridian passage'da noon sight ile yaklasik enlem; intercept method'da AP/DR uzerinden mevki hatti dusunulur.<br>Index error, dip, refraction, semi-diameter ve gerekirse parallax duzeltmeleri unutulmaz.<br><br><b>Bakilan temel yayinlar / tablolar:</b><br><b>Nautical Almanac</b> -> GHA, SHA, Declination, sunrise/sunset, meridian passage bilgileri<br><b>HO 249 / Pub.249</b> -> Air navigation sight reduction tables, pratik Hc/Zn icin kullanilir<br><b>HO 229 / Pub.229</b> -> Marine sight reduction tables, daha klasik denizcilik kullanimidir<br><b>Increments and Corrections Tables</b> -> dakika/saniye artimlari ve duzeltmeler<br><b>Altitude correction tables</b> -> dip, refraction, semi-diameter, parallax duzeltmeleri<br><b>Chronometer / UTC kaydi</b> -> goksel seyirde zaman hatasi mevki hatasina donusur<br><br><b>Ornek:</b> Ho 63 derece, deklinasyon 15 derece Kuzey ve ayni isimliyse latitude yaklasik 90 - 63 + 15 = 42 derece Kuzey bulunur.", tip:"Goksel seyirde formulu bilmek yetmez; hangi degeri hangi tablodan alacagini da bilmen gerekir."},
@@ -5344,8 +5241,8 @@ const STUDENT_NOTES = [
   {head:"GEMICI BAGLARI", body:buildKnotGallery(), tip:"Bag secimi kadar bagi dogru yere atmak da denizciliktir."},
   {head:"STABILITE / BALLAST", body:"GM, trim, list, free surface effect, displacement ve MCTC kavramlari temel bilinmelidir.<br>Ballast operasyonunda sounding, valf sirasi, tank secimi ve hedef trim/list birlikte dusunulur.<br>Slack tank bazen gizli dusmandir.<br>Ballast exchange ve ilgili MARPOL / ballast water kayit disiplini plansiz yurutulmez.<br>Heavy weather ballast planinda serbest yuzey, yapisal limit ve emniyetli trim birlikte ele alinir.", tip:"Bir tanki duzeltirken baska sorunu yaratma."},
   {head:"RASPA - BOYA / GUVERTELIK", body:"Yuzey hazirligi, pas derecesi, tuz kalintisi, astar secimi, katlar arasi bekleme ve PPE kullanimi boya isin temelidir.<br>Chipping hammer, needle gun, wire brush, primer ve top coat ne icin kullanildigi bilinmelidir.", tip:"Pasin ustunu kapatmak pasi bitirmez."},
-  {head:"DENIZCILIK SOZLUGU A-F", body:"Abeam: tam yan omuzluk<br>Abaft: kicin gerisi<br>Aft: kic tarafi<br>Alongside: borda bordaya yanaşık<br>Astern: kıç tarafa dogru / geriye<br>All fast: baglama tamam<br>Air draft: su hattindan en yuksek noktaya kadar yukseklik<br>Freeboard: su hattindan guverteye olan yukseklik", tip:"Terimler kulaga oturdukca vardiya dili hizlanir."},
-  {head:"DENIZCILIK SOZLUGU G-M", body:"GM: metasantrik yukseklik<br>Heading: geminin pruvasinin baktigi yon<br>COG: yer uzerindeki gercek gidis istikameti<br>SOG: yer uzerindeki hiz<br>Leeway: ruzgarla yan kayma<br>List: yan yatma<br>Trim: bas-kic oturuş farki<br>Mooring: baglama operasyonu", tip:"Ayni sey sanilan bircok kelime aslinda farkli anlama gelir."},
+  {head:"DENIZCILIK SOZLUGU A-F", body:"Abeam: tam yan omuzluk<br>Abaft: kicin gerisi<br>Aft: kic tarafi<br>Alongside: borda bordaya yanaÅŸÄ±k<br>Astern: kÄ±Ã§ tarafa dogru / geriye<br>All fast: baglama tamam<br>Air draft: su hattindan en yuksek noktaya kadar yukseklik<br>Freeboard: su hattindan guverteye olan yukseklik", tip:"Terimler kulaga oturdukca vardiya dili hizlanir."},
+  {head:"DENIZCILIK SOZLUGU G-M", body:"GM: metasantrik yukseklik<br>Heading: geminin pruvasinin baktigi yon<br>COG: yer uzerindeki gercek gidis istikameti<br>SOG: yer uzerindeki hiz<br>Leeway: ruzgarla yan kayma<br>List: yan yatma<br>Trim: bas-kic oturuÅŸ farki<br>Mooring: baglama operasyonu", tip:"Ayni sey sanilan bircok kelime aslinda farkli anlama gelir."},
   {head:"DENIZCILIK SOZLUGU N-Z", body:"NOR: Notice of Readiness<br>PSC: Port State Control<br>SOF: Statement of Facts<br>ETA: Tahmini varis zamani<br>ETD: Tahmini kalkis zamani<br>UKC: Under Keel Clearance<br>Waypoint: rota uzerindeki donus / referans noktasi<br>Watchkeeping: vardiya tutma", tip:"Kisaltmalar denizciligin ikinci dilidir."}
 ];
 const GLOSSARY_TERMS = [
@@ -5370,13 +5267,13 @@ const GLOSSARY_TERMS = [
   {term:"Abli", meaning:"Bumba veya yarim serenleri iki yana cevirmeye ve tutmaya yarayan donanim.", example:"Abli iyi ayarlanmazsa bumba kontrolsuz kalir."},
   {term:"Abli Palangasi", meaning:"Palanga seklindeki abli donanimi.", example:"Abli palangasi yuk altinda daha kontrollu calisir."},
   {term:"Abluka", meaning:"Bir liman veya kiyinin ustun kuvvetlerle kusatilarak dis baglantisinin kesilmesi.", example:"Tarih dersinde abluka uygulamalari incelenirdi."},
-  {term:"Aborda", meaning:"Bir teknenin digerine ya da iskeleye bordasini tamamen vererek yanasmasi.", example:"Rıhtıma aborda olduktan sonra halatlar verildi."},
+  {term:"Aborda", meaning:"Bir teknenin digerine ya da iskeleye bordasini tamamen vererek yanasmasi.", example:"RÄ±htÄ±ma aborda olduktan sonra halatlar verildi."},
   {term:"Abosa", meaning:"Dur, tut veya gecici olarak durdur kumandasi.", example:"Irgatta zincir hizlaninca 'abosa' komutu geldi."},
   {term:"Abramak", meaning:"Tekneyi zor hava sartlarinda en iyi sekilde kontrol altinda tutmak.", example:"Firtinada iyi abrayan serdumen cok sey degistirir."},
   {term:"Acenta", meaning:"Gemi veya yuk sahibinin islerini takip eden yetkili araci kisi.", example:"Liman formalitelerinde acenta sureci hizlandirdi."},
   {term:"Acentelik", meaning:"Acentanin gemi ve yuk sahibi adina yaptigi isler.", example:"Acentelik hizmeti olmadan liman islemleri aksar."},
   {term:"Acevele", meaning:"Bir cismin carpmasini onlemek icin yapilan donanim ya da serenleri iyice pirasya etme hali.", example:"Botu yanas tirirken acevele tuttular."},
-  {term:"Aci Sekstanti", meaning:"Yatay aci olcmek icin kullanilan ozel sekstant.", example:"Sörvey ekibi aci sekstanti ile olcu aldi."},
+  {term:"Aci Sekstanti", meaning:"Yatay aci olcmek icin kullanilan ozel sekstant.", example:"SÃ¶rvey ekibi aci sekstanti ile olcu aldi."},
   {term:"Aciga Cikmak", meaning:"Bulundugu yerden ayrilip daha aciga gitmek.", example:"Sahil guvenlik teknesi mendirekten aciga cikti."},
   {term:"Acik Barinakli Gemi", meaning:"Barinak guverte acikliklari nedeniyle alt hacmi tonaja tam girmeyen gemi tipi.", example:"Tonaj hesabinda acik barinakli gemi fark yaratir."},
   {term:"Acik Demir Yeri", meaning:"Bazi ruzgarlara acik olan demir yeri.", example:"Acik demir yerinde hava bozarsa rahat edilmez."},
@@ -5396,7 +5293,7 @@ const GLOSSARY_TERMS = [
   {term:"Alabanda", meaning:"Dumenin bir tarafa sonuna kadar basilmasi veya borda ic yuzeyi.", example:"Kaptan 'iskele alabanda' diye bagirdi."},
   {term:"Alabura", meaning:"Teknenin yan yatip devrilmesi.", example:"Asiri list alabura riskini buyuttu."},
   {term:"Alama Kurek", meaning:"Kurek cekmeyi durdurma emri.", example:"Komutla birlikte alama kurek yapildi."},
-  {term:"Alarga", meaning:"Bir yere yanasmadan acikta bulunma hali.", example:"Römorkor alarga bekliyordu."},
+  {term:"Alarga", meaning:"Bir yere yanasmadan acikta bulunma hali.", example:"RÃ¶morkor alarga bekliyordu."},
   {term:"Alesta", meaning:"Hazir ol, stand by komutu.", example:"Pilot laddere alesta bekledik."},
   {term:"Altabaso", meaning:"Bir yelkenin alt yakasi; alt kisim.", example:"Altabaso yakasi toplanirken kumas kiristi."},
   {term:"Ana Guverte", meaning:"Uzerinde yurutulen en ust ana guverte.", example:"Ana guvertede raspa-boya isi vardi."},
@@ -5416,7 +5313,7 @@ const GLOSSARY_TERMS = [
   {term:"Ayi Bacagi", meaning:"Pupadan ruzgarla iki yan yelken acilarak yapilan seyir.", example:"Ayi bacaginda yelken dengesi hassastir."},
   {term:"Aynalik", meaning:"Kic bodoslama uzerindeki tahta levha; ayna kic yapidaki parca.", example:"Aynalikta dumen ignesinin oturusu kontrol edildi."},
   {term:"B (Bravo-Burak)", meaning:"Uluslararasi isaret sancaklarinda B harfi; tehlikeli yuk yukluyorum, tahliye ediyorum veya tasiyorum.", example:"B sancagi iskeledeyken bunker veya tehlikeli yuk akla gelir."},
-  {term:"Baba", meaning:"Halat volta etmek icin gemide veya rıhtımda bulunan silindirik donanim.", example:"Spring halati babaya iki volta edildi."},
+  {term:"Baba", meaning:"Halat volta etmek icin gemide veya rÄ±htÄ±mda bulunan silindirik donanim.", example:"Spring halati babaya iki volta edildi."},
   {term:"Badarna Etmek", meaning:"Bir halati asinmaya karsi koruyucu malzemeyle sarmak.", example:"Surtunme noktasi icin halat badarna edildi."},
   {term:"Bakla", meaning:"Zinciri olusturan her bir halka.", example:"Bir baklada catlak gorulurse zincir degisir."},
   {term:"Bandira", meaning:"Geminin milliyetini gosteren milli sancak.", example:"Bandira cekimi gunluk rutinin parcasi."},
@@ -5446,13 +5343,13 @@ const GLOSSARY_TERMS = [
   {term:"Can Kurtarma Araclari", meaning:"Can filikasi, can sallari, can simitleri gibi tum life saving appliances.", example:"PSC once can kurtarma araclarini kontrol etti."},
   {term:"Can Simidi", meaning:"Denize dusen kisiyi yuzdurmek ve kurtarmak icin kullanilan halka bicimli arac.", example:"Can simidinin isik ve savlosu tamdi."},
   {term:"Cayro Pusula", meaning:"Dunyanin manyetik yapisindan etkilenmeyen elektrikli pusula.", example:"Gyro arizalaninca manyetik pusulayla cross-check yapildi."},
-  {term:"Ceviz", meaning:"Halat uclarina yapilan dugum veya agirlikli el incesi basi.", example:"El incesinin cevizli ucu rıhtıma atildi."},
+  {term:"Ceviz", meaning:"Halat uclarina yapilan dugum veya agirlikli el incesi basi.", example:"El incesinin cevizli ucu rÄ±htÄ±ma atildi."},
   {term:"Civadra", meaning:"Yelkenli teknede bas bodoslama ustunden one uzanan sabit seren.", example:"Floklar civadra uzerine acilir."},
   {term:"Cunda", meaning:"Seren, gonder veya bumbanin serbest ucu.", example:"Cunda donanimi zorlaninca ekip geri cekildi."},
   {term:"Capa riz", meaning:"Manevra veya isin engellenmesi; zincirlerin birbirine dolanmasi.", example:"Demirlerde capariz olursa is uzar."},
   {term:"Carmik", meaning:"Direkleri yanlardan tutan kalin sabit arma.", example:"Carmiklarin gerginligi tek tek kontrol edildi."},
   {term:"Cima", meaning:"Halatin ucu.", example:"Cima yipranmissa selvis gerekir."},
-  {term:"Cimaci", meaning:"Rıhtıma yanasan geminin halatini alip volta eden kisi.", example:"Cimaci springi babaya iyi aldi."},
+  {term:"Cimaci", meaning:"RÄ±htÄ±ma yanasan geminin halatini alip volta eden kisi.", example:"Cimaci springi babaya iyi aldi."},
   {term:"Cipo", meaning:"Ozellikle admiralti demirinde kollara dik baglanan kol parca.", example:"Cipolu demir egitimlerde anlatilir."},
   {term:"Curuk Su", meaning:"Geminin dumenine yakin olusan ve pervanenin icinde calistigi bozuk su.", example:"Curuk su bazen dumen etkisini degistirir."},
   {term:"D (Delta-Deniz)", meaning:"Uluslararasi isaret sancaklarinda D harfi; benden acik bulununuz, manevra yapmakta gucluk cekiyorum.", example:"Dar manevrada D sancagi anlamlidir."},
@@ -5484,7 +5381,7 @@ const GLOSSARY_TERMS = [
   {term:"Dispacor", meaning:"Avaryada taraflara dusen payi hesaplayan kisi.", example:"Dispacor belgeleri istemeye basladi."},
   {term:"Dispec", meaning:"Starya suresinin tamaminin kullanilmamasiyla kazanilan zaman.", example:"Kiraci dispec bekliyordu."},
   {term:"Doblin", meaning:"Halatin iki cimas i arasindaki bight.", example:"Volta atmadan once halatta dobline aldik."},
-  {term:"Dokuz Oturak Oturmak", meaning:"Geminin sert sekilde karaya oturmasi.", example:"Yanlis yaklaşmada gemi dokuz oturak oturdu."},
+  {term:"Dokuz Oturak Oturmak", meaning:"Geminin sert sekilde karaya oturmasi.", example:"Yanlis yaklaÅŸmada gemi dokuz oturak oturdu."},
   {term:"Dosek", meaning:"Geminin en alt kisminda postalari baglayan taban elemani.", example:"Havuzda dosek bolgesi de incelendi."},
   {term:"Draft Survey", meaning:"Yukleme markalari ve draftlar uzerinden yapilan yuk miktari denetimi/hesabi.", example:"Draft survey sonucu tahmini tonaj netlesti."},
   {term:"Dumen", meaning:"Gemiyi istenen yone cevirmeye yarayan parca.", example:"Dumen cevaplari kanalda cok kritik hale geldi."},
@@ -5492,19 +5389,19 @@ const GLOSSARY_TERMS = [
   {term:"Dumen Zaviyesi", meaning:"Dumen yelpazesinin omurgayla yaptigi aci.", example:"35 derece dumen zaviyesi manevrayi degistirir."},
   {term:"Dumenci Pusulasi", meaning:"Serdumenin komut verirken baktigi pusula.", example:"Manyetik hata dumenci pusulasinda not edildi."},
   {term:"E (Echo-Engin)", meaning:"Uluslararasi isaret sancaklarinda E harfi; rotami sancaga degistiriyorum.", example:"Karsidan gelen trafik icin E sanca gi acik bir niyettir."},
-  {term:"Eglenmek", meaning:"Bas rüzgari alarak ayni yerde kalmaya veya cok agir yol gitmeye calismak.", example:"Hava sertlesince bir sure eglendik."},
+  {term:"Eglenmek", meaning:"Bas rÃ¼zgari alarak ayni yerde kalmaya veya cok agir yol gitmeye calismak.", example:"Hava sertlesince bir sure eglendik."},
   {term:"El Incesi", meaning:"Bir tekneden digerine veya sahile atilan ince halat.", example:"Ilk once el incesi cimaciya atildi."},
   {term:"El Iskandili", meaning:"Elektrikli cihaz olmayan teknelerde derinlik olcmek icin kullanilan kursunlu salvo.", example:"El iskandili klasik ama ogreticidir."},
   {term:"Ellecleme", meaning:"Yukun yuklenmesi, istifi ve bosaltilmasi islemleri.", example:"Ellecleme sirasinda guvenli alan korunur."},
-  {term:"Enspektor", meaning:"Geminin sefere hazirligini takip eden armatör gorevlisi.", example:"Enspektor PSC oncesi gemiye cikti."},
+  {term:"Enspektor", meaning:"Geminin sefere hazirligini takip eden armatÃ¶r gorevlisi.", example:"Enspektor PSC oncesi gemiye cikti."},
   {term:"ETA", meaning:"Estimated Time of Arrival; tahmini varis zamani.", example:"ETA degisirse acenta hemen haberdar edilir."},
   {term:"ETD", meaning:"Estimated Time of Departure; tahmini kalkis zamani.", example:"Pilot saati ETD'yi etkiledi."},
   {term:"ETS", meaning:"Estimated Time of Sailing; tahmini seyire baslama zamani.", example:"Kanal gecisi ertelenince ETS kaydi degisti."},
-  {term:"Evaporator", meaning:"Deniz suyundan tatli su elde etmeye yarayan aygit.", example:"Evaporator devrede degilse freshwater kısıtlanir."},
+  {term:"Evaporator", meaning:"Deniz suyundan tatli su elde etmeye yarayan aygit.", example:"Evaporator devrede degilse freshwater kÄ±sÄ±tlanir."},
   {term:"F (Foxtrot-Felenk)", meaning:"Uluslararasi isaret sancaklarinda F harfi; hareket kabiliyetine sahip degilim, benimle irtibat kurunuz.", example:"Ariza halinde F sancagi cok sey anlatir."},
   {term:"Faca", meaning:"Yelkenin ters kuntradan dolmasi; boot top bolgesi.", example:"Faca alan yelken kontrol kaybettirebilir."},
   {term:"Facuna Etmek", meaning:"Badarnanin tel veya murnel ile siki sarilmasi.", example:"Tel halatin korunan yeri facuna edildi."},
-  {term:"Farsa Tahtalari", meaning:"Ahsap teknede sintine ustundeki aralikli tahtalar.", example:"Fars tahtalari kaldirilinca alt kısım temizlendi."},
+  {term:"Farsa Tahtalari", meaning:"Ahsap teknede sintine ustundeki aralikli tahtalar.", example:"Fars tahtalari kaldirilinca alt kÄ±sÄ±m temizlendi."},
   {term:"Feeder", meaning:"500 TEU'dan az kapasitedeki konteyner gemisi tipi.", example:"Bu hatta feeder tipi gemiler calisiyor."},
   {term:"Feedermax", meaning:"Yaklasik 500-999 TEU arasi konteyner gemisi tipi.", example:"Feedermax liman kisitlarina daha rahat uyar."},
   {term:"Feribot", meaning:"Arac ve bazen vagon tasiyan gemi.", example:"Feribot trafigi bogaz planini etkileyebilir."},
@@ -5538,7 +5435,7 @@ const GLOSSARY_TERMS = [
   {term:"Halat", meaning:"Bitkisel, sentetik veya celikten yapilan cekmeye uygun urgan.", example:"Halatin cimasinda asinma vardi."},
   {term:"Halat Bosa", meaning:"Volta edilecek halati tutmakta kullanilan kisa stopper.", example:"Halat bosa olmadan yuk altina girilmedi."},
   {term:"Handy", meaning:"Yaklasik 1000-1999 TEU arasi konteyner gemisi tipi.", example:"Bu terminal handy segmentini iyi ceviriyor."},
-  {term:"Handymax", meaning:"Yaklasik 35.000-49.999 DWT arasi gemi segmenti.", example:"Handymax drafti bu limana sınırda uyuyor."},
+  {term:"Handymax", meaning:"Yaklasik 35.000-49.999 DWT arasi gemi segmenti.", example:"Handymax drafti bu limana sÄ±nÄ±rda uyuyor."},
   {term:"Handysize", meaning:"Yaklasik 20.000-34.999 DWT arasi gemi segmenti.", example:"Handysize kuru yuk gemileri cok yaygindir."},
   {term:"Havuz Sorveyi", meaning:"Geminin havuza alinarak su alti kisimlarinin kontrol edilmesi.", example:"Havuz sorveyinde deniz sandigi da incelendi."},
   {term:"Hazirlik Mektubu", meaning:"Notice of Readiness; geminin yuklemeye veya tahliyeye hazir oldugunu bildiren mektup.", example:"NOR zamani laytime hesabini etkiler."},
@@ -5581,7 +5478,7 @@ const GLOSSARY_TERMS = [
   {term:"Mayday", meaning:"Hayati tehlike veya ciddi tehlikede kullanilan distress cagrisi.", example:"Yangin yayilsa MAYDAY mesaji gecilmesi gerekirdi."},
   {term:"Mevki", meaning:"Geminin o anki pozisyonu.", example:"Mevki raporu verilmeden trafik yorumlanmaz."},
   {term:"Mizana", meaning:"Kic tarafa yakin direk veya ona ait yelken.", example:"Mizana acisi teknenin dengesini etkiledi."},
-  {term:"Mooring", meaning:"Geminin iskeleye, rıhtıma veya babalara halatlarla baglanmasi.", example:"Mooring station snap-back zone konusunda uyarildi."},
+  {term:"Mooring", meaning:"Geminin iskeleye, rÄ±htÄ±ma veya babalara halatlarla baglanmasi.", example:"Mooring station snap-back zone konusunda uyarildi."},
   {term:"Mors", meaning:"Nokta ve cizgilerle yapilan isaretlesme sistemi.", example:"SOS mors kodu hala temel bilgi sayilir."},
   {term:"NAVTEX", meaning:"Seyir uyarilari, hava ve emniyet mesajlarini alan otomatik sistem.", example:"Yeni NAVTEX mesaji warning mi safety mi diye yorumlandi."},
   {term:"No-Go Area", meaning:"Girilmesi emniyetsiz veya yasak kabul edilen harita alani.", example:"ECDIS route check no-go area uyarisi verdi."},
@@ -5670,7 +5567,7 @@ function buildKnotGallery(){
     {name:'Izbarco', type:'izbarco', desc:'Halatin cimasinda gecici bir kasa olusturur. Yelken iskolalari, mandar ve sayisiz baglama isinde gorulur.'},
     {name:'Camadan', type:'camadan', desc:'Ayni capta iki halati birlestirmek icin kullanilir. Yuk binince krozu icinde guzel kilitlenir.'},
     {name:'Sancak Bagi', type:'sancak', desc:'Iskota bagi olarak da anilir. Bir halatin cimasini kasaya ya da baska bir halata baglamakta kullanilir.'},
-    {name:'Kropi', type:'kropi', desc:'Halatin cimasinin delik, koÃ§ boya ya da makaradan kacmasini onlemek icin cimanin ucuna atilir.'},
+    {name:'Kropi', type:'kropi', desc:'Halatin cimasinin delik, koÃƒÂ§ boya ya da makaradan kacmasini onlemek icin cimanin ucuna atilir.'},
     {name:'Dulger', type:'dulger', desc:'Mapaya, analeye ya da bir guverte yapisina baglamak icin teknelerde en cok gorulen baglardandir.'},
     {name:'Cifte Sancak', type:'cifte_sancak', desc:'Sancak bagi ile ayni amaca hizmet eder ama daha guclu ve daha emniyetli bir tutus verir.'},
     {name:'Cifte Kazik', type:'cifte_kazik', desc:'Kazik baginin cift dolamali daha saglam versiyonudur; daha emniyetli tutar.'},
@@ -5747,7 +5644,7 @@ function updateSceneNoteHints(sc){
 }
 
 function addJournalEntry(text, day, time){
-  journalEntries.push({text, day: day||'—', time: time||'—', ts: Date.now()});
+  journalEntries.push({text, day: day||'â€”', time: time||'â€”', ts: Date.now()});
 }
 
 function openJournal(){
@@ -5778,12 +5675,12 @@ function closeColreg(){ document.getElementById('colreg-panel').classList.remove
 function renderJournal(){
   const c = document.getElementById('journal-entries');
   if(journalEntries.length === 0){
-    c.innerHTML = '<div style="color:var(--text3);font-size:12px;padding:10px;">Henüz günlük girişi yok. Sahnelerdeki kararların burada görünecek.</div>';
+    c.innerHTML = '<div style="color:var(--text3);font-size:12px;padding:10px;">HenÃ¼z gÃ¼nlÃ¼k giriÅŸi yok. Sahnelerdeki kararlarÄ±n burada gÃ¶rÃ¼necek.</div>';
     return;
   }
   c.innerHTML = journalEntries.slice().reverse().map(e => `
     <div class="journal-entry">
-      <div class="journal-entry-day">${e.day} · ${e.time}</div>
+      <div class="journal-entry-day">${e.day} Â· ${e.time}</div>
       ${e.text}
     </div>`).join('');
 }
@@ -5816,7 +5713,7 @@ function renderNotes(){
   const notes = STUDENT_NOTES.filter(n => getNoteCategory(n) === notesTab).filter(n => (`${n.head} ${n.body} ${n.tip}`).toLowerCase().includes(notesSearch));
   c.innerHTML = notes.length ? notes.map(n => `
     <div class="notes-section ${currentNoteTopics.has(n.head)?'related':''}">
-      <div class="notes-head">${n.head}${currentNoteTopics.has(n.head)?' · ILGILI':''}</div>
+      <div class="notes-head">${n.head}${currentNoteTopics.has(n.head)?' Â· ILGILI':''}</div>
       <div class="notes-body">${n.body}</div>
       <div class="notes-tip">${n.tip}</div>
     </div>`).join('') : '<div class="notes-empty">Bu sekmede aramana uyan not bulunamadi.</div>';
@@ -5843,16 +5740,16 @@ function renderGlossaryDetail(visibleTerms){
   </div>`;
 }
 
-// ===== HAVA SİSTEMİ =====
+// ===== HAVA SÄ°STEMÄ° =====
 const WEATHER_STATES = [
-  {ico:"☀️", desc:"Açık hava — mükemmel seyir", bft:1, color:"#d4a017"},
-  {ico:"🌤️", desc:"Hafif bulutlu — sakin deniz", bft:2, color:"#d4a017"},
-  {ico:"⛅", desc:"Parçalı bulutlu — hafif dalga", bft:3, color:"#c9952a"},
-  {ico:"🌥️", desc:"Kapalı — orta deniz", bft:4, color:"#8aabcc"},
-  {ico:"🌬️", desc:"Rüzgarlı — düzensiz dalga", bft:5, color:"#6fa8dc"},
-  {ico:"🌧️", desc:"Yağmurlu — kuvvetli dalga", bft:6, color:"#4a7098"},
-  {ico:"⛈️", desc:"Fırtınalı — gemi yatıyor", bft:8, color:"#c97070"},
-  {ico:"🌀", desc:"Şiddetli fırtına — ACİL", bft:10, color:"#c93010"},
+  {ico:"â˜€ï¸", desc:"AÃ§Ä±k hava â€” mÃ¼kemmel seyir", bft:1, color:"#d4a017"},
+  {ico:"ğŸŒ¤ï¸", desc:"Hafif bulutlu â€” sakin deniz", bft:2, color:"#d4a017"},
+  {ico:"â›…", desc:"ParÃ§alÄ± bulutlu â€” hafif dalga", bft:3, color:"#c9952a"},
+  {ico:"ğŸŒ¥ï¸", desc:"KapalÄ± â€” orta deniz", bft:4, color:"#8aabcc"},
+  {ico:"ğŸŒ¬ï¸", desc:"RÃ¼zgarlÄ± â€” dÃ¼zensiz dalga", bft:5, color:"#6fa8dc"},
+  {ico:"ğŸŒ§ï¸", desc:"YaÄŸmurlu â€” kuvvetli dalga", bft:6, color:"#4a7098"},
+  {ico:"â›ˆï¸", desc:"FÄ±rtÄ±nalÄ± â€” gemi yatÄ±yor", bft:8, color:"#c97070"},
+  {ico:"ğŸŒ€", desc:"Åiddetli fÄ±rtÄ±na â€” ACÄ°L", bft:10, color:"#c93010"},
 ];
 
 let currentWeather = 1;
@@ -5873,11 +5770,11 @@ function updateWeather(sceneGfx){
   const temp = document.getElementById('weather-temp');
   if(ico) ico.textContent = w.ico;
   if(bft){ bft.textContent = w.bft; bft.style.color = w.color; }
-  if(info) info.innerHTML = `Beaufort <span id="weather-bft" style="color:${w.color};font-weight:600;">${w.bft}</span> — ${w.desc}`;
-  if(temp) temp.textContent = `${18+Math.floor(Math.random()*10)}°C`;
+  if(info) info.innerHTML = `Beaufort <span id="weather-bft" style="color:${w.color};font-weight:600;">${w.bft}</span> â€” ${w.desc}`;
+  if(temp) temp.textContent = `${18+Math.floor(Math.random()*10)}Â°C`;
 }
 
-// ===== FOTOĞRAF ALBÜMİ =====
+// ===== FOTOÄRAF ALBÃœMÄ° =====
 let photos = [];
 let seenPhotoMoments = new Set();
 
@@ -5923,7 +5820,7 @@ function openAlbum(){
   if(photos.length === 0){
     const empty = document.createElement('div');
     empty.style.cssText = 'color:var(--text3);font-size:13px;padding:20px;text-align:center;width:100%;';
-    empty.textContent = 'Henüz fotoğraf yok. Önemli anlarda otomatik çekilecek.';
+    empty.textContent = 'HenÃ¼z fotoÄŸraf yok. Ã–nemli anlarda otomatik Ã§ekilecek.';
     p.appendChild(empty);
     return;
   }
@@ -5934,44 +5831,44 @@ function openAlbum(){
     div.innerHTML = `<svg class="photo-img" viewBox="0 0 480 145" xmlns="http://www.w3.org/2000/svg">${mini}</svg>
       <div style="font-size:10px;font-weight:600;color:var(--text);margin-bottom:2px;">${ph.title}</div>
       <div class="photo-cap">${ph.caption}</div>
-      <div style="font-size:8px;color:var(--text3);margin-top:2px;">Gün ${ph.day}</div>`;
+      <div style="font-size:8px;color:var(--text3);margin-top:2px;">GÃ¼n ${ph.day}</div>`;
     p.appendChild(div);
   });
 }
 function closeAlbum(){ document.getElementById('album-panel').classList.remove('show'); }
 
-// ===== ANİ OLAY SİSTEMİ =====
+// ===== ANÄ° OLAY SÄ°STEMÄ° =====
 const RANDOM_EVENTS = [
-  {icon:"🤒",title:"Musa Hastalandı!",text:"Tayfa Musa aniden mide bulantısı şikayeti. Gemi doktoru yok.",timer:15,
+  {icon:"ğŸ¤’",title:"Musa HastalandÄ±!",text:"Tayfa Musa aniden mide bulantÄ±sÄ± ÅŸikayeti. Gemi doktoru yok.",timer:15,
     choices:[
-      {text:"İlk yardım kutusunu al, ilaç ver",effect:{sayginlik:8,bilgi:5}},
-      {text:"Mehmet Usta'ya git, bişeyler pişirsin",effect:{sayginlik:10}},
-      {text:"Kendi haline bırak",effect:{sayginlik:-8}}]},
-  {icon:"💧",title:"Tatlı Su Azaldı!",text:"Tatlı su tankı beklenenden hızlı tükeniyor. Hesap hatası mı?",timer:12,
+      {text:"Ä°lk yardÄ±m kutusunu al, ilaÃ§ ver",effect:{sayginlik:8,bilgi:5}},
+      {text:"Mehmet Usta'ya git, biÅŸeyler piÅŸirsin",effect:{sayginlik:10}},
+      {text:"Kendi haline bÄ±rak",effect:{sayginlik:-8}}]},
+  {icon:"ğŸ’§",title:"TatlÄ± Su AzaldÄ±!",text:"TatlÄ± su tankÄ± beklenenden hÄ±zlÄ± tÃ¼keniyor. Hesap hatasÄ± mÄ±?",timer:12,
     choices:[
-      {text:"Tüketim kısıtlaması öner — herkesi bilgilendir",effect:{bilgi:8,sayginlik:7}},
-      {text:"Çarkçıbaşı'ya bildir",effect:{bilgi:5,sayginlik:5}},
-      {text:"Görmezden gel",effect:{sayginlik:-10,bilgi:-5}}]},
-  {icon:"🐟",title:"Balık Sürüsü!",text:"Dev balık sürüsü geminin önünden geçiyor. Güverte herkes toplandı.",timer:20,
+      {text:"TÃ¼ketim kÄ±sÄ±tlamasÄ± Ã¶ner â€” herkesi bilgilendir",effect:{bilgi:8,sayginlik:7}},
+      {text:"Ã‡arkÃ§Ä±baÅŸÄ±'ya bildir",effect:{bilgi:5,sayginlik:5}},
+      {text:"GÃ¶rmezden gel",effect:{sayginlik:-10,bilgi:-5}}]},
+  {icon:"ğŸŸ",title:"BalÄ±k SÃ¼rÃ¼sÃ¼!",text:"Dev balÄ±k sÃ¼rÃ¼sÃ¼ geminin Ã¶nÃ¼nden geÃ§iyor. GÃ¼verte herkes toplandÄ±.",timer:20,
     choices:[
-      {text:"Anı yaşa, mürettebatla beraber izle",effect:{sayginlik:10,dinclik:5}},
-      {text:"Fotoğrafla — belgesel değeri var",effect:{bilgi:3,sayginlik:5}},
-      {text:"Göreve dön",effect:{sayginlik:2}}]},
-  {icon:"📡",title:"İletişim Kesildi!",text:"Uydu sistemi çöktü. VHF dışında hiçbir iletişim yok. 6 saat.",timer:10,
+      {text:"AnÄ± yaÅŸa, mÃ¼rettebatla beraber izle",effect:{sayginlik:10,dinclik:5}},
+      {text:"FotoÄŸrafla â€” belgesel deÄŸeri var",effect:{bilgi:3,sayginlik:5}},
+      {text:"GÃ¶reve dÃ¶n",effect:{sayginlik:2}}]},
+  {icon:"ğŸ“¡",title:"Ä°letiÅŸim Kesildi!",text:"Uydu sistemi Ã§Ã¶ktÃ¼. VHF dÄ±ÅŸÄ±nda hiÃ§bir iletiÅŸim yok. 6 saat.",timer:10,
     choices:[
-      {text:"Sakin kal, VHF prosedürünü uygula",effect:{bilgi:10,sayginlik:8,cesaret:5}},
-      {text:"Süvariyi bilgilendir, bekleme moduna geç",effect:{sayginlik:7,bilgi:5}},
+      {text:"Sakin kal, VHF prosedÃ¼rÃ¼nÃ¼ uygula",effect:{bilgi:10,sayginlik:8,cesaret:5}},
+      {text:"SÃ¼variyi bilgilendir, bekleme moduna geÃ§",effect:{sayginlik:7,bilgi:5}},
       {text:"Panikle",effect:{sayginlik:-12,cesaret:-8}}]},
-  {icon:"🚢",title:"SOS Sinyali!",text:"Yakın mesafede SOS sinyali alındı. Küçük tekne mi?",timer:15,
+  {icon:"ğŸš¢",title:"SOS Sinyali!",text:"YakÄ±n mesafede SOS sinyali alÄ±ndÄ±. KÃ¼Ã§Ã¼k tekne mi?",timer:15,
     choices:[
-      {text:"Süvariyi hemen çağır, pozisyona yönel",effect:{cesaret:10,sayginlik:12,bilgi:8}},
-      {text:"Sahil güvenliği ara, konumlarını bil",effect:{bilgi:8,sayginlik:10}},
-      {text:"Yanlış sinyal olabilir, devam et",effect:{sayginlik:-15,cesaret:-10}}]},
-  {icon:"🪳",title:"Ambar İhlali!",text:"Ambar 2'de insan izine benzer şeyler var. Kaçak yolcu mu?",timer:12,
+      {text:"SÃ¼variyi hemen Ã§aÄŸÄ±r, pozisyona yÃ¶nel",effect:{cesaret:10,sayginlik:12,bilgi:8}},
+      {text:"Sahil gÃ¼venliÄŸi ara, konumlarÄ±nÄ± bil",effect:{bilgi:8,sayginlik:10}},
+      {text:"YanlÄ±ÅŸ sinyal olabilir, devam et",effect:{sayginlik:-15,cesaret:-10}}]},
+  {icon:"ğŸª³",title:"Ambar Ä°hlali!",text:"Ambar 2'de insan izine benzer ÅŸeyler var. KaÃ§ak yolcu mu?",timer:12,
     choices:[
-      {text:"Lostromo ve süvariyi bilgilendir",effect:{bilgi:10,sayginlik:12,cesaret:8}},
-      {text:"Tek başına araştır",effect:{cesaret:8,sayginlik:-3}},
-      {text:"Hayal görüyorum de, unut",effect:{sayginlik:-10}}]},
+      {text:"Lostromo ve sÃ¼variyi bilgilendir",effect:{bilgi:10,sayginlik:12,cesaret:8}},
+      {text:"Tek baÅŸÄ±na araÅŸtÄ±r",effect:{cesaret:8,sayginlik:-3}},
+      {text:"Hayal gÃ¶rÃ¼yorum de, unut",effect:{sayginlik:-10}}]},
 ];
 
 let eventTimer = null;
@@ -5997,7 +5894,7 @@ function showEventCard(ev){
     b.onclick = () => {
       clearInterval(eventTimer);
       applyEffect(c.effect);
-      addJournalEntry(`Ani olay: ${ev.title} — "${c.text}" seçildi.`);
+      addJournalEntry(`Ani olay: ${ev.title} â€” "${c.text}" seÃ§ildi.`);
       document.getElementById('event-card').classList.remove('show');
       eventActive = false;
     };
@@ -6012,16 +5909,16 @@ function showEventCard(ev){
     if(el) el.textContent = t;
     if(t<=0){
       clearInterval(eventTimer);
-      // Time's up — worst choice by default
+      // Time's up â€” worst choice by default
       applyEffect({sayginlik:-5, dinclik:-5});
-      addJournalEntry(`Ani olay: ${ev.title} — süre doldu, hareketsiz kalındı.`);
+      addJournalEntry(`Ani olay: ${ev.title} â€” sÃ¼re doldu, hareketsiz kalÄ±ndÄ±.`);
       document.getElementById('event-card').classList.remove('show');
       eventActive = false;
     }
   }, 1000);
 }
 
-// Rastgele olay tetikleyici — her 5-8 sahnede bir
+// Rastgele olay tetikleyici â€” her 5-8 sahnede bir
 let scenesSinceEvent = 0;
 let nextEventAt = 5 + Math.floor(Math.random()*4);
 
@@ -6034,45 +5931,32 @@ function maybeTrigerEvent(){
   }
 }
 
-// Mevcut gün takibi
+// Mevcut gÃ¼n takibi
 let currentDay = 1;
 const COLREG_HINTS = {
-  s23:{icon:'âš“', title:'COLREG - Crossing', body:'Sancakta hedef varsa give-way sensin. Erken fark et, riski dogru raporla, nobet zabitini hemen haberdar et.'},
-  s23b:{icon:'ğŸ§­', title:'COLREG Ozeti', body:'Crossing, head-on ve dar kanal kurallari burada birlikte sinaniyor.'},
-  s48:{icon:'ğŸ—ºï¸', title:'COLREG - TSS', body:'Trafik ayrim seridinde rota disiplinini koru ve diger gemilerin emniyetli gecisini zorlastirma.'},
-  kriz17:{icon:'ğŸ“¡', title:'COLREG - Dar Kanal', body:'VHF yardimcidir; asil olan sancak sinirina yakin kalmak ve gecisi engellememektir.'}
+  s23:{icon:'Ã¢Å¡â€œ', title:'COLREG - Crossing', body:'Sancakta hedef varsa give-way sensin. Erken fark et, riski dogru raporla, nobet zabitini hemen haberdar et.'},
+  s23b:{icon:'ÄŸÅ¸Â§Â­', title:'COLREG Ozeti', body:'Crossing, head-on ve dar kanal kurallari burada birlikte sinaniyor.'},
+  s48:{icon:'ÄŸÅ¸â€”ÂºÃ¯Â¸Â', title:'COLREG - TSS', body:'Trafik ayrim seridinde rota disiplinini koru ve diger gemilerin emniyetli gecisini zorlastirma.'},
+  kriz17:{icon:'ÄŸÅ¸â€œÂ¡', title:'COLREG - Dar Kanal', body:'VHF yardimcidir; asil olan sancak sinirina yakin kalmak ve gecisi engellememektir.'}
 };
 
-// ===== SİSTEMLERİ ENTEGRE ET =====
-// Bu fonksiyon mevcut renderScene'e ek olarak çalışır
+// ===== SÄ°STEMLERÄ° ENTEGRE ET =====
+// Bu fonksiyon mevcut renderScene'e ek olarak Ã§alÄ±ÅŸÄ±r
 function onSceneRender(sc){
-  const speakerPortrait = document.getElementById('speaker-portrait');
-  if(speakerPortrait) speakerPortrait.textContent = getCrewPortraitIcon(sc.who);
-  const avatar = document.getElementById('avatar');
-  if(avatar) avatar.textContent = getPlayerPortrait();
-  const companyLine = document.getElementById('companyline');
-  const company = COMPANY_THEMES[selType] || COMPANY_THEMES.kuru;
-  if(companyLine) companyLine.textContent = company.name+' · '+company.line;
-  const sceneArea = document.getElementById('scene-area');
-  if(sceneArea){
-    sceneArea.classList.remove('scene-fade');
-    void sceneArea.offsetWidth;
-    sceneArea.classList.add('scene-fade');
-  }
-  // Hava güncelle
+  // Hava gÃ¼ncelle
   updateWeather(sc.gfx);
-  // Harita pozisyonunu güncelle
+  // Harita pozisyonunu gÃ¼ncelle
   updateShipPosition(sc.loc);
-  // Gün sayacını güncelle
+  // GÃ¼n sayacÄ±nÄ± gÃ¼ncelle
   if(sc.day) {
     const m = sc.day.match(/\d+/);
     if(m) currentDay = parseInt(m[0]);
   }
-  // Crew trust güncelle (sahne gösteriminde +1 tanışma)
+  // Crew trust gÃ¼ncelle (sahne gÃ¶steriminde +1 tanÄ±ÅŸma)
   const crewKey = getCrewKeyFromWho(sc.who);
   if(crewKey) updateCrewTrust(crewKey, 1);
-  // Önemli anlarda fotoğraf çek
-  if(sc.alert) tryAddMomentPhoto(`scene-${sc.id}`, `ACIL: ${sc.sub}`, sc.day+' · '+sc.time, sc.gfx);
+  // Ã–nemli anlarda fotoÄŸraf Ã§ek
+  if(sc.alert) tryAddMomentPhoto(`scene-${sc.id}`, `ACIL: ${sc.sub}`, sc.day+' Â· '+sc.time, sc.gfx);
   else if(sc.id==='s01') tryAddMomentPhoto('scene-s01', 'Ilk Adim', 'Iskeleye ilk kez ayak basiyorum...', 'harbor');
   else if(sc.id==='FINAL') tryAddMomentPhoto('scene-final', 'Son Gun', 'Bu yolculugun son sahnesi.', 'bridge');
   else maybeAddOceanPhoto(sc);
@@ -6089,7 +5973,7 @@ function onSceneRender(sc){
 }
 
 
-// ===== SES SİSTEMİ (Web Audio API) =====
+// ===== SES SÄ°STEMÄ° (Web Audio API) =====
 let audioCtx = null;
 let currentMusic = null;
 let musicGain = null;
@@ -6098,7 +5982,7 @@ let musicGain = null;
 let soundEnabled = true;
 function toggleSound(){
   soundEnabled = !soundEnabled;
-  document.getElementById('sound-btn').textContent = soundEnabled ? '🔊' : '🔇';
+  document.getElementById('sound-btn').textContent = soundEnabled ? 'ğŸ”Š' : 'ğŸ”‡';
   if(!soundEnabled) stopAllMusic();
 }
 
@@ -6116,7 +6000,7 @@ function getAudioCtx(){
   return audioCtx;
 }
 
-// Basit ses efekti üreticisi - Web Audio API ile synthtic sesler
+// Basit ses efekti Ã¼reticisi - Web Audio API ile synthtic sesler
 function playTone(freq, type, duration, vol, delay=0){
   const ctx = getAudioCtx();
   if(!ctx) return;
@@ -6156,7 +6040,7 @@ function playNoise(duration, vol, delay=0){
   src.stop(ctx.currentTime + delay + duration + 0.1);
 }
 
-// Müzik/ambians döngü sistemi
+// MÃ¼zik/ambians dÃ¶ngÃ¼ sistemi
 let ambianceNodes = [];
 function stopAllMusic(){
   ambianceNodes.forEach(n=>{ try{ n.stop(); }catch(e){} });
@@ -6177,16 +6061,16 @@ function playDroneNote(freq, vol, ctx){
   return osc;
 }
 
-// === ÖZEL SES FONKSİYONLARI ===
+// === Ã–ZEL SES FONKSÄ°YONLARI ===
 
-// VHF tıkırtısı
+// VHF tÄ±kÄ±rtÄ±sÄ±
 function sfxVHF(){
   playTone(800, 'square', 0.08, 0.3);
   setTimeout(()=>playTone(1200, 'square', 0.06, 0.2), 100);
   setTimeout(()=>playTone(800, 'square', 0.08, 0.25), 200);
 }
 
-// Alarm sesi (yangın/acil)
+// Alarm sesi (yangÄ±n/acil)
 function sfxAlarm(){
   for(let i=0;i<5;i++){
     playTone(880, 'square', 0.15, 0.4, i*0.35);
@@ -6199,16 +6083,16 @@ function sfxRadarBip(){
   playTone(1200, 'sine', 0.12, 0.25);
 }
 
-// Dalga/fırtına ambians
+// Dalga/fÄ±rtÄ±na ambians
 function sfxStormAmbiance(){
   stopAllMusic();
   const ctx = getAudioCtx();
   if(!ctx) return;
-  // Düşük frekanslı dalga uğultusu
+  // DÃ¼ÅŸÃ¼k frekanslÄ± dalga uÄŸultusu
   playDroneNote(40, 0.08, ctx);
   playDroneNote(55, 0.06, ctx);
   playDroneNote(80, 0.04, ctx);
-  // Periyodik buhran notları
+  // Periyodik buhran notlarÄ±
   let beat = 0;
   function stormBeat(){
     if(ambianceNodes.length === 0) return;
@@ -6220,15 +6104,15 @@ function sfxStormAmbiance(){
   setTimeout(stormBeat, 500);
 }
 
-// Korsan gerilim müziği
+// Korsan gerilim mÃ¼ziÄŸi
 function sfxPirateAmbiance(){
   stopAllMusic();
   const ctx = getAudioCtx();
   if(!ctx) return;
-  // Gerilim dronu - düşük, tehditkar
+  // Gerilim dronu - dÃ¼ÅŸÃ¼k, tehditkar
   playDroneNote(55, 0.1, ctx);
   playDroneNote(82, 0.07, ctx);
-  // Hızlı ritim
+  // HÄ±zlÄ± ritim
   let beat = 0;
   const pirateMelody = [220, 196, 185, 165, 196, 220, 233];
   function pirateBeat(){
@@ -6247,7 +6131,7 @@ function sfxPirateAmbiance(){
   setTimeout(pirateBeat, 200);
 }
 
-// Boğaz gerilimi — sessiz, tehlikeli
+// BoÄŸaz gerilimi â€” sessiz, tehlikeli
 function sfxBogazAmbiance(){
   stopAllMusic();
   const ctx = getAudioCtx();
@@ -6265,10 +6149,10 @@ function sfxBogazAmbiance(){
   setTimeout(bogazBeat, 300);
 }
 
-// Makine arızası — metalik, alarm
+// Makine arÄ±zasÄ± â€” metalik, alarm
 function sfxEngineAlarm(){
   stopAllMusic();
-  // Metal titreşim
+  // Metal titreÅŸim
   for(let i=0;i<3;i++){
     playTone(150+i*30, 'sawtooth', 0.3, 0.15, i*0.4);
     playTone(300+i*20, 'square', 0.2, 0.1, i*0.4+0.15);
@@ -6290,12 +6174,12 @@ function sfxEngineAlarm(){
 }
 
 
-// Deniz dalgası arka plan sesi
+// Deniz dalgasÄ± arka plan sesi
 function sfxOceanAmbiance(){
   const ctx = getAudioCtx();
   if(!ctx) return;
   stopAllMusic();
-  // Düşük frekanslı dalga uğultusu
+  // DÃ¼ÅŸÃ¼k frekanslÄ± dalga uÄŸultusu
   const createWave = (freq, amp, delay=0) => {
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
@@ -6317,13 +6201,13 @@ function sfxOceanAmbiance(){
   createWave(48, 0.06);
   createWave(72, 0.04, 0.3);
   createWave(95, 0.03, 0.7);
-  // Periyodik kıyı çarpma efekti
+  // Periyodik kÄ±yÄ± Ã§arpma efekti
   let waveT = 0;
   function waveImpact(){
     if(ambianceNodes.length === 0) return;
     const ctx2 = getAudioCtx();
     if(!ctx2) return;
-    // Gürültü patlaması (dalga kıyıya çarptı)
+    // GÃ¼rÃ¼ltÃ¼ patlamasÄ± (dalga kÄ±yÄ±ya Ã§arptÄ±)
     const bufSize = ctx2.sampleRate * 0.8;
     const buf = ctx2.createBuffer(1, bufSize, ctx2.sampleRate);
     const data = buf.getChannelData(0);
@@ -6351,7 +6235,7 @@ function sfxOceanAmbiance(){
   setTimeout(waveImpact, 2000);
 }
 
-// Gemi sesi — motor uğultusu (normal)
+// Gemi sesi â€” motor uÄŸultusu (normal)
 function sfxShipEngine(){
   stopAllMusic();
   const ctx = getAudioCtx();
@@ -6361,37 +6245,16 @@ function sfxShipEngine(){
   playDroneNote(150, 0.02, ctx);
 }
 
-// Liman sesi — kalabalık, canlı
+// Liman sesi â€” kalabalÄ±k, canlÄ±
 function sfxHarbor(){
   stopAllMusic();
-  // Vinç sesleri
+  // VinÃ§ sesleri
   setTimeout(()=>playTone(600, 'sawtooth', 0.15, 0.06), 200);
   setTimeout(()=>playTone(800, 'square', 0.1, 0.05), 700);
   setTimeout(()=>playNoise(0.2, 0.04), 1200);
 }
 
-// İyi sonuç fanfarı
-function sfxBridgeConsole(){
-  playTone(940, 'sine', 0.04, 0.04, 0.12);
-  playTone(1220, 'square', 0.03, 0.03, 0.42);
-}
-
-function sfxPortPA(){
-  playTone(420, 'triangle', 0.08, 0.04, 0.1);
-  playTone(560, 'triangle', 0.09, 0.03, 0.24);
-  playNoise(0.12, 0.015, 0.18);
-}
-
-function sfxWindRig(){
-  playNoise(0.9, 0.02, 0.05);
-  playTone(180+Math.random()*40, 'triangle', 0.55, 0.015, 0.1);
-}
-
-function sfxRopeStrain(){
-  playTone(140, 'sawtooth', 0.22, 0.03, 0.06);
-  playTone(210, 'triangle', 0.16, 0.02, 0.14);
-}
-
+// Ä°yi sonuÃ§ fanfarÄ±
 function sfxSuccess(){
   const notes = [523, 659, 784, 1047];
   notes.forEach((n,i)=> playTone(n, 'triangle', 0.4, 0.15, i*0.15));
@@ -6400,14 +6263,14 @@ function sfxSuccess(){
   }, 700);
 }
 
-// Kötü sonuç sesi
+// KÃ¶tÃ¼ sonuÃ§ sesi
 function sfxFail(){
   playTone(300, 'sawtooth', 0.5, 0.2);
   playTone(220, 'sawtooth', 0.5, 0.2, 0.3);
   playTone(160, 'sawtooth', 0.5, 0.25, 0.6);
 }
 
-// Seçim click sesi
+// SeÃ§im click sesi
 function sfxClick(){
   playTone(800, 'sine', 0.05, 0.08);
 }
@@ -6519,7 +6382,7 @@ function playHomesickAmbiance(sc){
   setTimeout(sfx, 420);
 }
 
-// Sahneye göre ses çal
+// Sahneye gÃ¶re ses Ã§al
 function playSceneAudio(sc){
   const gfx = sc.gfx || '';
   const alert = sc.alert || false;
@@ -6532,22 +6395,21 @@ function playSceneAudio(sc){
   } else {
     if(gfx === 'storm') sfxStormAmbiance();
     else if(gfx==='fire') { stopAllMusic(); sfxAlarm(); }
-    else if(gfx === 'radar') { stopAllMusic(); sfxRadarBip(); sfxBridgeConsole(); }
+    else if(gfx === 'radar') { stopAllMusic(); sfxRadarBip(); }
     else if(gfx === 'engine') { stopAllMusic(); sfxShipEngine(); }
-    else if(gfx==='harbor') { sfxHarbor(); sfxOceanAmbiance(); setTimeout(sfxPortPA, 280); }
-    else if(gfx==='sea'||gfx==='night'||gfx==='sunrise'||gfx==='port_arrival') { sfxShipEngine(); sfxOceanAmbiance(); if(gfx==='night') setTimeout(sfxBridgeConsole, 220); }
+    else if(gfx==='harbor') { sfxHarbor(); sfxOceanAmbiance(); }
+    else if(gfx==='sea'||gfx==='night'||gfx==='sunrise'||gfx==='port_arrival') { sfxShipEngine(); sfxOceanAmbiance(); }
     else if(gfx==='cabin'||gfx==='galley') {
       sfxOceanAmbiance();
       playHomesickAmbiance(sc);
     }
     else { stopAllMusic(); }
   }
-  if(/mooring|halat|tow line|spring|snap-back|romorkor/i.test(`${sc.loc||''} ${sc.sub||''}`)) setTimeout(sfxRopeStrain, 180);
-  if(/bogaz|storm|firtina|anchor watch|suruklenme/i.test(`${sc.loc||''} ${sc.sub||''} ${gfx}`)) setTimeout(sfxWindRig, 240);
 }
 
 
-// ===== BAŞLATMA =====
+// ===== BAÅLATMA =====
 document.getElementById('nameinp').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('shipnameinp').focus();});
 document.getElementById('shipnameinp').addEventListener('keydown',e=>{if(e.key==='Enter')beginGame();});
 buildIntro();
+
