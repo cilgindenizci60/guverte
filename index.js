@@ -2733,6 +2733,28 @@ choices:[
 {text:"Shackle sayisini kabaca tahmin etmenin yetecegini dusunurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"Zincir hizini onemsemem, birak gitsin derim",tag:"korkak",effect:{bilgi:-9,sayginlik:-9}}]},
 
+{id:"s180b",gfx:"bogaz",alert:false,day:"Gun 10",time:"18:28",loc:"Pruva Ustu - Zincir Markalari",sub:"Hangi bakla hangi renge boyanir?",who:"lostromo",
+text:`Lostromo zincirin ustune egildi, parmagiyla boyali baklalari gosterdi.
+
+"Zinciri sadece sayarak degil, markasindan da okursun. Bir kilit 15 fathom yani yaklasik 27.5 metre. Joining shackle cevresindeki boyali baklalar ve tel sargilari hangi kilidin suda oldugunu hizlica anlaman icindir. Sistem gemiden gemiye ufak degisebilir ama mantik hep aynidir."
+
+Sana gore dogru denizci tavri hangisi?`,
+choices:[
+{text:"Gemide uygulanan marking sistemini ogrenir; boyali bakla ile tel sargisini birlikte okuyarak kilit sayarim",tag:"kritik",effect:{bilgi:15,sayginlik:12}},
+{text:"Sadece zincirin ne kadar hizli aktigina bakmanin yeterli oldugunu dusunurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Bakla renklerinin pratikte onemli olmadigini sanirim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s180c",gfx:"bogaz",alert:false,day:"Gun 10",time:"18:34",loc:"Pruva Ustu - Kaloma Takibi",sub:"Kacinci zincir suda nasil anlasilir?",who:"z3",
+text:`3. Zabiti kilit sayimini bir daha sordurdu:
+
+"Mesela bir joining shackle kirmizi, yanindaki iki bakla beyaz ise bu gemide birinci kilit olabilir; ikinci kilitte uc bakla, ucuncude dort bakla gibi ilerler. Ama ezber degil, geminin marking plani esastir. Onemli olan suya giden kilidi dogru seslendirmek."
+
+Pruva ustunde en dogru rapor nasil verilir?`,
+choices:[
+{text:"Marking planina gore okuyup 'ucuncu kilit suya girdi' gibi net ve yuksek sesle rapor veririm",tag:"kritik",effect:{bilgi:16,sayginlik:12,cesaret:3}},
+{text:"Kaptan nasil olsa duyar diye sayiyi icimden takip ederim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Renkler karisik diye tahmini bir kilit sayisi soylerim",tag:"korkak",effect:{bilgi:-10,sayginlik:-10}}]},
+
 {id:"s181",gfx:"storm",alert:true,day:"Gun 10",time:"22:40",loc:"Demir Sahasi - Ruzgar Dondu",sub:"Holding ground ve suruklenme ihtimali",who:"suvari",
 text:`Gece ruzgar dondu, gemi hafifce baska bir aciya oturdu.
 
@@ -5089,6 +5111,7 @@ const STUDENT_NOTES = [
   {head:"LIMAN VE EVRAK", body:"Notice of Readiness, Bill of Lading, Mate's Receipt, Statement of Facts, manifest, stowage plan, Oil Record Book ve Garbage Record Book temel evraklardandir.<br>Uyumsuzluk gordugunde amire hemen bildirilir.<br>Laytime, demurrage, dispatch, arrival condition ve sea protest temel kavramlardir.", tip:"Saklanan hata buyur."},
   {head:"PSC / ISPS / SOLAS / STCW", body:"PSC denetiminde evrak, emniyet ekipmani, drill kayitlari, GMDSS testleri ve gemi kondisyonu birlikte incelenir.<br>ISPS tarafinda gangway kontrolu, ziyaretci kaydi ve security level takibi esastir.<br>SOLAS can emniyeti, STCW yeterlilik ve vardiya standartlarini kurar.", tip:"Denetime her gun hazir olunur."},
   {head:"LSA / FILIKA / MATAFORA BAKIMI", body:"Can salinda servis tarihi, hydrostatic release unit (HRU), painter, lash ve konteyner kondisyonu kontrol edilir.<br>Can filikasinda inventory, drain plug, battery, engine readiness, communication set, water/ration ve release gear gozden gecirilir.<br>Can yeleklerinde light, whistle, tape, buddy line ve genel kondisyon; immersion suitte size, zipper ve sizdirmazlik mantigi okunur.<br>Matafora ve launching appliance tarafinda fall, sheave, brake, grease noktasi, limit switch ve hareket testi birlikte dusunulur.<br>Pyrotechnics, line-throwing appliance, EPIRB, SART ve handheld VHF tarih/kayit/ready durumu unutulmaz.", tip:"Acil durum ekipmani en cok lazim oldugu gun surpriz cikarmamali."},
+  {head:"DEMIR ZINCIRI / KILIT MARKALARI", body:"Bir kilit / shackle genelde <b>15 fathom</b> yani yaklasik <b>27.5 metre</b> kabul edilir.<br>Zincir marking sisteminde joining shackle cevresindeki boyali baklalar ve tel sargilari hangi kilidin suda oldugunu hizlica anlamak icin kullanilir.<br>Gemiden gemiye renk ve tel duzeni degisebilir; esas olan geminin kendi <b>chain marking plan</b>ini bilmektir.<br>Pruva ustunde rapor verirken 'birinci kilit suya girdi', 'ucuncu kilit suya girdi' gibi net ve yuksek sesli ifade kullanilir.<br>Kaloma verirken sadece sayi degil; zincirin hizi, fren durumu ve davranisi da izlenir.", tip:"Ezber renk degil, gemide uygulanan marking sistemi esastir."},
   {head:"ACIL HABERLESME", body:"MAYDAY distress, PAN-PAN urgency, SECURITE emniyet yayini icindir.<br>Mesajda gemi adi, callsign, pozisyon, tehlikenin cinsi, yardim ihtiyaci ve kisi sayisi acik verilir.<br>GMDSS, EPIRB, SART, NAVTEX, DSC, handheld VHF ve emergency battery kayitlari bilinir.", tip:"Netlik hiz kadar onemlidir."},
   {head:"FORMULLER - HIZ / MESAFE / ZAMAN", body:"Mesafe = Hiz x Zaman<br>Hiz = Mesafe / Zaman<br>Zaman = Mesafe / Hiz<br>1 knot = 1 deniz mili / saat<br>Gece ETA hesaplari icin once kalan mesafe, sonra mevcut SOG kullanilir.<br><br><b>Ornek:</b> 48 mil yol, 12 knot hizla yaklasik 4 saatte biter.", tip:"Basit formuller vardiyada en cok kullanilanlardir."},
   {head:"FORMULLER - SET / DRIFT / CTS", body:"Course to Steer mantigi: istenen COG icin akinti vektorunu hesaba kat.<br>Drift = akintinin hizi<br>Set = akintinin yonu<br>Gercek iz = verilen rota + akinti etkisi<br>Yaklasik kapanis mantigi: Verilen HDG + akinti vektoru = gercek COG/SOG<br>Running fix / DR duzeltmelerinde set-drift sure ile birlikte okunur.<br><b>Yaklasik akis:</b> Akinti mesafesi = drift x zaman<br><b>ETA</b> icin kalan mesafe / gercek SOG mantigi kullanilir.<br><b>Kullanilan tablo / kaynaklar:</b> Tidal stream atlas, current tables, pilot book, chart notlari, ECDIS current overlay, sailing directions.<br><br><b>Ornek:</b> 090 rota tutmak isterken akinti seni kuzeye 2 knot itiyorsa bir miktar guneye pruva verip CTS duzeltmesi yaparsin.", tip:"Pruva baska, iz baska olabilir."},
