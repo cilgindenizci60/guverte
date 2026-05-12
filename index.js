@@ -4050,20 +4050,12 @@ function getRadarTrainingOverlay(sc){
     <text x="${t.x+6}" y="${t.y-4}" fill="${t.color}" font-size="6" font-family="monospace">${t.tag}</text>
     <text x="${t.x+6}" y="${t.y+7}" fill="#8ab0c8" font-size="5.5" font-family="monospace">${t.meta}</text>`).join('');
   return `<g opacity=".98">
-    <rect x="286" y="18" width="158" height="110" rx="4" fill="#03110a" stroke="#0d3a18" stroke-width="1"/>
-    <circle cx="365" cy="72" r="42" fill="none" stroke="#0d3a18" stroke-width="1"/>
-    <circle cx="365" cy="72" r="28" fill="none" stroke="#0d3a18" stroke-width=".8" opacity=".8"/>
-    <circle cx="365" cy="72" r="14" fill="none" stroke="#0d3a18" stroke-width=".7" opacity=".6"/>
-    <line x1="323" y1="72" x2="407" y2="72" stroke="#0d3a18" stroke-width=".8" opacity=".7"/>
-    <line x1="365" y1="30" x2="365" y2="114" stroke="#0d3a18" stroke-width=".8" opacity=".7"/>
-    <g class="radar-sweep" style="transform-origin:365px 72px">
-      <line x1="365" y1="72" x2="365" y2="31" stroke="#1aff50" stroke-width="1.3" opacity=".85"/>
-      <path d="M365 72 L365 31 A41 41 0 0 1 398 91 Z" fill="#1aff50" opacity=".06"/>
-    </g>
     ${mode.piLine?`<line x1="${mode.piLine.split(' ')[0].split(',')[0]}" y1="${mode.piLine.split(' ')[0].split(',')[1]}" x2="${mode.piLine.split(' ')[1].split(',')[0]}" y2="${mode.piLine.split(' ')[1].split(',')[1]}" stroke="#d4a017" stroke-width="1.1" stroke-dasharray="4,3" opacity=".9"/>`:''}
     ${mode.vector?`<line x1="${mode.vector.split(' ')[0].split(',')[0]}" y1="${mode.vector.split(' ')[0].split(',')[1]}" x2="${mode.vector.split(' ')[1].split(',')[0]}" y2="${mode.vector.split(' ')[1].split(',')[1]}" stroke="#6fa8dc" stroke-width="1.1" stroke-dasharray="3,2" opacity=".85"/>`:''}
     ${targets}
+    <rect x="286" y="18" width="158" height="14" rx="3" fill="rgba(3,17,10,.82)" stroke="#0d3a18" stroke-width=".8"/>
     <text x="294" y="27" fill="#81f7b8" font-size="6" font-family="monospace">${mode.label}</text>
+    <rect x="286" y="112" width="158" height="14" rx="3" fill="rgba(3,17,10,.82)" stroke="#0d3a18" stroke-width=".8"/>
     <text x="294" y="121" fill="#8ab0c8" font-size="6" font-family="monospace">${mode.footer}</text>
   </g>`;
 }
