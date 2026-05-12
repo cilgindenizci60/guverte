@@ -2857,6 +2857,61 @@ choices:[
 {text:"Uzanir, gozlerimi kapatip bedenimi dinlendiririm",tag:"itaatkar",effect:{dinclik:9}},
 {text:"Dinlenmek yerine telefonda oyalanirim",tag:"korkak",effect:{dinclik:-5}}]},
 
+{id:"s187b",gfx:"sea",alert:false,day:"Gun 9",time:"07:05",loc:"Acik GÃ¼verte - Serin Sabah",sub:"Vardiya once kisa esneme",who:"hasan",
+text:`Hasan seni korkuluga yaslanmis gorunce guldÃ¼.
+
+"Iki dakika omuz ac, sirtini ac, derin nefes al. Denizde bedenini ihmal edenin dikkati de dagilir."
+
+Sabah serin ama temiz. Kisa bir toparlanma sansin var.`,
+choices:[
+{text:"Kisa esneme yapip nefesimi duzenlerim",tag:"akilli",effect:{dinclik:10,cesaret:2}},
+{text:"Hasanla birlikte kisa tur atarim",tag:"sosyal",effect:{dinclik:8,sayginlik:4}},
+{text:"Buna da vakit yok diyip gecerim",tag:"korkak",effect:{dinclik:-3}}]},
+
+{id:"s187c",gfx:"galley",alert:false,day:"Gun 8",time:"05:40",loc:"Yemekhane",sub:"Erken kahvalti toparlanmasi",who:"asci",
+text:`Asci erken kalkmis olanlara sessiz bir masa birakti.
+
+"Bos mideyle vardiya tutulmaz," dedi. "Iki lokma duzgun ye, bir cay ic; sonra ne dusuneceksen dusunursun."
+
+Onunde sicak cay, peynir, ekmek ve zeytin var.`,
+choices:[
+{text:"Yavas yiyip bedenimi vardiyaya hazirlarim",tag:"akilli",effect:{dinclik:11,sayginlik:3}},
+{text:"Kisa ama duzgun bir kahvalti yapip cikiyorum",tag:"itaatkar",effect:{dinclik:9}},
+{text:"Aceleyle gecistirip neredeyse hic yemem",tag:"korkak",effect:{dinclik:-4}}]},
+
+{id:"s187d",gfx:"cabin",alert:false,day:"Gun 11",time:"21:50",loc:"Stajyer Kabini",sub:"Ilik dus ve erken toparlanma",who:"anlatici",
+text:`Gun boyunca uzerine sinen tuz, yag ve yorgunluk tenine yapismis gibi.
+
+Bazen uzun konusmalar degil, ilik bir dus ve temiz tisort insanin zihnini de sifirlar.
+
+Gece seni yormadan toparlanma sansi veriyor.`,
+choices:[
+{text:"Ilk is dus alip temiz kiyafetle erkenden uzanirim",tag:"kritik",effect:{dinclik:13,sayginlik:3}},
+{text:"Yuzumu yikayip kisa bir toparlanma yaparim",tag:"itaatkar",effect:{dinclik:8}},
+{text:"Ugrasmak istemeyip oldugu gibi yatağa girerim",tag:"korkak",effect:{dinclik:-3}}]},
+
+{id:"s187e",gfx:"harbor",alert:false,day:"Gun 12",time:"10:45",loc:"Kic GÃ¼verte",sub:"Golgede on dakikalik nefes",who:"lostromo",
+text:`Lostromo bu kez seni daha sert ise surmedi. Sadece eliyle golgeyi isaret etti.
+
+"Gunes tepene bindiginde kafa da agirlasir. On dakika golge, su ve sessizlik bazen ikinci kahve gibidir."
+
+Nadir gelen kisa bir ara bu.`,
+choices:[
+{text:"Golgeye gecip su icer, kendimi toplarim",tag:"akilli",effect:{dinclik:10,sayginlik:4}},
+{text:"Otuz saniye dinlenip yine ise donerim",tag:"itaatkar",effect:{dinclik:7}},
+{text:"Mola vermeden devam etmeyi marifet sayarim",tag:"korkak",effect:{dinclik:-4,cesaret:2}}]},
+
+{id:"s187f",gfx:"night",alert:false,day:"Gun 10",time:"23:10",loc:"Kopruustu - Gece Sonu",sub:"Nobet cikisi sessiz toparlanma",who:"z2",
+text:`Nobet cikisinda 2. Zabit seni hemen yollamadi.
+
+"Kabinine kosmadan once bir dakika ritmini dusur," dedi. "Gece vardiyasindan sonra zihin hala tam gaz giderse uyku da gec gelir."
+
+Kopruustunde sessizce nefes alacak kadar zamanin var.`,
+choices:[
+{text:"Bir dakika yavaslayip sonra kabine inerim",tag:"akilli",effect:{dinclik:9,bilgi:2}},
+{text:"Kisa bir tesekkur edip sakin adimla cikarim",tag:"itaatkar",effect:{dinclik:7,sayginlik:3}},
+{text:"Hizli hizli telefona gomulup ritmimi daha da bozarim",tag:"korkak",effect:{dinclik:-4}}]},
+
 {id:"s188",gfx:"harbor",alert:false,day:"Gun 9",time:"06:25",loc:"Iskele Bordi - Draft Marklari",sub:"Draft okuma disiplini",who:"z1",
 text:`1. Zabit seni bordaya aldi. Su sakin ama markalar gozu aldatiyor.
 
@@ -4649,16 +4704,16 @@ function buildSceneQueue(pool, totalDays){
   return [...mandatory_start, ...middle, ...EXTRA_ROUTE_SCENES, ...EXTRA_EQUIPMENT_SCENES, ...final];
 }
 
-const RECOVERY_SCENE_IDS = new Set(['s146','s147','s148','s149','s150','s183','s184','s185','s186','s187']);
+const RECOVERY_SCENE_IDS = new Set(['s146','s147','s148','s149','s150','s183','s184','s185','s186','s187','s187b','s187c','s187d','s187e','s187f']);
 
 function maybePrioritizeRecoveryScene(){
   if(currentIdx >= sceneQueue.length-1) return;
-  if(stats.dinclik > 40) return;
+  if(stats.dinclik > 45) return;
   const nextScene = sceneQueue[currentIdx];
   if(nextScene && RECOVERY_SCENE_IDS.has(nextScene.id)) return;
 
   let foundIdx = -1;
-  const nearLimit = Math.min(sceneQueue.length - 2, currentIdx + (stats.dinclik <= 25 ? 12 : 8));
+  const nearLimit = Math.min(sceneQueue.length - 2, currentIdx + (stats.dinclik <= 25 ? 14 : 10));
 
   for(let i=currentIdx+1; i<=nearLimit; i++){
     const sc = sceneQueue[i];
