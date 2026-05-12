@@ -3769,6 +3769,56 @@ Hangi ozet en dogru?`,
   {text:"Head-on'da iki taraf sanca?a duser; crossing'de sancaginda hedef varsa sen give-way olursun; overtaking yapan gemi yol verir",tag:"kritik",effect:{bilgi:19,sayginlik:13,cesaret:4}},
   {text:"Bu uc durumda da once diger geminin ne yapacagini beklemek yeterlidir",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
   {text:"Overtaking ile crossing'i pratikte ayirmanin cok da onemli olmadigini dusunurum",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s248b",gfx:"bridge",alert:false,day:"Gun 10",time:"01:35",loc:"Koprustu - COLREG Rule 5",sub:"Look-out sadece disari bakmak degildir",who:"suvari",
+  text:`Suvari kopruustu camindan disari bakarken kisa kesti:
+
+"Rule 5. Proper look-out. Bu sadece gozunu denize cevirmek degil; gorus, isitsel takip, radar, AIS, hava, trafik ve geminin durumunu birlikte izlemektir. Tek kaynaga yaslanan zabit gec fark eder."
+
+En dogru vardiya refleksi hangisi?`,
+  choices:[
+  {text:"Dis gorus, isitsel dikkat, radar/ECDIS cross-check ve trafik trendini birlikte tutarim",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Radar aciksa disariyi daha az kontrol etmenin sorun olmayacagini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"AIS etiketleri varken look-out'un buyuk olcude tamamlandigini sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s248c",gfx:"radar",alert:false,day:"Gun 10",time:"02:05",loc:"Koprustu - COLREG Rule 6",sub:"Safe speed ve duruma gore emniyetli hiz",who:"z2",radarMode:"multi_crossing",
+  text:`2. Zabiti radar resmi, yagmur perdesi ve trafik yogunlugunu gosterdi:
+
+"Rule 6. Safe speed sabit bir rakam degil. Gorus, trafik yogunlugu, manevra kabiliyeti, draft, fon isiklari, deniz durumu ve radar sinirlari birlikte dusunulur. Ayni knot her durumda emniyetli degildir."
+
+Sence en dogru yorum nedir?`,
+  choices:[
+  {text:"Safe speed'i gorus, trafik, manevra ve sensor limitleriyle birlikte degerlendiririm",tag:"kritik",effect:{bilgi:18,sayginlik:12},radarMode:"multi_crossing"},
+  {text:"Pilot booktaki ortalama hizi dogrudan emniyetli hiz kabul ederim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"multi_crossing"},
+  {text:"Makine elveriyorsa yuksek hiz her zaman daha kontrolludur diye dusunurum",tag:"korkak",effect:{bilgi:-12,sayginlik:-11},radarMode:"multi_crossing"}]},
+  {id:"s248d",gfx:"radar",alert:true,day:"Gun 10",time:"02:40",loc:"Koprustu - COLREG Rule 7/8",sub:"Risk of collision ve erken, belirgin action",who:"suvari",radarMode:"cpa",
+  text:`CPA dusuyor ama hedefin kerterizi neredeyse sabit. Suvari sakin sesle sordu:
+
+"Rule 7 risk of collision, Rule 8 action. Suphe varsa risk var kabul edilir. Manevra erken, belirgin ve iyi denizcilige uygun olacak; son anda kucuk oynamalar degil."
+
+Dogru davranis hangisi?`,
+  choices:[
+  {text:"Kerteriz/CPA trendini risk sayar, erken ve belirgin manevra dusuncesini zabite tasirim",tag:"kritik",effect:{bilgi:19,sayginlik:13,cesaret:4},radarMode:"cpa"},
+  {text:"Karsidaki son ana kadar bir sey yapmazsa ben de beklerim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"cpa"},
+  {text:"Supheyi risk saymayip son dakikaya kadar izlemekle yetinirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11},radarMode:"cpa"}]},
+  {id:"s248e",gfx:"bridge",alert:false,day:"Gun 10",time:"03:20",loc:"Koprustu - COLREG Rule 18",sub:"Hangi gemi hangisine gore yol durumunda?",who:"suvari",
+  text:`Suvari ufku isaret etti:
+
+"Rule 18 hiyerarsiyi bilmeden tablo kurulmaz. Not under command, restricted in ability to manoeuvre, constrained by draft, fishing, sailing ve power-driven vessel iliskisi ezber degil; oncelik ve sorumluluk mantigidir."
+
+Asagidaki ozetlerden hangisi daha saglam?`,
+  choices:[
+  {text:"Hiyerarsiyi kurar; ozel durumdaki gemilere karsi kendi gemimin gorevini turune gore degerlendiririm",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Buyuk gemi kucuk gemiye her zaman yol verir ya da alir gibi tek cizgili dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Yelkenli, balikci ve manevrasi kisitli gemi ayrimlarini cok da onemli bulmam",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s248f",gfx:"night",alert:false,day:"Gun 10",time:"04:10",loc:"Koprustu - COLREG Rule 19",sub:"Restricted visibility ve sis icinde davranis",who:"z2",
+  text:`Sis cokerken disarisi sut gibi oldu. 2. Zabiti sesini alcatti:
+
+"Rule 19. Restricted visibility'de gordugun kadarini degil, gormedigini de yonetirsin. Safe speed, engine readiness, radar yorum, fog signal ve ani sancak on hedeflerine karsi ozenli davranis gerekir."
+
+Bu durumda en dogru zabit dusuncesi hangisi?`,
+  choices:[
+  {text:"Hizi duruma gore sorgular, radar cross-check yapar, fog signal ve ani hedef riskini birlikte dusunurum",tag:"kritik",effect:{bilgi:19,sayginlik:13},radarMode:"small_target"},
+  {text:"Radar iyi goruyorsa sisin pratikte oyunu cok degistirmedigini varsayarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"small_target"},
+  {text:"Sis kurallarini ancak hedef ciktiktan sonra dusunmenin yeterli oldugunu sanirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11},radarMode:"small_target"}]},
   {id:"s249",gfx:"fire",alert:false,day:"Gun 10",time:"10:30",loc:"Hospital Room",sub:"Ilk yardimda ilk oncelik",who:"z3",
   text:`Tayfalardan biri guvertede kayip dizini ve on kolunu vurdu. 3. Zabiti seni yanina aldi:
 
@@ -4903,7 +4953,7 @@ const STUDENT_NOTES = [
   {head:"KOPRUUSTU VARDIYASI", body:"Look-out, COLREG, rota takibi, ECDIS kontrolu, radar cross-check ve logbook disiplini vardiyanin omurgasidir.<br>Vardiya devrinde rota, trafik, hava, makina durumu ve beklenen manevra net aktarilir.<br>Master'in standing orders ve night orders'i bilinmeden vardiya tutulmaz.", tip:"Once gozlem, sonra yorum."},
   {head:"ANA KURALLAR", body:"Sormadan varsayma.<br>Gormeden dogru kabul etme.<br>Hata gordugunde saklama, amire bildir.<br>PPE'siz ise baslama.<br>Snap-back zone'a girme.<br>Kapali mahalde permitsiz girme.<br>Stop komutu duyuldugunda herkes durur.<br>Near-miss de raporlanir.", tip:"Denizcilikte disiplin tekrar degil, hayatta kalma bicimidir."},
   {head:"OLCU BIRIMLERI - DENIZCILIK", body:"<b>1 deniz mili (NM)</b> = 1852 metre<br><b>1 knot (kt)</b> = saatte 1 deniz mili = 1.852 km/saat<br><b>1 kablo (cable)</b> = 0.1 deniz mili = 185.2 metre<br><b>1 kulac (fathom)</b> = 6 feet = 1.8288 metre<br><b>1 feet (ft)</b> = 0.3048 metre<br><b>1 inch</b> = 2.54 cm<br><b>1 metre</b> = 100 cm<br><b>1 santimetre</b> = 10 mm<br><b>1 ton</b> = 1000 kg<br><b>1 long ton</b> = 1016 kg yaklasik<br><b>1 short ton</b> = 907 kg yaklasik<br><b>DWT</b> = Deadweight tonnage; geminin tasiyabilecegi toplam agirlik kapasitesi<br><b>GT</b> = Gross Tonnage; hacim esasli tonaj olcusudur, agirlik degildir<br><b>TEU</b> = 20 feet'lik bir konteyner birimi<br><b>20 ft</b> = 6.096 metre<br><b>40 ft</b> = 12.192 metre<br><b>m3</b> = hacim birimi; tank, ambar ve stowage hesaplarinda kullanilir<br><b>t/m3</b> veya <b>kg/m3</b> = yogunluk birimi; draft survey, ballast ve yakit hesaplarinda gorulur<br><b>ppm</b> = millionda bir; OWS, su kalitesi ve gaz olcumlerinde gorulur<br><b>%LEL</b> = patlayici alt limit yuzdesi; gaz olcumlerinde kullanilir<br><b>bar</b> = basinÃ§ birimi; 1 bar yaklasik 100 kPa'dir<br><b>kW</b> = guc birimi; makine ve jeneratorde kullanilir<br><b>RPM</b> = dakikadaki devir sayisi; ana makine ve pompada gorulur<br><br><b>Pratik not:</b> Seyirde mesafe deniz miliyle, hiz knot ile, draft metre veya feet ile, yuk agirligi ton ile okunur.", tip:"Ayni soruda metre, feet, ton ve deniz mili bir araya gelebilir; birim karisinca hesap da karar da bozulur."},
-  {head:"COLREG OZETI", body:"Head-on durumda iki gemi de sancaga duser.<br>Crossing'de sancaginda gemi goruyorsan give-way sensin.<br>Overtaking yapan gemi yol verir.<br>Dar kanalda sancak tarafina yakin seyredilir.<br>Rule 5 lookout, Rule 7 risk, Rule 8 action, Rule 9 narrow channel, Rule 13 overtaking, Rule 14 head-on, Rule 15 crossing, Rule 18 hierarchy.", tip:"Erken ve belirgin manevra altin degerindedir."},
+  {head:"COLREG OZETI", body:"<b>Rule 5</b> proper look-out: goz, kulak, radar/AIS ve tum mevcut imkanlarla takip yapilir.<br><b>Rule 6</b> safe speed: gorus, trafik, draft, manevra ve sensor sinirlariyla birlikte degerlendirilir.<br><b>Rule 7</b> risk of collision: suphe varsa risk var kabul edilir; sabit kerteriz ve dusen CPA ciddiye alinir.<br><b>Rule 8</b> action to avoid collision: manevra erken, belirgin ve iyi denizcilige uygun olur.<br><b>Rule 9</b> dar kanal: sancak sinirina yakin seyredilir, gecis gereksiz engellenmez.<br><b>Rule 10</b> traffic separation scheme: serit disiplini korunur, akisi bozacak gecislerden kacinilir.<br><b>Rule 13</b> overtaking: yetisen gemi yol verir.<br><b>Rule 14</b> head-on: iki gemi de sancaga duser.<br><b>Rule 15</b> crossing: sancaginda gemi goruyorsan give-way sensin.<br><b>Rule 18</b> sorumluluk hiyerarsisi: NUC, RAM, CBD, fishing, sailing ve power-driven iliskisi birlikte okunur.<br><b>Rule 19</b> restricted visibility: safe speed, radar yorumu ve fog signal disiplini artar.", tip:"COLREG ezber listesi degil; durumu dogru okuyup erken davranma sanatidir."},
   {head:"ECDIS / HARITA", body:"Route check, safety contour, safety depth, no-go area, isolated danger ve alarm ayarlari seyirden once gozden gecirilir.<br>GPS bilgisi radar, gorusel mevki ve diger sensorlerle capraz kontrol edilir.<br>Waypoint'ler, parallel indexing, XTD ve chart correction mantigi bilinmelidir.", tip:"ECDIS yardimcidir; seyir sorumlulugu zabittedir."},
   {head:"FENER VE SAMANDIRA", body:"IALA lateral markalarda renk, tepe isareti ve isik karakteri birlikte okunur.<br>Fl, Oc, Iso, Q, VQ, LFl ve sektor renkleri fenerleri ayirt etmeyi saglar.<br>Cardinal marklarda kuzey-gu ney-dogu-bati tepe isaretleri ve siyah-sari renk dizilimi ezberlenmelidir.", tip:"Renk kadar ritmi de oku."},
   {head:"PILOT / ROMORKOR / LIMAN", body:"Pilot ladder durumu, can simidi ve isik kontrolu, personel konumu ve haberlesme disiplini kritik konulardir.<br>Master-pilot exchange yapilir; snap-back zone bos tutulur.<br>Heaving line, tug line, berthing plan, current-rüzgar etkisi ve mooring team konumlari net olmalidir.", tip:"Mooring station saka kabul etmez."},
@@ -5245,7 +5295,7 @@ function getGlossaryCategoryLabel(cat){
 function getRelevantNoteTopics(sc){
   const hay = `${sc.sub||''} ${sc.loc||''} ${sc.text||''} ${sc.gfx||''}`.toLowerCase();
   const topics = new Set();
-  if(/colreg|crossing|head-on|dar kanal|look-?out/.test(hay)) topics.add('COLREG OZETI');
+  if(/colreg|crossing|head-on|dar kanal|look-?out|safe speed|restricted visibility|fog signal|risk of collision|overtaking|tss/.test(hay)) topics.add('COLREG OZETI');
   if(/ecdis|harita|radar|waypoint|gps|route/.test(hay)) topics.add('ECDIS / HARITA');
   if(/fener|isik|samandira|iala|sector/.test(hay)) topics.add('FENER VE SAMANDIRA');
   if(/pilot|romorkor|mooring|snap-back|heaving line|berthing/.test(hay)) topics.add('PILOT / ROMORKOR / LIMAN');
