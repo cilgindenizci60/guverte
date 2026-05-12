@@ -3984,19 +3984,21 @@ function getShipDeckDetails(type){
   const shipType=getShipVisualType(type);
   if(shipType==='kont'){
     return `
-      <rect x="20" y="-6" width="104" height="3" rx="1" fill="#5c6d82" opacity=".7"/>
-      <rect x="18" y="-20" width="16" height="14" rx="1.5" fill="#8f3d34"/>
-      <rect x="36" y="-20" width="16" height="14" rx="1.5" fill="#295f93"/>
-      <rect x="54" y="-20" width="16" height="14" rx="1.5" fill="#3a6f47"/>
-      <rect x="72" y="-20" width="16" height="14" rx="1.5" fill="#b16d2d"/>
-      <rect x="90" y="-20" width="16" height="14" rx="1.5" fill="#7a485d"/>
-      <rect x="108" y="-20" width="16" height="14" rx="1.5" fill="#3f667f"/>
-      <rect x="18" y="-36" width="16" height="14" rx="1.5" fill="#6f2f28"/>
-      <rect x="36" y="-36" width="16" height="14" rx="1.5" fill="#224b74"/>
-      <rect x="54" y="-36" width="16" height="14" rx="1.5" fill="#315f3e"/>
-      <rect x="72" y="-36" width="16" height="14" rx="1.5" fill="#935821"/>
-      <rect x="90" y="-36" width="16" height="14" rx="1.5" fill="#663c4d"/>
-      <rect x="108" y="-36" width="16" height="14" rx="1.5" fill="#33536a"/>
+      <rect x="22" y="-6" width="112" height="3" rx="1" fill="#5c6d82" opacity=".7"/>
+      <rect x="18" y="-22" width="17" height="15" rx="1.4" fill="#8f3d34"/>
+      <rect x="37" y="-22" width="17" height="15" rx="1.4" fill="#295f93"/>
+      <rect x="56" y="-22" width="17" height="15" rx="1.4" fill="#3a6f47"/>
+      <rect x="75" y="-22" width="17" height="15" rx="1.4" fill="#b16d2d"/>
+      <rect x="94" y="-22" width="17" height="15" rx="1.4" fill="#7a485d"/>
+      <rect x="113" y="-22" width="17" height="15" rx="1.4" fill="#3f667f"/>
+      <rect x="18" y="-39" width="17" height="15" rx="1.4" fill="#6f2f28"/>
+      <rect x="37" y="-39" width="17" height="15" rx="1.4" fill="#224b74"/>
+      <rect x="56" y="-39" width="17" height="15" rx="1.4" fill="#315f3e"/>
+      <rect x="75" y="-39" width="17" height="15" rx="1.4" fill="#935821"/>
+      <rect x="94" y="-39" width="17" height="15" rx="1.4" fill="#663c4d"/>
+      <rect x="113" y="-39" width="17" height="15" rx="1.4" fill="#33536a"/>
+      <path d="M18 -24 h112" stroke="rgba(235,240,248,.18)" stroke-width=".8"/>
+      <path d="M18 -7 h112" stroke="rgba(235,240,248,.18)" stroke-width=".8"/>
       <rect x="134" y="-28" width="28" height="28" rx="2.5" fill="#dce4eb"/>
       <rect x="146" y="-42" width="14" height="14" rx="2" fill="#dce4eb"/>
       <rect x="140" y="-18" width="7" height="6" rx="1" fill="#8fc6ef"/>
@@ -4009,12 +4011,16 @@ function getShipDeckDetails(type){
   }
   if(shipType==='tanker'){
     return `
-      <rect x="18" y="-8" width="88" height="3" rx="1.5" fill="#8190a1"/>
-      <rect x="28" y="-12" width="70" height="2" rx="1" fill="#677789"/>
-      <rect x="26" y="-4" width="76" height="1.6" rx=".8" fill="#92a2b0" opacity=".75"/>
-      <line x1="54" y1="-12" x2="54" y2="-26" stroke="#6a7a8d" stroke-width="1.2"/>
-      <line x1="76" y1="-12" x2="76" y2="-24" stroke="#6a7a8d" stroke-width="1.2"/>
-      <line x1="54" y1="-26" x2="76" y2="-26" stroke="#6a7a8d" stroke-width="1.2"/>
+      <rect x="20" y="-8" width="92" height="3" rx="1.5" fill="#8190a1"/>
+      <rect x="28" y="-13" width="76" height="2.2" rx="1" fill="#677789"/>
+      <rect x="30" y="-4" width="80" height="1.6" rx=".8" fill="#92a2b0" opacity=".75"/>
+      <line x1="54" y1="-13" x2="54" y2="-28" stroke="#6a7a8d" stroke-width="1.2"/>
+      <line x1="78" y1="-13" x2="78" y2="-28" stroke="#6a7a8d" stroke-width="1.2"/>
+      <line x1="54" y1="-28" x2="78" y2="-28" stroke="#6a7a8d" stroke-width="1.2"/>
+      <line x1="66" y1="-13" x2="66" y2="-24" stroke="#6a7a8d" stroke-width="1"/>
+      <path d="M38 -10 h54" stroke="#a1b0bf" stroke-width="1" opacity=".8"/>
+      <circle cx="38" cy="-7" r="1.4" fill="#d48e2a"/>
+      <circle cx="106" cy="-7" r="1.4" fill="#d48e2a"/>
       <rect x="132" y="-24" width="26" height="24" rx="2.5" fill="#dde5ec"/>
       <rect x="143" y="-38" width="13" height="14" rx="2" fill="#dde5ec"/>
       <rect x="138" y="-15" width="6" height="5" rx="1" fill="#9cc8ef"/>
@@ -4022,7 +4028,6 @@ function getShipDeckDetails(type){
       <rect x="145" y="-34" width="10" height="17" rx="1.5" fill="#a3362d"/>
       <rect x="145" y="-28" width="10" height="3" fill="#e5d7ba"/>
       <line x1="149" y1="-50" x2="149" y2="-38" stroke="#7a92a8" stroke-width="1.2"/>
-      <circle cx="110" cy="-7" r="2.1" fill="#d48e2a"/>
     `;
   }
   if(shipType==='lng'){
@@ -4030,6 +4035,8 @@ function getShipDeckDetails(type){
       <ellipse cx="42" cy="-10" rx="12" ry="9" fill="#8fc6ef"/>
       <ellipse cx="66" cy="-10" rx="12" ry="9" fill="#a8dafd"/>
       <ellipse cx="90" cy="-10" rx="12" ry="9" fill="#8fc6ef"/>
+      <path d="M30 -10 h72" stroke="rgba(223,248,255,.28)" stroke-width="1"/>
+      <path d="M42 -19 v18 M66 -19 v18 M90 -19 v18" stroke="rgba(223,248,255,.15)" stroke-width=".8"/>
       <rect x="130" y="-24" width="26" height="24" rx="2.5" fill="#e3e9ef"/>
       <rect x="142" y="-38" width="13" height="14" rx="2" fill="#e3e9ef"/>
       <rect x="136" y="-15" width="6" height="5" rx="1" fill="#9fd6ff"/>
@@ -4041,9 +4048,10 @@ function getShipDeckDetails(type){
   }
   if(shipType==='roro'){
     return `
-      <path d="M18 -30 L106 -30 L122 -18 L136 -18 L136 0 L18 0 Z" fill="#dfe6ed"/>
-      <rect x="28" y="-24" width="48" height="7" rx="1.5" fill="#95a7b8"/>
-      <rect x="28" y="-14" width="84" height="5" rx="1.5" fill="#7f90a2"/>
+      <path d="M18 -30 L112 -30 L128 -18 L142 -18 L142 0 L18 0 Z" fill="#dfe6ed"/>
+      <rect x="28" y="-24" width="52" height="7" rx="1.5" fill="#95a7b8"/>
+      <rect x="30" y="-14" width="88" height="5" rx="1.5" fill="#7f90a2"/>
+      <path d="M24 -5 h102" stroke="rgba(120,138,154,.45)" stroke-width="1"/>
       <path d="M146 -6 L162 -6 L162 5 L148 5 Z" fill="#7e3b34"/>
       <path d="M148 5 L162 5 L158 10 L148 10 Z" fill="#5c2420"/>
       <rect x="142" y="-30" width="10" height="14" rx="1.5" fill="#2e7f96"/>
@@ -4052,17 +4060,18 @@ function getShipDeckDetails(type){
     `;
   }
   return `
-    <rect x="16" y="-12" width="24" height="9" rx="1.5" fill="#52687c"/>
-    <rect x="48" y="-12" width="24" height="9" rx="1.5" fill="#52687c"/>
-    <rect x="80" y="-12" width="24" height="9" rx="1.5" fill="#52687c"/>
-    <rect x="112" y="-12" width="24" height="9" rx="1.5" fill="#52687c"/>
-    <rect x="20" y="-4" width="118" height="2" rx="1" fill="#728597" opacity=".7"/>
-    <line x1="44" y1="-12" x2="44" y2="-28" stroke="#7a8ea2" stroke-width="1.2"/>
-    <line x1="76" y1="-12" x2="76" y2="-28" stroke="#7a8ea2" stroke-width="1.2"/>
-    <line x1="108" y1="-12" x2="108" y2="-28" stroke="#7a8ea2" stroke-width="1.2"/>
-    <line x1="44" y1="-28" x2="52" y2="-18" stroke="#7a8ea2" stroke-width="1.2"/>
-    <line x1="76" y1="-28" x2="84" y2="-18" stroke="#7a8ea2" stroke-width="1.2"/>
-    <line x1="108" y1="-28" x2="116" y2="-18" stroke="#7a8ea2" stroke-width="1.2"/>
+    <rect x="18" y="-13" width="24" height="10" rx="1.5" fill="#52687c"/>
+    <rect x="46" y="-13" width="24" height="10" rx="1.5" fill="#52687c"/>
+    <rect x="74" y="-13" width="24" height="10" rx="1.5" fill="#52687c"/>
+    <rect x="102" y="-13" width="24" height="10" rx="1.5" fill="#52687c"/>
+    <rect x="22" y="-4" width="108" height="2" rx="1" fill="#728597" opacity=".7"/>
+    <line x1="46" y1="-13" x2="46" y2="-30" stroke="#7a8ea2" stroke-width="1.2"/>
+    <line x1="78" y1="-13" x2="78" y2="-30" stroke="#7a8ea2" stroke-width="1.2"/>
+    <line x1="110" y1="-13" x2="110" y2="-30" stroke="#7a8ea2" stroke-width="1.2"/>
+    <line x1="46" y1="-30" x2="54" y2="-18" stroke="#7a8ea2" stroke-width="1.2"/>
+    <line x1="78" y1="-30" x2="86" y2="-18" stroke="#7a8ea2" stroke-width="1.2"/>
+    <line x1="110" y1="-30" x2="118" y2="-18" stroke="#7a8ea2" stroke-width="1.2"/>
+    <path d="M18 -1 h116" stroke="rgba(215,226,238,.12)" stroke-width="1"/>
     <rect x="138" y="-26" width="24" height="26" rx="2.5" fill="#dbe3ea"/>
     <rect x="148" y="-40" width="12" height="14" rx="2" fill="#dbe3ea"/>
     <rect x="144" y="-17" width="6" height="5" rx="1" fill="#8fc6ef"/>
@@ -4086,17 +4095,33 @@ function getModernShipSvg(type, opts={}){
   const mastLight=opts.mastLight ?? '#f2d889';
   const details=getShipDeckDetails(type);
   return `<g transform="translate(${x} ${y}) scale(${scale})" opacity="${opacity}">
-    <path d="M-10 8 L10 0 L124 0 L144 5 L166 5 L176 12 L-14 12 L-18 7 Z" fill="${p.hull}"/>
-    <path d="M12 7 L168 7 L174 11 L4 11 Z" fill="${p.shadow}" opacity=".9"/>
-    <path d="M6 0 L122 0" stroke="${p.hullEdge}" stroke-width="2.2" opacity=".95"/>
+    <path d="M-18 10 Q-10 2 8 0 L126 0 Q145 0 160 5 L176 6 L188 12 L180 15 L-14 15 Q-22 14 -24 11 Z" fill="${p.hull}"/>
+    <path d="M6 11 L180 11 L184 14 L-6 14 Z" fill="${p.shadow}" opacity=".9"/>
+    <path d="M10 1.5 L134 1.5" stroke="${p.hullEdge}" stroke-width="2.2" opacity=".95"/>
+    <path d="M18 12 h158" stroke="rgba(70,110,140,.35)" stroke-width="1.1"/>
+    <path d="M26 -1 L120 -1" stroke="rgba(200,220,235,.12)" stroke-width="1.1"/>
     ${details}
-    <circle cx="12" cy="2.8" r="1.7" fill="${portLight}" opacity=".92"/>
-    <circle cx="164" cy="4" r="1.7" fill="${starboardLight}" opacity=".92"/>
-    <circle cx="146" cy="-20" r="1.9" fill="${mastLight}" opacity=".96"/>
-    <circle cx="152" cy="-42" r="1.5" fill="${light}" opacity=".96"/>
-    <path d="M146 -20 l11 -4" stroke="rgba(242,216,137,.35)" stroke-width="1"/>
-    <path d="M-22 11 q-14 -4 -26 1" fill="none" stroke="rgba(180,220,245,${wakeOpacity})" stroke-width="2"/>
-    <path d="M-12 13 q-18 -2 -30 3" fill="none" stroke="rgba(180,220,245,${wakeOpacity*0.8})" stroke-width="1.6"/>
+    <path d="M136 0 v16" stroke="rgba(120,68,40,.28)" stroke-width="1.3"/>
+    <path d="M148 2 v16" stroke="rgba(120,68,40,.22)" stroke-width="1.1"/>
+    <path d="M160 4 v14" stroke="rgba(120,68,40,.2)" stroke-width="1"/>
+    <g opacity=".78">
+      <text x="0" y="8" fill="#dfe6ee" font-size="4.8" font-family="monospace">8</text>
+      <text x="0" y="13" fill="#dfe6ee" font-size="4.8" font-family="monospace">6</text>
+      <text x="164" y="10" fill="#dfe6ee" font-size="4.8" font-family="monospace">8</text>
+      <text x="164" y="15" fill="#dfe6ee" font-size="4.8" font-family="monospace">6</text>
+    </g>
+    <circle cx="84" cy="7.5" r="5.5" fill="none" stroke="#dfe6ee" stroke-width=".8" opacity=".75"/>
+    <line x1="90" y1="7.5" x2="98" y2="7.5" stroke="#dfe6ee" stroke-width=".8" opacity=".75"/>
+    <line x1="84" y1="2" x2="84" y2="13" stroke="#dfe6ee" stroke-width=".6" opacity=".55"/>
+    <circle cx="14" cy="3.4" r="1.6" fill="${portLight}" opacity=".92"/>
+    <circle cx="170" cy="5" r="1.6" fill="${starboardLight}" opacity=".92"/>
+    <circle cx="152" cy="-18" r="1.9" fill="${mastLight}" opacity=".96"/>
+    <circle cx="156" cy="-54" r="1.5" fill="${light}" opacity=".96"/>
+    <path d="M152 -18 l11 -4" stroke="rgba(242,216,137,.35)" stroke-width="1"/>
+    <path d="M156 -54 L156 -40" stroke="rgba(122,146,170,.55)" stroke-width="1.1"/>
+    <path d="M156 -48 L168 -42" stroke="rgba(122,146,170,.45)" stroke-width="1"/>
+    <path d="M-22 13 q-14 -5 -27 1" fill="none" stroke="rgba(180,220,245,${wakeOpacity})" stroke-width="2"/>
+    <path d="M-14 16 q-18 -3 -31 3" fill="none" stroke="rgba(180,220,245,${wakeOpacity*0.8})" stroke-width="1.6"/>
   </g>`;
 }
 
@@ -6179,4 +6204,3 @@ function playSceneAudio(sc){
 document.getElementById('nameinp').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('shipnameinp').focus();});
 document.getElementById('shipnameinp').addEventListener('keydown',e=>{if(e.key==='Enter')beginGame();});
 buildIntro();
-
