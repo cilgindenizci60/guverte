@@ -4084,6 +4084,7 @@ function getShipDeckDetails(type){
 
 function getModernShipSvg(type, opts={}){
   const p=getShipPalette(type);
+  const shipType=getShipVisualType(type);
   const x=opts.x ?? 280;
   const y=opts.y ?? 98;
   const scale=opts.scale ?? 1;
@@ -4093,6 +4094,17 @@ function getModernShipSvg(type, opts={}){
   const portLight=opts.portLight ?? '#c93030';
   const starboardLight=opts.starboardLight ?? '#5dbf8a';
   const mastLight=opts.mastLight ?? '#f2d889';
+  const vesselName=(opts.name || sn || 'M/V HORIZON').toUpperCase().slice(0,18);
+  const imoText=opts.imo || (shipType==='kont' ? 'IMO 9482714' : shipType==='tanker' ? 'IMO 9374402' : shipType==='lng' ? 'IMO 9651180' : shipType==='roro' ? 'IMO 9226405' : 'IMO 9142058');
+  const typeMark=shipType==='kont'
+    ? `<text x="26" y="-44" fill="rgba(235,242,248,.62)" font-size="4.8" font-family="monospace">BAY 14 / STACK 82</text>`
+    : shipType==='tanker'
+      ? `<text x="34" y="-18" fill="rgba(235,242,248,.62)" font-size="4.6" font-family="monospace">MANIFOLD  MIDSHIP</text>`
+      : shipType==='lng'
+        ? `<text x="34" y="-24" fill="rgba(235,242,248,.62)" font-size="4.6" font-family="monospace">LNG CARGO TANKS</text>`
+        : shipType==='roro'
+          ? `<text x="34" y="-34" fill="rgba(235,242,248,.62)" font-size="4.6" font-family="monospace">RAMP DECK 05</text>`
+          : `<text x="28" y="-34" fill="rgba(235,242,248,.62)" font-size="4.6" font-family="monospace">HATCH 1   HATCH 2   HATCH 3</text>`;
   const details=getShipDeckDetails(type);
   return `<g transform="translate(${x} ${y}) scale(${scale})" opacity="${opacity}">
     <path d="M-18 10 Q-10 2 8 0 L126 0 Q145 0 160 5 L176 6 L188 12 L180 15 L-14 15 Q-22 14 -24 11 Z" fill="${p.hull}"/>
@@ -4113,6 +4125,9 @@ function getModernShipSvg(type, opts={}){
     <circle cx="84" cy="7.5" r="5.5" fill="none" stroke="#dfe6ee" stroke-width=".8" opacity=".75"/>
     <line x1="90" y1="7.5" x2="98" y2="7.5" stroke="#dfe6ee" stroke-width=".8" opacity=".75"/>
     <line x1="84" y1="2" x2="84" y2="13" stroke="#dfe6ee" stroke-width=".6" opacity=".55"/>
+    <text x="18" y="9.3" fill="rgba(228,236,244,.82)" font-size="5.1" font-family="monospace">${vesselName}</text>
+    <text x="110" y="9.3" fill="rgba(228,236,244,.58)" font-size="4.3" font-family="monospace">${imoText}</text>
+    ${typeMark}
     <circle cx="14" cy="3.4" r="1.6" fill="${portLight}" opacity=".92"/>
     <circle cx="170" cy="5" r="1.6" fill="${starboardLight}" opacity=".92"/>
     <circle cx="152" cy="-18" r="1.9" fill="${mastLight}" opacity=".96"/>
