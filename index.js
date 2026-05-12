@@ -1945,6 +1945,39 @@ choices:[
 {text:"Sadece haritanin kenarina ufak not dusup birakirim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"ECDIS varken buna gerek yok derim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
+{id:"s112b",gfx:"bridge",alert:false,day:"Gun 10",time:"19:05",loc:"Chart Room",sub:"Kagit haritada correction tracing ve record tutma",who:"z2",
+text:`2. Zabiti bu kez tracing kagidini ve correction record klasorunu onune koydu.
+
+"Duzeltmeyi cizmek kadar nasil kaydettigin de onemli. Hangi chart, hangi kaynak, hangi correction number, hangi tarih... sonradan bakan zabit neyin ne zaman islendigini gorebilmeli."
+
+Sence en dogru disiplin hangisi?`,
+choices:[
+{text:"Duzeltmeyi temiz isler, chart correction record'a numara ve tarih ile kaydederim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"Haritada degisiklik gorunuyorsa ayri kayda cok gerek olmadigini dusunurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Tracing ve record isini gereksiz evrak kalabaligi sayarim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s112c",gfx:"ecdis_panel",alert:false,day:"Gun 10",time:"19:40",loc:"Kopruustu - ECDIS Admin",sub:"ENC update ve cell status kontrolu",who:"z2",
+text:`Bu kez ECDIS update penceresi acildi.
+
+"Elektronik harita da kendi kendine guncel kalmaz. Permit, cell status, latest update package, overdue area ve warning listesi birlikte kontrol edilir. 'Harita aciliyor' demek 'up to date' demek degildir."
+
+Ne yaparsin?`,
+choices:[
+{text:"Cell status, permit, son update tarihi ve overdue alanlari birlikte kontrol ederim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"Ekranda harita gorunuyorsa guncel kabul ederim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Alarm yoksa update ihtiyaci da yoktur diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s112d",gfx:"compass",alert:false,day:"Gun 10",time:"20:05",loc:"Kopruustu - Rota Duzeltmesi",sub:"Kagit harita ve ECDIS'e birlikte isleme",who:"z2",
+text:`Sonra rota degisikligi geldi. 2. Zabiti kalemi ve ECDIS plan ekranini ayni anda gosterdi.
+
+"Iyi zabit duzeltmeyi tek yerde birakmaz. Passage plan, kagit harita, ECDIS route, ilgili notlar ve logbook birbirini tamamlar. Biri eski kalirsa hata sessizce buyur."
+
+Dogru siralama hangisi?`,
+choices:[
+{text:"Rota degisikligini ECDIS, kagit harita, passage plan ve log kayitlarina tutarli sekilde islerim",tag:"kritik",effect:{bilgi:17,sayginlik:13}},
+{text:"ECDIS'i guncelleyip kagit haritayi daha sonra halletmeyi yeterli gorurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:"Iki sistemden birinin guncel olmasi yeterlidir diye dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+
 {id:"s113",gfx:"sea",alert:false,day:"Gun 10",time:"06:50",loc:"Valensiya Aciklari",sub:"Farkli rota ve trafik plani",who:"suvari",
 text:`Suvari yeni rotayi acikladı.
 
@@ -4092,8 +4125,60 @@ function getSceneFleetOverlay(gfx){
   return `<g>${main}${support[gfx] || ''}</g>`;
 }
 
+function getChartWorkOverlay(sc){
+  if(!sc) return '';
+  if(sc.id==='s112' || sc.id==='s112b'){
+    return `<g opacity=".98">
+      <rect x="234" y="18" width="214" height="108" rx="6" fill="#08131e" stroke="#113457" stroke-width="1.2"/>
+      <rect x="246" y="28" width="190" height="86" rx="4" fill="#e6d8ab" stroke="#a89256" stroke-width="1.2"/>
+      <path d="M256 44 L424 44 M256 60 L424 60 M256 76 L424 76 M256 92 L424 92" stroke="#b39a5c" stroke-width=".8" opacity=".45"/>
+      <path d="M262 96 Q294 80 322 82 Q350 84 380 68 Q398 60 420 58" fill="none" stroke="#c93030" stroke-width="2.2"/>
+      <circle cx="322" cy="82" r="3.2" fill="#c93030"/>
+      <circle cx="380" cy="68" r="3.2" fill="#c93030"/>
+      <rect x="356" y="94" width="58" height="10" rx="2" fill="#f1e6bf" stroke="#a89256" stroke-width=".8"/>
+      <text x="360" y="101" fill="#7d6122" font-size="6" font-family="monospace">NTM 2421/26</text>
+      <polygon points="428,102 442,114 437,118 423,107" fill="#c93030"/>
+      <rect x="434" y="112" width="10" height="4" rx="1" fill="#f0d3b2"/>
+      <rect x="252" y="24" width="66" height="10" rx="2" fill="#0f2842"/>
+      <text x="258" y="31" fill="#d9e3ea" font-size="6" font-family="monospace">PAPER CHART CORR</text>
+    </g>`;
+  }
+  if(sc.id==='s112c'){
+    return `<g opacity=".98">
+      <rect x="266" y="18" width="176" height="104" rx="6" fill="#071828" stroke="#12395b" stroke-width="1.3"/>
+      <rect x="278" y="30" width="152" height="16" rx="3" fill="#0d2840"/>
+      <text x="288" y="41" fill="#d9e3ea" font-size="7" font-family="monospace">ENC UPDATE MANAGER</text>
+      <rect x="278" y="52" width="152" height="58" rx="4" fill="#04111b" stroke="#0d2a48" stroke-width="1"/>
+      <text x="286" y="66" fill="#81f7b8" font-size="7" font-family="monospace">TR 540122   UPDATED</text>
+      <text x="286" y="79" fill="#81f7b8" font-size="7" font-family="monospace">GR 340088   UPDATED</text>
+      <text x="286" y="92" fill="#d4a017" font-size="7" font-family="monospace">EG 420551   OVERDUE</text>
+      <text x="286" y="105" fill="#c97070" font-size="7" font-family="monospace">PERMIT CHECK REQUIRED</text>
+      <rect x="278" y="114" width="68" height="8" rx="2" fill="#113050"/>
+      <rect x="278" y="114" width="49" height="8" rx="2" fill="#5dbf8a"/>
+      <text x="352" y="121" fill="#6fa8dc" font-size="6" font-family="monospace">PKG 26.5 / CELL STATUS</text>
+    </g>`;
+  }
+  if(sc.id==='s112d'){
+    return `<g opacity=".98">
+      <rect x="234" y="18" width="102" height="104" rx="6" fill="#08131e" stroke="#113457" stroke-width="1.2"/>
+      <rect x="244" y="28" width="82" height="74" rx="4" fill="#e6d8ab" stroke="#a89256" stroke-width="1"/>
+      <path d="M250 88 Q268 80 282 82 Q294 84 314 70" fill="none" stroke="#c93030" stroke-width="1.8"/>
+      <text x="248" y="110" fill="#d9e3ea" font-size="6" font-family="monospace">PAPER CHART</text>
+      <rect x="344" y="18" width="104" height="104" rx="6" fill="#071828" stroke="#12395b" stroke-width="1.2"/>
+      <rect x="354" y="28" width="84" height="74" rx="4" fill="#03111c" stroke="#0d2a48" stroke-width="1"/>
+      <polyline points="360,88 380,82 398,78 420,62" fill="none" stroke="#d4a017" stroke-width="2" stroke-dasharray="5,3"/>
+      <circle cx="398" cy="78" r="2.8" fill="#1aff50"/>
+      <text x="360" y="110" fill="#81f7b8" font-size="6" font-family="monospace">ECDIS ROUTE</text>
+      <path d="M330 70 L350 70" stroke="#6fa8dc" stroke-width="2" stroke-dasharray="3,2"/>
+      <polygon points="350,70 344,66 344,74" fill="#6fa8dc"/>
+    </g>`;
+  }
+  return '';
+}
+
 function getSceneOverlay(gfx,sc){
   let extra = getSceneFleetOverlay(gfx);
+  extra += getChartWorkOverlay(sc);
   if((gfx==='compass'||gfx==='bridge') && sc && (sc.ecdisPlanKey || sc.sub?.toLowerCase().includes('ecdis') || sc.sub?.toLowerCase().includes('seyir plani') || sc.loc?.toLowerCase().includes('ecdis'))){
     extra += getEcdisRouteOverlay(sc);
   }
@@ -4954,7 +5039,7 @@ const STUDENT_NOTES = [
   {head:"ANA KURALLAR", body:"Sormadan varsayma.<br>Gormeden dogru kabul etme.<br>Hata gordugunde saklama, amire bildir.<br>PPE'siz ise baslama.<br>Snap-back zone'a girme.<br>Kapali mahalde permitsiz girme.<br>Stop komutu duyuldugunda herkes durur.<br>Near-miss de raporlanir.", tip:"Denizcilikte disiplin tekrar degil, hayatta kalma bicimidir."},
   {head:"OLCU BIRIMLERI - DENIZCILIK", body:"<b>1 deniz mili (NM)</b> = 1852 metre<br><b>1 knot (kt)</b> = saatte 1 deniz mili = 1.852 km/saat<br><b>1 kablo (cable)</b> = 0.1 deniz mili = 185.2 metre<br><b>1 kulac (fathom)</b> = 6 feet = 1.8288 metre<br><b>1 feet (ft)</b> = 0.3048 metre<br><b>1 inch</b> = 2.54 cm<br><b>1 metre</b> = 100 cm<br><b>1 santimetre</b> = 10 mm<br><b>1 ton</b> = 1000 kg<br><b>1 long ton</b> = 1016 kg yaklasik<br><b>1 short ton</b> = 907 kg yaklasik<br><b>DWT</b> = Deadweight tonnage; geminin tasiyabilecegi toplam agirlik kapasitesi<br><b>GT</b> = Gross Tonnage; hacim esasli tonaj olcusudur, agirlik degildir<br><b>TEU</b> = 20 feet'lik bir konteyner birimi<br><b>20 ft</b> = 6.096 metre<br><b>40 ft</b> = 12.192 metre<br><b>m3</b> = hacim birimi; tank, ambar ve stowage hesaplarinda kullanilir<br><b>t/m3</b> veya <b>kg/m3</b> = yogunluk birimi; draft survey, ballast ve yakit hesaplarinda gorulur<br><b>ppm</b> = millionda bir; OWS, su kalitesi ve gaz olcumlerinde gorulur<br><b>%LEL</b> = patlayici alt limit yuzdesi; gaz olcumlerinde kullanilir<br><b>bar</b> = basinÃ§ birimi; 1 bar yaklasik 100 kPa'dir<br><b>kW</b> = guc birimi; makine ve jeneratorde kullanilir<br><b>RPM</b> = dakikadaki devir sayisi; ana makine ve pompada gorulur<br><br><b>Pratik not:</b> Seyirde mesafe deniz miliyle, hiz knot ile, draft metre veya feet ile, yuk agirligi ton ile okunur.", tip:"Ayni soruda metre, feet, ton ve deniz mili bir araya gelebilir; birim karisinca hesap da karar da bozulur."},
   {head:"COLREG OZETI", body:"<b>Rule 5</b> proper look-out: goz, kulak, radar/AIS ve tum mevcut imkanlarla takip yapilir.<br><b>Rule 6</b> safe speed: gorus, trafik, draft, manevra ve sensor sinirlariyla birlikte degerlendirilir.<br><b>Rule 7</b> risk of collision: suphe varsa risk var kabul edilir; sabit kerteriz ve dusen CPA ciddiye alinir.<br><b>Rule 8</b> action to avoid collision: manevra erken, belirgin ve iyi denizcilige uygun olur.<br><b>Rule 9</b> dar kanal: sancak sinirina yakin seyredilir, gecis gereksiz engellenmez.<br><b>Rule 10</b> traffic separation scheme: serit disiplini korunur, akisi bozacak gecislerden kacinilir.<br><b>Rule 13</b> overtaking: yetisen gemi yol verir.<br><b>Rule 14</b> head-on: iki gemi de sancaga duser.<br><b>Rule 15</b> crossing: sancaginda gemi goruyorsan give-way sensin.<br><b>Rule 18</b> sorumluluk hiyerarsisi: NUC, RAM, CBD, fishing, sailing ve power-driven iliskisi birlikte okunur.<br><b>Rule 19</b> restricted visibility: safe speed, radar yorumu ve fog signal disiplini artar.", tip:"COLREG ezber listesi degil; durumu dogru okuyup erken davranma sanatidir."},
-  {head:"ECDIS / HARITA", body:"Route check, safety contour, safety depth, no-go area, isolated danger ve alarm ayarlari seyirden once gozden gecirilir.<br>GPS bilgisi radar, gorusel mevki ve diger sensorlerle capraz kontrol edilir.<br>Waypoint'ler, parallel indexing, XTD ve chart correction mantigi bilinmelidir.", tip:"ECDIS yardimcidir; seyir sorumlulugu zabittedir."},
+  {head:"ECDIS / HARITA", body:"Route check, safety contour, safety depth, no-go area, isolated danger ve alarm ayarlari seyirden once gozden gecirilir.<br>GPS bilgisi radar, gorusel mevki ve diger sensorlerle capraz kontrol edilir.<br>Waypoint'ler, parallel indexing, XTD ve chart correction mantigi bilinmelidir.<br>Kagit haritada NtM, correction number, tracing ve correction record disiplini; ECDIS'te ise ENC permit, cell status, latest update ve overdue area kontrolu birlikte dusunulur.<br>Rota degisikligi varsa passage plan, kagit harita, ECDIS route ve logbook ayni mantikla guncellenir.", tip:"ECDIS yardimcidir; kagit harita dusuncesiyle birlikte kullanildiginda daha guclu olur."},
   {head:"FENER VE SAMANDIRA", body:"IALA lateral markalarda renk, tepe isareti ve isik karakteri birlikte okunur.<br>Fl, Oc, Iso, Q, VQ, LFl ve sektor renkleri fenerleri ayirt etmeyi saglar.<br>Cardinal marklarda kuzey-gu ney-dogu-bati tepe isaretleri ve siyah-sari renk dizilimi ezberlenmelidir.", tip:"Renk kadar ritmi de oku."},
   {head:"PILOT / ROMORKOR / LIMAN", body:"Pilot ladder durumu, can simidi ve isik kontrolu, personel konumu ve haberlesme disiplini kritik konulardir.<br>Master-pilot exchange yapilir; snap-back zone bos tutulur.<br>Heaving line, tug line, berthing plan, current-rüzgar etkisi ve mooring team konumlari net olmalidir.", tip:"Mooring station saka kabul etmez."},
   {head:"LIMAN VE EVRAK", body:"Notice of Readiness, Bill of Lading, Mate's Receipt, Statement of Facts, manifest, stowage plan, Oil Record Book ve Garbage Record Book temel evraklardandir.<br>Uyumsuzluk gordugunde amire hemen bildirilir.<br>Laytime, demurrage, dispatch, arrival condition ve sea protest temel kavramlardir.", tip:"Saklanan hata buyur."},
