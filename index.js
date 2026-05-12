@@ -323,6 +323,23 @@ harbor:`<rect width="480" height="145" fill="#040d1a"/>
 <circle cx="418" cy="36" r="3" fill="#d4a017" opacity=".8"/>
 <line x1="55" y1="96" x2="185" y2="96" stroke="#1a4a7f" stroke-width="1" opacity=".4"/>`,
 
+deck:`<rect width="480" height="145" fill="#06111b"/>
+<rect y="86" width="480" height="59" fill="#7b5a35"/>
+<path d="M0 95 H480 M0 106 H480 M0 117 H480 M0 128 H480" stroke="#9b7447" stroke-width="1" opacity=".45"/>
+<path d="M48 86 V145 M112 86 V145 M176 86 V145 M240 86 V145 M304 86 V145 M368 86 V145 M432 86 V145" stroke="#634626" stroke-width="1" opacity=".35"/>
+<rect x="26" y="72" width="118" height="10" rx="2" fill="#24384c"/>
+<rect x="44" y="54" width="42" height="18" fill="#314b63"/>
+<rect x="92" y="48" width="28" height="24" fill="#3b5872"/>
+<line x1="130" y1="40" x2="130" y2="86" stroke="#70879c" stroke-width="2"/>
+<line x1="130" y1="44" x2="156" y2="60" stroke="#70879c" stroke-width="1.2"/>
+<rect x="298" y="68" width="132" height="12" rx="2" fill="#182534"/>
+<rect x="322" y="56" width="26" height="12" rx="1" fill="#d7e1e8"/>
+<rect x="350" y="50" width="14" height="18" rx="1" fill="#d7e1e8"/>
+<line x1="358" y1="40" x2="358" y2="50" stroke="#607d99" stroke-width="1.1"/>
+<circle cx="380" cy="73" r="2" fill="#d4a017" opacity=".8"/>
+<circle cx="392" cy="73" r="2" fill="#5dbf8a" opacity=".75"/>
+<path d="M154 82 Q190 76 226 82" fill="none" stroke="#b7d0e2" stroke-width="1.6" opacity=".36"/>`,
+
 sea:`<rect width="480" height="145" fill="#030d1a"/>
 <rect width="480" height="60" fill="#04111f"/>
 <ellipse cx="240" cy="62" rx="200" ry="12" fill="#1a4a7f" opacity=".15"/>
@@ -2912,6 +2929,48 @@ choices:[
 {text:"Kisa bir tesekkur edip sakin adimla cikarim",tag:"itaatkar",effect:{dinclik:7,sayginlik:3}},
 {text:"Hizli hizli telefona gomulup ritmimi daha da bozarim",tag:"korkak",effect:{dinclik:-4}}]},
 
+{id:"s187g",gfx:"sea",alert:false,day:"Gun 12",time:"16:40",loc:"Acik GÃ¼verte - Pruva Tarafi",sub:"Bes dakikalik temiz hava molasi",who:"hasan",
+text:`Hasan bu kez seni sadece korkuluga yasladi.
+
+"Bazen insanin ihtiyaci tavsiye degil, bes dakikalik temiz hava," dedi.
+
+Ruzgar sert degil. Kisa bir nefes arasi var.`,
+choices:[
+{text:"Basimi toparlayip ufka bakar, ritmimi sakinlestiririm",tag:"akilli",effect:{dinclik:10,cesaret:2}},
+{text:"Hasanla iki laf edip gulerek rahatlarim",tag:"sosyal",effect:{dinclik:8,sayginlik:4}},
+{text:"Buna da vakit kaybi der, hemen donerim",tag:"korkak",effect:{dinclik:-3}}]},
+
+{id:"s187h",gfx:"galley",alert:false,day:"Gun 9",time:"21:15",loc:"Yemekhane",sub:"Geceye sicak corbayla girmek",who:"asci",
+text:`Asci ses etmeden bir kase corba koydu.
+
+"Yorgunken mide de, kafa da cabuk dagilir," dedi. "Sicak bir sey ic, geceyi daha duzgun gecirirsin."
+
+Masa sakin, ortam yumusak.`,
+choices:[
+{text:"Corbayi yavas yavas icip bedenimi toplarim",tag:"akilli",effect:{dinclik:11,sayginlik:3}},
+{text:"Kisa bir tesekkur edip sessizce bitiririm",tag:"itaatkar",effect:{dinclik:8}},
+{text:"Acele edip yari birakir, cikarim",tag:"korkak",effect:{dinclik:-3}}]},
+
+{id:"s187i",gfx:"cabin",alert:false,day:"Gun 13",time:"14:05",loc:"Stajyer Kabini",sub:"Perdeyi cekip gozleri dinlendirmek",who:"anlatici",
+text:`Kabinin ici bu kez nispeten sessiz. Disarisi hala calisiyor ama senin gozlerin ve kafan yorulmus.
+
+Tam uyumasan bile, perdeyi cekip birkaç dakika karanlikta kalmak bile fark yaratabilir.`,
+choices:[
+{text:"Telefonu ters cevirip gozlerimi gercekten dinlendiririm",tag:"kritik",effect:{dinclik:13,bilgi:2}},
+{text:"Yataga uzanip bedenimi gevsetirim",tag:"itaatkar",effect:{dinclik:9}},
+{text:"Yine ekrana bakip zihnimi daha da yoruyorum",tag:"korkak",effect:{dinclik:-4}}]},
+
+{id:"s187j",gfx:"harbor",alert:false,day:"Gun 14",time:"11:30",loc:"Iskele Ustu",sub:"Guneşten cekilip kisa oturma molasi",who:"lostromo",
+text:`Lostromo bu kez seni kosusturmak yerine bir baba kenarina oturttu.
+
+"Mola da is kadar ciddidir," dedi. "Yorulan adam once gozden, sonra kafadan kacar."
+
+Liman sakin. Uzerindeki baski bir anligina gevseyebilir.`,
+choices:[
+{text:"Suyu yudumlayip iki dakika hicbir sey yapmam",tag:"akilli",effect:{dinclik:10,sayginlik:4}},
+{text:"Etrafi izleyip sonra toplu sekilde ise donerim",tag:"itaatkar",effect:{dinclik:7,bilgi:2}},
+{text:"Oturmaya utanip hemen kalkarim",tag:"korkak",effect:{dinclik:-3,cesaret:1}}]},
+
 {id:"s188",gfx:"harbor",alert:false,day:"Gun 9",time:"06:25",loc:"Iskele Bordi - Draft Marklari",sub:"Draft okuma disiplini",who:"z1",
 text:`1. Zabit seni bordaya aldi. Su sakin ama markalar gozu aldatiyor.
 
@@ -4696,8 +4755,8 @@ function buildSceneQueue(pool, totalDays){
   return [...mandatory_start, ...middle, ...EXTRA_ROUTE_SCENES, ...EXTRA_EQUIPMENT_SCENES, ...final];
 }
 
-const RECOVERY_SCENE_IDS = new Set(['s146','s147','s148','s149','s150','s183','s184','s185','s186','s187','s187b','s187c','s187d','s187e','s187f']);
-const HARBOR_RECOVERY_SCENE_IDS = new Set(['s147','s150','s186','s187c','s187e']);
+const RECOVERY_SCENE_IDS = new Set(['s146','s147','s148','s149','s150','s183','s184','s185','s186','s187','s187b','s187c','s187d','s187e','s187f','s187g','s187h','s187i','s187j']);
+const HARBOR_RECOVERY_SCENE_IDS = new Set(['s147','s150','s186','s187c','s187e','s187h','s187j']);
 
 function maybePrioritizeRecoveryScene(){
   if(currentIdx >= sceneQueue.length-1) return;
@@ -4774,7 +4833,7 @@ function renderScene(idx){
   else ab.style.display='none';
 
   const svg=document.getElementById('gfx-svg');
-  svg.innerHTML=(GFX[sc.gfx]||GFX.sea)+getSceneOverlay(sc.gfx,sc);
+  svg.innerHTML=getSafeSceneMarkup(sc);
 
   playSceneAudio(sc);
   updateSceneNoteHints(sc);
@@ -6404,6 +6463,7 @@ function playSceneAudio(sc){
 document.getElementById('nameinp').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('shipnameinp').focus();});
 document.getElementById('shipnameinp').addEventListener('keydown',e=>{if(e.key==='Enter')beginGame();});
 buildIntro();
+
 
 
 
