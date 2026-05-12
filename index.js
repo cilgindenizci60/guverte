@@ -840,6 +840,30 @@ sunrise:`<rect width="480" height="145" fill="#040e1c"/>
 <path d="M14 73 Q70 69 134 75" fill="none" stroke="#1b456d" stroke-width="1" opacity=".2"/>
 <path d="M22 80 Q78 77 142 82" fill="none" stroke="#143555" stroke-width=".9" opacity=".16"/>`,
 
+meteo_panel:`<rect width="480" height="145" fill="#07111c"/>
+<rect width="480" height="92" fill="#7ca9d4"/>
+<rect y="92" width="480" height="53" fill="#5d7c56"/>
+<rect y="108" width="480" height="37" fill="#44624a"/>
+<path d="M0 101 Q54 96 108 101 Q162 106 216 101 Q270 96 324 101 Q378 106 432 101 Q456 98 480 101" fill="none" stroke="#c9d9e6" stroke-width="1" opacity=".18"/>
+<ellipse cx="88" cy="46" rx="28" ry="13" fill="#f4f7fb"/>
+<ellipse cx="70" cy="48" rx="15" ry="10" fill="#edf3f8"/>
+<ellipse cx="103" cy="49" rx="18" ry="11" fill="#edf3f8"/>
+<path d="M182 34 Q194 26 206 34 Q218 42 230 34 Q242 26 254 34" fill="none" stroke="#f7fbff" stroke-width="3.2" stroke-linecap="round"/>
+<path d="M174 42 Q188 32 202 40 Q214 47 228 38 Q240 31 256 40" fill="none" stroke="#f7fbff" stroke-width="2.4" stroke-linecap="round" opacity=".88"/>
+<ellipse cx="332" cy="57" rx="52" ry="17" fill="#d9e1e8"/>
+<ellipse cx="298" cy="60" rx="30" ry="12" fill="#d3dce4"/>
+<ellipse cx="362" cy="60" rx="34" ry="12" fill="#d3dce4"/>
+<path d="M308 72 v10 M330 72 v10 M352 72 v10" stroke="#7aa0c0" stroke-width="2" stroke-linecap="round"/>
+<path d="M418 68 Q414 45 425 30 Q436 12 452 22 Q460 28 458 42 Q455 55 462 68 Z" fill="#e8edf4"/>
+<ellipse cx="434" cy="66" rx="34" ry="11" fill="#dce4eb"/>
+<ellipse cx="449" cy="60" rx="20" ry="10" fill="#dce4eb"/>
+<path d="M416 84 l8 -14 l-5 0 l10 -17 l-2 11 l6 0 l-10 20 z" fill="#ffd44f" opacity=".86"/>
+<text x="20" y="18" fill="#eef6ff" font-size="8" font-family="monospace">METEOROLOGY WATCH</text>
+<text x="54" y="84" fill="#0d2741" font-size="7" font-family="monospace">CUMULUS</text>
+<text x="176" y="84" fill="#0d2741" font-size="7" font-family="monospace">CIRRUS</text>
+<text x="292" y="84" fill="#0d2741" font-size="7" font-family="monospace">NIMBOSTRATUS</text>
+<text x="404" y="96" fill="#0d2741" font-size="7" font-family="monospace">CB</text>`,
+
 dolphins:`<rect width="480" height="145" fill="#05111d"/>
 <rect width="480" height="56" fill="#081c30"/>
 <ellipse cx="240" cy="58" rx="180" ry="16" fill="#6fa8dc" opacity=".12"/>
@@ -4242,9 +4266,27 @@ function getChartWorkOverlay(sc){
   return '';
 }
 
+function getMeteorologyOverlay(sc){
+  if(!sc || sc.gfx!=='meteo_panel') return '';
+  const focusMap = {
+    s255:{cx:88,cy:46,rx:40,ry:20,label:'CUMULUS - dikey gelisim basliyor'},
+    s256:{cx:214,cy:36,rx:52,ry:18,label:'CIRRUS - ust seviye ince buz bulutu'},
+    s257:{cx:332,cy:58,rx:64,ry:24,label:'NIMBOSTRATUS - yaygin yagis bulutu'},
+    s258:{cx:434,cy:58,rx:46,ry:34,label:'CUMULONIMBUS - firtina bulutu'}
+  };
+  const f = focusMap[sc.id];
+  if(!f) return '';
+  return `
+  <ellipse cx="${f.cx}" cy="${f.cy}" rx="${f.rx}" ry="${f.ry}" fill="none" stroke="#ffd45a" stroke-width="2.4" opacity=".95"/>
+  <ellipse cx="${f.cx}" cy="${f.cy}" rx="${f.rx+7}" ry="${f.ry+6}" fill="none" stroke="#fff2b0" stroke-width="1" opacity=".45" class="blink"/>
+  <rect x="20" y="118" width="248" height="16" rx="4" fill="rgba(3,17,28,.72)" stroke="#ffd45a" stroke-width=".8"/>
+  <text x="28" y="129" fill="#fff4bf" font-size="8" font-family="monospace">${f.label}</text>`;
+}
+
 function getSceneOverlay(gfx,sc){
   let extra = getSceneFleetOverlay(gfx);
   extra += getChartWorkOverlay(sc);
+  extra += getMeteorologyOverlay(sc);
   if((gfx==='compass'||gfx==='bridge') && sc && (sc.ecdisPlanKey || sc.sub?.toLowerCase().includes('ecdis') || sc.sub?.toLowerCase().includes('seyir plani') || sc.loc?.toLowerCase().includes('ecdis'))){
     extra += getEcdisRouteOverlay(sc);
   }
@@ -5113,6 +5155,7 @@ const STUDENT_NOTES = [
   {head:"LSA / FILIKA / MATAFORA BAKIMI", body:"Can salinda servis tarihi, hydrostatic release unit (HRU), painter, lash ve konteyner kondisyonu kontrol edilir.<br>Can filikasinda inventory, drain plug, battery, engine readiness, communication set, water/ration ve release gear gozden gecirilir.<br>Can yeleklerinde light, whistle, tape, buddy line ve genel kondisyon; immersion suitte size, zipper ve sizdirmazlik mantigi okunur.<br>Matafora ve launching appliance tarafinda fall, sheave, brake, grease noktasi, limit switch ve hareket testi birlikte dusunulur.<br>Pyrotechnics, line-throwing appliance, EPIRB, SART ve handheld VHF tarih/kayit/ready durumu unutulmaz.", tip:"Acil durum ekipmani en cok lazim oldugu gun surpriz cikarmamali."},
   {head:"DEMIR ZINCIRI / KILIT MARKALARI", body:"Bir kilit / shackle genelde <b>15 fathom</b> yani yaklasik <b>27.5 metre</b> kabul edilir.<br>Zincir marking sisteminde joining shackle cevresindeki boyali baklalar ve tel sargilari hangi kilidin suda oldugunu hizlica anlamak icin kullanilir.<br>Gemiden gemiye renk ve tel duzeni degisebilir; esas olan geminin kendi <b>chain marking plan</b>ini bilmektir.<br>Pruva ustunde rapor verirken 'birinci kilit suya girdi', 'ucuncu kilit suya girdi' gibi net ve yuksek sesli ifade kullanilir.<br>Kaloma verirken sadece sayi degil; zincirin hizi, fren durumu ve davranisi da izlenir.", tip:"Ezber renk degil, gemide uygulanan marking sistemi esastir."},
   {head:"ACIL HABERLESME", body:"MAYDAY distress, PAN-PAN urgency, SECURITE emniyet yayini icindir.<br>Mesajda gemi adi, callsign, pozisyon, tehlikenin cinsi, yardim ihtiyaci ve kisi sayisi acik verilir.<br>GMDSS, EPIRB, SART, NAVTEX, DSC, handheld VHF ve emergency battery kayitlari bilinir.", tip:"Netlik hiz kadar onemlidir."},
+  {head:"METEOROLOJI / BULUTLAR", body:"<b>Cumulus</b> gun icinde dikey gelisebilen pamuksu buluttur; hava iyi de olabilir ama buyurse shower'a gider.<br><b>Cirrus</b> ince ve tuy gibi ust seviye buz bulutudur; yaklasan front'un habercisi olabilir.<br><b>Stratus</b> alcak, yaygin ve tek katman gibi gorunur; gorus ve drizzle etkisi yaratabilir.<br><b>Nimbostratus</b> uzun sureli ve yaygin yagisin bulutudur.<br><b>Cumulonimbus (CB)</b> dikey gelisimi cok guclu firtina bulutudur; saganak, yildirim, squall ve ani ruzgar bekletir.<br><b>Barometer trendi</b>, ruzgar donusu ve bulut tipi birlikte okunur; tek bir buluta bakip kesin hukum verilmez.", tip:"Bulut gormek yetmez; hangi seviyede oldugunu ve neye donusebilecegini de dusun."},
   {head:"FORMULLER - HIZ / MESAFE / ZAMAN", body:"Mesafe = Hiz x Zaman<br>Hiz = Mesafe / Zaman<br>Zaman = Mesafe / Hiz<br>1 knot = 1 deniz mili / saat<br>Gece ETA hesaplari icin once kalan mesafe, sonra mevcut SOG kullanilir.<br><br><b>Ornek:</b> 48 mil yol, 12 knot hizla yaklasik 4 saatte biter.", tip:"Basit formuller vardiyada en cok kullanilanlardir."},
   {head:"FORMULLER - SET / DRIFT / CTS", body:"Course to Steer mantigi: istenen COG icin akinti vektorunu hesaba kat.<br>Drift = akintinin hizi<br>Set = akintinin yonu<br>Gercek iz = verilen rota + akinti etkisi<br>Yaklasik kapanis mantigi: Verilen HDG + akinti vektoru = gercek COG/SOG<br>Running fix / DR duzeltmelerinde set-drift sure ile birlikte okunur.<br><b>Yaklasik akis:</b> Akinti mesafesi = drift x zaman<br><b>ETA</b> icin kalan mesafe / gercek SOG mantigi kullanilir.<br><b>Kullanilan tablo / kaynaklar:</b> Tidal stream atlas, current tables, pilot book, chart notlari, ECDIS current overlay, sailing directions.<br><br><b>Ornek:</b> 090 rota tutmak isterken akinti seni kuzeye 2 knot itiyorsa bir miktar guneye pruva verip CTS duzeltmesi yaparsin.", tip:"Pruva baska, iz baska olabilir."},
   {head:"FORMULLER - KLASIK SEYIR / PLANE SAILING", body:"<b>D'Lat = Dist x cos C</b><br><b>Departure = Dist x sin C</b><br><b>D'Long (dakika) = Departure / cos orta enlem</b><br><b>Orta enlem = (Lat1 + Lat2) / 2</b><br>Plane sailing kisa mesafelerde kullanilir; Mercator sailing ve middle latitude mantigi burada devreye girer.<br><br><b>Kuzey/Guney, Dogu/Bati isaretleri</b> hesap kadar onemlidir.<br><b>Traverse table</b> kullanilirken cos/sin sonucu North-South ve East-West olarak okunur.<br><br><b>Ornek:</b> 120 mil, rota 060 ise D'Lat = 120 x cos60 = 60 mil; Departure = 120 x sin60 yaklasik 104 mildir.", tip:"Kisa rota problemlerinde en klasik omurga budur."},
