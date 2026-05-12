@@ -4401,6 +4401,17 @@ function getSceneOverlay(gfx,sc){
   }
   return extra;
 }
+function getSafeSceneMarkup(sc){
+  const key = sc?.gfx || 'sea';
+  const safeKey = GFX[key] ? key : 'sea';
+  const base = GFX[safeKey] || GFX.sea;
+  try{
+    return base + getSceneOverlay(safeKey, sc);
+  }catch(err){
+    console.warn('Scene render fallback:', safeKey, err);
+    return base;
+  }
+}
 const tagL={cesur:"Cesur",akilli:"Akıllı",itaatkar:"İtaatkar",korkak:"Korkak",sosyal:"Sosyal",kritik:"KRİTİK"};
 let mood=58;
 let delayedConsequences=[];
@@ -6463,6 +6474,7 @@ function playSceneAudio(sc){
 document.getElementById('nameinp').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('shipnameinp').focus();});
 document.getElementById('shipnameinp').addEventListener('keydown',e=>{if(e.key==='Enter')beginGame();});
 buildIntro();
+
 
 
 
