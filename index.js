@@ -299,6 +299,28 @@ const CREW={
   gazsubay:{name:"Gaz Kontrol Subayı Elif",icon:"🔵",title:"IGF Sertifikalı LNG Sorumlusu"},
 };
 
+const COMPANY_THEMES = {
+  kuru:{name:'Arel Denizcilik', line:'Dry cargo fleet · operational discipline first', color:'#7aa0c0'},
+  tanker:{name:'Marmara Tankers', line:'Cargo integrity · manifold precision', color:'#c9952a'},
+  kont:{name:'Northline Container', line:'Schedule pressure · route discipline', color:'#6fa8dc'},
+  roro:{name:'Transit Ro-Ro', line:'Fast turnaround · deck safety', color:'#5dbf8a'},
+  bulk:{name:'Pelorus Bulk', line:'Draft, ballast, weather thinking', color:'#b8c8d8'},
+  lng:{name:'Blue Flame Gas', line:'IGF culture · zero shortcut mindset', color:'#8bd3ff'}
+};
+
+function getPlayerPortrait(){
+  const iconMap={kuru:'⚓', tanker:'🛢️', kont:'📦', roro:'🚛', bulk:'⛏️', lng:'🔷'};
+  return iconMap[selType] || '⚓';
+}
+
+function getCrewPortraitIcon(who){
+  const map = {
+    anlatici:'📖', suvari:'🎖️', z1:'🧭', z2:'🗺️', z3:'🚨', carkci:'⚙️', bas2:'🔧',
+    lostromo:'🪢', silici:'🧹', yagci:'🛢️', asci:'🍳', hasan:'👷', musa:'🛟', gazsubay:'🔵'
+  };
+  return map[who] || '⚓';
+}
+
 // ===== GRAFİKLER =====
 const GFX={
 harbor:`<rect width="480" height="145" fill="#040d1a"/>
@@ -4338,10 +4360,46 @@ function getMeteorologyOverlay(sc){
   <text x="28" y="129" fill="#fff4bf" font-size="8" font-family="monospace">${f.label}</text>`;
 }
 
+function getPremiumPanelOverlay(gfx, sc){
+  if(!gfx) return '';
+  const panelGfx = new Set(['radar','compass','ecdis_panel','ais_panel','gyro_panel','magnetic_panel','echo_panel','speedlog_panel','autopilot_panel','bnwas_panel','gmdss_panel','engine','engine_fault','meteo_panel']);
+  if(!panelGfx.has(gfx)) return '';
+  const title = (sc?.sub || gfx).toUpperCase().replace(/[^A-Z0-9 /.-]/g,'').slice(0,34);
+  return `<rect x="8" y="8" width="464" height="129" rx="10" class="premium-panel"/>
+  <circle cx="20" cy="20" r="2" fill="#5dbf8a" class="blink"/><circle cx="30" cy="20" r="2" fill="#d4a017"/><circle cx="40" cy="20" r="2" fill="#c97070"/>
+  <text x="56" y="22" class="premium-label">${title}</text>
+  <text x="390" y="22" class="premium-label">LIVE</text>`;
+}
+
+function getCriticalSceneOverlay(sc){
+  if(!sc) return '';
+  const key = sc.id || '';
+  if(['kriz05','kriz05b','kriz16'].includes(key)){
+    return `<rect width="480" height="145" fill="url(#stormVignette)" opacity=".18"/>
+    <defs><radialGradient id="stormVignette"><stop offset="45%" stop-color="rgba(255,255,255,0)"/><stop offset="100%" stop-color="rgba(0,0,0,.9)"/></radialGradient></defs>
+    <text x="18" y="128" class="premium-label">HEAVY WEATHER CONDITION</text>`;
+  }
+  if(['kriz10','kriz11','kriz12'].includes(key)){
+    return `<rect width="480" height="145" fill="rgba(0,0,0,.14)"/><text x="18" y="128" class="premium-label">HIGH RISK TRANSIT · SECURITY STATION</text>`;
+  }
+  if(['s139','s181'].includes(key)){
+    return `<rect width="480" height="145" fill="rgba(11,18,28,.12)"/><text x="18" y="128" class="premium-label">ANCHOR WATCH · POSITION UNDER REVIEW</text>`;
+  }
+  if(key.startsWith('s8') && /psc|deficiency|detention/i.test(`${sc.sub||''} ${sc.loc||''}`)){
+    return `<rect width="480" height="145" fill="rgba(60,16,16,.12)"/><text x="18" y="128" class="premium-label">PSC INSPECTION · DOCUMENT & SAFETY REVIEW</text>`;
+  }
+  if(key==='s_birthday_surprise'){
+    return `<rect width="480" height="145" fill="rgba(201,149,42,.07)"/><text x="18" y="128" class="premium-label">CREW MOMENT · QUIET CELEBRATION</text>`;
+  }
+  return '';
+}
+
 function getSceneOverlay(gfx,sc){
   let extra = getSceneFleetOverlay(gfx);
+  extra += getPremiumPanelOverlay(gfx, sc);
   extra += getChartWorkOverlay(sc);
   extra += getMeteorologyOverlay(sc);
+  extra += getCriticalSceneOverlay(sc);
   if((gfx==='compass'||gfx==='bridge') && sc && (sc.ecdisPlanKey || sc.sub?.toLowerCase().includes('ecdis') || sc.sub?.toLowerCase().includes('seyir plani') || sc.loc?.toLowerCase().includes('ecdis'))){
     extra += getEcdisRouteOverlay(sc);
   }
@@ -4851,6 +4909,7 @@ function showEnd(){
   stopAllMusic();
   document.getElementById('game').style.display='none';
   document.getElementById('endscr').style.display='flex';
+  setTimeout(renderCareerSummary, 60);
 
   const avg=(stats.cesaret+stats.bilgi+stats.sayginlik)/3;
   const cesurC=choicesMade.filter(c=>c.tag==='cesur').length;
@@ -4907,6 +4966,46 @@ function showEnd(){
 }
 
 // ===== BAŞLAT =====
+function renderCareerSummary(){
+  const badgesEl = document.getElementById('career-badges');
+  const metaEl = document.getElementById('career-meta');
+  if(!badgesEl || !metaEl) return;
+  const badges = [];
+  if(playerFlags.securityBreach===0) badges.push('ISPS Temiz Sicil');
+  if(playerFlags.nearMiss===0) badges.push('Sessiz Emniyet');
+  if(playerFlags.sextantGood>0) badges.push('Sextant Eli');
+  if(stats.sayginlik>=70) badges.push('Ekip Guveni');
+  if(stats.bilgi>=70) badges.push('Seyir Disiplini');
+  if(stats.cesaret>=70) badges.push('Sogukkanli Vardiya');
+  if(stats.dinclik>=65) badges.push('Dayanikli Tempo');
+  if(choicesMade.filter(c=>c.tag==='kritik').length>=6) badges.push('Karar Kalitesi');
+  if(!badges.length) badges.push('Ilk Kontrat Tamamlandi');
+  badgesEl.innerHTML = badges.map(b=>`<span class="career-badge">${b}</span>`).join('');
+
+  const strongest = [
+    ['Cesaret', stats.cesaret],
+    ['Bilgi', stats.bilgi],
+    ['Sayginlik', stats.sayginlik],
+    ['Dinclik', stats.dinclik]
+  ].sort((a,b)=>b[1]-a[1])[0][0];
+  const branch = stats.bilgi>=stats.cesaret && stats.bilgi>=stats.sayginlik ? 'Kopruustu / planlama' :
+    stats.sayginlik>=stats.cesaret ? 'Ekip koordinasyonu' : 'Kriz ve saha refleksi';
+  const trusted = Object.entries(crewTrust||{}).sort((a,b)=>(b[1]||0)-(a[1]||0)).slice(0,2).map(([k])=>CREW_DEFS[k]?.name).filter(Boolean).join(', ') || 'Ekip seni tanimaya basladi';
+  metaEl.innerHTML = `<strong>En guclu taraf:</strong> ${strongest}<br><strong>YatkÄ±n oldugu hat:</strong> ${branch}<br><strong>En yakin iliskiler:</strong> ${trusted}`;
+}
+
+function showCinematicIntro(){
+  const wrap = document.getElementById('intro-cinematic');
+  if(!wrap) return;
+  const stObj = STYPES.find(x=>x.key===selType) || STYPES[0];
+  const weather = selectedStartScenario?.subPrefix || 'Sessiz sabah';
+  document.getElementById('intro-cinematic-port').textContent = selectedStartPort?.name || 'Ilk Liman';
+  document.getElementById('intro-cinematic-meta').textContent = `${selYear} · ${stObj.nm} · ${selectedStartScenario?.time||'06:00'}`;
+  document.getElementById('intro-cinematic-weather').innerHTML = `${weather}<br>${sn} · ${COMPANY_THEMES[selType]?.name || 'Gemi Sirketi'}<br>Ilk kontrat gunu basliyor.`;
+  wrap.classList.add('show');
+  setTimeout(()=>wrap.classList.remove('show'), 2400);
+}
+
 function beginGame(){
   const ni=document.getElementById('nameinp').value.trim();
   const si=document.getElementById('shipnameinp').value.trim();
@@ -4951,12 +5050,15 @@ function beginGame(){
 
   document.getElementById('intro').style.display='none';
   const g=document.getElementById('game');g.style.display='flex';g.style.flexDirection='column';
+  showCinematicIntro();
   setTimeout(()=>{if(window._drawClock)window._drawClock();},50);
   setTimeout(()=>{if(window._drawClock)window._drawClock();},300);
   setTimeout(()=>{if(window._drawClock)window._drawClock();},600);
   updateStats({});
   document.getElementById('contract-fill').style.width='0%';
   document.getElementById('tb-photos-count').textContent='0';
+  const avatar = document.getElementById('avatar');
+  if(avatar) avatar.textContent = getPlayerPortrait();
   document.getElementById('contract-days').textContent=`0 / ${contractTotal} GÜN`;
   renderScene(0);
   setTimeout(()=>{const cv=document.getElementById('clock-canvas');if(cv){const ev=new Event('resize');window.dispatchEvent(ev);}},100);
@@ -4967,6 +5069,7 @@ function restartGame(){
   document.getElementById('crisis').style.display='none';
   document.getElementById('endscr').style.display='none';
   document.getElementById('game').style.display='none';
+  const cine=document.getElementById('intro-cinematic'); if(cine) cine.classList.remove('show');
   document.getElementById('intro').style.display='flex';
 }
 
@@ -5063,7 +5166,7 @@ function renderCrewCards(){
     const div = document.createElement('div');
     div.className = 'crew-card';
     div.innerHTML = `<div class="crew-card-top">
-      <span class="crew-ico">${def.icon}</span>
+      <span class="crew-ico portrait-chip small">${def.icon}</span>
       <div><div class="crew-name">${def.name}</div><div class="crew-title-small">${def.title}</div></div>
       <span style="margin-left:auto;font-size:11px;font-family:'Share Tech Mono',monospace;color:${color};">${trust}</span>
     </div>
@@ -5943,6 +6046,19 @@ const COLREG_HINTS = {
 // ===== SİSTEMLERİ ENTEGRE ET =====
 // Bu fonksiyon mevcut renderScene'e ek olarak çalışır
 function onSceneRender(sc){
+  const speakerPortrait = document.getElementById('speaker-portrait');
+  if(speakerPortrait) speakerPortrait.textContent = getCrewPortraitIcon(sc.who);
+  const avatar = document.getElementById('avatar');
+  if(avatar) avatar.textContent = getPlayerPortrait();
+  const companyLine = document.getElementById('companyline');
+  const company = COMPANY_THEMES[selType] || COMPANY_THEMES.kuru;
+  if(companyLine) companyLine.textContent = company.name+' · '+company.line;
+  const sceneArea = document.getElementById('scene-area');
+  if(sceneArea){
+    sceneArea.classList.remove('scene-fade');
+    void sceneArea.offsetWidth;
+    sceneArea.classList.add('scene-fade');
+  }
   // Hava güncelle
   updateWeather(sc.gfx);
   // Harita pozisyonunu güncelle
@@ -6255,6 +6371,27 @@ function sfxHarbor(){
 }
 
 // İyi sonuç fanfarı
+function sfxBridgeConsole(){
+  playTone(940, 'sine', 0.04, 0.04, 0.12);
+  playTone(1220, 'square', 0.03, 0.03, 0.42);
+}
+
+function sfxPortPA(){
+  playTone(420, 'triangle', 0.08, 0.04, 0.1);
+  playTone(560, 'triangle', 0.09, 0.03, 0.24);
+  playNoise(0.12, 0.015, 0.18);
+}
+
+function sfxWindRig(){
+  playNoise(0.9, 0.02, 0.05);
+  playTone(180+Math.random()*40, 'triangle', 0.55, 0.015, 0.1);
+}
+
+function sfxRopeStrain(){
+  playTone(140, 'sawtooth', 0.22, 0.03, 0.06);
+  playTone(210, 'triangle', 0.16, 0.02, 0.14);
+}
+
 function sfxSuccess(){
   const notes = [523, 659, 784, 1047];
   notes.forEach((n,i)=> playTone(n, 'triangle', 0.4, 0.15, i*0.15));
@@ -6395,16 +6532,18 @@ function playSceneAudio(sc){
   } else {
     if(gfx === 'storm') sfxStormAmbiance();
     else if(gfx==='fire') { stopAllMusic(); sfxAlarm(); }
-    else if(gfx === 'radar') { stopAllMusic(); sfxRadarBip(); }
+    else if(gfx === 'radar') { stopAllMusic(); sfxRadarBip(); sfxBridgeConsole(); }
     else if(gfx === 'engine') { stopAllMusic(); sfxShipEngine(); }
-    else if(gfx==='harbor') { sfxHarbor(); sfxOceanAmbiance(); }
-    else if(gfx==='sea'||gfx==='night'||gfx==='sunrise'||gfx==='port_arrival') { sfxShipEngine(); sfxOceanAmbiance(); }
+    else if(gfx==='harbor') { sfxHarbor(); sfxOceanAmbiance(); setTimeout(sfxPortPA, 280); }
+    else if(gfx==='sea'||gfx==='night'||gfx==='sunrise'||gfx==='port_arrival') { sfxShipEngine(); sfxOceanAmbiance(); if(gfx==='night') setTimeout(sfxBridgeConsole, 220); }
     else if(gfx==='cabin'||gfx==='galley') {
       sfxOceanAmbiance();
       playHomesickAmbiance(sc);
     }
     else { stopAllMusic(); }
   }
+  if(/mooring|halat|tow line|spring|snap-back|romorkor/i.test(`${sc.loc||''} ${sc.sub||''}`)) setTimeout(sfxRopeStrain, 180);
+  if(/bogaz|storm|firtina|anchor watch|suruklenme/i.test(`${sc.loc||''} ${sc.sub||''} ${gfx}`)) setTimeout(sfxWindRig, 240);
 }
 
 

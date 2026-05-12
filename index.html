@@ -11,6 +11,15 @@
 </head>
 <body>
 <canvas id="bg-canvas" style="pointer-events:none;touch-action:none;"></canvas>
+<div id="intro-cinematic">
+  <div id="intro-cinematic-box">
+    <div id="intro-cinematic-kicker">ILK KONTRAT GUNU</div>
+    <div id="intro-cinematic-port"></div>
+    <div id="intro-cinematic-meta"></div>
+    <div id="intro-cinematic-weather"></div>
+    <div id="intro-cinematic-line"></div>
+  </div>
+</div>
 <div id="notifover"><div id="notifbox"><div id="notifico">📊</div><div id="notiftt"></div><div id="notifbd"></div></div></div>
 <div id="app">
 
@@ -122,11 +131,12 @@
 <!-- OYUN -->
 <div id="game">
   <div id="topbar">
-    <div id="avatar">⚓</div>
+    <div id="avatar" class="portrait-chip">⚓</div>
     <div id="charinfo">
       <div id="charname">Stajyer</div>
       <div id="charrole">GÜV. STAJYERİ · GÜN 1</div>
       <div id="shipinfo">—</div>
+      <div id="companyline">—</div>
     </div>
     <div id="topright">
       <button id="sound-btn" onclick="toggleSound()">🔊</button>
@@ -173,7 +183,7 @@
   </div>
   <div id="alert-banner">⚠ ACİL DURUM</div>
   <div id="story">
-    <div id="spkrow"><span id="spkico">📖</span><div><div id="spknm">Anlatıcı</div><div id="spktl"></div></div></div>
+    <div id="spkrow"><div id="speaker-portrait" class="portrait-chip small">📖</div><div><div id="spknm">Anlatıcı</div><div id="spktl"></div></div></div>
     <div id="text">Yükleniyor...</div>
   </div>
   <div id="choices"></div>
@@ -191,6 +201,11 @@
 <div id="endscr">
   <div id="ende">🏅</div><div id="endt"></div>
   <div id="endf"></div><div id="endd"></div>
+  <div id="career-panel">
+    <div id="career-title">KARIYER OZETI</div>
+    <div id="career-badges"></div>
+    <div id="career-meta"></div>
+  </div>
   <div id="endgrid"></div><div id="endv"></div>
   <button class="rbtn" onclick="restartGame()">🔄 Yeniden Oyna</button>
 </div>
