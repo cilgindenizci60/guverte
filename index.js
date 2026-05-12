@@ -4758,7 +4758,23 @@ function buildSceneQueue(pool, totalDays){
   // Düzenli sahneleri karıştır ve totalDays - (başlangıç+kriz+final) kadar seç
   const shuffledRegular=[...regular].sort(()=>Math.random()-0.5);
   const needed=Math.max(5, totalDays - selectedCrisis.length - 2 - EXTRA_ROUTE_SCENES.length - EXTRA_EQUIPMENT_SCENES.length);
-  const selectedRegular=shuffledRegular.slice(0,needed);
+  let selectedRegular=shuffledRegular.slice(0,needed);
+
+  // Dinclik toparlanma sahneleri kuyrukta gercekten yer bulsun.
+  const minRecoveryCount = Math.min(4, Math.max(2, Math.floor(totalDays/8)));
+  const currentRecoveryCount = selectedRegular.filter(s=>RECOVERY_SCENE_IDS.has(s.id)).length;
+  if(currentRecoveryCount < minRecoveryCount){
+    const recoveryPool = shuffledRegular.filter(s=>RECOVERY_SCENE_IDS.has(s.id) && !selectedRegular.some(x=>x.id===s.id));
+    const needMore = minRecoveryCount - currentRecoveryCount;
+    const extras = recoveryPool.slice(0, needMore);
+    if(extras.length){
+      selectedRegular = [
+        ...selectedRegular.filter(s=>!RECOVERY_SCENE_IDS.has(s.id)).slice(0, Math.max(0, selectedRegular.length - extras.length)),
+        ...selectedRegular.filter(s=>RECOVERY_SCENE_IDS.has(s.id)),
+        ...extras
+      ];
+    }
+  }
 
   // Sıralamayı oluştur: başlangıç + (karışık regular + kriz) + final
   const middle=[...selectedRegular,...selectedCrisis].sort(()=>Math.random()-0.5);
@@ -4771,7 +4787,7 @@ const HARBOR_RECOVERY_SCENE_IDS = new Set(['s147','s150','s186','s187c','s187e',
 
 function maybePrioritizeRecoveryScene(){
   if(currentIdx >= sceneQueue.length-1) return;
-  if(stats.dinclik > 45) return;
+  if(stats.dinclik > 55) return;
   const nextScene = sceneQueue[currentIdx];
   if(nextScene && RECOVERY_SCENE_IDS.has(nextScene.id)) return;
 
@@ -4781,7 +4797,7 @@ function maybePrioritizeRecoveryScene(){
   const harborWindow = !!(nextScene && /harbor|port_arrival/.test(nextScene.gfx||'')) || /liman|iskele|rihtim|romorkor|pilot station|mooring/.test(prevBlob);
 
   let foundIdx = -1;
-  const nearSpan = afterCrisis ? (stats.dinclik <= 25 ? 6 : 4) : (harborWindow ? 7 : (stats.dinclik <= 25 ? 14 : 10));
+  const nearSpan = afterCrisis ? (stats.dinclik <= 25 ? 7 : 5) : (harborWindow ? 9 : (stats.dinclik <= 25 ? 16 : 12));
   const nearLimit = Math.min(sceneQueue.length - 2, currentIdx + nearSpan);
 
   for(let i=currentIdx+1; i<=nearLimit; i++){
