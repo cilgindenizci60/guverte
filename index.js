@@ -4133,12 +4133,13 @@ function getChartWorkOverlay(sc){
       <rect x="246" y="28" width="190" height="86" rx="4" fill="#e6d8ab" stroke="#a89256" stroke-width="1.2"/>
       <path d="M256 44 L424 44 M256 60 L424 60 M256 76 L424 76 M256 92 L424 92" stroke="#b39a5c" stroke-width=".8" opacity=".45"/>
       <path d="M262 96 Q294 80 322 82 Q350 84 380 68 Q398 60 420 58" fill="none" stroke="#c93030" stroke-width="2.2"/>
-      <circle cx="322" cy="82" r="3.2" fill="#c93030"/>
-      <circle cx="380" cy="68" r="3.2" fill="#c93030"/>
+      <circle cx="322" cy="82" r="3.2" fill="#c93030" class="blink"/>
+      <circle cx="380" cy="68" r="3.2" fill="#c93030" class="blink"/>
       <rect x="356" y="94" width="58" height="10" rx="2" fill="#f1e6bf" stroke="#a89256" stroke-width=".8"/>
       <text x="360" y="101" fill="#7d6122" font-size="6" font-family="monospace">NTM 2421/26</text>
       <polygon points="428,102 442,114 437,118 423,107" fill="#c93030"/>
       <rect x="434" y="112" width="10" height="4" rx="1" fill="#f0d3b2"/>
+      <circle cx="430" cy="106" r="2.1" fill="#ffd9d0" opacity=".8" class="blink"/>
       <rect x="252" y="24" width="66" height="10" rx="2" fill="#0f2842"/>
       <text x="258" y="31" fill="#d9e3ea" font-size="6" font-family="monospace">PAPER CHART CORR</text>
     </g>`;
@@ -4151,10 +4152,11 @@ function getChartWorkOverlay(sc){
       <rect x="278" y="52" width="152" height="58" rx="4" fill="#04111b" stroke="#0d2a48" stroke-width="1"/>
       <text x="286" y="66" fill="#81f7b8" font-size="7" font-family="monospace">TR 540122   UPDATED</text>
       <text x="286" y="79" fill="#81f7b8" font-size="7" font-family="monospace">GR 340088   UPDATED</text>
-      <text x="286" y="92" fill="#d4a017" font-size="7" font-family="monospace">EG 420551   OVERDUE</text>
-      <text x="286" y="105" fill="#c97070" font-size="7" font-family="monospace">PERMIT CHECK REQUIRED</text>
+      <text x="286" y="92" fill="#d4a017" font-size="7" font-family="monospace" class="blink">EG 420551   OVERDUE</text>
+      <text x="286" y="105" fill="#c97070" font-size="7" font-family="monospace" class="alarm">PERMIT CHECK REQUIRED</text>
       <rect x="278" y="114" width="68" height="8" rx="2" fill="#113050"/>
       <rect x="278" y="114" width="49" height="8" rx="2" fill="#5dbf8a"/>
+      <circle cx="423" cy="38" r="2.5" fill="#81f7b8" class="blink"/>
       <text x="352" y="121" fill="#6fa8dc" font-size="6" font-family="monospace">PKG 26.5 / CELL STATUS</text>
     </g>`;
   }
@@ -4163,13 +4165,14 @@ function getChartWorkOverlay(sc){
       <rect x="234" y="18" width="102" height="104" rx="6" fill="#08131e" stroke="#113457" stroke-width="1.2"/>
       <rect x="244" y="28" width="82" height="74" rx="4" fill="#e6d8ab" stroke="#a89256" stroke-width="1"/>
       <path d="M250 88 Q268 80 282 82 Q294 84 314 70" fill="none" stroke="#c93030" stroke-width="1.8"/>
+      <circle cx="282" cy="82" r="2.8" fill="#c93030" class="blink"/>
       <text x="248" y="110" fill="#d9e3ea" font-size="6" font-family="monospace">PAPER CHART</text>
       <rect x="344" y="18" width="104" height="104" rx="6" fill="#071828" stroke="#12395b" stroke-width="1.2"/>
       <rect x="354" y="28" width="84" height="74" rx="4" fill="#03111c" stroke="#0d2a48" stroke-width="1"/>
       <polyline points="360,88 380,82 398,78 420,62" fill="none" stroke="#d4a017" stroke-width="2" stroke-dasharray="5,3"/>
-      <circle cx="398" cy="78" r="2.8" fill="#1aff50"/>
+      <circle cx="398" cy="78" r="2.8" fill="#1aff50" class="blink"/>
       <text x="360" y="110" fill="#81f7b8" font-size="6" font-family="monospace">ECDIS ROUTE</text>
-      <path d="M330 70 L350 70" stroke="#6fa8dc" stroke-width="2" stroke-dasharray="3,2"/>
+      <path d="M330 70 L350 70" stroke="#6fa8dc" stroke-width="2" stroke-dasharray="3,2" class="blink"/>
       <polygon points="350,70 344,66 344,74" fill="#6fa8dc"/>
     </g>`;
   }
