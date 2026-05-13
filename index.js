@@ -2406,8 +2406,8 @@ Yastiga basini koyunca dusunuyorsun: denizde bazen en buyuk luks, kesintisiz dor
 
 Bu firsati nasil kullanirsin?`,
 choices:[
-{text:"Telefonu bir kenara birakir, hemen uykuya teslim olurum",tag:"akilli",effect:{dinclik:16,sayginlik:3}},
-{text:"Kisa bir not yazip sonra uyurum",tag:"itaatkar",effect:{dinclik:12,bilgi:4}},
+{text:"Telefonu bir kenara birakir, hemen uykuya teslim olurum",tag:"akilli",effect:{dinclik:20,sayginlik:3}},
+{text:"Kisa bir not yazip sonra uyurum",tag:"itaatkar",effect:{dinclik:16,bilgi:4}},
 {text:"Bos zamani harcayip yine gec yatarim",tag:"korkak",effect:{dinclik:-5}}]},
 
 {id:"s147",gfx:"galley",alert:false,day:"Gun 9",time:"18:30",loc:"Yemekhane",sub:"Sicak yemek, sakin masa",who:"asci",
@@ -2417,8 +2417,8 @@ text:`Asci bu aksam masayi sessizce topladi.
 
 Sicak corba, taze ekmek, cay. Kucuk seyler ama gemide bazen insani toparlayan da bunlar.`,
 choices:[
-{text:"Sakin sakin yer, acele etmeden biraz nefes alirim",tag:"sosyal",effect:{dinclik:12,sayginlik:6}},
-{text:"Yemegi bitirip erkenden kabine cekilirim",tag:"itaatkar",effect:{dinclik:10}},
+{text:"Sakin sakin yer, acele etmeden biraz nefes alirim",tag:"sosyal",effect:{dinclik:16,sayginlik:6}},
+{text:"Yemegi bitirip erkenden kabine cekilirim",tag:"itaatkar",effect:{dinclik:14}},
 {text:"Aklim baska yerde diye yemegi gecistiririm",tag:"korkak",effect:{dinclik:-4,sayginlik:-2}}]},
 
 {id:"s148",gfx:"sea",alert:false,day:"Gun 10",time:"06:20",loc:"Açık Güverte - Sabah Havası",sub:"Vardiya oncesi kisa toparlanma",who:"hasan",
@@ -2428,8 +2428,8 @@ text:`Hasan seni vardiya oncesi disari cagirdi.
 
 Ufuk acik, ruzgar yumusak. Ne yaparsin?`,
 choices:[
-{text:"Derin nefes alir, ufka bakip zihnimi toplarim",tag:"akilli",effect:{dinclik:11,cesaret:3}},
-{text:"Hasanla iki laf eder, sonra goreve donerim",tag:"sosyal",effect:{dinclik:9,sayginlik:5}},
+{text:"Derin nefes alir, ufka bakip zihnimi toplarim",tag:"akilli",effect:{dinclik:14,cesaret:3}},
+{text:"Hasanla iki laf eder, sonra goreve donerim",tag:"sosyal",effect:{dinclik:12,sayginlik:5}},
 {text:"Bos is deyip dogrudan ise dalarim",tag:"korkak",effect:{dinclik:-3}}]},
 
 {id:"s149",gfx:"cabin",alert:false,day:"Gun 11",time:"13:40",loc:"Stajyer Kabini",sub:"Kisa ogle uykusu",who:"anlatici",
@@ -2439,8 +2439,8 @@ Denizde uzun dinlenme her zaman bulunmaz ama bazen kisa uyku bile insanin gozunu
 
 Bu arayi nasil degerlendirirsin?`,
 choices:[
-{text:"Alarm kurup yirmi dakikalik power nap yaparim",tag:"kritik",effect:{dinclik:14,bilgi:3}},
-{text:"Uzanir, gozlerimi kapatip bedenimi dinlendiririm",tag:"itaatkar",effect:{dinclik:9}},
+{text:"Alarm kurup yirmi dakikalik power nap yaparim",tag:"kritik",effect:{dinclik:18,bilgi:3}},
+{text:"Uzanir, gozlerimi kapatip bedenimi dinlendiririm",tag:"itaatkar",effect:{dinclik:13}},
 {text:"Uyursam sersem olurum deyip hic dinlenmem",tag:"korkak",effect:{dinclik:-4}}]},
 
 {id:"s150",gfx:"harbor",alert:false,day:"Gun 12",time:"17:20",loc:"Kıç Güverte",sub:"İş bitti, omuzlar düştü",who:"lostromo",
@@ -2450,8 +2450,8 @@ text:`Uzun bir isin ardindan lostromo ilk kez "tamam" dedi.
 
 Kendine kucuk bir mola verir misin?`,
 choices:[
-{text:"Su icer, oturup kisa bir toparlanma molasi veririm",tag:"akilli",effect:{dinclik:10,sayginlik:6}},
-{text:"Etrafi son kez kontrol edip sonra dinlenirim",tag:"itaatkar",effect:{dinclik:8,bilgi:3}},
+{text:"Su icer, oturup kisa bir toparlanma molasi veririm",tag:"akilli",effect:{dinclik:14,sayginlik:6}},
+{text:"Etrafi son kez kontrol edip sonra dinlenirim",tag:"itaatkar",effect:{dinclik:11,bilgi:3}},
 {text:"Dinlenmeden yeni is aramaya devam ederim",tag:"korkak",effect:{dinclik:-5,cesaret:2}}]},
 
 {id:"s151",gfx:"harbor",alert:false,day:"Gun 11",time:"05:50",loc:"Cebelitarık Gecisi",sub:"Gel-git ve tidal set",who:"z2",
@@ -2835,8 +2835,8 @@ text:`Aksam yemegi dagildiktan sonra ortalik ilk kez sakinledi. Asci onune ince 
 
 Bu kisa molayi nasil degerlendirirsin?`,
 choices:[
-{text:"Cayimi sakin sakin icip kafami toplarim",tag:"akilli",effect:{dinclik:11,sayginlik:4}},
-{text:"Asciyla iki laf eder, sonra kabine gecerim",tag:"sosyal",effect:{dinclik:9,sayginlik:6}},
+{text:"Cayimi sakin sakin icip kafami toplarim",tag:"akilli",effect:{dinclik:14,sayginlik:4}},
+{text:"Asciyla iki laf eder, sonra kabine gecerim",tag:"sosyal",effect:{dinclik:12,sayginlik:6}},
 {text:"Mola vermeden yeni is ararim",tag:"korkak",effect:{dinclik:-4}}]},
 
 {id:"s184",gfx:"cabin",alert:false,day:"Gun 14",time:"21:35",loc:"Stajyer Kabini",sub:"Duzenli kabin, duzenli zihin",who:"anlatici",
@@ -2846,8 +2846,8 @@ Kucuk bir toparlama yapsan hem oda hem zihin rahatlayacak.
 
 Ne yaparsin?`,
 choices:[
-{text:"Kabinimi toparlar, su icip erken uykuya hazirlanirim",tag:"akilli",effect:{dinclik:12,bilgi:3}},
-{text:"Sadece yatagi duzeltip biraz nefes alirim",tag:"itaatkar",effect:{dinclik:8}},
+{text:"Kabinimi toparlar, su icip erken uykuya hazirlanirim",tag:"akilli",effect:{dinclik:16,bilgi:3}},
+{text:"Sadece yatagi duzeltip biraz nefes alirim",tag:"itaatkar",effect:{dinclik:11}},
 {text:"Bosverip telefona gomulurum",tag:"korkak",effect:{dinclik:-5}}]},
 
 {id:"s185",gfx:"sea",alert:false,day:"Gun 11",time:"05:55",loc:"Acik Güverte - Gunes Dogarken",sub:"Ufka bakip toparlanmak",who:"hasan",
@@ -2859,8 +2859,8 @@ Gunes daha yeni cizgiye degiyor. Geminin sesi bile daha yumusak geliyor.
 
 Ne yaparsin?`,
 choices:[
-{text:"Sessizce ufka bakip nefesimi duzenlerim",tag:"akilli",effect:{dinclik:10,cesaret:3}},
-{text:"Hasanla kisa bir sohbet edip rahatlarim",tag:"sosyal",effect:{dinclik:8,sayginlik:5}},
+{text:"Sessizce ufka bakip nefesimi duzenlerim",tag:"akilli",effect:{dinclik:13,cesaret:3}},
+{text:"Hasanla kisa bir sohbet edip rahatlarim",tag:"sosyal",effect:{dinclik:11,sayginlik:5}},
 {text:"Buna vakit yok deyip geri donerim",tag:"korkak",effect:{dinclik:-3}}]},
 
 {id:"s186",gfx:"harbor",alert:false,day:"Gun 12",time:"15:50",loc:"Kic Güverte",sub:"Is bitti, su molasi",who:"lostromo",
@@ -2869,8 +2869,8 @@ text:`Zor bir isin ardindan lostromo ilk kez acele etmedi. Sadece su uzatti.
 "Kahramanlik sonra. Once su ic. Yorgun adam hatayi fark etmez."`
 ,
 choices:[
-{text:"Suyu icip kisa mola veririm",tag:"itaatkar",effect:{dinclik:10,sayginlik:5}},
-{text:"Mola sirasinda bugunku isi kafamda toparlarim",tag:"akilli",effect:{dinclik:8,bilgi:4}},
+{text:"Suyu icip kisa mola veririm",tag:"itaatkar",effect:{dinclik:13,sayginlik:5}},
+{text:"Mola sirasinda bugunku isi kafamda toparlarim",tag:"akilli",effect:{dinclik:11,bilgi:4}},
 {text:"Dinlenmeden devam ederim",tag:"korkak",effect:{dinclik:-4,cesaret:2}}]},
 
 {id:"s187",gfx:"cabin",alert:false,day:"Gun 10",time:"13:20",loc:"Stajyer Kabini",sub:"Yirmi dakikalik gercek dinlenme",who:"anlatici",
@@ -2880,8 +2880,8 @@ Gemide uzun tatil yok ama dogru kullanilan yirmi dakika bazen yarim gece kadar d
 
 Bu arayi nasil kullanirsin?`,
 choices:[
-{text:"Alarm kurup kisa ama derin bir uyku alirim",tag:"kritik",effect:{dinclik:14,bilgi:2}},
-{text:"Uzanir, gozlerimi kapatip bedenimi dinlendiririm",tag:"itaatkar",effect:{dinclik:9}},
+{text:"Alarm kurup kisa ama derin bir uyku alirim",tag:"kritik",effect:{dinclik:18,bilgi:2}},
+{text:"Uzanir, gozlerimi kapatip bedenimi dinlendiririm",tag:"itaatkar",effect:{dinclik:13}},
 {text:"Dinlenmek yerine telefonda oyalanirim",tag:"korkak",effect:{dinclik:-5}}]},
 
 {id:"s187b",gfx:"sea",alert:false,day:"Gun 9",time:"07:05",loc:"Acik GÃ¼verte - Serin Sabah",sub:"Vardiya once kisa esneme",who:"hasan",
@@ -2891,7 +2891,7 @@ text:`Hasan seni korkuluga yaslanmis gorunce guldÃ¼.
 
 Sabah serin ama temiz. Kisa bir toparlanma sansin var.`,
 choices:[
-{text:"Kisa esneme yapip nefesimi duzenlerim",tag:"akilli",effect:{dinclik:10,cesaret:2}},
+{text:"Kisa esneme yapip nefesimi duzenlerim",tag:"akilli",effect:{dinclik:13,cesaret:2}},
 {text:"Hasanla birlikte kisa tur atarim",tag:"sosyal",effect:{dinclik:8,sayginlik:4}},
 {text:"Buna da vakit yok diyip gecerim",tag:"korkak",effect:{dinclik:-3}}]},
 
@@ -2902,8 +2902,8 @@ text:`Asci erken kalkmis olanlara sessiz bir masa birakti.
 
 Onunde sicak cay, peynir, ekmek ve zeytin var.`,
 choices:[
-{text:"Yavas yiyip bedenimi vardiyaya hazirlarim",tag:"akilli",effect:{dinclik:11,sayginlik:3}},
-{text:"Kisa ama duzgun bir kahvalti yapip cikiyorum",tag:"itaatkar",effect:{dinclik:9}},
+{text:"Yavas yiyip bedenimi vardiyaya hazirlarim",tag:"akilli",effect:{dinclik:14,sayginlik:3}},
+{text:"Kisa ama duzgun bir kahvalti yapip cikiyorum",tag:"itaatkar",effect:{dinclik:12}},
 {text:"Aceleyle gecistirip neredeyse hic yemem",tag:"korkak",effect:{dinclik:-4}}]},
 
 {id:"s187d",gfx:"cabin",alert:false,day:"Gun 11",time:"21:50",loc:"Stajyer Kabini",sub:"Ilik dus ve erken toparlanma",who:"anlatici",
@@ -2913,8 +2913,8 @@ Bazen uzun konusmalar degil, ilik bir dus ve temiz tisort insanin zihnini de sif
 
 Gece seni yormadan toparlanma sansi veriyor.`,
 choices:[
-{text:"Ilk is dus alip temiz kiyafetle erkenden uzanirim",tag:"kritik",effect:{dinclik:13,sayginlik:3}},
-{text:"Yuzumu yikayip kisa bir toparlanma yaparim",tag:"itaatkar",effect:{dinclik:8}},
+{text:"Ilk is dus alip temiz kiyafetle erkenden uzanirim",tag:"kritik",effect:{dinclik:17,sayginlik:3}},
+{text:"Yuzumu yikayip kisa bir toparlanma yaparim",tag:"itaatkar",effect:{dinclik:11}},
 {text:"Ugrasmak istemeyip oldugu gibi yatağa girerim",tag:"korkak",effect:{dinclik:-3}}]},
 
 {id:"s187e",gfx:"harbor",alert:false,day:"Gun 12",time:"10:45",loc:"Kic GÃ¼verte",sub:"Golgede on dakikalik nefes",who:"lostromo",
@@ -2924,8 +2924,8 @@ text:`Lostromo bu kez seni daha sert ise surmedi. Sadece eliyle golgeyi isaret e
 
 Nadir gelen kisa bir ara bu.`,
 choices:[
-{text:"Golgeye gecip su icer, kendimi toplarim",tag:"akilli",effect:{dinclik:10,sayginlik:4}},
-{text:"Otuz saniye dinlenip yine ise donerim",tag:"itaatkar",effect:{dinclik:7}},
+{text:"Golgeye gecip su icer, kendimi toplarim",tag:"akilli",effect:{dinclik:13,sayginlik:4}},
+{text:"Otuz saniye dinlenip yine ise donerim",tag:"itaatkar",effect:{dinclik:10}},
 {text:"Mola vermeden devam etmeyi marifet sayarim",tag:"korkak",effect:{dinclik:-4,cesaret:2}}]},
 
 {id:"s187f",gfx:"night",alert:false,day:"Gun 10",time:"23:10",loc:"Kopruustu - Gece Sonu",sub:"Nobet cikisi sessiz toparlanma",who:"z2",
@@ -2935,8 +2935,8 @@ text:`Nobet cikisinda 2. Zabit seni hemen yollamadi.
 
 Kopruustunde sessizce nefes alacak kadar zamanin var.`,
 choices:[
-{text:"Bir dakika yavaslayip sonra kabine inerim",tag:"akilli",effect:{dinclik:9,bilgi:2}},
-{text:"Kisa bir tesekkur edip sakin adimla cikarim",tag:"itaatkar",effect:{dinclik:7,sayginlik:3}},
+{text:"Bir dakika yavaslayip sonra kabine inerim",tag:"akilli",effect:{dinclik:12,bilgi:2}},
+{text:"Kisa bir tesekkur edip sakin adimla cikarim",tag:"itaatkar",effect:{dinclik:10,sayginlik:3}},
 {text:"Hizli hizli telefona gomulup ritmimi daha da bozarim",tag:"korkak",effect:{dinclik:-4}}]},
 
 {id:"s187g",gfx:"sea",alert:false,day:"Gun 12",time:"16:40",loc:"Acik GÃ¼verte - Pruva Tarafi",sub:"Bes dakikalik temiz hava molasi",who:"hasan",
@@ -2946,8 +2946,8 @@ text:`Hasan bu kez seni sadece korkuluga yasladi.
 
 Ruzgar sert degil. Kisa bir nefes arasi var.`,
 choices:[
-{text:"Basimi toparlayip ufka bakar, ritmimi sakinlestiririm",tag:"akilli",effect:{dinclik:10,cesaret:2}},
-{text:"Hasanla iki laf edip gulerek rahatlarim",tag:"sosyal",effect:{dinclik:8,sayginlik:4}},
+{text:"Basimi toparlayip ufka bakar, ritmimi sakinlestiririm",tag:"akilli",effect:{dinclik:13,cesaret:2}},
+{text:"Hasanla iki laf edip gulerek rahatlarim",tag:"sosyal",effect:{dinclik:11,sayginlik:4}},
 {text:"Buna da vakit kaybi der, hemen donerim",tag:"korkak",effect:{dinclik:-3}}]},
 
 {id:"s187h",gfx:"galley",alert:false,day:"Gun 9",time:"21:15",loc:"Yemekhane",sub:"Geceye sicak corbayla girmek",who:"asci",
@@ -2957,8 +2957,8 @@ text:`Asci ses etmeden bir kase corba koydu.
 
 Masa sakin, ortam yumusak.`,
 choices:[
-{text:"Corbayi yavas yavas icip bedenimi toplarim",tag:"akilli",effect:{dinclik:11,sayginlik:3}},
-{text:"Kisa bir tesekkur edip sessizce bitiririm",tag:"itaatkar",effect:{dinclik:8}},
+{text:"Corbayi yavas yavas icip bedenimi toplarim",tag:"akilli",effect:{dinclik:15,sayginlik:3}},
+{text:"Kisa bir tesekkur edip sessizce bitiririm",tag:"itaatkar",effect:{dinclik:11}},
 {text:"Acele edip yari birakir, cikarim",tag:"korkak",effect:{dinclik:-3}}]},
 
 {id:"s187i",gfx:"cabin",alert:false,day:"Gun 13",time:"14:05",loc:"Stajyer Kabini",sub:"Perdeyi cekip gozleri dinlendirmek",who:"anlatici",
@@ -2966,8 +2966,8 @@ text:`Kabinin ici bu kez nispeten sessiz. Disarisi hala calisiyor ama senin gozl
 
 Tam uyumasan bile, perdeyi cekip birkaç dakika karanlikta kalmak bile fark yaratabilir.`,
 choices:[
-{text:"Telefonu ters cevirip gozlerimi gercekten dinlendiririm",tag:"kritik",effect:{dinclik:13,bilgi:2}},
-{text:"Yataga uzanip bedenimi gevsetirim",tag:"itaatkar",effect:{dinclik:9}},
+{text:"Telefonu ters cevirip gozlerimi gercekten dinlendiririm",tag:"kritik",effect:{dinclik:17,bilgi:2}},
+{text:"Yataga uzanip bedenimi gevsetirim",tag:"itaatkar",effect:{dinclik:12}},
 {text:"Yine ekrana bakip zihnimi daha da yoruyorum",tag:"korkak",effect:{dinclik:-4}}]},
 
 {id:"s187j",gfx:"harbor",alert:false,day:"Gun 14",time:"11:30",loc:"Iskele Ustu",sub:"Guneşten cekilip kisa oturma molasi",who:"lostromo",
@@ -2977,8 +2977,8 @@ text:`Lostromo bu kez seni kosusturmak yerine bir baba kenarina oturttu.
 
 Liman sakin. Uzerindeki baski bir anligina gevseyebilir.`,
 choices:[
-{text:"Suyu yudumlayip iki dakika hicbir sey yapmam",tag:"akilli",effect:{dinclik:10,sayginlik:4}},
-{text:"Etrafi izleyip sonra toplu sekilde ise donerim",tag:"itaatkar",effect:{dinclik:7,bilgi:2}},
+{text:"Suyu yudumlayip iki dakika hicbir sey yapmam",tag:"akilli",effect:{dinclik:13,sayginlik:4}},
+{text:"Etrafi izleyip sonra toplu sekilde ise donerim",tag:"itaatkar",effect:{dinclik:10,bilgi:2}},
 {text:"Oturmaya utanip hemen kalkarim",tag:"korkak",effect:{dinclik:-3,cesaret:1}}]},
 
 {id:"s188",gfx:"harbor",alert:false,day:"Gun 9",time:"06:25",loc:"Iskele Bordi - Draft Marklari",sub:"Draft okuma disiplini",who:"z1",
@@ -4165,7 +4165,47 @@ En saglam yorum hangisi?`,
   choices:[
   {text:"Dis hava, ambar ici hava ve dew point farkini birlikte okuyup sonra havalandirma karari veririm",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
   {text:"Disarisi temiz gorunuyorsa havalandirmanin her zaman iyi oldugunu dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
-  {text:"Meteoroloji verisiyle ambar kondisyonu arasinda ciddi bag olmadigini sanirim",tag:"korkak",effect:{bilgi:-13,sayginlik:-11}}]}
+  {text:"Meteoroloji verisiyle ambar kondisyonu arasinda ciddi bag olmadigini sanirim",tag:"korkak",effect:{bilgi:-13,sayginlik:-11}}]},
+  {id:"s267",gfx:"cargo",alert:false,day:"Gun 10",time:"09:20",loc:"Ambar Ustu - Tropik Gecis",sub:"Sicak bolgede yuk terlemesini onleme",who:"z1",
+  text:`Tropik hatta hava agirlasti. 1. Zabiti ambar havalandirma kaydini acip sordu:
+
+"Sicak ve nemli bolgede hatali havalandirma ambari ferahlatmaz; bazen yukun ustune su indirir. Ozellikle celik urunler, kagit, paketli yuk ve hassas torbali yukler terleme ve pasla hizli zarar gorur."
+
+Ne yaparsin?`,
+  choices:[
+  {text:"Dis hava/ambar ici hava farkini, dew point'i ve yuk cinsini birlikte okuyup kontrollu havalandirma dusunurum",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
+  {text:"Kapaklari acip ne kadar hava girerse o kadar iyi olacagini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Sicak bolgede yuk zaten terler diye tedbiri gereksiz gorurum",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s268",gfx:"cargo",alert:false,day:"Gun 10",time:"18:25",loc:"Ambar Ustu - Soguk Hava Gecisi",sub:"Soguk bolgede yogusma ve ship sweat riski",who:"z1",
+  text:`Kuzeye cikildikca saclar sogudu. 1. Zabiti ambar kapagini eliyle yokladi:
+
+"Soguk sac, daha sicak nemli havayla bulusursa damlama icerde baslar. Bazen yuk terlemez; gemi terler. O su yukun ustune duser."
+
+Bu durumda en dogru refleks hangisi?`,
+  choices:[
+  {text:"Soguyan yuzeyleri, ambar ic sicakligini ve ship sweat ihtimalini birlikte dusunurum",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
+  {text:"Yagis yoksa ambar icinde nem sorunu da olmayacagini varsayarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Soguk havanin yuk icin otomatik olarak daha guvenli oldugunu sanirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s269",gfx:"cargo",alert:false,day:"Gun 11",time:"07:45",loc:"Reefer Kontrol Koridoru",sub:"Sicak bolgede reefer yuk disiplini",who:"z1",
+  text:`Reefer konteyner sirasi boyunca fan sesleri ayni degil. 1. Zabiti seni yanina cagiriyor:
+
+"Sicak bolgede reefer sadece prizde dursun yeter diye dusunulmez. Setpoint, return air, supply air, alarm kaydi ve kapak muhuru birlikte okunur. Kucuk fark buyuk hasar dogurur."
+
+Ilk kontrol ne olur?`,
+  choices:[
+  {text:"Setpoint, alarm kaydi, return/supply air degerleri ve fiziksel durumunu birlikte kontrol ederim",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
+  {text:"Elektrik geliyorsa reeferin guvende oldugunu dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Disaridan soguk hissediliyorsa ayrintiya gerek olmadigini sanirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s270",gfx:"cargo",alert:false,day:"Gun 11",time:"16:40",loc:"Yuk Ofisi - Gecis Plani",sub:"Sicak-soguk geciste yuk selameti plani",who:"suvari",
+  text:`Suvari rota ustunde iki farkli iklimi isaret etti:
+
+"Asil hata bir bolgenin tedbirini digerine tasimaktir. Sicaktan soguga, soguktan neme gecislerde havalandirma, lashing, reefer takibi, ambar turu ve jurnal notu birlikte planlanir."
+
+Sence profesyonel plan nasil kurulur?`,
+  choices:[
+  {text:"Bolge degisiminden once yuk cinsine gore havalandirma, kontrol turu ve jurnal planini birlikte kurarim",tag:"kritik",effect:{bilgi:19,sayginlik:14}},
+  {text:"Deniz sakin oldugu surece iklim gecisinin buyuk fark yaratmayacagini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Yuk selametini sadece limanda dusunmenin yeterli oldugunu sanirim",tag:"korkak",effect:{bilgi:-13,sayginlik:-11}}]}
 ];
 
 function getEcdisRouteOverlay(sc){
@@ -4930,7 +4970,7 @@ function buildSceneQueue(pool, totalDays){
   let selectedRegular=shuffledRegular.slice(0,needed);
 
   // Dinclik toparlanma sahneleri kuyrukta gercekten yer bulsun.
-  const minRecoveryCount = Math.min(4, Math.max(2, Math.floor(totalDays/8)));
+  const minRecoveryCount = Math.min(6, Math.max(3, Math.floor(totalDays/7)));
   const currentRecoveryCount = selectedRegular.filter(s=>RECOVERY_SCENE_IDS.has(s.id)).length;
   if(currentRecoveryCount < minRecoveryCount){
     const recoveryPool = shuffledRegular.filter(s=>RECOVERY_SCENE_IDS.has(s.id) && !selectedRegular.some(x=>x.id===s.id));
@@ -4956,7 +4996,7 @@ const HARBOR_RECOVERY_SCENE_IDS = new Set(['s147','s150','s186','s187c','s187e',
 
 function maybePrioritizeRecoveryScene(){
   if(currentIdx >= sceneQueue.length-1) return;
-  if(stats.dinclik > 55) return;
+  if(stats.dinclik > 62) return;
   const nextScene = sceneQueue[currentIdx];
   if(nextScene && RECOVERY_SCENE_IDS.has(nextScene.id)) return;
 
@@ -4966,7 +5006,7 @@ function maybePrioritizeRecoveryScene(){
   const harborWindow = !!(nextScene && /harbor|port_arrival/.test(nextScene.gfx||'')) || /liman|iskele|rihtim|romorkor|pilot station|mooring/.test(prevBlob);
 
   let foundIdx = -1;
-  const nearSpan = afterCrisis ? (stats.dinclik <= 25 ? 7 : 5) : (harborWindow ? 9 : (stats.dinclik <= 25 ? 16 : 12));
+  const nearSpan = afterCrisis ? (stats.dinclik <= 25 ? 9 : 7) : (harborWindow ? 11 : (stats.dinclik <= 25 ? 18 : 14));
   const nearLimit = Math.min(sceneQueue.length - 2, currentIdx + nearSpan);
 
   for(let i=currentIdx+1; i<=nearLimit; i++){
