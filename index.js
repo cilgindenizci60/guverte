@@ -4085,7 +4085,87 @@ Sence en profesyonel yaklasim hangisi?`,
   choices:[
   {text:"Plan ustunde yangin mahallini, en yakin hydrant'i, kacis yolunu ve izolasyon noktalarini birlikte okurum",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
   {text:"Sadece mahal adini bilmek yeter derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
-  {text:"Fire planin gercek olayda cok zaman kazandirmadigini dusunurum",tag:"korkak",effect:{bilgi:-13,sayginlik:-12}}]}
+  {text:"Fire planin gercek olayda cok zaman kazandirmadigini dusunurum",tag:"korkak",effect:{bilgi:-13,sayginlik:-12}}]},
+  {id:"s255",gfx:"meteo_panel",alert:false,day:"Gun 7",time:"15:10",loc:"Koprustu - Acik Ufuk",sub:"Cumulus bulutu neye donusebilir?",who:"z2",
+  text:`2. Zabiti sancak omuzluktaki bulutlara bakip sordu:
+
+"Her pamuk gibi bulut masum degildir. Cumulus gun icinde dikey gelisim gosterirse shower'a, hatta uygun kosulda CB'ye kadar gidebilir. Bulutu tek kare degil, zaman icinde okuyacaksin."
+
+Ilk profesyonel yorumun ne olur?`,
+  choices:[
+  {text:"Bulutun dikey gelisimini, ruzgar degisimini ve basinc trendini birlikte izlerim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Pamuksuysa havanin guzel kalacagini varsayarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Bulut tipiyle havanin gidisati arasinda ciddi bag olmadigini dusunurum",tag:"korkak",effect:{bilgi:-12,sayginlik:-10}}]},
+  {id:"s256",gfx:"meteo_panel",alert:false,day:"Gun 7",time:"17:40",loc:"Koprustu - Aksam Ustu",sub:"Cirrus ve yaklasan front ipucu",who:"z2",
+  text:`Aksam ustu gokyuzunde ince, tuy gibi izler belirdi.
+
+2. Zabiti gulumsemeden anlatti: "Cirrus sadece guzel goruntu degil. Ust seviyede buz kristali bulutudur; bazen yaklasan warm front'un ilk habercilerinden biri olur. Hava daha bozmadan ipucu verir."
+
+Ne dersin?`,
+  choices:[
+  {text:"Cirrus'u ust seviye bulutu olarak okur, diger isaretlerle birlikte front yaklasimini sorgularim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Ince bulutlarin hava tahmininde onemsiz kaldigini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Bulut yuksekliginin pratikte bir sey fark ettirmedigini sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s257",gfx:"meteo_panel",alert:false,day:"Gun 8",time:"06:50",loc:"Koprustu - Yagisli Sabah",sub:"Nimbostratus ve surekli yagis",who:"z2",
+  text:`Sabah acildiginda gokyuzu tek parca griye donmustu. Yagis ince ama kalici.
+
+"Nimbostratus bagirmaz; uzatir." dedi 2. Zabiti. "Gorus, islak guverte, yuk operasyonu ve vardiya konforu ayni anda etkilenir. Her yagis saganak karakterli degildir."
+
+Bu tabloyu nasil okursun?`,
+  choices:[
+  {text:"Uzun sureli yaygin yagis, dusen gorus ve guverte etkisini birlikte dusunurum",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Saganak kadar sert degilse operasyonu pek etkilemeyecegini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Yagis turlerinin operasyonel fark yaratmadigini sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s258",gfx:"meteo_panel",alert:true,day:"Gun 8",time:"13:20",loc:"Koprustu - Squall Hatti",sub:"Cumulonimbus ve ani ruzgar riski",who:"suvari",
+  text:`Ufukta kule gibi buyuyen koyu bir bulut duvari var. Alti daha da karanlik.
+
+Suvari eliyle isaret etti: "CB. Burada sadece yagmur yok; ani ruzgar, yildirim, sert gorus dususu ve squall olabilir. Guverteyi, radar yorumunu ve rota dusuncesini bir anda etkiler."
+
+En dogru refleks hangisi?`,
+  choices:[
+  {text:"CB'yi ani ruzgar ve saganak riski olarak gorur, guverte ve seyir emniyetini once sorgularim",tag:"kritik",effect:{bilgi:18,sayginlik:13,cesaret:3}},
+  {text:"Bulut gecene kadar sadece izlemeyi yeterli bulurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Yildirim olmadikca CB'nin fazla fark yaratmayacagini dusunurum",tag:"korkak",effect:{bilgi:-13,sayginlik:-11}}]},
+  {id:"s263",gfx:"meteo_panel",alert:false,day:"Gun 8",time:"18:10",loc:"Koprustu - Barometre Kosesi",sub:"Barometre dususu ne anlatir?",who:"z2",
+  text:`2. Zabiti barometre kaydini gunluk cizelgeyle yan yana koydu:
+
+"Tek bir deger degil, trend onemli. BasinÃ§ hizli dusuyorsa yaklasan alcak basinc, squall line ya da bozan hava dusunursun. Yavas toparlaniyorsa sistem geciyor olabilir."
+
+Bu kaydi nasil yorumlarsin?`,
+  choices:[
+  {text:"Tek sayidan cok basinc trendine, ruzgar donusune ve bulut davranisina birlikte bakarim",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Anlik basinc normal gorunuyorsa trendi ikinci planda tutarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Barometrenin pratik seyirde ciddi fark yaratmadigini dusunurum",tag:"korkak",effect:{bilgi:-12,sayginlik:-10}}]},
+  {id:"s264",gfx:"meteo_panel",alert:false,day:"Gun 9",time:"04:40",loc:"Koprustu - Sisli Sabah",sub:"Sis tipi ve gorus yonetimi",who:"suvari",
+  text:`Sabaha karsi gorus kapandi. Denizin ustu sut gibi.
+
+Suvari kisa kesti: "Her sis ayni degil. Advection fog, radiation fog, sea smoke... Ama vardiyada ilk sorumuz ayni: gorus ne kadar dustu, rota ve hiz ne olacak, hangi ek tedbirler devreye girecek?"
+
+Sence en dogru dusunce ne?`,
+  choices:[
+  {text:"Sis tipini anlamaya calisir ama once gorus, hiz, fog signal ve radar cross-check'i birlikte dusunurum",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
+  {text:"Sis tipini bilmiyorsam diger tedbirlerin de cok fark etmeyecegini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Sis olsa da rota ayniysa hiz ve vardiya mantiginin cok degismeyecegini sanirim",tag:"korkak",effect:{bilgi:-13,sayginlik:-11}}]},
+  {id:"s265",gfx:"meteo_panel",alert:false,day:"Gun 9",time:"11:30",loc:"Koprustu - Synoptic Chart",sub:"Isobar ve front cizgilerini okuma",who:"z2",
+  text:`Masada synoptic chart acik. 2. Zabiti kalemiyle cizgilerin uzerinden gecti:
+
+"Isobarlarin siklasmasi ruzgar potansiyelini hissettirir. Warm front, cold front, occlusion; bunlar hava degisiminin dilidir. Haritayi okuyamayan zabit sadece geleni karsilar."
+
+Ne yaparsin?`,
+  choices:[
+  {text:"Isobar sikligi, front tipi ve geminin goreli mevkiini birlikte okumaya calisirim",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
+  {text:"Sadece ruzgar oklarini okuyup front detayini ikinci plana atarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Synoptic chartin ancak karadaki meteorologlar icin anlamli oldugunu dusunurum",tag:"korkak",effect:{bilgi:-13,sayginlik:-11}}]},
+  {id:"s266",gfx:"meteo_panel",alert:false,day:"Gun 9",time:"14:10",loc:"Yuk Ofisi - Havalandirma Karari",sub:"Dew point ve cargo sweat riski",who:"z1",
+  text:`1. Zabiti hava cetveliyle ambar kaydini yan yana koydu:
+
+"Meteoroloji sadece kopruustunun isi degil. Dew point'i yanlis okursan havalandirma diye ambari terletirsin. Sicak-nemli hava soguk yukle bulusursa zarar buyur."
+
+En saglam yorum hangisi?`,
+  choices:[
+  {text:"Dis hava, ambar ici hava ve dew point farkini birlikte okuyup sonra havalandirma karari veririm",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
+  {text:"Disarisi temiz gorunuyorsa havalandirmanin her zaman iyi oldugunu dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Meteoroloji verisiyle ambar kondisyonu arasinda ciddi bag olmadigini sanirim",tag:"korkak",effect:{bilgi:-13,sayginlik:-11}}]}
 ];
 
 function getEcdisRouteOverlay(sc){
@@ -4388,15 +4468,53 @@ function getMeteorologyOverlay(sc){
     s255:{cx:88,cy:46,rx:40,ry:20,label:'CUMULUS - dikey gelisim basliyor'},
     s256:{cx:214,cy:36,rx:52,ry:18,label:'CIRRUS - ust seviye ince buz bulutu'},
     s257:{cx:332,cy:58,rx:64,ry:24,label:'NIMBOSTRATUS - yaygin yagis bulutu'},
-    s258:{cx:434,cy:58,rx:46,ry:34,label:'CUMULONIMBUS - firtina bulutu'}
+    s258:{cx:434,cy:58,rx:46,ry:34,label:'CUMULONIMBUS - firtina bulutu'},
+    s263:{cx:60,cy:24,rx:34,ry:12,label:'BAROMETER TREND - basinc duserken dikkat'},
+    s264:{cx:240,cy:64,rx:150,ry:26,label:'FOG / VISIBILITY - gorusu yonet'},
+    s265:{cx:240,cy:34,rx:160,ry:26,label:'SYNOPTIC CHART - isobar / front okuma'},
+    s266:{cx:126,cy:116,rx:58,ry:18,label:'DEW POINT - cargo sweat riski'}
   };
   const f = focusMap[sc.id];
   if(!f) return '';
+  let detail = '';
+  if(sc.id==='s263'){
+    detail = `
+    <rect x="24" y="20" width="92" height="54" rx="4" fill="rgba(3,17,28,.72)" stroke="#7fc3ff" stroke-width=".9"/>
+    <text x="34" y="33" fill="#cfeaff" font-size="7" font-family="monospace">BARO 1004 hPa</text>
+    <text x="34" y="45" fill="#ffd45a" font-size="7" font-family="monospace">3h trend: -4.0</text>
+    <text x="34" y="57" fill="#ffb0b0" font-size="6.5" font-family="monospace">LOW APPROACH?</text>
+    <polyline points="32,64 48,58 64,52 80,46 98,38" fill="none" stroke="#ffb0b0" stroke-width="2"/>
+    `;
+  }else if(sc.id==='s264'){
+    detail = `
+    <rect x="88" y="80" width="304" height="22" rx="5" fill="rgba(220,235,245,.16)" stroke="rgba(255,255,255,.24)" stroke-width=".8"/>
+    <text x="102" y="95" fill="#eef8ff" font-size="7" font-family="monospace">VISIBILITY REDUCED - SAFE SPEED / FOG SIGNAL / RADAR</text>
+    <path d="M40 94 q20 -6 42 0 q22 6 44 0 q22 -6 44 0" fill="none" stroke="rgba(230,242,248,.7)" stroke-width="2"/>
+    <path d="M250 90 q20 -6 42 0 q22 6 44 0 q22 -6 44 0" fill="none" stroke="rgba(230,242,248,.65)" stroke-width="2"/>
+    `;
+  }else if(sc.id==='s265'){
+    detail = `
+    <path d="M42 34 q40 -20 88 -8 q54 14 96 2 q40 -12 86 6 q34 14 70 4" fill="none" stroke="#9fd6ff" stroke-width="1.4"/>
+    <path d="M42 46 q40 -20 88 -8 q54 14 96 2 q40 -12 86 6 q34 14 70 4" fill="none" stroke="#9fd6ff" stroke-width="1.4"/>
+    <path d="M42 58 q40 -20 88 -8 q54 14 96 2 q40 -12 86 6 q34 14 70 4" fill="none" stroke="#9fd6ff" stroke-width="1.4"/>
+    <path d="M118 18 l16 0 l8 8 l16 0 l8 8 l16 0" fill="none" stroke="#d95b5b" stroke-width="2"/>
+    <path d="M250 20 l18 10 l18 -10 l18 10 l18 -10" fill="none" stroke="#6fa8dc" stroke-width="2"/>
+    <text x="54" y="78" fill="#fff1b0" font-size="6.5" font-family="monospace">ISOBARLAR SIKLASIYOR = RUZGAR ARTABILIR</text>
+    `;
+  }else if(sc.id==='s266'){
+    detail = `
+    <rect x="26" y="96" width="196" height="30" rx="4" fill="rgba(3,17,28,.78)" stroke="#7fc3ff" stroke-width=".8"/>
+    <text x="36" y="109" fill="#cfeaff" font-size="6.5" font-family="monospace">OUTSIDE AIR DP : 18C</text>
+    <text x="36" y="119" fill="#fff0b0" font-size="6.5" font-family="monospace">HOLD TEMP     : 14C</text>
+    <text x="36" y="129" fill="#ffb0b0" font-size="6.5" font-family="monospace">VENT? THINK BEFORE OPEN</text>
+    `;
+  }
   return `
   <ellipse cx="${f.cx}" cy="${f.cy}" rx="${f.rx}" ry="${f.ry}" fill="none" stroke="#ffd45a" stroke-width="2.4" opacity=".95"/>
   <ellipse cx="${f.cx}" cy="${f.cy}" rx="${f.rx+7}" ry="${f.ry+6}" fill="none" stroke="#fff2b0" stroke-width="1" opacity=".45" class="blink"/>
   <rect x="20" y="118" width="248" height="16" rx="4" fill="rgba(3,17,28,.72)" stroke="#ffd45a" stroke-width=".8"/>
-  <text x="28" y="129" fill="#fff4bf" font-size="8" font-family="monospace">${f.label}</text>`;
+  <text x="28" y="129" fill="#fff4bf" font-size="8" font-family="monospace">${f.label}</text>
+  ${detail}`;
 }
 
 function getPanelChromeOverlay(gfx, sc){
