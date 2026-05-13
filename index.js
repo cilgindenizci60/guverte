@@ -3890,6 +3890,46 @@ Sana gore en dogru yorum hangisi?`,
   {text:"AIS'te static, voyage-related ve dynamic veriyi ayirir; radar/gorsel teyidi surdururum",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
   {text:"AIS'te isim ve hedef gorunuyorsa diger alanlari ikinci planda tutarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
   {text:"AIS verisinin dogrulugunu hic sorgulamadan oldugu gibi kabul ederim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s279",gfx:"gmdss_panel",alert:false,day:"Gun 5",time:"16:10",loc:"Koprustu - GMDSS Sea Areas",sub:"A1-A2-A3-A4 neyi degistirir?",who:"z3",
+  text:`3. Zabiti GMDSS kitabinin kenarina dort satir yazdi:
+
+"A1, A2, A3, A4 ezber satiri degil. Hangi kapsamada oldugunu bilirsen hangi cihaza, hangi istasyona ve hangi distress yoluna guvenecegini anlarsin."
+
+En dogru zabit dusuncesi hangisi?`,
+  choices:[
+  {text:"Sea area'yi cihaz kapsamasiyla birlikte okur; VHF, MF/HF ve uydu imkanini ona gore dusunurum",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"A1-A4 ayriminin pratikte cihaz secimini cok etkilemedigini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Her denizde ayni GMDSS refleksi yeterli olur sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s280",gfx:"gmdss_panel",alert:false,day:"Gun 5",time:"16:35",loc:"Koprustu - Coast Station Listesi",sub:"Hangi sahil istasyonuna bakilir?",who:"z2",
+  text:`2. Zabiti radio signals yayininin ilgili sayfasini acti:
+
+"Sahil istasyonu secimi gelisiguzel olmaz. Cagri isareti, calisma frekansi, DSC bilgisi, NAVTEX coverage ve MRCC baglantisi birlikte okunur. Yanlis istasyon, geciken haberlesme demektir."
+
+Ilk refleksin ne olur?`,
+  choices:[
+  {text:"Bolgeye uygun coast station, frekans ve hizmet turunu yayindan teyit ederim",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"En yakin ulke adini gorup direkt onu secmenin yetecegini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Sahil istasyonu bilgisini acil durumda rastgele denemenin sorun olmayacagini sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s281",gfx:"gmdss_panel",alert:false,day:"Gun 5",time:"17:00",loc:"Koprustu - MRCC / RCC Mantigi",sub:"Rescue Coordination Centre ne yapar?",who:"z3",
+  text:`3. Zabiti distress zincirini bir daha anlatti:
+
+"Her mesaj dogrudan yardim botuna gitmez. Cogu durumda RCC/MRCC koordinasyonu devreye girer. Senin net pozisyon, olay tipi ve durum raporun arama-kurtarma duzenini hizlandirir."
+
+Bu zinciri nasil yorumlarsin?`,
+  choices:[
+  {text:"RCC/MRCC'nin yardim organizasyonunu koordine ettigini bilir, mesaji net ve tam kurarim",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Distress gecildikten sonra detayli bilgi vermenin ikincil kaldigini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"RCC kavramini bilmeden sadece yakindaki gemilerin yardiminin yeterli olacagini sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s282",gfx:"gmdss_panel",alert:false,day:"Gun 5",time:"17:25",loc:"Koprustu - Radio Log",sub:"GMDSS istasyon ve mesaj kaydi",who:"z3",
+  text:`Radio log acik. 3. Zabiti kalemi sana uzatti:
+
+"Istasyonla gorustun, DSC alert teyit edildi, NAVTEX warning alindi ya da Inmarsat-C report gitti. Bunlar kafada tutulmaz; saat, istasyon, frekans ve mesaj ozeti kayda girer."
+
+En profesyonel disiplin hangisi?`,
+  choices:[
+  {text:"Saat, istasyon adi/callsign, frekans ve mesaj ozetini radio log'a duzenli gecerim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Onemli bir sey olursa sonra hatirlar yazarim diye dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Radio log'un pratikte gereksiz ayrinti oldugunu sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
   {id:"s237",gfx:"bridge",alert:true,day:"Gun 6",time:"05:55",loc:"Koprustu - Sabah Vardiyasi",sub:"MOB proseduru ilk dakikalar",who:"z2",
   text:`Sancak taraftan bir cisim denize dustu. 2. Zabiti sesi sertlestirdi:
 
@@ -5638,7 +5678,7 @@ const STUDENT_NOTES = [
   {head:"LSA / FILIKA / MATAFORA BAKIMI", body:"Can salinda servis tarihi, hydrostatic release unit (HRU), painter, lash ve konteyner kondisyonu kontrol edilir.<br>Can filikasinda inventory, drain plug, battery, engine readiness, communication set, water/ration ve release gear gozden gecirilir.<br>Can yeleklerinde light, whistle, tape, buddy line ve genel kondisyon; immersion suitte size, zipper ve sizdirmazlik mantigi okunur.<br>Matafora ve launching appliance tarafinda fall, sheave, brake, grease noktasi, limit switch ve hareket testi birlikte dusunulur.<br>Pyrotechnics, line-throwing appliance, EPIRB, SART ve handheld VHF tarih/kayit/ready durumu unutulmaz.", tip:"Acil durum ekipmani en cok lazim oldugu gun surpriz cikarmamali."},
   {head:"DEMIR ZINCIRI / KILIT MARKALARI", body:"Bir kilit / shackle genelde <b>15 fathom</b> yani yaklasik <b>27.5 metre</b> kabul edilir.<br>Zincir marking sisteminde joining shackle cevresindeki boyali baklalar ve tel sargilari hangi kilidin suda oldugunu hizlica anlamak icin kullanilir.<br>Gemiden gemiye renk ve tel duzeni degisebilir; esas olan geminin kendi <b>chain marking plan</b>ini bilmektir.<br>Pruva ustunde rapor verirken 'birinci kilit suya girdi', 'ucuncu kilit suya girdi' gibi net ve yuksek sesli ifade kullanilir.<br>Kaloma verirken sadece sayi degil; zincirin hizi, fren durumu ve davranisi da izlenir.", tip:"Ezber renk degil, gemide uygulanan marking sistemi esastir."},
   {head:"ACIL HABERLESME", body:"MAYDAY distress, PAN-PAN urgency, SECURITE emniyet yayini icindir.<br>Mesajda gemi adi, callsign, pozisyon, tehlikenin cinsi, yardim ihtiyaci ve kisi sayisi acik verilir.<br>GMDSS, EPIRB, SART, NAVTEX, DSC, handheld VHF ve emergency battery kayitlari bilinir.", tip:"Netlik hiz kadar onemlidir."},
-  {head:"GMDSS / HABERLESME CIHAZLARI", body:"<b>VHF DSC</b> kisa mesafe distress / urgency / safety ve CH16 nobet disiplininin temelidir.<br><b>MF/HF DSC</b> daha uzak mesafe haberlesme ve uygun frekans secimiyle dusunulur.<br><b>NAVTEX</b> navigational ve meteorological warning alir; baski / printer / mesaj secimi onemlidir.<br><b>EGC / SafetyNET</b> genelde Inmarsat-C uzerinden MSI ve safety message alir.<br><b>Inmarsat-C</b> text tabanli haberlesme, distress, reporting ve mesajlasmada kullanilir.<br><b>EPIRB</b> acil durumda COSPAS-SARSAT uydu sistemine distress beacon gonderir.<br><b>SART</b> arama-kurtarmada radar cevaplayici olarak hedef bulunurlugunu artirir.<br><b>AIS</b> trafik farkindaligi ve hedef tanimlamada yardimcidir; radar ve gorsel teyidin yerine gecmez.<br><br><b>Pratik mantik:</b> Hangi cihazin ne zaman, hangi menzilde ve hangi maksatla kullanilacagini bilmek gerekir.", tip:"Cihazi tanimak yetmez; hangi acilde hangisine uzanacagini da bil."},
+  {head:"GMDSS / HABERLESME CIHAZLARI", body:"<b>VHF DSC</b> kisa mesafe distress / urgency / safety ve CH16 nobet disiplininin temelidir.<br><b>MF/HF DSC</b> daha uzak mesafe haberlesme ve uygun frekans secimiyle dusunulur.<br><b>NAVTEX</b> navigational ve meteorological warning alir; baski / printer / mesaj secimi onemlidir.<br><b>EGC / SafetyNET</b> genelde Inmarsat-C uzerinden MSI ve safety message alir.<br><b>Inmarsat-C</b> text tabanli haberlesme, distress, reporting ve mesajlasmada kullanilir.<br><b>EPIRB</b> acil durumda COSPAS-SARSAT uydu sistemine distress beacon gonderir.<br><b>SART</b> arama-kurtarmada radar cevaplayici olarak hedef bulunurlugunu artirir.<br><b>AIS</b> trafik farkindaligi ve hedef tanimlamada yardimcidir; radar ve gorsel teyidin yerine gecmez.<br><br><b>GMDSS Sea Areas</b>:<br><b>A1</b> VHF DSC kapsamasinda yakin denizler<br><b>A2</b> MF DSC kapsamasina kadar uzayan bolgeler<br><b>A3</b> Inmarsat kapsamasindaki acik denizler<br><b>A4</b> kutup / Inmarsat disi yuksek enlem alanlari; HF dusuncesi agir basar.<br><br><b>RCC/MRCC</b> distress sonrasinda arama-kurtarma koordinasyon zincirini yurutur.<br><b>Pratik mantik:</b> Hangi cihazin ne zaman, hangi menzilde ve hangi maksatla kullanilacagini bilmek gerekir.", tip:"Cihazi tanimak yetmez; hangi acilde hangisine uzanacagini da bil."},
   {head:"METEOROLOJI / BULUTLAR", body:"<b>Cumulus</b> gun icinde dikey gelisebilen pamuksu buluttur; hava iyi de olabilir ama buyurse shower'a gider.<br><b>Cirrus</b> ince ve tuy gibi ust seviye buz bulutudur; yaklasan front'un habercisi olabilir.<br><b>Stratus</b> alcak, yaygin ve tek katman gibi gorunur; gorus ve drizzle etkisi yaratabilir.<br><b>Nimbostratus</b> uzun sureli ve yaygin yagisin bulutudur.<br><b>Cumulonimbus (CB)</b> dikey gelisimi cok guclu firtina bulutudur; saganak, yildirim, squall ve ani ruzgar bekletir.<br><b>Barometer trendi</b>, ruzgar donusu ve bulut tipi birlikte okunur; tek bir buluta bakip kesin hukum verilmez.", tip:"Bulut gormek yetmez; hangi seviyede oldugunu ve neye donusebilecegini de dusun."},
   {head:"FORMULLER - HIZ / MESAFE / ZAMAN", body:"Mesafe = Hiz x Zaman<br>Hiz = Mesafe / Zaman<br>Zaman = Mesafe / Hiz<br>1 knot = 1 deniz mili / saat<br>Gece ETA hesaplari icin once kalan mesafe, sonra mevcut SOG kullanilir.<br><br><b>Ornek:</b> 48 mil yol, 12 knot hizla yaklasik 4 saatte biter.", tip:"Basit formuller vardiyada en cok kullanilanlardir."},
   {head:"FORMULLER - SET / DRIFT / CTS", body:"Course to Steer mantigi: istenen COG icin akinti vektorunu hesaba kat.<br>Drift = akintinin hizi<br>Set = akintinin yonu<br>Gercek iz = verilen rota + akinti etkisi<br>Yaklasik kapanis mantigi: Verilen HDG + akinti vektoru = gercek COG/SOG<br>Running fix / DR duzeltmelerinde set-drift sure ile birlikte okunur.<br><b>Yaklasik akis:</b> Akinti mesafesi = drift x zaman<br><b>ETA</b> icin kalan mesafe / gercek SOG mantigi kullanilir.<br><b>Kullanilan tablo / kaynaklar:</b> Tidal stream atlas, current tables, pilot book, chart notlari, ECDIS current overlay, sailing directions.<br><br><b>Ornek:</b> 090 rota tutmak isterken akinti seni kuzeye 2 knot itiyorsa bir miktar guneye pruva verip CTS duzeltmesi yaparsin.", tip:"Pruva baska, iz baska olabilir."},
