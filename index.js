@@ -4389,8 +4389,28 @@ function getMeteorologyOverlay(sc){
   <text x="28" y="129" fill="#fff4bf" font-size="8" font-family="monospace">${f.label}</text>`;
 }
 
+function getPanelChromeOverlay(gfx, sc){
+  if(!gfx) return '';
+  const panelGfx = new Set(['radar','ecdis_panel','ais_panel','gyro_panel','magnetic_panel','echo_panel','speedlog_panel','autopilot_panel','bnwas_panel','gmdss_panel','engine','engine_fault']);
+  const panelScenes = /stability booklet|loadicator|fire plan|enc update|route check|ecdis|radar/i.test(`${sc?.loc||''} ${sc?.sub||''}`);
+  if(!panelGfx.has(gfx) && !panelScenes) return '';
+  const label = (sc?.sub || sc?.loc || gfx).replace(/`/g,'').slice(0,34).toUpperCase();
+  const status = sc?.alert ? 'ALERT' : (gfx==='radar' ? 'TRACK' : gfx==='ecdis_panel' ? 'ROUTE' : gfx==='gmdss_panel' ? 'COMMS' : 'READY');
+  return `<g opacity=".98">
+    <rect x="10" y="10" width="460" height="125" rx="10" fill="rgba(3,10,18,.12)" stroke="rgba(120,170,210,.28)" stroke-width="1.2"/>
+    <rect x="18" y="16" width="170" height="14" rx="3" fill="rgba(3,17,28,.78)" stroke="rgba(111,168,220,.24)" stroke-width=".8"/>
+    <circle cx="28" cy="23" r="2.1" fill="${sc?.alert ? '#c97070' : '#5dbf8a'}"/>
+    <text x="36" y="26" fill="#d9e3ea" font-size="6" font-family="monospace">${label}</text>
+    <rect x="390" y="16" width="62" height="14" rx="3" fill="rgba(3,17,28,.78)" stroke="rgba(111,168,220,.24)" stroke-width=".8"/>
+    <text x="404" y="26" fill="${sc?.alert ? '#ffb0b0' : '#81f7b8'}" font-size="6" font-family="monospace">${status}</text>
+    <rect x="18" y="116" width="212" height="10" rx="3" fill="rgba(3,17,28,.72)" stroke="rgba(111,168,220,.16)" stroke-width=".6"/>
+    <text x="26" y="123" fill="#8ab0c8" font-size="5.5" font-family="monospace">${(sc?.loc||gfx).slice(0,38).toUpperCase()}</text>
+  </g>`;
+}
+
 function getSceneOverlay(gfx,sc){
   let extra = getSceneFleetOverlay(gfx);
+  extra += getPanelChromeOverlay(gfx, sc);
   extra += getChartWorkOverlay(sc);
   extra += getMeteorologyOverlay(sc);
   if((gfx==='compass'||gfx==='bridge') && sc && (sc.ecdisPlanKey || sc.sub?.toLowerCase().includes('ecdis') || sc.sub?.toLowerCase().includes('seyir plani') || sc.loc?.toLowerCase().includes('ecdis'))){
@@ -6021,6 +6041,12 @@ const COLREG_HINTS = {
 // ===== SİSTEMLERİ ENTEGRE ET =====
 // Bu fonksiyon mevcut renderScene'e ek olarak çalışır
 function onSceneRender(sc){
+  const sceneArea = document.getElementById('scene-area');
+  if(sceneArea){
+    sceneArea.classList.remove('scene-fade-once');
+    void sceneArea.offsetWidth;
+    sceneArea.classList.add('scene-fade-once');
+  }
   // Hava güncelle
   updateWeather(sc.gfx);
   // Harita pozisyonunu güncelle
@@ -6353,6 +6379,22 @@ function sfxClick(){
   playTone(800, 'sine', 0.05, 0.08);
 }
 
+let lastSceneGfx = '';
+function sfxSceneTransition(gfx){
+  if(!gfx || gfx===lastSceneGfx) return;
+  if(gfx==='storm') playNoise(0.12, 0.018);
+  else if(gfx==='harbor') playTone(520, 'triangle', 0.08, 0.05);
+  else if(gfx==='night') playTone(420, 'sine', 0.1, 0.04);
+  else if(gfx==='sea'||gfx==='sunrise'||gfx==='port_arrival') playTone(610, 'sine', 0.07, 0.035);
+  else if(/radar|ecdis_panel|ais_panel|gyro_panel|magnetic_panel|echo_panel|speedlog_panel|autopilot_panel|bnwas_panel|gmdss_panel/.test(gfx)) playTone(980, 'square', 0.045, 0.05);
+  lastSceneGfx = gfx;
+}
+
+function sfxPanelWake(){
+  playTone(880, 'square', 0.04, 0.045);
+  setTimeout(()=>playTone(1180, 'sine', 0.05, 0.03), 60);
+}
+
 function sfxHomesickCry(){
   const ctx = getAudioCtx();
   if(!ctx) return;
@@ -6464,6 +6506,7 @@ function playHomesickAmbiance(sc){
 function playSceneAudio(sc){
   const gfx = sc.gfx || '';
   const alert = sc.alert || false;
+  sfxSceneTransition(gfx);
   
   if(alert){
     if(gfx === 'pirate') { setTimeout(sfxPirateAmbiance, 300); sfxAlarm(); }
@@ -6473,13 +6516,17 @@ function playSceneAudio(sc){
   } else {
     if(gfx === 'storm') sfxStormAmbiance();
     else if(gfx==='fire') { stopAllMusic(); sfxAlarm(); }
-    else if(gfx === 'radar') { stopAllMusic(); sfxRadarBip(); }
+    else if(gfx === 'radar') { stopAllMusic(); sfxRadarBip(); sfxPanelWake(); }
     else if(gfx === 'engine') { stopAllMusic(); sfxShipEngine(); }
     else if(gfx==='harbor') { sfxHarbor(); sfxOceanAmbiance(); }
     else if(gfx==='sea'||gfx==='night'||gfx==='sunrise'||gfx==='port_arrival') { sfxShipEngine(); sfxOceanAmbiance(); }
     else if(gfx==='cabin'||gfx==='galley') {
       sfxOceanAmbiance();
       playHomesickAmbiance(sc);
+    }
+    else if(/ecdis_panel|ais_panel|gyro_panel|magnetic_panel|echo_panel|speedlog_panel|autopilot_panel|bnwas_panel|gmdss_panel/.test(gfx)) {
+      stopAllMusic();
+      sfxPanelWake();
     }
     else { stopAllMusic(); }
   }
@@ -6490,6 +6537,7 @@ function playSceneAudio(sc){
 document.getElementById('nameinp').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('shipnameinp').focus();});
 document.getElementById('shipnameinp').addEventListener('keydown',e=>{if(e.key==='Enter')beginGame();});
 buildIntro();
+
 
 
 
