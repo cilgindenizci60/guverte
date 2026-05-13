@@ -567,7 +567,11 @@ gmdss_panel:`<rect width="480" height="145" fill="#06111c"/>
 <rect x="52" y="54" width="92" height="50" rx="4" fill="#03111c" stroke="#0d2a48" stroke-width="1"/><text x="64" y="74" fill="#d4a017" font-size="8" font-family="monospace">VHF DSC</text><text x="64" y="90" fill="#6fa8dc" font-size="7" font-family="monospace">CH16 READY</text>
 <rect x="160" y="54" width="92" height="50" rx="4" fill="#03111c" stroke="#0d2a48" stroke-width="1"/><text x="176" y="74" fill="#d4a017" font-size="8" font-family="monospace">MF/HF</text><text x="176" y="90" fill="#6fa8dc" font-size="7" font-family="monospace">2187.5 kHz</text>
 <rect x="268" y="54" width="72" height="50" rx="4" fill="#03111c" stroke="#0d2a48" stroke-width="1"/><text x="282" y="74" fill="#d4a017" font-size="8" font-family="monospace">EPIRB</text><text x="282" y="90" fill="#6fa8dc" font-size="7" font-family="monospace">ARMED</text>
-<rect x="354" y="54" width="72" height="50" rx="4" fill="#03111c" stroke="#0d2a48" stroke-width="1"/><text x="370" y="74" fill="#d4a017" font-size="8" font-family="monospace">SART</text><text x="368" y="90" fill="#6fa8dc" font-size="7" font-family="monospace">TEST OK</text>`,
+<rect x="354" y="54" width="72" height="50" rx="4" fill="#03111c" stroke="#0d2a48" stroke-width="1"/><text x="370" y="74" fill="#d4a017" font-size="8" font-family="monospace">SART</text><text x="368" y="90" fill="#6fa8dc" font-size="7" font-family="monospace">TEST OK</text>
+<rect x="52" y="108" width="78" height="10" rx="3" fill="#03111c" stroke="#0d2a48" stroke-width=".8"/><text x="60" y="115" fill="#81f7b8" font-size="6" font-family="monospace">NAVTEX</text>
+<rect x="138" y="108" width="92" height="10" rx="3" fill="#03111c" stroke="#0d2a48" stroke-width=".8"/><text x="146" y="115" fill="#81f7b8" font-size="6" font-family="monospace">INM-C / EGC</text>
+<rect x="238" y="108" width="86" height="10" rx="3" fill="#03111c" stroke="#0d2a48" stroke-width=".8"/><text x="246" y="115" fill="#81f7b8" font-size="6" font-family="monospace">COSPAS LINK</text>
+<rect x="332" y="108" width="94" height="10" rx="3" fill="#03111c" stroke="#0d2a48" stroke-width=".8"/><text x="340" y="115" fill="#81f7b8" font-size="6" font-family="monospace">PORTABLE VHF</text>`,
 
 engine:`<rect width="480" height="145" fill="#040c10"/>
 <rect x="60" y="33" width="100" height="82" rx="3" fill="#071828"/>
@@ -3806,6 +3810,86 @@ Ilk bakisin nereye dagilir?`,
   {text:"Aktif rota kadar warning, safety contour ve aktif waypoint bilgisini birlikte okurum",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
   {text:"Sadece sari rota cizgisine bakmak yeter derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
   {text:"ECDIS ekrani karmasik diye yorumlamayi birakirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s271",gfx:"gmdss_panel",alert:false,day:"Gun 5",time:"12:20",loc:"Koprustu - VHF DSC",sub:"VHF DSC ve CH16 disiplini",who:"z3",
+  text:`3. Zabiti VHF setinin ustune dokundu:
+
+"VHF sadece konusma kutusu degil. CH16 nobeti, DSC distress/urgency/safety mantigi, low power / high power secimi ve net tekrar disiplini burada baslar."
+
+VHF icin en dogru zabit dusuncesi hangisi?`,
+  choices:[
+  {text:"CH16 nobetini, DSC fonksiyonunu ve kisa/net haberlesme disiplinini birlikte dusunurum",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"VHF'yi sadece liman icinde kullanilan basit bir telsiz gibi gorurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"DSC mantigini bilmeden sadece mikrofona konusmanin yetecegini sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s272",gfx:"gmdss_panel",alert:false,day:"Gun 5",time:"12:45",loc:"Koprustu - MF/HF Console",sub:"MF/HF ne zaman devreye girer?",who:"z3",
+  text:`MF/HF setinin altindaki frekans listesi gozunu korkutuyor.
+
+"Menzil buyudukce cihaz dusuncesi de degisir." dedi 3. Zabiti. "MF/HF, DSC distress frekanslari, propagation ve uygun band secimiyle VHF'den ayrilir."
+
+En saglam yorum hangisi?`,
+  choices:[
+  {text:"MF/HF'nin daha uzak haberlesme ve uygun frekans/band secimi gerektirdigini soylerim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"VHF cekmiyorsa rastgele MF/HF tuslarina basmanin yeterli oldugunu dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"MF/HF'nin artik fiilen gereksiz hale geldigini sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s273",gfx:"gmdss_panel",alert:false,day:"Gun 5",time:"13:10",loc:"Koprustu - NAVTEX Unit",sub:"NAVTEX mesaji nasil okunur?",who:"z2",
+  text:`Printerdan yeni kagit cikiyor. 2. Zabiti mesaji eline vermeden once sordu:
+
+"NAVTEX'i sadece kagit sayma. Mesaj tipi, gecerlilik alani, warning/safety ayrimi ve rota etkisi birlikte okunur. Yaziciya baktin diye mesaji anladin sanma."
+
+Ilk zabit refleksi ne olmali?`,
+  choices:[
+  {text:"Mesaj tipini, rota ilgisini ve warning onceligini birlikte ayiririm",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Printerdan ciktiysa genel bilgi sayip sonra bakarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"NAVTEX mesajlarini cogunlukla gereksiz kalabalik gibi gorurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s274",gfx:"gmdss_panel",alert:false,day:"Gun 5",time:"13:35",loc:"Koprustu - Inmarsat C / EGC",sub:"EGC ve SafetyNET ne verir?",who:"z3",
+  text:`3. Zabiti Inmarsat-C terminalindeki mesaj kutusunu acti:
+
+"EGC dedigin genelde Enhanced Group Call. SafetyNET uzerinden MSI, weather warning, SAR ve guvenlik mesajlari gelebilir. Bu cihaz konfor degil; bilgi zinciridir."
+
+Sence en dogru dusunce hangisi?`,
+  choices:[
+  {text:"EGC/SafetyNET'i seyir emniyeti ve meteorolojik guvenlik yayini olarak gorurum",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Inmarsat-C varsa sadece sirket mesajlasmasi icindir diye dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"EGC ile NAVTEX arasinda pratikte hic fark olmadigini sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s275",gfx:"gmdss_panel",alert:false,day:"Gun 5",time:"14:05",loc:"Bridge Wing - SART",sub:"SART ne ise yarar?",who:"z3",
+  text:`SART setini eline alinica 3. Zabiti acikladi:
+
+"Bu cihaz kendi basina MAYDAY cihazi gibi dusunulmez. Arama-kurtarma radarina cevap vererek seni daha gorunur yapar. Can sali ve abandon ship dusuncesinin bir parcasidir."
+
+En dogru yorum hangisi?`,
+  choices:[
+  {text:"SART'in arama-kurtarmada radar cevaplayici olarak bulunurlugu artirdigini soylerim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"SART'i normal VHF yerine gececek bir konusma cihazi sanirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"EPIRB varken SART'in onemsiz kaldigini dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s276",gfx:"gmdss_panel",alert:true,day:"Gun 5",time:"14:40",loc:"Emergency Locker - EPIRB",sub:"EPIRB ve COSPAS-SARSAT baglantisi",who:"z3",
+  text:`3. Zabiti EPIRB braketinin yaninda durdu:
+
+"EPIRB denize dusunce veya manuel aktive olunca sadece yakindaki gemiye bagirmez; COSPAS-SARSAT uydu zincirine distress beacon yollar. Bu yuzden bracket, HRU, battery ve registration bilgisi ciddidir."
+
+Bu cihazi nasil yorumlarsin?`,
+  choices:[
+  {text:"EPIRB'in uydu tabanli distress beacon oldugunu, bracket/HRU/battery kaydiyla birlikte dusunurum",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
+  {text:"EPIRB'i sadece isik yakan bir can sali aksesuarina indirgerim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"COSPAS-SARSAT mantigini bilmeden butun isi VHF'ye birakmanin yeterli oldugunu sanirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s277",gfx:"gmdss_panel",alert:false,day:"Gun 5",time:"15:10",loc:"Koprustu - Inmarsat C Terminal",sub:"Inmarsat-C ile mesaj / rapor mantigi",who:"z2",
+  text:`Terminalde sirketten bir metin, altta da raporlama sayfasi acik.
+
+2. Zabiti anlatti: "Inmarsat-C bazen weather, bazen reporting, bazen security ya da sirket mesaji tasir. Distress fonksiyonu ayri bir disiplin ister; her metin ayni onemde degildir."
+
+En profesyonel refleks hangisi?`,
+  choices:[
+  {text:"Mesaj tipini ayirir, reporting/distress/safety farkini anlayarak terminali kullanirim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Inmarsat-C'yi sadece ofisten gelen mail kutusu gibi gorurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Terminal karmasik diye hic ilgi gostermem",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s278",gfx:"ais_panel",alert:false,day:"Gun 5",time:"15:45",loc:"Koprustu - AIS Ayrintisi",sub:"AIS static ve dynamic data farki",who:"z2",
+  text:`AIS terminali bu kez daha ayrintili acik. 2. Zabiti hedef listesine kaydirdi:
+
+"Bir kisim bilgi static ya da voyage-related'dir; MMSI, callsign, draft, destination gibi. Bir kisim da dynamic akar; heading, COG, SOG, ROT gibi. Yanlis veri girisi trafik farkindaligini bozar."
+
+Sana gore en dogru yorum hangisi?`,
+  choices:[
+  {text:"AIS'te static, voyage-related ve dynamic veriyi ayirir; radar/gorsel teyidi surdururum",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"AIS'te isim ve hedef gorunuyorsa diger alanlari ikinci planda tutarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"AIS verisinin dogrulugunu hic sorgulamadan oldugu gibi kabul ederim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
   {id:"s237",gfx:"bridge",alert:true,day:"Gun 6",time:"05:55",loc:"Koprustu - Sabah Vardiyasi",sub:"MOB proseduru ilk dakikalar",who:"z2",
   text:`Sancak taraftan bir cisim denize dustu. 2. Zabiti sesi sertlestirdi:
 
@@ -4596,12 +4680,62 @@ function getCargoIncidentOverlay(sc){
   </g>`;
 }
 
+function getCommsDeviceOverlay(sc){
+  if(!sc) return '';
+  const map = {
+    s271:`<g opacity=".98">
+      <rect x="48" y="50" width="100" height="58" rx="6" fill="none" stroke="#ffd45a" stroke-width="2.4"/>
+      <rect x="56" y="108" width="124" height="12" rx="3" fill="rgba(3,17,28,.75)" stroke="#ffd45a" stroke-width=".7"/>
+      <text x="62" y="116" fill="#fff4bf" font-size="6.5" font-family="monospace">VHF DSC / CH16 WATCH</text>
+    </g>`,
+    s272:`<g opacity=".98">
+      <rect x="156" y="50" width="100" height="58" rx="6" fill="none" stroke="#ffd45a" stroke-width="2.4"/>
+      <rect x="164" y="108" width="126" height="12" rx="3" fill="rgba(3,17,28,.75)" stroke="#ffd45a" stroke-width=".7"/>
+      <text x="170" y="116" fill="#fff4bf" font-size="6.5" font-family="monospace">MF/HF / DSC BAND</text>
+    </g>`,
+    s273:`<g opacity=".98">
+      <rect x="48" y="30" width="92" height="18" rx="4" fill="rgba(3,17,28,.82)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="58" y="41" fill="#cfeaff" font-size="6.5" font-family="monospace">NAVTEX MSG SELECT</text>
+      <rect x="286" y="58" width="118" height="24" rx="4" fill="rgba(3,17,28,.68)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="294" y="73" fill="#cfeaff" font-size="6.5" font-family="monospace">WX / NAV WARNING</text>
+    </g>`,
+    s274:`<g opacity=".98">
+      <rect x="282" y="30" width="132" height="32" rx="4" fill="rgba(3,17,28,.75)" stroke="#5dbf8a" stroke-width="1"/>
+      <text x="292" y="43" fill="#81f7b8" font-size="7" font-family="monospace">INMARSAT-C / EGC</text>
+      <text x="292" y="54" fill="#d9e3ea" font-size="6" font-family="monospace">SAFETYNET / MSI FEED</text>
+    </g>`,
+    s275:`<g opacity=".98">
+      <rect x="350" y="50" width="80" height="58" rx="6" fill="none" stroke="#ffd45a" stroke-width="2.4"/>
+      <rect x="314" y="108" width="118" height="12" rx="3" fill="rgba(3,17,28,.75)" stroke="#ffd45a" stroke-width=".7"/>
+      <text x="322" y="116" fill="#fff4bf" font-size="6.5" font-family="monospace">SART / RADAR RESPONDER</text>
+    </g>`,
+    s276:`<g opacity=".98">
+      <rect x="264" y="50" width="80" height="58" rx="6" fill="none" stroke="#ffb0b0" stroke-width="2.4"/>
+      <rect x="248" y="24" width="148" height="16" rx="4" fill="rgba(58,11,11,.72)" stroke="#c97070" stroke-width=".8"/>
+      <text x="258" y="35" fill="#ffd1d1" font-size="6.5" font-family="monospace">EPIRB -> COSPAS-SARSAT</text>
+    </g>`,
+    s277:`<g opacity=".98">
+      <rect x="280" y="76" width="144" height="30" rx="4" fill="rgba(3,17,28,.72)" stroke="#6fa8dc" stroke-width=".9"/>
+      <text x="292" y="89" fill="#cfeaff" font-size="6.5" font-family="monospace">REPORT / MSG / DISTRESS MENU</text>
+      <text x="292" y="100" fill="#81f7b8" font-size="6.5" font-family="monospace">INMARSAT-C TERMINAL</text>
+    </g>`,
+    s278:`<g opacity=".98">
+      <rect x="36" y="24" width="166" height="18" rx="4" fill="rgba(3,17,28,.78)" stroke="#ffd45a" stroke-width=".8"/>
+      <text x="46" y="36" fill="#fff4bf" font-size="6.5" font-family="monospace">STATIC / VOYAGE / DYNAMIC DATA</text>
+      <rect x="252" y="28" width="168" height="18" rx="4" fill="rgba(3,17,28,.72)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="262" y="40" fill="#cfeaff" font-size="6.5" font-family="monospace">MMSI / COG / SOG / ROT / DEST</text>
+    </g>`
+  };
+  return map[sc.id] || '';
+}
+
 function getSceneOverlay(gfx,sc){
   let extra = getSceneFleetOverlay(gfx);
   extra += getPanelChromeOverlay(gfx, sc);
   extra += getChartWorkOverlay(sc);
   extra += getMeteorologyOverlay(sc);
   extra += getCargoIncidentOverlay(sc);
+  extra += getCommsDeviceOverlay(sc);
   if((gfx==='compass'||gfx==='bridge') && sc && (sc.ecdisPlanKey || sc.sub?.toLowerCase().includes('ecdis') || sc.sub?.toLowerCase().includes('seyir plani') || sc.loc?.toLowerCase().includes('ecdis'))){
     extra += getEcdisRouteOverlay(sc);
   }
@@ -5504,6 +5638,7 @@ const STUDENT_NOTES = [
   {head:"LSA / FILIKA / MATAFORA BAKIMI", body:"Can salinda servis tarihi, hydrostatic release unit (HRU), painter, lash ve konteyner kondisyonu kontrol edilir.<br>Can filikasinda inventory, drain plug, battery, engine readiness, communication set, water/ration ve release gear gozden gecirilir.<br>Can yeleklerinde light, whistle, tape, buddy line ve genel kondisyon; immersion suitte size, zipper ve sizdirmazlik mantigi okunur.<br>Matafora ve launching appliance tarafinda fall, sheave, brake, grease noktasi, limit switch ve hareket testi birlikte dusunulur.<br>Pyrotechnics, line-throwing appliance, EPIRB, SART ve handheld VHF tarih/kayit/ready durumu unutulmaz.", tip:"Acil durum ekipmani en cok lazim oldugu gun surpriz cikarmamali."},
   {head:"DEMIR ZINCIRI / KILIT MARKALARI", body:"Bir kilit / shackle genelde <b>15 fathom</b> yani yaklasik <b>27.5 metre</b> kabul edilir.<br>Zincir marking sisteminde joining shackle cevresindeki boyali baklalar ve tel sargilari hangi kilidin suda oldugunu hizlica anlamak icin kullanilir.<br>Gemiden gemiye renk ve tel duzeni degisebilir; esas olan geminin kendi <b>chain marking plan</b>ini bilmektir.<br>Pruva ustunde rapor verirken 'birinci kilit suya girdi', 'ucuncu kilit suya girdi' gibi net ve yuksek sesli ifade kullanilir.<br>Kaloma verirken sadece sayi degil; zincirin hizi, fren durumu ve davranisi da izlenir.", tip:"Ezber renk degil, gemide uygulanan marking sistemi esastir."},
   {head:"ACIL HABERLESME", body:"MAYDAY distress, PAN-PAN urgency, SECURITE emniyet yayini icindir.<br>Mesajda gemi adi, callsign, pozisyon, tehlikenin cinsi, yardim ihtiyaci ve kisi sayisi acik verilir.<br>GMDSS, EPIRB, SART, NAVTEX, DSC, handheld VHF ve emergency battery kayitlari bilinir.", tip:"Netlik hiz kadar onemlidir."},
+  {head:"GMDSS / HABERLESME CIHAZLARI", body:"<b>VHF DSC</b> kisa mesafe distress / urgency / safety ve CH16 nobet disiplininin temelidir.<br><b>MF/HF DSC</b> daha uzak mesafe haberlesme ve uygun frekans secimiyle dusunulur.<br><b>NAVTEX</b> navigational ve meteorological warning alir; baski / printer / mesaj secimi onemlidir.<br><b>EGC / SafetyNET</b> genelde Inmarsat-C uzerinden MSI ve safety message alir.<br><b>Inmarsat-C</b> text tabanli haberlesme, distress, reporting ve mesajlasmada kullanilir.<br><b>EPIRB</b> acil durumda COSPAS-SARSAT uydu sistemine distress beacon gonderir.<br><b>SART</b> arama-kurtarmada radar cevaplayici olarak hedef bulunurlugunu artirir.<br><b>AIS</b> trafik farkindaligi ve hedef tanimlamada yardimcidir; radar ve gorsel teyidin yerine gecmez.<br><br><b>Pratik mantik:</b> Hangi cihazin ne zaman, hangi menzilde ve hangi maksatla kullanilacagini bilmek gerekir.", tip:"Cihazi tanimak yetmez; hangi acilde hangisine uzanacagini da bil."},
   {head:"METEOROLOJI / BULUTLAR", body:"<b>Cumulus</b> gun icinde dikey gelisebilen pamuksu buluttur; hava iyi de olabilir ama buyurse shower'a gider.<br><b>Cirrus</b> ince ve tuy gibi ust seviye buz bulutudur; yaklasan front'un habercisi olabilir.<br><b>Stratus</b> alcak, yaygin ve tek katman gibi gorunur; gorus ve drizzle etkisi yaratabilir.<br><b>Nimbostratus</b> uzun sureli ve yaygin yagisin bulutudur.<br><b>Cumulonimbus (CB)</b> dikey gelisimi cok guclu firtina bulutudur; saganak, yildirim, squall ve ani ruzgar bekletir.<br><b>Barometer trendi</b>, ruzgar donusu ve bulut tipi birlikte okunur; tek bir buluta bakip kesin hukum verilmez.", tip:"Bulut gormek yetmez; hangi seviyede oldugunu ve neye donusebilecegini de dusun."},
   {head:"FORMULLER - HIZ / MESAFE / ZAMAN", body:"Mesafe = Hiz x Zaman<br>Hiz = Mesafe / Zaman<br>Zaman = Mesafe / Hiz<br>1 knot = 1 deniz mili / saat<br>Gece ETA hesaplari icin once kalan mesafe, sonra mevcut SOG kullanilir.<br><br><b>Ornek:</b> 48 mil yol, 12 knot hizla yaklasik 4 saatte biter.", tip:"Basit formuller vardiyada en cok kullanilanlardir."},
   {head:"FORMULLER - SET / DRIFT / CTS", body:"Course to Steer mantigi: istenen COG icin akinti vektorunu hesaba kat.<br>Drift = akintinin hizi<br>Set = akintinin yonu<br>Gercek iz = verilen rota + akinti etkisi<br>Yaklasik kapanis mantigi: Verilen HDG + akinti vektoru = gercek COG/SOG<br>Running fix / DR duzeltmelerinde set-drift sure ile birlikte okunur.<br><b>Yaklasik akis:</b> Akinti mesafesi = drift x zaman<br><b>ETA</b> icin kalan mesafe / gercek SOG mantigi kullanilir.<br><b>Kullanilan tablo / kaynaklar:</b> Tidal stream atlas, current tables, pilot book, chart notlari, ECDIS current overlay, sailing directions.<br><br><b>Ornek:</b> 090 rota tutmak isterken akinti seni kuzeye 2 knot itiyorsa bir miktar guneye pruva verip CTS duzeltmesi yaparsin.", tip:"Pruva baska, iz baska olabilir."},
@@ -5896,7 +6031,8 @@ function getRelevantNoteTopics(sc){
   if(/fener|isik|samandira|iala|sector/.test(hay)) topics.add('FENER VE SAMANDIRA');
   if(/pilot|romorkor|mooring|snap-back|heaving line|berthing/.test(hay)) topics.add('PILOT / ROMORKOR / LIMAN');
   if(/psc|isps|solas|stcw|security|gangway/.test(hay)) topics.add('PSC / ISPS / SOLAS / STCW');
-  if(/mayday|pan-pan|securite|vhf|gmdss|navtex|epirb|sart/.test(hay)) topics.add('ACIL HABERLESME');
+  if(/mayday|pan-pan|securite|vhf|gmdss|navtex|epirb|sart|egc|inmarsat|cospas|safetynet|ais/.test(hay)) topics.add('ACIL HABERLESME');
+  if(/vhf|mf\/hf|mfhf|navtex|egc|inmarsat|epirb|sart|cospas|safetynet|ais/.test(hay)) topics.add('GMDSS / HABERLESME CIHAZLARI');
   if(/demir|anchor|anchorage|holding ground|dragging|shackle/.test(hay)) topics.add('KOPRUUSTU VARDIYASI');
   if(/stabil|gm|trim|list|ballast|heel|fsc|mctc/.test(hay)) topics.add('STABILITE / BALLAST');
   if(/gel-git|tidal|ukc|under keel|draft/.test(hay)) topics.add('FORMULLER - GEL-GIT / UKC');
