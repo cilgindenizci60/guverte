@@ -1,4 +1,4 @@
-
+﻿
 // ===== CANLI ARKA PLAN =====
 (function(){
   const cv=document.getElementById('bg-canvas');
@@ -2159,6 +2159,16 @@ choices:[
 {text:"Tecrübeli tayfayi izleyip aynisini tekrarlarim",tag:"itaatkar",effect:{bilgi:8,sayginlik:6}},
 {text:"Emin olmadan el hareketi veririm",tag:"korkak",effect:{bilgi:-10,sayginlik:-10}}]},
 
+{id:"s124b",gfx:"cargo",alert:true,day:"Gun 9",time:"16:45",loc:"Vinc Operasyonu - Ambar Ustu",sub:"Lifting sirasinda halat/sling kopuyor",who:"lostromo",
+text:`Yuk havadayken bir anda kuru bir ses duyuldu. Slinglerden biri bosaldi, yuk yana sertce salindi ve guvertedeki herkes bir an dondu.
+
+Lostromo bagirdi: "STOP! Kimse yuk altina girmesin. Alan bosaltilacak, ekip sayilacak, kimse kopan hatta yaklasmayacak."
+
+Bu anda ilk ne yaparsin?`,
+choices:[
+{text:"Operasyonu durdurur, personeli yuk hattindan uzaklastirir ve olayi lostromo ile zabite net raporlarim",tag:"kritik",effect:{bilgi:16,sayginlik:14,cesaret:6}},
+{text:"Kendi emniyetimi alir, emir gelene kadar kenarda beklerim",tag:"itaatkar",effect:{bilgi:7,sayginlik:5}},
+{text:"Yuku elle sabitlemeye ya da kopan halata yaklasmaya calisirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-12,cesaret:-5}}]},
 {id:"s125",gfx:"bogaz",alert:false,day:"Gun 6",time:"21:40",loc:"Çanakkale Boğazı - Jurnal Masasi",sub:"Jurnale not dusmek",who:"z2",
 text:`Bogaz geride kalirken kopruustu ilk kez biraz gevsedi. 2. Zabiti jurnal defterini sana uzatti.
 
@@ -4408,11 +4418,32 @@ function getPanelChromeOverlay(gfx, sc){
   </g>`;
 }
 
+function getCargoIncidentOverlay(sc){
+  if(!sc || sc.id!=='s124b') return '';
+  return `<g opacity=".98">
+    <rect x="18" y="18" width="320" height="92" rx="6" fill="rgba(2,8,14,.18)" stroke="rgba(201,112,112,.22)" stroke-width="1"/>
+    <line x1="210" y1="14" x2="182" y2="44" stroke="#c97070" stroke-width="2.4" stroke-dasharray="5,3"/>
+    <line x1="210" y1="14" x2="240" y2="39" stroke="#566a82" stroke-width="2"/>
+    <line x1="240" y1="39" x2="268" y2="62" stroke="#8aa6c2" stroke-width="1.6" opacity=".55"/>
+    <rect x="248" y="58" width="28" height="18" rx="2" fill="#a55d2a" stroke="#e7b180" stroke-width=".8" transform="rotate(18 262 67)"/>
+    <path d="M267 78 q17 5 28 -6" fill="none" stroke="rgba(191,225,245,.5)" stroke-width="1.6"/>
+    <path d="M274 84 q20 6 34 -7" fill="none" stroke="rgba(191,225,245,.34)" stroke-width="1.2"/>
+    <rect x="38" y="90" width="132" height="12" rx="3" fill="rgba(201,48,48,.18)" stroke="#c93030" stroke-width="1.1"/>
+    <text x="48" y="99" fill="#ffd1d1" font-size="7" font-family="monospace">STOP - LOAD SWING / BROKEN SLING</text>
+    <path d="M204 48 l8 -14 l8 14 z" fill="#ffd45a" stroke="#5a4710" stroke-width=".8"/>
+    <rect x="198" y="48" width="12" height="18" rx="2" fill="#ffd45a" stroke="#5a4710" stroke-width=".8"/>
+    <text x="200" y="61" fill="#402f05" font-size="7" font-family="monospace" font-weight="bold">!</text>
+    <path d="M140 88 L320 88" stroke="#c97070" stroke-width="2" stroke-dasharray="7,5" opacity=".85"/>
+    <text x="146" y="84" fill="#ffb0b0" font-size="6" font-family="monospace">DANGER ZONE - CLEAR PERSONNEL</text>
+  </g>`;
+}
+
 function getSceneOverlay(gfx,sc){
   let extra = getSceneFleetOverlay(gfx);
   extra += getPanelChromeOverlay(gfx, sc);
   extra += getChartWorkOverlay(sc);
   extra += getMeteorologyOverlay(sc);
+  extra += getCargoIncidentOverlay(sc);
   if((gfx==='compass'||gfx==='bridge') && sc && (sc.ecdisPlanKey || sc.sub?.toLowerCase().includes('ecdis') || sc.sub?.toLowerCase().includes('seyir plani') || sc.loc?.toLowerCase().includes('ecdis'))){
     extra += getEcdisRouteOverlay(sc);
   }
