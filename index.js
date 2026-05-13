@@ -3193,7 +3193,7 @@ const START_PORTS=[
 ];
 const START_SCENARIOS=[
   {time:"05:30", subPrefix:"Sabah sisi", intro:"Sabah erken, rıhtımın üstünde ince sis var.", bridgeCall:"Rampadan biri indi: \"Sen stajyer ${n} misin? 1. Zabiti köprüde bekliyor.\""},
-  {time:"06:10", subPrefix:"Yağmurlu vardiya", intro:"Çiseliyor. Rıhtım ıslak, halatlar koyu renk kesilmiş gibi parlıyor.", bridgeCall:"Vardiya devrinden çıkan bir tayfa seni görünce bağırdı: \"Stajyer sensen çabuk ol, köprü seni bekliyor.\""},
+  {time:"06:10", subPrefix:"Yağmurlu vardiya", intro:"Yagmur ciseliyor. Rihtim islak, halatlar koyu renk kesilmis gibi parliyor.", bridgeCall:"Vardiya devrinden cikan bir tayfa seni gorunce bagirdi: \"Stajyer sensen cabuk ol, kopru seni bekliyor.\""},
   {time:"04:50", subPrefix:"Gece sonu telaşı", intro:"Gece daha tam dağılmamış. Projektörler güverteyi beyaz kesiyor, liman yarı uykuda.", bridgeCall:"Nöbetçi zabit merdiven ağzından seslendi: \"Geç kalmadın. Belgelerinle yukarı çık.\""},
   {time:"07:00", subPrefix:"Liman uğultusu", intro:"Forklift sesleri, vinç alarmları ve martı çığlıkları birbirine karışıyor.", bridgeCall:"Ajans görevlisi seni gemiye teslim ederken fısıldadı: \"İlk günün sert geçer, dikkatli ol.\""},
 ];
