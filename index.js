@@ -3930,6 +3930,76 @@ En profesyonel disiplin hangisi?`,
   {text:"Saat, istasyon adi/callsign, frekans ve mesaj ozetini radio log'a duzenli gecerim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
   {text:"Onemli bir sey olursa sonra hatirlar yazarim diye dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
   {text:"Radio log'un pratikte gereksiz ayrinti oldugunu sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s283",gfx:"gmdss_panel",alert:true,day:"Gun 5",time:"17:50",loc:"Koprustu - DSC Controller",sub:"DSC alert sequence nasil ilerler?",who:"z3",
+  text:`3. Zabiti DSC controller'a bakip sordu:
+
+"Distress alert bir tus degil, bir zincirdir. Kimlik, pozisyon, nature of distress ve uygun kanal disiplini birbirini tamamlar. Sirayi bozarsan yardim gecikebilir."
+
+En dogru refleks hangisi?`,
+  choices:[
+  {text:"DSC alert sequence'i kimlik, pozisyon ve distress bilgisi mantigiyla duzenli dusunurum",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Once tusa basip ayrintiyi sonra duzeltmenin yeterli oldugunu dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"DSC zincirini bilmeden dogrudan sesli cagrinin her zaman yetecegini sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s284",gfx:"gmdss_panel",alert:false,day:"Gun 5",time:"18:15",loc:"Koprustu - Test Modu",sub:"Test ile gercek distress farki",who:"z3",
+  text:`3. Zabiti test prosedurunu gosterdi:
+
+"Test baska, gercek distress baska. Cihazi sinarken yanlis yerde, yanlis modda ya da yanlis istasyona gercek alarm atmak basit hata sayilmaz."
+
+Bu ayrimi nasil korursun?`,
+  choices:[
+  {text:"Test prosedurunu yalnizca uygun mod, uygun zaman ve uygun kayitla uygularim",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Test ile gercek alarm mantiginin ekranda kolayca ayristigini varsayarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Deneme icin kisa bir gercek alertin buyuk sorun olmayacagini sanirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s285",gfx:"gmdss_panel",alert:true,day:"Gun 5",time:"18:40",loc:"Koprustu - Yanlis Alarm Sonrasi",sub:"False alert iptali nasil yapilir?",who:"suvari",
+  text:`Suvari bu kez yuzu ciddileserek sordu:
+
+"Yanlis distress alert atildi diyelim. Saklamak daha buyuk hatadir. Iptal proseduru, ilgili istasyona bildirim ve radio log kaydi bir arada yurur."
+
+En saglam zabit tavri hangisi?`,
+  choices:[
+  {text:"False alert'i hemen uygun prosedurle iptal eder, ilgili istasyona bildirir ve log'a gecerim",tag:"kritik",effect:{bilgi:19,sayginlik:13,cesaret:3}},
+  {text:"Biraz bekleyip kimsenin fark etmeyecegini umarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Yanlis alarmi gizlemenin daha az sorun cikaracagini sanirim",tag:"korkak",effect:{bilgi:-13,sayginlik:-12}}]},
+  {id:"s286",gfx:"gmdss_panel",alert:false,day:"Gun 5",time:"19:05",loc:"Koprustu - Radio Log Uygulamasi",sub:"Mesaji dogru kayda gecmek",who:"z3",
+  text:`Radio log bu kez bos satirla onunde:
+
+"Saat UTC mi local mi, istasyon kim, frekans ne, mesaj tipi ne, hangi aksiyon alindi? GMDSS'te 'konusuldu bitti' diye bir sey yok."
+
+Kaydi nasil tutarsin?`,
+  choices:[
+  {text:"Saat, istasyon, frekans, mesaj tipi ve sonucu acik-sekilde kayda gecerim",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Kisa bir notla gecistirir, detayi gerekirse sonra eklerim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Mesaji duyduysam ayrica yazmanin cok da onemli olmadigini dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s287",gfx:"fire",alert:false,day:"Gun 8",time:"18:10",loc:"Fire Locker - Ekipman Turu",sub:"Gemideki yangin ekipmanlarini tanimak",who:"z3",
+  text:`Fire locker acildi. 3. Zabiti tek tek gosterdi:
+
+"Hydrant, hose, nozzle, branch pipe, BA set, fireman's outfit, portable extinguisher, fire blanket... Bir yanginda neyin nerede oldugunu dusunmek icin gec kalinmaz."
+
+Ilk profesyonel refleksin ne olur?`,
+  choices:[
+  {text:"Ekipmani yer, kullanim amaci ve hangi mahalde ise yarayacagiyla birlikte tanirim",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Sadece hortum dolabinin yerini bilmenin yetecegini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Yangin ekipmanini acil durumda bakarak ogrenmenin yeterli olacagini sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s288",gfx:"fire",alert:false,day:"Gun 8",time:"18:35",loc:"CO2 Room / Fire Plan",sub:"Otomatik ve fixed yangin sistemleri",who:"z3",
+  text:`3. Zabiti fire plan ustunde fixed sistemleri gosterdi:
+
+"Sprinkler, fixed CO2, local application, fire damper, quick-closing valve... Bunlar hortumun buyuk hali degil; farkli mantikla calisir. Ozellikle CO2'de sayim ve mahal izolasyonu hayati."
+
+En dogru dusunce hangisi?`,
+  choices:[
+  {text:"Fixed sistemleri mahal, izolasyon, sayim ve release disipliniyle birlikte dusunurum",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
+  {text:"Otomatik sistem varsa yangin ekibine daha az gerek oldugunu dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"CO2 salmadan once mahal kontrolunun ikincil oldugunu sanirim",tag:"korkak",effect:{bilgi:-13,sayginlik:-12}}]},
+  {id:"s289",gfx:"fire",alert:false,day:"Gun 8",time:"19:05",loc:"Muster Station - Sondurucu Secimi",sub:"Hangi yangina hangi sondurucu?",who:"z3",
+  text:`3. Zabiti bu kez sadece isim sormadi; senaryo verdi:
+
+"Kati madde, yanici sivi, elektrik panosu, mutfak yagi... Her birinde ayni refleks kurulmaz. En yakin sondurucuyu degil, en dogru sondurucuyu sececeksin."
+
+En saglam ozet hangisi?`,
+  choices:[
+  {text:"Yangin sinifina gore su, foam, CO2, dry powder veya wet chemical mantigini ayiririm",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
+  {text:"Ilk elime gelen sondurucunun buyuk ihtimalle yeterli olacagini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Elektrik ve yag yanginlarinda da suyun genelde guvenli oldugunu sanirim",tag:"korkak",effect:{bilgi:-13,sayginlik:-12}}]},
   {id:"s237",gfx:"bridge",alert:true,day:"Gun 6",time:"05:55",loc:"Koprustu - Sabah Vardiyasi",sub:"MOB proseduru ilk dakikalar",who:"z2",
   text:`Sancak taraftan bir cisim denize dustu. 2. Zabiti sesi sertlestirdi:
 
@@ -4769,6 +4839,53 @@ function getCommsDeviceOverlay(sc){
   return map[sc.id] || '';
 }
 
+function getFireTrainingOverlay(sc){
+  if(!sc) return '';
+  const map = {
+    s283:`<g opacity=".98">
+      <rect x="54" y="24" width="146" height="18" rx="4" fill="rgba(58,11,11,.72)" stroke="#c97070" stroke-width=".8"/>
+      <text x="64" y="36" fill="#ffd1d1" font-size="6.5" font-family="monospace">DISTRESS -> POSITION -> NATURE</text>
+      <path d="M210 64 L286 64" stroke="#ffd45a" stroke-width="2" stroke-dasharray="5,3"/>
+      <polygon points="286,64 278,60 278,68" fill="#ffd45a"/>
+    </g>`,
+    s284:`<g opacity=".98">
+      <rect x="58" y="92" width="126" height="16" rx="4" fill="rgba(3,17,28,.75)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="68" y="103" fill="#cfeaff" font-size="6.5" font-family="monospace">TEST MODE / NO LIVE ALERT</text>
+    </g>`,
+    s285:`<g opacity=".98">
+      <rect x="240" y="24" width="140" height="18" rx="4" fill="rgba(58,11,11,.72)" stroke="#c97070" stroke-width=".8"/>
+      <text x="250" y="36" fill="#ffd1d1" font-size="6.5" font-family="monospace">FALSE ALERT CANCEL</text>
+      <rect x="256" y="88" width="118" height="16" rx="4" fill="rgba(3,17,28,.75)" stroke="#ffd45a" stroke-width=".8"/>
+      <text x="264" y="99" fill="#fff4bf" font-size="6.5" font-family="monospace">REPORT / LOG / CONFIRM</text>
+    </g>`,
+    s286:`<g opacity=".98">
+      <rect x="250" y="88" width="170" height="22" rx="4" fill="rgba(3,17,28,.75)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="260" y="101" fill="#cfeaff" font-size="6.5" font-family="monospace">UTC / STATION / FREQ / MSG TYPE</text>
+    </g>`,
+    s287:`<g opacity=".98">
+      <rect x="64" y="58" width="42" height="54" rx="4" fill="none" stroke="#ffd45a" stroke-width="2"/>
+      <rect x="114" y="52" width="86" height="26" rx="4" fill="none" stroke="#7fc3ff" stroke-width="2"/>
+      <rect x="304" y="42" width="120" height="34" rx="4" fill="none" stroke="#5dbf8a" stroke-width="2"/>
+      <text x="310" y="90" fill="#fff4bf" font-size="6.5" font-family="monospace">EXT / HOSE / BA SET</text>
+    </g>`,
+    s288:`<g opacity=".98">
+      <rect x="286" y="26" width="144" height="18" rx="4" fill="rgba(58,11,11,.72)" stroke="#c97070" stroke-width=".8"/>
+      <text x="294" y="38" fill="#ffd1d1" font-size="6.5" font-family="monospace">FIXED CO2 / ISOLATE / COUNT</text>
+      <rect x="50" y="102" width="126" height="14" rx="4" fill="rgba(3,17,28,.75)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="60" y="112" fill="#cfeaff" font-size="6.5" font-family="monospace">SPRINKLER / DAMPER / QCV</text>
+    </g>`,
+    s289:`<g opacity=".98">
+      <rect x="54" y="46" width="84" height="20" rx="4" fill="rgba(3,17,28,.75)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="66" y="59" fill="#cfeaff" font-size="6.5" font-family="monospace">WATER / FOAM</text>
+      <rect x="54" y="74" width="84" height="20" rx="4" fill="rgba(3,17,28,.75)" stroke="#ffd45a" stroke-width=".8"/>
+      <text x="72" y="87" fill="#fff4bf" font-size="6.5" font-family="monospace">CO2 / DCP</text>
+      <rect x="54" y="102" width="112" height="20" rx="4" fill="rgba(58,11,11,.72)" stroke="#c97070" stroke-width=".8"/>
+      <text x="64" y="115" fill="#ffd1d1" font-size="6.5" font-family="monospace">WET CHEMICAL / GALLEY</text>
+    </g>`
+  };
+  return map[sc.id] || '';
+}
+
 function getSceneOverlay(gfx,sc){
   let extra = getSceneFleetOverlay(gfx);
   extra += getPanelChromeOverlay(gfx, sc);
@@ -4776,6 +4893,7 @@ function getSceneOverlay(gfx,sc){
   extra += getMeteorologyOverlay(sc);
   extra += getCargoIncidentOverlay(sc);
   extra += getCommsDeviceOverlay(sc);
+  extra += getFireTrainingOverlay(sc);
   if((gfx==='compass'||gfx==='bridge') && sc && (sc.ecdisPlanKey || sc.sub?.toLowerCase().includes('ecdis') || sc.sub?.toLowerCase().includes('seyir plani') || sc.loc?.toLowerCase().includes('ecdis'))){
     extra += getEcdisRouteOverlay(sc);
   }
