@@ -3266,7 +3266,7 @@ const DIFFICULTY={
   extremeStatThreshold:85,
   highStatGainMult:0.55,
   extremeStatGainMult:0.5,
-  passiveFatigue:2,
+  passiveFatigue:1,
   periodicStressEvery:5,
   periodicStressLoss:1,
 };
