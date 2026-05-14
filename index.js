@@ -3292,6 +3292,14 @@ const START_PORTS=[
   {name:"Pire", dock:"Pire Limanı — Terminal", office:"Pire Limanı — Limancı Ofisi", departureLine:"Pire rıhtımı geride kaldı", x:120, y:160},
   {name:"İskenderiye", dock:"İskenderiye Limanı — Yük İskelesi", office:"İskenderiye Limanı — Limancı Ofisi", departureLine:"İskenderiye mendireği geride kaldı", x:200, y:210},
   {name:"Cenova", dock:"Cenova Limanı — Konteyner Rıhtımı", office:"Cenova Limanı — Limancı Ofisi", departureLine:"Ligurya kıyısı geride kaldı", x:60, y:80},
+  {name:"Marsilya", dock:"Marsilya Limanı — Terminal", office:"Marsilya Limanı — Limancı Ofisi", departureLine:"Provence kıyıları geride kaldı", x:40, y:92},
+  {name:"Napoli", dock:"Napoli Limanı — Rıhtım", office:"Napoli Limanı — Limancı Ofisi", departureLine:"Napoli Körfezi yavaşça geride kaldı", x:88, y:120},
+  {name:"Hamburg", dock:"Hamburg Limanı — Rıhtım", office:"Hamburg Limanı — Limancı Ofisi", departureLine:"Elbe hattı arkada kaldı", x:42, y:10},
+  {name:"Limasol", dock:"Limasol Limanı — Terminal", office:"Limasol Limanı — Limancı Ofisi", departureLine:"Kıbrıs kıyısı iskelede kaldı", x:176, y:172},
+  {name:"Cidde", dock:"Cidde Limanı — Ticari Rıhtım", office:"Cidde Limanı — Limancı Ofisi", departureLine:"Kızıldeniz hattı açılmaya başladı", x:260, y:210},
+  {name:"Dubai", dock:"Dubai Limanı — Jebel Ali Terminali", office:"Dubai Limanı — Limancı Ofisi", departureLine:"Basra Körfezi trafiği arkada kaldı", x:336, y:218},
+  {name:"Tanger Med", dock:"Tanger Med — Konteyner Terminali", office:"Tanger Med — Limancı Ofisi", departureLine:"Cebelitarık trafiği kıç omuzlukta kaldı", x:6, y:118},
+  {name:"Anvers", dock:"Anvers Limanı — Ticari Rıhtım", office:"Anvers Limanı — Limancı Ofisi", departureLine:"Scheldt hattı kıçta kaldı", x:28, y:14},
 ];
 const START_SCENARIOS=[
   {time:"05:30", subPrefix:"Sabah sisi", intro:"Sabah erken, rıhtımın üstünde ince sis var.", bridgeCall:"Rampadan biri indi: \"Sen stajyer ${n} misin? 1. Zabiti köprüde bekliyor.\""},
@@ -5788,6 +5796,25 @@ const ROUTE_PORTS = [
   {name:"Suveys", x:245, y:212, visited:false},
   {name:"Rotterdam", x:25, y:18, visited:false},
   {name:"Mersin", x:180, y:180, visited:false},
+  {name:"Marsilya", x:40, y:92, visited:false},
+  {name:"Napoli", x:88, y:120, visited:false},
+  {name:"Hamburg", x:42, y:10, visited:false},
+  {name:"Limasol", x:176, y:172, visited:false},
+  {name:"Cidde", x:260, y:210, visited:false},
+  {name:"Dubai", x:336, y:218, visited:false},
+  {name:"Tanger Med", x:6, y:118, visited:false},
+  {name:"Anvers", x:28, y:14, visited:false},
+  {name:"Malaga", x:18, y:132, visited:false},
+  {name:"Bari", x:112, y:96, visited:false},
+  {name:"Civitavecchia", x:74, y:108, visited:false},
+  {name:"Split", x:110, y:72, visited:false},
+  {name:"Ravenna", x:92, y:64, visited:false},
+  {name:"Burgaz", x:205, y:55, visited:false},
+  {name:"Varna", x:214, y:48, visited:false},
+  {name:"Batum", x:258, y:58, visited:false},
+  {name:"Novorossiysk", x:250, y:34, visited:false},
+  {name:"Abu Dhabi", x:348, y:214, visited:false},
+  {name:"Doha", x:362, y:208, visited:false},
 ];
 
 let shipPosition = {x:85, y:130};
@@ -5825,8 +5852,24 @@ function updateShipPosition(sceneLoc){
 function renderMap(){
   const svg = document.getElementById('map-svg');
   const legend = document.getElementById('map-legend');
-  const region = shipPosition.x < 60 ? 'BATI AKDENIZ' : shipPosition.x < 150 ? 'ORTA AKDENIZ' : shipPosition.y < 110 ? 'TURK BOGAZLARI' : 'DOGU AKDENIZ';
-  const regionFill = region==='BATI AKDENIZ' ? '#02111f' : region==='ORTA AKDENIZ' ? '#03101d' : region==='TURK BOGAZLARI' ? '#041320' : '#04111b';
+  const region =
+    shipPosition.x >= 320 ? 'BASRA KORFEZI' :
+    shipPosition.x >= 245 ? 'KIZILDENIZ / ARAP DENIZI GIRISI' :
+    (shipPosition.y <= 22 || (shipPosition.x < 55 && shipPosition.y < 26)) ? 'KUZEY DENIZI' :
+    shipPosition.y < 62 && shipPosition.x >= 180 ? 'KARADENIZ' :
+    shipPosition.y < 88 && shipPosition.x >= 120 ? 'TURK BOGAZLARI / ADRIYATIK' :
+    shipPosition.x < 60 ? 'BATI AKDENIZ' :
+    shipPosition.x < 150 ? 'ORTA AKDENIZ' :
+    'DOGU AKDENIZ';
+  const regionFill =
+    region==='BATI AKDENIZ' ? '#02111f' :
+    region==='ORTA AKDENIZ' ? '#03101d' :
+    region==='TURK BOGAZLARI / ADRIYATIK' ? '#041320' :
+    region==='KARADENIZ' ? '#061626' :
+    region==='KUZEY DENIZI' ? '#071725' :
+    region==='KIZILDENIZ / ARAP DENIZI GIRISI' ? '#10161f' :
+    region==='BASRA KORFEZI' ? '#121722' :
+    '#04111b';
   let s = `<rect width="440" height="260" fill="${regionFill}" rx="6"/>`;
   // Sea texture
   for(let i=0;i<8;i++){
