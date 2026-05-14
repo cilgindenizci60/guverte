@@ -1934,6 +1934,72 @@ choices:[
 {text:"Manifest ile NOR ayni, Mate's Receipt ise gemi ici not derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
 {text:"Hepsi yuk evraki, fark etmez diye gecistiririm",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
+{id:"s309",gfx:"bridge",alert:false,day:"Gun 8",time:"12:45",loc:"Suvari Kamarasi - NOR Taslagi",sub:"NOR ne zaman verilir, ne zaman tartisma cikar?",who:"suvari",
+text:`Suvari NOR taslagini acip saati isaret etti.
+
+"Geminin limana gelmesi yetmez. Hazir olma hali, free pratique, customs, berth condition ve charter party dili birlikte okunur. NOR'u yanlis anda verirsen laytime kavgasini kendin acarsin."
+
+Sence en profesyonel tutum hangisi?`,
+choices:[
+{text:"Geminin fiilen hazirlik durumunu, charter party sartlarini ve liman formalitelerini birlikte teyit ederim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"Rihitma yanaşır yanasmaz NOR veririm, sonra bakariz derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"NOR saatinin onemi yoktur diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s310",gfx:"harbor",alert:false,day:"Gun 8",time:"14:10",loc:"Acenta Ofisi - Statement of Facts",sub:"SOF nasil dogru tutulur?",who:"z1",
+text:`Acenta SOF satirlarini bir bir sayiyordu.
+
+"All fast, notice tendered, hose connected, rain stop, hatch open, surveyor onboard... Bunlar sadece not degil; yarin tartisma cikarsa hafiza yerine gececek satirlar."
+
+Neyi savunursun?`,
+choices:[
+{text:"Saatleri logbook, operasyon akisi ve tanik olaylarla uyumlu sekilde yazarim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"Yuvarlak saatlerle de idare edilir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"SOF'u acenta ne yazarsa oyle birakirim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s311",gfx:"cargo",alert:false,day:"Gun 8",time:"15:25",loc:"Yuk Ofisi - Mate's Receipt",sub:"Mate's Receipt'e hangi cekince dusulur?",who:"z1",
+text:`Yukten bir kisim islak ve ambalaji zayif gorunuyordu. 1. Zabiti sana bakti.
+
+"Mate's Receipt temiz yazildi mi, cekinceli mi yazildi; bazen butun dosyanin tonu degisir. Gordugunu dogru yazmazsan sonra daha buyuk kagitlar yanlis uzerine kurulur."
+
+Ne yaparsin?`,
+choices:[
+{text:"Gordugum hasari veya supheli durumu acik ve tarafsiz cekince olarak kayda gecerim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+{text:"Teslim alinsin da sonra bakariz diye temiz receipt dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Mate's Receipt'e ayrinti yazmanin gereksiz oldugunu sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+
+{id:"s312",gfx:"cargo",alert:false,day:"Gun 8",time:"16:20",loc:"Yuk Ofisi - Cargo Manifest",sub:"Manifest ile fiili yuk uyumu",who:"suvari",
+text:`Suvari manifesti stowage planiyla yan yana koydu.
+
+"Manifest kagit, yuk gercek. Tehlike, miktar, paket, container no, hold dagilimi ve bazen DG ayrimi burada uyusacak. Biri digerini sadece kabaca andiriyorsa yetmez."
+
+Hangi kontrol daha saglam?`,
+choices:[
+{text:"Manifesti stowage plani, fiili yuk ve ozel notlarla capraz kontrol ederim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:"Toplam ton tutuyorsa manifest yeterlidir derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Manifest sadece gumruge giden kagit diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+
+{id:"s313",gfx:"storm",alert:true,day:"Gun 9",time:"18:40",loc:"Kaptan Kosku - Sea Protest",sub:"Hangi durumda sea protest dusunulur?",who:"suvari",
+text:`Kaptan kotu hava, gecikme ve liman tartismasi notlarini masaya yaydi.
+
+"Sea protest her canin istediginde yazilan dramatik kagit degil. Kotu hava, zorlayici deniz, gecikme veya hasar ihtimalinde ileride hak kaybini onlemek icin dusunulur."
+
+Sence dogru refleks ne olur?`,
+choices:[
+{text:"Olayin niteligini, hava/seyir kayitlarini ve ileride dogabilecek hak ihtilafini birlikte degerlendiririm",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+{text:"Gecikme varsa otomatik sea protest yazariz derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Sea protest'in artik onemsiz oldugunu dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+
+{id:"s314",gfx:"bridge",alert:true,day:"Gun 9",time:"19:15",loc:"Kaptan Kosku - Letter of Protest",sub:"Letter of protest nasil ve ne icin verilir?",who:"suvari",
+text:`Bu kez dosyada ton daha sertti.
+
+"Terminal gecikmesi, shore ekipman aksagi, uygunsuz yukleme hizi, hasarli yuk teslimi... Bazen sadece jurnal yetmez; resmi itiraz kaydi gerekir. Letter of protest duygusal cikis degil, kontrollu resmi bildiridir."
+
+Nasil ilerlersin?`,
+choices:[
+{text:"Somut olayi, saati, mahal ve itiraz konusunu net yazip resmi dille kayda gecerim",tag:"kritik",effect:{bilgi:17,sayginlik:13,cesaret:3}},
+{text:"Sert bir sitem mektubu gibi yazar gecirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:"Bu tur belgelerin gereksiz oldugunu dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+
 {id:"s106",gfx:"galley",alert:true,day:"Gun 9",time:"20:15",loc:"Yemekhane",sub:"Gemide kavga cikti",who:"asci",
 text:`Yemekte bir anda sandalye geriye surttü. Guverte tayfasindan biri ile yagci sert sekilde tartismaya girdi.
 
@@ -3751,6 +3817,7 @@ Ilk disiplinin ne olur?"`,
   {text:"En parlak hedefe bakip digerlerini ikinci plana atarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"multi_crossing"},
   {text:"Bu kadar hedefte saglikli yorum yapilmaz diye dagilirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11},radarMode:"multi_crossing"}]}
 ];
+const DOCUMENT_CHAIN_SCENE_IDS = new Set(['s309','s310','s311','s312','s313','s314']);
 const EXTRA_EQUIPMENT_SCENES=[
   {id:"s228",gfx:"gyro_panel",alert:false,day:"Gun 4",time:"10:30",loc:"Koprustu - Gyro Repeater",sub:"Gyro compass neyi verir?",who:"z2",
   text:`2. Zabiti seni gyro repeater'in onune cekti.
@@ -5267,7 +5334,8 @@ function buildSceneQueue(pool, totalDays){
   const mandatory_start = pool.filter(s=>s.id==='s01');
   const final = pool.filter(s=>s.id==='FINAL');
   const crisis_scenes = pool.filter(s=>s.id.startsWith('kriz'));
-  const regular = pool.filter(s=>!s.id.startsWith('kriz')&&s.id!=='s01'&&s.id!=='FINAL');
+  const regular = pool.filter(s=>!s.id.startsWith('kriz')&&s.id!=='s01'&&s.id!=='FINAL'&&!DOCUMENT_CHAIN_SCENE_IDS.has(s.id));
+  const documentChain = ['s309','s310','s311','s312','s313','s314'].map(id=>pool.find(s=>s.id===id)).filter(Boolean);
 
   // Kriz sahnelerini grupla
   const crisisGroups=[
@@ -5290,7 +5358,7 @@ function buildSceneQueue(pool, totalDays){
 
   // Düzenli sahneleri karıştır ve totalDays - (başlangıç+kriz+final) kadar seç
   const shuffledRegular=[...regular].sort(()=>Math.random()-0.5);
-  const needed=Math.max(5, totalDays - selectedCrisis.length - 2 - EXTRA_ROUTE_SCENES.length - EXTRA_EQUIPMENT_SCENES.length);
+  const needed=Math.max(5, totalDays - selectedCrisis.length - 2 - EXTRA_ROUTE_SCENES.length - EXTRA_EQUIPMENT_SCENES.length - documentChain.length);
   let selectedRegular=shuffledRegular.slice(0,needed);
 
   // Dinclik toparlanma sahneleri kuyrukta gercekten yer bulsun.
@@ -5312,7 +5380,7 @@ function buildSceneQueue(pool, totalDays){
   // Sıralamayı oluştur: başlangıç + (karışık regular + kriz) + final
   const middle=[...selectedRegular,...selectedCrisis].sort(()=>Math.random()-0.5);
 
-  return [...mandatory_start, ...middle, ...EXTRA_ROUTE_SCENES, ...EXTRA_EQUIPMENT_SCENES, ...final];
+  return [...mandatory_start, ...middle, ...documentChain, ...EXTRA_ROUTE_SCENES, ...EXTRA_EQUIPMENT_SCENES, ...final];
 }
 
 const RECOVERY_SCENE_IDS = new Set(['s146','s147','s148','s149','s150','s183','s184','s185','s186','s187','s187b','s187c','s187d','s187e','s187f','s187g','s187h','s187i','s187j']);
