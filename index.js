@@ -476,28 +476,44 @@ storm:`<rect width="480" height="145" fill="#020a14"/>
 <path d="M214 84 Q226 78 238 84" fill="none" stroke="#b7d0e2" stroke-width="1.8" opacity=".62"/>
 <path d="M336 78 Q348 72 360 78" fill="none" stroke="#b7d0e2" stroke-width="1.8" opacity=".54"/>`,
 
-radar:`<rect width="480" height="145" fill="#020d08"/>
-<circle cx="240" cy="72" r="66" fill="#030f06"/>
-<circle cx="240" cy="72" r="66" fill="none" stroke="#0d3a18" stroke-width="1.5"/>
-<circle cx="240" cy="72" r="22" fill="none" stroke="#0d3a18" stroke-width="1" opacity=".6"/>
-<circle cx="240" cy="72" r="44" fill="none" stroke="#0d3a18" stroke-width="1" opacity=".5"/>
-<circle cx="240" cy="72" r="64" fill="none" stroke="#0d3a18" stroke-width="1" opacity=".4"/>
-<line x1="174" y1="72" x2="306" y2="72" stroke="#0d3a18" stroke-width="1" opacity=".5"/>
-<line x1="240" y1="6" x2="240" y2="138" stroke="#0d3a18" stroke-width="1" opacity=".5"/>
-<g class="radar-sweep" style="transform-origin:240px 72px">
-<line x1="240" y1="72" x2="240" y2="8" stroke="#1aff50" stroke-width="1.5" opacity=".8"/>
-<path d="M240 72 L240 8 A64 64 0 0 1 296 102 Z" fill="#1aff50" opacity=".06"/>
+radar:`<rect width="480" height="145" fill="#030d0d"/>
+<rect x="18" y="12" width="284" height="120" rx="8" fill="#061111" stroke="#11433d" stroke-width="1.6"/>
+<circle cx="160" cy="72" r="56" fill="#03110b"/>
+<circle cx="160" cy="72" r="56" fill="none" stroke="#12604f" stroke-width="1.6"/>
+<circle cx="160" cy="72" r="14" fill="none" stroke="#114d3a" stroke-width=".9" opacity=".7"/>
+<circle cx="160" cy="72" r="28" fill="none" stroke="#114d3a" stroke-width=".9" opacity=".6"/>
+<circle cx="160" cy="72" r="42" fill="none" stroke="#114d3a" stroke-width=".9" opacity=".48"/>
+<circle cx="160" cy="72" r="54" fill="none" stroke="#114d3a" stroke-width=".8" opacity=".32"/>
+<line x1="104" y1="72" x2="216" y2="72" stroke="#114d3a" stroke-width=".9" opacity=".46"/>
+<line x1="160" y1="16" x2="160" y2="128" stroke="#114d3a" stroke-width=".9" opacity=".46"/>
+<path d="M160 72 L160 16 A56 56 0 0 1 208 99 Z" fill="#35ff7a" opacity=".05"/>
+<g class="radar-sweep" style="transform-origin:160px 72px">
+<line x1="160" y1="72" x2="160" y2="16" stroke="#35ff7a" stroke-width="1.7" opacity=".88"/>
 </g>
-<circle cx="266" cy="48" r="3" fill="#1aff50" opacity=".9" class="blink"/>
-<circle cx="280" cy="88" r="2.5" fill="#1aff50" opacity=".7"/>
-<circle cx="207" cy="60" r="2" fill="#1aff50" opacity=".5"/>
-<circle cx="250" cy="106" r="2" fill="#1aff50" opacity=".6"/>
-<circle cx="240" cy="72" r="3" fill="#6fa8dc"/>
-<line x1="240" y1="72" x2="266" y2="48" stroke="#d4a017" stroke-width="1" stroke-dasharray="3,2" opacity=".7"/>
-<text x="243" y="10" fill="#0d3a18" font-size="8" font-family="monospace">N</text>
-<text x="304" y="75" fill="#0d3a18" font-size="8" font-family="monospace">E</text>
-<text x="243" y="140" fill="#0d3a18" font-size="8" font-family="monospace">S</text>
-<text x="166" y="75" fill="#0d3a18" font-size="8" font-family="monospace">W</text>`,
+<circle cx="182" cy="50" r="2.6" fill="#35ff7a" opacity=".95" class="blink"/>
+<circle cx="194" cy="86" r="2.2" fill="#35ff7a" opacity=".68"/>
+<circle cx="132" cy="61" r="1.8" fill="#35ff7a" opacity=".52"/>
+<circle cx="168" cy="102" r="1.9" fill="#35ff7a" opacity=".58"/>
+<circle cx="160" cy="72" r="2.6" fill="#7fc3ff"/>
+<line x1="160" y1="72" x2="182" y2="50" stroke="#ffd45a" stroke-width="1" stroke-dasharray="3,2" opacity=".72"/>
+<text x="157" y="22" fill="#1f7c63" font-size="6.5" font-family="monospace">000</text>
+<text x="213" y="75" fill="#1f7c63" font-size="6.5" font-family="monospace">090</text>
+<text x="156" y="126" fill="#1f7c63" font-size="6.5" font-family="monospace">180</text>
+<text x="96" y="75" fill="#1f7c63" font-size="6.5" font-family="monospace">270</text>
+<text x="166" y="58" fill="#1f7c63" font-size="5.5" font-family="monospace">1.5</text>
+<text x="166" y="44" fill="#1f7c63" font-size="5.5" font-family="monospace">3.0</text>
+<text x="166" y="30" fill="#1f7c63" font-size="5.5" font-family="monospace">6.0 NM</text>
+<rect x="314" y="14" width="148" height="118" rx="8" fill="#071420" stroke="#10304e" stroke-width="1.6"/>
+<rect x="326" y="24" width="124" height="18" rx="4" fill="#04111c" stroke="#174464" stroke-width=".8"/>
+<text x="336" y="36" fill="#cfeaff" font-size="7" font-family="monospace">RADAR / ARPA STATUS</text>
+<text x="330" y="56" fill="#81f7b8" font-size="7" font-family="monospace">RANGE   6.0 NM</text>
+<text x="330" y="69" fill="#7fc3ff" font-size="7" font-family="monospace">MODE    HEAD-UP RM</text>
+<text x="330" y="82" fill="#fff4bf" font-size="7" font-family="monospace">GAIN    68</text>
+<text x="330" y="95" fill="#fff4bf" font-size="7" font-family="monospace">SEA     24   RAIN 10</text>
+<text x="330" y="108" fill="#5dbf8a" font-size="7" font-family="monospace">TRAIL   3 MIN</text>
+<rect x="326" y="114" width="124" height="8" rx="3" fill="#0d2840"/>
+<rect x="326" y="114" width="74" height="8" rx="3" fill="#35ff7a" opacity=".7"/>
+<text x="24" y="140" fill="#7fc3ff" font-size="6.5" font-family="monospace">X-BAND   12 kW   STBY OFF   TX ON</text>`,
 
 compass:`<rect width="480" height="145" fill="#040d1a"/>
 <line x1="0" y1="30" x2="480" y2="30" stroke="#0a1e30" stroke-width="1" opacity=".4"/>
@@ -4585,16 +4601,17 @@ function getRadarTrainingOverlay(sc){
   const targets=mode.targets.map(t=>`
     <circle cx="${t.x}" cy="${t.y}" r="${t.r}" fill="${t.color}" opacity=".95"/>
     <circle cx="${t.x}" cy="${t.y}" r="${t.r+3.8}" fill="none" stroke="${t.color}" opacity=".18"/>
-    <text x="${t.x+6}" y="${t.y-4}" fill="${t.color}" font-size="6" font-family="monospace">${t.tag}</text>
-    <text x="${t.x+6}" y="${t.y+7}" fill="#8ab0c8" font-size="5.5" font-family="monospace">${t.meta}</text>`).join('');
+    <rect x="${t.x+6}" y="${t.y-10}" width="${Math.max(28,(t.tag.length*4.4)+10)}" height="8" rx="2" fill="rgba(4,18,16,.88)" stroke="rgba(65,132,112,.55)" stroke-width=".5"/>
+    <text x="${t.x+10}" y="${t.y-4}" fill="${t.color}" font-size="5.8" font-family="monospace">${t.tag}</text>
+    <text x="${t.x+8}" y="${t.y+8}" fill="#9bc9d1" font-size="5.2" font-family="monospace">${t.meta}</text>`).join('');
   return `<g opacity=".98">
     ${mode.piLine?`<line x1="${mode.piLine.split(' ')[0].split(',')[0]}" y1="${mode.piLine.split(' ')[0].split(',')[1]}" x2="${mode.piLine.split(' ')[1].split(',')[0]}" y2="${mode.piLine.split(' ')[1].split(',')[1]}" stroke="#d4a017" stroke-width="1.1" stroke-dasharray="4,3" opacity=".9"/>`:''}
     ${mode.vector?`<line x1="${mode.vector.split(' ')[0].split(',')[0]}" y1="${mode.vector.split(' ')[0].split(',')[1]}" x2="${mode.vector.split(' ')[1].split(',')[0]}" y2="${mode.vector.split(' ')[1].split(',')[1]}" stroke="#6fa8dc" stroke-width="1.1" stroke-dasharray="3,2" opacity=".85"/>`:''}
     ${targets}
-    <rect x="286" y="18" width="158" height="14" rx="3" fill="rgba(3,17,10,.82)" stroke="#0d3a18" stroke-width=".8"/>
-    <text x="294" y="27" fill="#81f7b8" font-size="6" font-family="monospace">${mode.label}</text>
-    <rect x="286" y="112" width="158" height="14" rx="3" fill="rgba(3,17,10,.82)" stroke="#0d3a18" stroke-width=".8"/>
-    <text x="294" y="121" fill="#8ab0c8" font-size="6" font-family="monospace">${mode.footer}</text>
+    <rect x="326" y="24" width="124" height="12" rx="3" fill="rgba(4,18,16,.88)" stroke="#1f6f5b" stroke-width=".7"/>
+    <text x="334" y="32.5" fill="#81f7b8" font-size="5.8" font-family="monospace">${mode.label}</text>
+    <rect x="326" y="118" width="124" height="10" rx="3" fill="rgba(4,18,16,.88)" stroke="#1f6f5b" stroke-width=".7"/>
+    <text x="334" y="125.5" fill="#9bc9d1" font-size="5.6" font-family="monospace">${mode.footer}</text>
   </g>`;
 }
 
