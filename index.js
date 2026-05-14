@@ -37,6 +37,39 @@
       cx.lineTo(W,H);cx.lineTo(0,H);cx.closePath();
       cx.fillStyle=col;cx.fill();
     });
+    // Tiny islands / rocky silhouettes
+    const drawIsland = (x,y,scale=1,withLight=false) => {
+      cx.save();
+      cx.translate(x,y);
+      cx.scale(scale,scale);
+      cx.fillStyle = '#08121d';
+      cx.beginPath();
+      cx.moveTo(-36,10);
+      cx.quadraticCurveTo(-24,-4,-10,-2);
+      cx.quadraticCurveTo(-2,-14,12,-10);
+      cx.quadraticCurveTo(24,-6,34,8);
+      cx.lineTo(-36,10);
+      cx.closePath();
+      cx.fill();
+      cx.fillStyle = 'rgba(120,150,175,0.12)';
+      cx.beginPath();
+      cx.moveTo(-16,2);
+      cx.quadraticCurveTo(-6,-6,4,-4);
+      cx.quadraticCurveTo(12,-1,18,4);
+      cx.lineTo(-16,2);
+      cx.closePath();
+      cx.fill();
+      if(withLight){
+        const pulse = 0.35 + Math.sin(t*0.028 + x*0.001)*0.18;
+        cx.fillStyle = `rgba(255,226,164,${pulse})`;
+        cx.beginPath();
+        cx.arc(8,-11,2.2,0,Math.PI*2);
+        cx.fill();
+        cx.fillStyle = '#09111c';
+        cx.fillRect(7,-11,2,11);
+      }
+      cx.restore();
+    };
     // Distant ships
     const shipBob = Math.sin(t*0.02)*2;
     const drawShip = (cfg) => {
@@ -159,9 +192,15 @@
     drawShip({x:W*0.1, y:H*0.735 + shipBob*0.1, scale:0.42, type:'chemical', hull:'#0a1523', shadow:'#07111d', deck:'#1d3958', light:`rgba(111,168,220,${0.42+Math.sin(t*0.028)*0.12})`});
     drawShip({x:W*0.16, y:H*0.71 + shipBob*0.16, scale:0.64, type:'tanker', hull:'#0a1523', shadow:'#07111d', deck:'#193957', light:`rgba(111,168,220,${0.55+Math.sin(t*0.03)*0.15})`});
     drawShip({x:W*0.37, y:H*0.748 + shipBob*0.14, scale:0.5, type:'roro', hull:'#091523', shadow:'#06101b', deck:'#214968', light:`rgba(167,210,236,${0.4+Math.cos(t*0.02)*0.1})`});
+    drawShip({x:W*0.47, y:H*0.718 + shipBob*0.11, scale:0.54, type:'bulk', hull:'#091422', shadow:'#06111b', deck:'#36506a', light:`rgba(185,205,224,${0.34+Math.sin(t*0.02)*0.1})`});
     drawShip({x:W*0.58, y:H*0.775 + shipBob*0.2, scale:0.96, type:'kont', hull:'#091321', shadow:'#06101b', deck:'#173553', light:`rgba(212,160,23,${0.5+Math.cos(t*0.025)*0.18})`});
     drawShip({x:W*0.72, y:H*0.725 + shipBob*0.12, scale:0.46, type:'feeder', hull:'#0a1624', shadow:'#07121e', deck:'#1a4163', light:`rgba(154,194,228,${0.38+Math.sin(t*0.022)*0.12})`});
     drawShip({x:W*0.8, y:H*0.695 + shipBob*0.14, scale:0.56, type:'lng', hull:'#0a1624', shadow:'#07121e', deck:'#183d62', light:`rgba(201,112,112,${0.45+Math.sin(t*0.04)*0.18})`});
+    drawShip({x:W*0.88, y:H*0.742 + shipBob*0.1, scale:0.43, type:'roro', hull:'#091523', shadow:'#06101b', deck:'#214968', light:`rgba(167,210,236,${0.32+Math.cos(t*0.018)*0.08})`});
+    drawShip({x:W*0.24, y:H*0.782 + shipBob*0.08, scale:0.34, type:'kont', hull:'#091321', shadow:'#06101b', deck:'#173553', light:`rgba(212,160,23,${0.26+Math.cos(t*0.022)*0.08})`});
+    drawIsland(W*0.22, H*0.628, 1.05, true);
+    drawIsland(W*0.52, H*0.61, 0.8, false);
+    drawIsland(W*0.84, H*0.64, 0.92, true);
     // Buoys
     const drawBuoy = (x,y,body,topLight) => {
       const bob = Math.sin(t*0.03 + x*0.01)*3;
