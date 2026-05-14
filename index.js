@@ -6510,6 +6510,19 @@ function buildShipPartsDiagram(){
       <circle cx="16" cy="198" r="8" fill="none" stroke="#bfd2df" stroke-width="2"/>
       <path d="M390 171 Q396 178 395 188" stroke="#a9c0d3" stroke-width="2" fill="none"/>
       <path d="M392 170 Q404 177 403 191" stroke="#a9c0d3" stroke-width="1.6" fill="none" opacity=".8"/>
+      <rect x="48" y="126" width="14" height="5" rx="1" fill="#c5d2de"/>
+      <rect x="58" y="122" width="5" height="11" rx="1" fill="#c5d2de"/>
+      <path d="M376 167 q9 4 12 12 q-12 3 -19 -3 q2 -7 7 -9Z" fill="#9eb8cc" stroke="#c9d9e5" stroke-width="1"/>
+      <path d="M381 168 L381 182" stroke="#dce7ef" stroke-width="1"/>
+      <path d="M365 153 L371 153 L371 170 L365 170 Z" fill="#7f9fbb"/>
+      <path d="M74 139 L77 126 L89 126 L86 139 Z" fill="#5d7890"/>
+      <path d="M64 138 L76 129 L83 129 L71 138 Z" fill="#8aa7c2"/>
+      <path d="M41 151 L41 168" stroke="#d6e2ec" stroke-width="1.5"/>
+      <path d="M41 151 L46 147" stroke="#d6e2ec" stroke-width="1.5"/>
+      <path d="M41 159 L46 155" stroke="#d6e2ec" stroke-width="1.5"/>
+      <path d="M384 152 L384 168" stroke="#d6e2ec" stroke-width="1.5"/>
+      <path d="M384 152 L389 148" stroke="#d6e2ec" stroke-width="1.5"/>
+      <path d="M384 160 L389 156" stroke="#d6e2ec" stroke-width="1.5"/>
       <text x="14" y="23" fill="#8ab0c8" font-size="8" font-family="monospace">ISKELE</text>
       <text x="349" y="23" fill="#8ab0c8" font-size="8" font-family="monospace">SANCAK</text>
       <g class="shipparts-hotspot" data-part="bas" tabindex="0">
@@ -6556,6 +6569,26 @@ function buildShipPartsDiagram(){
         <circle cx="220" cy="186" r="11" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.6"/>
         <text x="212" y="190" fill="#dceaf4" font-size="9" font-family="monospace">11</text>
       </g>
+      <g class="shipparts-hotspot" data-part="windlass" tabindex="0">
+        <circle cx="58" cy="118" r="10" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.5"/>
+        <text x="53" y="122" fill="#f4e7b4" font-size="9" font-family="monospace">12</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="bulwark" tabindex="0">
+        <circle cx="155" cy="140" r="10" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.5"/>
+        <text x="150" y="144" fill="#dceaf4" font-size="9" font-family="monospace">13</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="draftmarks" tabindex="0">
+        <circle cx="34" cy="160" r="10" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.5"/>
+        <text x="29" y="164" fill="#dceaf4" font-size="9" font-family="monospace">14</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="rudder" tabindex="0">
+        <circle cx="364" cy="175" r="10" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.5"/>
+        <text x="359" y="179" fill="#f4e7b4" font-size="9" font-family="monospace">15</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="propeller" tabindex="0">
+        <circle cx="392" cy="183" r="10" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.5"/>
+        <text x="387" y="187" fill="#f4e7b4" font-size="9" font-family="monospace">16</text>
+      </g>
     </svg>
     <div class="shipparts-legend">
       <button class="shipparts-chip" type="button" data-part="bas">1 Pruva / Bas</button>
@@ -6569,6 +6602,11 @@ function buildShipPartsDiagram(){
       <button class="shipparts-chip" type="button" data-part="hawse">9 Demir Locasi</button>
       <button class="shipparts-chip" type="button" data-part="deck">10 Ana Guverte</button>
       <button class="shipparts-chip" type="button" data-part="keel">11 Omurga</button>
+      <button class="shipparts-chip" type="button" data-part="windlass">12 Irgat / Windlass</button>
+      <button class="shipparts-chip" type="button" data-part="bulwark">13 Bulwark / Sancaklik</button>
+      <button class="shipparts-chip" type="button" data-part="draftmarks">14 Draft Markalari</button>
+      <button class="shipparts-chip" type="button" data-part="rudder">15 Rudder</button>
+      <button class="shipparts-chip" type="button" data-part="propeller">16 Pervane</button>
     </div>
     <div class="shipparts-detail" data-active-ship-part="bridge">
       <div class="shipparts-detail-head">Kopruustu</div>
@@ -6621,6 +6659,26 @@ const SHIP_PARTS_INFO = {
   keel:{
     head:'Omurga',
     body:'Teknenin ana boyuna tasiyici eksenidir. Yapisal butunlugun temeli kabul edilir; trim, hog-sag ve genel tekne davranisi anlatilirken referans olur.'
+  },
+  windlass:{
+    head:'Irgat / Windlass',
+    body:'Basta bulunan demir alma-verme makinesidir. Zincirin vira edilmesi, kaloma kontrolu ve demir operasyonlarinin emniyetli yurutulmesi icin kritik ekipmandir.'
+  },
+  bulwark:{
+    head:'Bulwark / Sancaklik',
+    body:'Guverte kenarindaki koruyucu yukselti ya da korkuluk hattidir. Personelin disariya dusmesini azaltir, dalga ve suyun guverte uzerindeki etkisini kismen keser.'
+  },
+  draftmarks:{
+    head:'Draft Markalari',
+    body:'Bas ve kicta su cekimini okumaya yarayan rakamlar ve isaretlerdir. Draft survey, yukleme kontrolu ve su cekimi raporlamasinda bunlar esas alinir.'
+  },
+  rudder:{
+    head:'Rudder',
+    body:'Geminin yone cevirmesini saglayan duzendir. Pervane akisiyla birlikte calisarak manevra kabiliyetini dogrudan etkiler; ozellikle dusuk suratte etkisi dikkatle izlenir.'
+  },
+  propeller:{
+    head:'Pervane',
+    body:'Ana makine gucunu itkiye ceviren parcadir. Gemiye ileri ya da geri yol verir; cavitation, titreşim, cekis ve iz suyu davranisi bu bolgede hissedilir.'
   }
 };
 
