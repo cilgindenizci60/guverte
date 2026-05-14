@@ -6469,40 +6469,178 @@ function buildKnotGallery(){
 
 function buildShipPartsDiagram(){
   return `<div class="shipparts-card">
-    <svg class="shipparts-svg" viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" aria-label="Geminin kisimlari">
-      <rect x="0" y="0" width="360" height="180" rx="10" fill="#071523"/>
-      <path d="M0 118 Q50 110 100 118 T200 118 T300 118 T360 118 V180 H0 Z" fill="#0a2340"/>
-      <path d="M24 104 L78 90 L232 90 L264 98 L310 98 L328 108 L26 108 Z" fill="#123252" stroke="#315c82" stroke-width="1.2"/>
-      <path d="M52 86 L108 86 L122 74 L188 74 L188 90 L52 90 Z" fill="#1b476c" stroke="#527ca1" stroke-width="1"/>
-      <rect x="166" y="48" width="42" height="26" rx="3" fill="#d8e2ea" stroke="#5a7690" stroke-width="1"/>
-      <rect x="174" y="34" width="24" height="16" rx="2" fill="#d8e2ea" stroke="#5a7690" stroke-width="1"/>
-      <rect x="183" y="16" width="4" height="18" fill="#7fa2c2"/>
-      <rect x="200" y="24" width="10" height="24" rx="2" fill="#2a4763"/>
-      <rect x="64" y="92" width="46" height="10" rx="2" fill="#435d76"/>
-      <rect x="116" y="92" width="46" height="10" rx="2" fill="#435d76"/>
-      <rect x="168" y="92" width="46" height="10" rx="2" fill="#435d76"/>
-      <rect x="220" y="92" width="36" height="10" rx="2" fill="#435d76"/>
-      <path d="M80 110 l0 26" stroke="#d4a017" stroke-width="1.6" stroke-dasharray="4,3"/>
-      <path d="M188 74 l0 -34" stroke="#d4a017" stroke-width="1.6" stroke-dasharray="4,3"/>
-      <path d="M286 98 l26 24" stroke="#d4a017" stroke-width="1.6" stroke-dasharray="4,3"/>
-      <path d="M42 108 l-18 18" stroke="#d4a017" stroke-width="1.6" stroke-dasharray="4,3"/>
-      <path d="M34 106 l-8 18" stroke="#b9c8d6" stroke-width="2"/>
-      <circle cx="28" cy="128" r="7" fill="none" stroke="#b9c8d6" stroke-width="2"/>
-      <text x="14" y="143" fill="#d9e3ea" font-size="8" font-family="monospace">DEMIR LOCASI</text>
-      <text x="49" y="153" fill="#d4a017" font-size="8" font-family="monospace">PRUVA / BAS</text>
-      <text x="56" y="82" fill="#d4a017" font-size="8" font-family="monospace">BAS KASARASI</text>
-      <text x="134" y="101" fill="#d9e3ea" font-size="8" font-family="monospace">HATCH COVER / AMBAR</text>
-      <text x="139" y="28" fill="#d4a017" font-size="8" font-family="monospace">KOPRUSTU</text>
-      <text x="213" y="66" fill="#d9e3ea" font-size="8" font-family="monospace">BACA / UST YAPI</text>
-      <text x="247" y="132" fill="#d4a017" font-size="8" font-family="monospace">KIC USTU</text>
-      <text x="290" y="145" fill="#d4a017" font-size="8" font-family="monospace">KIC</text>
-      <text x="12" y="18" fill="#8ab0c8" font-size="8" font-family="monospace">ISKELE</text>
-      <text x="304" y="18" fill="#8ab0c8" font-size="8" font-family="monospace">SANCAK</text>
-      <text x="122" y="120" fill="#8ab0c8" font-size="8" font-family="monospace">ANA GUVERT E</text>
-      <text x="130" y="136" fill="#8ab0c8" font-size="8" font-family="monospace">BORDA / ALABANDA HATTI</text>
-      <text x="126" y="154" fill="#8ab0c8" font-size="8" font-family="monospace">OMURGA HATTI (ana eksen)</text>
+    <svg class="shipparts-svg" viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" aria-label="Geminin kisimlari">
+      <defs>
+        <linearGradient id="shipSky" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#0d2238"/>
+          <stop offset="100%" stop-color="#08121d"/>
+        </linearGradient>
+        <linearGradient id="shipHull" x1="0" x2="1">
+          <stop offset="0%" stop-color="#1f4467"/>
+          <stop offset="55%" stop-color="#15344f"/>
+          <stop offset="100%" stop-color="#294d72"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="420" height="240" rx="12" fill="url(#shipSky)"/>
+      <circle cx="350" cy="38" r="16" fill="#d3aa54" opacity=".15"/>
+      <path d="M0 156 Q54 148 108 156 T216 156 T324 156 T420 156 V240 H0 Z" fill="#0c2946"/>
+      <path d="M0 168 Q35 162 70 168 T140 168 T210 168 T280 168 T350 168 T420 168 V240 H0 Z" fill="#103554" opacity=".9"/>
+      <path d="M22 146 L70 127 L274 127 L304 134 L340 136 L372 147 L376 157 L34 157 Z" fill="url(#shipHull)" stroke="#54789c" stroke-width="1.4"/>
+      <path d="M52 123 L104 123 L122 109 L178 109 L178 127 L52 127 Z" fill="#204f77" stroke="#6d91b2" stroke-width="1"/>
+      <path d="M108 118 L116 92 L224 92 L224 127 L108 127 Z" fill="#284f73" opacity=".45"/>
+      <rect x="124" y="112" width="42" height="12" rx="2" fill="#546f86"/>
+      <rect x="172" y="112" width="42" height="12" rx="2" fill="#546f86"/>
+      <rect x="220" y="112" width="34" height="12" rx="2" fill="#546f86"/>
+      <rect x="204" y="69" width="44" height="23" rx="3" fill="#dde5ec" stroke="#67829d" stroke-width="1"/>
+      <rect x="214" y="56" width="24" height="14" rx="2" fill="#dde5ec" stroke="#67829d" stroke-width="1"/>
+      <rect x="220" y="76" width="7" height="6" fill="#4b657f"/>
+      <rect x="230" y="76" width="7" height="6" fill="#4b657f"/>
+      <rect x="240" y="76" width="7" height="6" fill="#4b657f"/>
+      <rect x="250" y="48" width="11" height="44" rx="2" fill="#2f4a63"/>
+      <rect x="254" y="28" width="3" height="20" fill="#8eb2d1"/>
+      <rect x="262" y="58" width="18" height="8" rx="2" fill="#c88a3b"/>
+      <rect x="300" y="131" width="30" height="5" fill="#6f8ca7"/>
+      <path d="M330 136 L343 150 L311 150 Z" fill="#6f8ca7"/>
+      <path d="M26 156 L18 172" stroke="#bfd2df" stroke-width="2"/>
+      <circle cx="15" cy="180" r="8" fill="none" stroke="#bfd2df" stroke-width="2"/>
+      <text x="14" y="23" fill="#8ab0c8" font-size="8" font-family="monospace">ISKELE</text>
+      <text x="349" y="23" fill="#8ab0c8" font-size="8" font-family="monospace">SANCAK</text>
+      <g class="shipparts-hotspot" data-part="bas" tabindex="0">
+        <circle cx="54" cy="150" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
+        <text x="49" y="154" fill="#f4e7b4" font-size="10" font-family="monospace">1</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="forecastle" tabindex="0">
+        <circle cx="86" cy="120" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
+        <text x="81" y="124" fill="#f4e7b4" font-size="10" font-family="monospace">2</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="cargo" tabindex="0">
+        <circle cx="190" cy="118" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
+        <text x="185" y="122" fill="#f4e7b4" font-size="10" font-family="monospace">3</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="bridge" tabindex="0">
+        <circle cx="226" cy="66" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
+        <text x="221" y="70" fill="#f4e7b4" font-size="10" font-family="monospace">4</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="funnel" tabindex="0">
+        <circle cx="257" cy="73" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
+        <text x="252" y="77" fill="#f4e7b4" font-size="10" font-family="monospace">5</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="engine" tabindex="0">
+        <circle cx="286" cy="136" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
+        <text x="281" y="140" fill="#f4e7b4" font-size="10" font-family="monospace">6</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="poop" tabindex="0">
+        <circle cx="323" cy="138" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
+        <text x="318" y="142" fill="#f4e7b4" font-size="10" font-family="monospace">7</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="stern" tabindex="0">
+        <circle cx="360" cy="149" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
+        <text x="355" y="153" fill="#f4e7b4" font-size="10" font-family="monospace">8</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="hawse" tabindex="0">
+        <circle cx="24" cy="175" r="11" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.6"/>
+        <text x="19" y="179" fill="#dceaf4" font-size="10" font-family="monospace">9</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="deck" tabindex="0">
+        <circle cx="161" cy="148" r="11" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.6"/>
+        <text x="153" y="152" fill="#dceaf4" font-size="9" font-family="monospace">10</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="keel" tabindex="0">
+        <circle cx="210" cy="171" r="11" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.6"/>
+        <text x="202" y="175" fill="#dceaf4" font-size="9" font-family="monospace">11</text>
+      </g>
     </svg>
+    <div class="shipparts-legend">
+      <button class="shipparts-chip" type="button" data-part="bas">1 Pruva / Bas</button>
+      <button class="shipparts-chip" type="button" data-part="forecastle">2 Bas Kasarasi</button>
+      <button class="shipparts-chip" type="button" data-part="cargo">3 Ambar / Hatch</button>
+      <button class="shipparts-chip" type="button" data-part="bridge">4 Kopruustu</button>
+      <button class="shipparts-chip" type="button" data-part="funnel">5 Baca / Ust Yapi</button>
+      <button class="shipparts-chip" type="button" data-part="engine">6 Makine Dairesi</button>
+      <button class="shipparts-chip" type="button" data-part="poop">7 Kic Ustu</button>
+      <button class="shipparts-chip" type="button" data-part="stern">8 Kic</button>
+      <button class="shipparts-chip" type="button" data-part="hawse">9 Demir Locasi</button>
+      <button class="shipparts-chip" type="button" data-part="deck">10 Ana Guverte</button>
+      <button class="shipparts-chip" type="button" data-part="keel">11 Omurga</button>
+    </div>
+    <div class="shipparts-detail" data-active-ship-part="bridge">
+      <div class="shipparts-detail-head">Kopruustu</div>
+      <div class="shipparts-detail-body">Geminin sevk ve idaresinin yapildigi mahaldir. Radar, ECDIS, pusulalar, VHF/GMDSS ekipmanlari ve vardiya zabitinin ana kontrol noktasi burada bulunur.</div>
+    </div>
   </div>`;
+}
+
+const SHIP_PARTS_INFO = {
+  bas:{
+    head:'Pruva / Bas',
+    body:'Geminin ileri ucudur. Denizleri ilk karsilayan kisim oldugu icin sekli denize girisi, vuruntuyu ve dalgayi nasil yardigini etkiler.'
+  },
+  forecastle:{
+    head:'Bas Kasarasi',
+    body:'Pruva tarafindaki yuksek bolumdur. Irgat, palamar ekipmani, zincir ve demir operasyonlari burada yogunlasir.'
+  },
+  cargo:{
+    head:'Ambar / Hatch Cover',
+    body:'Yukun tasindigi kapali hacim ambar, ustundeki kapak sistemi hatch cover olarak anilir. Yukun emniyeti, su gecirmezlik ve ventilasyon burada kritik olur.'
+  },
+  bridge:{
+    head:'Kopruustu',
+    body:'Geminin sevk ve idaresinin yapildigi mahaldir. Radar, ECDIS, pusulalar, VHF/GMDSS ekipmanlari ve vardiya zabitinin ana kontrol noktasi burada bulunur.'
+  },
+  funnel:{
+    head:'Baca / Ust Yapi',
+    body:'Makine egzoz cikisi, havalandirma ve bazi servis mahalleri ust yapida toplanir. Geminin dis siluetinde tipini en hizli veren bolgelerden biridir.'
+  },
+  engine:{
+    head:'Makine Dairesi',
+    body:'Ana makine, jeneratörler, separatorler, pompalar ve yardimci sistemler burada bulunur. Sicaklik, gürültü ve vardiya disiplini genelde en yogun mahaldir.'
+  },
+  poop:{
+    head:'Kic Ustu / Poop Deck',
+    body:'Kic taraftaki yuksek calisma/alansal bolumdur. Palamar operasyonlari, kic manevralari ve ekipman depolari acisindan onemlidir.'
+  },
+  stern:{
+    head:'Kic',
+    body:'Geminin arka ucudur. Manevrada pervane akimi, rudder etkisi ve iz suyu davranisi burada daha belirgin hissedilir.'
+  },
+  hawse:{
+    head:'Demir Locasi / Hawse Pipe',
+    body:'Demir zincirinin gemi icinden gectigi yapidir. Demirleme, vira/fundo ve zincir markasi takibinde bu bolgeye cok dikkat edilir.'
+  },
+  deck:{
+    head:'Ana Guverte',
+    body:'Gemi uzerindeki ana yuruyus ve calisma hattidir. Yuk operasyonu, lashing, raspa-boya, kontrol turlari ve emniyetli gecis burada yurutulur.'
+  },
+  keel:{
+    head:'Omurga',
+    body:'Teknenin ana boyuna tasiyici eksenidir. Yapisal butunlugun temeli kabul edilir; trim, hog-sag ve genel tekne davranisi anlatilirken referans olur.'
+  }
+};
+
+function activateShipPart(part){
+  const info = SHIP_PARTS_INFO[part];
+  if(!info) return;
+  document.querySelectorAll('.shipparts-hotspot.active,.shipparts-chip.active').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll(`.shipparts-hotspot[data-part="${part}"], .shipparts-chip[data-part="${part}"]`).forEach(el=>el.classList.add('active'));
+  document.querySelectorAll('.shipparts-detail').forEach(box=>{
+    box.setAttribute('data-active-ship-part', part);
+    box.innerHTML = `<div class="shipparts-detail-head">${info.head}</div><div class="shipparts-detail-body">${info.body}</div>`;
+  });
+}
+
+function bindShipPartsDiagram(){
+  document.querySelectorAll('.shipparts-hotspot,.shipparts-chip').forEach(el=>{
+    if(el.dataset.boundShipPart === '1') return;
+    el.dataset.boundShipPart = '1';
+    el.addEventListener('click', ()=> activateShipPart(el.dataset.part));
+    el.addEventListener('keydown', ev=>{
+      if(ev.key === 'Enter' || ev.key === ' '){
+        ev.preventDefault();
+        activateShipPart(el.dataset.part);
+      }
+    });
+  });
+  if(document.querySelector('.shipparts-detail')) activateShipPart('bridge');
 }
 
 function getGlossaryCategory(entry){
@@ -6646,6 +6784,7 @@ function renderNotes(){
       <div class="notes-body">${n.body}</div>
       <div class="notes-tip">${n.tip}</div>
     </div>`).join('') : '<div class="notes-empty">Bu sekmede aramana uyan not bulunamadi.</div>';
+  bindShipPartsDiagram();
 }
 
 function selectGlossaryTerm(term){
