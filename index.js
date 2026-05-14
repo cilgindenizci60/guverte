@@ -1011,6 +1011,10 @@ function shuffleChoices(arr){
   return [...arr].sort(()=>Math.random()-0.5);
 }
 
+function buildCalcPrompt(answer, unit, formula, attempts=2, toleranceText=''){
+  return {answer, unit, formula, attempts, toleranceText};
+}
+
 function createStabilityScenes(n,sn){
   const disp1=11000+Math.floor(Math.random()*5000);
   const gm1=1.4+Math.random()*0.8;
@@ -1036,6 +1040,7 @@ function createStabilityScenes(n,sn){
 "${n}, bunu goz karariyla gecemeyiz. ${sn}'de sancak tarafa ${weight1} tonluk bir yuk parcasi ${dist1} metre kaydi. Deplasman ${disp1} ton, mevcut GM ${gm1.toFixed(2)} metre.
 
 Formul basit: tan(theta) = heeling moment / (displacement x GM). Bana yaklasik yatma acisini soyle."`,
+    calc:buildCalcPrompt(Number(heelDeg.toFixed(1)),'derece','tan(theta) = heeling moment / (displacement x GM)',2,'0.3 derece icinde'),
     choices:shuffleChoices([
       {text:`Yaklasik ${heelDeg.toFixed(1)} derece sancaga yatma beklerim`,tag:"kritik",effect:{bilgi:16,sayginlik:12,cesaret:4}},
       {text:`Yaklasik ${(heelDeg*2.2).toFixed(1)} derece`,tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
@@ -1047,6 +1052,7 @@ Formul basit: tan(theta) = heeling moment / (displacement x GM). Bana yaklasik y
 "Pruvaya dogru agirlik kaydiriyoruz. ${weight2} tonluk agirlik ${shift2} metre for'a alinacak. Geminin MCTC degeri ${mctc} ton-metre/santim.
 
 Trim degisimi = trimming moment / MCTC. Bana kac santim trim degisimi bekledigini soyle; sonra kaptana birlikte cikalim."`,
+    calc:buildCalcPrompt(Number(trimCm.toFixed(1)),'cm','trim degisimi = trimming moment / MCTC',2,'0.5 cm icinde'),
     choices:shuffleChoices([
       {text:`Yaklasik ${trimCm.toFixed(1)} cm trim degisimi olur`,tag:"kritik",effect:{bilgi:15,sayginlik:11}},
       {text:`Yaklasik ${(trimCm/2).toFixed(1)} cm olur`,tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
@@ -1058,6 +1064,7 @@ Trim degisimi = trimming moment / MCTC. Bana kac santim trim degisimi bekledigin
 "Son hesap bu. Baslangic GM ${gm3.toFixed(2)} metre. Slack tanklarin free surface correction toplami ${fsc} ton-metre. Deplasman ${disp3} ton.
 
 Duzeltilmis GM = GM - FSC / displacement. Gercek GM'yi bul; sonra bu gemi gece vardiyasina rahat cikar mi konusalim."`,
+    calc:buildCalcPrompt(Number(correctedGM.toFixed(2)),'m','duzeltilmis GM = GM - FSC / displacement',2,'0.05 m icinde'),
     choices:shuffleChoices([
       {text:`Duzeltilmis GM yaklasik ${correctedGM.toFixed(2)} metre`,tag:"kritik",effect:{bilgi:17,sayginlik:12,cesaret:3}},
       {text:`Duzeltilmis GM yaklasik ${(gm3+(fsc/disp3)).toFixed(2)} metre`,tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
@@ -3144,6 +3151,7 @@ text:`1. Zabit kagida iki not birakti:
 "Ilk survey 12480 ton, son survey 13195 ton deplasmana denk geldi. Basitlestirilmis haliyle aradaki fark bize yuklenen miktarin cekirdegini verir. Tabii gercekte density, ballast, constant ve diger duzeltmeler de girer."
 
 Bu mini hesapta ilk sonuc ne cikar?`,
+calc:buildCalcPrompt(715,'ton','yukleme farki = son survey - ilk survey',2,'5 ton icinde'),
 choices:[
 {text:"Yaklasik 715 ton fark oldugunu, bunun da temel yukleme farki olarak yorumlanacagini soylerim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
 {text:"Rakamlar buyuk diye kafadan kesin yorum yapmam derim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
@@ -3232,6 +3240,7 @@ text:`1. Zabit onceki notlara bir satir daha ekledi.
 "Baslangic GM 1.60 metre. Slack tanklardan gelen free surface correction 0.22 metre. Bunu kafanda duseceksin; cunku serbest yuzey bazen hic gorunmeden stabiliteyi yer."
 
 Bu mini hesapta corrected GM kac olur?`,
+calc:buildCalcPrompt(1.38,'m','corrected GM = baslangic GM - free surface correction',2,'0.05 m icinde'),
 choices:[
 {text:"1.38 metre civari olur derim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
 {text:"1.82 metre olur derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
@@ -5336,6 +5345,114 @@ function showNotif(icon,title,body){
   setTimeout(()=>o.classList.remove('show'),2200);
 }
 
+function getCalcOutcomeChoice(sc, numericAnswer){
+  const calc = sc?.calc;
+  if(!calc || !Array.isArray(sc.choices)) return sc?.choices?.[0] || null;
+  const diff = Math.abs(Number(numericAnswer) - Number(calc.answer));
+  const critical = sc.choices.find(c=>c.tag==='kritik') || sc.choices[0];
+  const medium = sc.choices.find(c=>c.tag==='itaatkar' || c.tag==='akilli') || sc.choices[1] || critical;
+  const weak = sc.choices.find(c=>c.tag==='korkak') || sc.choices[sc.choices.length-1] || medium;
+  const tightTol = calc.unit==='m' ? 0.05 : calc.unit==='cm' ? 0.5 : calc.unit==='ton' ? 5 : 0.3;
+  const softTol = calc.unit==='m' ? 0.15 : calc.unit==='cm' ? 2 : calc.unit==='ton' ? 30 : 1.2;
+  if(diff <= tightTol) return critical;
+  if(diff <= softTol) return medium;
+  return weak;
+}
+
+function handleSceneChoice(sc, c2, ch){
+  sfxClick();
+  const calcPanel = document.getElementById('calc-panel');
+  if(calcPanel) calcPanel.className='';
+  if(ch){
+    ch.querySelectorAll('.cbtn').forEach(x=>{x.disabled=true;x.style.opacity='.4';});
+  }
+  const pressure=evaluateDecisionPressure(sc,c2);
+  const resolvedEffect={...(c2.effect||{})};
+  Object.entries(pressure.extra).forEach(([k,v])=>{resolvedEffect[k]=(resolvedEffect[k]||0)+v;});
+  if(c2.routePlanKey&&ECDIS_ROUTE_PLANS[c2.routePlanKey]){
+    activeEcdisPlanKey=c2.routePlanKey;
+    addJournalEntry(`[SEYIR PLANI] ${ECDIS_ROUTE_PLANS[c2.routePlanKey].label} ECDIS uzerinde aktif edildi.`, sc.day, sc.time);
+  }
+  if(c2.radarMode&&RADAR_TRAINING_MODES[c2.radarMode]){
+    activeRadarMode=c2.radarMode;
+    addJournalEntry(`[RADAR] ${RADAR_TRAINING_MODES[c2.radarMode].label} ekran duzeni aktif edildi.`, sc.day, sc.time);
+  }
+  choicesMade.push({tag:c2.tag,domain:getSceneDomain(sc),extraPressure:Object.keys(pressure.extra).length>0});
+  scheduleAdvancedConsequences(sc,c2);
+  applyCrewEffect(sc.who, c2.tag);
+  const crisis=applyEffect(resolvedEffect);
+
+  const pos=Object.entries(resolvedEffect).filter(([k,v])=>v>0&&k!=='yorgunluk').map(([k,v])=>'+'+v+' '+k).join(' ');
+  const neg=Object.entries(resolvedEffect).filter(([k,v])=>v<0&&k!=='yorgunluk').map(([k,v])=>v+' '+k).join(' ');
+  const parts=[];if(pos)parts.push(pos);if(neg)parts.push(neg);
+  const icon=c2.tag==='kritik'?'!':c2.tag==='cesur'?'^':c2.tag==='akilli'?'i':'~';
+  if(parts.length)showNotif(icon,'Stat degisimi',parts.join(' | '));
+  if(pressure.notes.length){
+    setTimeout(()=>showNotif('!','Baski Artiyor',pressure.notes[0]),900);
+    addJournalEntry('[BASKI] '+pressure.notes.join(' '), sc.day, sc.time);
+  }
+
+  addJournalEntry(c2.text, sc.day, sc.time);
+  const nextFn=()=>{
+    if(c2.next==='end'||currentIdx>=sceneQueue.length-1){showEnd();}
+    else if(crisis){showCrisis(crisis);}
+    else{currentIdx++;renderScene(currentIdx);}
+  };
+  setTimeout(nextFn, parts.length?2200:300);
+}
+
+function renderCalcPanel(sc, ch){
+  const panel = document.getElementById('calc-panel');
+  if(!panel) return;
+  const calc = sc?.calc;
+  if(!calc){
+    panel.className='';
+    panel.innerHTML='';
+    return;
+  }
+  let attemptsLeft = calc.attempts || 2;
+  panel.className='calc-panel show';
+  panel.innerHTML = `<div class="calc-box">
+    <div class="calc-title">Mini Hesap Ekrani</div>
+    <div class="calc-hint">${calc.formula || 'Hesabi yap ve sonucu gir.'}</div>
+    <div class="calc-row">
+      <input id="calc-input" class="calc-input" type="number" step="0.01" placeholder="Sonucu yaz...">
+      <span class="calc-unit">${calc.unit || ''}</span>
+      <button id="calc-submit" class="calc-btn">Hesapla</button>
+    </div>
+    <div class="calc-meta"><span>${calc.toleranceText || ''}</span><span id="calc-attempts">Hak: ${attemptsLeft}</span></div>
+    <div id="calc-feedback" class="calc-feedback"></div>
+  </div>`;
+  const input = document.getElementById('calc-input');
+  const submit = document.getElementById('calc-submit');
+  const feedback = document.getElementById('calc-feedback');
+  const attempts = document.getElementById('calc-attempts');
+  const tryResolve = ()=>{
+    const val = Number(input.value);
+    if(Number.isNaN(val)){
+      feedback.className='calc-feedback bad';
+      feedback.textContent='Once sayisal bir sonuc gir.';
+      return;
+    }
+    const picked = getCalcOutcomeChoice(sc, val);
+    const isCritical = picked && picked.tag==='kritik';
+    attemptsLeft--;
+    attempts.textContent = `Hak: ${attemptsLeft}`;
+    if(isCritical || attemptsLeft<=0){
+      feedback.className = isCritical ? 'calc-feedback' : 'calc-feedback warn';
+      feedback.textContent = isCritical ? 'Hesap oturdu. Sonucu zabite iletiyorsun.' : 'Tam oturmadi; yine de mevcut hesabinla ilerliyorsun.';
+      submit.disabled = true;
+      input.disabled = true;
+      setTimeout(()=>handleSceneChoice(sc, picked, ch), 700);
+      return;
+    }
+    feedback.className='calc-feedback warn';
+    feedback.textContent='Yaklastin ama tekrar kontrol et. Birim ve formulu yeniden dusun.';
+  };
+  submit.onclick = tryResolve;
+  input.addEventListener('keydown',e=>{ if(e.key==='Enter') tryResolve(); });
+}
+
 // ===== RASTGELE SENARYO SIRASI =====
 function buildSceneQueue(pool, totalDays){
   // Zorunlu sahneler: s01 (başlangıç), FINAL (son)
@@ -5476,48 +5593,18 @@ function renderScene(idx){
   onSceneRender(sc);
 
   const ch=document.getElementById('choices');ch.innerHTML='';
+  renderCalcPanel(sc, ch);
   sc.choices.forEach(c2=>{
     const b=document.createElement('button');b.className='cbtn';
     b.innerHTML='<span class="ctag tag-'+(c2.tag||'akilli')+'">'+tagL[c2.tag||'akilli']+'</span>'+c2.text;
-    b.onclick=()=>{
-      sfxClick();
-      ch.querySelectorAll('.cbtn').forEach(x=>{x.disabled=true;x.style.opacity='.4';});
-      const pressure=evaluateDecisionPressure(sc,c2);
-      const resolvedEffect={...(c2.effect||{})};
-      Object.entries(pressure.extra).forEach(([k,v])=>{resolvedEffect[k]=(resolvedEffect[k]||0)+v;});
-      if(c2.routePlanKey&&ECDIS_ROUTE_PLANS[c2.routePlanKey]){
-        activeEcdisPlanKey=c2.routePlanKey;
-        addJournalEntry(`[SEYIR PLANI] ${ECDIS_ROUTE_PLANS[c2.routePlanKey].label} ECDIS uzerinde aktif edildi.`, sc.day, sc.time);
-      }
-      if(c2.radarMode&&RADAR_TRAINING_MODES[c2.radarMode]){
-        activeRadarMode=c2.radarMode;
-        addJournalEntry(`[RADAR] ${RADAR_TRAINING_MODES[c2.radarMode].label} ekran duzeni aktif edildi.`, sc.day, sc.time);
-      }
-      choicesMade.push({tag:c2.tag,domain:getSceneDomain(sc),extraPressure:Object.keys(pressure.extra).length>0});
-      scheduleAdvancedConsequences(sc,c2);
-      applyCrewEffect(sc.who, c2.tag);
-      const crisis=applyEffect(resolvedEffect);
-
-      const pos=Object.entries(resolvedEffect).filter(([k,v])=>v>0&&k!=='yorgunluk').map(([k,v])=>'+'+v+' '+k).join(' ');
-      const neg=Object.entries(resolvedEffect).filter(([k,v])=>v<0&&k!=='yorgunluk').map(([k,v])=>v+' '+k).join(' ');
-      const parts=[];if(pos)parts.push(pos);if(neg)parts.push(neg);
-      const icon=c2.tag==='kritik'?'!':c2.tag==='cesur'?'^':c2.tag==='akilli'?'i':'~';
-      if(parts.length)showNotif(icon,'Stat degisimi',parts.join(' | '));
-      if(pressure.notes.length){
-        setTimeout(()=>showNotif('!','Baski Artiyor',pressure.notes[0]),900);
-        addJournalEntry('[BASKI] '+pressure.notes.join(' '), sc.day, sc.time);
-      }
-
-      addJournalEntry(c2.text, sc.day, sc.time);
-      const nextFn=()=>{
-        if(c2.next==='end'||currentIdx>=sceneQueue.length-1){showEnd();}
-        else if(crisis){showCrisis(crisis);}
-        else{currentIdx++;renderScene(currentIdx);}
-      };
-      setTimeout(nextFn, parts.length?2200:300);
-    };
+    b.onclick=()=>handleSceneChoice(sc,c2,ch);
     ch.appendChild(b);
   });
+  if(sc.calc){
+    ch.style.display='none';
+  }else{
+    ch.style.display='';
+  }
 }
 
 // ===== KRİZ =====
