@@ -98,6 +98,29 @@
         cx.fill();
         cx.fillStyle = '#d6dde7';
         cx.fillRect(28,-16,46,6);
+      }else if(cfg.type==='feeder'){
+        const contColors=['#7e3430','#29537f','#8d622c','#315743'];
+        [24,44,64].forEach((sx,i)=>{
+          cx.fillStyle=contColors[i%contColors.length];
+          cx.fillRect(sx,-9,15,11);
+        });
+        cx.fillStyle = cfg.deck;
+        cx.fillRect(96,-18,24,20);
+        cx.fillRect(108,-28,8,10);
+        cx.fillStyle = '#d5dde6';
+        cx.fillRect(99,-12,10,4);
+      }else if(cfg.type==='chemical'){
+        cx.fillStyle = '#70839a';
+        cx.fillRect(18,-4,74,2);
+        cx.fillRect(26,-8,60,2);
+        cx.strokeStyle = '#8ca1b8';
+        cx.lineWidth = 1;
+        cx.beginPath();
+        cx.moveTo(48,-8); cx.lineTo(48,-18); cx.lineTo(76,-18); cx.lineTo(76,-8);
+        cx.stroke();
+        cx.fillStyle = cfg.deck;
+        cx.fillRect(104,-18,18,20);
+        cx.fillRect(112,-28,8,10);
       }else{
         cx.fillStyle = '#4d6178';
         [22,46,70].forEach((sx)=>cx.fillRect(sx,-7,16,6));
@@ -117,6 +140,12 @@
       cx.beginPath();
       cx.arc(118,-9,1.8,0,Math.PI*2);
       cx.fill();
+      cx.fillStyle = 'rgba(220,228,236,0.7)';
+      cx.fillRect(107,-12,10,3);
+      cx.fillStyle = 'rgba(28,49,71,0.55)';
+      cx.fillRect(20,8,82,1.2);
+      cx.fillStyle = 'rgba(148,92,72,0.18)';
+      cx.fillRect(10,9,16,2.2);
       cx.strokeStyle = 'rgba(170,210,240,0.18)';
       cx.lineWidth = 1;
       cx.beginPath();
@@ -127,8 +156,11 @@
       cx.stroke();
       cx.restore();
     };
+    drawShip({x:W*0.1, y:H*0.735 + shipBob*0.1, scale:0.42, type:'chemical', hull:'#0a1523', shadow:'#07111d', deck:'#1d3958', light:`rgba(111,168,220,${0.42+Math.sin(t*0.028)*0.12})`});
     drawShip({x:W*0.16, y:H*0.71 + shipBob*0.16, scale:0.64, type:'tanker', hull:'#0a1523', shadow:'#07111d', deck:'#193957', light:`rgba(111,168,220,${0.55+Math.sin(t*0.03)*0.15})`});
+    drawShip({x:W*0.37, y:H*0.748 + shipBob*0.14, scale:0.5, type:'roro', hull:'#091523', shadow:'#06101b', deck:'#214968', light:`rgba(167,210,236,${0.4+Math.cos(t*0.02)*0.1})`});
     drawShip({x:W*0.58, y:H*0.775 + shipBob*0.2, scale:0.96, type:'kont', hull:'#091321', shadow:'#06101b', deck:'#173553', light:`rgba(212,160,23,${0.5+Math.cos(t*0.025)*0.18})`});
+    drawShip({x:W*0.72, y:H*0.725 + shipBob*0.12, scale:0.46, type:'feeder', hull:'#0a1624', shadow:'#07121e', deck:'#1a4163', light:`rgba(154,194,228,${0.38+Math.sin(t*0.022)*0.12})`});
     drawShip({x:W*0.8, y:H*0.695 + shipBob*0.14, scale:0.56, type:'lng', hull:'#0a1624', shadow:'#07121e', deck:'#183d62', light:`rgba(201,112,112,${0.45+Math.sin(t*0.04)*0.18})`});
     // Buoys
     const drawBuoy = (x,y,body,topLight) => {
