@@ -310,6 +310,8 @@ input[type=text]::placeholder{color:var(--text3);}
 .knot-svg .post{fill:#24425f;stroke:#6f8ca8;stroke-width:2;}
 .knot-svg .ring{fill:none;stroke:#6f8ca8;stroke-width:4;}
 .knot-svg text{fill:#8ab0c8;font-size:8px;font-family:'Share Tech Mono',monospace;}
+.shipparts-card{margin-top:10px;border:1px solid var(--border2);border-radius:8px;background:rgba(6,16,28,0.72);padding:8px;}
+.shipparts-svg{width:100%;height:auto;display:block;border-radius:6px;background:linear-gradient(180deg, rgba(10,24,40,.9), rgba(5,14,24,.95));border:1px solid rgba(74,112,152,.25);}
 .notes-tip{font-size:10px;color:var(--text3);margin-top:5px;line-height:1.5;}
 .notes-empty{color:var(--text3);font-size:12px;padding:10px;border:1px dashed var(--border2);border-radius:8px;text-align:center;}
 .glossary-list{display:flex;flex-wrap:wrap;gap:6px;}

@@ -6060,7 +6060,7 @@ const STUDENT_NOTES = [
   {head:"ECDIS / HARITA", body:"Route check, safety contour, safety depth, no-go area, isolated danger ve alarm ayarlari seyirden once gozden gecirilir.<br>GPS bilgisi radar, gorusel mevki ve diger sensorlerle capraz kontrol edilir.<br>Waypoint'ler, parallel indexing, XTD ve chart correction mantigi bilinmelidir.<br>Kagit haritada NtM, correction number, tracing ve correction record disiplini; ECDIS'te ise ENC permit, cell status, latest update ve overdue area kontrolu birlikte dusunulur.<br>Rota degisikligi varsa passage plan, kagit harita, ECDIS route ve logbook ayni mantikla guncellenir.", tip:"ECDIS yardimcidir; kagit harita dusuncesiyle birlikte kullanildiginda daha guclu olur."},
   {head:"FENER VE SAMANDIRA", body:"IALA lateral markalarda renk, tepe isareti ve isik karakteri birlikte okunur.<br>Fl, Oc, Iso, Q, VQ, LFl ve sektor renkleri fenerleri ayirt etmeyi saglar.<br>Cardinal marklarda kuzey-gu ney-dogu-bati tepe isaretleri ve siyah-sari renk dizilimi ezberlenmelidir.", tip:"Renk kadar ritmi de oku."},
   {head:"PILOT / ROMORKOR / LIMAN", body:"Pilot ladder durumu, can simidi ve isik kontrolu, personel konumu ve haberlesme disiplini kritik konulardir.<br>Master-pilot exchange yapilir; snap-back zone bos tutulur.<br>Heaving line, tug line, berthing plan, current-rüzgar etkisi ve mooring team konumlari net olmalidir.", tip:"Mooring station saka kabul etmez."},
-  {head:"GEMININ KISIMLARI", body:"<b>Pruva</b> geminin on tarafidir; <b>Kic</b> arka tarafidir.<br><b>Iskele</b> sol, <b>Sancak</b> sag bordadir.<br><b>Bas bodoslama</b> on dikey/egik uc yapisidir; <b>Kic bodoslama</b> arka uc yapisidir.<br><b>Ana guverte</b> ana yuru yus ve calisma guvertesidir.<br><b>Bas kasarasi / forecastle</b> pruva tarafindaki yuksek bolumdur; <b>Kic ustu / poop deck</b> kic tarafindaki yuksek bolumdur.<br><b>Kopruustu</b> geminin sevk ve idaresinin yapildigi mahaldir.<br><b>Ambar</b> yukun tasindigi kapali hacimdir; <b>Hatch cover</b> ambar kapagidir.<br><b>Makine dairesi</b> ana makine ve yardimci sistemlerin bulundugu mahaldir.<br><b>Borda</b> geminin yan tarafidir; <b>alabanda</b> bunun ic yuzune verilen addir.<br><b>Omurga</b> teknenin ana boyuna omurgasal tasiyici hattidir.<br><b>Draft markalari</b> bas ve kicta su cekimini okumaya yarar.<br><b>Bulwark / sancaklik</b> guverte kenarindaki koruyucu yukselti veya korkuluk hattidir.<br><b>Hawse pipe / demir locasi</b> demir zincirinin gectigi yapidir.", tip:"Gemi dili once yone, sonra mahale, sonra ekipmana oturur."},
+  {head:"GEMININ KISIMLARI", body:"<b>Pruva</b> geminin on tarafidir; <b>Kic</b> arka tarafidir.<br><b>Iskele</b> sol, <b>Sancak</b> sag bordadir.<br><b>Bas bodoslama</b> on dikey/egik uc yapisidir; <b>Kic bodoslama</b> arka uc yapisidir.<br><b>Ana guverte</b> ana yuru yus ve calisma guvertesidir.<br><b>Bas kasarasi / forecastle</b> pruva tarafindaki yuksek bolumdur; <b>Kic ustu / poop deck</b> kic tarafindaki yuksek bolumdur.<br><b>Kopruustu</b> geminin sevk ve idaresinin yapildigi mahaldir.<br><b>Ambar</b> yukun tasindigi kapali hacimdir; <b>Hatch cover</b> ambar kapagidir.<br><b>Makine dairesi</b> ana makine ve yardimci sistemlerin bulundugu mahaldir.<br><b>Borda</b> geminin yan tarafidir; <b>alabanda</b> bunun ic yuzune verilen addir.<br><b>Omurga</b> teknenin ana boyuna omurgasal tasiyici hattidir.<br><b>Draft markalari</b> bas ve kicta su cekimini okumaya yarar.<br><b>Bulwark / sancaklik</b> guverte kenarindaki koruyucu yukselti veya korkuluk hattidir.<br><b>Hawse pipe / demir locasi</b> demir zincirinin gectigi yapidir.<br><br>"+buildShipPartsDiagram(), tip:"Gemi dili once yone, sonra mahale, sonra ekipmana oturur."},
   {head:"LIMAN VE EVRAK", body:"Notice of Readiness, Bill of Lading, Mate's Receipt, Statement of Facts, manifest, stowage plan, Oil Record Book ve Garbage Record Book temel evraklardandir.<br>Uyumsuzluk gordugunde amire hemen bildirilir.<br>Laytime, demurrage, dispatch, arrival condition ve sea protest temel kavramlardir.", tip:"Saklanan hata buyur."},
   {head:"PSC / ISPS / SOLAS / STCW", body:"PSC denetiminde evrak, emniyet ekipmani, drill kayitlari, GMDSS testleri ve gemi kondisyonu birlikte incelenir.<br>ISPS tarafinda gangway kontrolu, ziyaretci kaydi ve security level takibi esastir.<br>SOLAS can emniyeti, STCW yeterlilik ve vardiya standartlarini kurar.", tip:"Denetime her gun hazir olunur."},
   {head:"LSA / FILIKA / MATAFORA BAKIMI", body:"Can salinda servis tarihi, hydrostatic release unit (HRU), painter, lash ve konteyner kondisyonu kontrol edilir.<br>Can filikasinda inventory, drain plug, battery, engine readiness, communication set, water/ration ve release gear gozden gecirilir.<br>Can yeleklerinde light, whistle, tape, buddy line ve genel kondisyon; immersion suitte size, zipper ve sizdirmazlik mantigi okunur.<br>Matafora ve launching appliance tarafinda fall, sheave, brake, grease noktasi, limit switch ve hareket testi birlikte dusunulur.<br>Pyrotechnics, line-throwing appliance, EPIRB, SART ve handheld VHF tarih/kayit/ready durumu unutulmaz.", tip:"Acil durum ekipmani en cok lazim oldugu gun surpriz cikarmamali."},
@@ -6465,6 +6465,44 @@ function buildKnotGallery(){
     {name:'Balikci Bagi', type:'balikci', desc:'Iki halatin cimalarini, ozellikle misina ve ince ipleri birbirine baglamak icin kullanilir.'}
   ];
   return intro + `<div class="knot-grid">${knots.map(k=>`<div class="knot-card">${knotSvg(k.type)}<div class="knot-name">${k.name}</div><div class="knot-desc">${k.desc}</div></div>`).join('')}</div>`;
+}
+
+function buildShipPartsDiagram(){
+  return `<div class="shipparts-card">
+    <svg class="shipparts-svg" viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" aria-label="Geminin kisimlari">
+      <rect x="0" y="0" width="360" height="180" rx="10" fill="#071523"/>
+      <path d="M0 118 Q50 110 100 118 T200 118 T300 118 T360 118 V180 H0 Z" fill="#0a2340"/>
+      <path d="M24 104 L78 90 L232 90 L264 98 L310 98 L328 108 L26 108 Z" fill="#123252" stroke="#315c82" stroke-width="1.2"/>
+      <path d="M52 86 L108 86 L122 74 L188 74 L188 90 L52 90 Z" fill="#1b476c" stroke="#527ca1" stroke-width="1"/>
+      <rect x="166" y="48" width="42" height="26" rx="3" fill="#d8e2ea" stroke="#5a7690" stroke-width="1"/>
+      <rect x="174" y="34" width="24" height="16" rx="2" fill="#d8e2ea" stroke="#5a7690" stroke-width="1"/>
+      <rect x="183" y="16" width="4" height="18" fill="#7fa2c2"/>
+      <rect x="200" y="24" width="10" height="24" rx="2" fill="#2a4763"/>
+      <rect x="64" y="92" width="46" height="10" rx="2" fill="#435d76"/>
+      <rect x="116" y="92" width="46" height="10" rx="2" fill="#435d76"/>
+      <rect x="168" y="92" width="46" height="10" rx="2" fill="#435d76"/>
+      <rect x="220" y="92" width="36" height="10" rx="2" fill="#435d76"/>
+      <path d="M80 110 l0 26" stroke="#d4a017" stroke-width="1.6" stroke-dasharray="4,3"/>
+      <path d="M188 74 l0 -34" stroke="#d4a017" stroke-width="1.6" stroke-dasharray="4,3"/>
+      <path d="M286 98 l26 24" stroke="#d4a017" stroke-width="1.6" stroke-dasharray="4,3"/>
+      <path d="M42 108 l-18 18" stroke="#d4a017" stroke-width="1.6" stroke-dasharray="4,3"/>
+      <path d="M34 106 l-8 18" stroke="#b9c8d6" stroke-width="2"/>
+      <circle cx="28" cy="128" r="7" fill="none" stroke="#b9c8d6" stroke-width="2"/>
+      <text x="14" y="143" fill="#d9e3ea" font-size="8" font-family="monospace">DEMIR LOCASI</text>
+      <text x="49" y="153" fill="#d4a017" font-size="8" font-family="monospace">PRUVA / BAS</text>
+      <text x="56" y="82" fill="#d4a017" font-size="8" font-family="monospace">BAS KASARASI</text>
+      <text x="134" y="101" fill="#d9e3ea" font-size="8" font-family="monospace">HATCH COVER / AMBAR</text>
+      <text x="139" y="28" fill="#d4a017" font-size="8" font-family="monospace">KOPRUSTU</text>
+      <text x="213" y="66" fill="#d9e3ea" font-size="8" font-family="monospace">BACA / UST YAPI</text>
+      <text x="247" y="132" fill="#d4a017" font-size="8" font-family="monospace">KIC USTU</text>
+      <text x="290" y="145" fill="#d4a017" font-size="8" font-family="monospace">KIC</text>
+      <text x="12" y="18" fill="#8ab0c8" font-size="8" font-family="monospace">ISKELE</text>
+      <text x="304" y="18" fill="#8ab0c8" font-size="8" font-family="monospace">SANCAK</text>
+      <text x="122" y="120" fill="#8ab0c8" font-size="8" font-family="monospace">ANA GUVERT E</text>
+      <text x="130" y="136" fill="#8ab0c8" font-size="8" font-family="monospace">BORDA / ALABANDA HATTI</text>
+      <text x="126" y="154" fill="#8ab0c8" font-size="8" font-family="monospace">OMURGA HATTI (ana eksen)</text>
+    </svg>
+  </div>`;
 }
 
 function getGlossaryCategory(entry){
