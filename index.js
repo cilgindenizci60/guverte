@@ -5777,6 +5777,7 @@ function beginGame(){
   shipPosition={x:selectedStartPort.x,y:selectedStartPort.y};
   scenesSinceEvent=0;
   nextEventAt=5+Math.floor(Math.random()*4);
+  randomizeCrewRoster();
   initCrewSystem();
 
   document.getElementById('intro').style.display='none';
@@ -5842,6 +5843,31 @@ const CREW_DEFS = {
     secrets:["İlk gemisi bu. Sen de ilk stajyersin — benzer his.","Evleneceği kız denizden korkuyor.","Gece vardiyasında yıldız sayıyor."],
     tips:["Musa ile deneyim paylaş","Zor anlarda yanında dur","Birlikte öğrenin"]},
 };
+
+const CREW_NAME_POOLS = {
+  suvari:["Kaptan Serra","Kaptan Leyla","Kaptan Murat","Kaptan Defne","Kaptan Onur","Kaptan Selda"],
+  z1:["1. Zabit Ece","1. Zabit Arda","1. Zabit Melis","1. Zabit Cem","1. Zabit Selen","1. Zabit Bora"],
+  z2:["2. Zabit Derya","2. Zabit Emre","2. Zabit İpek","2. Zabit Kerem","2. Zabit Nil","2. Zabit Baran"],
+  z3:["3. Zabit Selin","3. Zabit Elif","3. Zabit Mert","3. Zabit Yağmur","3. Zabit Kaan","3. Zabit Zeynep"],
+  carkci:["Baş Mühendis Nermin","Baş Mühendis Hakan","Baş Mühendis Pınar","Baş Mühendis Tolga","Baş Mühendis Ayşe","Baş Mühendis Erdem"],
+  bas2:["2. Mühendis Aylin","2. Mühendis Burcu","2. Mühendis Emrah","2. Mühendis Ozan","2. Mühendis Eylül","2. Mühendis Deniz"],
+  lostromo:["Lostromo İbrahim","Lostromo Kemal","Lostromo Erhan","Lostromo Yusuf","Lostromo Nejat","Lostromo Cihan"],
+  lostromo2:["Silici Ramazan","Silici Ali","Silici Furkan","Silici Tahir","Silici Kadir","Silici Serhat"],
+  yagci:["Yağcı Mehmet Ali","Yağcı Volkan","Yağcı Samet","Yağcı Ferhat","Yağcı Oğuz","Yağcı Kaan"],
+  asci:["Aşçı Mehmet Usta","Aşçı Fikret Usta","Aşçı Nihat Usta","Aşçı Sevim Hanım","Aşçı Hüseyin Usta","Aşçı Dilek Hanım"],
+  hasan:["Tayfa Hasan","Tayfa Eren","Tayfa Barış","Tayfa Ahmet","Tayfa Merve","Tayfa Gökhan"],
+  musa:["Tayfa Musa","Tayfa Emir","Tayfa Deniz","Tayfa Sarp","Tayfa Cansu","Tayfa Yiğit"]
+};
+
+function pickRandom(list){
+  return list[Math.floor(Math.random()*list.length)];
+}
+
+function randomizeCrewRoster(){
+  Object.keys(CREW_NAME_POOLS).forEach(key=>{
+    if(CREW_DEFS[key]) CREW_DEFS[key].name = pickRandom(CREW_NAME_POOLS[key]);
+  });
+}
 
 let crewTrust = {};
 let crewUnlocked = {};
