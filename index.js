@@ -4217,6 +4217,66 @@ Senin ilk profesyonel yorumun ne olur?`,
   {text:"Akis, squat/bank effect, tug ihtiyaci ve pilot bilgisini birlikte okuyarak nehir pilotajina hazirlanirim",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
   {text:"Derinlik varsa nehir gecisinin normal liman yaklasmasindan cok farkli olmadigini sanirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
   {text:"Nehirde sadece dumen komutlarini takip etmenin yeterli oldugunu dusunurum",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s319",gfx:"bridge",alert:false,day:"Gun 12",time:"10:40",loc:"Suveys Kanali - Konvoy Hatti",sub:"Konvoy, raporlama ve kanal disiplini",who:"suvari",
+  text:`Suvari kanal kitabini masaya birakti:
+
+"Suveys'te sadece duz su var diye rahatlanmaz. Konvoy zamani, pilot, speed restriction, meeting arrangement ve raporlama disiplini birlikte yurur."
+
+Sen once neye tutunursun?`,
+  choices:[
+  {text:"Konvoy sirasi, raporlama noktasi, speed limiti ve pilot talimatini birlikte takip ederim",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
+  {text:"Kanal duz oldugu icin esas zorlayici tarafin az oldugunu dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Sadece onundeki gemiyi izleyip geri kalani ikincil gorurum",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s320",gfx:"bridge",alert:false,day:"Gun 12",time:"13:05",loc:"Kiel Kanali - Dar Gecis",sub:"Karsilasmalarda hiz ve bank effect",who:"z2",
+  text:`2. Zabiti Kiel hattindaki notlara dokundu:
+
+"Kanal sadece rota cizgisi degil; emme-etme etkisi, bank effect, karsilasmalarda hiz ayari ve lokal kurallar demek. Buyuk gemiler birbirini su gibi ceker."
+
+En dogru dusunce hangisi?`,
+  choices:[
+  {text:"Karsilasmalarda hiz, bank effect ve lokal kanal talimatlarini birlikte dikkate alirim",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
+  {text:"Dar kanal ama duz oldugu icin sadece rota merkezini korumak yeterli sanirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Bank effect'i teorik bilgi sayip pratikte onemsiz gorurum",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s321",gfx:"radar",alert:true,day:"Gun 12",time:"18:50",loc:"Dover Bogazi - Ayrim Duzeni",sub:"TSS, crossing trafik ve fog riski",who:"z2",radarMode:"guard_zone",
+  text:`Dover hattinda trafik akiyor ama hava bozmaya baslamis.
+
+2. Zabiti alti cizili anlatti: "Burada ayrim duzeni kagitta kalmaz. TSS disiplini, crossing ferries, fog riski ve guard zone alarmi ayni anda dusunulur."
+
+Ilk disiplinin ne olur?`,
+  choices:[
+  {text:"TSS seridini korur, crossing trafik ve fog riskine gore radar/guard zone takibini siklastiririm",tag:"kritik",effect:{bilgi:19,sayginlik:13},radarMode:"guard_zone"},
+  {text:"Seritte kaldikca crossing hedefleri ikinci planda kalir diye dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"guard_zone"},
+  {text:"Dover trafigini AIS isimlerinden takip etmenin yeterli oldugunu sanirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11},radarMode:"guard_zone"}]},
+  {id:"s322",gfx:"bridge",alert:true,day:"Gun 13",time:"04:35",loc:"Babulmendep - Dar Gecis",sub:"Security ve traffic separation birlikte",who:"suvari",
+  text:`Gecis daraliyor. Suvari bir yanda security notu, bir yanda passage plan tutuyor.
+
+"Burada dar gecit, trafik ayrimi ve security dusuncesi birbirinden ayrilmaz. Birini abartip oburunu ihmal edersen zincir kirilir."
+
+Sen neyi birlikte tutarsin?`,
+  choices:[
+  {text:"Traffic separation, raporlama, ek gozculuk ve security farkindaligini ayni masada tutarim",tag:"kritik",effect:{bilgi:18,sayginlik:13,cesaret:3}},
+  {text:"Dar gecit oldugu icin guvenlik tarafini ikinci plana atmanin sorun olmayacagini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Guvenlik baskisiyla seyir disiplinini fazla bozup gereksiz VHF ve manevra yaratirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-11}}]},
+  {id:"s323",gfx:"radar",alert:true,day:"Gun 13",time:"23:20",loc:"Torres Bogazi - Resif Gecisi",sub:"Sığ su, yerel akinti ve hassas rota",who:"z2",radarMode:"parallel_index",
+  text:`Torres tarafinda harita adeta daraldi. Sığlıklar ve resifler rota hattina yaklasti.
+
+2. Zabiti sakin ama sert: "Burada bir iki kablo hata romantik sayilmaz. Parallel index, local current, visual mark ve safe speed birlikte calisir."
+
+En dogru refleks hangisi?`,
+  choices:[
+  {text:"Parallel indexing, yerel akinti, visual mark ve emniyetli hizi birlikte kullanirim",tag:"kritik",effect:{bilgi:20,sayginlik:13},radarMode:"parallel_index"},
+  {text:"ECDIS rotasi acik oldugu surece ek cross-check'e daha az gerek oldugunu dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"parallel_index"},
+  {text:"Bolgede pilot varsa kalan takibin cok kritik olmadigini sanirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11},radarMode:"parallel_index"}]},
+  {id:"s324",gfx:"storm",alert:true,day:"Gun 14",time:"05:10",loc:"Macellan Bogazi - Sert Hava",sub:"Ruzgar, akis ve dar gecit baskisi",who:"suvari",
+  text:`Macellan hattinda ruzgar gemiyi itiyor, akis baska yone cekiyor.
+
+Suvari sesi kisik ama nettir: "Bazi yerlerde harita bir cizgi degildir; ruzgarin, akintinin ve dumen cevabinin pazarligidir. Burada aceleci rahatlik istemem."
+
+Senin ilk profesyonel yorumun ne olur?`,
+  choices:[
+  {text:"Ruzgar, akis, dar gecit manevrasi ve makine hazirligini birlikte dusunerek daha konservatif giderim",tag:"kritik",effect:{bilgi:19,sayginlik:13,cesaret:4}},
+  {text:"Macellan'i sadece biraz daha sert hava gibi gorup rutin vardiya mantigini korurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Baskidan dolayi ya asiri yavaslayip durumu tikarim ya da gereksiz risk alirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
   {id:"s237",gfx:"bridge",alert:true,day:"Gun 6",time:"05:55",loc:"Koprustu - Sabah Vardiyasi",sub:"MOB proseduru ilk dakikalar",who:"z2",
   text:`Sancak taraftan bir cisim denize dustu. 2. Zabiti sesi sertlestirdi:
 
