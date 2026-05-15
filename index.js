@@ -4529,6 +4529,46 @@ En dogru zabit disiplini hangisi?`,
   {text:"Expiry tarihleri, bracket/ready durumu, self-test ve inventory kaydini birlikte kontrol ederim",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
   {text:"Sadece EPIRB'in yerinde olmasi bana yeter",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
   {text:"Kullanilmayan acil ekipmanlarin kontrolunu ertelerim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s246g",gfx:"harbor",alert:false,day:"Gun 9",time:"16:45",loc:"Can Filikasi Mahalli",sub:"Rescue boat launch drill",who:"z3",
+  text:`Bu kez tatbikat filika bakmakla kalmadi; rescue boat launch akisi anlatildi.
+
+"Hook, painter, engine readiness, crew PPE, communication ve recovery plani birlikte dusunulmezse drill bile kazaya doner." dedi 3. Zabiti.
+
+Ilk profesyonel disiplinin ne olur?`,
+  choices:[
+  {text:"PPE, communication, hook/painter kontrolu ve recovery planini birlikte teyit ederim",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Bot suya iniyorsa kalan detaylar ekip icinde halledilir diye dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Launch drillinde asil riskin operasyon sonrasi toplamada oldugunu dusunmeyip acele ederim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s246h",gfx:"deck",alert:false,day:"Gun 9",time:"17:15",loc:"Ana Guverte - SOPEP Locker",sub:"Oil spill drill akisi",who:"z3",
+  text:`SOPEP tatbikatinda kucuk bir sizinti senaryosu verildi.
+
+"Scupper kapama, absorbent, spill kit, raporlama ve kaynak izolasyonu ayni anda dusunulur. Bez alip silmek tatbikat sayilmaz." dedi 3. Zabiti.
+
+Sen neyi once kurarsin?`,
+  choices:[
+  {text:"Kaynak izolasyonu, scupper korumasi ve spill kit yerlesimini birlikte baslatirim",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Once zemini silip sonra yayilima bakarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"SOPEP drillini formalite gorur, rapor zincirini ikincil sayarim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s246i",gfx:"engine",alert:false,day:"Gun 9",time:"17:50",loc:"Steering Gear Room - Drill",sub:"Emergency steering drill",who:"carkci",
+  text:`Steering gear room'da bu kez tam tatbikat akisi kuruldu.
+
+"Kopru komutu, yerel tekrar, dumen aci teyidi ve haberlesme net degilse emergency steering gercek anda kaosa doner." dedi basmuhendis.
+
+En dogru uygulama hangisi?`,
+  choices:[
+  {text:"Komut tekrarini, dumen aci teyidini ve kopru-yerel haberlesmeyi disiplinle kurarim",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Yerel kol hareket ediyorsa drillin basarili sayilacagini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Emergency steering drillinde yazili tekrar ve teyidin o kadar gerekli olmadigini sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s246j",gfx:"deck",alert:false,day:"Gun 9",time:"18:25",loc:"Kapali Mahal Girisi",sub:"Enclosed space rescue drill",who:"gazsubay",
+  text:`Gaz Kontrol Subayi Elif bu kez kapali mahal kurtarma tatbikati acti.
+
+"Permit, gas reading, attendant, communication, rescue set ve standby ekip ayni zincirin halkalari. Iceri girmek kadar yanlis kurtarma denemesi de oldurur."
+
+Senin ilk dogru refleksin ne olur?`,
+  choices:[
+  {text:"Permit, gaz olcumu, attendant ve rescue hazirligini birlikte teyit ederim",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
+  {text:"Iceride biri bayildiysa ilk refleks olarak hizla iceri atlamayi dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Kapali mahal rescue drillinde attendant ve communication rolunu ikinci plana atarim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
   {id:"s247",gfx:"compass",alert:false,day:"Gun 9",time:"19:10",loc:"Koprustu - Gece Seyri",sub:"Fenerler, sekiller ve sis isaretleri",who:"z2",
   text:`Gece vardiyasinda 2. Zabiti disariyi isaret etti:
 
@@ -6393,6 +6433,9 @@ const STUDENT_NOTES = [
   {head:"LIMAN VE EVRAK", body:"Notice of Readiness, Bill of Lading, Mate's Receipt, Statement of Facts, manifest, stowage plan, Oil Record Book ve Garbage Record Book temel evraklardandir.<br>Uyumsuzluk gordugunde amire hemen bildirilir.<br>Laytime, demurrage, dispatch, arrival condition ve sea protest temel kavramlardir.", tip:"Saklanan hata buyur."},
   {head:"PSC / ISPS / SOLAS / STCW", body:"PSC denetiminde evrak, emniyet ekipmani, drill kayitlari, GMDSS testleri ve gemi kondisyonu birlikte incelenir.<br>ISPS tarafinda gangway kontrolu, ziyaretci kaydi ve security level takibi esastir.<br>SOLAS can emniyeti, STCW yeterlilik ve vardiya standartlarini kurar.", tip:"Denetime her gun hazir olunur."},
   {head:"LSA / FILIKA / MATAFORA BAKIMI", body:"Can salinda servis tarihi, hydrostatic release unit (HRU), painter, lash ve konteyner kondisyonu kontrol edilir.<br>Can filikasinda inventory, drain plug, battery, engine readiness, communication set, water/ration ve release gear gozden gecirilir.<br>Can yeleklerinde light, whistle, tape, buddy line ve genel kondisyon; immersion suitte size, zipper ve sizdirmazlik mantigi okunur.<br>Matafora ve launching appliance tarafinda fall, sheave, brake, grease noktasi, limit switch ve hareket testi birlikte dusunulur.<br>Pyrotechnics, line-throwing appliance, EPIRB, SART ve handheld VHF tarih/kayit/ready durumu unutulmaz.", tip:"Acil durum ekipmani en cok lazim oldugu gun surpriz cikarmamali."},
+  {head:"TATBIKATLAR / DRILL MANTIGI", body:"<b>Fire drill</b>: alarm, muster, mahal teyidi, boundary cooling, fire party, communication ve sayim zinciri kurulur.<br><b>Abandon ship drill</b>: muster list, can yelekleri, kisi sayimi, filika/can sali hazirligi ve komut zinciri uygulanir.<br><b>MOB drill</b>: bagir, tarafi isaretle, goz temasini kaybetme, alarm ve manevra zincirini baslat.<br><b>Rescue boat drill</b>: hook, painter, PPE, engine readiness ve recovery plani birlikte kontrol edilir.<br><b>Oil spill drill</b>: kaynak izolasyonu, scupper kapama, spill kit, absorbent ve raporlama birlikte gider.<br><b>Emergency steering drill</b>: kopru komutu, yerel tekrar, dumen aci teyidi ve haberlesme temiz olmali.<br><b>Enclosed space rescue drill</b>: permit, gas reading, attendant, rescue set ve standby ekip hazir tutulur.", tip:"Tatbikat ezber degil; gercek olay gelmeden koordinasyonu kas hafizasina indirme isidir."},
+  {head:"YANGIN EKIPMANI NASIL KULLANILIR", body:"<b>Hydrant / hose / nozzle</b>: once uygun hydrant secilir, hortum serilir, nozzle ayari verilir, su hattina kademeli basinilir; ekip asla kontrolsuz su yemez.<br><b>Portable extinguisher</b>: pimi cek, tabana yonel, sweep hareketiyle kullan; ruzgar ve kacis yolu dusunulmeden girilmez.<br><b>CO2</b>: canli mahal veya enerjili panelde prosedursuz acilmaz; mahal izolasyonu ve personel sayimi hayati onemdedir.<br><b>Foam</b>: yanici sivilarda yuzeyi orterek oksijeni keser; kopugu dagitacak sert jet kullanilmaz.<br><b>Dry Powder</b>: hizli knock-down saglar ama gorusu bozar; elektrik ve gaz risklerinde senaryoya gore kullanilir.<br><b>Wet Chemical / Fire Blanket</b>: mutfak yag yanginlarinda ilk akla gelen medyalardandir; suyla tepki buyutulmez.<br><b>SCBA</b>: basinc, maske sizdirmazligi, demand valve, harness, alarm ve buddy check tamamlanmadan entry baslamaz.", tip:"Yanginda hiz onemlidir ama dogru medya ve dogru prosedur daha onemlidir."},
+  {head:"ILK YARDIMDA ILK ADIMLAR", body:"<b>1. Sahayi emniyete al</b>: once kendini ve ortamı koru; elektrik, duman, gaz, dusme riski varsa kontrolsuz yaklasma.<br><b>2. Bilinc kontrolu</b>: sesli ve hafif dokunsal uyariyla tepki var mi bak.<br><b>3. Solunum ve hava yolu</b>: hava yolunu ac, normal solunum var mi degerlendir.<br><b>4. Yardim cagir</b>: amire, bridge'e veya medical support zincirine net bilgi ver.<br><b>5. Kanama kontrolu</b>: dogrudan basiyla durdurmaya calis; buyuk kanamada zaman kaybetme.<br><b>6. Yanikta</b>: uygun sogutma yap, yag/kimyasal/elektrik ayrimini dusun, rastgele krem-surme hatasina dusme.<br><b>7. Dumandan etkilenmede</b>: temiz hava, bilinç-solunum takibi ve ileri yardim zinciri onceliklidir.<br><b>8. Supheli kirik / dusme</b>: gereksiz oynatma; omurga veya boyun riski varsa sabitleyerek bekle.<br><b>9. Kayit</b>: saat, belirti ve yapilan ilk mudahale not edilir; gemide bilgi kaybolmasin.", tip:"Ilk yardim kahramanlik degil; sirayi bozmadan hayat fonksiyonlarini koruma isidir."},
   {head:"DEMIR ZINCIRI / KILIT MARKALARI", body:"Bir kilit / shackle genelde <b>15 fathom</b> yani yaklasik <b>27.5 metre</b> kabul edilir.<br>Zincir marking sisteminde joining shackle cevresindeki boyali baklalar ve tel sargilari hangi kilidin suda oldugunu hizlica anlamak icin kullanilir.<br>Gemiden gemiye renk ve tel duzeni degisebilir; esas olan geminin kendi <b>chain marking plan</b>ini bilmektir.<br>Pruva ustunde rapor verirken 'birinci kilit suya girdi', 'ucuncu kilit suya girdi' gibi net ve yuksek sesli ifade kullanilir.<br>Kaloma verirken sadece sayi degil; zincirin hizi, fren durumu ve davranisi da izlenir.", tip:"Ezber renk degil, gemide uygulanan marking sistemi esastir."},
   {head:"ACIL HABERLESME", body:"MAYDAY distress, PAN-PAN urgency, SECURITE emniyet yayini icindir.<br>Mesajda gemi adi, callsign, pozisyon, tehlikenin cinsi, yardim ihtiyaci ve kisi sayisi acik verilir.<br>GMDSS, EPIRB, SART, NAVTEX, DSC, handheld VHF ve emergency battery kayitlari bilinir.", tip:"Netlik hiz kadar onemlidir."},
   {head:"GMDSS / HABERLESME CIHAZLARI", body:"<b>VHF DSC</b> kisa mesafe distress / urgency / safety ve CH16 nobet disiplininin temelidir.<br><b>MF/HF DSC</b> daha uzak mesafe haberlesme ve uygun frekans secimiyle dusunulur.<br><b>NAVTEX</b> navigational ve meteorological warning alir; baski / printer / mesaj secimi onemlidir.<br><b>EGC / SafetyNET</b> genelde Inmarsat-C uzerinden MSI ve safety message alir.<br><b>Inmarsat-C</b> text tabanli haberlesme, distress, reporting ve mesajlasmada kullanilir.<br><b>EPIRB</b> acil durumda COSPAS-SARSAT uydu sistemine distress beacon gonderir.<br><b>SART</b> arama-kurtarmada radar cevaplayici olarak hedef bulunurlugunu artirir.<br><b>AIS</b> trafik farkindaligi ve hedef tanimlamada yardimcidir; radar ve gorsel teyidin yerine gecmez.<br><br><b>GMDSS Sea Areas</b>:<br><b>A1</b> VHF DSC kapsamasinda yakin denizler<br><b>A2</b> MF DSC kapsamasina kadar uzayan bolgeler<br><b>A3</b> Inmarsat kapsamasindaki acik denizler<br><b>A4</b> kutup / Inmarsat disi yuksek enlem alanlari; HF dusuncesi agir basar.<br><br><b>RCC/MRCC</b> distress sonrasinda arama-kurtarma koordinasyon zincirini yurutur.<br><b>Pratik mantik:</b> Hangi cihazin ne zaman, hangi menzilde ve hangi maksatla kullanilacagini bilmek gerekir.", tip:"Cihazi tanimak yetmez; hangi acilde hangisine uzanacagini da bil."},
