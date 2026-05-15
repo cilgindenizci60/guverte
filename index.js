@@ -337,6 +337,37 @@ const STYPES=[
   {key:"lng",   ico:"🔵",nm:"LNG",         ds:"Sıvı gaz",    ton:"75.000 m³", spd:"19 kn",kontracts:[{ay:4,izin:1,ucret:"Çok Yüksek"},{ay:6,izin:2,ucret:"Maksimum"}]},
 ];
 
+const SHIP_TON_PROFILES={
+  kuru:{min:18000,max:32000,step:1000,unit:"DWT"},
+  tanker:{min:38000,max:64000,step:2000,unit:"DWT"},
+  kont:{min:12000,max:26000,step:1000,unit:"GT"},
+  roro:{min:9000,max:18000,step:1000,unit:"GT"},
+  bulk:{min:42000,max:82000,step:2000,unit:"DWT"},
+  lng:{min:68000,max:174000,step:2000,unit:"m³"},
+};
+let CURRENT_SHIP_SPECS={};
+
+function formatShipTonnage(value, unit){
+  return `${Math.round(value).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')} ${unit}`;
+}
+function rollShipSpec(typeKey){
+  const profile=SHIP_TON_PROFILES[typeKey];
+  const fallback=STYPES.find(x=>x.key===typeKey);
+  if(!profile){
+    return {value:null, unit:'', tonLabel:fallback?.ton||''};
+  }
+  const steps=Math.floor((profile.max-profile.min)/profile.step);
+  const value=profile.min + Math.floor(Math.random()*(steps+1))*profile.step;
+  return {value, unit:profile.unit, tonLabel:formatShipTonnage(value, profile.unit)};
+}
+function refreshShipSpecs(){
+  CURRENT_SHIP_SPECS={};
+  STYPES.forEach(t=>{ CURRENT_SHIP_SPECS[t.key]=rollShipSpec(t.key); });
+}
+function getShipSpec(typeKey){
+  return CURRENT_SHIP_SPECS[typeKey] || rollShipSpec(typeKey);
+}
+
 const SNAMES={
   kuru:["M/V Ege Meltem","M/V Karadeniz","M/V Bozkurt","M/V Marmara","M/V Toros"],
   tanker:["MT Boğaziçi","MT Fırat","MT Dicle","MT Akdeniz"],
@@ -1132,6 +1163,7 @@ Duzeltilmis GM = GM - FSC / displacement. Gercek GM'yi bul; sonra bu gemi gece v
 function buildScenePool(n,sn,yr,stype,startPort=selectedStartPort,startScenario=selectedStartScenario){
   const era=ERA_TECH[yr]||ERA_TECH[2018];
   const st=STYPES.find(x=>x.key===stype)||STYPES[0];
+  const shipSpec=getShipSpec(stype);
   const startSub=`${startScenario.subPrefix} - ${yr}`;
 
   // Sahneler: her biri bağımsız, next kullanılmayacak (rastgele sıra sistemi)
@@ -1142,7 +1174,7 @@ function buildScenePool(n,sn,yr,stype,startPort=selectedStartPort,startScenario=
   return [
 // ---- GÜN 1 SAHNELERİ ----
 {id:"s01",gfx:"harbor",alert:false,day:"Gun 1",time:startScenario.time,loc:startPort.dock,sub:startSub,who:"anlatici",
-text:`${startPort.name}, ${yr} yili.\n\n${startScenario.intro}\n\nCantan sirtinda, staj belgelerin avucunda iskeleye geldin. Onunde ${sn} - ${st.ton} ${st.nm} gemisi.\n\n${startScenario.bridgeCall.replace('${n}',n)}`,
+text:`${startPort.name}, ${yr} yili.\n\n${startScenario.intro}\n\nCantan sirtinda, staj belgelerin avucunda iskeleye geldin. Onunde ${sn} - ${shipSpec.tonLabel||st.ton} ${st.nm} gemisi.\n\n${startScenario.bridgeCall.replace('${n}',n)}`,
 choices:[
 {text:"Düzgünce selamlayıp kendini tanıt",tag:"akilli",effect:{sayginlik:5,bilgi:3}},
 {text:"Heyecanla 'Evet!' deyip içeri gir",tag:"cesur",effect:{cesaret:5,sayginlik:-2}},
@@ -4277,6 +4309,76 @@ Senin ilk profesyonel yorumun ne olur?`,
   {text:"Ruzgar, akis, dar gecit manevrasi ve makine hazirligini birlikte dusunerek daha konservatif giderim",tag:"kritik",effect:{bilgi:19,sayginlik:13,cesaret:4}},
   {text:"Macellan'i sadece biraz daha sert hava gibi gorup rutin vardiya mantigini korurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
   {text:"Baskidan dolayi ya asiri yavaslayip durumu tikarim ya da gereksiz risk alirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s325",gfx:"harbor",alert:false,day:"Gun 14",time:"10:10",loc:"St. Lawrence - Nehir Sistemi",sub:"Pilotaj, akinti ve tatli su dusuncesi",who:"z2",
+  text:`St. Lawrence hattinda deniz mantigi bir anda nehir pilotajina donuyor.
+
+2. Zabiti not etti: "Burada tatli su etkisi, akinti, dar alanlar ve yerel pilotaj bilgisi beraber gider. Draft raporu ve manevra hissi birlikte okunur."
+
+En dogru yorumun ne olur?`,
+  choices:[
+  {text:"Tatli su etkisi, nehir akintisi, pilotaj ve dar manevra alanini birlikte degerlendiririm",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
+  {text:"St. Lawrence'i daha uzun bir liman yaklasmasi gibi dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Nehir pilotajinda draft ve su yogunlugunu ikincil gorurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s326",gfx:"bridge",alert:false,day:"Gun 14",time:"12:30",loc:"Korint Kanali - Dar Hiza",sub:"Dar kanal ama kisa gecis",who:"suvari",
+  text:`Korint hattinda her sey yakin gorunuyor; kaya, duvar ve su.
+
+Suvari omzunun ustunden bakti: "Kisa gecis diye rehavete izin yok. Dar kanal disiplini, hiz kontrolu ve bank etkisini kucuk diye hafife alani su affetmez."
+
+Ilk refleksin ne olur?`,
+  choices:[
+  {text:"Dar gecit, hiz kontrolu ve duvar etkisini birlikte dusunup daha temiz bir vardiya kurarim",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
+  {text:"Gecis kisa oldugu icin risk penceresinin de kucuk oldugunu sanirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Korint'i dar ama basit bir kanal gibi gorup cross-check'i gevsetirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s327",gfx:"bridge",alert:true,day:"Gun 15",time:"03:50",loc:"Sunda Bogazi - Akinti Hatti",sub:"Volkanik ada gecisi ve trafik karisimi",who:"z2",
+  text:`Sunda hattinda trafik daginik, akinti ise beklediginden daha oyunlu.
+
+2. Zabiti anlatti: "Burada sadece iki nokta arasindan gecmiyorsun. Yerel akinti, balikci hareketi ve sinirli gorus bazen dar bogazdan daha zor olur."
+
+En dogru disiplin hangisi?`,
+  choices:[
+  {text:"Yerel akinti, daginik trafik ve visual/radar cross-check'i birlikte siklastiririm",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
+  {text:"Ana rota aciksa daginik yerel hedefleri ikinci planda tutarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Akinti yorumunu buyuk gemiler icin o kadar kritik gormem",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s328",gfx:"bridge",alert:true,day:"Gun 15",time:"06:15",loc:"Lombok Bogazi - Derin Gecis",sub:"Alternatif rota ama guclu akis",who:"suvari",
+  text:`Lombok bazen Malakka yerine rahat rota gibi duyulur. Suvari hemen kesti:
+
+"Derin diye kolay sayma. Guclu akis, dar pencereli trafik ve rota uzerindeki enerji hissi burada farklidir. Alternatif olmak risksiz olmak degil."
+
+Neye dikkat edersin?`,
+  choices:[
+  {text:"Guclu akis, ETA kaymasi, rota kontrolu ve traffic picture'i birlikte izlerim",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
+  {text:"Lombok'u daha acik ve rahat su sayip vardiya baskisini azaltirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Alternatif rota diye manevra ve akinti takibini gevsetirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s329",gfx:"radar",alert:true,day:"Gun 15",time:"19:10",loc:"Kerch Bogazi - Sira Bekleme",sub:"Dar gecit, raporlama ve trafik yogunlugu",who:"z2",radarMode:"ebl_vrm",
+  text:`Kerch hattinda bekleyen trafik zincir gibi uzaniyor.
+
+2. Zabiti dedi ki: "Burada bazen gecisin zorlugu manevradan cok raporlama, bekleme ve dar hedef ayrimidir. Mesafe ve kerterizi temiz okumak gerekir."
+
+Ilk profesyonel tavrin ne olur?`,
+  choices:[
+  {text:"Raporlama disipliniyle birlikte EBL/VRM kullanir, dar hedef ayrimini net tutarim",tag:"kritik",effect:{bilgi:19,sayginlik:13},radarMode:"ebl_vrm"},
+  {text:"Sira bekleniyorsa ayrintili hedef ayrimi daha az kritik diye dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"ebl_vrm"},
+  {text:"Bekleme trafiginde radar mesafe/kerteriz disiplinini gevsetirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10},radarMode:"ebl_vrm"}]},
+  {id:"s330",gfx:"storm",alert:true,day:"Gun 16",time:"02:40",loc:"Bering Bogazi - Soguk Hava Gecisi",sub:"Soguk, akinti ve gorus baskisi",who:"suvari",
+  text:`Bering tarafinda hava sadece soguk degil; sert ve inatci.
+
+Suvari not dusuyor: "Burada soguk hava sadece personeli degil, ekipmani ve gorusu de etkiler. Akinti, buz riski ve sis bir araya gelirse disiplin daha da sertlesir."
+
+Sen nasil yaklasirsin?`,
+  choices:[
+  {text:"Soguk hava, gorus, ekipman etkisi ve akintiyi birlikte okuyup daha muhafazakar giderim",tag:"kritik",effect:{bilgi:19,sayginlik:13,cesaret:3}},
+  {text:"Soguk havayi esasen personel konforu konusu gibi gorurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Bering gecisinde sis ve ekipman etkisini ikinci plana iterim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s331",gfx:"harbor",alert:false,day:"Gun 16",time:"11:20",loc:"Yangtze Nehri - Yogun Ticari Hat",sub:"Nehir trafigi, pilot ve raporlama baskisi",who:"z2",
+  text:`Yangtze hattinda nehir sanki durmuyor; trafik akiyor, terminal akiyor, anons akiyor.
+
+2. Zabiti sesini alcatti: "Burada sadece nehir pilotaji yok. Yogun ticari trafik, raporlama disiplini, lokal kurallar ve zaman baskisi birlikte isler."
+
+En dogru yorumun ne olur?`,
+  choices:[
+  {text:"Pilotaj, lokal raporlama, nehir trafigi ve operasyon baskisini birlikte yonetirim",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
+  {text:"Pilot varken yerel kural yogunlugunu ikinci planda tutarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Nehir hattinda anons ve lokal kural kalabaligini cok da onemli gormem",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
   {id:"s237",gfx:"bridge",alert:true,day:"Gun 6",time:"05:55",loc:"Koprustu - Sabah Vardiyasi",sub:"MOB proseduru ilk dakikalar",who:"z2",
   text:`Sancak taraftan bir cisim denize dustu. 2. Zabiti sesi sertlestirdi:
 
@@ -5274,6 +5376,7 @@ function scheduleAdvancedConsequences(sc,c2){
 
 // ===== GİRİŞ EKRANI =====
 function buildIntro(){
+  refreshShipSpecs();
   // Yıl seçimi
   const ys=document.getElementById('yearsel');
   YEARS.forEach(y=>{
@@ -5288,9 +5391,10 @@ function buildIntro(){
   STYPES.forEach(t=>{
     const konts=KONTRAT_DEFS[t.key]||[];
     const kontStr=konts.map(k=>`${k.ay}+1`).join(' / ');
+    const spec=getShipSpec(t.key);
     const d=document.createElement('div');
     d.className='selb'+(t.key===selType?' active':'');
-    d.innerHTML=`<span class="sb-ico">${t.ico}</span><span class="sb-nm">${t.nm}</span><span class="sb-kont">${kontStr} ay</span>`;
+    d.innerHTML=`<span class="sb-ico">${t.ico}</span><span class="sb-nm">${t.nm}</span><span class="sb-kont">${spec.tonLabel}<br>${kontStr} ay</span>`;
     d.onclick=()=>{selType=t.key;document.querySelectorAll('.selb').forEach(x=>x.classList.remove('active'));d.classList.add('active');updateKontrat();updateSugs();};
     st.appendChild(d);
   });
@@ -5736,7 +5840,8 @@ function renderScene(idx){
   document.getElementById('charname').textContent=pn;
   document.getElementById('charrole').textContent='GÜV. STAJYERİ · '+sc.day.toUpperCase();
   const stObj=STYPES.find(x=>x.key===selType);
-  document.getElementById('shipinfo').textContent=sn+' · '+stObj.nm+' · '+selYear;
+  const shipSpec=getShipSpec(selType);
+  document.getElementById('shipinfo').textContent=sn+' · '+(shipSpec.tonLabel||stObj.ton)+' · '+stObj.nm+' · '+selYear;
   document.getElementById('contract-type').textContent=stObj.nm+' '+contractTotal+'+'+(KONTRAT_DEFS[selType]?.[selKontrat]?.izin||1)+'ay';
 
   const pct=Math.round((currentIdx/sceneQueue.length)*100);
