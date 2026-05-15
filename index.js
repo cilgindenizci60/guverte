@@ -3081,7 +3081,7 @@ choices:[
 {text:"Dinlenmek yerine telefonda oyalanirim",tag:"korkak",effect:{dinclik:-5}}]},
 
 {id:"s187b",gfx:"sea",alert:false,day:"Gun 9",time:"07:05",loc:"Acik GÃ¼verte - Serin Sabah",sub:"Vardiya once kisa esneme",who:"hasan",
-text:`Hasan seni korkuluga yaslanmis gorunce guldÃ¼.
+text:`Hasan seni korkuluga yaslanmis gorunce guldu.
 
 "Iki dakika omuz ac, sirtini ac, derin nefes al. Denizde bedenini ihmal edenin dikkati de dagilir."
 
