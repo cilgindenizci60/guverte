@@ -3364,6 +3364,12 @@ const START_PORTS=[
   {name:"Dubai", dock:"Dubai Limanı — Jebel Ali Terminali", office:"Dubai Limanı — Limancı Ofisi", departureLine:"Basra Körfezi trafiği arkada kaldı", x:336, y:218},
   {name:"Tanger Med", dock:"Tanger Med — Konteyner Terminali", office:"Tanger Med — Limancı Ofisi", departureLine:"Cebelitarık trafiği kıç omuzlukta kaldı", x:6, y:118},
   {name:"Anvers", dock:"Anvers Limanı — Ticari Rıhtım", office:"Anvers Limanı — Limancı Ofisi", departureLine:"Scheldt hattı kıçta kaldı", x:28, y:14},
+  {name:"Singapur", dock:"Singapur Limanı — Terminal", office:"Singapur Limanı — Limancı Ofisi", departureLine:"Malakka trafiği arkada kaldı", x:350, y:166},
+  {name:"Şanghay", dock:"Şanghay Limanı — Konteyner Rıhtımı", office:"Şanghay Limanı — Limancı Ofisi", departureLine:"Yangtze ağzı kıçta kaldı", x:392, y:78},
+  {name:"Panama", dock:"Balboa Terminali — Panama", office:"Panama Acentesi", departureLine:"Panama Kanalı geçişi ufukta kaldı", x:18, y:170},
+  {name:"New Orleans", dock:"New Orleans Limanı — Mississippi Rıhtımı", office:"New Orleans Acentesi", departureLine:"Mississippi deltası arkada kaldı", x:36, y:128},
+  {name:"Santos", dock:"Santos Limanı — Terminal", office:"Santos Acentesi", departureLine:"Brezilya kıyısı kıç omuzlukta kaldı", x:58, y:236},
+  {name:"Yokohama", dock:"Yokohama Limanı — Rıhtım", office:"Yokohama Acentesi", departureLine:"Japon kıyıları yavaşça geride kaldı", x:414, y:86},
 ];
 const START_SCENARIOS=[
   {time:"05:30", subPrefix:"Sabah sisi", intro:"Sabah erken, rıhtımın üstünde ince sis var.", bridgeCall:"Rampadan biri indi: \"Sen stajyer ${n} misin? 1. Zabiti köprüde bekliyor.\""},
@@ -5945,45 +5951,87 @@ function applyCrewEffect(who, tag){
 
 // ===== ROTA HARİTASI =====
 const ROUTE_PORTS = [
-  {name:"İzmir", x:85, y:130, visited:true},
-  {name:"Çanakkale", x:130, y:100, visited:false},
-  {name:"İstanbul", x:180, y:85, visited:false},
-  {name:"Ambarli", x:172, y:92, visited:false},
-  {name:"Pire", x:120, y:160, visited:false},
-  {name:"Malta", x:95, y:175, visited:false},
-  {name:"Valensiya", x:22, y:108, visited:false},
-  {name:"Cebelitarık", x:8, y:120, visited:false},
-  {name:"Algeciras", x:10, y:125, visited:false},
-  {name:"İskenderiye", x:200, y:210, visited:false},
-  {name:"Kıbrıs", x:170, y:170, visited:false},
-  {name:"Port Said", x:228, y:200, visited:false},
-  {name:"Cenova", x:60, y:80, visited:false},
-  {name:"Barselona", x:30, y:100, visited:false},
-  {name:"Trieste", x:102, y:52, visited:false},
-  {name:"Messina", x:78, y:145, visited:false},
-  {name:"Haifa", x:212, y:188, visited:false},
-  {name:"Suveys", x:245, y:212, visited:false},
-  {name:"Rotterdam", x:25, y:18, visited:false},
-  {name:"Mersin", x:180, y:180, visited:false},
-  {name:"Marsilya", x:40, y:92, visited:false},
-  {name:"Napoli", x:88, y:120, visited:false},
-  {name:"Hamburg", x:42, y:10, visited:false},
-  {name:"Limasol", x:176, y:172, visited:false},
-  {name:"Cidde", x:260, y:210, visited:false},
-  {name:"Dubai", x:336, y:218, visited:false},
-  {name:"Tanger Med", x:6, y:118, visited:false},
-  {name:"Anvers", x:28, y:14, visited:false},
-  {name:"Malaga", x:18, y:132, visited:false},
-  {name:"Bari", x:112, y:96, visited:false},
-  {name:"Civitavecchia", x:74, y:108, visited:false},
-  {name:"Split", x:110, y:72, visited:false},
-  {name:"Ravenna", x:92, y:64, visited:false},
-  {name:"Burgaz", x:205, y:55, visited:false},
-  {name:"Varna", x:214, y:48, visited:false},
-  {name:"Batum", x:258, y:58, visited:false},
-  {name:"Novorossiysk", x:250, y:34, visited:false},
-  {name:"Abu Dhabi", x:348, y:214, visited:false},
-  {name:"Doha", x:362, y:208, visited:false},
+  {name:"İzmir", x:85, y:130, visited:true, kind:"port"},
+  {name:"Çanakkale", x:130, y:100, visited:false, kind:"port"},
+  {name:"İstanbul", x:180, y:85, visited:false, kind:"port"},
+  {name:"Ambarli", x:172, y:92, visited:false, kind:"port"},
+  {name:"Pire", x:120, y:160, visited:false, kind:"port"},
+  {name:"Malta", x:95, y:175, visited:false, kind:"port"},
+  {name:"Valensiya", x:22, y:108, visited:false, kind:"port"},
+  {name:"Cebelitarık", x:8, y:120, visited:false, kind:"waterway"},
+  {name:"Algeciras", x:10, y:125, visited:false, kind:"port"},
+  {name:"İskenderiye", x:200, y:210, visited:false, kind:"port"},
+  {name:"Kıbrıs", x:170, y:170, visited:false, kind:"port"},
+  {name:"Port Said", x:228, y:200, visited:false, kind:"port"},
+  {name:"Cenova", x:60, y:80, visited:false, kind:"port"},
+  {name:"Barselona", x:30, y:100, visited:false, kind:"port"},
+  {name:"Trieste", x:102, y:52, visited:false, kind:"port"},
+  {name:"Messina", x:78, y:145, visited:false, kind:"waterway"},
+  {name:"Haifa", x:212, y:188, visited:false, kind:"port"},
+  {name:"Suveys", x:245, y:212, visited:false, kind:"waterway"},
+  {name:"Rotterdam", x:25, y:18, visited:false, kind:"port"},
+  {name:"Mersin", x:180, y:180, visited:false, kind:"port"},
+  {name:"Marsilya", x:40, y:92, visited:false, kind:"port"},
+  {name:"Napoli", x:88, y:120, visited:false, kind:"port"},
+  {name:"Hamburg", x:42, y:10, visited:false, kind:"port"},
+  {name:"Limasol", x:176, y:172, visited:false, kind:"port"},
+  {name:"Cidde", x:260, y:210, visited:false, kind:"port"},
+  {name:"Dubai", x:336, y:218, visited:false, kind:"port"},
+  {name:"Tanger Med", x:6, y:118, visited:false, kind:"port"},
+  {name:"Anvers", x:28, y:14, visited:false, kind:"port"},
+  {name:"Malaga", x:18, y:132, visited:false, kind:"port"},
+  {name:"Bari", x:112, y:96, visited:false, kind:"port"},
+  {name:"Civitavecchia", x:74, y:108, visited:false, kind:"port"},
+  {name:"Split", x:110, y:72, visited:false, kind:"port"},
+  {name:"Ravenna", x:92, y:64, visited:false, kind:"port"},
+  {name:"Burgaz", x:205, y:55, visited:false, kind:"port"},
+  {name:"Varna", x:214, y:48, visited:false, kind:"port"},
+  {name:"Batum", x:258, y:58, visited:false, kind:"port"},
+  {name:"Novorossiysk", x:250, y:34, visited:false, kind:"port"},
+  {name:"Abu Dhabi", x:348, y:214, visited:false, kind:"port"},
+  {name:"Doha", x:362, y:208, visited:false, kind:"port"},
+  {name:"Singapur", x:350, y:166, visited:false, kind:"port"},
+  {name:"Şanghay", x:392, y:78, visited:false, kind:"port"},
+  {name:"Panama", x:18, y:170, visited:false, kind:"port"},
+  {name:"New Orleans", x:36, y:128, visited:false, kind:"port"},
+  {name:"Santos", x:58, y:236, visited:false, kind:"port"},
+  {name:"Yokohama", x:414, y:86, visited:false, kind:"port"},
+  {name:"Panama Kanali", x:22, y:172, visited:false, kind:"waterway"},
+  {name:"Kiel Kanali", x:46, y:8, visited:false, kind:"waterway"},
+  {name:"Korint Kanali", x:118, y:154, visited:false, kind:"waterway"},
+  {name:"St. Lawrence", x:46, y:56, visited:false, kind:"waterway"},
+  {name:"Hurmuz Bogazi", x:342, y:206, visited:false, kind:"waterway"},
+  {name:"Babulmendep", x:282, y:218, visited:false, kind:"waterway"},
+  {name:"Malakka Bogazi", x:344, y:162, visited:false, kind:"waterway"},
+  {name:"Sunda Bogazi", x:350, y:186, visited:false, kind:"waterway"},
+  {name:"Lombok Bogazi", x:360, y:194, visited:false, kind:"waterway"},
+  {name:"Dover Bogazi", x:34, y:24, visited:false, kind:"waterway"},
+  {name:"Bonifacio Bogazi", x:68, y:138, visited:false, kind:"waterway"},
+  {name:"Kerch Bogazi", x:234, y:38, visited:false, kind:"waterway"},
+  {name:"Tayvan Bogazi", x:386, y:116, visited:false, kind:"waterway"},
+  {name:"Tsugaru Bogazi", x:414, y:66, visited:false, kind:"waterway"},
+  {name:"Kore Bogazi", x:404, y:84, visited:false, kind:"waterway"},
+  {name:"Torres Bogazi", x:396, y:210, visited:false, kind:"waterway"},
+  {name:"Macellan Bogazi", x:34, y:252, visited:false, kind:"waterway"},
+  {name:"Bering Bogazi", x:430, y:12, visited:false, kind:"waterway"},
+  {name:"Mississippi Nehri", x:36, y:128, visited:false, kind:"waterway"},
+  {name:"Amazon Nehri", x:48, y:214, visited:false, kind:"waterway"},
+  {name:"Ren Nehri", x:30, y:20, visited:false, kind:"waterway"},
+  {name:"Tuna Nehri", x:146, y:72, visited:false, kind:"waterway"},
+  {name:"Elbe Nehri", x:40, y:12, visited:false, kind:"waterway"},
+  {name:"Hudson Nehri", x:60, y:64, visited:false, kind:"waterway"},
+  {name:"Yangtze Nehri", x:392, y:78, visited:false, kind:"waterway"},
+  {name:"Mekong Nehri", x:368, y:154, visited:false, kind:"waterway"},
+  {name:"Nijer Nehri", x:88, y:178, visited:false, kind:"waterway"},
+  {name:"Basra Korfezi", x:344, y:214, visited:false, kind:"waterway"},
+  {name:"Aden Korfezi", x:274, y:218, visited:false, kind:"waterway"},
+  {name:"Akabe Korfezi", x:240, y:194, visited:false, kind:"waterway"},
+  {name:"Meksika Korfezi", x:24, y:134, visited:false, kind:"waterway"},
+  {name:"Gine Korfezi", x:88, y:188, visited:false, kind:"waterway"},
+  {name:"Finlandiya Korfezi", x:92, y:12, visited:false, kind:"waterway"},
+  {name:"Biskay Korfezi", x:10, y:70, visited:false, kind:"waterway"},
+  {name:"Aslan Korfezi", x:34, y:96, visited:false, kind:"waterway"},
+  {name:"Umman Korfezi", x:352, y:198, visited:false, kind:"waterway"},
 ];
 
 let shipPosition = {x:85, y:130};
@@ -6006,7 +6054,24 @@ function updateShipPosition(sceneLoc){
     'Kıbrıs':{x:170,y:170},
     'Cenova':{x:60,y:80}, 'Barselona':{x:30,y:100}, 'Trieste':{x:102,y:52},
     'Haifa':{x:212,y:188}, 'Rotterdam':{x:25,y:18}, 'Mersin':{x:180,y:180},
-    'Aden':{x:300,y:230}, 'Süveyş':{x:250,y:195},
+    'Aden':{x:300,y:230}, 'Süveyş':{x:250,y:195}, 'Suveys':{x:245,y:212},
+    'Marsilya':{x:40,y:92}, 'Napoli':{x:88,y:120}, 'Hamburg':{x:42,y:10},
+    'Limasol':{x:176,y:172}, 'Cidde':{x:260,y:210}, 'Dubai':{x:336,y:218},
+    'Tanger Med':{x:6,y:118}, 'Anvers':{x:28,y:14}, 'Singapur':{x:350,y:166},
+    'Şanghay':{x:392,y:78}, 'Panama':{x:18,y:170}, 'New Orleans':{x:36,y:128},
+    'Santos':{x:58,y:236}, 'Yokohama':{x:414,y:86}, 'Panama Kanali':{x:22,y:172},
+    'Kiel Kanali':{x:46,y:8}, 'Korint Kanali':{x:118,y:154}, 'St. Lawrence':{x:46,y:56},
+    'Hurmuz Bogazi':{x:342,y:206}, 'Babulmendep':{x:282,y:218}, 'Malakka Bogazi':{x:344,y:162},
+    'Sunda Bogazi':{x:350,y:186}, 'Lombok Bogazi':{x:360,y:194}, 'Dover Bogazi':{x:34,y:24},
+    'Bonifacio Bogazi':{x:68,y:138}, 'Kerch Bogazi':{x:234,y:38}, 'Tayvan Bogazi':{x:386,y:116},
+    'Tsugaru Bogazi':{x:414,y:66}, 'Kore Bogazi':{x:404,y:84}, 'Torres Bogazi':{x:396,y:210},
+    'Macellan Bogazi':{x:34,y:252}, 'Bering Bogazi':{x:430,y:12}, 'Mississippi Nehri':{x:36,y:128},
+    'Amazon Nehri':{x:48,y:214}, 'Ren Nehri':{x:30,y:20}, 'Tuna Nehri':{x:146,y:72},
+    'Elbe Nehri':{x:40,y:12}, 'Hudson Nehri':{x:60,y:64}, 'Yangtze Nehri':{x:392,y:78},
+    'Mekong Nehri':{x:368,y:154}, 'Nijer Nehri':{x:88,y:178}, 'Basra Korfezi':{x:344,y:214},
+    'Aden Korfezi':{x:274,y:218}, 'Akabe Korfezi':{x:240,y:194}, 'Meksika Korfezi':{x:24,y:134},
+    'Gine Korfezi':{x:88,y:188}, 'Finlandiya Korfezi':{x:92,y:12}, 'Biskay Korfezi':{x:10,y:70},
+    'Aslan Korfezi':{x:34,y:96}, 'Umman Korfezi':{x:352,y:198},
   };
   for(const [key,pos] of Object.entries(locMap)){
     if(sceneLoc && sceneLoc.includes(key)){
@@ -6022,22 +6087,32 @@ function renderMap(){
   const svg = document.getElementById('map-svg');
   const legend = document.getElementById('map-legend');
   const region =
-    shipPosition.x >= 320 ? 'BASRA KORFEZI' :
-    shipPosition.x >= 245 ? 'KIZILDENIZ / ARAP DENIZI GIRISI' :
-    (shipPosition.y <= 22 || (shipPosition.x < 55 && shipPosition.y < 26)) ? 'KUZEY DENIZI' :
-    shipPosition.y < 62 && shipPosition.x >= 180 ? 'KARADENIZ' :
+    shipPosition.x >= 405 ? 'KUZEY PASIFIK / JAPONYA' :
+    shipPosition.x >= 372 ? 'DOGU ASYA' :
+    shipPosition.x >= 330 && shipPosition.y < 190 ? 'GUNEYDOGU ASYA' :
+    shipPosition.x >= 320 ? 'BASRA KORFEZI / ARAP DENIZI' :
+    shipPosition.x >= 245 ? 'KIZILDENIZ / HINT OKYANUSU GIRISI' :
+    shipPosition.x < 70 && shipPosition.y > 220 ? 'GUNEY AMERIKA' :
+    shipPosition.x < 70 && shipPosition.y > 120 ? 'AMERIKA / KARAYIPLER' :
+    shipPosition.x < 70 && shipPosition.y <= 120 ? 'ATLANTIK / BATI AVRUPA' :
+    (shipPosition.y <= 22 || (shipPosition.x < 95 && shipPosition.y < 30)) ? 'KUZEY DENIZI / BALTIK' :
+    shipPosition.y < 62 && shipPosition.x >= 180 ? 'KARADENIZ / AZAK' :
     shipPosition.y < 88 && shipPosition.x >= 120 ? 'TURK BOGAZLARI / ADRIYATIK' :
-    shipPosition.x < 60 ? 'BATI AKDENIZ' :
     shipPosition.x < 150 ? 'ORTA AKDENIZ' :
     'DOGU AKDENIZ';
   const regionFill =
-    region==='BATI AKDENIZ' ? '#02111f' :
     region==='ORTA AKDENIZ' ? '#03101d' :
     region==='TURK BOGAZLARI / ADRIYATIK' ? '#041320' :
-    region==='KARADENIZ' ? '#061626' :
-    region==='KUZEY DENIZI' ? '#071725' :
-    region==='KIZILDENIZ / ARAP DENIZI GIRISI' ? '#10161f' :
-    region==='BASRA KORFEZI' ? '#121722' :
+    region==='KARADENIZ / AZAK' ? '#061626' :
+    region==='KUZEY DENIZI / BALTIK' ? '#071725' :
+    region==='ATLANTIK / BATI AVRUPA' ? '#031420' :
+    region==='AMERIKA / KARAYIPLER' ? '#041726' :
+    region==='GUNEY AMERIKA' ? '#071724' :
+    region==='KIZILDENIZ / HINT OKYANUSU GIRISI' ? '#10161f' :
+    region==='BASRA KORFEZI / ARAP DENIZI' ? '#121722' :
+    region==='GUNEYDOGU ASYA' ? '#071a20' :
+    region==='DOGU ASYA' ? '#081821' :
+    region==='KUZEY PASIFIK / JAPONYA' ? '#0a1824' :
     '#04111b';
   let s = `<rect width="440" height="260" fill="${regionFill}" rx="6"/>`;
   // Sea texture
@@ -6069,8 +6144,13 @@ function renderMap(){
   ROUTE_PORTS.forEach(p => {
     const px = p.x*4.4, py = p.y*2.6;
     const visited = visitedPorts.has(p.name);
-    const color = visited ? '#5dbf8a' : '#2e6bbf';
-    s+=`<circle cx="${px}" cy="${py}" r="${visited?5:3}" fill="${color}" opacity="${visited?1:.6}"/>`;
+    const color = p.kind==='waterway' ? (visited ? '#d4a017' : '#6cbbe0') : (visited ? '#5dbf8a' : '#2e6bbf');
+    if(p.kind==='waterway'){
+      const sz = visited ? 5 : 3.5;
+      s+=`<path d="M${px} ${py-sz} L${px+sz} ${py} L${px} ${py+sz} L${px-sz} ${py} Z" fill="${color}" opacity="${visited?1:.75}"/>`;
+    }else{
+      s+=`<circle cx="${px}" cy="${py}" r="${visited?5:3}" fill="${color}" opacity="${visited?1:.6}"/>`;
+    }
     s+=`<text x="${px+7}" y="${py+4}" fill="${color}" font-size="8" font-family="monospace" opacity="${visited?1:.7}">${p.name}</text>`;
     if(visited){
       s+=`<circle cx="${px}" cy="${py}" r="9" fill="none" stroke="${color}" stroke-width="1" opacity=".3"/>`;
@@ -6089,7 +6169,7 @@ function renderMap(){
   s+=`<path d="M362 68 h22 l7 3 h6 v2 h-35 z" fill="#0c1b2d" opacity=".65"/>`;
 
   svg.innerHTML = s;
-  legend.textContent = `🟢 Uğranan liman  🔵 Planlanan liman  🟡 ${sn||'Gemimiz'}  — ${visitedPorts.size} liman uğrandı`;
+  legend.textContent = `🟢 Uğranan liman  🔵 Planlanan liman  🔷 Kanal/bogaz/nehir/korfez  🟡 ${sn||'Gemimiz'}  — ${visitedPorts.size} nokta işlendi`;
 }
 
 // ===== SEYİR GÜNLÜĞİ =====
@@ -6103,6 +6183,7 @@ const STUDENT_NOTES = [
   {head:"ECDIS / HARITA", body:"Route check, safety contour, safety depth, no-go area, isolated danger ve alarm ayarlari seyirden once gozden gecirilir.<br>GPS bilgisi radar, gorusel mevki ve diger sensorlerle capraz kontrol edilir.<br>Waypoint'ler, parallel indexing, XTD ve chart correction mantigi bilinmelidir.<br>Kagit haritada NtM, correction number, tracing ve correction record disiplini; ECDIS'te ise ENC permit, cell status, latest update ve overdue area kontrolu birlikte dusunulur.<br>Rota degisikligi varsa passage plan, kagit harita, ECDIS route ve logbook ayni mantikla guncellenir.", tip:"ECDIS yardimcidir; kagit harita dusuncesiyle birlikte kullanildiginda daha guclu olur."},
   {head:"FENER VE SAMANDIRA", body:"IALA lateral markalarda renk, tepe isareti ve isik karakteri birlikte okunur.<br>Fl, Oc, Iso, Q, VQ, LFl ve sektor renkleri fenerleri ayirt etmeyi saglar.<br>Cardinal marklarda kuzey-gu ney-dogu-bati tepe isaretleri ve siyah-sari renk dizilimi ezberlenmelidir.", tip:"Renk kadar ritmi de oku."},
   {head:"PILOT / ROMORKOR / LIMAN", body:"Pilot ladder durumu, can simidi ve isik kontrolu, personel konumu ve haberlesme disiplini kritik konulardir.<br>Master-pilot exchange yapilir; snap-back zone bos tutulur.<br>Heaving line, tug line, berthing plan, current-rüzgar etkisi ve mooring team konumlari net olmalidir.<br><br><b>Tipik yanasma halat sirasi</b> (gemi plani, ruzgar/akinti ve kaptan-pilot talimatina gore degisebilir):<br><b>1.</b> Ilk emniyet halati genelde <b>fore spring</b> ya da bazen <b>head line</b> olur; geminin ileri-geri kacmasini erken kontrol etmek icin.<br><b>2.</b> Ardindan <b>head line</b> veya karsilikli olarak <b>stern line</b> verilir.<br><b>3.</b> Sonra <b>aft spring</b> tamamlanir; geminin boyuna hareketi daha iyi tutulur.<br><b>4.</b> Daha sonra <b>breast line</b>lar verilir; gemiyi rihtima paralel ve yakinda tutar.<br><b>5.</b> En sonda ince ayar yapilip tum halatlar esit yuk dagitacak sekilde bos alinir, volta edilir ve <b>all fast</b> durumu kurulur.<br><br><b>Halatlarin gorevi</b>:<br><b>Head line / stern line</b> basi ve kici ileri-geri tutar.<br><b>Spring</b> geminin boyuna kaymasini keser.<br><b>Breast line</b> gemiyi rihtima dogru ceker ve borda acisini tutar.", tip:"Mooring station saka kabul etmez; ama halat sirasi da ezber degil, plan isidir."},
+  {head:"DUNYA GECITLERI / SU YOLLARI", body:"<b>Kanallar</b>: Suveys, Panama, Kiel, Korint, St. Lawrence.<br><b>Bogazlar</b>: Cebelitarik, Istanbul, Canakkale, Hurmuz, Babulmendep, Malakka, Sunda, Lombok, Dover, Bonifacio, Kerch, Tayvan, Kore, Tsugaru, Torres, Macellan, Bering.<br><b>Nehirler</b>: Mississippi, Amazon, Ren, Tuna, Elbe, Hudson, Yangtze, Mekong, Nijer.<br><b>Korfezler</b>: Basra, Aden, Akabe, Meksika, Gine, Finlandiya, Biskay, Aslan, Umman.<br><br>Her gecitte draft, akinti, pilotaj, VTS, reporting point, tug gereksinimi ve hava penceresi farklidir.", tip:"Her su yolu ayni degil; bazisi draft ister, bazisi raporlama, bazisi da sadece iyi zamanlama ister."},
   {head:"GEMININ KISIMLARI", body:"<b>Pruva</b> geminin on tarafidir; <b>Kic</b> arka tarafidir.<br><b>Iskele</b> sol, <b>Sancak</b> sag bordadir.<br><b>Bas bodoslama</b> on dikey/egik uc yapisidir; <b>Kic bodoslama</b> arka uc yapisidir.<br><b>Ana guverte</b> ana yuru yus ve calisma guvertesidir.<br><b>Bas kasarasi / forecastle</b> pruva tarafindaki yuksek bolumdur; <b>Kic ustu / poop deck</b> kic tarafindaki yuksek bolumdur.<br><b>Kopruustu</b> geminin sevk ve idaresinin yapildigi mahaldir.<br><b>Ambar</b> yukun tasindigi kapali hacimdir; <b>Hatch cover</b> ambar kapagidir.<br><b>Makine dairesi</b> ana makine ve yardimci sistemlerin bulundugu mahaldir.<br><b>Borda</b> geminin yan tarafidir; <b>alabanda</b> bunun ic yuzune verilen addir.<br><b>Omurga</b> teknenin ana boyuna omurgasal tasiyici hattidir.<br><b>Draft markalari</b> bas ve kicta su cekimini okumaya yarar.<br><b>Bulwark / sancaklik</b> guverte kenarindaki koruyucu yukselti veya korkuluk hattidir.<br><b>Hawse pipe / demir locasi</b> demir zincirinin gectigi yapidir.<br><br>"+buildShipPartsDiagram(), tip:"Gemi dili once yone, sonra mahale, sonra ekipmana oturur."},
   {head:"LIMAN VE EVRAK", body:"Notice of Readiness, Bill of Lading, Mate's Receipt, Statement of Facts, manifest, stowage plan, Oil Record Book ve Garbage Record Book temel evraklardandir.<br>Uyumsuzluk gordugunde amire hemen bildirilir.<br>Laytime, demurrage, dispatch, arrival condition ve sea protest temel kavramlardir.", tip:"Saklanan hata buyur."},
   {head:"PSC / ISPS / SOLAS / STCW", body:"PSC denetiminde evrak, emniyet ekipmani, drill kayitlari, GMDSS testleri ve gemi kondisyonu birlikte incelenir.<br>ISPS tarafinda gangway kontrolu, ziyaretci kaydi ve security level takibi esastir.<br>SOLAS can emniyeti, STCW yeterlilik ve vardiya standartlarini kurar.", tip:"Denetime her gun hazir olunur."},
