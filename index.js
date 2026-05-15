@@ -5309,6 +5309,60 @@ function getFireTrainingOverlay(sc){
 function getDrillTrainingOverlay(sc){
   if(!sc) return '';
   const map = {
+    s24:`<g opacity=".98">
+      <rect x="42" y="24" width="154" height="18" rx="4" fill="rgba(58,11,11,.72)" stroke="#c97070" stroke-width=".8"/>
+      <text x="52" y="36" fill="#ffd1d1" font-size="6.5" font-family="monospace">FIRE DRILL / MUSTER FLOW</text>
+      <rect x="56" y="82" width="94" height="22" rx="4" fill="rgba(3,17,28,.75)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="68" y="96" fill="#cfeaff" font-size="6.3" font-family="monospace">ALARM / REPORT</text>
+      <path d="M170 94 L216 94" stroke="#6fa8dc" stroke-width="2" stroke-dasharray="5,3"/>
+      <polygon points="216,94 208,90 208,98" fill="#6fa8dc"/>
+      <rect x="228" y="82" width="86" height="22" rx="4" fill="rgba(3,17,28,.75)" stroke="#ffd45a" stroke-width=".8"/>
+      <text x="240" y="96" fill="#fff4bf" font-size="6.3" font-family="monospace">MUSTER / COUNT</text>
+      <path d="M328 94 L364 94" stroke="#6fa8dc" stroke-width="2" stroke-dasharray="5,3"/>
+      <polygon points="364,94 356,90 356,98" fill="#6fa8dc"/>
+      <rect x="372" y="82" width="54" height="22" rx="4" fill="rgba(3,17,28,.75)" stroke="#5dbf8a" stroke-width=".8"/>
+      <text x="380" y="96" fill="#81f7b8" font-size="6.3" font-family="monospace">CLEAR</text>
+    </g>`,
+    s82:`<g opacity=".98">
+      <rect x="38" y="24" width="166" height="18" rx="4" fill="rgba(3,17,28,.78)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="48" y="36" fill="#cfeaff" font-size="6.5" font-family="monospace">ABANDON SHIP / DRILL READY</text>
+      <rect x="52" y="84" width="100" height="22" rx="4" fill="rgba(3,17,28,.75)" stroke="#ffd45a" stroke-width=".8"/>
+      <text x="64" y="98" fill="#fff4bf" font-size="6.3" font-family="monospace">MUSTER LIST</text>
+      <rect x="168" y="84" width="102" height="22" rx="4" fill="rgba(3,17,28,.75)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="178" y="98" fill="#cfeaff" font-size="6.3" font-family="monospace">LIFEJACKET CHECK</text>
+      <rect x="286" y="80" width="124" height="26" rx="4" fill="rgba(3,17,28,.75)" stroke="#5dbf8a" stroke-width=".8"/>
+      <text x="296" y="95" fill="#81f7b8" font-size="6.3" font-family="monospace">BOAT / RAFT READY</text>
+    </g>`,
+    kriz15:`<g opacity=".98">
+      <rect x="44" y="24" width="144" height="18" rx="4" fill="rgba(58,11,11,.72)" stroke="#c97070" stroke-width=".8"/>
+      <text x="54" y="36" fill="#ffd1d1" font-size="6.5" font-family="monospace">MOB DRILL / STARBOARD SIDE</text>
+      <circle cx="310" cy="72" r="7" fill="none" stroke="#ffd45a" stroke-width="2"/>
+      <path d="M304 72 l4 -6 l4 6" fill="none" stroke="#ffd45a" stroke-width="1.6"/>
+      <rect x="52" y="90" width="110" height="20" rx="4" fill="rgba(3,17,28,.75)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="62" y="103" fill="#cfeaff" font-size="6.3" font-family="monospace">POINT / DO NOT LOSE</text>
+      <rect x="178" y="90" width="110" height="20" rx="4" fill="rgba(3,17,28,.75)" stroke="#ffd45a" stroke-width=".8"/>
+      <text x="190" y="103" fill="#fff4bf" font-size="6.3" font-family="monospace">MARKER / ALARM</text>
+    </g>`,
+    s237:`<g opacity=".98">
+      <rect x="42" y="24" width="150" height="18" rx="4" fill="rgba(58,11,11,.72)" stroke="#c97070" stroke-width=".8"/>
+      <text x="52" y="36" fill="#ffd1d1" font-size="6.5" font-family="monospace">MOB FIRST MINUTE ACTION</text>
+      <rect x="56" y="84" width="86" height="22" rx="4" fill="rgba(3,17,28,.75)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="68" y="98" fill="#cfeaff" font-size="6.3" font-family="monospace">SHOUT / POINT</text>
+      <rect x="156" y="84" width="102" height="22" rx="4" fill="rgba(3,17,28,.75)" stroke="#ffd45a" stroke-width=".8"/>
+      <text x="168" y="98" fill="#fff4bf" font-size="6.3" font-family="monospace">KEEP VISUAL</text>
+      <rect x="274" y="84" width="112" height="22" rx="4" fill="rgba(3,17,28,.75)" stroke="#5dbf8a" stroke-width=".8"/>
+      <text x="286" y="98" fill="#81f7b8" font-size="6.3" font-family="monospace">ALARM / REPORT</text>
+    </g>`,
+    s238:`<g opacity=".98">
+      <rect x="42" y="24" width="146" height="18" rx="4" fill="rgba(58,11,11,.72)" stroke="#c97070" stroke-width=".8"/>
+      <text x="52" y="36" fill="#ffd1d1" font-size="6.5" font-family="monospace">FIRE ALARM / INITIAL RESPONSE</text>
+      <rect x="58" y="84" width="88" height="22" rx="4" fill="rgba(3,17,28,.75)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="70" y="98" fill="#cfeaff" font-size="6.3" font-family="monospace">MUSTER</text>
+      <rect x="162" y="84" width="94" height="22" rx="4" fill="rgba(3,17,28,.75)" stroke="#ffd45a" stroke-width=".8"/>
+      <text x="174" y="98" fill="#fff4bf" font-size="6.3" font-family="monospace">REPORT</text>
+      <rect x="272" y="84" width="124" height="22" rx="4" fill="rgba(3,17,28,.75)" stroke="#5dbf8a" stroke-width=".8"/>
+      <text x="284" y="98" fill="#81f7b8" font-size="6.3" font-family="monospace">AREA CONTROL</text>
+    </g>`,
     s246g:`<g opacity=".98">
       <rect x="42" y="26" width="120" height="18" rx="4" fill="rgba(3,17,28,.78)" stroke="#7fc3ff" stroke-width=".8"/>
       <text x="52" y="38" fill="#cfeaff" font-size="6.5" font-family="monospace">RESCUE BOAT / READY</text>
