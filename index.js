@@ -4177,6 +4177,46 @@ En saglam ozet hangisi?`,
   {text:"Yangin sinifina gore su, foam, CO2, dry powder veya wet chemical mantigini ayiririm",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
   {text:"Ilk elime gelen sondurucunun buyuk ihtimalle yeterli olacagini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
   {text:"Elektrik ve yag yanginlarinda da suyun genelde guvenli oldugunu sanirim",tag:"korkak",effect:{bilgi:-13,sayginlik:-12}}]},
+  {id:"s315",gfx:"bridge",alert:false,day:"Gun 9",time:"06:20",loc:"Panama Kanali - Gatun Yaklasmasi",sub:"Panama gecisinde ilk profesyonel dusunce",who:"suvari",
+  text:`Suvari passage plan'i acip parmagini Panama kanal hattina basti.
+
+"Burada denizden limana girer gibi davranilmaz. Pilotaj, lock sirasi, draft limiti, taze su etkisi ve makine hazirligi birlikte dusunulur. Kanal seni gecirmez; sen kanala uygun hale gelirsin."
+
+Ilk hangi disipline tutunursun?`,
+  choices:[
+  {text:"Pilotaj, lock sirasi, draft/FWA ve makine-halat hazirligini birlikte kontrol ederim",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
+  {text:"Kanala girdikten sonra pilot ne derse o an dusunmenin yeterli oldugunu sanirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Panama gecisini siradan bir bogaz gecisi gibi gorurum",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s316",gfx:"radar",alert:true,day:"Gun 10",time:"22:10",loc:"Malakka Bogazi - Gece Trafigi",sub:"Yogun trafik, balikci hedefleri ve dar CPA",who:"z2",radarMode:"multi_crossing",
+  text:`Malakka gecesinde radar kalabalik. Buyuk ticari trafik bir yanda, zayif echo veren balikci hedefleri baska yanda akiyor.
+
+2. Zabiti kisa konustu: "Burada bir hedefe kilitlenmek yetmez. Kucuk hedef, hizli crossing, AIS uyumsuzlugu ve safe speed ayni anda okunur."
+
+Once neyi kurarsin?`,
+  choices:[
+  {text:"Safe speed'i dusurur, radar/visual/AIS capraz kontrolu ile kucuk hedefleri de tabloya alirim",tag:"kritik",effect:{bilgi:20,sayginlik:13,cesaret:3},radarMode:"multi_crossing"},
+  {text:"Sadece buyuk hedefleri takip edip kucuk echo'lari ikinci plana atarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"multi_crossing"},
+  {text:"Bu kadar hedefte yorum zor diye neredeyse sadece AIS listesine guvenirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11},radarMode:"multi_crossing"}]},
+  {id:"s317",gfx:"bridge",alert:true,day:"Gun 11",time:"15:40",loc:"Hurmuz Bogazi - Guvenlik Brifingi",sub:"Guvenlik baskisi altinda gecis",who:"suvari",
+  text:`Gecis oncesi kopruustunde hava degisti. Suvari rota uzerine guvenlik notlari birakti:
+
+"Burada sadece seyir yapmiyoruz; guvenlik seviyesi, raporlama disiplini, gozculuk ve citadel hazirligi de dusunuluyor. Panik degil, kontrollu sertlik ister."
+
+En saglam zabit tavri hangisi?`,
+  choices:[
+  {text:"Seyir planiyla birlikte security level, ek gozculuk, raporlama ve restricted area disiplinini uygularim",tag:"kritik",effect:{bilgi:18,sayginlik:13,cesaret:4}},
+  {text:"Askeri/güvenlik baskisinin seyir vardiyasini cok degistirmedigini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Baskidan dolayi asiri VHF ve gereksiz manevrayla durumu karistiririm",tag:"korkak",effect:{bilgi:-11,sayginlik:-11}}]},
+  {id:"s318",gfx:"harbor",alert:false,day:"Gun 12",time:"07:25",loc:"Mississippi Nehri - Pilotaj Hatti",sub:"Nehir pilotajinda akis ve squat dusuncesi",who:"z2",
+  text:`Nehir hattinda su kahverengiye donmus gibi. 2. Zabiti draft notuna bir daha bakti:
+
+"Nehir limani deniz limani gibi okunmaz. Akis, dar donus, squat, bank effect, tug ihtiyaci ve lokal pilot bilgisi birlikte dusunulur."
+
+Senin ilk profesyonel yorumun ne olur?`,
+  choices:[
+  {text:"Akis, squat/bank effect, tug ihtiyaci ve pilot bilgisini birlikte okuyarak nehir pilotajina hazirlanirim",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
+  {text:"Derinlik varsa nehir gecisinin normal liman yaklasmasindan cok farkli olmadigini sanirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Nehirde sadece dumen komutlarini takip etmenin yeterli oldugunu dusunurum",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
   {id:"s237",gfx:"bridge",alert:true,day:"Gun 6",time:"05:55",loc:"Koprustu - Sabah Vardiyasi",sub:"MOB proseduru ilk dakikalar",who:"z2",
   text:`Sancak taraftan bir cisim denize dustu. 2. Zabiti sesi sertlestirdi:
 
