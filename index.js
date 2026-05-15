@@ -5306,6 +5306,53 @@ function getFireTrainingOverlay(sc){
   return map[sc.id] || '';
 }
 
+function getDrillTrainingOverlay(sc){
+  if(!sc) return '';
+  const map = {
+    s246g:`<g opacity=".98">
+      <rect x="42" y="26" width="120" height="18" rx="4" fill="rgba(3,17,28,.78)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="52" y="38" fill="#cfeaff" font-size="6.5" font-family="monospace">RESCUE BOAT / READY</text>
+      <rect x="54" y="78" width="116" height="24" rx="5" fill="rgba(3,17,28,.72)" stroke="#ffd45a" stroke-width=".9"/>
+      <text x="64" y="92" fill="#fff4bf" font-size="6.3" font-family="monospace">HOOK / PAINTER / PPE</text>
+      <path d="M204 96 L260 96" stroke="#6fa8dc" stroke-width="2" stroke-dasharray="5,3"/>
+      <polygon points="260,96 252,92 252,100" fill="#6fa8dc"/>
+      <rect x="268" y="82" width="134" height="24" rx="5" fill="rgba(3,17,28,.72)" stroke="#5dbf8a" stroke-width=".9"/>
+      <text x="280" y="96" fill="#81f7b8" font-size="6.3" font-family="monospace">ENGINE / COMMS / RECOVERY</text>
+    </g>`,
+    s246h:`<g opacity=".98">
+      <rect x="44" y="28" width="126" height="18" rx="4" fill="rgba(58,11,11,.72)" stroke="#c97070" stroke-width=".8"/>
+      <text x="54" y="40" fill="#ffd1d1" font-size="6.5" font-family="monospace">SOPEP / SPILL RESPONSE</text>
+      <rect x="56" y="88" width="88" height="20" rx="4" fill="rgba(3,17,28,.75)" stroke="#ffd45a" stroke-width=".8"/>
+      <text x="66" y="101" fill="#fff4bf" font-size="6.3" font-family="monospace">SCUPPER COVER</text>
+      <rect x="162" y="84" width="90" height="24" rx="4" fill="rgba(3,17,28,.75)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="172" y="98" fill="#cfeaff" font-size="6.3" font-family="monospace">ABSORBENT / KIT</text>
+      <path d="M274 90 q18 -10 38 -2 q16 6 28 0" fill="none" stroke="#c97070" stroke-width="3"/>
+      <text x="322" y="98" fill="#ffb0b0" font-size="6.3" font-family="monospace">SOURCE ISOLATE</text>
+    </g>`,
+    s246i:`<g opacity=".98">
+      <rect x="42" y="24" width="148" height="18" rx="4" fill="rgba(3,17,28,.78)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="52" y="36" fill="#cfeaff" font-size="6.5" font-family="monospace">EMERGENCY STEERING DRILL</text>
+      <rect x="56" y="82" width="132" height="22" rx="5" fill="rgba(3,17,28,.72)" stroke="#ffd45a" stroke-width=".9"/>
+      <text x="66" y="96" fill="#fff4bf" font-size="6.3" font-family="monospace">LOCAL CONTROL / REPEAT</text>
+      <path d="M212 94 L258 94" stroke="#6fa8dc" stroke-width="2" stroke-dasharray="5,3"/>
+      <polygon points="258,94 250,90 250,98" fill="#6fa8dc"/>
+      <rect x="270" y="82" width="136" height="24" rx="5" fill="rgba(3,17,28,.72)" stroke="#5dbf8a" stroke-width=".9"/>
+      <text x="280" y="96" fill="#81f7b8" font-size="6.3" font-family="monospace">RUDDER ANGLE CONFIRM</text>
+    </g>`,
+    s246j:`<g opacity=".98">
+      <rect x="38" y="24" width="166" height="18" rx="4" fill="rgba(58,11,11,.72)" stroke="#c97070" stroke-width=".8"/>
+      <text x="48" y="36" fill="#ffd1d1" font-size="6.5" font-family="monospace">ENCLOSED SPACE RESCUE DRILL</text>
+      <rect x="52" y="84" width="96" height="22" rx="4" fill="rgba(3,17,28,.75)" stroke="#7fc3ff" stroke-width=".8"/>
+      <text x="64" y="98" fill="#cfeaff" font-size="6.3" font-family="monospace">GAS TEST / PERMIT</text>
+      <rect x="164" y="84" width="104" height="22" rx="4" fill="rgba(3,17,28,.75)" stroke="#ffd45a" stroke-width=".8"/>
+      <text x="174" y="98" fill="#fff4bf" font-size="6.3" font-family="monospace">ATTENDANT / COMMS</text>
+      <rect x="286" y="80" width="116" height="26" rx="4" fill="rgba(3,17,28,.75)" stroke="#5dbf8a" stroke-width=".8"/>
+      <text x="296" y="95" fill="#81f7b8" font-size="6.3" font-family="monospace">RESCUE SET / STANDBY</text>
+    </g>`
+  };
+  return map[sc.id] || '';
+}
+
 function getSceneOverlay(gfx,sc){
   let extra = getSceneFleetOverlay(gfx);
   extra += getPanelChromeOverlay(gfx, sc);
@@ -5314,6 +5361,7 @@ function getSceneOverlay(gfx,sc){
   extra += getCargoIncidentOverlay(sc);
   extra += getCommsDeviceOverlay(sc);
   extra += getFireTrainingOverlay(sc);
+  extra += getDrillTrainingOverlay(sc);
   if((gfx==='compass'||gfx==='bridge') && sc && (sc.ecdisPlanKey || sc.sub?.toLowerCase().includes('ecdis') || sc.sub?.toLowerCase().includes('seyir plani') || sc.loc?.toLowerCase().includes('ecdis'))){
     extra += getEcdisRouteOverlay(sc);
   }
