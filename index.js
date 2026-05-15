@@ -3094,7 +3094,7 @@ choices:[
 {id:"s187c",gfx:"galley",alert:false,day:"Gun 8",time:"05:40",loc:"Yemekhane",sub:"Erken kahvalti toparlanmasi",who:"asci",
 text:`Asci erken kalkmis olanlara sessiz bir masa birakti.
 
-"Bos mideyle vardiya tutulmaz," dedi. "Iki lokma duzgun ye, bir cay ic; sonra ne dusuneceksen dusunursun."
+"Bos mideyle vardiya tutulmaz," dedi. "Duzgun bir sey ye, bir cay ic; sonra ne dusuneceksen dusunursun."
 
 Onunde sicak cay, peynir, ekmek ve zeytin var.`,
 choices:[
