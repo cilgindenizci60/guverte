@@ -6588,6 +6588,7 @@ function getPortChartProfile(port){
     depthB: port.y < 70 ? '11.4' : '12.9',
     tides: /rotterdam|anvers|hamburg|dover|marsilya|singapur/.test(hay) ? 'Gelgit / akinti etkisi var' : 'Akinti / ruzgar one cikiyor',
     chartNo:`BA ${1000 + Math.round(port.x*3 + port.y)}`,
+    publication:`Admiralty Harbour Chart`,
     edition:`Ed. ${2026 - (Math.round(port.x+port.y)%4)}`,
     soundDatum:'Chart Datum',
     scale: port.x > 340 || port.x < 30 ? '1:75 000' : '1:50 000',
@@ -6601,6 +6602,10 @@ function getPortChartProfile(port){
   else if(/ras tanura/.test(hay)) profile.template = 'oil';
   else if(/rotterdam/.test(hay)) profile.template = 'canal';
   else if(/singapur/.test(hay)) profile.template = 'traffic';
+  if(profile.template==='river') profile.scale = '1:40 000';
+  if(profile.template==='oil') profile.scale = '1:35 000';
+  if(profile.template==='canal') profile.scale = '1:45 000';
+  if(profile.template==='traffic') profile.scale = '1:60 000';
   if(/singapur|yokohama|sanghay|rotterdam|anvers|hamburg/.test(hay)) profile.hazard = 'TSS / yogun trafik';
   if(/dubai|abu dhabi|doha|basra/.test(hay)) profile.hazard = 'Draft / sicak hava / traffic lane';
   if(/marsilya|napoli|pire|valensiya|malta|barselona|cenova/.test(hay)) profile.hazard = 'Breakwater / ferry traffic';
@@ -6623,6 +6628,36 @@ function buildPortChartSvg(port){
   const turningBasinX = coastLeft ? 206 : 234;
   const topWater = southFacing ? '#07131f' : '#06111c';
   const bottomWater = southFacing ? '#0a2440' : '#0c2d4f';
+  const soundingText = coastLeft
+    ? `
+      <text x="186" y="${channelY-10}" fill="#bfe4ff" font-size="7" font-family="monospace">14.8</text>
+      <text x="224" y="${channelY+18}" fill="#bfe4ff" font-size="7" font-family="monospace">13.6</text>
+      <text x="206" y="${channelY+36}" fill="#bfe4ff" font-size="7" font-family="monospace">11.2</text>
+      <text x="150" y="${channelY+4}" fill="#bfe4ff" font-size="7" font-family="monospace">10.9</text>
+      <text x="96" y="${southFacing ? 224 : 86}" fill="#bfe4ff" font-size="7" font-family="monospace">8.4</text>
+      <text x="248" y="${southFacing ? 214 : 208}" fill="#bfe4ff" font-size="7" font-family="monospace">15.1</text>
+      <text x="274" y="${channelY-34}" fill="#bfe4ff" font-size="7" font-family="monospace">17.2</text>
+      <text x="306" y="${channelY-2}" fill="#bfe4ff" font-size="7" font-family="monospace">16.4</text>
+      <text x="330" y="${channelY+28}" fill="#bfe4ff" font-size="7" font-family="monospace">12.7</text>`
+    : `
+      <text x="198" y="${channelY-6}" fill="#bfe4ff" font-size="7" font-family="monospace">14.8</text>
+      <text x="164" y="${channelY+22}" fill="#bfe4ff" font-size="7" font-family="monospace">13.6</text>
+      <text x="214" y="${channelY+40}" fill="#bfe4ff" font-size="7" font-family="monospace">11.2</text>
+      <text x="274" y="${channelY+4}" fill="#bfe4ff" font-size="7" font-family="monospace">10.9</text>
+      <text x="332" y="${southFacing ? 224 : 86}" fill="#bfe4ff" font-size="7" font-family="monospace">8.4</text>
+      <text x="150" y="${southFacing ? 214 : 208}" fill="#bfe4ff" font-size="7" font-family="monospace">15.1</text>
+      <text x="108" y="${channelY-28}" fill="#bfe4ff" font-size="7" font-family="monospace">17.0</text>
+      <text x="84" y="${channelY+8}" fill="#bfe4ff" font-size="7" font-family="monospace">16.3</text>
+      <text x="64" y="${channelY+32}" fill="#bfe4ff" font-size="7" font-family="monospace">12.5</text>`;
+  const contourOverlay = `
+    <path d="M${coastLeft ? 146 : 294} 62 Q220 86 ${coastLeft ? 334 : 106} 108" fill="none" stroke="#1d5d95" stroke-width="1" opacity=".4"/>
+    <path d="M${coastLeft ? 160 : 280} 92 Q220 110 ${coastLeft ? 312 : 128} 138" fill="none" stroke="#2b79b8" stroke-width="1" opacity=".32"/>
+    <path d="M${coastLeft ? 176 : 264} 120 Q224 134 ${coastLeft ? 292 : 148} 162" fill="none" stroke="#4aa6db" stroke-width=".9" opacity=".28"/>
+    <path d="M${coastLeft ? 192 : 248} 146 Q228 158 ${coastLeft ? 272 : 168} 184" fill="none" stroke="#7bc9ef" stroke-width=".8" opacity=".24"/>`;
+  const scaleBarX = coastLeft ? 270 : 44;
+  const islandLabels = coastLeft
+    ? `<text x="214" y="44" fill="#7ea0bd" font-size="7" font-family="monospace">ISLET</text><text x="250" y="222" fill="#7ea0bd" font-size="7" font-family="monospace">ROCKS</text>`
+    : `<text x="196" y="44" fill="#7ea0bd" font-size="7" font-family="monospace">ISLET</text><text x="166" y="222" fill="#7ea0bd" font-size="7" font-family="monospace">ROCKS</text>`;
   const specialOverlay = profile.template==='river'
     ? `
       <path d="M${coastLeft ? 420 : 18} ${channelY-26} Q220 ${channelY-36} ${coastLeft ? 164 : 276} ${channelY-22}" fill="none" stroke="#8c6a3c" stroke-width="1.2" stroke-dasharray="5,4" opacity=".75"/>
@@ -6675,6 +6710,8 @@ function buildPortChartSvg(port){
   <path d="${coastLeft ? 'M208 22 L236 34 L244 56 L222 64 L198 48 Z' : 'M232 22 L204 34 L196 56 L218 64 L242 48 Z'}" fill="#0d2337" opacity=".85"/>
   <path d="${coastLeft ? 'M246 198 L270 210 L264 228 L236 224 Z' : 'M194 198 L170 210 L176 228 L204 224 Z'}" fill="#0d2337" opacity=".8"/>
   <path d="${coastLeft ? 'M84 210 L112 218 L108 234 L76 232 Z' : 'M356 210 L328 218 L332 234 L364 232 Z'}" fill="#0d2337" opacity=".72"/>
+  ${islandLabels}
+  ${contourOverlay}
   <path d="M${channelStartX} ${channelY} Q${(channelStartX+channelEndX)/2} ${channelY-18} ${channelEndX} ${channelY}" fill="none" stroke="#4f8fc7" stroke-width="2.2" stroke-dasharray="7,5" opacity=".9"/>
   <path d="M${channelStartX} ${channelY-14} Q${(channelStartX+channelEndX)/2} ${channelY-32} ${channelEndX} ${channelY-14}" fill="none" stroke="#1d5d95" stroke-width="1" stroke-dasharray="4,4" opacity=".45"/>
   <path d="M${channelStartX} ${channelY+14} Q${(channelStartX+channelEndX)/2} ${channelY-4} ${channelEndX} ${channelY+14}" fill="none" stroke="#1d5d95" stroke-width="1" stroke-dasharray="4,4" opacity=".45"/>
@@ -6714,8 +6751,9 @@ function buildPortChartSvg(port){
   <text x="${coastLeft ? 230 : 120}" y="${channelY+74}" fill="#9cc8ef" font-size="7" font-family="monospace">DEPTH ${profile.depthB}m</text>
   <text x="16" y="20" fill="#8ab0c8" font-size="9" font-family="monospace">${port.name.toUpperCase()} PORT CHART</text>
   <text x="16" y="34" fill="#6fa8dc" font-size="8" font-family="monospace">${region} · SCALE ${profile.scale}</text>
-  <text x="320" y="20" fill="#8ab0c8" font-size="7.5" font-family="monospace">${profile.chartNo} · ${profile.edition}</text>
-  <text x="322" y="34" fill="#6fa8dc" font-size="7" font-family="monospace">${profile.soundDatum}</text>
+  <text x="282" y="20" fill="#8ab0c8" font-size="7.5" font-family="monospace">${profile.publication}</text>
+  <text x="316" y="32" fill="#8ab0c8" font-size="7.5" font-family="monospace">${profile.chartNo} · ${profile.edition}</text>
+  <text x="322" y="44" fill="#6fa8dc" font-size="7" font-family="monospace">${profile.soundDatum}</text>
   <text x="${coastLeft ? 178 : 140}" y="${channelY-32}" fill="#d4a017" font-size="8" font-family="monospace">${profile.pilot.toUpperCase()}</text>
   <text x="${coastLeft ? 168 : 238}" y="${channelY+56}" fill="#cfd8e4" font-size="8" font-family="monospace">${profile.berth.toUpperCase()}</text>
   <text x="${coastLeft ? 222 : 130}" y="${channelY+84}" fill="#5dbf8a" font-size="8" font-family="monospace">ANCHORAGE</text>
@@ -6727,14 +6765,15 @@ function buildPortChartSvg(port){
   <text x="391" y="26" fill="#8ab0c8" font-size="7" font-family="monospace">N</text>
   <text x="18" y="54" fill="#7ea0bd" font-size="7" font-family="monospace">${profile.latA}</text>
   <text x="18" y="102" fill="#7ea0bd" font-size="7" font-family="monospace">${profile.latB}</text>
+  <text x="18" y="150" fill="#7ea0bd" font-size="7" font-family="monospace">${Math.abs(parseFloat(profile.latB)-0.4).toFixed(1)}°${profile.latA.includes('N')?'N':'S'}</text>
   <text x="96" y="252" fill="#7ea0bd" font-size="7" font-family="monospace">${profile.lonA}</text>
   <text x="264" y="252" fill="#7ea0bd" font-size="7" font-family="monospace">${profile.lonB}</text>
-  <text x="${coastLeft ? 214 : 198}" y="${channelY-6}" fill="#bfe4ff" font-size="7" font-family="monospace">14.8</text>
-  <text x="${coastLeft ? 248 : 164}" y="${channelY+22}" fill="#bfe4ff" font-size="7" font-family="monospace">13.6</text>
-  <text x="${coastLeft ? 194 : 214}" y="${channelY+40}" fill="#bfe4ff" font-size="7" font-family="monospace">11.2</text>
-  <text x="${coastLeft ? 136 : 274}" y="${channelY+4}" fill="#bfe4ff" font-size="7" font-family="monospace">10.9</text>
-  <text x="${coastLeft ? 88 : 332}" y="${southFacing ? 224 : 86}" fill="#bfe4ff" font-size="7" font-family="monospace">8.4</text>
-  <text x="${coastLeft ? 244 : 150}" y="${southFacing ? 214 : 208}" fill="#bfe4ff" font-size="7" font-family="monospace">15.1</text>
+  ${soundingText}
+  <rect x="${scaleBarX}" y="236" width="108" height="10" rx="3" fill="#081929" stroke="#385f86" stroke-width="1"/>
+  <path d="M${scaleBarX+8} 241 H${scaleBarX+28} M${scaleBarX+28} 241 H${scaleBarX+48} M${scaleBarX+48} 241 H${scaleBarX+68} M${scaleBarX+68} 241 H${scaleBarX+88}" stroke="#cfd8e4" stroke-width="3"/>
+  <text x="${scaleBarX+4}" y="233" fill="#7ea0bd" font-size="7" font-family="monospace">0</text>
+  <text x="${scaleBarX+40}" y="233" fill="#7ea0bd" font-size="7" font-family="monospace">1</text>
+  <text x="${scaleBarX+80}" y="233" fill="#7ea0bd" font-size="7" font-family="monospace">2 NM</text>
   ${specialOverlay}
   `;
 }
