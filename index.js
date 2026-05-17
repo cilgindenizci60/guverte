@@ -6468,12 +6468,151 @@ const ROUTE_PORTS = [
 let shipPosition = {x:85, y:130};
 let routeHistory = [{x:85,y:130}];
 let visitedPorts = new Set(["İzmir"]);
+let mapView = 'world';
+let selectedPortChart = 'İzmir';
 
 function openMap(){
   document.getElementById('map-panel').classList.add('show');
   renderMap();
 }
 function closeMap(){ document.getElementById('map-panel').classList.remove('show'); }
+function setMapView(view){
+  mapView = view;
+  renderMap();
+}
+function selectPortChart(name){
+  selectedPortChart = name;
+  if(mapView !== 'library') mapView = 'library';
+  renderMap();
+}
+
+function getMapRegionByPosition(pos){
+  return pos.x >= 405 ? 'KUZEY PASIFIK / JAPONYA'
+    : pos.x >= 372 ? 'DOGU ASYA'
+    : pos.x >= 330 && pos.y < 190 ? 'GUNEYDOGU ASYA'
+    : pos.x >= 320 ? 'BASRA KORFEZI / ARAP DENIZI'
+    : pos.x >= 245 ? 'KIZILDENIZ / HINT OKYANUSU GIRISI'
+    : pos.x < 70 && pos.y > 220 ? 'GUNEY AMERIKA'
+    : pos.x < 70 && pos.y > 120 ? 'AMERIKA / KARAYIPLER'
+    : pos.x < 70 && pos.y <= 120 ? 'ATLANTIK / BATI AVRUPA'
+    : (pos.y <= 22 || (pos.x < 95 && pos.y < 30)) ? 'KUZEY DENIZI / BALTIK'
+    : pos.y < 62 && pos.x >= 180 ? 'KARADENIZ / AZAK'
+    : pos.y < 88 && pos.x >= 120 ? 'TURK BOGAZLARI / ADRIYATIK'
+    : pos.x < 150 ? 'ORTA AKDENIZ'
+    : 'DOGU AKDENIZ';
+}
+
+function getPortChartEntries(){
+  return ROUTE_PORTS
+    .filter(p=>p.kind==='port')
+    .slice()
+    .sort((a,b)=>{
+      const av = visitedPorts.has(a.name) ? 0 : 1;
+      const bv = visitedPorts.has(b.name) ? 0 : 1;
+      if(av !== bv) return av - bv;
+      return a.name.localeCompare(b.name,'tr');
+    });
+}
+
+function ensureSelectedPortChart(){
+  const entries = getPortChartEntries();
+  if(!entries.length) return null;
+  const current = entries.find(p=>p.name===selectedPortChart);
+  if(current) return current;
+  const visited = entries.find(p=>visitedPorts.has(p.name));
+  selectedPortChart = (visited || entries[0]).name;
+  return visited || entries[0];
+}
+
+function getPortChartHint(name, region){
+  const hay = `${name} ${region}`.toLowerCase();
+  if(/rotterdam|anvers|hamburg/.test(hay)) return 'Pilotaj, nehir/kanal disiplini ve ticari trafik yogunlugu dusunulur.';
+  if(/dubai|abu dhabi|doha|basra/.test(hay)) return 'Draft, sicak hava, traffic lane ve VHF raporlama birlikte okunur.';
+  if(/port said|suveys|iskenderiye|haifa|limasol|mersin/.test(hay)) return 'Konvoy, reporting point ve pilotaj zinciri burada one cikabilir.';
+  if(/panama|new orleans|santos/.test(hay)) return 'Nehir/kanal etkisi, tug ihtiyaci ve akinti dusuncesi one cikar.';
+  if(/singapur|yokohama|sanghay/.test(hay)) return 'Yogun trafik, pilot station ve elektronik/gorsel cross-check onemlidir.';
+  if(/malta|pire|napoli|marsilya|cenova|barselona|valensiya|trieste/.test(hay)) return 'Liman yaklasmasi, TSS, pilot ve mooring plani birlikte okunur.';
+  return 'Yaklasma plani, draft, pilot station ve mooring duzeni birlikte dusunulur.';
+}
+
+function buildPortChartSvg(port){
+  const region = getMapRegionByPosition(port);
+  const coastLeft = port.x < 110;
+  const southFacing = port.y > 170;
+  const harborColor = visitedPorts.has(port.name) ? '#d4a017' : '#6fa8dc';
+  const shipX = coastLeft ? 286 : 154;
+  const berthX = coastLeft ? 244 : 194;
+  const channelStartX = coastLeft ? 410 : 30;
+  const channelEndX = coastLeft ? 238 : 202;
+  const channelY = southFacing ? 150 : 126;
+  const topWater = southFacing ? '#07131f' : '#06111c';
+  const bottomWater = southFacing ? '#0a2440' : '#0c2d4f';
+  return `
+  <defs>
+    <linearGradient id="portSea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="${topWater}"/>
+      <stop offset="100%" stop-color="${bottomWater}"/>
+    </linearGradient>
+  </defs>
+  <rect width="440" height="260" rx="8" fill="url(#portSea)"/>
+  <path d="${coastLeft ? 'M0 0 L132 0 L168 58 L168 260 L0 260 Z' : 'M440 0 L308 0 L272 58 L272 260 L440 260 Z'}" fill="#0a1b2b" opacity=".95"/>
+  <path d="${coastLeft ? 'M132 0 L176 64 L176 260 L168 260 L168 58 Z' : 'M308 0 L264 64 L264 260 L272 260 L272 58 Z'}" fill="#10283f" opacity=".9"/>
+  <path d="M${channelStartX} ${channelY} Q${(channelStartX+channelEndX)/2} ${channelY-18} ${channelEndX} ${channelY}" fill="none" stroke="#4f8fc7" stroke-width="2.2" stroke-dasharray="7,5" opacity=".9"/>
+  <path d="M${coastLeft ? 170 : 270} ${channelY-44} L${berthX} ${channelY-20} L${berthX} ${channelY+36} L${coastLeft ? 176 : 264} ${channelY+18} Z" fill="#17324c" opacity=".72"/>
+  <path d="M${berthX} ${channelY-26} V${channelY+42}" stroke="#cfd8e4" stroke-width="4"/>
+  <path d="M${berthX + (coastLeft?-18:18)} ${channelY-10} V${channelY+26}" stroke="#8eb2d1" stroke-width="1.4" stroke-dasharray="3,3" opacity=".8"/>
+  <circle cx="${channelEndX}" cy="${channelY}" r="5" fill="${harborColor}"/>
+  <circle cx="${channelEndX}" cy="${channelY}" r="12" fill="none" stroke="${harborColor}" stroke-width="1" opacity=".35"/>
+  <path d="M${shipX-34} ${channelY+18} h52 l18 8 h12 v4 h-82 z" fill="#12263a"/>
+  <rect x="${shipX-12}" y="${channelY+2}" width="18" height="16" rx="2" fill="#d8dee6"/>
+  <rect x="${shipX-6}" y="${channelY-10}" width="8" height="12" rx="1.5" fill="#d8dee6"/>
+  <rect x="${shipX+9}" y="${channelY-6}" width="7" height="24" rx="1.5" fill="#304b64"/>
+  <path d="M${shipX-34} ${channelY+32} Q${shipX+4} ${channelY+26} ${shipX+48} ${channelY+31}" fill="none" stroke="#6fa8dc" stroke-width="1.2" opacity=".55"/>
+  <path d="M${coastLeft ? 196 : 244} 54 L${coastLeft ? 226 : 214} 46" stroke="#d4a017" stroke-width="2"/>
+  <circle cx="${coastLeft ? 196 : 244}" cy="54" r="4" fill="#d4a017"/>
+  <path d="M${coastLeft ? 180 : 260} 210 L${coastLeft ? 218 : 222} 192" stroke="#5dbf8a" stroke-width="1.8" stroke-dasharray="5,4"/>
+  <circle cx="${coastLeft ? 180 : 260}" cy="210" r="4" fill="#5dbf8a"/>
+  <text x="16" y="20" fill="#8ab0c8" font-size="9" font-family="monospace">${port.name.toUpperCase()} PORT CHART</text>
+  <text x="16" y="34" fill="#6fa8dc" font-size="8" font-family="monospace">${region}</text>
+  <text x="${coastLeft ? 190 : 152}" y="${channelY-32}" fill="#d4a017" font-size="8" font-family="monospace">PILOT STATION</text>
+  <text x="${coastLeft ? 178 : 242}" y="${channelY+56}" fill="#cfd8e4" font-size="8" font-family="monospace">BERTH</text>
+  <text x="${coastLeft ? 222 : 130}" y="${channelY+84}" fill="#5dbf8a" font-size="8" font-family="monospace">ANCHORAGE</text>
+  <text x="${coastLeft ? 286 : 42}" y="${channelY-14}" fill="#6fa8dc" font-size="8" font-family="monospace">APPROACH CHANNEL</text>
+  <text x="${shipX-20}" y="${channelY+54}" fill="#d4a017" font-size="8" font-family="monospace">OWN SHIP</text>
+  <circle cx="394" cy="44" r="22" fill="none" stroke="#204a72" stroke-width="1.4"/>
+  <path d="M394 28 V60 M378 44 H410" stroke="#204a72" stroke-width="1"/>
+  <text x="391" y="26" fill="#8ab0c8" font-size="7" font-family="monospace">N</text>
+  `;
+}
+
+function renderMapLibrary(){
+  const files = document.getElementById('map-files');
+  const chartSvg = document.getElementById('port-chart-svg');
+  const chartTitle = document.getElementById('port-chart-title');
+  const chartMeta = document.getElementById('port-chart-meta');
+  if(!files || !chartSvg || !chartTitle || !chartMeta) return;
+  const active = ensureSelectedPortChart();
+  const entries = getPortChartEntries();
+  files.innerHTML = entries.map(port=>`
+    <button class="map-file ${port.name===selectedPortChart?'active':''}" onclick="selectPortChart('${port.name.replace(/'/g,"\\'")}')">
+      <span class="map-file-main">
+        <span class="map-file-ico">🗂</span>
+        <span class="map-file-name">${port.name}</span>
+      </span>
+      <span class="map-file-tag">${visitedPorts.has(port.name)?'ugrandi':'arsiv'}</span>
+    </button>
+  `).join('');
+  if(!active){
+    chartSvg.innerHTML = '';
+    chartTitle.textContent = 'Liman Haritasi';
+    chartMeta.textContent = 'Harita arsivi hazir degil.';
+    return;
+  }
+  const region = getMapRegionByPosition(active);
+  chartTitle.textContent = `${active.name} · Liman Haritasi`;
+  chartSvg.innerHTML = buildPortChartSvg(active);
+  chartMeta.innerHTML = `DOSYA: ${active.name.replace(/ /g,'_').toUpperCase()}.chart<br>TIP: LIMAN YAKLASMA PLANI<br>BOLGE: ${region}<br>DURUM: ${visitedPorts.has(active.name)?'UGRANAN LIMAN':'ARSIV HARITASI'}<br>NOT: ${getPortChartHint(active.name, region)}`;
+}
 
 function updateShipPosition(sceneLoc){
   const locMap = {
@@ -6515,22 +6654,22 @@ function updateShipPosition(sceneLoc){
 }
 
 function renderMap(){
+  const panel = document.getElementById('map-panel');
+  const tabs = document.querySelectorAll('.map-tab');
+  if(panel){
+    panel.classList.toggle('library', mapView === 'library');
+  }
+  tabs.forEach(btn=>{
+    const wants = btn.textContent.toLowerCase().includes('haritalarim') ? 'library' : 'world';
+    btn.classList.toggle('active', wants===mapView);
+  });
+  if(mapView === 'library'){
+    renderMapLibrary();
+    return;
+  }
   const svg = document.getElementById('map-svg');
   const legend = document.getElementById('map-legend');
-  const region =
-    shipPosition.x >= 405 ? 'KUZEY PASIFIK / JAPONYA' :
-    shipPosition.x >= 372 ? 'DOGU ASYA' :
-    shipPosition.x >= 330 && shipPosition.y < 190 ? 'GUNEYDOGU ASYA' :
-    shipPosition.x >= 320 ? 'BASRA KORFEZI / ARAP DENIZI' :
-    shipPosition.x >= 245 ? 'KIZILDENIZ / HINT OKYANUSU GIRISI' :
-    shipPosition.x < 70 && shipPosition.y > 220 ? 'GUNEY AMERIKA' :
-    shipPosition.x < 70 && shipPosition.y > 120 ? 'AMERIKA / KARAYIPLER' :
-    shipPosition.x < 70 && shipPosition.y <= 120 ? 'ATLANTIK / BATI AVRUPA' :
-    (shipPosition.y <= 22 || (shipPosition.x < 95 && shipPosition.y < 30)) ? 'KUZEY DENIZI / BALTIK' :
-    shipPosition.y < 62 && shipPosition.x >= 180 ? 'KARADENIZ / AZAK' :
-    shipPosition.y < 88 && shipPosition.x >= 120 ? 'TURK BOGAZLARI / ADRIYATIK' :
-    shipPosition.x < 150 ? 'ORTA AKDENIZ' :
-    'DOGU AKDENIZ';
+  const region = getMapRegionByPosition(shipPosition);
   const regionFill =
     region==='ORTA AKDENIZ' ? '#03101d' :
     region==='TURK BOGAZLARI / ADRIYATIK' ? '#041320' :

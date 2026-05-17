@@ -25,8 +25,22 @@
 <div id="map-panel">
   <div id="map-box">
     <div id="map-title"><span>🗺️ ROTA HARİTASI</span><button id="map-close" onclick="closeMap()">✕ Kapat</button></div>
-    <svg id="map-svg" viewBox="0 0 440 260" xmlns="http://www.w3.org/2000/svg"></svg>
-    <div style="font-size:9px;color:var(--text3);margin-top:6px;font-family:'Share Tech Mono',monospace;" id="map-legend"></div>
+    <div id="map-tabs">
+      <button class="map-tab active" onclick="setMapView('world')">Rota Haritasi</button>
+      <button class="map-tab" onclick="setMapView('library')">Haritalarim</button>
+    </div>
+    <div id="map-world-view">
+      <svg id="map-svg" viewBox="0 0 440 260" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div style="font-size:9px;color:var(--text3);margin-top:6px;font-family:'Share Tech Mono',monospace;" id="map-legend"></div>
+    </div>
+    <div id="map-library-view">
+      <div id="map-files"></div>
+      <div id="port-chart-box">
+        <div id="port-chart-title">Liman Haritasi</div>
+        <svg id="port-chart-svg" viewBox="0 0 440 260" xmlns="http://www.w3.org/2000/svg"></svg>
+        <div id="port-chart-meta"></div>
+      </div>
+    </div>
   </div>
 </div>
 
