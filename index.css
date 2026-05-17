@@ -285,7 +285,9 @@ input[type=text]::placeholder{color:var(--text3);}
 .map-file:hover,.map-file.active{border-color:var(--accent);color:var(--text);background:rgba(20,44,70,0.95);}
 .map-file-main{display:flex;align-items:center;gap:8px;min-width:0;}
 .map-file-ico{color:var(--gold);font-size:13px;}
+.map-file-text{display:flex;flex-direction:column;min-width:0;gap:2px;}
 .map-file-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.map-file-sub{font-size:9px;color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .map-file-tag{font-size:9px;color:var(--text3);border:1px solid rgba(138,176,200,.2);border-radius:999px;padding:3px 6px;}
 #port-chart-box{border:1px solid var(--border2);border-radius:10px;background:rgba(7,19,36,0.55);padding:10px;}
 #port-chart-title{font-size:11px;color:var(--gold);font-family:'Share Tech Mono',monospace;margin-bottom:8px;letter-spacing:1px;}

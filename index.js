@@ -6535,8 +6535,32 @@ function getPortChartHint(name, region){
   return 'Yaklasma plani, draft, pilot station ve mooring duzeni birlikte dusunulur.';
 }
 
-function buildPortChartSvg(port){
+function getPortChartProfile(port){
   const region = getMapRegionByPosition(port);
+  const hay = `${port.name} ${region}`.toLowerCase();
+  const profile = {
+    region,
+    maxDraft: port.y > 185 ? '14.5m' : port.y < 40 ? '12.8m' : '13.6m',
+    berth: /rotterdam|anvers|hamburg|panama|new orleans|santos|singapur|yokohama|sanghay/.test(hay) ? 'Terminal 3' : 'Berth 2',
+    pilot: /rotterdam|anvers|hamburg|panama|new orleans|santos|trieste/.test(hay) ? 'River / Pilot boarding' : 'Pilot Station',
+    hazard: /mersin|haifa|port said|suveys|cidde|dubai|abu dhabi|doha/.test(hay) ? 'Traffic lane / reporting' : 'Shallow patch',
+    approach: /rotterdam|anvers|hamburg|panama|new orleans|santos/.test(hay) ? 'Nehir / kanal yaklasmasi' : 'Acik denizden liman yaklasmasi',
+    notes: getPortChartHint(port.name, region),
+    depthA: port.y > 185 ? '16.2' : '14.8',
+    depthB: port.y < 70 ? '11.4' : '12.9',
+    tides: /rotterdam|anvers|hamburg|dover|marsilya|singapur/.test(hay) ? 'Gelgit / akinti etkisi var' : 'Akinti / ruzgar one cikiyor'
+  };
+  if(/singapur|yokohama|sanghay|rotterdam|anvers|hamburg/.test(hay)) profile.hazard = 'TSS / yogun trafik';
+  if(/dubai|abu dhabi|doha|basra/.test(hay)) profile.hazard = 'Draft / sicak hava / traffic lane';
+  if(/marsilya|napoli|pire|valensiya|malta|barselona|cenova/.test(hay)) profile.hazard = 'Breakwater / ferry traffic';
+  if(/panama|new orleans|santos/.test(hay)) profile.hazard = 'Akinti / turning basin';
+  if(/port said|suveys|iskenderiye|haifa|limasol|mersin/.test(hay)) profile.hazard = 'Pilot / convoy / reporting';
+  return profile;
+}
+
+function buildPortChartSvg(port){
+  const profile = getPortChartProfile(port);
+  const region = profile.region;
   const coastLeft = port.x < 110;
   const southFacing = port.y > 170;
   const harborColor = visitedPorts.has(port.name) ? '#d4a017' : '#6fa8dc';
@@ -6545,6 +6569,7 @@ function buildPortChartSvg(port){
   const channelStartX = coastLeft ? 410 : 30;
   const channelEndX = coastLeft ? 238 : 202;
   const channelY = southFacing ? 150 : 126;
+  const turningBasinX = coastLeft ? 206 : 234;
   const topWater = southFacing ? '#07131f' : '#06111c';
   const bottomWater = southFacing ? '#0a2440' : '#0c2d4f';
   return `
@@ -6557,28 +6582,52 @@ function buildPortChartSvg(port){
   <rect width="440" height="260" rx="8" fill="url(#portSea)"/>
   <path d="${coastLeft ? 'M0 0 L132 0 L168 58 L168 260 L0 260 Z' : 'M440 0 L308 0 L272 58 L272 260 L440 260 Z'}" fill="#0a1b2b" opacity=".95"/>
   <path d="${coastLeft ? 'M132 0 L176 64 L176 260 L168 260 L168 58 Z' : 'M308 0 L264 64 L264 260 L272 260 L272 58 Z'}" fill="#10283f" opacity=".9"/>
+  <path d="${coastLeft ? 'M168 64 L214 98 L214 224 L176 260 L176 64 Z' : 'M272 64 L226 98 L226 224 L264 260 L264 64 Z'}" fill="#112e46" opacity=".85"/>
   <path d="M${channelStartX} ${channelY} Q${(channelStartX+channelEndX)/2} ${channelY-18} ${channelEndX} ${channelY}" fill="none" stroke="#4f8fc7" stroke-width="2.2" stroke-dasharray="7,5" opacity=".9"/>
+  <path d="M${channelStartX} ${channelY-14} Q${(channelStartX+channelEndX)/2} ${channelY-32} ${channelEndX} ${channelY-14}" fill="none" stroke="#1d5d95" stroke-width="1" stroke-dasharray="4,4" opacity=".45"/>
+  <path d="M${channelStartX} ${channelY+14} Q${(channelStartX+channelEndX)/2} ${channelY-4} ${channelEndX} ${channelY+14}" fill="none" stroke="#1d5d95" stroke-width="1" stroke-dasharray="4,4" opacity=".45"/>
   <path d="M${coastLeft ? 170 : 270} ${channelY-44} L${berthX} ${channelY-20} L${berthX} ${channelY+36} L${coastLeft ? 176 : 264} ${channelY+18} Z" fill="#17324c" opacity=".72"/>
   <path d="M${berthX} ${channelY-26} V${channelY+42}" stroke="#cfd8e4" stroke-width="4"/>
+  <path d="M${berthX + (coastLeft?-24:24)} ${channelY-18} V${channelY+32}" stroke="#7ea0bd" stroke-width="1" opacity=".7"/>
+  <path d="M${berthX + (coastLeft?-36:36)} ${channelY-10} V${channelY+24}" stroke="#7ea0bd" stroke-width="1" opacity=".55"/>
   <path d="M${berthX + (coastLeft?-18:18)} ${channelY-10} V${channelY+26}" stroke="#8eb2d1" stroke-width="1.4" stroke-dasharray="3,3" opacity=".8"/>
+  <circle cx="${turningBasinX}" cy="${channelY}" r="22" fill="none" stroke="#2f6ea5" stroke-width="1.2" opacity=".4"/>
+  <circle cx="${turningBasinX}" cy="${channelY}" r="14" fill="none" stroke="#2f6ea5" stroke-width="1" opacity=".25" stroke-dasharray="5,4"/>
   <circle cx="${channelEndX}" cy="${channelY}" r="5" fill="${harborColor}"/>
   <circle cx="${channelEndX}" cy="${channelY}" r="12" fill="none" stroke="${harborColor}" stroke-width="1" opacity=".35"/>
+  <circle cx="${coastLeft ? channelEndX+44 : channelEndX-44}" cy="${channelY-10}" r="4" fill="#44d26f"/>
+  <circle cx="${coastLeft ? channelEndX+66 : channelEndX-66}" cy="${channelY+10}" r="4" fill="#d24c4c"/>
+  <circle cx="${coastLeft ? channelEndX+88 : channelEndX-88}" cy="${channelY-12}" r="4" fill="#44d26f"/>
+  <circle cx="${coastLeft ? channelEndX+110 : channelEndX-110}" cy="${channelY+12}" r="4" fill="#d24c4c"/>
   <path d="M${shipX-34} ${channelY+18} h52 l18 8 h12 v4 h-82 z" fill="#12263a"/>
   <rect x="${shipX-12}" y="${channelY+2}" width="18" height="16" rx="2" fill="#d8dee6"/>
   <rect x="${shipX-6}" y="${channelY-10}" width="8" height="12" rx="1.5" fill="#d8dee6"/>
   <rect x="${shipX+9}" y="${channelY-6}" width="7" height="24" rx="1.5" fill="#304b64"/>
   <path d="M${shipX-34} ${channelY+32} Q${shipX+4} ${channelY+26} ${shipX+48} ${channelY+31}" fill="none" stroke="#6fa8dc" stroke-width="1.2" opacity=".55"/>
+  <path d="M${shipX-44} ${channelY+18} L${shipX-58} ${channelY+9}" stroke="#8ab0c8" stroke-width="1.3"/>
+  <path d="M${shipX+48} ${channelY+18} L${shipX+62} ${channelY+10}" stroke="#8ab0c8" stroke-width="1.3"/>
+  <circle cx="${shipX-60}" cy="${channelY+8}" r="2.4" fill="#cfd8e4"/>
+  <circle cx="${shipX+64}" cy="${channelY+9}" r="2.4" fill="#cfd8e4"/>
   <path d="M${coastLeft ? 196 : 244} 54 L${coastLeft ? 226 : 214} 46" stroke="#d4a017" stroke-width="2"/>
   <circle cx="${coastLeft ? 196 : 244}" cy="54" r="4" fill="#d4a017"/>
   <path d="M${coastLeft ? 180 : 260} 210 L${coastLeft ? 218 : 222} 192" stroke="#5dbf8a" stroke-width="1.8" stroke-dasharray="5,4"/>
   <circle cx="${coastLeft ? 180 : 260}" cy="210" r="4" fill="#5dbf8a"/>
+  <rect x="${coastLeft ? 52 : 328}" y="${southFacing ? 178 : 46}" width="42" height="18" rx="4" fill="#081929" stroke="#385f86" stroke-width="1"/>
+  <text x="${coastLeft ? 60 : 336}" y="${southFacing ? 190 : 58}" fill="#8ab0c8" font-size="8" font-family="monospace">VTS</text>
+  <rect x="${coastLeft ? 98 : 282}" y="${southFacing ? 178 : 46}" width="58" height="18" rx="4" fill="#081929" stroke="#385f86" stroke-width="1"/>
+  <text x="${coastLeft ? 106 : 290}" y="${southFacing ? 190 : 58}" fill="#8ab0c8" font-size="8" font-family="monospace">PILOT CH.12</text>
+  <path d="M${coastLeft ? 140 : 300} ${southFacing ? 116 : 198} h58" stroke="#c97070" stroke-width="1.4" stroke-dasharray="5,3" opacity=".8"/>
+  <text x="${coastLeft ? 142 : 302}" y="${southFacing ? 110 : 192}" fill="#c97070" font-size="7" font-family="monospace">${profile.hazard.toUpperCase()}</text>
+  <text x="${coastLeft ? 124 : 252}" y="${channelY-58}" fill="#9cc8ef" font-size="7" font-family="monospace">DEPTH ${profile.depthA}m</text>
+  <text x="${coastLeft ? 230 : 120}" y="${channelY+74}" fill="#9cc8ef" font-size="7" font-family="monospace">DEPTH ${profile.depthB}m</text>
   <text x="16" y="20" fill="#8ab0c8" font-size="9" font-family="monospace">${port.name.toUpperCase()} PORT CHART</text>
   <text x="16" y="34" fill="#6fa8dc" font-size="8" font-family="monospace">${region}</text>
-  <text x="${coastLeft ? 190 : 152}" y="${channelY-32}" fill="#d4a017" font-size="8" font-family="monospace">PILOT STATION</text>
-  <text x="${coastLeft ? 178 : 242}" y="${channelY+56}" fill="#cfd8e4" font-size="8" font-family="monospace">BERTH</text>
+  <text x="${coastLeft ? 178 : 140}" y="${channelY-32}" fill="#d4a017" font-size="8" font-family="monospace">${profile.pilot.toUpperCase()}</text>
+  <text x="${coastLeft ? 168 : 238}" y="${channelY+56}" fill="#cfd8e4" font-size="8" font-family="monospace">${profile.berth.toUpperCase()}</text>
   <text x="${coastLeft ? 222 : 130}" y="${channelY+84}" fill="#5dbf8a" font-size="8" font-family="monospace">ANCHORAGE</text>
   <text x="${coastLeft ? 286 : 42}" y="${channelY-14}" fill="#6fa8dc" font-size="8" font-family="monospace">APPROACH CHANNEL</text>
   <text x="${shipX-20}" y="${channelY+54}" fill="#d4a017" font-size="8" font-family="monospace">OWN SHIP</text>
+  <text x="${turningBasinX-24}" y="${channelY+4}" fill="#5f92bf" font-size="7" font-family="monospace">TURN</text>
   <circle cx="394" cy="44" r="22" fill="none" stroke="#204a72" stroke-width="1.4"/>
   <path d="M394 28 V60 M378 44 H410" stroke="#204a72" stroke-width="1"/>
   <text x="391" y="26" fill="#8ab0c8" font-size="7" font-family="monospace">N</text>
@@ -6597,7 +6646,10 @@ function renderMapLibrary(){
     <button class="map-file ${port.name===selectedPortChart?'active':''}" onclick="selectPortChart('${port.name.replace(/'/g,"\\'")}')">
       <span class="map-file-main">
         <span class="map-file-ico">🗂</span>
-        <span class="map-file-name">${port.name}</span>
+        <span class="map-file-text">
+          <span class="map-file-name">${port.name}</span>
+          <span class="map-file-sub">${getMapRegionByPosition(port)} · ${port.kind==='port'?'liman chart':'gecit chart'}</span>
+        </span>
       </span>
       <span class="map-file-tag">${visitedPorts.has(port.name)?'ugrandi':'arsiv'}</span>
     </button>
@@ -6608,10 +6660,11 @@ function renderMapLibrary(){
     chartMeta.textContent = 'Harita arsivi hazir degil.';
     return;
   }
-  const region = getMapRegionByPosition(active);
+  const profile = getPortChartProfile(active);
+  const region = profile.region;
   chartTitle.textContent = `${active.name} · Liman Haritasi`;
   chartSvg.innerHTML = buildPortChartSvg(active);
-  chartMeta.innerHTML = `DOSYA: ${active.name.replace(/ /g,'_').toUpperCase()}.chart<br>TIP: LIMAN YAKLASMA PLANI<br>BOLGE: ${region}<br>DURUM: ${visitedPorts.has(active.name)?'UGRANAN LIMAN':'ARSIV HARITASI'}<br>NOT: ${getPortChartHint(active.name, region)}`;
+  chartMeta.innerHTML = `DOSYA: ${active.name.replace(/ /g,'_').toUpperCase()}.chart<br>TIP: LIMAN YAKLASMA PLANI<br>BOLGE: ${region}<br>YAKLASMA: ${profile.approach}<br>MAKS DRAFT: ${profile.maxDraft}<br>BERTH: ${profile.berth}<br>GELGIT/AKINTI: ${profile.tides}<br>DURUM: ${visitedPorts.has(active.name)?'UGRANAN LIMAN':'ARSIV HARITASI'}<br>NOT: ${profile.notes}`;
 }
 
 function updateShipPosition(sceneLoc){
