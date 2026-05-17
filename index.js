@@ -6506,6 +6506,7 @@ let routeHistory = [{x:85,y:130}];
 let visitedPorts = new Set(["İzmir"]);
 let mapView = 'world';
 let selectedPortChart = 'İzmir';
+let portChartZoom = 1;
 
 function openMap(){
   document.getElementById('map-panel').classList.add('show');
@@ -6520,6 +6521,20 @@ function selectPortChart(name){
   selectedPortChart = name;
   if(mapView !== 'library') mapView = 'library';
   renderMap();
+}
+function adjustPortChartZoom(delta){
+  portChartZoom = Math.max(1, Math.min(2.5, +(portChartZoom + delta).toFixed(2)));
+  if(mapView === 'library') renderMapLibrary();
+}
+
+function getPortChartViewBox(){
+  const baseW = 440, baseH = 260;
+  const zoom = Math.max(1, portChartZoom || 1);
+  const width = +(baseW / zoom).toFixed(2);
+  const height = +(baseH / zoom).toFixed(2);
+  const x = +((baseW - width) / 2).toFixed(2);
+  const y = +((baseH - height) / 2).toFixed(2);
+  return `${x} ${y} ${width} ${height}`;
 }
 
 function getMapRegionByPosition(pos){
@@ -6617,6 +6632,7 @@ function getPortChartProfile(port){
 function buildPortChartSvg(port){
   const profile = getPortChartProfile(port);
   const region = profile.region;
+  const hay = `${port.name} ${region}`.toLowerCase();
   const coastLeft = port.x < 110;
   const southFacing = port.y > 170;
   const harborColor = visitedPorts.has(port.name) ? '#d4a017' : '#6fa8dc';
@@ -6658,6 +6674,30 @@ function buildPortChartSvg(port){
   const islandLabels = coastLeft
     ? `<text x="214" y="44" fill="#7ea0bd" font-size="7" font-family="monospace">ISLET</text><text x="250" y="222" fill="#7ea0bd" font-size="7" font-family="monospace">ROCKS</text>`
     : `<text x="196" y="44" fill="#7ea0bd" font-size="7" font-family="monospace">ISLET</text><text x="166" y="222" fill="#7ea0bd" font-size="7" font-family="monospace">ROCKS</text>`;
+  const pilotGroundOverlay = `
+    <circle cx="${coastLeft ? 330 : 112}" cy="${southFacing ? 92 : 178}" r="15" fill="none" stroke="#d4a017" stroke-width="1.2" stroke-dasharray="4,3" opacity=".85"/>
+    <circle cx="${coastLeft ? 330 : 112}" cy="${southFacing ? 92 : 178}" r="4" fill="#d4a017"/>
+    <text x="${coastLeft ? 302 : 86}" y="${southFacing ? 82 : 168}" fill="#f0d59b" font-size="7" font-family="monospace">PILOT BOARDING</text>`;
+  const noAnchoringOverlay = /ras tanura|fujairah|singapur|rotterdam|port said|suveys|panama/.test(hay)
+    ? `
+      <ellipse cx="${coastLeft ? 282 : 158}" cy="${southFacing ? 196 : 194}" rx="34" ry="14" fill="none" stroke="#c97070" stroke-width="1.2" stroke-dasharray="5,4" opacity=".85"/>
+      <path d="M${coastLeft ? 252 : 128} ${southFacing ? 206 : 204} L${coastLeft ? 312 : 188} ${southFacing ? 184 : 184}" stroke="#c97070" stroke-width="1.3"/>
+      <text x="${coastLeft ? 248 : 124}" y="${southFacing ? 220 : 218}" fill="#e1a2a2" font-size="7" font-family="monospace">NO ANCHORING</text>`
+    : '';
+  const trafficArrowOverlay = /singapur|rotterdam|dover|malakka|hurmuz|babulmendep/.test(hay)
+    ? `
+      <path d="M${channelStartX+18} ${channelY-24} H${channelStartX+78}" stroke="#d4a017" stroke-width="1.3"/>
+      <path d="M${channelStartX+78} ${channelY-24} l-8 -4 v8 z" fill="#d4a017"/>
+      <path d="M${channelStartX+98} ${channelY+24} H${channelStartX+158}" stroke="#d4a017" stroke-width="1.3"/>
+      <path d="M${channelStartX+158} ${channelY+24} l-8 -4 v8 z" fill="#d4a017"/>
+      <text x="${channelStartX+22}" y="${channelY-32}" fill="#f0d59b" font-size="7" font-family="monospace">TRAFFIC FLOW</text>`
+    : '';
+  const sectorLightOverlay = `
+    <circle cx="${coastLeft ? 174 : 266}" cy="${southFacing ? 54 : 208}" r="4.2" fill="#f7f0a5"/>
+    <path d="M${coastLeft ? 174 : 266} ${southFacing ? 54 : 208} L${coastLeft ? 214 : 226} ${southFacing ? 24 : 178}" stroke="#f0d59b" stroke-width="1.4" opacity=".55"/>
+    <path d="M${coastLeft ? 174 : 266} ${southFacing ? 54 : 208} L${coastLeft ? 224 : 236} ${southFacing ? 44 : 198}" stroke="#44d26f" stroke-width="1.2" opacity=".5"/>
+    <path d="M${coastLeft ? 174 : 266} ${southFacing ? 54 : 208} L${coastLeft ? 198 : 242} ${southFacing ? 84 : 228}" stroke="#d24c4c" stroke-width="1.2" opacity=".45"/>
+    <text x="${coastLeft ? 184 : 226}" y="${southFacing ? 22 : 174}" fill="#8ab0c8" font-size="7" font-family="monospace">SECTOR LT</text>`;
   const specialOverlay = profile.template==='river'
     ? `
       <path d="M${coastLeft ? 420 : 18} ${channelY-26} Q220 ${channelY-36} ${coastLeft ? 164 : 276} ${channelY-22}" fill="none" stroke="#8c6a3c" stroke-width="1.2" stroke-dasharray="5,4" opacity=".75"/>
@@ -6774,6 +6814,10 @@ function buildPortChartSvg(port){
   <text x="${scaleBarX+4}" y="233" fill="#7ea0bd" font-size="7" font-family="monospace">0</text>
   <text x="${scaleBarX+40}" y="233" fill="#7ea0bd" font-size="7" font-family="monospace">1</text>
   <text x="${scaleBarX+80}" y="233" fill="#7ea0bd" font-size="7" font-family="monospace">2 NM</text>
+  ${pilotGroundOverlay}
+  ${noAnchoringOverlay}
+  ${trafficArrowOverlay}
+  ${sectorLightOverlay}
   ${specialOverlay}
   `;
 }
@@ -6783,6 +6827,7 @@ function renderMapLibrary(){
   const chartSvg = document.getElementById('port-chart-svg');
   const chartTitle = document.getElementById('port-chart-title');
   const chartMeta = document.getElementById('port-chart-meta');
+  const chartZoomLabel = document.getElementById('port-chart-zoom-label');
   if(!files || !chartSvg || !chartTitle || !chartMeta) return;
   const active = ensureSelectedPortChart();
   const entries = getPortChartEntries();
@@ -6808,6 +6853,8 @@ function renderMapLibrary(){
   const region = profile.region;
   chartTitle.textContent = `${active.name} · Liman Haritasi`;
   chartSvg.innerHTML = buildPortChartSvg(active);
+  chartSvg.setAttribute('viewBox', getPortChartViewBox());
+  if(chartZoomLabel) chartZoomLabel.textContent = `${Math.round(portChartZoom*100)}%`;
   chartMeta.innerHTML = `DOSYA: ${active.name.replace(/ /g,'_').toUpperCase()}.chart<br>YAYIN: ${profile.chartNo} · ${profile.edition}<br>TIP: LIMAN YAKLASMA PLANI<br>BOLGE: ${region}<br>OLCEK: ${profile.scale}<br>YAKLASMA: ${profile.approach}<br>MAKS DRAFT: ${profile.maxDraft}<br>BERTH: ${profile.berth}<br>DATUM: ${profile.soundDatum}<br>GELGIT/AKINTI: ${profile.tides}<br>DURUM: ${visitedPorts.has(active.name)?'UGRANAN LIMAN':'ARSIV HARITASI'}<br>NOT: ${profile.notes}`;
 }
 
