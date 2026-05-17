@@ -2153,30 +2153,42 @@ choices:[
 {text:"Verilen isi yapar, sessizce kosustururum",tag:"itaatkar",effect:{sayginlik:6,bilgi:5}},
 {text:"Moral bozup kenara cekilirim",tag:"korkak",effect:{sayginlik:-8,dinclik:-6}}]},
 
-{id:"s110",gfx:"compass",alert:false,day:"Gun 7",time:"09:20",loc:"Kopruustu - ECDIS Konsolu",sub:"Route check ve safety contour",who:"z2",
-text:`2. Zabiti ECDIS route check ekranini acti.
+{id:"s110",gfx:"compass",alert:false,day:"Gun 7",time:"09:20",loc:yr<2000?"Chart Room - Kagit Harita":"Kopruustu - ECDIS Konsolu",sub:yr<2000?"Kagit haritada route check ve emniyetli su":"Route check ve safety contour",who:"z2",
+text:yr<2000?`2. Zabiti buyuk kagit haritayi masaya yaydi.
+
+"Harita sadece cizgi degil. Derinlik, no-go alan, shoal, reporting point ve donus acisi burada gozle okunur. Karsina gelen seyri kalemle dusunmezsen denizde gec kalirsin."
+
+Sana sordu: route check'te once neye bakarsin?"`:`2. Zabiti ECDIS route check ekranini acti.
 
 "GPS nokta verir; ama seyri ECDIS ustunde akilla kurarsin. Safety depth, safety contour, no-go area ve isolated danger ayarlari bos is degil."
 
 Sana sordu: route check'te once neye bakarsin?"`,
 choices:[
-{text:"Safety contour, cross track limit ve chart warning listesini birlikte kontrol ederim",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
+{text:yr<2000?"Derinlik, no-go alan, donus noktasi ve raporlama yerlerini birlikte kontrol ederim":"Safety contour, cross track limit ve chart warning listesini birlikte kontrol ederim",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
 {text:"Sadece rotanin cizili olmasina bakarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
-{text:"GPS cizgisi varsa kalanina gerek yok derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-8}}]},
+{text:yr<2000?"Cizgi cekildiyse kalanina gerek yok derim":"GPS cizgisi varsa kalanina gerek yok derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-8}}]},
 
-{id:"s111",gfx:"compass",alert:false,day:"Gun 7",time:"17:10",loc:"Kopruustu - GPS Alarmi",sub:"GPS ile kağıt/visual cross-check",who:"z2",
-text:`Bir anda GPS quality alarmi geldi. Pozisyon akiyor gibi.
+{id:"s111",gfx:"compass",alert:false,day:"Gun 7",time:"17:10",loc:yr<1990?"Kopruustu - Mevki Suphesi":"Kopruustu - GPS Alarmi",sub:yr<1990?"Radar/visual ile kagit harita cross-check":"GPS ile kağıt/visual cross-check",who:"z2",
+text:yr<1990?`Mevki seyri bir anda icine sinmemeye basladi. Radar mesafesi, visual mark ve kagit haritadaki DR noktasi tam oturmuyor gibi.
+
+2. Zabiti derin bir nefes aldi: "Iste tam da bu yuzden tek kaynaga asik olunmaz. Radar range, visual mark, echo sounder ve kagit harita dusuncesi birlikte geri gelir."
+
+Ilk refleksin?"`:`Bir anda GPS quality alarmi geldi. Pozisyon akiyor gibi.
 
 2. Zabiti derin bir nefes aldi: "Iste simdi elektronik rahatlik bitti. Radar range, visual mark, echo sounder ve kagit harita dusuncesi geri gelir."
 
 Ilk refleksin?"`,
 choices:[
-{text:"Pozisyonu ikinci kaynaklarla cross-check eder, ECDIS'e kor gibi guvenmem",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
-{text:"GPS duzelir diye biraz beklerim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
-{text:"Alarmi susturup rota ayni diye devam ederim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+{text:yr<1990?"Pozisyonu radar, visual mark ve echo sounder ile capraz kontrol ederim":"Pozisyonu ikinci kaynaklarla cross-check eder, ECDIS'e kor gibi guvenmem",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:yr<1990?"Biraz daha bekleyip mevkideki farkin kendiliginden acilacagini umarim":"GPS duzelir diye biraz beklerim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+{text:yr<1990?"Icime sinmese de DR'ye fazla bakmadan devam ederim":"Alarmi susturup rota ayni diye devam ederim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
 
 {id:"s112",gfx:"bridge",alert:false,day:"Gun 10",time:"18:40",loc:"Kopruustu - Harita Duzeltmesi",sub:"Weekly chart correction",who:"z2",
-text:`Masa kagit haritalarla dolu. 2. Zabiti elindeki Notice to Mariners'i salladi.
+text:yr<2000?`Masa kagit haritalarla dolu. 2. Zabiti elindeki Notice to Mariners'i salladi.
+
+"Bu yillarda harita disiplini luks degil, omurgadir. Duzeltme tarihi, correction number, yeni tehlike, yeni siglik... hepsi tek tek islenir."
+
+Sana bir not verdi. Ne yaparsin?"`:`Masa kagit haritalarla dolu. 2. Zabiti elindeki Notice to Mariners'i salladi.
 
 "Elektronik var diye kâğıt harita disiplini olmez. Duzeltme tarihi, correction number, yeni tehlike, yeni sığlık... hepsi tek tek islenir."
 
@@ -2184,7 +2196,7 @@ Sana bir not verdi. Ne yaparsin?"`,
 choices:[
 {text:"Notu ilgili haritaya isler, correction numarasini ve tarihi kayda gecerim",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
 {text:"Sadece haritanin kenarina ufak not dusup birakirim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
-{text:"ECDIS varken buna gerek yok derim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
+{text:yr<2000?"Bu kadar ayrintiya gerek yok diye dusunurum":"ECDIS varken buna gerek yok derim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
 {id:"s112b",gfx:"bridge",alert:false,day:"Gun 10",time:"19:05",loc:"Chart Room",sub:"Kagit haritada correction tracing ve record tutma",who:"z2",
 text:`2. Zabiti bu kez tracing kagidini ve correction record klasorunu onune koydu.
@@ -2197,27 +2209,35 @@ choices:[
 {text:"Haritada degisiklik gorunuyorsa ayri kayda cok gerek olmadigini dusunurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:"Tracing ve record isini gereksiz evrak kalabaligi sayarim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
 
-{id:"s112c",gfx:"ecdis_panel",alert:false,day:"Gun 10",time:"19:40",loc:"Kopruustu - ECDIS Admin",sub:"ENC update ve cell status kontrolu",who:"z2",
-text:`Bu kez ECDIS update penceresi acildi.
+{id:"s112c",gfx:yr<2000?"bridge":"ecdis_panel",alert:false,day:"Gun 10",time:"19:40",loc:yr<2000?"Chart Room - Chart Folio":"Kopruustu - ECDIS Admin",sub:yr<2000?"Chart folio ve correction listesi kontrolu":"ENC update ve cell status kontrolu",who:"z2",
+text:yr<2000?`Bu kez chart folio, correction listesi ve yayin klasoru masaya acildi.
+
+"Kagit harita doneminde de guncellik kendiliginden gelmez. Hangi chart aktif, hangisi son correction'li, hangi yayinin son listesi gelmis; bunlar tek tek kontrol edilir. Rafda duruyor diye guncel sayilmaz."
+
+Ne yaparsin?`:`Bu kez ECDIS update penceresi acildi.
 
 "Elektronik harita da kendi kendine guncel kalmaz. Permit, cell status, latest update package, overdue area ve warning listesi birlikte kontrol edilir. 'Harita aciliyor' demek 'up to date' demek degildir."
 
 Ne yaparsin?`,
 choices:[
-{text:"Cell status, permit, son update tarihi ve overdue alanlari birlikte kontrol ederim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
-{text:"Ekranda harita gorunuyorsa guncel kabul ederim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
-{text:"Alarm yoksa update ihtiyaci da yoktur diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+{text:yr<2000?"Folio, son correction numarasi ve yayin listesini birlikte kontrol ederim":"Cell status, permit, son update tarihi ve overdue alanlari birlikte kontrol ederim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:yr<2000?"Rafda varsa gunceldir diye dusunurum":"Ekranda harita gorunuyorsa guncel kabul ederim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:yr<2000?"Yeni liste gelmediyse eskiyle devam etmenin yeterli oldugunu sanirim":"Alarm yoksa update ihtiyaci da yoktur diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
 
-{id:"s112d",gfx:"compass",alert:false,day:"Gun 10",time:"20:05",loc:"Kopruustu - Rota Duzeltmesi",sub:"Kagit harita ve ECDIS'e birlikte isleme",who:"z2",
-text:`Sonra rota degisikligi geldi. 2. Zabiti kalemi ve ECDIS plan ekranini ayni anda gosterdi.
+{id:"s112d",gfx:"compass",alert:false,day:"Gun 10",time:"20:05",loc:"Kopruustu - Rota Duzeltmesi",sub:yr<2000?"Kagit harita ve passage plan guncellemesi":"Kagit harita ve ECDIS'e birlikte isleme",who:"z2",
+text:yr<2000?`Sonra rota degisikligi geldi. 2. Zabiti kalemi, parallel cetveli ve passage plan dosyasini ayni anda gosterdi.
+
+"Iyi zabit duzeltmeyi tek yerde birakmaz. Passage plan, kagit harita, ilgili notlar ve logbook birbirini tamamlar. Biri eski kalirsa hata sessizce buyur."
+
+Dogru siralama hangisi?`:`Sonra rota degisikligi geldi. 2. Zabiti kalemi ve ECDIS plan ekranini ayni anda gosterdi.
 
 "Iyi zabit duzeltmeyi tek yerde birakmaz. Passage plan, kagit harita, ECDIS route, ilgili notlar ve logbook birbirini tamamlar. Biri eski kalirsa hata sessizce buyur."
 
 Dogru siralama hangisi?`,
 choices:[
-{text:"Rota degisikligini ECDIS, kagit harita, passage plan ve log kayitlarina tutarli sekilde islerim",tag:"kritik",effect:{bilgi:17,sayginlik:13}},
-{text:"ECDIS'i guncelleyip kagit haritayi daha sonra halletmeyi yeterli gorurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
-{text:"Iki sistemden birinin guncel olmasi yeterlidir diye dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+{text:yr<2000?"Rota degisikligini kagit harita, passage plan ve log kayitlarina tutarli sekilde islerim":"Rota degisikligini ECDIS, kagit harita, passage plan ve log kayitlarina tutarli sekilde islerim",tag:"kritik",effect:{bilgi:17,sayginlik:13}},
+{text:yr<2000?"Passage plani guncelleyip haritayi daha sonra halletmeyi yeterli gorurum":"ECDIS'i guncelleyip kagit haritayi daha sonra halletmeyi yeterli gorurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:yr<2000?"Kayitlardan birinin guncel olmasi yeter diye dusunurum":"Iki sistemden birinin guncel olmasi yeterlidir diye dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
 
 {id:"s113",gfx:"sea",alert:false,day:"Gun 10",time:"06:50",loc:"Valensiya Aciklari",sub:"Farkli rota ve trafik plani",who:"suvari",
 text:`Suvari yeni rotayi acikladı.
@@ -3927,6 +3947,68 @@ Ilk disiplinin ne olur?"`,
   {text:"En parlak hedefe bakip digerlerini ikinci plana atarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4},radarMode:"multi_crossing"},
   {text:"Bu kadar hedefte saglikli yorum yapilmaz diye dagilirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11},radarMode:"multi_crossing"}]}
 ];
+const PRE2000_ROUTE_SCENES=[
+  {id:"s204p",gfx:"bridge",alert:false,day:"Gun 11",time:"20:05",loc:"Chart Room - Passage Planning",sub:"Kagit haritada seyir plani ve waypoint secimi",who:"z2",
+  text:`2. Zabiti buyuk kagit haritayi, parallel cetveli ve pergeli masaya dizdi.
+
+"Bu kez cizgiyi ekranda degil burada kuracaksin. Rota; waypoint mantigi, wheel-over dusuncesi, trafik ayirimi saygisi, emniyetli su ve reporting noktasi ister. Yanlis donus acisi kagit ustunde de denizde de bela cikarir."
+
+Simdi bana bu gecis icin hangi plan dusuncesini kuracagini soyle.`,
+  choices:[
+  {text:"Emniyetli suyu ve trafik ayirim duzenini koruyan guneyli plani kurarim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Daha kisa ama trafik baskili direct hatta yakin bir plan denerim",tag:"akilli",effect:{bilgi:12,sayginlik:8}},
+  {text:"Sadece mesafeyi kisaltan cizgiye agirlik veririm",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+  {id:"s205p",gfx:"bridge",alert:false,day:"Gun 11",time:"20:40",loc:"Chart Room - Route Check",sub:"Kagit haritada route check ve no-go alan kontrolu",who:"z2",
+  text:`Cizdigin rota bu kez harita ustunde kirmizi kursun kalemle duruyor.
+
+"Route planning'in yarisi cizmekse diger yarisi route check'tir. Siglik, no-go alan, wheel-over dusuncesi, raporlama noktasi ve emniyetli su hattini kontrol etmeden bu rota canli sayilmaz."
+
+Hangi kontrolden baslarsin?`,
+  choices:[
+  {text:"Derinlikler, no-go alanlar ve donus noktalarini birlikte kontrol ederim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+  {text:"Haritada cizgi duzgun gorunuyorsa yeter derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Varis limanina uzaniyorsa kalanina gerek yok diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+  {id:"s206p",gfx:"bridge",alert:false,day:"Gun 12",time:"06:20",loc:"Koprustu - Sabah Seyir Brifingi",sub:"Seyir planini ekibe anlatma ve kagit harita brifingi",who:"suvari",
+  text:`Sabah brifinginde suvari seni haritanin basina cagirdi.
+
+"Plani cizmek kadar anlatmak da zabitliktir. Kagit harita ustunde hangi noktada donus var, hangi reporting yapilacak, hangi kesimde emniyet payi daraliyor; hepsini ekibe net aktaracaksin."
+
+Neye vurgu yaparsin?`,
+  choices:[
+  {text:"Donus noktalarini, emniyetli suyu ve reporting sahalarini birlikte anlatirim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+  {text:"Harita zaten masada, sozlu brifing fazla derim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Sadece varis limanini soylemenin yeterli oldugunu sanirim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+  {id:"s209p",gfx:"compass",alert:true,day:"Gun 12",time:"08:20",loc:"Koprustu - Mevki Kaymasi",sub:"DR/EP kaymasi ve rota disina tasma riski",who:"z2",
+  text:`2. Zabiti kagit harita ustunde DR mevki ile gozlenen mevki arasindaki farki isaretledi.
+
+"Akinti seni kagit ustunde de sessizce disari tasir. DR, EP, radar range ve visual mark birlikte okunmazsa rota kaymasini gec anlarsin."
+
+Ilk refleksin ne olur?`,
+  choices:[
+  {text:"DR/EP farkini radar, visual mark ve echo sounder ile birlikte teyit ederim",tag:"kritik",effect:{bilgi:17,sayginlik:12,cesaret:3}},
+  {text:"Bir sonraki gozlemde fark kapanir diye biraz beklerim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Kagit haritada kucuk kaymalarin onemsiz oldugunu dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]}
+];
+const PRE2000_EQUIPMENT_SCENES=[
+  {id:"s236p",gfx:"bridge",alert:false,day:"Gun 5",time:"12:00",loc:"Chart Room - Kagit Harita",sub:"Kagit harita ustunde neye bakiyoruz?",who:"z2",
+  text:`2. Zabiti haritayi onune cektikten sonra isaret etti.
+
+"Harita sadece sahil cizgisi degil. Baslik, olcek, sounding datum, compass rose, derinlikler, tehlike isaretleri ve notlar birlikte okunur. Goz sadece cizili rotada kalirsa eksik kalir."
+
+Ilk bakisin nereye dagilir?`,
+  choices:[
+  {text:"Olcek, datum, derinlik, tehlike ve aktif rota hattini birlikte okurum",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Sadece cizili rota hattina bakmanin yeterli oldugunu sanirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Harita karmasik diye yorumlamayi birakirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]}
+];
+function getExtraRouteScenesForYear(yr){
+  return yr<2000 ? PRE2000_ROUTE_SCENES : EXTRA_ROUTE_SCENES;
+}
+function getExtraEquipmentScenesForYear(yr){
+  return yr<2000
+    ? EXTRA_EQUIPMENT_SCENES.filter(sc=>sc.id!=='s236').concat(PRE2000_EQUIPMENT_SCENES)
+    : EXTRA_EQUIPMENT_SCENES;
+}
 const DOCUMENT_CHAIN_SCENE_IDS = new Set(['s309','s310','s311','s312','s313','s314']);
 const EXTRA_EQUIPMENT_SCENES=[
   {id:"s228",gfx:"gyro_panel",alert:false,day:"Gun 4",time:"10:30",loc:"Koprustu - Gyro Repeater",sub:"Gyro compass neyi verir?",who:"z2",
@@ -5862,7 +5944,9 @@ function renderCalcPanel(sc, ch){
 }
 
 // ===== RASTGELE SENARYO SIRASI =====
-function buildSceneQueue(pool, totalDays){
+function buildSceneQueue(pool, totalDays, yr=selYear){
+  const extraRouteScenes = getExtraRouteScenesForYear(yr);
+  const extraEquipmentScenes = getExtraEquipmentScenesForYear(yr);
   // Zorunlu sahneler: s01 (başlangıç), FINAL (son)
   const mandatory_start = pool.filter(s=>s.id==='s01');
   const final = pool.filter(s=>s.id==='FINAL');
@@ -5891,7 +5975,7 @@ function buildSceneQueue(pool, totalDays){
 
   // Düzenli sahneleri karıştır ve totalDays - (başlangıç+kriz+final) kadar seç
   const shuffledRegular=[...regular].sort(()=>Math.random()-0.5);
-  const needed=Math.max(5, totalDays - selectedCrisis.length - 2 - EXTRA_ROUTE_SCENES.length - EXTRA_EQUIPMENT_SCENES.length - documentChain.length);
+  const needed=Math.max(5, totalDays - selectedCrisis.length - 2 - extraRouteScenes.length - extraEquipmentScenes.length - documentChain.length);
   let selectedRegular=shuffledRegular.slice(0,needed);
 
   // Dinclik toparlanma sahneleri kuyrukta gercekten yer bulsun.
@@ -5913,7 +5997,7 @@ function buildSceneQueue(pool, totalDays){
   // Sıralamayı oluştur: başlangıç + (karışık regular + kriz) + final
   const middle=[...selectedRegular,...selectedCrisis].sort(()=>Math.random()-0.5);
 
-  return [...mandatory_start, ...middle, ...documentChain, ...EXTRA_ROUTE_SCENES, ...EXTRA_EQUIPMENT_SCENES, ...final];
+  return [...mandatory_start, ...middle, ...documentChain, ...extraRouteScenes, ...extraEquipmentScenes, ...final];
 }
 
 const RECOVERY_SCENE_IDS = new Set(['s146','s147','s148','s149','s150','s183','s184','s185','s186','s187','s187b','s187c','s187d','s187e','s187f','s187g','s187h','s187i','s187j']);
@@ -6104,7 +6188,7 @@ function beginGame(){
   selectedStartPort=START_PORTS[Math.floor(Math.random()*START_PORTS.length)];
   selectedStartScenario=START_SCENARIOS[Math.floor(Math.random()*START_SCENARIOS.length)];
   const pool=buildScenePool(pn,sn,selYear,selType,selectedStartPort,selectedStartScenario);
-  sceneQueue=buildSceneQueue(pool, contractTotal);
+  sceneQueue=buildSceneQueue(pool, contractTotal, selYear);
   const birthdayScene = buildBirthdaySurpriseScene();
   const insertAt = Math.min(sceneQueue.length-1, Math.max(4, 6 + Math.floor(Math.random()*Math.max(2, Math.floor(sceneQueue.length/3)))));
   sceneQueue.splice(insertAt, 0, birthdayScene);
