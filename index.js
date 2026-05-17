@@ -3432,6 +3432,14 @@ const START_PORTS=[
   {name:"Los Angeles", dock:"Los Angeles — Long Beach Terminali", office:"Los Angeles Acentesi", departureLine:"Pasifik kıyısı kıçta kaldı", x:8, y:104},
   {name:"Vancouver", dock:"Vancouver Limanı — Terminal", office:"Vancouver Acentesi", departureLine:"Kuzey Pasifik’e çıkış başladı", x:10, y:42},
   {name:"Sydney", dock:"Sydney Limanı — Rıhtım", office:"Sydney Acentesi", departureLine:"Avustralya kıyısı sancak kıçta kaldı", x:420, y:232},
+  {name:"Ras Tanura", dock:"Ras Tanura Terminali — Petrol İskelesi", office:"Ras Tanura Acentesi", departureLine:"Basra Körfezi petrol hattı arkada kaldı", x:350, y:210},
+  {name:"Fujairah", dock:"Fujairah Terminali — Anchorage Servisi", office:"Fujairah Acentesi", departureLine:"Umman Körfezi açıldı", x:356, y:196},
+  {name:"Felixstowe", dock:"Felixstowe — Container Berth", office:"Felixstowe Acentesi", departureLine:"Kuzey Denizi hattı kıçta kaldı", x:32, y:20},
+  {name:"Le Havre", dock:"Le Havre Limanı — Rıhtım", office:"Le Havre Acentesi", departureLine:"Manş girişi geride kaldı", x:24, y:36},
+  {name:"Gdansk", dock:"Gdansk Limanı — Terminal", office:"Gdansk Acentesi", departureLine:"Baltık suları açıldı", x:88, y:6},
+  {name:"Koper", dock:"Koper Limanı — Terminal", office:"Koper Acentesi", departureLine:"Adriyatik kıyısı geride kaldı", x:100, y:60},
+  {name:"Salalah", dock:"Salalah Limanı — Terminal", office:"Salalah Acentesi", departureLine:"Arap Denizi vardiyası başladı", x:312, y:216},
+  {name:"Kaohsiung", dock:"Kaohsiung Limanı — Terminal", office:"Kaohsiung Acentesi", departureLine:"Tayvan Boğazı trafiği arkada kaldı", x:388, y:108},
 ];
 const START_SCENARIOS=[
   {time:"05:30", subPrefix:"Sabah sisi", intro:"Sabah erken, rıhtımın üstünde ince sis var.", bridgeCall:"Rampadan biri indi: \"Sen stajyer ${n} misin? 1. Zabiti köprüde bekliyor.\""},
@@ -6447,6 +6455,14 @@ const ROUTE_PORTS = [
   {name:"Los Angeles", x:8, y:104, visited:false, kind:"port"},
   {name:"Vancouver", x:10, y:42, visited:false, kind:"port"},
   {name:"Sydney", x:420, y:232, visited:false, kind:"port"},
+  {name:"Ras Tanura", x:350, y:210, visited:false, kind:"port"},
+  {name:"Fujairah", x:356, y:196, visited:false, kind:"port"},
+  {name:"Felixstowe", x:32, y:20, visited:false, kind:"port"},
+  {name:"Le Havre", x:24, y:36, visited:false, kind:"port"},
+  {name:"Gdansk", x:88, y:6, visited:false, kind:"port"},
+  {name:"Koper", x:100, y:60, visited:false, kind:"port"},
+  {name:"Salalah", x:312, y:216, visited:false, kind:"port"},
+  {name:"Kaohsiung", x:388, y:108, visited:false, kind:"port"},
   {name:"Panama Kanali", x:22, y:172, visited:false, kind:"waterway"},
   {name:"Kiel Kanali", x:46, y:8, visited:false, kind:"waterway"},
   {name:"Korint Kanali", x:118, y:154, visited:false, kind:"waterway"},
@@ -6558,6 +6574,8 @@ function getPortChartHint(name, region){
 function getPortChartProfile(port){
   const region = getMapRegionByPosition(port);
   const hay = `${port.name} ${region}`.toLowerCase();
+  const latBase = (8 + (260-port.y)*0.18);
+  const lonBase = (-14 + port.x*0.9);
   const profile = {
     region,
     maxDraft: port.y > 185 ? '14.5m' : port.y < 40 ? '12.8m' : '13.6m',
@@ -6568,7 +6586,15 @@ function getPortChartProfile(port){
     notes: getPortChartHint(port.name, region),
     depthA: port.y > 185 ? '16.2' : '14.8',
     depthB: port.y < 70 ? '11.4' : '12.9',
-    tides: /rotterdam|anvers|hamburg|dover|marsilya|singapur/.test(hay) ? 'Gelgit / akinti etkisi var' : 'Akinti / ruzgar one cikiyor'
+    tides: /rotterdam|anvers|hamburg|dover|marsilya|singapur/.test(hay) ? 'Gelgit / akinti etkisi var' : 'Akinti / ruzgar one cikiyor',
+    chartNo:`BA ${1000 + Math.round(port.x*3 + port.y)}`,
+    edition:`Ed. ${2026 - (Math.round(port.x+port.y)%4)}`,
+    soundDatum:'Chart Datum',
+    scale: port.x > 340 || port.x < 30 ? '1:75 000' : '1:50 000',
+    latA:`${Math.abs(latBase).toFixed(1)}°${latBase>=0?'N':'S'}`,
+    latB:`${Math.abs(latBase-0.4).toFixed(1)}°${latBase>=0?'N':'S'}`,
+    lonA:`${Math.abs(lonBase).toFixed(1)}°${lonBase>=0?'E':'W'}`,
+    lonB:`${Math.abs(lonBase+0.5).toFixed(1)}°${lonBase+0.5>=0?'E':'W'}`
   };
   if(/singapur|yokohama|sanghay|rotterdam|anvers|hamburg/.test(hay)) profile.hazard = 'TSS / yogun trafik';
   if(/dubai|abu dhabi|doha|basra/.test(hay)) profile.hazard = 'Draft / sicak hava / traffic lane';
@@ -6600,9 +6626,15 @@ function buildPortChartSvg(port){
     </linearGradient>
   </defs>
   <rect width="440" height="260" rx="8" fill="url(#portSea)"/>
+  <rect x="8" y="8" width="424" height="244" rx="6" fill="none" stroke="#284561" stroke-width="1"/>
+  <path d="M36 22 V238 M118 22 V238 M200 22 V238 M282 22 V238 M364 22 V238" stroke="#17324c" stroke-width=".8" opacity=".55" stroke-dasharray="3,4"/>
+  <path d="M18 44 H422 M18 92 H422 M18 140 H422 M18 188 H422 M18 236 H422" stroke="#17324c" stroke-width=".8" opacity=".55" stroke-dasharray="3,4"/>
   <path d="${coastLeft ? 'M0 0 L132 0 L168 58 L168 260 L0 260 Z' : 'M440 0 L308 0 L272 58 L272 260 L440 260 Z'}" fill="#0a1b2b" opacity=".95"/>
   <path d="${coastLeft ? 'M132 0 L176 64 L176 260 L168 260 L168 58 Z' : 'M308 0 L264 64 L264 260 L272 260 L272 58 Z'}" fill="#10283f" opacity=".9"/>
   <path d="${coastLeft ? 'M168 64 L214 98 L214 224 L176 260 L176 64 Z' : 'M272 64 L226 98 L226 224 L264 260 L264 64 Z'}" fill="#112e46" opacity=".85"/>
+  <path d="${coastLeft ? 'M208 22 L236 34 L244 56 L222 64 L198 48 Z' : 'M232 22 L204 34 L196 56 L218 64 L242 48 Z'}" fill="#0d2337" opacity=".85"/>
+  <path d="${coastLeft ? 'M246 198 L270 210 L264 228 L236 224 Z' : 'M194 198 L170 210 L176 228 L204 224 Z'}" fill="#0d2337" opacity=".8"/>
+  <path d="${coastLeft ? 'M84 210 L112 218 L108 234 L76 232 Z' : 'M356 210 L328 218 L332 234 L364 232 Z'}" fill="#0d2337" opacity=".72"/>
   <path d="M${channelStartX} ${channelY} Q${(channelStartX+channelEndX)/2} ${channelY-18} ${channelEndX} ${channelY}" fill="none" stroke="#4f8fc7" stroke-width="2.2" stroke-dasharray="7,5" opacity=".9"/>
   <path d="M${channelStartX} ${channelY-14} Q${(channelStartX+channelEndX)/2} ${channelY-32} ${channelEndX} ${channelY-14}" fill="none" stroke="#1d5d95" stroke-width="1" stroke-dasharray="4,4" opacity=".45"/>
   <path d="M${channelStartX} ${channelY+14} Q${(channelStartX+channelEndX)/2} ${channelY-4} ${channelEndX} ${channelY+14}" fill="none" stroke="#1d5d95" stroke-width="1" stroke-dasharray="4,4" opacity=".45"/>
@@ -6641,7 +6673,9 @@ function buildPortChartSvg(port){
   <text x="${coastLeft ? 124 : 252}" y="${channelY-58}" fill="#9cc8ef" font-size="7" font-family="monospace">DEPTH ${profile.depthA}m</text>
   <text x="${coastLeft ? 230 : 120}" y="${channelY+74}" fill="#9cc8ef" font-size="7" font-family="monospace">DEPTH ${profile.depthB}m</text>
   <text x="16" y="20" fill="#8ab0c8" font-size="9" font-family="monospace">${port.name.toUpperCase()} PORT CHART</text>
-  <text x="16" y="34" fill="#6fa8dc" font-size="8" font-family="monospace">${region}</text>
+  <text x="16" y="34" fill="#6fa8dc" font-size="8" font-family="monospace">${region} · SCALE ${profile.scale}</text>
+  <text x="320" y="20" fill="#8ab0c8" font-size="7.5" font-family="monospace">${profile.chartNo} · ${profile.edition}</text>
+  <text x="322" y="34" fill="#6fa8dc" font-size="7" font-family="monospace">${profile.soundDatum}</text>
   <text x="${coastLeft ? 178 : 140}" y="${channelY-32}" fill="#d4a017" font-size="8" font-family="monospace">${profile.pilot.toUpperCase()}</text>
   <text x="${coastLeft ? 168 : 238}" y="${channelY+56}" fill="#cfd8e4" font-size="8" font-family="monospace">${profile.berth.toUpperCase()}</text>
   <text x="${coastLeft ? 222 : 130}" y="${channelY+84}" fill="#5dbf8a" font-size="8" font-family="monospace">ANCHORAGE</text>
@@ -6651,6 +6685,16 @@ function buildPortChartSvg(port){
   <circle cx="394" cy="44" r="22" fill="none" stroke="#204a72" stroke-width="1.4"/>
   <path d="M394 28 V60 M378 44 H410" stroke="#204a72" stroke-width="1"/>
   <text x="391" y="26" fill="#8ab0c8" font-size="7" font-family="monospace">N</text>
+  <text x="18" y="54" fill="#7ea0bd" font-size="7" font-family="monospace">${profile.latA}</text>
+  <text x="18" y="102" fill="#7ea0bd" font-size="7" font-family="monospace">${profile.latB}</text>
+  <text x="96" y="252" fill="#7ea0bd" font-size="7" font-family="monospace">${profile.lonA}</text>
+  <text x="264" y="252" fill="#7ea0bd" font-size="7" font-family="monospace">${profile.lonB}</text>
+  <text x="${coastLeft ? 214 : 198}" y="${channelY-6}" fill="#bfe4ff" font-size="7" font-family="monospace">14.8</text>
+  <text x="${coastLeft ? 248 : 164}" y="${channelY+22}" fill="#bfe4ff" font-size="7" font-family="monospace">13.6</text>
+  <text x="${coastLeft ? 194 : 214}" y="${channelY+40}" fill="#bfe4ff" font-size="7" font-family="monospace">11.2</text>
+  <text x="${coastLeft ? 136 : 274}" y="${channelY+4}" fill="#bfe4ff" font-size="7" font-family="monospace">10.9</text>
+  <text x="${coastLeft ? 88 : 332}" y="${southFacing ? 224 : 86}" fill="#bfe4ff" font-size="7" font-family="monospace">8.4</text>
+  <text x="${coastLeft ? 244 : 150}" y="${southFacing ? 214 : 208}" fill="#bfe4ff" font-size="7" font-family="monospace">15.1</text>
   `;
 }
 
@@ -6684,7 +6728,7 @@ function renderMapLibrary(){
   const region = profile.region;
   chartTitle.textContent = `${active.name} · Liman Haritasi`;
   chartSvg.innerHTML = buildPortChartSvg(active);
-  chartMeta.innerHTML = `DOSYA: ${active.name.replace(/ /g,'_').toUpperCase()}.chart<br>TIP: LIMAN YAKLASMA PLANI<br>BOLGE: ${region}<br>YAKLASMA: ${profile.approach}<br>MAKS DRAFT: ${profile.maxDraft}<br>BERTH: ${profile.berth}<br>GELGIT/AKINTI: ${profile.tides}<br>DURUM: ${visitedPorts.has(active.name)?'UGRANAN LIMAN':'ARSIV HARITASI'}<br>NOT: ${profile.notes}`;
+  chartMeta.innerHTML = `DOSYA: ${active.name.replace(/ /g,'_').toUpperCase()}.chart<br>YAYIN: ${profile.chartNo} · ${profile.edition}<br>TIP: LIMAN YAKLASMA PLANI<br>BOLGE: ${region}<br>OLCEK: ${profile.scale}<br>YAKLASMA: ${profile.approach}<br>MAKS DRAFT: ${profile.maxDraft}<br>BERTH: ${profile.berth}<br>DATUM: ${profile.soundDatum}<br>GELGIT/AKINTI: ${profile.tides}<br>DURUM: ${visitedPorts.has(active.name)?'UGRANAN LIMAN':'ARSIV HARITASI'}<br>NOT: ${profile.notes}`;
 }
 
 function updateShipPosition(sceneLoc){
@@ -6706,6 +6750,9 @@ function updateShipPosition(sceneLoc){
     'Busan':{x:404,y:76}, 'Colombo':{x:300,y:170}, 'Mumbai':{x:286,y:164},
     'Cape Town':{x:126,y:246}, 'Durban':{x:166,y:244}, 'Houston':{x:18,y:142},
     'Los Angeles':{x:8,y:104}, 'Vancouver':{x:10,y:42}, 'Sydney':{x:420,y:232},
+    'Ras Tanura':{x:350,y:210}, 'Fujairah':{x:356,y:196}, 'Felixstowe':{x:32,y:20},
+    'Le Havre':{x:24,y:36}, 'Gdansk':{x:88,y:6}, 'Koper':{x:100,y:60},
+    'Salalah':{x:312,y:216}, 'Kaohsiung':{x:388,y:108},
     'Panama Kanali':{x:22,y:172},
     'Kiel Kanali':{x:46,y:8}, 'Korint Kanali':{x:118,y:154}, 'St. Lawrence':{x:46,y:56},
     'Hurmuz Bogazi':{x:342,y:206}, 'Babulmendep':{x:282,y:218}, 'Malakka Bogazi':{x:344,y:162},
