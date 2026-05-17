@@ -6507,6 +6507,9 @@ let visitedPorts = new Set(["İzmir"]);
 let mapView = 'world';
 let selectedPortChart = 'İzmir';
 let portChartZoom = 1;
+let portChartPanX = null;
+let portChartPanY = null;
+let portChartDragState = null;
 
 function openMap(){
   document.getElementById('map-panel').classList.add('show');
@@ -6527,14 +6530,75 @@ function adjustPortChartZoom(delta){
   if(mapView === 'library') renderMapLibrary();
 }
 
+function clampPortChartPan(panX, panY){
+  const baseW = 440, baseH = 260;
+  const width = baseW / Math.max(1, portChartZoom || 1);
+  const height = baseH / Math.max(1, portChartZoom || 1);
+  const maxX = Math.max(0, baseW - width);
+  const maxY = Math.max(0, baseH - height);
+  return {
+    x: Math.max(0, Math.min(maxX, panX)),
+    y: Math.max(0, Math.min(maxY, panY))
+  };
+}
+
 function getPortChartViewBox(){
   const baseW = 440, baseH = 260;
   const zoom = Math.max(1, portChartZoom || 1);
   const width = +(baseW / zoom).toFixed(2);
   const height = +(baseH / zoom).toFixed(2);
-  const x = +((baseW - width) / 2).toFixed(2);
-  const y = +((baseH - height) / 2).toFixed(2);
+  const centeredX = (baseW - width) / 2;
+  const centeredY = (baseH - height) / 2;
+  const safePan = clampPortChartPan(
+    portChartPanX == null ? centeredX : portChartPanX,
+    portChartPanY == null ? centeredY : portChartPanY
+  );
+  portChartPanX = +safePan.x.toFixed(2);
+  portChartPanY = +safePan.y.toFixed(2);
+  const x = portChartPanX;
+  const y = portChartPanY;
   return `${x} ${y} ${width} ${height}`;
+}
+
+function initPortChartInteractions(svg){
+  if(!svg || svg.dataset.panBound === '1') return;
+  svg.dataset.panBound = '1';
+  const stopDrag = ()=>{
+    portChartDragState = null;
+    svg.classList.remove('dragging');
+  };
+  svg.addEventListener('pointerdown',ev=>{
+    if((portChartZoom||1) <= 1) return;
+    const rect = svg.getBoundingClientRect();
+    const vb = svg.viewBox.baseVal;
+    portChartDragState = {
+      startX: ev.clientX,
+      startY: ev.clientY,
+      startPanX: portChartPanX == null ? vb.x : portChartPanX,
+      startPanY: portChartPanY == null ? vb.y : portChartPanY,
+      scaleX: vb.width / rect.width,
+      scaleY: vb.height / rect.height
+    };
+    svg.classList.add('dragging');
+    if(svg.setPointerCapture) svg.setPointerCapture(ev.pointerId);
+  });
+  svg.addEventListener('pointermove',ev=>{
+    if(!portChartDragState) return;
+    const dx = (ev.clientX - portChartDragState.startX) * portChartDragState.scaleX;
+    const dy = (ev.clientY - portChartDragState.startY) * portChartDragState.scaleY;
+    const next = clampPortChartPan(
+      portChartDragState.startPanX - dx,
+      portChartDragState.startPanY - dy
+    );
+    portChartPanX = +next.x.toFixed(2);
+    portChartPanY = +next.y.toFixed(2);
+    svg.setAttribute('viewBox', getPortChartViewBox());
+  });
+  svg.addEventListener('pointerup',stopDrag);
+  svg.addEventListener('pointercancel',stopDrag);
+  svg.addEventListener('pointerleave',ev=>{
+    if(portChartDragState && ev.buttons === 0) stopDrag();
+  });
 }
 
 function getMapRegionByPosition(pos){
@@ -6853,6 +6917,7 @@ function renderMapLibrary(){
   const region = profile.region;
   chartTitle.textContent = `${active.name} · Liman Haritasi`;
   chartSvg.innerHTML = buildPortChartSvg(active);
+  initPortChartInteractions(chartSvg);
   chartSvg.setAttribute('viewBox', getPortChartViewBox());
   if(chartZoomLabel) chartZoomLabel.textContent = `${Math.round(portChartZoom*100)}%`;
   chartMeta.innerHTML = `DOSYA: ${active.name.replace(/ /g,'_').toUpperCase()}.chart<br>YAYIN: ${profile.chartNo} · ${profile.edition}<br>TIP: LIMAN YAKLASMA PLANI<br>BOLGE: ${region}<br>OLCEK: ${profile.scale}<br>YAKLASMA: ${profile.approach}<br>MAKS DRAFT: ${profile.maxDraft}<br>BERTH: ${profile.berth}<br>DATUM: ${profile.soundDatum}<br>GELGIT/AKINTI: ${profile.tides}<br>DURUM: ${visitedPorts.has(active.name)?'UGRANAN LIMAN':'ARSIV HARITASI'}<br>NOT: ${profile.notes}`;
