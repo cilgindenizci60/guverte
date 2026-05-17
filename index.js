@@ -6998,7 +6998,7 @@ let notesSearch = '';
 let selectedGlossaryTerm = GLOSSARY_TERMS[0]?.term || '';
 let selectedGlossaryCategory = 'tum';
 let currentNoteTopics = new Set();
-const GLOSSARY_CATEGORIES = ['tum','seyir','demirleme','yelken','evrak','emniyet','yapi','yuk'];
+const GLOSSARY_CATEGORIES = ['tum','seyir','guverte','makine','tankerlng','demirleme','yelken','evrak','emniyet','yapi','yuk'];
 
 function getNoteCategory(note){
   if(note.head.includes('FORMULLER')) return 'formuller';
@@ -7294,10 +7294,13 @@ function bindShipPartsDiagram(){
 
 function getGlossaryCategory(entry){
   const hay = `${entry.term} ${entry.meaning} ${entry.example}`.toLowerCase();
+  if(/auxiliary boiler|cargo control room|cargo pump|cargo compressor|cow|esd|economizer|fo booster pump|flash point|gas detection panel|high velocity vent|igs|inert gas|line displacement|lng spray pump|nitrogen purging|pv valve|re-liquefaction|slop tank|stripping pump|ullage port|vapor return line|manifold|cargo tank|vapou?r|lng|lpg|tanker/.test(hay)) return 'tankerlng';
+  if(/crankcase|scavenge|sea chest|stern tube|turbocharger|purifier|jacket cooling water|governor|oily water separator|settling tank|emergency generator|quick closing valve|boiler|machinery|makine|motor|jenerator|separator|pompa|yaglama|lube oil|fuel oil|lo system|rpm/.test(hay)) return 'makine';
   if(/nor|sof|statement of facts|laytime|demuraj|oil record book|orb|stcw|imo|ilo|load line|pilot card|jurnal|logbook|evrak|kancello/.test(hay)) return 'evrak';
   if(/mayday|pan-pan|securite|sart|sopep|can |life |emniyet|yangin|tehlike|dalgic|f harfi|j harfi/.test(hay)) return 'emniyet';
   if(/demir|zincir|kaloma|fundo|vira|anchor|anchorage|mooring|spring|baba|bosa|volta|samandira|aborda|alarga|salpa|zincirlik|matafora/.test(hay)) return 'demirleme';
   if(/yelken|seren|gabya|babafingo|civadra|mizana|iskota|kandilisa|camadan|apazlama|ayi bacagi|genova|bocurum|giz|arma|cunda/.test(hay)) return 'yelken';
+  if(/bridge wing|bridge team management|scupper|bulwark|fairlead|head line|stern line|breast line|fore spring|aft spring|twist lock|winch|windlass|hawse pipe|hatch cover|forecastle|poop deck|guverte|kopruustu|pruva|kic|iskele|sancak|borda/.test(hay)) return 'guverte';
   if(/cargo|yuk|draft survey|lashing|twist lock|ullage|loadicator|stowage|dedveyt|ellecleme/.test(hay)) return 'yuk';
   if(/omurga|borda|guverte|kaplama|lumboz|kaporta|dumen|yeke|double bottom|bodoslama|yapi|zincirlik|mapa/.test(hay)) return 'yapi';
   return 'seyir';
@@ -7307,6 +7310,9 @@ function getGlossaryCategoryLabel(cat){
   return ({
     tum:'Tum',
     seyir:'Seyir',
+    guverte:'Guverte',
+    makine:'Makine',
+    tankerlng:'Tanker / LNG',
     demirleme:'Demirleme',
     yelken:'Yelken',
     evrak:'Evrak',
