@@ -6594,8 +6594,13 @@ function getPortChartProfile(port){
     latA:`${Math.abs(latBase).toFixed(1)}°${latBase>=0?'N':'S'}`,
     latB:`${Math.abs(latBase-0.4).toFixed(1)}°${latBase>=0?'N':'S'}`,
     lonA:`${Math.abs(lonBase).toFixed(1)}°${lonBase>=0?'E':'W'}`,
-    lonB:`${Math.abs(lonBase+0.5).toFixed(1)}°${lonBase+0.5>=0?'E':'W'}`
+    lonB:`${Math.abs(lonBase+0.5).toFixed(1)}°${lonBase+0.5>=0?'E':'W'}`,
+    template:'default'
   };
+  if(/panama/.test(hay)) profile.template = 'river';
+  else if(/ras tanura/.test(hay)) profile.template = 'oil';
+  else if(/rotterdam/.test(hay)) profile.template = 'canal';
+  else if(/singapur/.test(hay)) profile.template = 'traffic';
   if(/singapur|yokohama|sanghay|rotterdam|anvers|hamburg/.test(hay)) profile.hazard = 'TSS / yogun trafik';
   if(/dubai|abu dhabi|doha|basra/.test(hay)) profile.hazard = 'Draft / sicak hava / traffic lane';
   if(/marsilya|napoli|pire|valensiya|malta|barselona|cenova/.test(hay)) profile.hazard = 'Breakwater / ferry traffic';
@@ -6618,6 +6623,41 @@ function buildPortChartSvg(port){
   const turningBasinX = coastLeft ? 206 : 234;
   const topWater = southFacing ? '#07131f' : '#06111c';
   const bottomWater = southFacing ? '#0a2440' : '#0c2d4f';
+  const specialOverlay = profile.template==='river'
+    ? `
+      <path d="M${coastLeft ? 420 : 18} ${channelY-26} Q220 ${channelY-36} ${coastLeft ? 164 : 276} ${channelY-22}" fill="none" stroke="#8c6a3c" stroke-width="1.2" stroke-dasharray="5,4" opacity=".75"/>
+      <text x="${coastLeft ? 220 : 160}" y="${channelY-40}" fill="#d7b37a" font-size="7" font-family="monospace">RIVER CURRENT 2.1kt</text>
+      <rect x="${coastLeft ? 232 : 146}" y="${channelY-70}" width="58" height="16" rx="4" fill="#081929" stroke="#5f92bf" stroke-width="1"/>
+      <text x="${coastLeft ? 240 : 154}" y="${channelY-59}" fill="#8ab0c8" font-size="7" font-family="monospace">LOCK / PILOT</text>
+      <circle cx="${turningBasinX+18}" cy="${channelY-26}" r="4" fill="#d4a017"/>
+      <circle cx="${turningBasinX-18}" cy="${channelY+26}" r="4" fill="#d4a017"/>`
+    : profile.template==='oil'
+    ? `
+      <path d="M${berthX} ${channelY-22} H${coastLeft ? berthX+64 : berthX-64}" stroke="#c97070" stroke-width="2"/>
+      <path d="M${coastLeft ? berthX+16 : berthX-16} ${channelY-30} V${channelY+34}" stroke="#c97070" stroke-width="1.4"/>
+      <path d="M${coastLeft ? berthX+34 : berthX-34} ${channelY-26} V${channelY+28}" stroke="#c97070" stroke-width="1.2"/>
+      <rect x="${coastLeft ? berthX+48 : berthX-106}" y="${channelY-56}" width="76" height="16" rx="4" fill="#081929" stroke="#a94a4a" stroke-width="1"/>
+      <text x="${coastLeft ? berthX+56 : berthX-98}" y="${channelY-45}" fill="#e1a2a2" font-size="7" font-family="monospace">MANIFOLD / ESD</text>
+      <circle cx="${coastLeft ? berthX+78 : berthX-78}" cy="${channelY+50}" r="15" fill="none" stroke="#c97070" stroke-width="1" opacity=".45"/>
+      <text x="${coastLeft ? berthX+68 : berthX-88}" y="${channelY+54}" fill="#e1a2a2" font-size="7" font-family="monospace">SPM</text>`
+    : profile.template==='canal'
+    ? `
+      <path d="M${coastLeft ? 420 : 20} ${channelY-24} Q220 ${channelY-24} ${coastLeft ? 184 : 256} ${channelY-22}" fill="none" stroke="#5f92bf" stroke-width="1.4" stroke-dasharray="4,3"/>
+      <path d="M${coastLeft ? 420 : 20} ${channelY+24} Q220 ${channelY+24} ${coastLeft ? 184 : 256} ${channelY+22}" fill="none" stroke="#5f92bf" stroke-width="1.4" stroke-dasharray="4,3"/>
+      <text x="${coastLeft ? 188 : 154}" y="${channelY-36}" fill="#8ab0c8" font-size="7" font-family="monospace">RIVER TRAFFIC LANE</text>
+      <rect x="${coastLeft ? 248 : 138}" y="${channelY+54}" width="88" height="16" rx="4" fill="#081929" stroke="#385f86" stroke-width="1"/>
+      <text x="${coastLeft ? 256 : 146}" y="${channelY+65}" fill="#8ab0c8" font-size="7" font-family="monospace">BRIDGE / TUG AREA</text>`
+    : profile.template==='traffic'
+    ? `
+      <path d="M${channelStartX} ${channelY-32} Q${(channelStartX+channelEndX)/2} ${channelY-46} ${channelEndX} ${channelY-32}" fill="none" stroke="#d4a017" stroke-width="1.2" stroke-dasharray="5,4" opacity=".9"/>
+      <path d="M${channelStartX} ${channelY+32} Q${(channelStartX+channelEndX)/2} ${channelY+18} ${channelEndX} ${channelY+32}" fill="none" stroke="#d4a017" stroke-width="1.2" stroke-dasharray="5,4" opacity=".9"/>
+      <circle cx="${shipX-92}" cy="${channelY-20}" r="3.6" fill="#44d26f"/>
+      <circle cx="${shipX-74}" cy="${channelY+24}" r="3.6" fill="#d24c4c"/>
+      <circle cx="${shipX+96}" cy="${channelY-18}" r="3.6" fill="#44d26f"/>
+      <circle cx="${shipX+118}" cy="${channelY+20}" r="3.6" fill="#d24c4c"/>
+      <rect x="${coastLeft ? 242 : 134}" y="${channelY-70}" width="84" height="16" rx="4" fill="#081929" stroke="#d4a017" stroke-width="1"/>
+      <text x="${coastLeft ? 250 : 142}" y="${channelY-59}" fill="#f0d59b" font-size="7" font-family="monospace">TSS / VTIS REPORT</text>`
+    : '';
   return `
   <defs>
     <linearGradient id="portSea" x1="0" y1="0" x2="0" y2="1">
@@ -6695,6 +6735,7 @@ function buildPortChartSvg(port){
   <text x="${coastLeft ? 136 : 274}" y="${channelY+4}" fill="#bfe4ff" font-size="7" font-family="monospace">10.9</text>
   <text x="${coastLeft ? 88 : 332}" y="${southFacing ? 224 : 86}" fill="#bfe4ff" font-size="7" font-family="monospace">8.4</text>
   <text x="${coastLeft ? 244 : 150}" y="${southFacing ? 214 : 208}" fill="#bfe4ff" font-size="7" font-family="monospace">15.1</text>
+  ${specialOverlay}
   `;
 }
 
