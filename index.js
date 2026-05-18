@@ -7229,7 +7229,7 @@ const STUDENT_NOTES = [
   {head:"ACIL HABERLESME", body:"MAYDAY distress, PAN-PAN urgency, SECURITE emniyet yayini icindir.<br>Mesajda gemi adi, callsign, pozisyon, tehlikenin cinsi, yardim ihtiyaci ve kisi sayisi acik verilir.<br>GMDSS, EPIRB, SART, NAVTEX, DSC, handheld VHF ve emergency battery kayitlari bilinir.", tip:"Netlik hiz kadar onemlidir."},
   {head:"GMDSS / HABERLESME CIHAZLARI", body:"<b>VHF DSC</b> kisa mesafe distress / urgency / safety ve CH16 nobet disiplininin temelidir.<br><b>MF/HF DSC</b> daha uzak mesafe haberlesme ve uygun frekans secimiyle dusunulur.<br><b>NAVTEX</b> navigational ve meteorological warning alir; baski / printer / mesaj secimi onemlidir.<br><b>EGC / SafetyNET</b> genelde Inmarsat-C uzerinden MSI ve safety message alir.<br><b>Inmarsat-C</b> text tabanli haberlesme, distress, reporting ve mesajlasmada kullanilir.<br><b>EPIRB</b> acil durumda COSPAS-SARSAT uydu sistemine distress beacon gonderir.<br><b>SART</b> arama-kurtarmada radar cevaplayici olarak hedef bulunurlugunu artirir.<br><b>AIS</b> trafik farkindaligi ve hedef tanimlamada yardimcidir; radar ve gorsel teyidin yerine gecmez.<br><br><b>GMDSS Sea Areas</b>:<br><b>A1</b> VHF DSC kapsamasinda yakin denizler<br><b>A2</b> MF DSC kapsamasina kadar uzayan bolgeler<br><b>A3</b> Inmarsat kapsamasindaki acik denizler<br><b>A4</b> kutup / Inmarsat disi yuksek enlem alanlari; HF dusuncesi agir basar.<br><br><b>RCC/MRCC</b> distress sonrasinda arama-kurtarma koordinasyon zincirini yurutur.<br><b>Pratik mantik:</b> Hangi cihazin ne zaman, hangi menzilde ve hangi maksatla kullanilacagini bilmek gerekir.", tip:"Cihazi tanimak yetmez; hangi acilde hangisine uzanacagini da bil."},
   {head:"METEOROLOJI / BULUTLAR", body:"<b>Cumulus</b> gun icinde dikey gelisebilen pamuksu buluttur; hava iyi de olabilir ama buyurse shower'a gider.<br><b>Cirrus</b> ince ve tuy gibi ust seviye buz bulutudur; yaklasan front'un habercisi olabilir.<br><b>Stratus</b> alcak, yaygin ve tek katman gibi gorunur; gorus ve drizzle etkisi yaratabilir.<br><b>Nimbostratus</b> uzun sureli ve yaygin yagisin bulutudur.<br><b>Cumulonimbus (CB)</b> dikey gelisimi cok guclu firtina bulutudur; saganak, yildirim, squall ve ani ruzgar bekletir.<br><b>Barometer trendi</b>, ruzgar donusu ve bulut tipi birlikte okunur; tek bir buluta bakip kesin hukum verilmez.", tip:"Bulut gormek yetmez; hangi seviyede oldugunu ve neye donusebilecegini de dusun."},
-  {head:"RUZGAR YONLERI / DERECELER", body:"Ruzgar denizde <b>nereye gittigine gore degil</b>, <b>nereden geldigine gore</b> adlandirilir.<br><b>Pruvadan</b> gelen ruzgar 000°/360°, <b>pupadan</b> gelen ruzgar 180° kabul edilir.<br><b>Kemere</b> tam bordadan gelen ruzgardir; sancak kemere 090°, iskele kemere 270° diye okunur.<br><b>Bas omuzluk</b> 45°'lik on ceyrek, <b>kic omuzluk</b> ise 135° / 225° taraflaridir.<br>Brifinglerde 'ruzgar sancak bas omuzluktan 4 bofor' gibi kisa ve net ifade kullanilir.<br><br>"+buildWindRoseDiagram(), tip:"Ruzgar yonu rapor ederken once gemi referansini dusun: pruva, pupa, iskele, sancak."},
+  {head:"RUZGAR YONLERI / DERECELER", body:"Ruzgar denizde <b>nereye gittigine gore degil</b>, <b>nereden geldigine gore</b> adlandirilir.<br><b>Pruvadan</b> gelen ruzgar 000°/360°, <b>pupadan</b> gelen ruzgar 180° kabul edilir.<br><b>Kemere</b> tam bordadan gelen ruzgardir; sancak kemere 090°, iskele kemere 270° diye okunur.<br><b>Bas omuzluk</b> 45°'lik on ceyrek, <b>kic omuzluk</b> ise 135° / 225° taraflaridir.<br><b>Geleneksel adlar</b>: 000° Yildiz, 045° Poyraz, 090° Gundogusu, 135° Kesishleme, 180° Kible, 225° Lodos, 270° Gunbatisi, 315° Karayel.<br>Brifinglerde 'ruzgar sancak bas omuzluktan 4 bofor' gibi kisa ve net ifade kullanilir.<br><br>"+buildWindRoseDiagram(), tip:"Ruzgar yonu rapor ederken once gemi referansini dusun: pruva, pupa, iskele, sancak."},
   {head:"FORMULLER - HIZ / MESAFE / ZAMAN", body:"Mesafe = Hiz x Zaman<br>Hiz = Mesafe / Zaman<br>Zaman = Mesafe / Hiz<br>1 knot = 1 deniz mili / saat<br>Gece ETA hesaplari icin once kalan mesafe, sonra mevcut SOG kullanilir.<br><br><b>Ornek:</b> 48 mil yol, 12 knot hizla yaklasik 4 saatte biter.", tip:"Basit formuller vardiyada en cok kullanilanlardir."},
   {head:"FORMULLER - SET / DRIFT / CTS", body:"Course to Steer mantigi: istenen COG icin akinti vektorunu hesaba kat.<br>Drift = akintinin hizi<br>Set = akintinin yonu<br>Gercek iz = verilen rota + akinti etkisi<br>Yaklasik kapanis mantigi: Verilen HDG + akinti vektoru = gercek COG/SOG<br>Running fix / DR duzeltmelerinde set-drift sure ile birlikte okunur.<br><b>Yaklasik akis:</b> Akinti mesafesi = drift x zaman<br><b>ETA</b> icin kalan mesafe / gercek SOG mantigi kullanilir.<br><b>Kullanilan tablo / kaynaklar:</b> Tidal stream atlas, current tables, pilot book, chart notlari, ECDIS current overlay, sailing directions.<br><br><b>Ornek:</b> 090 rota tutmak isterken akinti seni kuzeye 2 knot itiyorsa bir miktar guneye pruva verip CTS duzeltmesi yaparsin.", tip:"Pruva baska, iz baska olabilir."},
   {head:"FORMULLER - KLASIK SEYIR / PLANE SAILING", body:"<b>D'Lat = Dist x cos C</b><br><b>Departure = Dist x sin C</b><br><b>D'Long (dakika) = Departure / cos orta enlem</b><br><b>Orta enlem = (Lat1 + Lat2) / 2</b><br>Plane sailing kisa mesafelerde kullanilir; Mercator sailing ve middle latitude mantigi burada devreye girer.<br><br><b>Kuzey/Guney, Dogu/Bati isaretleri</b> hesap kadar onemlidir.<br><b>Traverse table</b> kullanilirken cos/sin sonucu North-South ve East-West olarak okunur.<br><br><b>Ornek:</b> 120 mil, rota 060 ise D'Lat = 120 x cos60 = 60 mil; Departure = 120 x sin60 yaklasik 104 mildir.", tip:"Kisa rota problemlerinde en klasik omurga budur."},
@@ -7846,14 +7846,14 @@ function buildKnotGallery(){
 
 function buildWindRoseDiagram(){
   const dirs = [
-    {deg:'000° / 360°', head:'Pruvadan', body:'Ruzgar tam bastan gelir. Deniz bastan yenir, gemi kafa vurabilir.'},
-    {deg:'045°', head:'Sancak bas omuzluk', body:'Ruzgar sancak on ceyrektendir; spray ve yalpa hissi artabilir.'},
-    {deg:'090°', head:'Sancak kemere', body:'Ruzgar tam sancak bordadan gelir. Yalpa etkisi belirginlesir.'},
-    {deg:'135°', head:'Sancak kic omuzluk', body:'Ruzgar sancak kictan gelir; surukleme ve rota tutus farkli hissedilir.'},
-    {deg:'180°', head:'Pupadan', body:'Ruzgar tam kictan gelir. Following sea davranisi ayrica izlenir.'},
-    {deg:'225°', head:'Iskele kic omuzluk', body:'Ruzgar iskele kictandir; kiç dalgasi ve yaw artabilir.'},
-    {deg:'270°', head:'Iskele kemere', body:'Ruzgar tam iskeleden gelir. Yalpa ve guverte calismasi etkilenir.'},
-    {deg:'315°', head:'Iskele bas omuzluk', body:'Ruzgar iskele on ceyrektendir; bas omuzluk denizi sertlesebilir.'}
+    {deg:'000° / 360°', head:'Pruvadan · Yildiz', body:'Ruzgar tam bastan gelir. Deniz bastan yenir, gemi kafa vurabilir.'},
+    {deg:'045°', head:'Sancak bas omuzluk · Poyraz', body:'Ruzgar sancak on ceyrektendir; spray ve yalpa hissi artabilir.'},
+    {deg:'090°', head:'Sancak kemere · Gundogusu', body:'Ruzgar tam sancak bordadan gelir. Yalpa etkisi belirginlesir.'},
+    {deg:'135°', head:'Sancak kic omuzluk · Kesishleme', body:'Ruzgar sancak kictan gelir; surukleme ve rota tutus farkli hissedilir.'},
+    {deg:'180°', head:'Pupadan · Kible', body:'Ruzgar tam kictan gelir. Following sea davranisi ayrica izlenir.'},
+    {deg:'225°', head:'Iskele kic omuzluk · Lodos', body:'Ruzgar iskele kictandir; kic dalgasi ve yaw artabilir.'},
+    {deg:'270°', head:'Iskele kemere · Gunbatisi', body:'Ruzgar tam iskeleden gelir. Yalpa ve guverte calismasi etkilenir.'},
+    {deg:'315°', head:'Iskele bas omuzluk · Karayel', body:'Ruzgar iskele on ceyrektendir; bas omuzluk denizi sertlesebilir.'}
   ];
   return `<div class="windrose-card">
     <svg class="windrose-svg" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-label="Ruzgar yonleri ve dereceleri">
@@ -7876,14 +7876,20 @@ function buildWindRoseDiagram(){
       </g>
       <circle cx="210" cy="210" r="28" fill="rgba(9,25,40,.95)" stroke="#d4a017" stroke-width="2"/>
       <circle cx="210" cy="210" r="6" fill="#d4a017"/>
-      <text x="210" y="24" text-anchor="middle" fill="#f4d172" font-size="12">000° PRUVA</text>
-      <text x="346" y="70" text-anchor="middle" fill="#8ab0c8" font-size="10">045° SANCAK BAS OMUZLUK</text>
-      <text x="398" y="214" text-anchor="end" fill="#8ab0c8" font-size="12">090° SANCAK KEMERE</text>
-      <text x="336" y="356" text-anchor="middle" fill="#8ab0c8" font-size="10">135° SANCAK KIC OMUZLUK</text>
-      <text x="210" y="404" text-anchor="middle" fill="#8ab0c8" font-size="12">180° PUPA</text>
-      <text x="82" y="356" text-anchor="middle" fill="#8ab0c8" font-size="10">225° ISKELE KIC OMUZLUK</text>
-      <text x="24" y="214" text-anchor="start" fill="#8ab0c8" font-size="12">270° ISKELE KEMERE</text>
-      <text x="74" y="70" text-anchor="middle" fill="#8ab0c8" font-size="10">315° ISKELE BAS OMUZLUK</text>
+      <text x="210" y="24" text-anchor="middle" fill="#f4d172" font-size="12">000° PRUVA · YILDIZ</text>
+      <text x="346" y="60" text-anchor="middle" fill="#8ab0c8" font-size="10">045° SANCAK BAS OMUZLUK</text>
+      <text x="346" y="74" text-anchor="middle" fill="#f4d172" font-size="10">POYRAZ</text>
+      <text x="398" y="208" text-anchor="end" fill="#8ab0c8" font-size="11">090° SANCAK KEMERE</text>
+      <text x="398" y="222" text-anchor="end" fill="#f4d172" font-size="10">GUNDOGUSU</text>
+      <text x="336" y="346" text-anchor="middle" fill="#8ab0c8" font-size="10">135° SANCAK KIC OMUZLUK</text>
+      <text x="336" y="360" text-anchor="middle" fill="#f4d172" font-size="10">KESISHLEME</text>
+      <text x="210" y="404" text-anchor="middle" fill="#8ab0c8" font-size="11">180° PUPA · KIBLE</text>
+      <text x="82" y="346" text-anchor="middle" fill="#8ab0c8" font-size="10">225° ISKELE KIC OMUZLUK</text>
+      <text x="82" y="360" text-anchor="middle" fill="#f4d172" font-size="10">LODOS</text>
+      <text x="24" y="208" text-anchor="start" fill="#8ab0c8" font-size="11">270° ISKELE KEMERE</text>
+      <text x="24" y="222" text-anchor="start" fill="#f4d172" font-size="10">GUNBATISI</text>
+      <text x="74" y="60" text-anchor="middle" fill="#8ab0c8" font-size="10">315° ISKELE BAS OMUZLUK</text>
+      <text x="74" y="74" text-anchor="middle" fill="#f4d172" font-size="10">KARAYEL</text>
       <text x="210" y="164" text-anchor="middle" fill="#dceaf4" font-size="11">RUZGAR NEREDEN GELIYORSA</text>
       <text x="210" y="180" text-anchor="middle" fill="#dceaf4" font-size="11">O YONLE ANILIR</text>
       <text x="210" y="246" text-anchor="middle" fill="#f4d172" font-size="13">360° = 000°</text>
