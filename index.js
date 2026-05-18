@@ -2176,14 +2176,14 @@ choices:[
 {text:"Sadece rotanin cizili olmasina bakarim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:yr<2000?"Cizgi cekildiyse kalanina gerek yok derim":"GPS cizgisi varsa kalanina gerek yok derim",tag:"korkak",effect:{bilgi:-10,sayginlik:-8}}]},
 
-{id:"s111",gfx:"compass",alert:false,day:"Gun 7",time:"17:10",loc:yr<1990?"Kopruustu - Mevki Suphesi":"Kopruustu - GPS Alarmi",sub:yr<1990?"Radar/visual ile kagit harita cross-check":"GPS ile kağıt/visual cross-check",who:"z2",
+{id:"s111",gfx:"compass",alert:false,day:"Gun 7",time:"17:10",loc:yr<1990?"Kopruustu - Mevki Suphesi":"Kopruustu - GPS Alarmi",sub:yr<1990?"Radar/visual ile kagit harita cross-check":"GPS ile radar/visual cross-check",who:"z2",
 text:yr<1990?`Mevki seyri bir anda icine sinmemeye basladi. Radar mesafesi, visual mark ve kagit haritadaki DR noktasi tam oturmuyor gibi.
 
 2. Zabiti derin bir nefes aldi: "Iste tam da bu yuzden tek kaynaga asik olunmaz. Radar range, visual mark, echo sounder ve kagit harita dusuncesi birlikte geri gelir."
 
 Ilk refleksin?"`:`Bir anda GPS quality alarmi geldi. Pozisyon akiyor gibi.
 
-2. Zabiti derin bir nefes aldi: "Iste simdi elektronik rahatlik bitti. Radar range, visual mark, echo sounder ve kagit harita dusuncesi geri gelir."
+2. Zabiti derin bir nefes aldi: "Iste simdi elektronik rahatlik bitti. Radar range, visual mark, echo sounder ve diger sensor kaynaklariyla mevkiyi capraz kontrol edersin."
 
 Ilk refleksin?"`,
 choices:[
@@ -2196,26 +2196,30 @@ text:yr<2000?`Masa kagit haritalarla dolu. 2. Zabiti elindeki Notice to Mariners
 
 "Bu yillarda harita disiplini luks degil, omurgadir. Duzeltme tarihi, correction number, yeni tehlike, yeni siglik... hepsi tek tek islenir."
 
-Sana bir not verdi. Ne yaparsin?"`:`Masa kagit haritalarla dolu. 2. Zabiti elindeki Notice to Mariners'i salladi.
+Sana bir not verdi. Ne yaparsin?"`:`2. Zabiti ECDIS update ve warning notlarini onune acti.
 
-"Elektronik var diye kâğıt harita disiplini olmez. Duzeltme tarihi, correction number, yeni tehlike, yeni sığlık... hepsi tek tek islenir."
+"ECDIS varsa mesele kagit degil, update disiplinidir. ENC correction package, warning listesi, yeni tehlike ve yeni siglik bilgisi sistemde dogru islenmeli."
 
 Sana bir not verdi. Ne yaparsin?"`,
 choices:[
-{text:"Notu ilgili haritaya isler, correction numarasini ve tarihi kayda gecerim",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
-{text:"Sadece haritanin kenarina ufak not dusup birakirim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:yr<2000?"Notu ilgili haritaya isler, correction numarasini ve tarihi kayda gecerim":"Update/warning bilgisini ilgili ENC kaydi, tarih ve kontrol notuyla duzenli islerim",tag:"kritik",effect:{bilgi:15,sayginlik:11}},
+{text:yr<2000?"Sadece haritanin kenarina ufak not dusup birakirim":"Sadece ekrana bakip daha sonra islerim diye dusunurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:yr<2000?"Bu kadar ayrintiya gerek yok diye dusunurum":"ECDIS varken buna gerek yok derim",tag:"korkak",effect:{bilgi:-9,sayginlik:-8}}]},
 
-{id:"s112b",gfx:"bridge",alert:false,day:"Gun 10",time:"19:05",loc:"Chart Room",sub:"Kagit haritada correction tracing ve record tutma",who:"z2",
-text:`2. Zabiti bu kez tracing kagidini ve correction record klasorunu onune koydu.
+{id:"s112b",gfx:yr<2000?"bridge":"ecdis_panel",alert:false,day:"Gun 10",time:"19:05",loc:yr<2000?"Chart Room":"Kopruustu - ECDIS Record",sub:yr<2000?"Kagit haritada correction tracing ve record tutma":"ENC update log ve audit trail mantigi",who:"z2",
+text:yr<2000?`2. Zabiti bu kez tracing kagidini ve correction record klasorunu onune koydu.
 
 "Duzeltmeyi cizmek kadar nasil kaydettigin de onemli. Hangi chart, hangi kaynak, hangi correction number, hangi tarih... sonradan bakan zabit neyin ne zaman islendigini gorebilmeli."
 
+Sence en dogru disiplin hangisi?`:`2. Zabiti bu kez ECDIS update history ve audit ekranini onune getirdi.
+
+"Elektronikte de kayit izi gerekir. Hangi cell guncellendi, hangi warning geldi, hangi tarihte hangi paket yuklendi; sonradan bakan zabit bunu gorebilmeli."
+
 Sence en dogru disiplin hangisi?`,
 choices:[
-{text:"Duzeltmeyi temiz isler, chart correction record'a numara ve tarih ile kaydederim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
-{text:"Haritada degisiklik gorunuyorsa ayri kayda cok gerek olmadigini dusunurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
-{text:"Tracing ve record isini gereksiz evrak kalabaligi sayarim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+{text:yr<2000?"Duzeltmeyi temiz isler, chart correction record'a numara ve tarih ile kaydederim":"Update history, cell kaydi ve warning log'unu tarih/surum bilgisiyle duzenli takip ederim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+{text:yr<2000?"Haritada degisiklik gorunuyorsa ayri kayda cok gerek olmadigini dusunurum":"Harita aciliyorsa audit trail'e cok bakmaya gerek olmadigini dusunurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:yr<2000?"Tracing ve record isini gereksiz evrak kalabaligi sayarim":"ENC log ve update izini gereksiz ekran ayrintisi sayarim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
 
 {id:"s112c",gfx:yr<2000?"bridge":"ecdis_panel",alert:false,day:"Gun 10",time:"19:40",loc:yr<2000?"Chart Room - Chart Folio":"Kopruustu - ECDIS Admin",sub:yr<2000?"Chart folio ve correction listesi kontrolu":"ENC update ve cell status kontrolu",who:"z2",
 text:yr<2000?`Bu kez chart folio, correction listesi ve yayin klasoru masaya acildi.
@@ -2232,20 +2236,20 @@ choices:[
 {text:yr<2000?"Rafda varsa gunceldir diye dusunurum":"Ekranda harita gorunuyorsa guncel kabul ederim",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
 {text:yr<2000?"Yeni liste gelmediyse eskiyle devam etmenin yeterli oldugunu sanirim":"Alarm yoksa update ihtiyaci da yoktur diye dusunurum",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
 
-{id:"s112d",gfx:"compass",alert:false,day:"Gun 10",time:"20:05",loc:"Kopruustu - Rota Duzeltmesi",sub:yr<2000?"Kagit harita ve passage plan guncellemesi":"Kagit harita ve ECDIS'e birlikte isleme",who:"z2",
+{id:"s112d",gfx:"compass",alert:false,day:"Gun 10",time:"20:05",loc:"Kopruustu - Rota Duzeltmesi",sub:yr<2000?"Kagit harita ve passage plan guncellemesi":"ECDIS route ve passage plan guncellemesi",who:"z2",
 text:yr<2000?`Sonra rota degisikligi geldi. 2. Zabiti kalemi, parallel cetveli ve passage plan dosyasini ayni anda gosterdi.
 
 "Iyi zabit duzeltmeyi tek yerde birakmaz. Passage plan, kagit harita, ilgili notlar ve logbook birbirini tamamlar. Biri eski kalirsa hata sessizce buyur."
 
-Dogru siralama hangisi?`:`Sonra rota degisikligi geldi. 2. Zabiti kalemi ve ECDIS plan ekranini ayni anda gosterdi.
+Dogru siralama hangisi?`:`Sonra rota degisikligi geldi. 2. Zabiti ECDIS plan ekranini ve passage plan dosyasini ayni anda gosterdi.
 
-"Iyi zabit duzeltmeyi tek yerde birakmaz. Passage plan, kagit harita, ECDIS route, ilgili notlar ve logbook birbirini tamamlar. Biri eski kalirsa hata sessizce buyur."
+"Iyi zabit duzeltmeyi tek yerde birakmaz. Passage plan, ECDIS route, ilgili notlar ve logbook birbirini tamamlar. Biri eski kalirsa hata sessizce buyur."
 
 Dogru siralama hangisi?`,
 choices:[
-{text:yr<2000?"Rota degisikligini kagit harita, passage plan ve log kayitlarina tutarli sekilde islerim":"Rota degisikligini ECDIS, kagit harita, passage plan ve log kayitlarina tutarli sekilde islerim",tag:"kritik",effect:{bilgi:17,sayginlik:13}},
-{text:yr<2000?"Passage plani guncelleyip haritayi daha sonra halletmeyi yeterli gorurum":"ECDIS'i guncelleyip kagit haritayi daha sonra halletmeyi yeterli gorurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
-{text:yr<2000?"Kayitlardan birinin guncel olmasi yeter diye dusunurum":"Iki sistemden birinin guncel olmasi yeterlidir diye dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+{text:yr<2000?"Rota degisikligini kagit harita, passage plan ve log kayitlarina tutarli sekilde islerim":"Rota degisikligini ECDIS route, passage plan ve log kayitlarina tutarli sekilde islerim",tag:"kritik",effect:{bilgi:17,sayginlik:13}},
+{text:yr<2000?"Passage plani guncelleyip haritayi daha sonra halletmeyi yeterli gorurum":"ECDIS'i guncelleyip passage plan ve logu sonra halletmeyi yeterli gorurum",tag:"itaatkar",effect:{bilgi:6,sayginlik:4}},
+{text:yr<2000?"Kayitlardan birinin guncel olmasi yeter diye dusunurum":"Kayitlardan sadece birinin guncel olmasi yeterlidir diye dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
 
 {id:"s113",gfx:"sea",alert:false,day:"Gun 10",time:"06:50",loc:"Valensiya Aciklari",sub:"Farkli rota ve trafik plani",who:"suvari",
 text:`Suvari yeni rotayi acikladı.
