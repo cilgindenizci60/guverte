@@ -4567,6 +4567,222 @@ En yerinde dusunce hangisi?`,
   {text:"Mendirek korumasini abartmadan, ruzgar ve dalga kirilmasini da hesaba katarim",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
   {text:"Mendirek icine bir kez girince geri kalan her seyin kolaylasacagini varsayarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
   {text:"Karadeniz limanlarinda liman agzinin hava ve dalga acisindan ciddi fark yaratmayacagini sanirim",tag:"korkak",effect:{bilgi:-13,sayginlik:-11}}]},
+  {id:"s338",gfx:"night",alert:false,day:"Gun 4",time:"00:35",loc:"Koprustu - Gece Vardiyasi",sub:"Uzak isik sabit mi akiyor mu?",who:"z2",
+  text:`Gece deniz siyah ama ufuk temiz. Iskele bas omuzlukta zayif bir isik var; kerterizi sanki cok degismiyor.
+
+2. Zabiti sesini alcatti:
+
+"Gece vardiyasinda ilk tehlike panik degil, rehavettir. Bir isik sabit gibi duruyorsa gozunu, radarini ve zaman duygunu ayni anda kullanacaksin."
+
+Ilk ne yaparsin?`,
+  choices:[
+  {text:"Kerterizi tekrar alir, radar/ARPA ile trendi kontrol eder ve risk of collision olup olmadigini netlestiririm",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Tek isik oldugu icin bir sure daha izleyip beklerim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Gece isiklarinin goz yaniltmasi normal diyip konuyu buyutmem",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s339",gfx:"bridge",alert:true,day:"Gun 4",time:"02:10",loc:"Koprustu - Gece Yalnizligi",sub:"Kaptani ne zaman cagirirsin?",who:"z2",
+  text:`Trafik tablo gibi degil. Bir hedef daraliyormus gibi, digeri TSS kenarinda huzursuz. Kaptan asagida.
+
+2. Zabiti daha once soylemisti:
+
+"Bazi hatalar vardiyada cozulur; bazilari kaptani gec cagirdigin an baslar."
+
+En saglam tavrin hangisi?`,
+  choices:[
+  {text:"Durumu net veriyle toparlar, suphe buyuyorsa kaptani erken cagiririm",tag:"kritik",effect:{bilgi:17,sayginlik:13,cesaret:3}},
+  {text:"Biraz daha tek basima idare etmeye calisirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Kaptani rahatsiz etmemek icin son ana kadar beklerim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s340",gfx:"night",alert:false,day:"Gun 4",time:"03:25",loc:"Koprustu - Kisitli Goruste Gece",sub:"Sis henuz tam oturmadan hiz karari",who:"suvari",
+  text:`Ufuk dagilmaya basladi; sis duvar gibi gelmiyor ama gorus keskinligini bozuyor. Sesler de daha boguk.
+
+Suvari night orders'a not dusmus:
+
+"Restricted visibility bir anda baslamaz; bazen once denizin rengi, sonra isiklarin kenari bozulur."
+
+Ne yaparsin?`,
+  choices:[
+  {text:"Safe speed, radar ayarlari, fog signal hazirligi ve look-out disiplini tarafini erken sikilastiririm",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Sis iyice kapanmadan hiz ve duzeni cok degistirmem",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Gorus tamamen kaybolmadan restricted visibility saymanin gereksiz oldugunu dusunurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s341",gfx:"bridge",alert:false,day:"Gun 5",time:"01:40",loc:"Koprustu - Gece Defteri",sub:"Logbook'a neyi gecersin?",who:"z3",
+  text:`Gecenin ortasi bazen sakin gecer ama zabit defteri sakin diye bos kalmaz.
+
+3. Zabiti kalemi sana uzatti:
+
+"Rota, hava, traffic remark, engine status, position check... Gece vardiyasi notu olay olunca degil, olay cikmadan once ciddiye alinir."
+
+Hangi dusunce profesyoneldir?`,
+  choices:[
+  {text:"Olay olmasa da rota, hava, trafik ve mevki teyidini duzenli logbook'a gecerim",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+  {text:"Siradisi bir sey yoksa logbook'u minimum notla gecistiririm",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Gece sakin gectiyse kaydi de neredeyse bos birakmanin yeterli oldugunu sanirim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+  {id:"s342",gfx:"night",alert:false,day:"Gun 5",time:"04:50",loc:"Koprustu - Dawn Watch",sub:"Sabaha karsi dikkatin dusmesi",who:"z2",
+  text:`En zor saatler bazen firtina degil, sabaha yakin olan o sessiz saatlerdir. Gozun acik ama zihin yavaslamaya basliyor.
+
+2. Zabiti onceki vardiyada seni uyarmisti:
+
+"Gece vardiyasinda dusman bazen trafik degil, yorgunlugun kendisidir."
+
+Ne yaparsin?`,
+  choices:[
+  {text:"Kendimi aktif tutar, mevki/radar cross-check ritmini siklastirir ve gerekirse destek isterim",tag:"kritik",effect:{bilgi:15,sayginlik:11,dinclik:3}},
+  {text:"Biraz oyalanir ama vardiyanin sonunu sessizce getirmeye calisirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4,dinclik:-2}},
+  {text:"Sabaha az kaldigi icin rehavete kapilip kontrolleri seyrekletirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10,dinclik:-4}}]},
+  {id:"s343",gfx:"cargo",alert:false,day:"Gun 9",time:"08:20",loc:"Ambar Ustu - Yukleme Baslangici",sub:"Ilk ambar secimi trim ve dengeyi bozar mi?",who:"z1",
+  text:`Vincler hazir, terminal baskili. Ilk hangi ambardan baslanacagi sadece operasyon hizi degil, gemi davranisi da demek.
+
+1. Zabiti plan kagidina vurdu:
+
+"Loading sequence yanlis baslarsa sonra sayilar duzelir ama gemi seni once uyarir."
+
+Ilk dusuncen ne olur?`,
+  choices:[
+  {text:"Ilk ambar secimini trim, shear force, bending moment ve terminal akisiyla birlikte degerlendiririm",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Terminal hangi ambari isterse once oradan baslamanin yeterli oldugunu dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Baslangic sirasinin gemi dengesini cok etkilemeyecegini sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s344",gfx:"cargo",alert:true,day:"Gun 9",time:"11:30",loc:"Guvetede Yuk Hatti",sub:"Yagmur geliyor, ambar acik",who:"lostromo",
+  text:`Ufukta yagmur var ama terminal acele ediyor. Ambar acik, yuk hassas.
+
+Lostromo kaşlarini catip sordu:
+
+"Hiz mi, yuk selameti mi? Bazi kararlar vinci durdurdugun an belli olur."
+
+Ne yaparsin?`,
+  choices:[
+  {text:"Yuk cinsine gore yagmur riskini one alir, gerekirse operasyonu durdurup ambari korurum",tag:"kritik",effect:{bilgi:17,sayginlik:13}},
+  {text:"Bir miktar daha yuk alip sonra bakmayi denerim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Hafif yagmurun yukte ciddi fark yaratmayacagini varsayarim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s345",gfx:"cargo",alert:false,day:"Gun 9",time:"14:10",loc:"Ambar No.2",sub:"Dunnage ve ayirici malzeme niye onemli?",who:"lostromo",
+  text:`Yuk guzel gorunuyor ama altina ne kondugu da en az kadar onemli.
+
+Lostromo elindeki takozu gosterdi:
+
+"Dunnage bazen kimsenin bakmadigi ama hasarin mahkemede once soruldugu seydir."
+
+En dogru yorum hangisi?`,
+  choices:[
+  {text:"Dunnage, ayirici malzeme ve yuk temas noktalarini yukun cinsine gore ciddi degerlendiririm",tag:"kritik",effect:{bilgi:16,sayginlik:12}},
+  {text:"Yuk guzel oturuyorsa ekstra ayirici malzeme ikinci planda kalabilir diye dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Dunnage'i daha cok duzen gostergesi sayar, hasarla iliskisini hafife alirim",tag:"korkak",effect:{bilgi:-10,sayginlik:-9}}]},
+  {id:"s346",gfx:"cargo",alert:true,day:"Gun 10",time:"09:15",loc:"Konteyner Sahasi - On Deck Plan",sub:"Yuksek stack ve ruzgar karari",who:"z1",
+  text:`On deck konteyner plani buyuyor. Terminal hizli, ruzgar da artmaya niyetli.
+
+1. Zabiti ekrana bakti:
+
+"Her bos slot doldurulacak diye bir kural yok. Stack weight, visibility, lashing ve hava penceresi birlikte okunur."
+
+Ne dersin?`,
+  choices:[
+  {text:"Stack weight, lashing, ruzgar ve gorus etkisini birlikte dusunerek daha dengeli istif isterim",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Bos yer kalmasin diye istifi once hacim mantigiyla doldururum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Ruzgarin on deck konteyner yerlesiminde buyuk fark yaratmayacagini sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s347",gfx:"cargo",alert:false,day:"Gun 10",time:"16:40",loc:"Terminal Planner Ofisi",sub:"Yukleme hizi ile emniyet hizi ayni degil",who:"z1",
+  text:`Terminal planner hizdan bahsediyor, sen ise geminin sinirlarindan.
+
+1. Zabiti kisa konustu:
+
+"Hizli yukleme guzel cumledir ama kontrolsuz hiz, sonradan saatler kaybettirir."
+
+En profesyonel tavir hangisi?`,
+  choices:[
+  {text:"Loading rate'i gemi limitleri, ballast cevabi ve guverte emniyetiyle birlikte yonetirim",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Terminal hiz istiyorsa once onu karsilamaya calisirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Hiz arttikca emniyet kontrolunun ikinci planda kalmasini normal gorurum",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s348",gfx:"engine_fault",alert:true,day:"Gun 7",time:"10:25",loc:"Makine Kontrol Ekrani",sub:"LO pressure hafif dusuyor",who:"carkci",
+  text:`Alarm bagirmiyor ama rakam rahatsiz ediyor. Lubricating oil pressure hafifce asagi kaydi.
+
+Basmuhendis not dusuyor:
+
+"Buyuk ariza bazen kucuk rakam kaymasi gibi baslar. Once trendi gor, sonra sebebi daralt."
+
+Ne yaparsin?`,
+  choices:[
+  {text:"Trend, yuk, sicaklik ve standby pompa/filtre tarafini birlikte kontrol ettiririm",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Alarm tam vermeden ciddi dusunmeye gerek olmadigini sanirim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"LO pressure dususunu gostergede gecici oynama sayip gecerim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s349",gfx:"engine_fault",alert:true,day:"Gun 7",time:"12:05",loc:"Makine Dairesi - Silindir Takibi",sub:"Bir egzoz sicakligi ayrismaya basladi",who:"carkci",
+  text:`Silindirlerden biri digerlerinden usulca ayriliyor. Egzoz sicakligi tablosunda tek bir kolon yukseliyor.
+
+2. Muhendis seni uyardi:
+
+"Tek rakam bazen tek silindir sorunudur, bazen tum dengeyi bozan ilk haberdir."
+
+En saglam refleksin hangisi?`,
+  choices:[
+  {text:"Yuk, injector/yanma dengesi ve silindir trendini birlikte sorgularim",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Fark biraz acilsin sonra bakariz diye dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Egzoz sicakligi farklarini makinede normal dalgalanma sayarim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s350",gfx:"engine_fault",alert:true,day:"Gun 7",time:"15:20",loc:"Pompa Platformu",sub:"Standby pump niye hazir tutulur?",who:"carkci",
+  text:`Bir servis pompasinin sesi degisti. Henuz durmadi ama huzur da vermiyor.
+
+Carkci basti:
+
+"Standby pump gostermelik yedek degil. Hazir degilse yedek de degildir."
+
+Ne yaparsin?`,
+  choices:[
+  {text:"Standby pump ready durumunu, suction/discharge line-up'ini ve degisim planini hemen netlestiririm",tag:"kritik",effect:{bilgi:17,sayginlik:12}},
+  {text:"Ana pompa durana kadar standby tarafina cok bakmam",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Yedek pompanin gercekten testli ve line-up olmasi gerekmedigini sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s351",gfx:"engine_fault",alert:true,day:"Gun 8",time:"01:15",loc:"Jenerator Panosu",sub:"Yuk paylasimi temiz degil",who:"bascarkci",
+  text:`Gece sakin ama panoda yuk dagilimi huzursuz. Bir jenerator daha fazla yuk cekiyor.
+
+Basmuhendis sert degil ama nettir:
+
+"Blackout bir anda olmaz; bazen once paylasim bozulur, sonra biri trip eder."
+
+En iyi yorum hangisi?`,
+  choices:[
+  {text:"Load sharing, governor cevabi ve standby generator hazirligini birlikte dusunurum",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Sistem kendi kendine dengeleyecektir diye fazla kurcalamam",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Jenerator yuk farklarini onemsiz bir panel ayrintisi sanirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s352",gfx:"engine_fault",alert:true,day:"Gun 8",time:"03:45",loc:"Sintine Hatti",sub:"Bilge high level ilk ne anlatir?",who:"carkci",
+  text:`Bilge high level alarmi geldi. Her alarm yagmur gibi ustune atlanmaz; bazen once neyi anlattigini anlamak gerekir.
+
+Carkci telsizde:
+
+"Su mu, yag mi, drenaj mi, kacaktan mi? Alarmi susturmak degil; kokeni bulmak esas."
+
+Ilk neyi kurarsin?`,
+  choices:[
+  {text:"Alarm kaynagini, mahali, sizinti tipini ve drenaj durumunu sistemli kontrol ettiririm",tag:"kritik",effect:{bilgi:18,sayginlik:12}},
+  {text:"Bilge alarmi zaman zaman olur diye once ciddiyetini dusuk tutarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Seviyeyi dusurmek yetiyorsa sebebi aramaya gerek olmadigini sanirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s353",gfx:"harbor",alert:false,day:"Gun 11",time:"06:40",loc:"Pilot Station - Yanasma Oncesi",sub:"Tug plan ne zaman netlesmeli?",who:"suvari",
+  text:`Pilot station yaklasiyor. Römorkor adedi belli ama hangi tug nerede alacak konusu hala net degil.
+
+Suvari bunu sevmez:
+
+"Tug plan son dakikada ezberlenmez. Kim nerede alacak, push mu pull mu, hangi tarafta risk var; once zihinde oturur."
+
+Ne yaparsin?`,
+  choices:[
+  {text:"Pilot gelmeden tug planini, alma noktasini ve push/pull mantigini netlestiririm",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
+  {text:"Pilot geldiginde zaten soyler diye once detay istemem",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Tug planinin esasen römorkor kaptanlarinin konusu oldugunu sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s354",gfx:"harbor",alert:false,day:"Gun 11",time:"07:25",loc:"Pilot Ladder / Bridge Wing",sub:"Pilot geldi ama is bitmedi",who:"suvari",
+  text:`Pilot kopruye cikti diye vardiya bitmez; bazen asil o an baslar.
+
+Suvari sana dondu:
+
+"Pilot gemiyi taniyor olabilir ama sen kendi gemini taniyorsun. Cross-check burada saygısizlik degil, profesyonelliktir."
+
+En dogru tavir hangisi?`,
+  choices:[
+  {text:"Master-pilot exchange sonrasi conning order'lari gemi davranisiyla capraz kontrol ederek aktif destek veririm",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
+  {text:"Pilot geldikten sonra kalan takibin buyuk kisminin ona ait oldugunu dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Pilot varken soru sormanin veya cross-check yapmanin gereksiz oldugunu sanirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s355",gfx:"harbor",alert:true,day:"Gun 11",time:"08:05",loc:"Berth Yaklasmasi - Son Kablo",sub:"Son yaklasmada bilgi akisi koparsa ne olur?",who:"lostromo",
+  text:`Geminin hizi dusuk ama stres yuksek. Kopru, pruvas, kic istasyon, pilot ve römorkor ayni anda konusuyor.
+
+Lostromo telsize bakip bagirdi:
+
+"Bu anda sessizlik degil, temiz bilgi lazim. Bir kelime eksik kalirsa halat da gec kalir, dumen de."
+
+Senin refleksin ne olur?`,
+  choices:[
+  {text:"Mesafe, halat hazirligi, tug etkisi ve komut tekrarlarini net ve kisa bilgiyle ayakta tutarim",tag:"kritik",effect:{bilgi:17,sayginlik:14}},
+  {text:"Kalabalik anlarda daha az konusup sadece komut beklemeyi tercih ederim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Son yaklasmada herkes zaten gordugu icin bilgi tekrarinin cok gerekli olmadigini sanirim",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
   {id:"s237",gfx:"bridge",alert:true,day:"Gun 6",time:"05:55",loc:"Koprustu - Sabah Vardiyasi",sub:"MOB proseduru ilk dakikalar",who:"z2",
   text:`Sancak taraftan bir cisim denize dustu. 2. Zabiti sesi sertlestirdi:
 
