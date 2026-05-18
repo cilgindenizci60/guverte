@@ -8583,6 +8583,19 @@ function buildShipPartsDiagram(){
       <rect x="92" y="70" width="28" height="10" fill="#d0d0d0"/>
       <rect x="86" y="82" width="36" height="6" fill="#8ca8bf"/>
       <rect x="198" y="108" width="150" height="7" fill="#7f7f7f"/>
+      <rect x="196" y="104" width="154" height="4" fill="#5f5f5f" opacity=".85"/>
+      <path d="M172 121 h190" stroke="#d5dde4" stroke-width="1" stroke-dasharray="4,3" opacity=".55"/>
+      <path d="M118 98 h18" stroke="#dceaf4" stroke-width="2"/>
+      <path d="M118 102 h18" stroke="#dceaf4" stroke-width="2"/>
+      <path d="M128 98 v10" stroke="#dceaf4" stroke-width="1.2"/>
+      <rect x="66" y="150" width="10" height="18" rx="1.5" fill="#d6dfe6"/>
+      <path d="M72 168 l-16 16" stroke="#d6dfe6" stroke-width="2"/>
+      <path d="M60 180 h14" stroke="#d6dfe6" stroke-width="1.1"/>
+      <path d="M62 176 h12" stroke="#d6dfe6" stroke-width="1.1"/>
+      <path d="M64 172 h10" stroke="#d6dfe6" stroke-width="1.1"/>
+      <rect x="470" y="141" width="8" height="12" rx="1.2" fill="#0f2942"/>
+      <circle cx="474" cy="147" r="1.6" fill="#9ed3ff"/>
+      <path d="M66 120 h7 M66 126 h7 M66 132 h7" stroke="#7ea0bd" stroke-width="1.4" opacity=".9"/>
       <path d="M434 102 L442 96" stroke="#777" stroke-width="1"/>
       <path d="M66 176 L66 188" stroke="#dfe9ef" stroke-width="2"/>
       <path d="M71 176 L71 186" stroke="#dfe9ef" stroke-width="2"/>
@@ -8697,6 +8710,26 @@ function buildShipPartsDiagram(){
         <circle cx="210" cy="140" r="10" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.5"/>
         <text x="205" y="144" fill="#f4e7b4" font-size="9" font-family="monospace">21</text>
       </g>
+      <g class="shipparts-hotspot" data-part="foremooring" tabindex="0">
+        <circle cx="414" cy="126" r="10" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.5"/>
+        <text x="409" y="130" fill="#dceaf4" font-size="9" font-family="monospace">22</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="ladder" tabindex="0">
+        <circle cx="58" cy="186" r="10" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.5"/>
+        <text x="53" y="190" fill="#f4e7b4" font-size="9" font-family="monospace">23</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="coaming" tabindex="0">
+        <circle cx="236" cy="102" r="10" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.5"/>
+        <text x="231" y="106" fill="#dceaf4" font-size="9" font-family="monospace">24</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="thruster" tabindex="0">
+        <circle cx="474" cy="147" r="10" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.5"/>
+        <text x="469" y="151" fill="#f4e7b4" font-size="9" font-family="monospace">25</text>
+      </g>
+      <g class="shipparts-hotspot" data-part="freeingport" tabindex="0">
+        <circle cx="72" cy="126" r="10" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.5"/>
+        <text x="67" y="130" fill="#dceaf4" font-size="9" font-family="monospace">26</text>
+      </g>
     </svg>
     <div class="shipparts-legend">
       <button class="shipparts-chip" type="button" data-part="bas">1 Pruva / Bas</button>
@@ -8720,6 +8753,11 @@ function buildShipPartsDiagram(){
       <button class="shipparts-chip" type="button" data-part="chainlocker">19 Zincirlik</button>
       <button class="shipparts-chip" type="button" data-part="mooring">20 Kic Mooring Station</button>
       <button class="shipparts-chip" type="button" data-part="loadline">21 Load Line / Plimsoll</button>
+      <button class="shipparts-chip" type="button" data-part="foremooring">22 Bas Mooring Station</button>
+      <button class="shipparts-chip" type="button" data-part="ladder">23 Accommodation Ladder</button>
+      <button class="shipparts-chip" type="button" data-part="coaming">24 Hatch Coaming</button>
+      <button class="shipparts-chip" type="button" data-part="thruster">25 Bow Thruster</button>
+      <button class="shipparts-chip" type="button" data-part="freeingport">26 Freeing Port</button>
     </div>
     <div class="shipparts-detail" data-active-ship-part="bridge">
       <div class="shipparts-detail-head">Kopruustu</div>
@@ -8812,6 +8850,26 @@ const SHIP_PARTS_INFO = {
   loadline:{
     head:'Load Line / Plimsoll Mark',
     body:'Yukleme hattini gosteren resmi isarettir. Ortadaki daire ve yatay cizgi ana load line markidir; yanindaki cizgiler ve harfler mevsim ve su yogunluguna gore izin verilen maksimum yukleme seviyelerini anlatir. Burada <b>WNA</b> winter North Atlantic, <b>TF</b> tropical fresh water, <b>F</b> fresh water, <b>T</b> tropical, <b>S</b> summer ve <b>W</b> winter mantigini gosterir.'
+  },
+  foremooring:{
+    head:'Bas Mooring Station',
+    body:'Pruva tarafinda head line, fore spring ve diger bas halatlarinin verildigi calisma alanidir. Irgat, fairlead, baba ve ekip konumlari burada birlikte dusunulur; snap-back zone yine bos tutulur.'
+  },
+  ladder:{
+    head:'Accommodation Ladder',
+    body:'Gemiden iskeleye inis-cikis icin kullanilan borda merdivenidir. Aci, alt platform, emniyet agi, can simidi ve aydinlatma birlikte kontrol edilir; ISPS nobeti de genelde bu hatta kurulur.'
+  },
+  coaming:{
+    head:'Hatch Coaming',
+    body:'Ambar acikliginin etrafindaki yukseltilmis bordur. Suyun ambar icine girmesini azaltir; hatch cover baskisi, conta, drain channel ve sizdirmazlik kontrolunde referans yuzeylerden biridir.'
+  },
+  thruster:{
+    head:'Bow Thruster',
+    body:'Ozellikle dusuk suratte yanaşma-kalkista pruvalin yana itilmesine yardim eden pervaneli yardimci manevra duzenidir. Her gemide bulunmaz; olan gemide de tek basina degil, ruzgar-akinti-tug ile birlikte dusunulur.'
+  },
+  freeingport:{
+    head:'Freeing Port',
+    body:'Guverteye gelen suyun hizla denize bosalmasi icin bulwark uzerinde birakilan tahliye acikligidir. Tikaliysa guvertede su birikir, agirlik ve kayma riski buyur.'
   }
 };
 
