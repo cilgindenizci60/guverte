@@ -7283,6 +7283,64 @@ function buildPortChartSvg(port){
       <text x="${coastLeft ? 48 : 48}" y="${southFacing ? 64 : 52}" fill="#8fd8ab" font-size="6.2" font-family="monospace">ANCH</text>
       <text x="${coastLeft ? 84 : 16}" y="${southFacing ? 28 : 18}" fill="#f4e9c6" font-size="6.2" font-family="monospace">PILOT</text>
     </g>`;
+  const specialInset = /rotterdam|singapur|panama|ambarlı|ambarli/.test(hay)
+    ? (() => {
+        if(/rotterdam/.test(hay)){
+          return `
+            <g transform="translate(${coastLeft ? 18 : 304},${southFacing ? 172 : 18})">
+              <rect x="0" y="0" width="118" height="72" rx="6" fill="rgba(5,16,28,.94)" stroke="#385f86" stroke-width="1"/>
+              <text x="8" y="12" fill="#8ab0c8" font-size="6.6" font-family="monospace">BERTH INSET / ROTTERDAM</text>
+              <path d="M10 28 H108" stroke="#234663" stroke-width=".8"/>
+              <path d="M10 44 H108" stroke="#234663" stroke-width=".8"/>
+              <path d="M24 20 V62 M54 20 V62 M84 20 V62" stroke="#18344f" stroke-width=".8" stroke-dasharray="3,3"/>
+              <rect x="64" y="24" width="20" height="30" fill="#cfd8e4" opacity=".9"/>
+              <path d="M22 34 H62" stroke="#4f8fc7" stroke-width="2"/>
+              <path d="M22 50 H62" stroke="#d4a017" stroke-width="1.4" stroke-dasharray="4,3"/>
+              <text x="12" y="70" fill="#8fd8ab" font-size="6.2" font-family="monospace">TUG AREA / BERTH SWING</text>
+            </g>`;
+        }
+        if(/singapur/.test(hay)){
+          return `
+            <g transform="translate(${coastLeft ? 18 : 304},${southFacing ? 172 : 18})">
+              <rect x="0" y="0" width="118" height="72" rx="6" fill="rgba(5,16,28,.94)" stroke="#385f86" stroke-width="1"/>
+              <text x="8" y="12" fill="#8ab0c8" font-size="6.6" font-family="monospace">APPROACH INSET / SINGAPUR</text>
+              <path d="M12 24 Q58 14 106 24" fill="none" stroke="#d4a017" stroke-width="1.3" stroke-dasharray="4,3"/>
+              <path d="M12 48 Q58 58 106 48" fill="none" stroke="#d4a017" stroke-width="1.3" stroke-dasharray="4,3"/>
+              <circle cx="28" cy="30" r="3" fill="#44d26f"/>
+              <circle cx="42" cy="42" r="3" fill="#d24c4c"/>
+              <circle cx="64" cy="26" r="3" fill="#44d26f"/>
+              <circle cx="82" cy="44" r="3" fill="#d24c4c"/>
+              <circle cx="94" cy="30" r="3" fill="#44d26f"/>
+              <text x="12" y="66" fill="#f0d59b" font-size="6.2" font-family="monospace">TSS / HEAVY TRAFFIC</text>
+            </g>`;
+        }
+        if(/panama/.test(hay)){
+          return `
+            <g transform="translate(${coastLeft ? 18 : 304},${southFacing ? 172 : 18})">
+              <rect x="0" y="0" width="118" height="72" rx="6" fill="rgba(5,16,28,.94)" stroke="#385f86" stroke-width="1"/>
+              <text x="8" y="12" fill="#8ab0c8" font-size="6.6" font-family="monospace">LOCK / TUG INSET</text>
+              <rect x="18" y="24" width="28" height="28" fill="none" stroke="#5f92bf" stroke-width="1.2"/>
+              <rect x="72" y="24" width="28" height="28" fill="none" stroke="#5f92bf" stroke-width="1.2"/>
+              <path d="M46 38 H72" stroke="#4f8fc7" stroke-width="2"/>
+              <circle cx="54" cy="32" r="3" fill="#d4a017"/>
+              <circle cx="64" cy="44" r="3" fill="#d4a017"/>
+              <text x="14" y="66" fill="#d7b37a" font-size="6.2" font-family="monospace">LOCK ENTRY / TUG ASSIST</text>
+            </g>`;
+        }
+        return `
+          <g transform="translate(${coastLeft ? 18 : 304},${southFacing ? 172 : 18})">
+            <rect x="0" y="0" width="118" height="72" rx="6" fill="rgba(5,16,28,.94)" stroke="#385f86" stroke-width="1"/>
+            <text x="8" y="12" fill="#8ab0c8" font-size="6.6" font-family="monospace">TERMINAL / TUG PLAN</text>
+            <path d="M18 26 H102" stroke="#234663" stroke-width="1"/>
+            <path d="M18 46 H102" stroke="#234663" stroke-width="1"/>
+            <rect x="76" y="22" width="18" height="30" fill="#cfd8e4" opacity=".92"/>
+            <path d="M18 36 H74" stroke="#4f8fc7" stroke-width="2"/>
+            <circle cx="32" cy="30" r="3" fill="#d4a017"/>
+            <circle cx="54" cy="42" r="3" fill="#d4a017"/>
+            <text x="10" y="66" fill="#f0d59b" font-size="6.2" font-family="monospace">APPROACH / BERTH / TUG</text>
+          </g>`;
+      })()
+    : '';
   const pilotGroundOverlay = `
     <circle cx="${coastLeft ? 330 : 112}" cy="${southFacing ? 92 : 178}" r="15" fill="none" stroke="#d4a017" stroke-width="1.2" stroke-dasharray="4,3" opacity=".85"/>
     <circle cx="${coastLeft ? 330 : 112}" cy="${southFacing ? 92 : 178}" r="4" fill="#d4a017"/>
@@ -7451,6 +7509,7 @@ function buildPortChartSvg(port){
   ${sectorLightOverlay}
   ${specialOverlay}
   ${overviewInset}
+  ${specialInset}
   `;
 }
 
