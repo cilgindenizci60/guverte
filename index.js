@@ -7465,7 +7465,7 @@ const STUDENT_NOTES = [
   {head:"OLCU BIRIMLERI - DENIZCILIK", body:"<b>1 deniz mili (NM)</b> = 1852 metre<br><b>1 knot (kt)</b> = saatte 1 deniz mili = 1.852 km/saat<br><b>1 kablo (cable)</b> = 0.1 deniz mili = 185.2 metre<br><b>1 kulac (fathom)</b> = 6 feet = 1.8288 metre<br><b>1 feet (ft)</b> = 0.3048 metre<br><b>1 inch</b> = 2.54 cm<br><b>1 metre</b> = 100 cm<br><b>1 santimetre</b> = 10 mm<br><b>1 ton</b> = 1000 kg<br><b>1 long ton</b> = 1016 kg yaklasik<br><b>1 short ton</b> = 907 kg yaklasik<br><b>DWT</b> = Deadweight tonnage; geminin tasiyabilecegi toplam agirlik kapasitesi<br><b>GT</b> = Gross Tonnage; hacim esasli tonaj olcusudur, agirlik degildir<br><b>TEU</b> = 20 feet'lik bir konteyner birimi<br><b>20 ft</b> = 6.096 metre<br><b>40 ft</b> = 12.192 metre<br><b>m3</b> = hacim birimi; tank, ambar ve stowage hesaplarinda kullanilir<br><b>t/m3</b> veya <b>kg/m3</b> = yogunluk birimi; draft survey, ballast ve yakit hesaplarinda gorulur<br><b>ppm</b> = millionda bir; OWS, su kalitesi ve gaz olcumlerinde gorulur<br><b>%LEL</b> = patlayici alt limit yuzdesi; gaz olcumlerinde kullanilir<br><b>bar</b> = basinÃ§ birimi; 1 bar yaklasik 100 kPa'dir<br><b>kW</b> = guc birimi; makine ve jeneratorde kullanilir<br><b>RPM</b> = dakikadaki devir sayisi; ana makine ve pompada gorulur<br><br><b>Pratik not:</b> Seyirde mesafe deniz miliyle, hiz knot ile, draft metre veya feet ile, yuk agirligi ton ile okunur.", tip:"Ayni soruda metre, feet, ton ve deniz mili bir araya gelebilir; birim karisinca hesap da karar da bozulur."},
   {head:"COLREG OZETI", body:"<b>Rule 5</b> proper look-out: goz, kulak, radar/AIS ve tum mevcut imkanlarla takip yapilir.<br><b>Rule 6</b> safe speed: gorus, trafik, draft, manevra ve sensor sinirlariyla birlikte degerlendirilir.<br><b>Rule 7</b> risk of collision: suphe varsa risk var kabul edilir; sabit kerteriz ve dusen CPA ciddiye alinir.<br><b>Rule 8</b> action to avoid collision: manevra erken, belirgin ve iyi denizcilige uygun olur.<br><b>Rule 9</b> dar kanal: sancak sinirina yakin seyredilir, gecis gereksiz engellenmez.<br><b>Rule 10</b> traffic separation scheme: serit disiplini korunur, akisi bozacak gecislerden kacinilir.<br><b>Rule 13</b> overtaking: yetisen gemi yol verir.<br><b>Rule 14</b> head-on: iki gemi de sancaga duser.<br><b>Rule 15</b> crossing: sancaginda gemi goruyorsan give-way sensin.<br><b>Rule 18</b> sorumluluk hiyerarsisi: NUC, RAM, CBD, fishing, sailing ve power-driven iliskisi birlikte okunur.<br><b>Rule 19</b> restricted visibility: safe speed, radar yorumu ve fog signal disiplini artar.", tip:"COLREG ezber listesi degil; durumu dogru okuyup erken davranma sanatidir."},
   {head:"ECDIS / HARITA", body:"Route check, safety contour, safety depth, no-go area, isolated danger ve alarm ayarlari seyirden once gozden gecirilir.<br>GPS bilgisi radar, gorusel mevki ve diger sensorlerle capraz kontrol edilir.<br><b>GPS quality control</b>: pozisyon kaynagi saglikli mi; DGPS/GNSS durumu, HDOP/PDOP, RAIM uyari mantigi, anten ofseti, sensor input secimi, position jump, COG/SOG tutarliligi ve secondary position source birlikte izlenir.<br>Waypoint'ler, parallel indexing, XTD ve chart correction mantigi bilinmelidir.<br>Kagit haritada NtM, correction number, tracing ve correction record disiplini; ECDIS'te ise ENC permit, cell status, latest update ve overdue area kontrolu birlikte dusunulur.<br>Rota degisikligi varsa passage plan, kagit harita, ECDIS route ve logbook ayni mantikla guncellenir.", tip:"ECDIS yardimcidir; kagit harita dusuncesiyle birlikte kullanildiginda daha guclu olur."},
-  {head:"FENER VE SAMANDIRA", body:"IALA lateral markalarda renk, tepe isareti ve isik karakteri birlikte okunur.<br>Fl, Oc, Iso, Q, VQ, LFl ve sektor renkleri fenerleri ayirt etmeyi saglar.<br>Cardinal marklarda kuzey-gu ney-dogu-bati tepe isaretleri ve siyah-sari renk dizilimi ezberlenmelidir.", tip:"Renk kadar ritmi de oku."},
+  {head:"FENER VE SAMANDIRA", body:"IALA lateral markalarda renk, tepe isareti ve isik karakteri birlikte okunur.<br>Fl, Oc, Iso, Q, VQ, LFl ve sektor renkleri fenerleri ayirt etmeyi saglar.<br>Cardinal marklarda kuzey-dogu-guney-bati tepe isaretleri ve siyah-sari renk dizilimi ezberlenmelidir.<br><br>"+buildBuoyGallery(), tip:"Renk kadar sekli ve ust isaretini de oku."},
   {head:"PILOT / ROMORKOR / LIMAN", body:"Pilot ladder durumu, can simidi ve isik kontrolu, personel konumu ve haberlesme disiplini kritik konulardir.<br>Master-pilot exchange yapilir; snap-back zone bos tutulur.<br>Heaving line, tug line, berthing plan, current-rüzgar etkisi ve mooring team konumlari net olmalidir.<br><br><b>Tipik yanasma halat sirasi</b> (gemi plani, ruzgar/akinti ve kaptan-pilot talimatina gore degisebilir):<br><b>1.</b> Ilk emniyet halati genelde <b>fore spring</b> ya da bazen <b>head line</b> olur; geminin ileri-geri kacmasini erken kontrol etmek icin.<br><b>2.</b> Ardindan <b>head line</b> veya karsilikli olarak <b>stern line</b> verilir.<br><b>3.</b> Sonra <b>aft spring</b> tamamlanir; geminin boyuna hareketi daha iyi tutulur.<br><b>4.</b> Daha sonra <b>breast line</b>lar verilir; gemiyi rihtima paralel ve yakinda tutar.<br><b>5.</b> En sonda ince ayar yapilip tum halatlar esit yuk dagitacak sekilde bos alinir, volta edilir ve <b>all fast</b> durumu kurulur.<br><br><b>Halatlarin gorevi</b>:<br><b>Head line / stern line</b> basi ve kici ileri-geri tutar.<br><b>Spring</b> geminin boyuna kaymasini keser.<br><b>Breast line</b> gemiyi rihtima dogru ceker ve borda acisini tutar.", tip:"Mooring station saka kabul etmez; ama halat sirasi da ezber degil, plan isidir."},
   {head:"DUNYA GECITLERI / SU YOLLARI", body:"<b>Kanallar</b>: Suveys, Panama, Kiel, Korint, St. Lawrence.<br><b>Bogazlar</b>: Cebelitarik, Istanbul, Canakkale, Hurmuz, Babulmendep, Malakka, Sunda, Lombok, Dover, Bonifacio, Kerch, Tayvan, Kore, Tsugaru, Torres, Macellan, Bering.<br><b>Nehirler</b>: Mississippi, Amazon, Ren, Tuna, Elbe, Hudson, Yangtze, Mekong, Nijer.<br><b>Korfezler</b>: Basra, Aden, Akabe, Meksika, Gine, Finlandiya, Biskay, Aslan, Umman.<br><br>Her gecitte draft, akinti, pilotaj, VTS, reporting point, tug gereksinimi ve hava penceresi farklidir.", tip:"Her su yolu ayni degil; bazisi draft ister, bazisi raporlama, bazisi da sadece iyi zamanlama ister."},
   {head:"GEMININ KISIMLARI", body:"<b>Pruva</b> geminin on tarafidir; <b>Kic</b> arka tarafidir.<br><b>Iskele</b> sol, <b>Sancak</b> sag bordadir.<br><b>Bas bodoslama</b> on dikey/egik uc yapisidir; <b>Kic bodoslama</b> arka uc yapisidir.<br><b>Ana guverte</b> ana yuru yus ve calisma guvertesidir.<br><b>Bas kasarasi / forecastle</b> pruva tarafindaki yuksek bolumdur; <b>Kic ustu / poop deck</b> kic tarafindaki yuksek bolumdur.<br><b>Kopruustu</b> geminin sevk ve idaresinin yapildigi mahaldir.<br><b>Ambar</b> yukun tasindigi kapali hacimdir; <b>Hatch cover</b> ambar kapagidir.<br><b>Makine dairesi</b> ana makine ve yardimci sistemlerin bulundugu mahaldir.<br><b>Borda</b> geminin yan tarafidir; <b>alabanda</b> bunun ic yuzune verilen addir.<br><b>Omurga</b> teknenin ana boyuna omurgasal tasiyici hattidir.<br><b>Draft markalari</b> bas ve kicta su cekimini okumaya yarar.<br><b>Bulwark / sancaklik</b> guverte kenarindaki koruyucu yukselti veya korkuluk hattidir.<br><b>Hawse pipe / demir locasi</b> demir zincirinin gectigi yapidir.<br><br>"+buildShipPartsDiagram(), tip:"Gemi dili once yone, sonra mahale, sonra ekipmana oturur."},
@@ -8150,6 +8150,54 @@ function buildWindRoseDiagram(){
       ${dirs.map(d => `<div class="windrose-item"><div class="windrose-item-head">${d.deg} · ${d.head}</div><div class="windrose-item-body">${d.body}</div></div>`).join('')}
     </div>
   </div>`;
+}
+
+function buoySvg(type){
+  const topmark = {
+    port:`<rect x="57" y="18" width="6" height="12" fill="#d24c4c"/>`,
+    starboard:`<path d="M60 16 L54 28 L66 28 Z" fill="#44d26f"/>`,
+    north:`<path d="M60 12 L54 22 L66 22 Z" fill="#111"/><path d="M60 24 L54 14 L66 14 Z" fill="#111"/>`,
+    east:`<path d="M60 12 L54 22 L66 22 Z" fill="#111"/><path d="M60 26 L54 16 L66 16 Z" fill="#111"/>`,
+    south:`<path d="M60 14 L54 24 L66 24 Z" fill="#111"/><path d="M60 28 L54 18 L66 18 Z" fill="#111"/>`,
+    west:`<path d="M60 12 L54 22 L66 22 Z" fill="#111"/><path d="M60 28 L54 18 L66 18 Z" fill="#111"/>`,
+    isolated:`<circle cx="57" cy="18" r="4.5" fill="#111"/><circle cx="63" cy="18" r="4.5" fill="#111"/>`,
+    safewater:`<circle cx="60" cy="18" r="5" fill="#c43d3d"/>`,
+    special:`<path d="M60 14 L63 22 L72 22 L65 27 L68 35 L60 30 L52 35 L55 27 L48 22 L57 22 Z" fill="#f4d172"/>`
+  }[type] || '';
+  const body = {
+    port:`<rect x="52" y="34" width="16" height="42" rx="7" fill="#d24c4c"/>`,
+    starboard:`<rect x="52" y="34" width="16" height="42" rx="7" fill="#44d26f"/>`,
+    north:`<rect x="52" y="34" width="16" height="10" fill="#111"/><rect x="52" y="44" width="16" height="11" fill="#f4d172"/><rect x="52" y="55" width="16" height="21" fill="#111"/>`,
+    east:`<rect x="52" y="34" width="16" height="14" fill="#111"/><rect x="52" y="48" width="16" height="14" fill="#f4d172"/><rect x="52" y="62" width="16" height="14" fill="#111"/>`,
+    south:`<rect x="52" y="34" width="16" height="22" fill="#f4d172"/><rect x="52" y="56" width="16" height="20" fill="#111"/>`,
+    west:`<rect x="52" y="34" width="16" height="14" fill="#f4d172"/><rect x="52" y="48" width="16" height="14" fill="#111"/><rect x="52" y="62" width="16" height="14" fill="#f4d172"/>`,
+    isolated:`<rect x="52" y="34" width="16" height="42" rx="7" fill="#111"/><rect x="52" y="48" width="16" height="10" fill="#d24c4c"/>`,
+    safewater:`<rect x="52" y="34" width="16" height="42" rx="7" fill="#dfe2e6"/><rect x="52" y="48" width="16" height="10" fill="#c43d3d"/>`,
+    special:`<rect x="52" y="34" width="16" height="42" rx="7" fill="#f4d172"/>`
+  }[type] || '';
+  return `<svg class="buoy-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-label="${type} samandira">
+    <rect width="120" height="120" fill="none"/>
+    <path d="M0 84 Q30 80 60 84 T120 84 V120 H0 Z" fill="#0a2846"/>
+    <path d="M0 92 Q30 88 60 92 T120 92 V120 H0 Z" fill="#10385c" opacity=".9"/>
+    ${topmark}
+    ${body}
+    <path d="M60 76 L60 92" stroke="#8ab0c8" stroke-width="1.5"/>
+  </svg>`;
+}
+
+function buildBuoyGallery(){
+  const items = [
+    {name:'Lateral Iskele', type:'port', desc:'IALA A’da iskele markasi kirmizidir; geminin iskele tarafinda tutulur.'},
+    {name:'Lateral Sancak', type:'starboard', desc:'IALA A’da sancak markasi yesildir; geminin sancak tarafinda tutulur.'},
+    {name:'Cardinal Kuzey', type:'north', desc:'Tehlikenin kuzeyinden gecilir; siyah-sari-siyah ve iki koni yukari bakar.'},
+    {name:'Cardinal Dogu', type:'east', desc:'Tehlikenin dogusundan gecilir; siyah-sari-siyah dizilimi dogu karakterindedir.'},
+    {name:'Cardinal Guney', type:'south', desc:'Tehlikenin guneyinden gecilir; sari ustte, siyah altta ve koniler asagi bakar.'},
+    {name:'Cardinal Bati', type:'west', desc:'Tehlikenin batisindan gecilir; sari-siyah-sari ve koniler birbirine bakar.'},
+    {name:'Isolated Danger', type:'isolated', desc:'Etrafinda emniyetli su olup tek tehlikeyi gosterir; siyah uzerine kirmizi bantlidir.'},
+    {name:'Safe Water', type:'safewater', desc:'Emniyetli su / orta hat isaretidir; kirmizi-beyaz karakterle okunur.'},
+    {name:'Special Mark', type:'special', desc:'Ozel alan, kablo, askeri saha veya baska ozel maksadi gosterir; sari renklidir.'}
+  ];
+  return `<div class="buoy-grid">${items.map(item=>`<div class="buoy-card">${buoySvg(item.type)}<div class="buoy-name">${item.name}</div><div class="buoy-desc">${item.desc}</div></div>`).join('')}</div>`;
 }
 
 function buildShipPartsDiagram(){

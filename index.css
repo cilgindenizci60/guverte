@@ -372,6 +372,12 @@ input[type=text]::placeholder{color:var(--text3);}
 .windrose-item{border:1px solid rgba(74,112,152,.28);border-radius:8px;background:rgba(8,20,33,.82);padding:7px 8px;}
 .windrose-item-head{font-size:10px;color:var(--gold);font-family:'Share Tech Mono',monospace;margin-bottom:3px;}
 .windrose-item-body{font-size:11px;line-height:1.5;color:var(--text2);}
+.buoy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px;}
+.buoy-card{border:1px solid var(--border2);border-radius:8px;background:rgba(6,16,28,0.72);padding:8px;}
+.buoy-name{font-size:10px;color:var(--gold);font-family:'Share Tech Mono',monospace;margin-bottom:5px;}
+.buoy-desc{font-size:11px;line-height:1.5;color:var(--text2);}
+.buoy-svg{width:100%;height:auto;display:block;margin:0 0 8px 0;border-radius:6px;background:linear-gradient(180deg, rgba(13,34,56,.92), rgba(7,20,34,.98));border:1px solid rgba(74,112,152,.25);}
+.buoy-svg text{font-family:'Share Tech Mono',monospace;}
 .shipparts-hotspot{cursor:pointer;transition:transform .16s ease, opacity .16s ease;}
 .shipparts-hotspot:hover,.shipparts-hotspot:focus-visible,.shipparts-hotspot.active{transform:scale(1.06);}
 .shipparts-hotspot:focus-visible{outline:none;}
@@ -385,6 +391,7 @@ input[type=text]::placeholder{color:var(--text3);}
 .shipparts-detail-body{font-size:12px;line-height:1.6;color:var(--text2);}
 @media (max-width:380px){
   .windrose-list{grid-template-columns:1fr;}
+  .buoy-grid{grid-template-columns:1fr;}
 }
 .notes-tip{font-size:10px;color:var(--text3);margin-top:5px;line-height:1.5;}
 .notes-empty{color:var(--text3);font-size:12px;padding:10px;border:1px dashed var(--border2);border-radius:8px;text-align:center;}
