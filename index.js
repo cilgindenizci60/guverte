@@ -8187,15 +8187,15 @@ function buoySvg(type){
 
 function buildBuoyGallery(){
   const items = [
-    {name:'Lateral Iskele', type:'port', desc:'IALA A’da iskele markasi kirmizidir; geminin iskele tarafinda tutulur.'},
-    {name:'Lateral Sancak', type:'starboard', desc:'IALA A’da sancak markasi yesildir; geminin sancak tarafinda tutulur.'},
-    {name:'Cardinal Kuzey', type:'north', desc:'Tehlikenin kuzeyinden gecilir; siyah-sari-siyah ve iki koni yukari bakar.'},
-    {name:'Cardinal Dogu', type:'east', desc:'Tehlikenin dogusundan gecilir; siyah-sari-siyah dizilimi dogu karakterindedir.'},
-    {name:'Cardinal Guney', type:'south', desc:'Tehlikenin guneyinden gecilir; sari ustte, siyah altta ve koniler asagi bakar.'},
-    {name:'Cardinal Bati', type:'west', desc:'Tehlikenin batisindan gecilir; sari-siyah-sari ve koniler birbirine bakar.'},
-    {name:'Isolated Danger', type:'isolated', desc:'Etrafinda emniyetli su olup tek tehlikeyi gosterir; siyah uzerine kirmizi bantlidir.'},
-    {name:'Safe Water', type:'safewater', desc:'Emniyetli su / orta hat isaretidir; kirmizi-beyaz karakterle okunur.'},
-    {name:'Special Mark', type:'special', desc:'Ozel alan, kablo, askeri saha veya baska ozel maksadi gosterir; sari renklidir.'}
+    {name:'Lateral Iskele', type:'port', desc:'IALA A’da iskele markasi kirmizidir; geminin iskele tarafinda tutulur. Isik karakteri cogu zaman R Fl / Oc olarak gorulur.'},
+    {name:'Lateral Sancak', type:'starboard', desc:'IALA A’da sancak markasi yesildir; geminin sancak tarafinda tutulur. Isik karakteri G Fl / Oc seklinde okunabilir.'},
+    {name:'Cardinal Kuzey', type:'north', desc:'Tehlikenin kuzeyinden gecilir; siyah-sari-siyah ve iki koni yukari bakar. Isik karakteri genelde VQ veya Q surekli seri yanip sönmedir.'},
+    {name:'Cardinal Dogu', type:'east', desc:'Tehlikenin dogusundan gecilir; siyah-sari-siyah dizilimi dogu karakterindedir. Isikta grup 3’lu VQ(3) / Q(3) mantigi aranir.'},
+    {name:'Cardinal Guney', type:'south', desc:'Tehlikenin guneyinden gecilir; sari ustte, siyah altta ve koniler asagi bakar. Isik karakteri grup 6 + uzun cakma VQ(6)+LFl / Q(6)+LFl mantigidir.'},
+    {name:'Cardinal Bati', type:'west', desc:'Tehlikenin batisindan gecilir; sari-siyah-sari ve koniler birbirine bakar. Isik karakteri grup 9’lu VQ(9) / Q(9) olarak okunur.'},
+    {name:'Isolated Danger', type:'isolated', desc:'Etrafinda emniyetli su olup tek tehlikeyi gosterir; siyah uzerine kirmizi bantlidir. Isik karakteri genelde Fl(2) olur.'},
+    {name:'Safe Water', type:'safewater', desc:'Emniyetli su / orta hat isaretidir; kirmizi-beyaz karakterle okunur. Isik karakteri Iso, Oc veya LFl 10s olabilir.'},
+    {name:'Special Mark', type:'special', desc:'Ozel alan, kablo, askeri saha veya baska ozel maksadi gosterir; sari renklidir. Isikta Y Fl gibi sari karakterler gorulebilir.'}
   ];
   return `<div class="buoy-grid">${items.map(item=>`<div class="buoy-card">${buoySvg(item.type)}<div class="buoy-name">${item.name}</div><div class="buoy-desc">${item.desc}</div></div>`).join('')}</div>`;
 }
