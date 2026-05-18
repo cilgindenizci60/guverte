@@ -7906,148 +7906,121 @@ function buildShipPartsDiagram(){
     <svg class="shipparts-svg" viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg" aria-label="Geminin kisimlari">
       <defs>
         <linearGradient id="shipSky" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stop-color="#0d2238"/>
-          <stop offset="100%" stop-color="#08121d"/>
+          <stop offset="0%" stop-color="#8cc4dc"/>
+          <stop offset="100%" stop-color="#70b0cb"/>
         </linearGradient>
-        <linearGradient id="shipHull" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0%" stop-color="#21496d"/>
-          <stop offset="52%" stop-color="#173750"/>
-          <stop offset="100%" stop-color="#2a5377"/>
+        <linearGradient id="shipHull" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#8c8c8c"/>
+          <stop offset="100%" stop-color="#686868"/>
         </linearGradient>
-        <linearGradient id="shipDeck" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stop-color="#6c8297"/>
-          <stop offset="100%" stop-color="#52697f"/>
+        <linearGradient id="bootTop" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stop-color="#ff3333"/>
+          <stop offset="100%" stop-color="#ff2b2b"/>
         </linearGradient>
       </defs>
       <rect x="0" y="0" width="520" height="260" rx="12" fill="url(#shipSky)"/>
-      <circle cx="430" cy="34" r="18" fill="#d3aa54" opacity=".15"/>
-      <path d="M0 175 Q65 168 130 175 T260 175 T390 175 T520 175 V260 H0 Z" fill="#0c2946"/>
-      <path d="M0 194 Q43 188 86 194 T172 194 T258 194 T344 194 T430 194 T520 194 V260 H0 Z" fill="#103554" opacity=".92"/>
-      <path d="M26 168 L72 150 L120 137 L365 137 L405 145 L442 157 L486 176 L479 189 L35 189 Z" fill="url(#shipHull)" stroke="#6b92b4" stroke-width="1.8"/>
-      <path d="M78 141 L123 141 L142 126 L376 126 L389 132 L423 145 L443 156 L443 164 L79 164 Z" fill="url(#shipDeck)" stroke="#7a98b6" stroke-width="1.2"/>
-      <path d="M78 151 L92 151 L92 188 L78 188 Z" fill="#9cb4c8" opacity=".5"/>
-      <path d="M458 168 L472 168 L472 189 L458 189 Z" fill="#9cb4c8" opacity=".4"/>
-      <rect x="148" y="126" width="58" height="16" rx="2" fill="#4d667b"/>
-      <rect x="212" y="126" width="58" height="16" rx="2" fill="#4d667b"/>
-      <rect x="276" y="126" width="58" height="16" rx="2" fill="#4d667b"/>
-      <rect x="340" y="126" width="38" height="16" rx="2" fill="#4d667b"/>
-      <path d="M158 126 L166 96" stroke="#8eb0cd" stroke-width="2.4"/>
-      <path d="M222 126 L230 94" stroke="#8eb0cd" stroke-width="2.4"/>
-      <path d="M286 126 L294 94" stroke="#8eb0cd" stroke-width="2.4"/>
-      <path d="M350 126 L358 96" stroke="#8eb0cd" stroke-width="2.4"/>
-      <path d="M166 96 L152 96" stroke="#8eb0cd" stroke-width="2"/>
-      <path d="M230 94 L216 94" stroke="#8eb0cd" stroke-width="2"/>
-      <path d="M294 94 L280 94" stroke="#8eb0cd" stroke-width="2"/>
-      <path d="M358 96 L344 96" stroke="#8eb0cd" stroke-width="2"/>
-      <rect x="386" y="78" width="66" height="32" rx="3" fill="#dde5ec" stroke="#67829d" stroke-width="1"/>
-      <rect x="397" y="58" width="34" height="20" rx="2" fill="#dde5ec" stroke="#67829d" stroke-width="1"/>
-      <rect x="394" y="87" width="9" height="8" fill="#4b657f"/>
-      <rect x="406" y="87" width="9" height="8" fill="#4b657f"/>
-      <rect x="418" y="87" width="9" height="8" fill="#4b657f"/>
-      <rect x="430" y="87" width="9" height="8" fill="#4b657f"/>
-      <path d="M386 90 L378 96 L386 101" stroke="#8fb1ce" stroke-width="2" fill="none"/>
-      <path d="M452 90 L460 96 L452 101" stroke="#8fb1ce" stroke-width="2" fill="none"/>
-      <rect x="461" y="58" width="16" height="52" rx="2" fill="#304b64"/>
-      <rect x="467" y="30" width="4" height="28" fill="#8eb2d1"/>
-      <rect x="476" y="74" width="23" height="10" rx="2" fill="#c88a3b"/>
-      <ellipse cx="498" cy="84" rx="10" ry="3" fill="#596f82" opacity=".8"/>
-      <path d="M66 171 L54 196" stroke="#bfd2df" stroke-width="2.4"/>
-      <circle cx="50" cy="206" r="9" fill="none" stroke="#bfd2df" stroke-width="2.2"/>
-      <rect x="84" y="130" width="18" height="6" rx="1" fill="#c5d2de"/>
-      <rect x="97" y="125" width="6" height="13" rx="1" fill="#c5d2de"/>
-      <path d="M449 182 q11 4 14 14 q-14 3 -23 -3 q3 -8 9 -11Z" fill="#9eb8cc" stroke="#c9d9e5" stroke-width="1"/>
-      <path d="M455 183 L455 199" stroke="#dce7ef" stroke-width="1"/>
-      <path d="M434 168 L441 168 L441 186 L434 186 Z" fill="#7f9fbb"/>
-      <path d="M408 112 q8 -10 20 -10 q-1 12 -8 19 q-10 0 -12 -9Z" fill="#d8e1e8" stroke="#7e98b0" stroke-width="1"/>
-      <path d="M108 145 L113 132 L126 132 L121 145 Z" fill="#5d7890"/>
-      <path d="M96 145 L110 136 L118 136 L104 145 Z" fill="#8aa7c2"/>
-      <path d="M92 163 L92 180" stroke="#d6e2ec" stroke-width="1.5"/>
-      <path d="M92 163 L98 158" stroke="#d6e2ec" stroke-width="1.5"/>
-      <path d="M92 171 L98 166" stroke="#d6e2ec" stroke-width="1.5"/>
-      <path d="M458 165 L458 180" stroke="#d6e2ec" stroke-width="1.5"/>
-      <path d="M458 165 L464 160" stroke="#d6e2ec" stroke-width="1.5"/>
-      <path d="M458 173 L464 168" stroke="#d6e2ec" stroke-width="1.5"/>
-      <text x="18" y="23" fill="#8ab0c8" font-size="8" font-family="monospace">ISKELE</text>
-      <text x="438" y="23" fill="#8ab0c8" font-size="8" font-family="monospace">SANCAK</text>
+      <path d="M0 156 Q65 152 130 156 T260 156 T390 156 T520 156 V260 H0 Z" fill="#00a4e6"/>
+      <path d="M0 176 Q50 171 100 176 T200 176 T300 176 T400 176 T520 176 V260 H0 Z" fill="#0092d2" opacity=".85"/>
+      <path d="M52 108 L422 108 L435 102 L492 102 L482 118 L484 165 Q484 175 474 181 L70 181 Q56 181 52 170 Z" fill="url(#shipHull)" stroke="#4f4f4f" stroke-width="1.6"/>
+      <path d="M52 165 L469 165 Q478 165 478 173 Q478 178 470 178 L65 178 Q55 178 52 165 Z" fill="url(#bootTop)"/>
+      <path d="M52 108 L418 108" stroke="#4b4b4b" stroke-width="1.2"/>
+      <rect x="84" y="62" width="44" height="46" fill="#bfbfbf" stroke="#666" stroke-width="1.2"/>
+      <rect x="92" y="56" width="34" height="8" fill="#d9d9d9" stroke="#777" stroke-width="1"/>
+      <rect x="92" y="70" width="28" height="10" fill="#d0d0d0"/>
+      <rect x="86" y="82" width="36" height="6" fill="#8ca8bf"/>
+      <rect x="198" y="108" width="150" height="7" fill="#7f7f7f"/>
+      <path d="M434 102 L442 96" stroke="#777" stroke-width="1"/>
+      <path d="M66 176 L66 188" stroke="#dfe9ef" stroke-width="2"/>
+      <path d="M71 176 L71 186" stroke="#dfe9ef" stroke-width="2"/>
+      <path d="M78 176 L78 186" stroke="#dfe9ef" stroke-width="2"/>
+      <path d="M437 177 Q447 185 446 198" stroke="#8ea3b4" stroke-width="2" fill="none"/>
+      <path d="M444 176 Q458 183 456 199" stroke="#8ea3b4" stroke-width="1.5" fill="none"/>
+      <path d="M54 166 L44 188" stroke="#f0f5f8" stroke-width="2"/>
+      <circle cx="40" cy="197" r="8" fill="none" stroke="#f0f5f8" stroke-width="2"/>
+      <rect x="76" y="106" width="16" height="6" rx="1" fill="#e5edf2"/>
+      <rect x="89" y="101" width="6" height="12" rx="1" fill="#e5edf2"/>
+      <text x="20" y="25" fill="#0f3450" font-size="8" font-family="monospace">ISKELE</text>
+      <text x="434" y="25" fill="#0f3450" font-size="8" font-family="monospace">SANCAK</text>
+      <text x="260" y="158" text-anchor="middle" fill="#111" font-size="13" font-family="Arial, sans-serif" font-weight="700">Deadweight Tonnage</text>
       <g class="shipparts-hotspot" data-part="bas" tabindex="0">
-        <circle cx="110" cy="164" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
-        <text x="105" y="168" fill="#f4e7b4" font-size="10" font-family="monospace">1</text>
+        <circle cx="454" cy="112" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
+        <text x="449" y="116" fill="#f4e7b4" font-size="10" font-family="monospace">1</text>
       </g>
       <g class="shipparts-hotspot" data-part="forecastle" tabindex="0">
-        <circle cx="134" cy="133" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
-        <text x="129" y="137" fill="#f4e7b4" font-size="10" font-family="monospace">2</text>
+        <circle cx="420" cy="112" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
+        <text x="415" y="116" fill="#f4e7b4" font-size="10" font-family="monospace">2</text>
       </g>
       <g class="shipparts-hotspot" data-part="cargo" tabindex="0">
-        <circle cx="262" cy="134" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
-        <text x="257" y="138" fill="#f4e7b4" font-size="10" font-family="monospace">3</text>
+        <circle cx="274" cy="116" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
+        <text x="269" y="120" fill="#f4e7b4" font-size="10" font-family="monospace">3</text>
       </g>
       <g class="shipparts-hotspot" data-part="bridge" tabindex="0">
-        <circle cx="421" cy="77" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
-        <text x="416" y="81" fill="#f4e7b4" font-size="10" font-family="monospace">4</text>
+        <circle cx="108" cy="64" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
+        <text x="103" y="68" fill="#f4e7b4" font-size="10" font-family="monospace">4</text>
       </g>
       <g class="shipparts-hotspot" data-part="funnel" tabindex="0">
-        <circle cx="485" cy="78" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
-        <text x="480" y="82" fill="#f4e7b4" font-size="10" font-family="monospace">5</text>
+        <circle cx="84" cy="84" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
+        <text x="79" y="88" fill="#f4e7b4" font-size="10" font-family="monospace">5</text>
       </g>
       <g class="shipparts-hotspot" data-part="engine" tabindex="0">
-        <circle cx="430" cy="151" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
-        <text x="425" y="155" fill="#f4e7b4" font-size="10" font-family="monospace">6</text>
+        <circle cx="118" cy="150" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
+        <text x="113" y="154" fill="#f4e7b4" font-size="10" font-family="monospace">6</text>
       </g>
       <g class="shipparts-hotspot" data-part="poop" tabindex="0">
-        <circle cx="455" cy="145" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
-        <text x="450" y="149" fill="#f4e7b4" font-size="10" font-family="monospace">7</text>
+        <circle cx="94" cy="112" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
+        <text x="89" y="116" fill="#f4e7b4" font-size="10" font-family="monospace">7</text>
       </g>
       <g class="shipparts-hotspot" data-part="stern" tabindex="0">
-        <circle cx="470" cy="171" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
-        <text x="465" y="175" fill="#f4e7b4" font-size="10" font-family="monospace">8</text>
+        <circle cx="58" cy="112" r="11" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.6"/>
+        <text x="53" y="116" fill="#f4e7b4" font-size="10" font-family="monospace">8</text>
       </g>
       <g class="shipparts-hotspot" data-part="hawse" tabindex="0">
-        <circle cx="54" cy="200" r="11" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.6"/>
-        <text x="49" y="204" fill="#dceaf4" font-size="10" font-family="monospace">9</text>
+        <circle cx="48" cy="196" r="11" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.6"/>
+        <text x="43" y="200" fill="#dceaf4" font-size="10" font-family="monospace">9</text>
       </g>
       <g class="shipparts-hotspot" data-part="deck" tabindex="0">
-        <circle cx="300" cy="165" r="11" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.6"/>
-        <text x="292" y="169" fill="#dceaf4" font-size="9" font-family="monospace">10</text>
+        <circle cx="210" cy="110" r="11" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.6"/>
+        <text x="202" y="114" fill="#dceaf4" font-size="9" font-family="monospace">10</text>
       </g>
       <g class="shipparts-hotspot" data-part="keel" tabindex="0">
-        <circle cx="274" cy="202" r="11" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.6"/>
-        <text x="266" y="206" fill="#dceaf4" font-size="9" font-family="monospace">11</text>
+        <circle cx="270" cy="182" r="11" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.6"/>
+        <text x="262" y="186" fill="#dceaf4" font-size="9" font-family="monospace">11</text>
       </g>
       <g class="shipparts-hotspot" data-part="windlass" tabindex="0">
-        <circle cx="95" cy="129" r="10" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.5"/>
-        <text x="90" y="133" fill="#f4e7b4" font-size="9" font-family="monospace">12</text>
+        <circle cx="82" cy="108" r="10" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.5"/>
+        <text x="77" y="112" fill="#f4e7b4" font-size="9" font-family="monospace">12</text>
       </g>
       <g class="shipparts-hotspot" data-part="bulwark" tabindex="0">
-        <circle cx="190" cy="150" r="10" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.5"/>
-        <text x="185" y="154" fill="#dceaf4" font-size="9" font-family="monospace">13</text>
+        <circle cx="330" cy="110" r="10" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.5"/>
+        <text x="325" y="114" fill="#dceaf4" font-size="9" font-family="monospace">13</text>
       </g>
       <g class="shipparts-hotspot" data-part="draftmarks" tabindex="0">
-        <circle cx="80" cy="171" r="10" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.5"/>
-        <text x="75" y="175" fill="#dceaf4" font-size="9" font-family="monospace">14</text>
+        <circle cx="72" cy="174" r="10" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.5"/>
+        <text x="67" y="178" fill="#dceaf4" font-size="9" font-family="monospace">14</text>
       </g>
       <g class="shipparts-hotspot" data-part="rudder" tabindex="0">
-        <circle cx="444" cy="189" r="10" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.5"/>
-        <text x="439" y="193" fill="#f4e7b4" font-size="9" font-family="monospace">15</text>
+        <circle cx="440" cy="191" r="10" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.5"/>
+        <text x="435" y="195" fill="#f4e7b4" font-size="9" font-family="monospace">15</text>
       </g>
       <g class="shipparts-hotspot" data-part="propeller" tabindex="0">
-        <circle cx="459" cy="198" r="10" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.5"/>
-        <text x="454" y="202" fill="#f4e7b4" font-size="9" font-family="monospace">16</text>
+        <circle cx="454" cy="200" r="10" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.5"/>
+        <text x="449" y="204" fill="#f4e7b4" font-size="9" font-family="monospace">16</text>
       </g>
       <g class="shipparts-hotspot" data-part="bridgewing" tabindex="0">
-        <circle cx="381" cy="101" r="10" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.5"/>
-        <text x="376" y="105" fill="#dceaf4" font-size="9" font-family="monospace">17</text>
+        <circle cx="130" cy="84" r="10" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.5"/>
+        <text x="125" y="88" fill="#dceaf4" font-size="9" font-family="monospace">17</text>
       </g>
       <g class="shipparts-hotspot" data-part="lifeboat" tabindex="0">
-        <circle cx="419" cy="111" r="10" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.5"/>
-        <text x="414" y="115" fill="#f4e7b4" font-size="9" font-family="monospace">18</text>
+        <circle cx="132" cy="108" r="10" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.5"/>
+        <text x="127" y="112" fill="#f4e7b4" font-size="9" font-family="monospace">18</text>
       </g>
       <g class="shipparts-hotspot" data-part="chainlocker" tabindex="0">
-        <circle cx="72" cy="146" r="10" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.5"/>
-        <text x="67" y="150" fill="#dceaf4" font-size="9" font-family="monospace">19</text>
+        <circle cx="94" cy="146" r="10" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.5"/>
+        <text x="89" y="150" fill="#dceaf4" font-size="9" font-family="monospace">19</text>
       </g>
       <g class="shipparts-hotspot" data-part="mooring" tabindex="0">
-        <circle cx="474" cy="152" r="10" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.5"/>
-        <text x="469" y="156" fill="#dceaf4" font-size="9" font-family="monospace">20</text>
+        <circle cx="62" cy="152" r="10" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.5"/>
+        <text x="57" y="156" fill="#dceaf4" font-size="9" font-family="monospace">20</text>
       </g>
     </svg>
     <div class="shipparts-legend">
