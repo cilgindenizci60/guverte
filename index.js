@@ -7229,6 +7229,7 @@ const STUDENT_NOTES = [
   {head:"ACIL HABERLESME", body:"MAYDAY distress, PAN-PAN urgency, SECURITE emniyet yayini icindir.<br>Mesajda gemi adi, callsign, pozisyon, tehlikenin cinsi, yardim ihtiyaci ve kisi sayisi acik verilir.<br>GMDSS, EPIRB, SART, NAVTEX, DSC, handheld VHF ve emergency battery kayitlari bilinir.", tip:"Netlik hiz kadar onemlidir."},
   {head:"GMDSS / HABERLESME CIHAZLARI", body:"<b>VHF DSC</b> kisa mesafe distress / urgency / safety ve CH16 nobet disiplininin temelidir.<br><b>MF/HF DSC</b> daha uzak mesafe haberlesme ve uygun frekans secimiyle dusunulur.<br><b>NAVTEX</b> navigational ve meteorological warning alir; baski / printer / mesaj secimi onemlidir.<br><b>EGC / SafetyNET</b> genelde Inmarsat-C uzerinden MSI ve safety message alir.<br><b>Inmarsat-C</b> text tabanli haberlesme, distress, reporting ve mesajlasmada kullanilir.<br><b>EPIRB</b> acil durumda COSPAS-SARSAT uydu sistemine distress beacon gonderir.<br><b>SART</b> arama-kurtarmada radar cevaplayici olarak hedef bulunurlugunu artirir.<br><b>AIS</b> trafik farkindaligi ve hedef tanimlamada yardimcidir; radar ve gorsel teyidin yerine gecmez.<br><br><b>GMDSS Sea Areas</b>:<br><b>A1</b> VHF DSC kapsamasinda yakin denizler<br><b>A2</b> MF DSC kapsamasina kadar uzayan bolgeler<br><b>A3</b> Inmarsat kapsamasindaki acik denizler<br><b>A4</b> kutup / Inmarsat disi yuksek enlem alanlari; HF dusuncesi agir basar.<br><br><b>RCC/MRCC</b> distress sonrasinda arama-kurtarma koordinasyon zincirini yurutur.<br><b>Pratik mantik:</b> Hangi cihazin ne zaman, hangi menzilde ve hangi maksatla kullanilacagini bilmek gerekir.", tip:"Cihazi tanimak yetmez; hangi acilde hangisine uzanacagini da bil."},
   {head:"METEOROLOJI / BULUTLAR", body:"<b>Cumulus</b> gun icinde dikey gelisebilen pamuksu buluttur; hava iyi de olabilir ama buyurse shower'a gider.<br><b>Cirrus</b> ince ve tuy gibi ust seviye buz bulutudur; yaklasan front'un habercisi olabilir.<br><b>Stratus</b> alcak, yaygin ve tek katman gibi gorunur; gorus ve drizzle etkisi yaratabilir.<br><b>Nimbostratus</b> uzun sureli ve yaygin yagisin bulutudur.<br><b>Cumulonimbus (CB)</b> dikey gelisimi cok guclu firtina bulutudur; saganak, yildirim, squall ve ani ruzgar bekletir.<br><b>Barometer trendi</b>, ruzgar donusu ve bulut tipi birlikte okunur; tek bir buluta bakip kesin hukum verilmez.", tip:"Bulut gormek yetmez; hangi seviyede oldugunu ve neye donusebilecegini de dusun."},
+  {head:"RUZGAR YONLERI / DERECELER", body:"Ruzgar denizde <b>nereye gittigine gore degil</b>, <b>nereden geldigine gore</b> adlandirilir.<br><b>Pruvadan</b> gelen ruzgar 000°/360°, <b>pupadan</b> gelen ruzgar 180° kabul edilir.<br><b>Kemere</b> tam bordadan gelen ruzgardir; sancak kemere 090°, iskele kemere 270° diye okunur.<br><b>Bas omuzluk</b> 45°'lik on ceyrek, <b>kic omuzluk</b> ise 135° / 225° taraflaridir.<br>Brifinglerde 'ruzgar sancak bas omuzluktan 4 bofor' gibi kisa ve net ifade kullanilir.<br><br>"+buildWindRoseDiagram(), tip:"Ruzgar yonu rapor ederken once gemi referansini dusun: pruva, pupa, iskele, sancak."},
   {head:"FORMULLER - HIZ / MESAFE / ZAMAN", body:"Mesafe = Hiz x Zaman<br>Hiz = Mesafe / Zaman<br>Zaman = Mesafe / Hiz<br>1 knot = 1 deniz mili / saat<br>Gece ETA hesaplari icin once kalan mesafe, sonra mevcut SOG kullanilir.<br><br><b>Ornek:</b> 48 mil yol, 12 knot hizla yaklasik 4 saatte biter.", tip:"Basit formuller vardiyada en cok kullanilanlardir."},
   {head:"FORMULLER - SET / DRIFT / CTS", body:"Course to Steer mantigi: istenen COG icin akinti vektorunu hesaba kat.<br>Drift = akintinin hizi<br>Set = akintinin yonu<br>Gercek iz = verilen rota + akinti etkisi<br>Yaklasik kapanis mantigi: Verilen HDG + akinti vektoru = gercek COG/SOG<br>Running fix / DR duzeltmelerinde set-drift sure ile birlikte okunur.<br><b>Yaklasik akis:</b> Akinti mesafesi = drift x zaman<br><b>ETA</b> icin kalan mesafe / gercek SOG mantigi kullanilir.<br><b>Kullanilan tablo / kaynaklar:</b> Tidal stream atlas, current tables, pilot book, chart notlari, ECDIS current overlay, sailing directions.<br><br><b>Ornek:</b> 090 rota tutmak isterken akinti seni kuzeye 2 knot itiyorsa bir miktar guneye pruva verip CTS duzeltmesi yaparsin.", tip:"Pruva baska, iz baska olabilir."},
   {head:"FORMULLER - KLASIK SEYIR / PLANE SAILING", body:"<b>D'Lat = Dist x cos C</b><br><b>Departure = Dist x sin C</b><br><b>D'Long (dakika) = Departure / cos orta enlem</b><br><b>Orta enlem = (Lat1 + Lat2) / 2</b><br>Plane sailing kisa mesafelerde kullanilir; Mercator sailing ve middle latitude mantigi burada devreye girer.<br><br><b>Kuzey/Guney, Dogu/Bati isaretleri</b> hesap kadar onemlidir.<br><b>Traverse table</b> kullanilirken cos/sin sonucu North-South ve East-West olarak okunur.<br><br><b>Ornek:</b> 120 mil, rota 060 ise D'Lat = 120 x cos60 = 60 mil; Departure = 120 x sin60 yaklasik 104 mildir.", tip:"Kisa rota problemlerinde en klasik omurga budur."},
@@ -7843,6 +7844,57 @@ function buildKnotGallery(){
   return intro + `<div class="knot-grid">${knots.map(k=>`<div class="knot-card">${knotSvg(k.type)}<div class="knot-name">${k.name}</div><div class="knot-desc">${k.desc}</div></div>`).join('')}</div>`;
 }
 
+function buildWindRoseDiagram(){
+  const dirs = [
+    {deg:'000° / 360°', head:'Pruvadan', body:'Ruzgar tam bastan gelir. Deniz bastan yenir, gemi kafa vurabilir.'},
+    {deg:'045°', head:'Sancak bas omuzluk', body:'Ruzgar sancak on ceyrektendir; spray ve yalpa hissi artabilir.'},
+    {deg:'090°', head:'Sancak kemere', body:'Ruzgar tam sancak bordadan gelir. Yalpa etkisi belirginlesir.'},
+    {deg:'135°', head:'Sancak kic omuzluk', body:'Ruzgar sancak kictan gelir; surukleme ve rota tutus farkli hissedilir.'},
+    {deg:'180°', head:'Pupadan', body:'Ruzgar tam kictan gelir. Following sea davranisi ayrica izlenir.'},
+    {deg:'225°', head:'Iskele kic omuzluk', body:'Ruzgar iskele kictandir; kiç dalgasi ve yaw artabilir.'},
+    {deg:'270°', head:'Iskele kemere', body:'Ruzgar tam iskeleden gelir. Yalpa ve guverte calismasi etkilenir.'},
+    {deg:'315°', head:'Iskele bas omuzluk', body:'Ruzgar iskele on ceyrektendir; bas omuzluk denizi sertlesebilir.'}
+  ];
+  return `<div class="windrose-card">
+    <svg class="windrose-svg" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-label="Ruzgar yonleri ve dereceleri">
+      <defs>
+        <radialGradient id="windGlow" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="rgba(36,84,128,.4)"/>
+          <stop offset="100%" stop-color="rgba(8,20,33,0)"/>
+        </radialGradient>
+      </defs>
+      <circle cx="210" cy="210" r="182" fill="url(#windGlow)"/>
+      <circle cx="210" cy="210" r="160" fill="none" stroke="rgba(138,176,200,.28)" stroke-width="1.5"/>
+      <circle cx="210" cy="210" r="122" fill="none" stroke="rgba(138,176,200,.2)" stroke-width="1.2"/>
+      <circle cx="210" cy="210" r="84" fill="none" stroke="rgba(138,176,200,.15)" stroke-width="1"/>
+      <path d="M210 36 L210 384 M36 210 L384 210 M86 86 L334 334 M334 86 L86 334" stroke="rgba(138,176,200,.22)" stroke-width="1.4"/>
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M210 60 L198 92 L210 82 L222 92 Z" fill="#f2cf7a" stroke="#f2cf7a"/>
+        <path d="M210 360 L199 330 L210 338 L221 330 Z" fill="#6f8ca8" stroke="#6f8ca8"/>
+        <path d="M360 210 L330 199 L338 210 L330 221 Z" fill="#6f8ca8" stroke="#6f8ca8"/>
+        <path d="M60 210 L92 198 L82 210 L92 222 Z" fill="#6f8ca8" stroke="#6f8ca8"/>
+      </g>
+      <circle cx="210" cy="210" r="28" fill="rgba(9,25,40,.95)" stroke="#d4a017" stroke-width="2"/>
+      <circle cx="210" cy="210" r="6" fill="#d4a017"/>
+      <text x="210" y="24" text-anchor="middle" fill="#f4d172" font-size="12">000° PRUVA</text>
+      <text x="346" y="70" text-anchor="middle" fill="#8ab0c8" font-size="10">045° SANCAK BAS OMUZLUK</text>
+      <text x="398" y="214" text-anchor="end" fill="#8ab0c8" font-size="12">090° SANCAK KEMERE</text>
+      <text x="336" y="356" text-anchor="middle" fill="#8ab0c8" font-size="10">135° SANCAK KIC OMUZLUK</text>
+      <text x="210" y="404" text-anchor="middle" fill="#8ab0c8" font-size="12">180° PUPA</text>
+      <text x="82" y="356" text-anchor="middle" fill="#8ab0c8" font-size="10">225° ISKELE KIC OMUZLUK</text>
+      <text x="24" y="214" text-anchor="start" fill="#8ab0c8" font-size="12">270° ISKELE KEMERE</text>
+      <text x="74" y="70" text-anchor="middle" fill="#8ab0c8" font-size="10">315° ISKELE BAS OMUZLUK</text>
+      <text x="210" y="164" text-anchor="middle" fill="#dceaf4" font-size="11">RUZGAR NEREDEN GELIYORSA</text>
+      <text x="210" y="180" text-anchor="middle" fill="#dceaf4" font-size="11">O YONLE ANILIR</text>
+      <text x="210" y="246" text-anchor="middle" fill="#f4d172" font-size="13">360° = 000°</text>
+      <text x="210" y="264" text-anchor="middle" fill="#8ab0c8" font-size="10">45° araliklarla temel yonler</text>
+    </svg>
+    <div class="windrose-list">
+      ${dirs.map(d => `<div class="windrose-item"><div class="windrose-item-head">${d.deg} · ${d.head}</div><div class="windrose-item-body">${d.body}</div></div>`).join('')}
+    </div>
+  </div>`;
+}
+
 function buildShipPartsDiagram(){
   return `<div class="shipparts-card">
     <svg class="shipparts-svg" viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" aria-label="Geminin kisimlari">
@@ -8125,6 +8177,7 @@ function getRelevantNoteTopics(sc){
   if(/mayday|pan-pan|securite|vhf|gmdss|navtex|epirb|sart|egc|inmarsat|cospas|safetynet|ais/.test(hay)) topics.add('ACIL HABERLESME');
   if(/vhf|mf\/hf|mfhf|navtex|egc|inmarsat|epirb|sart|cospas|safetynet|ais/.test(hay)) topics.add('GMDSS / HABERLESME CIHAZLARI');
   if(/demir|anchor|anchorage|holding ground|dragging|shackle/.test(hay)) topics.add('KOPRUUSTU VARDIYASI');
+  if(/ruzgar|wind|bas omuzluk|kic omuzluk|kemere|pupa|pruva/.test(hay)) topics.add('RUZGAR YONLERI / DERECELER');
   if(/stabil|gm|trim|list|ballast|heel|fsc|mctc/.test(hay)) topics.add('STABILITE / BALLAST');
   if(/gel-git|tidal|ukc|under keel|draft/.test(hay)) topics.add('FORMULLER - GEL-GIT / UKC');
   if(/set|drift|course to steer|cog|sog|seyir/.test(hay)) topics.add('FORMULLER - SET / DRIFT / CTS');
