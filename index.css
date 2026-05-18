@@ -394,6 +394,13 @@ input[type=text]::placeholder{color:var(--text3);}
 .meteo-svg{width:100%;height:auto;display:block;margin:0 0 8px 0;border-radius:6px;border:1px solid rgba(74,112,152,.25);background:linear-gradient(180deg, rgba(13,34,56,.92), rgba(7,20,34,.98));}
 .shiplight-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px;}
 .shiplight-svg{width:100%;height:auto;display:block;margin:0 0 8px 0;border-radius:6px;border:1px solid rgba(74,112,152,.25);background:linear-gradient(180deg, rgba(13,34,56,.92), rgba(7,20,34,.98));}
+.sensorcompare-card{margin-top:10px;border:1px solid var(--border2);border-radius:8px;background:rgba(6,16,28,0.72);padding:10px;}
+.sensorcompare-head{font-size:11px;color:var(--gold);font-family:'Share Tech Mono',monospace;margin-bottom:8px;}
+.sensorcompare-grid{display:grid;grid-template-columns:1fr;gap:8px;}
+.sensorcompare-row{border:1px solid rgba(111,146,178,0.22);border-radius:8px;background:rgba(9,22,37,0.72);padding:9px;display:grid;grid-template-columns:72px 1fr;gap:8px;}
+.sensorcompare-name{font-size:11px;color:var(--gold);font-family:'Share Tech Mono',monospace;}
+.sensorcompare-block{font-size:11px;line-height:1.55;color:var(--text2);display:flex;flex-direction:column;gap:2px;}
+.sensorcompare-block span{font-size:10px;color:var(--text3);font-family:'Share Tech Mono',monospace;}
 .buoy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px;}
 .buoy-card{border:1px solid var(--border2);border-radius:8px;background:rgba(6,16,28,0.72);padding:8px;}
 .buoy-name{font-size:10px;color:var(--gold);font-family:'Share Tech Mono',monospace;margin-bottom:5px;}
@@ -434,6 +441,7 @@ input[type=text]::placeholder{color:var(--text3);}
   .shiplight-grid{grid-template-columns:1fr;}
   .buoy-grid{grid-template-columns:1fr;}
   .lightchar-grid{grid-template-columns:1fr;}
+  .sensorcompare-row{grid-template-columns:1fr;}
 }
 @media (max-width:720px){
   .stowage-snapshot{grid-template-columns:1fr;}
