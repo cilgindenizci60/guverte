@@ -7713,7 +7713,7 @@ const STUDENT_NOTES = [
   {head:"DEMIR ZINCIRI / KILIT MARKALARI", body:"Bir kilit / shackle genelde <b>15 fathom</b> yani yaklasik <b>27.5 metre</b> kabul edilir.<br>Zincir marking sisteminde joining shackle cevresindeki boyali baklalar ve tel sargilari hangi kilidin suda oldugunu hizlica anlamak icin kullanilir.<br>Gemiden gemiye renk ve tel duzeni degisebilir; esas olan geminin kendi <b>chain marking plan</b>ini bilmektir.<br>Pruva ustunde rapor verirken 'birinci kilit suya girdi', 'ucuncu kilit suya girdi' gibi net ve yuksek sesli ifade kullanilir.<br>Kaloma verirken sadece sayi degil; zincirin hizi, fren durumu ve davranisi da izlenir.", tip:"Ezber renk degil, gemide uygulanan marking sistemi esastir."},
   {head:"ACIL HABERLESME", body:"MAYDAY distress, PAN-PAN urgency, SECURITE emniyet yayini icindir.<br>Mesajda gemi adi, callsign, pozisyon, tehlikenin cinsi, yardim ihtiyaci ve kisi sayisi acik verilir.<br>GMDSS, EPIRB, SART, NAVTEX, DSC, handheld VHF ve emergency battery kayitlari bilinir.", tip:"Netlik hiz kadar onemlidir."},
   {head:"GMDSS / HABERLESME CIHAZLARI", body:"<b>VHF DSC</b> kisa mesafe distress / urgency / safety ve CH16 nobet disiplininin temelidir.<br><b>MF/HF DSC</b> daha uzak mesafe haberlesme ve uygun frekans secimiyle dusunulur.<br><b>NAVTEX</b> navigational ve meteorological warning alir; baski / printer / mesaj secimi onemlidir.<br><b>EGC / SafetyNET</b> genelde Inmarsat-C uzerinden MSI ve safety message alir.<br><b>Inmarsat-C</b> text tabanli haberlesme, distress, reporting ve mesajlasmada kullanilir.<br><b>EPIRB</b> acil durumda COSPAS-SARSAT uydu sistemine distress beacon gonderir.<br><b>SART</b> arama-kurtarmada radar cevaplayici olarak hedef bulunurlugunu artirir.<br><b>AIS</b> trafik farkindaligi ve hedef tanimlamada yardimcidir; radar ve gorsel teyidin yerine gecmez.<br><br><b>GMDSS Sea Areas</b>:<br><b>A1</b> VHF DSC kapsamasinda yakin denizler<br><b>A2</b> MF DSC kapsamasina kadar uzayan bolgeler<br><b>A3</b> Inmarsat kapsamasindaki acik denizler<br><b>A4</b> kutup / Inmarsat disi yuksek enlem alanlari; HF dusuncesi agir basar.<br><br><b>RCC/MRCC</b> distress sonrasinda arama-kurtarma koordinasyon zincirini yurutur.<br><b>Pratik mantik:</b> Hangi cihazin ne zaman, hangi menzilde ve hangi maksatla kullanilacagini bilmek gerekir.", tip:"Cihazi tanimak yetmez; hangi acilde hangisine uzanacagini da bil."},
-  {head:"METEOROLOJI / BULUTLAR", body:"<b>Cumulus</b> gun icinde dikey gelisebilen pamuksu buluttur; hava iyi de olabilir ama buyurse shower'a gider.<br><b>Cirrus</b> ince ve tuy gibi ust seviye buz bulutudur; yaklasan front'un habercisi olabilir.<br><b>Stratus</b> alcak, yaygin ve tek katman gibi gorunur; gorus ve drizzle etkisi yaratabilir.<br><b>Nimbostratus</b> uzun sureli ve yaygin yagisin bulutudur.<br><b>Cumulonimbus (CB)</b> dikey gelisimi cok guclu firtina bulutudur; saganak, yildirim, squall ve ani ruzgar bekletir.<br><b>Barometer trendi</b>, ruzgar donusu ve bulut tipi birlikte okunur; tek bir buluta bakip kesin hukum verilmez.", tip:"Bulut gormek yetmez; hangi seviyede oldugunu ve neye donusebilecegini de dusun."},
+  {head:"METEOROLOJI / BULUTLAR", body:"<b>Cumulus</b> gun icinde dikey gelisebilen pamuksu buluttur; hava iyi de olabilir ama buyurse shower'a gider.<br><b>Cirrus</b> ince ve tuy gibi ust seviye buz bulutudur; yaklasan front'un habercisi olabilir.<br><b>Stratus</b> alcak, yaygin ve tek katman gibi gorunur; gorus ve drizzle etkisi yaratabilir.<br><b>Nimbostratus</b> uzun sureli ve yaygin yagisin bulutudur.<br><b>Cumulonimbus (CB)</b> dikey gelisimi cok guclu firtina bulutudur; saganak, yildirim, squall ve ani ruzgar bekletir.<br><b>Altocumulus</b> orta seviyede pamuksu-katmanli gorunur; hava degisiminin habercisi olabilir.<br><b>Altostratus</b> gunesi solduran gri tabaka gibidir; front yaklasmasinda sik gorulur.<br><b>Fog / mist</b> sadece yatay gorusu degil, ses ve radar yorumunu da etkiler.<br><b>Barometer trendi</b>, ruzgar donusu, swell ve bulut tipi birlikte okunur; tek bir buluta bakip kesin hukum verilmez.<br><br>"+buildCloudGallery(), tip:"Bulut gormek yetmez; hangi seviyede oldugunu ve neye donusebilecegini de dusun."},
   {head:"RUZGAR YONLERI / DERECELER", body:"Ruzgar denizde <b>nereye gittigine gore degil</b>, <b>nereden geldigine gore</b> adlandirilir.<br><b>Pruvadan</b> gelen ruzgar 000°/360°, <b>pupadan</b> gelen ruzgar 180° kabul edilir.<br><b>Kemere</b> tam bordadan gelen ruzgardir; sancak kemere 090°, iskele kemere 270° diye okunur.<br><b>Bas omuzluk</b> 45°'lik on ceyrek, <b>kic omuzluk</b> ise 135° / 225° taraflaridir.<br><b>Geleneksel adlar</b>: 000° Yildiz, 045° Poyraz, 090° Gundogusu, 135° Kesishleme, 180° Kible, 225° Lodos, 270° Gunbatisi, 315° Karayel.<br>Brifinglerde 'ruzgar sancak bas omuzluktan 4 bofor' gibi kisa ve net ifade kullanilir.<br><br>"+buildWindRoseDiagram(), tip:"Ruzgar yonu rapor ederken once gemi referansini dusun: pruva, pupa, iskele, sancak."},
   {head:"FORMULLER - HIZ / MESAFE / ZAMAN", body:"Mesafe = Hiz x Zaman<br>Hiz = Mesafe / Zaman<br>Zaman = Mesafe / Hiz<br>1 knot = 1 deniz mili / saat<br>Gece ETA hesaplari icin once kalan mesafe, sonra mevcut SOG kullanilir.<br><br><b>Ornek:</b> 48 mil yol, 12 knot hizla yaklasik 4 saatte biter.", tip:"Basit formuller vardiyada en cok kullanilanlardir."},
   {head:"FORMULLER - SET / DRIFT / CTS", body:"Course to Steer mantigi: istenen COG icin akinti vektorunu hesaba kat.<br>Drift = akintinin hizi<br>Set = akintinin yonu<br>Gercek iz = verilen rota + akinti etkisi<br>Yaklasik kapanis mantigi: Verilen HDG + akinti vektoru = gercek COG/SOG<br>Running fix / DR duzeltmelerinde set-drift sure ile birlikte okunur.<br><b>Yaklasik akis:</b> Akinti mesafesi = drift x zaman<br><b>ETA</b> icin kalan mesafe / gercek SOG mantigi kullanilir.<br><b>Kullanilan tablo / kaynaklar:</b> Tidal stream atlas, current tables, pilot book, chart notlari, ECDIS current overlay, sailing directions.<br><br><b>Ornek:</b> 090 rota tutmak isterken akinti seni kuzeye 2 knot itiyorsa bir miktar guneye pruva verip CTS duzeltmesi yaparsin.", tip:"Pruva baska, iz baska olabilir."},
@@ -8553,6 +8553,72 @@ function buildSectorLightDemo(){
       <div class="sectorlight-pill green">Yesil: diger emniyet siniri</div>
     </div>
   </div>`;
+}
+
+function cloudSvg(type){
+  const bodies = {
+    cumulus: `
+      <circle cx="44" cy="62" r="16" fill="#eef4fb"/><circle cx="62" cy="54" r="20" fill="#f7fbff"/><circle cx="84" cy="62" r="16" fill="#e9f1f9"/>
+      <rect x="34" y="62" width="60" height="16" rx="8" fill="#eef4fb"/>
+    `,
+    cirrus: `
+      <path d="M24 54 Q58 40 92 50" stroke="#eef5ff" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M36 68 Q70 56 104 64" stroke="#dfe9f5" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M28 82 Q58 72 88 80" stroke="#cfdcea" stroke-width="4" fill="none" stroke-linecap="round"/>
+    `,
+    stratus: `
+      <rect x="24" y="48" width="72" height="12" rx="6" fill="#d8e3ef"/>
+      <rect x="18" y="62" width="84" height="12" rx="6" fill="#e2ebf4"/>
+      <rect x="28" y="76" width="68" height="12" rx="6" fill="#cfdcea"/>
+    `,
+    nimbostratus: `
+      <rect x="22" y="46" width="76" height="16" rx="8" fill="#b8c7d8"/>
+      <rect x="18" y="60" width="84" height="18" rx="8" fill="#aab9ca"/>
+      <path d="M34 84 v14 M50 84 v16 M66 84 v14 M82 84 v16" stroke="#79b8ff" stroke-width="3" stroke-linecap="round"/>
+    `,
+    cumulonimbus: `
+      <path d="M34 88 Q38 60 52 40 Q70 18 82 38 Q96 24 104 46 Q112 70 94 88 Z" fill="#dfe7f2"/>
+      <path d="M62 90 l-10 18 h12 l-8 16 l18-22 h-12 l10-12 z" fill="#f4d172"/>
+    `,
+    altocumulus: `
+      <circle cx="34" cy="58" r="8" fill="#e6eef8"/><circle cx="52" cy="54" r="9" fill="#eef5ff"/><circle cx="70" cy="58" r="8" fill="#e6eef8"/>
+      <circle cx="48" cy="74" r="8" fill="#dbe7f3"/><circle cx="68" cy="70" r="9" fill="#e6eef8"/><circle cx="88" cy="74" r="8" fill="#dbe7f3"/>
+    `,
+    altostratus: `
+      <rect x="18" y="48" width="84" height="26" rx="13" fill="#c8d4e2"/>
+      <circle cx="76" cy="62" r="12" fill="rgba(244,209,114,.35)"/>
+    `,
+    fog: `
+      <rect x="18" y="54" width="84" height="10" rx="5" fill="#d8e2ee"/>
+      <rect x="12" y="68" width="96" height="10" rx="5" fill="#cfd9e5"/>
+      <rect x="20" y="82" width="80" height="10" rx="5" fill="#c2cfdd"/>
+    `
+  }[type] || '';
+  return `<svg class="cloud-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-label="${type} bulutu">
+    <defs>
+      <linearGradient id="cloudBg_${type}" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stop-color="#163a5a"/>
+        <stop offset="100%" stop-color="#081828"/>
+      </linearGradient>
+    </defs>
+    <rect width="120" height="120" rx="8" fill="url(#cloudBg_${type})"/>
+    <circle cx="96" cy="24" r="10" fill="rgba(244,209,114,.2)"/>
+    ${bodies}
+  </svg>`;
+}
+
+function buildCloudGallery(){
+  const items = [
+    {name:'Cumulus', type:'cumulus', desc:'Pamuksu, gun icinde buyuyebilen adacik bulut. Buyurse shower veya CB’ye gidebilir.'},
+    {name:'Cirrus', type:'cirrus', desc:'Yuksek seviyede ince, tuy gibi. Uzak bir front veya hava degisimi isareti olabilir.'},
+    {name:'Stratus', type:'stratus', desc:'Alcak ve yaygin gri tabaka. Drizzle, mist ve dusuk gorusle birlikte gelebilir.'},
+    {name:'Nimbostratus', type:'nimbostratus', desc:'Uzun sureli, yaygin yagis getiren tabakali bulut.'},
+    {name:'Cumulonimbus', type:'cumulonimbus', desc:'Dikey gelisimi cok guclu firtina bulutu. Squall, yildirim ve ani ruzgar bekletir.'},
+    {name:'Altocumulus', type:'altocumulus', desc:'Orta seviyede parcali-kumeli gorunum. Hava degisimi ve dengesizlik ipucu verebilir.'},
+    {name:'Altostratus', type:'altostratus', desc:'Gunesi solduran orta seviye gri tabaka. Front oncesi sik gorulur.'},
+    {name:'Fog / Mist', type:'fog', desc:'Bulut gibi degil ama yatay gorusu kapatan su damlacigi tabakasi. Radar ve ses disiplini etkilenir.'}
+  ];
+  return `<div class="cloud-grid">${items.map(item=>`<div class="cloud-card">${cloudSvg(item.type)}<div class="cloud-name">${item.name}</div><div class="cloud-desc">${item.desc}</div></div>`).join('')}</div>`;
 }
 
 function buildShipPartsDiagram(){
