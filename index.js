@@ -7943,14 +7943,18 @@ function buildShipPartsDiagram(){
         <circle cx="0" cy="0" r="10" fill="none" stroke="#111" stroke-width="2"/>
         <line x1="-16" y1="0" x2="16" y2="0" stroke="#111" stroke-width="2"/>
         <line x1="12" y1="-14" x2="12" y2="14" stroke="#111" stroke-width="2"/>
+        <line x1="12" y1="-20" x2="20" y2="-20" stroke="#111" stroke-width="2"/>
         <line x1="12" y1="-12" x2="22" y2="-12" stroke="#111" stroke-width="2"/>
         <line x1="12" y1="-4" x2="24" y2="-4" stroke="#111" stroke-width="2"/>
         <line x1="12" y1="4" x2="22" y2="4" stroke="#111" stroke-width="2"/>
         <line x1="12" y1="12" x2="20" y2="12" stroke="#111" stroke-width="2"/>
+        <line x1="12" y1="20" x2="18" y2="20" stroke="#111" stroke-width="2"/>
+        <text x="28" y="-18" fill="#111" font-size="8" font-family="Arial, sans-serif" font-weight="700">WNA</text>
         <text x="28" y="-10" fill="#111" font-size="8" font-family="Arial, sans-serif" font-weight="700">TF</text>
         <text x="28" y="-2" fill="#111" font-size="8" font-family="Arial, sans-serif" font-weight="700">F</text>
         <text x="28" y="6" fill="#111" font-size="8" font-family="Arial, sans-serif" font-weight="700">T</text>
         <text x="28" y="14" fill="#111" font-size="8" font-family="Arial, sans-serif" font-weight="700">S</text>
+        <text x="28" y="22" fill="#111" font-size="8" font-family="Arial, sans-serif" font-weight="700">W</text>
       </g>
       <text x="20" y="25" fill="#0f3450" font-size="8" font-family="monospace">ISKELE</text>
       <text x="434" y="25" fill="#0f3450" font-size="8" font-family="monospace">SANCAK</text>
@@ -8153,7 +8157,7 @@ const SHIP_PARTS_INFO = {
   },
   loadline:{
     head:'Load Line / Plimsoll Mark',
-    body:'Yukleme hattini gosteren resmi isarettir. Ortadaki daire ve yatay cizgi ana load line markidir; yanindaki cizgiler ve harfler mevsim ve su yogunluguna gore izin verilen maksimum yukleme seviyelerini anlatir. Burada <b>S</b> summer, <b>T</b> tropical, <b>F</b> fresh water ve <b>TF</b> tropical fresh water mantigini gosterir.'
+    body:'Yukleme hattini gosteren resmi isarettir. Ortadaki daire ve yatay cizgi ana load line markidir; yanindaki cizgiler ve harfler mevsim ve su yogunluguna gore izin verilen maksimum yukleme seviyelerini anlatir. Burada <b>WNA</b> winter North Atlantic, <b>TF</b> tropical fresh water, <b>F</b> fresh water, <b>T</b> tropical, <b>S</b> summer ve <b>W</b> winter mantigini gosterir.'
   }
 };
 
