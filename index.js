@@ -1097,6 +1097,14 @@ function shuffleChoices(arr){
   return [...arr].sort(()=>Math.random()-0.5);
 }
 
+function getSceneRenderChoices(sc){
+  if(!sc || !Array.isArray(sc.choices)) return [];
+  if(!sc._renderChoices){
+    sc._renderChoices = shuffleChoices(sc.choices);
+  }
+  return sc._renderChoices;
+}
+
 function buildCalcPrompt(answer, unit, formula, attempts=2, toleranceText=''){
   return {answer, unit, formula, attempts, toleranceText};
 }
@@ -6105,7 +6113,7 @@ function renderScene(idx){
 
   const ch=document.getElementById('choices');ch.innerHTML='';
   renderCalcPanel(sc, ch);
-  sc.choices.forEach(c2=>{
+  getSceneRenderChoices(sc).forEach(c2=>{
     const b=document.createElement('button');b.className='cbtn';
     b.innerHTML='<span class="ctag tag-'+(c2.tag||'akilli')+'">'+tagL[c2.tag||'akilli']+'</span>'+c2.text;
     b.onclick=()=>handleSceneChoice(sc,c2,ch);
@@ -7611,6 +7619,26 @@ const GLOSSARY_TERMS = [
   {term:"Head-On", meaning:"Iki makine gucuyle yuruyen geminin karsilikli yaklasma durumu.", example:"Head-on goruldugunde iki gemi de sancaga duser."},
   {term:"Crossing Situation", meaning:"Iki geminin yollarinin kesiserek carpisma riski olusturdugu durum.", example:"Crossing situation'da sancagindaki hedefi once degerlendirirsin."},
   {term:"Separation Zone", meaning:"TSS icinde karsit trafik akislarini ayiran bolge.", example:"Separation zone uzerinden gelişi guzel seyir yapilmaz."},
+  {term:"Course Up", meaning:"Haritada veya radarda geminin mevcut rota istikametini yukari gosteren gosterim modu.", example:"Course up modunda hedef acilari daha farkli hissedilir."},
+  {term:"North Up", meaning:"Harita veya radar ekraninda kuzeyin sabit olarak yukarida tutuldugu gosterim modu.", example:"North up modunda kagit haritayla zihinsel uyum daha kolaydir."},
+  {term:"Head Up", meaning:"Geminin bas istikametinin ekranin yukarisi olarak gosterildigi mod.", example:"Head up modunda donuslerde resim de birlikte doner."},
+  {term:"Bearing Drift", meaning:"Hedef kerterizinin zaman icinde degismesi veya sabit kalmasi durumu.", example:"Bearing drift yoksa carpismaya giden tablo ciddiye alinir."},
+  {term:"CPA", meaning:"Closest Point of Approach; iki hedefin en yakin gececegi mesafe.", example:"CPA 0.5 mil altina dusunce zabit daha erken uyandi."},
+  {term:"TCPA", meaning:"Time to Closest Point of Approach; en yakin gecise kalan sure.", example:"TCPA 12 dakika oldugunda karar icin fazla zaman kalmamis demektir."},
+  {term:"Dead Reckoning", meaning:"Son bilinen mevki, rota ve surate gore hesaplanan tahmini mevki; DR.", example:"GPS supheli olunca once DR mevki tekrar kuruldu."},
+  {term:"Estimated Position", meaning:"Akinti, ruzgar ve gozlemle duzeltilmis tahmini mevki; EP.", example:"Radar ve kerterizle EP noktasi daha saglam kuruldu."},
+  {term:"Variation", meaning:"Gercek kuzey ile manyetik kuzey arasindaki acisal fark.", example:"Variation bilinmeden pusula duzeltmesi tamamlanmis sayilmaz."},
+  {term:"Deviation", meaning:"Geminin kendi manyetik etkilerinden kaynaklanan pusula sapmasi.", example:"Deviation card eskiyse kerteriz yorumuna da suphe dusulur."},
+  {term:"Gyro Error", meaning:"Gyro pusulanin gercek kuzeye gore gosterdigi toplam hata.", example:"Gyro error buyurse tum repeaters birlikte kontrol edilir."},
+  {term:"Parallel Ruler", meaning:"Kagit haritada rota ve kerteriz tasimaya yarayan cizim aleti.", example:"Parallel ruler olmadan rota cizimi daha yorucu olur."},
+  {term:"Dividers", meaning:"Haritada mesafe olcmek ve aktarmak icin kullanilan pergel tipi alet.", example:"Dividers ile iki nokta arasi deniz mili olcumu yapildi."},
+  {term:"Chart Datum", meaning:"Haritadaki derinliklerin referans alindigi dusuk seviye veya datum duzlemi.", example:"Chart datum ile gelgit yuksekligi farkli seylerdir."},
+  {term:"Notice to Mariners", meaning:"Harita ve deniz yayinlarindaki duzeltmeleri bildiren resmi yayin; NtM.", example:"Notice to Mariners gelmeden chart correction tamam sayilmaz."},
+  {term:"Pilot Book", meaning:"Belirli bolgeler icin liman, akinti, gecit ve yerel uyarilari anlatan yayin.", example:"Pilot book dar gecitlerde altin degerindedir."},
+  {term:"List of Lights", meaning:"Fenerlerin karakter, menzil ve sektor bilgilerini veren resmi yayin.", example:"List of Lights ile gordugumuz isigin kimligini dogruladik."},
+  {term:"Storm Warning", meaning:"Sert hava veya firtina icin verilen resmi meteorolojik uyari.", example:"Storm warning geldiginde deck cargo plani degisti."},
+  {term:"Gale", meaning:"Kuvvetli ruzgar ve firtina arasi seviyeyi ifade eden meteorolojik terim.", example:"Gale kuvvetinde ruzgarda bos seyir daha huzursuz olur."},
+  {term:"Sextant Error", meaning:"Sekstant kullanimi veya ayarindan dogan toplam hata kaynagi.", example:"Sextant error buyukse iyi olcu de ise yaramaz."},
   {term:"X-Band Radar", meaning:"Kisa dalga boylu, detayli hedef gosterebilen radar tipi.", example:"Yakin trafik icin X-band radar daha net goruntu verdi."},
   {term:"Yeke", meaning:"Dumeni elle cevirmeye yarayan kol veya duzenek.", example:"Acil durumda yeke kontrolu anlatildi."},
   {term:"Yukleme Hatti", meaning:"Geminin mevsim ve su yogunluguna gore yukleme siniri.", example:"Yukleme hatti asilmadan operasyon durduruldu."},
