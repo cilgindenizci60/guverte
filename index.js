@@ -7713,7 +7713,7 @@ const STUDENT_NOTES = [
   {head:"DEMIR ZINCIRI / KILIT MARKALARI", body:"Bir kilit / shackle genelde <b>15 fathom</b> yani yaklasik <b>27.5 metre</b> kabul edilir.<br>Zincir marking sisteminde joining shackle cevresindeki boyali baklalar ve tel sargilari hangi kilidin suda oldugunu hizlica anlamak icin kullanilir.<br>Gemiden gemiye renk ve tel duzeni degisebilir; esas olan geminin kendi <b>chain marking plan</b>ini bilmektir.<br>Pruva ustunde rapor verirken 'birinci kilit suya girdi', 'ucuncu kilit suya girdi' gibi net ve yuksek sesli ifade kullanilir.<br>Kaloma verirken sadece sayi degil; zincirin hizi, fren durumu ve davranisi da izlenir.", tip:"Ezber renk degil, gemide uygulanan marking sistemi esastir."},
   {head:"ACIL HABERLESME", body:"MAYDAY distress, PAN-PAN urgency, SECURITE emniyet yayini icindir.<br>Mesajda gemi adi, callsign, pozisyon, tehlikenin cinsi, yardim ihtiyaci ve kisi sayisi acik verilir.<br>GMDSS, EPIRB, SART, NAVTEX, DSC, handheld VHF ve emergency battery kayitlari bilinir.", tip:"Netlik hiz kadar onemlidir."},
   {head:"GMDSS / HABERLESME CIHAZLARI", body:"<b>VHF DSC</b> kisa mesafe distress / urgency / safety ve CH16 nobet disiplininin temelidir.<br><b>MF/HF DSC</b> daha uzak mesafe haberlesme ve uygun frekans secimiyle dusunulur.<br><b>NAVTEX</b> navigational ve meteorological warning alir; baski / printer / mesaj secimi onemlidir.<br><b>EGC / SafetyNET</b> genelde Inmarsat-C uzerinden MSI ve safety message alir.<br><b>Inmarsat-C</b> text tabanli haberlesme, distress, reporting ve mesajlasmada kullanilir.<br><b>EPIRB</b> acil durumda COSPAS-SARSAT uydu sistemine distress beacon gonderir.<br><b>SART</b> arama-kurtarmada radar cevaplayici olarak hedef bulunurlugunu artirir.<br><b>AIS</b> trafik farkindaligi ve hedef tanimlamada yardimcidir; radar ve gorsel teyidin yerine gecmez.<br><br><b>GMDSS Sea Areas</b>:<br><b>A1</b> VHF DSC kapsamasinda yakin denizler<br><b>A2</b> MF DSC kapsamasina kadar uzayan bolgeler<br><b>A3</b> Inmarsat kapsamasindaki acik denizler<br><b>A4</b> kutup / Inmarsat disi yuksek enlem alanlari; HF dusuncesi agir basar.<br><br><b>RCC/MRCC</b> distress sonrasinda arama-kurtarma koordinasyon zincirini yurutur.<br><b>Pratik mantik:</b> Hangi cihazin ne zaman, hangi menzilde ve hangi maksatla kullanilacagini bilmek gerekir.", tip:"Cihazi tanimak yetmez; hangi acilde hangisine uzanacagini da bil."},
-  {head:"METEOROLOJI / BULUTLAR", body:"<b>Cumulus</b> gun icinde dikey gelisebilen pamuksu buluttur; hava iyi de olabilir ama buyurse shower'a gider.<br><b>Cirrus</b> ince ve tuy gibi ust seviye buz bulutudur; yaklasan front'un habercisi olabilir.<br><b>Stratus</b> alcak, yaygin ve tek katman gibi gorunur; gorus ve drizzle etkisi yaratabilir.<br><b>Nimbostratus</b> uzun sureli ve yaygin yagisin bulutudur.<br><b>Cumulonimbus (CB)</b> dikey gelisimi cok guclu firtina bulutudur; saganak, yildirim, squall ve ani ruzgar bekletir.<br><b>Altocumulus</b> orta seviyede parcali-kumeli gorunum. Hava degisimi ve dengesizlik ipucu verebilir.<br><b>Altostratus</b> gunesi solduran gri tabaka gibidir; front yaklasmasinda sik gorulur.<br><b>Fog / mist</b> sadece yatay gorusu degil, ses ve radar yorumunu da etkiler.<br><b>Barometer trendi</b>, ruzgar donusu, swell ve bulut tipi birlikte okunur; tek bir buluta bakip kesin hukum verilmez.<br><br>"+buildCloudGallery()+buildSeaStateGallery()+buildFogGallery(), tip:"Bulut gormek yetmez; hangi seviyede oldugunu ve neye donusebilecegini de dusun."},
+  {head:"METEOROLOJI / BULUTLAR", body:"<b>Cumulus</b> gun icinde dikey gelisebilen pamuksu buluttur; hava iyi de olabilir ama buyurse shower'a gider.<br><b>Cirrus</b> ince ve tuy gibi ust seviye buz bulutudur; yaklasan front'un habercisi olabilir.<br><b>Stratus</b> alcak, yaygin ve tek katman gibi gorunur; gorus ve drizzle etkisi yaratabilir.<br><b>Nimbostratus</b> uzun sureli ve yaygin yagisin bulutudur.<br><b>Cumulonimbus (CB)</b> dikey gelisimi cok guclu firtina bulutudur; saganak, yildirim, squall ve ani ruzgar bekletir.<br><b>Altocumulus</b> orta seviyede parcali-kumeli gorunum. Hava degisimi ve dengesizlik ipucu verebilir.<br><b>Altostratus</b> gunesi solduran gri tabaka gibidir; front yaklasmasinda sik gorulur.<br><b>Fog / mist</b> sadece yatay gorusu degil, ses ve radar yorumunu da etkiler.<br><b>Barometer trendi</b>, ruzgar donusu, swell ve bulut tipi birlikte okunur; tek bir buluta bakip kesin hukum verilmez.<br><br>"+buildCloudGallery()+buildSeaStateGallery()+buildFogGallery()+buildFrontGallery(), tip:"Bulut gormek yetmez; hangi seviyede oldugunu ve neye donusebilecegini de dusun."},
   {head:"RUZGAR YONLERI / DERECELER", body:"Ruzgar denizde <b>nereye gittigine gore degil</b>, <b>nereden geldigine gore</b> adlandirilir.<br><b>Pruvadan</b> gelen ruzgar 000°/360°, <b>pupadan</b> gelen ruzgar 180° kabul edilir.<br><b>Kemere</b> tam bordadan gelen ruzgardir; sancak kemere 090°, iskele kemere 270° diye okunur.<br><b>Bas omuzluk</b> 45°'lik on ceyrek, <b>kic omuzluk</b> ise 135° / 225° taraflaridir.<br><b>Geleneksel adlar</b>: 000° Yildiz, 045° Poyraz, 090° Gundogusu, 135° Kesishleme, 180° Kible, 225° Lodos, 270° Gunbatisi, 315° Karayel.<br>Brifinglerde 'ruzgar sancak bas omuzluktan 4 bofor' gibi kisa ve net ifade kullanilir.<br><br>"+buildWindRoseDiagram(), tip:"Ruzgar yonu rapor ederken once gemi referansini dusun: pruva, pupa, iskele, sancak."},
   {head:"FORMULLER - HIZ / MESAFE / ZAMAN", body:"Mesafe = Hiz x Zaman<br>Hiz = Mesafe / Zaman<br>Zaman = Mesafe / Hiz<br>1 knot = 1 deniz mili / saat<br>Gece ETA hesaplari icin once kalan mesafe, sonra mevcut SOG kullanilir.<br><br><b>Ornek:</b> 48 mil yol, 12 knot hizla yaklasik 4 saatte biter.", tip:"Basit formuller vardiyada en cok kullanilanlardir."},
   {head:"FORMULLER - SET / DRIFT / CTS", body:"Course to Steer mantigi: istenen COG icin akinti vektorunu hesaba kat.<br>Drift = akintinin hizi<br>Set = akintinin yonu<br>Gercek iz = verilen rota + akinti etkisi<br>Yaklasik kapanis mantigi: Verilen HDG + akinti vektoru = gercek COG/SOG<br>Running fix / DR duzeltmelerinde set-drift sure ile birlikte okunur.<br><b>Yaklasik akis:</b> Akinti mesafesi = drift x zaman<br><b>ETA</b> icin kalan mesafe / gercek SOG mantigi kullanilir.<br><b>Kullanilan tablo / kaynaklar:</b> Tidal stream atlas, current tables, pilot book, chart notlari, ECDIS current overlay, sailing directions.<br><br><b>Ornek:</b> 090 rota tutmak isterken akinti seni kuzeye 2 knot itiyorsa bir miktar guneye pruva verip CTS duzeltmesi yaparsin.", tip:"Pruva baska, iz baska olabilir."},
@@ -8368,6 +8368,16 @@ function knotSvg(type){
       return wrap(`<path class="rope-a" d="M18 56 C58 56,86 56,106 56"/><path class="rope-a" d="M104 56 C120 35,144 34,159 56 C144 78,120 77,104 56"/><path class="rope-a" d="M156 56 C171 56,183 56,200 56"/><path class="rope-b" d="M18 56 C58 56,86 56,106 56"/><path class="rope-b" d="M104 56 C120 35,144 34,159 56 C144 78,120 77,104 56"/><path class="rope-b" d="M156 56 C171 56,183 56,200 56"/><path d="M86 38 L94 74" stroke="#c97070" stroke-width="3"/><path d="M90 38 L98 74" stroke="#c97070" stroke-width="3" opacity=".6"/>`,'Zayif kismi by-pass eder');
     case 'balikci':
       return wrap(`<path class="rope-a" d="M18 44 C46 44,60 46,76 58 C88 67,102 70,122 70"/><path class="rope-a" d="M202 66 C174 66,160 64,144 52 C132 43,118 40,98 40"/><path class="rope-b" d="M18 44 C46 44,60 46,76 58 C88 67,102 70,122 70"/><path class="rope-b" d="M202 66 C174 66,160 64,144 52 C132 43,118 40,98 40"/><path class="rope-a" d="M70 56 C79 43,92 42,100 54 C92 66,79 67,70 56"/><path class="rope-a" d="M120 54 C129 41,142 40,150 52 C142 64,129 65,120 54"/><path class="rope-b" d="M70 56 C79 43,92 42,100 54 C92 66,79 67,70 56"/><path class="rope-b" d="M120 54 C129 41,142 40,150 52 C142 64,129 65,120 54"/>`,'Iki cimanin karsilikli emniyet bagi');
+    case 'palamar':
+      return wrap(`<rect class="post" x="140" y="20" width="26" height="70" rx="5"/><path class="rope-a" d="M22 56 C70 56,96 56,126 56 C145 56,162 54,176 48 C190 43,196 54,186 62 C176 70,160 72,145 70 C132 68,126 62,126 56"/><path class="rope-a" d="M126 56 C140 76,168 84,198 82"/><path class="rope-b" d="M22 56 C70 56,96 56,126 56 C145 56,162 54,176 48 C190 43,196 54,186 62 C176 70,160 72,145 70 C132 68,126 62,126 56"/><path class="rope-b" d="M126 56 C140 76,168 84,198 82"/>`,'Babaya emniyetli sabitleme');
+    case 'sekiz':
+      return wrap(`<path class="rope-a" d="M26 56 C44 34,76 34,92 54 C74 74,42 74,26 56 C42 38,74 38,92 58 C108 78,140 78,158 58 C140 38,108 38,92 56"/><path class="rope-b" d="M26 56 C44 34,76 34,92 54 C74 74,42 74,26 56 C42 38,74 38,92 58 C108 78,140 78,158 58 C140 38,108 38,92 56"/>`,'Sekiz formu, stopper ve tutus icin cok kullanilir');
+    case 'prusik':
+      return wrap(`<path class="rope-a" d="M42 24 L42 88"/><path class="rope-a" d="M86 24 L86 88"/><path class="rope-b" d="M42 24 L42 88"/><path class="rope-b" d="M86 24 L86 88"/><path class="rope-a" d="M42 38 C64 24,64 24,86 38"/><path class="rope-a" d="M42 56 C64 42,64 42,86 56"/><path class="rope-a" d="M42 74 C64 60,64 60,86 74"/><path class="rope-b" d="M42 38 C64 24,64 24,86 38"/><path class="rope-b" d="M42 56 C64 42,64 42,86 56"/><path class="rope-b" d="M42 74 C64 60,64 60,86 74"/>`,'Bir beden uzerinde surtunmeli tutus saglar');
+    case 'catspaw':
+      return wrap(`<path class="rope-a" d="M22 56 C46 30,70 30,94 56 C118 82,142 82,166 56"/><path class="rope-a" d="M22 56 C46 82,70 82,94 56 C118 30,142 30,166 56"/><path class="rope-b" d="M22 56 C46 30,70 30,94 56 C118 82,142 82,166 56"/><path class="rope-b" d="M22 56 C46 82,70 82,94 56 C118 30,142 30,166 56"/>`,'Kanca veya cengele yuk alma icin iki goz yaratir');
+    case 'bosa':
+      return wrap(`<path class="rope-a" d="M22 56 H188"/><path class="rope-b" d="M22 56 H188"/><path class="rope-a" d="M86 56 C86 34,116 34,116 56 C116 78,86 78,86 56"/><path class="rope-a" d="M116 56 C116 34,146 34,146 56 C146 78,116 78,116 56"/><path class="rope-b" d="M86 56 C86 34,116 34,116 56 C116 78,86 78,86 56"/><path class="rope-b" d="M116 56 C116 34,146 34,146 56 C146 78,116 78,116 56"/>`,'Gergin halati kisa sure tutmak icin bosa mantigi');
     default:
       return wrap(`<path class="rope-a" d="M18 55 C62 55,92 55,202 55"/><path class="rope-b" d="M18 55 C62 55,92 55,202 55"/>`);
   }
@@ -8385,7 +8395,12 @@ function buildKnotGallery(){
     {name:'Cifte Sancak', type:'cifte_sancak', desc:'Sancak bagi ile ayni amaca hizmet eder ama daha guclu ve daha emniyetli bir tutus verir.'},
     {name:'Cifte Kazik', type:'cifte_kazik', desc:'Kazik baginin cift dolamali daha saglam versiyonudur; daha emniyetli tutar.'},
     {name:'Curuk Bagi', type:'curuk', desc:'Halat bedeni uzerindeki curuk ya da zayif kismi by-pass etmek icin kullanilir.'},
-    {name:'Balikci Bagi', type:'balikci', desc:'Iki halatin cimalarini, ozellikle misina ve ince ipleri birbirine baglamak icin kullanilir.'}
+    {name:'Balikci Bagi', type:'balikci', desc:'Iki halatin cimalarini, ozellikle misina ve ince ipleri birbirine baglamak icin kullanilir.'},
+    {name:'Palamar Bagi', type:'palamar', desc:'Babaya veya uygun bir sabit noktaya halati emniyetli almak icin kullanilan guclu tutuslardan biridir.'},
+    {name:'Sekiz Bagi', type:'sekiz', desc:'Halatin ucunda stopper gibi kullanilan, acilmasi nispeten kolay ve guvenli bir bagdir.'},
+    {name:'Prusik Bagi', type:'prusik', desc:'Bir beden uzerinde surtunme ile tutan yardimci bagdir; gecici tespit ve emniyet mantiginda bilinir.'},
+    {name:'Catspaw', type:'catspaw', desc:'Kanca veya cengele yuk almak icin iki goz olusturan duzenlemedir; lifting mantiginda gorulur.'},
+    {name:'Bosa Bagi / Stopper', type:'bosa', desc:'Gergin bir halati gecici tutmak veya yuk aktarmak icin kullanilan bosa mantiginin gorsel ozeti gibidir.'}
   ];
   return intro + `<div class="knot-grid">${knots.map(k=>`<div class="knot-card">${knotSvg(k.type)}<div class="knot-name">${k.name}</div><div class="knot-desc">${k.desc}</div></div>`).join('')}</div>`;
 }
@@ -8668,6 +8683,49 @@ function buildFogGallery(){
     {name:'Patchy Fog / Mist', type:'patchy', desc:'Yer yer kapanan gorus yapisi; gozu ve radari bir arada disiplinli kullanmak gerekir.'}
   ];
   return `<div class="meteo-gallery-card"><div class="meteo-gallery-head">Fog / Mist Tipleri</div><div class="cloud-grid">${items.map(item=>`<div class="cloud-card">${fogSvg(item.type)}<div class="cloud-name">${item.name}</div><div class="cloud-desc">${item.desc}</div></div>`).join('')}</div></div>`;
+}
+
+function frontSvg(type){
+  const body = {
+    cold: `
+      <path d="M28 86 C88 64,144 58,292 62" stroke="#5db6ff" stroke-width="3.2" fill="none"/>
+      <path d="M58 74 l10 -14 l8 16 z M114 66 l10 -14 l8 16 z M170 62 l10 -14 l8 16 z M226 60 l10 -14 l8 16 z" fill="#5db6ff"/>
+    `,
+    warm: `
+      <path d="M28 86 C88 64,144 58,292 62" stroke="#ff8a8a" stroke-width="3.2" fill="none"/>
+      <path d="M62 74 a10 10 0 0 1 16 0 M118 66 a10 10 0 0 1 16 0 M174 62 a10 10 0 0 1 16 0 M230 60 a10 10 0 0 1 16 0" stroke="#ff8a8a" stroke-width="3.2" fill="none"/>
+    `,
+    occluded: `
+      <path d="M28 86 C88 64,144 58,292 62" stroke="#c97fd4" stroke-width="3.2" fill="none"/>
+      <path d="M62 74 l10 -14 l8 16 z" fill="#c97fd4"/><path d="M96 70 a10 10 0 0 1 16 0" stroke="#c97fd4" stroke-width="3.2" fill="none"/>
+      <path d="M154 64 l10 -14 l8 16 z" fill="#c97fd4"/><path d="M188 62 a10 10 0 0 1 16 0" stroke="#c97fd4" stroke-width="3.2" fill="none"/>
+    `,
+    trough: `
+      <path d="M28 60 C96 96,152 26,292 82" stroke="#d4a017" stroke-width="3" stroke-dasharray="7,5" fill="none"/>
+      <text x="116" y="34" fill="#f0d59b" font-size="12" font-family="Share Tech Mono, monospace">TROUGH</text>
+    `,
+    ridge: `
+      <path d="M28 82 C96 38,152 110,292 54" stroke="#8fd8ab" stroke-width="3" stroke-dasharray="7,5" fill="none"/>
+      <text x="126" y="34" fill="#b6f0c7" font-size="12" font-family="Share Tech Mono, monospace">RIDGE</text>
+    `
+  }[type] || '';
+  return `<svg class="meteo-svg" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" aria-label="${type} front ornegi">
+    <defs><linearGradient id="frontBg_${type}" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#163a5a"/><stop offset="100%" stop-color="#081828"/></linearGradient></defs>
+    <rect width="320" height="140" rx="8" fill="url(#frontBg_${type})"/>
+    <path d="M0 104 Q60 98 120 104 T240 104 T320 104 V140 H0 Z" fill="#0b2238"/>
+    ${body}
+  </svg>`;
+}
+
+function buildFrontGallery(){
+  const items = [
+    {name:'Cold Front', type:'cold', desc:'Mavi cizgi ve ucgenlerle gosterilir; soguk hava daha hizli ilerler, squall ve ani ruzgar getirebilir.'},
+    {name:'Warm Front', type:'warm', desc:'Kirmizi cizgi ve yarim dairelerle gosterilir; daha yumusak ama genis alanli hava degisimi getirir.'},
+    {name:'Occluded Front', type:'occluded', desc:'Mor cizgi uzerinde ucgen ve yarim daire birlikte gorulur; hava karmasik ve degisken olabilir.'},
+    {name:'Trough', type:'trough', desc:'Alcak basinç olugu gibi dusunulur; saganak, dengesizlik ve lokal hava bozmasi getirebilir.'},
+    {name:'Ridge', type:'ridge', desc:'Yuksek basinç sirti; genelde daha duzenli ve nispeten sakin hava penceresi saglar.'}
+  ];
+  return `<div class="meteo-gallery-card"><div class="meteo-gallery-head">Front Turleri</div><div class="cloud-grid">${items.map(item=>`<div class="cloud-card">${frontSvg(item.type)}<div class="cloud-name">${item.name}</div><div class="cloud-desc">${item.desc}</div></div>`).join('')}</div></div>`;
 }
 
 function buildShipPartsDiagram(){
