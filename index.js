@@ -7939,6 +7939,19 @@ function buildShipPartsDiagram(){
       <circle cx="40" cy="197" r="8" fill="none" stroke="#f0f5f8" stroke-width="2"/>
       <rect x="76" y="106" width="16" height="6" rx="1" fill="#e5edf2"/>
       <rect x="89" y="101" width="6" height="12" rx="1" fill="#e5edf2"/>
+      <g transform="translate(186 141)">
+        <circle cx="0" cy="0" r="10" fill="none" stroke="#111" stroke-width="2"/>
+        <line x1="-16" y1="0" x2="16" y2="0" stroke="#111" stroke-width="2"/>
+        <line x1="12" y1="-14" x2="12" y2="14" stroke="#111" stroke-width="2"/>
+        <line x1="12" y1="-12" x2="22" y2="-12" stroke="#111" stroke-width="2"/>
+        <line x1="12" y1="-4" x2="24" y2="-4" stroke="#111" stroke-width="2"/>
+        <line x1="12" y1="4" x2="22" y2="4" stroke="#111" stroke-width="2"/>
+        <line x1="12" y1="12" x2="20" y2="12" stroke="#111" stroke-width="2"/>
+        <text x="28" y="-10" fill="#111" font-size="8" font-family="Arial, sans-serif" font-weight="700">TF</text>
+        <text x="28" y="-2" fill="#111" font-size="8" font-family="Arial, sans-serif" font-weight="700">F</text>
+        <text x="28" y="6" fill="#111" font-size="8" font-family="Arial, sans-serif" font-weight="700">T</text>
+        <text x="28" y="14" fill="#111" font-size="8" font-family="Arial, sans-serif" font-weight="700">S</text>
+      </g>
       <text x="20" y="25" fill="#0f3450" font-size="8" font-family="monospace">ISKELE</text>
       <text x="434" y="25" fill="#0f3450" font-size="8" font-family="monospace">SANCAK</text>
       <text x="260" y="158" text-anchor="middle" fill="#111" font-size="13" font-family="Arial, sans-serif" font-weight="700">Deadweight Tonnage</text>
@@ -8022,6 +8035,10 @@ function buildShipPartsDiagram(){
         <circle cx="62" cy="152" r="10" fill="rgba(138,176,200,.18)" stroke="#8ab0c8" stroke-width="1.5"/>
         <text x="57" y="156" fill="#dceaf4" font-size="9" font-family="monospace">20</text>
       </g>
+      <g class="shipparts-hotspot" data-part="loadline" tabindex="0">
+        <circle cx="210" cy="140" r="10" fill="rgba(212,160,23,.18)" stroke="#d4a017" stroke-width="1.5"/>
+        <text x="205" y="144" fill="#f4e7b4" font-size="9" font-family="monospace">21</text>
+      </g>
     </svg>
     <div class="shipparts-legend">
       <button class="shipparts-chip" type="button" data-part="bas">1 Pruva / Bas</button>
@@ -8044,6 +8061,7 @@ function buildShipPartsDiagram(){
       <button class="shipparts-chip" type="button" data-part="lifeboat">18 Can Filikasi</button>
       <button class="shipparts-chip" type="button" data-part="chainlocker">19 Zincirlik</button>
       <button class="shipparts-chip" type="button" data-part="mooring">20 Kic Mooring Station</button>
+      <button class="shipparts-chip" type="button" data-part="loadline">21 Load Line / Plimsoll</button>
     </div>
     <div class="shipparts-detail" data-active-ship-part="bridge">
       <div class="shipparts-detail-head">Kopruustu</div>
@@ -8132,6 +8150,10 @@ const SHIP_PARTS_INFO = {
   mooring:{
     head:'Kic Mooring Station',
     body:'Kic halatlarin verildigi, alindigi ve volta edildigi calisma bolgesidir. Baba, fairlead, spring ve breast line duzeni burada kurulur; snap-back zone bos tutulur.'
+  },
+  loadline:{
+    head:'Load Line / Plimsoll Mark',
+    body:'Yukleme hattini gosteren resmi isarettir. Ortadaki daire ve yatay cizgi ana load line markidir; yanindaki cizgiler ve harfler mevsim ve su yogunluguna gore izin verilen maksimum yukleme seviyelerini anlatir. Burada <b>S</b> summer, <b>T</b> tropical, <b>F</b> fresh water ve <b>TF</b> tropical fresh water mantigini gosterir.'
   }
 };
 
