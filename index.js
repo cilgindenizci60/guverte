@@ -1731,7 +1731,7 @@ choices:[
 {text:"Görevi kontrol et — hissedecek vakit yok",tag:"itaatkar",effect:{sayginlik:5,bilgi:3}}]},
 
 {id:"s60",gfx:"cargo",alert:false,day:"Gün 8",time:"10:00",loc:"Yük Sahası — Stowage Planı",sub:"Konteyner ağırlık dengesi hesabı",who:"z1",
-text:`1. Zabiti stowage planını açtı:\n\n"${n}, bu gemide 340 konteyner var. Ağır olanlar altta, hafifler üste. Ama sorun: Şu 3 ağır konteyner son anda eklendi, sancak tarafa konuldu.\n\nGemi hafif sancak yatık. Trim hesabı yap — güvenli mi?"`,
+text:`1. Zabiti stowage planını açtı:\n\n"${n}, bu gemide 340 konteyner var. Ağır olanlar altta, hafifler üste. Ama sorun: Son anda gelen 3 agir unite icin yeni yer secmemiz gerekiyor.\n\nGemi hafif sancak yatik. Bu uc yukluk grubu ambarlara dagit, listeyi yumusat, agirligi alta indir ve boyuna dengeyi bozma."`,
 choices:[
 {text:"Hesabı yap: GM değeri, serbest yüzey, baş/kıç farkı",tag:"akilli",effect:{bilgi:15,sayginlik:12}},
 {text:"'Süvari bilmeli, bildir' de",tag:"itaatkar",effect:{sayginlik:7,bilgi:5}},
@@ -6124,6 +6124,64 @@ const DOCUMENT_FORM_CONFIGS = {
   }
 };
 
+const STOWAGE_PLAN_CONFIGS = {
+  s60:{
+    title:'Stowage Plan Mini Uygulamasi',
+    hint:'Uc agir uniteyi uygun ambar, taraf ve seviyeye yerlestir. Hedef: sancak yatikligi yumusatmak, agirligi alt seviyede tutmak ve boyuna dengeyi bozmamak.',
+    units:[
+      {id:'u1', label:'Unit A', weight:'28 t'},
+      {id:'u2', label:'Unit B', weight:'28 t'},
+      {id:'u3', label:'Unit C', weight:'26 t'}
+    ],
+    holds:[
+      {id:'H1', label:'Ambar 1'},
+      {id:'H2', label:'Ambar 2'},
+      {id:'H3', label:'Ambar 3'},
+      {id:'H4', label:'Ambar 4'}
+    ],
+    snapshot:[
+      'H1: bas tarafa yakin, trim etkisi hassas',
+      'H2: orta bolge, alt istif icin guvenli',
+      'H3: orta-kic bolge, list duzeltmede faydali',
+      'H4: kic tarafa yakin, asiri yukleme trim riski yaratir'
+    ]
+  }
+};
+
+function getStowageOutcomeChoice(sc, values){
+  const picks = Object.values(values);
+  let score = 0;
+  let portCount = 0;
+  let lowerCount = 0;
+  let midHoldCount = 0;
+  let badAftForward = 0;
+
+  picks.forEach(pick=>{
+    if(!pick) return;
+    if(pick.side === 'port'){ score += 2; portCount++; }
+    else if(pick.side === 'center'){ score += 1; }
+    else { score -= 2; }
+
+    if(pick.level === 'lower'){ score += 2; lowerCount++; }
+    else if(pick.level === 'middle'){ score += 1; }
+    else { score -= 1; }
+
+    if(pick.hold === 'H2' || pick.hold === 'H3'){ score += 2; midHoldCount++; }
+    else { badAftForward++; }
+  });
+
+  const uniqueSlots = new Set(picks.map(p=>`${p.hold}-${p.side}-${p.level}`)).size;
+  if(uniqueSlots < picks.length) score -= 2;
+  if(portCount >= 2) score += 2;
+  if(lowerCount >= 2) score += 2;
+  if(midHoldCount >= 2) score += 2;
+  if(badAftForward >= 2) score -= 2;
+
+  if(score >= 11) return sc.choices.find(c=>c.tag==='akilli') || sc.choices[0];
+  if(score >= 6) return sc.choices.find(c=>c.tag==='itaatkar') || sc.choices[1] || sc.choices[0];
+  return sc.choices.find(c=>c.tag==='korkak') || sc.choices[sc.choices.length-1] || sc.choices[0];
+}
+
 function getDocumentOutcomeChoice(sc, values){
   const cfg = DOCUMENT_FORM_CONFIGS[sc?.id];
   if(!cfg) return sc?.choices?.[0];
@@ -6178,6 +6236,69 @@ function renderDocumentPanel(sc, ch){
   panel.querySelectorAll('[data-doc-field]').forEach(input=>{
     input.addEventListener('keydown',e=>{ if(e.key==='Enter') resolve(); });
   });
+  return true;
+}
+
+function renderStowagePanel(sc, ch){
+  const panel = document.getElementById('calc-panel');
+  if(!panel) return false;
+  const cfg = STOWAGE_PLAN_CONFIGS[sc?.id];
+  if(!cfg) return false;
+  panel.className='calc-panel show';
+  panel.innerHTML = `<div class="stowage-box">
+    <div class="stowage-title">${cfg.title}</div>
+    <div class="stowage-hint">${cfg.hint}</div>
+    <div class="stowage-snapshot">
+      ${cfg.snapshot.map(line=>`<div class="stowage-snapline">${line}</div>`).join('')}
+    </div>
+    <div class="stowage-grid">
+      ${cfg.units.map(unit=>`<div class="stowage-row">
+        <div class="stowage-unit"><span>${unit.label}</span><b>${unit.weight}</b></div>
+        <select class="stowage-select" data-stowage="${unit.id}-hold">
+          ${cfg.holds.map(h=>`<option value="${h.id}">${h.label}</option>`).join('')}
+        </select>
+        <select class="stowage-select" data-stowage="${unit.id}-side">
+          <option value="port">Iskele</option>
+          <option value="center">Merkez</option>
+          <option value="starboard">Sancak</option>
+        </select>
+        <select class="stowage-select" data-stowage="${unit.id}-level">
+          <option value="lower">Alt seviye</option>
+          <option value="middle">Orta seviye</option>
+          <option value="upper">Ust seviye</option>
+        </select>
+      </div>`).join('')}
+    </div>
+    <div class="stowage-actions">
+      <span class="stowage-meta">Iskele + alt seviye + orta ambarlar genelde daha emniyetli bir baslangic verir.</span>
+      <button id="stowage-submit" class="doc-submit">Plani Degerlendir</button>
+    </div>
+    <div id="stowage-feedback" class="doc-feedback"></div>
+  </div>`;
+  const submit = document.getElementById('stowage-submit');
+  const feedback = document.getElementById('stowage-feedback');
+  submit.onclick = ()=>{
+    const values = {};
+    cfg.units.forEach(unit=>{
+      values[unit.id] = {
+        hold: panel.querySelector(`[data-stowage="${unit.id}-hold"]`)?.value,
+        side: panel.querySelector(`[data-stowage="${unit.id}-side"]`)?.value,
+        level: panel.querySelector(`[data-stowage="${unit.id}-level"]`)?.value
+      };
+    });
+    const picked = getStowageOutcomeChoice(sc, values);
+    const isGood = picked && picked.tag === 'akilli';
+    const isMid = picked && picked.tag === 'itaatkar';
+    feedback.className = `doc-feedback ${isGood ? '' : (isMid ? 'warn' : 'bad')}`.trim();
+    feedback.textContent = isGood
+      ? 'Dagilim oturdu; listeyi yumusatip agirligi alt istifte tuttun.'
+      : isMid
+        ? 'Plan fena degil ama orta ambar ve alt seviye mantigini daha iyi kullanabilirdin.'
+        : 'Bu yerlesim sancak yatikligi veya boyuna dengeyi gereksiz zorlayabilir.';
+    submit.disabled = true;
+    panel.querySelectorAll('.stowage-select').forEach(el=>el.disabled = true);
+    setTimeout(()=>handleSceneChoice(sc, picked, ch), 850);
+  };
   return true;
 }
 
@@ -6326,13 +6447,14 @@ function renderScene(idx){
   const ch=document.getElementById('choices');ch.innerHTML='';
   renderCalcPanel(sc, ch);
   const hasDocPanel = renderDocumentPanel(sc, ch);
+  const hasStowagePanel = renderStowagePanel(sc, ch);
   getSceneRenderChoices(sc).forEach(c2=>{
     const b=document.createElement('button');b.className='cbtn';
     b.innerHTML='<span class="ctag tag-'+(c2.tag||'akilli')+'">'+tagL[c2.tag||'akilli']+'</span>'+c2.text;
     b.onclick=()=>handleSceneChoice(sc,c2,ch);
     ch.appendChild(b);
   });
-  if(sc.calc || hasDocPanel){
+  if(sc.calc || hasDocPanel || hasStowagePanel){
     ch.style.display='none';
   }else{
     ch.style.display='';
