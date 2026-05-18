@@ -6739,6 +6739,33 @@ let portChartZoom = 1;
 let portChartPanX = null;
 let portChartPanY = null;
 let portChartDragState = null;
+let portChartDidPan = false;
+let activeMapTaskIndex = 0;
+const completedMapTasks = new Set();
+
+const MAP_TASKS = [
+  {
+    id:'pilot',
+    title:'Pilot Station Sec',
+    desc:'Pilot boarding ground noktasina tikla.'
+  },
+  {
+    id:'anchorage',
+    title:'Guvenli Demir Yeri Bul',
+    desc:'Guvenli demirleme icin ayrilan anchorage bolgesini tikla.'
+  },
+  {
+    id:'tss',
+    title:'TSS\'yi Yanlis Kesme',
+    desc:'Traffic lane / TSS hattini isaretle. Bu gorev trafik yogun chartta calisir.',
+    preferredPort:'Singapur'
+  },
+  {
+    id:'berth',
+    title:'Berth\'e Yaklasma Planini Isaretle',
+    desc:'Berth\'e girmeden once donus basinini / approach turn point\'i sec.'
+  }
+];
 
 function openMap(){
   document.getElementById('map-panel').classList.add('show');
@@ -6757,6 +6784,91 @@ function selectPortChart(name){
 function adjustPortChartZoom(delta){
   portChartZoom = Math.max(1, Math.min(2.5, +(portChartZoom + delta).toFixed(2)));
   if(mapView === 'library') renderMapLibrary();
+}
+
+function getPortChartTaskGeometry(port){
+  const region = getMapRegionByPosition(port);
+  const hay = `${port.name} ${region}`.toLowerCase();
+  const coastLeft = port.x < 110;
+  const southFacing = port.y > 170;
+  const berthX = coastLeft ? 244 : 194;
+  const channelStartX = coastLeft ? 410 : 30;
+  const channelEndX = coastLeft ? 238 : 202;
+  const channelY = southFacing ? 150 : 126;
+  const turningBasinX = coastLeft ? 206 : 234;
+  const profile = getPortChartProfile(port);
+  return {region,hay,coastLeft,southFacing,berthX,channelStartX,channelEndX,channelY,turningBasinX,profile};
+}
+
+function getCurrentMapTask(){
+  return MAP_TASKS[activeMapTaskIndex % MAP_TASKS.length];
+}
+
+function ensureTaskPort(task){
+  if(!task?.preferredPort) return;
+  const active = ROUTE_PORTS.find(p=>p.name===selectedPortChart && p.kind==='port');
+  if(!active) return;
+  const geo = getPortChartTaskGeometry(active);
+  if(task.id === 'tss' && !/traffic|canal/.test(geo.profile.template)) selectedPortChart = task.preferredPort;
+}
+
+function nextMapTask(){
+  activeMapTaskIndex = (activeMapTaskIndex + 1) % MAP_TASKS.length;
+  ensureTaskPort(getCurrentMapTask());
+  if(mapView !== 'library') mapView = 'library';
+  renderMap();
+}
+
+function getMapTaskTarget(task, port){
+  const geo = getPortChartTaskGeometry(port);
+  if(task.id === 'pilot') return {x: geo.coastLeft ? 330 : 112, y: geo.southFacing ? 92 : 178, tol: 20};
+  if(task.id === 'anchorage') return {x: geo.coastLeft ? 180 : 260, y: 210, tol: 24};
+  if(task.id === 'tss') return {x: geo.channelStartX + 56, y: geo.channelY - 24, tol: 28};
+  if(task.id === 'berth') return {x: geo.turningBasinX, y: geo.channelY, tol: 22};
+  return {x: geo.channelEndX, y: geo.channelY, tol: 20};
+}
+
+function updateMapTaskBox(port){
+  const task = getCurrentMapTask();
+  ensureTaskPort(task);
+  const title = document.getElementById('port-chart-tasktitle');
+  const desc = document.getElementById('port-chart-taskdesc');
+  const status = document.getElementById('port-chart-taskstatus');
+  const btn = document.getElementById('port-task-next');
+  if(!title || !desc || !status) return;
+  const effectivePort = ROUTE_PORTS.find(p=>p.name===selectedPortChart && p.kind==='port') || port;
+  title.textContent = `${task.title} · ${effectivePort?.name || ''}`;
+  desc.textContent = task.desc + (task.preferredPort && effectivePort?.name===task.preferredPort ? ` Bu tur ${effectivePort.name} charti uzerindesin.` : '');
+  status.className = '';
+  status.textContent = completedMapTasks.has(task.id) ? 'Tamamlandi. Istersen sonraki goreve gecebilirsin.' : 'Harita ustunde uygun bolgeye tikla.';
+  if(btn) btn.textContent = activeMapTaskIndex === MAP_TASKS.length-1 ? 'Basa Don' : 'Sonraki';
+}
+
+function handlePortChartTaskClick(svg, ev, port){
+  const task = getCurrentMapTask();
+  if(!task || !port) return;
+  if(portChartDidPan){
+    portChartDidPan = false;
+    return;
+  }
+  const rect = svg.getBoundingClientRect();
+  const vb = svg.viewBox.baseVal;
+  const x = vb.x + ((ev.clientX - rect.left) / rect.width) * vb.width;
+  const y = vb.y + ((ev.clientY - rect.top) / rect.height) * vb.height;
+  const target = getMapTaskTarget(task, port);
+  const dist = Math.hypot(x-target.x, y-target.y);
+  const status = document.getElementById('port-chart-taskstatus');
+  if(dist <= target.tol){
+    completedMapTasks.add(task.id);
+    if(status){
+      status.className = '';
+      status.textContent = `Dogru secim. ${task.title} gorevi tamamlandi.`;
+    }
+    addJournalEntry(`[HARITA GOREVI] ${task.title} basariyla tamamlandi (${port.name}).`, 'Harita', '--:--');
+  }else if(status){
+    status.className = 'bad';
+    status.textContent = 'Bu nokta zayif kaldi. Harita isaretlerini yeniden okuyup bir daha dene.';
+  }
 }
 
 function clampPortChartPan(panX, panY){
@@ -6798,6 +6910,7 @@ function initPortChartInteractions(svg){
   };
   svg.addEventListener('pointerdown',ev=>{
     if((portChartZoom||1) <= 1) return;
+    portChartDidPan = false;
     const rect = svg.getBoundingClientRect();
     const vb = svg.viewBox.baseVal;
     portChartDragState = {
@@ -6813,6 +6926,7 @@ function initPortChartInteractions(svg){
   });
   svg.addEventListener('pointermove',ev=>{
     if(!portChartDragState) return;
+    if(Math.abs(ev.clientX - portChartDragState.startX) > 3 || Math.abs(ev.clientY - portChartDragState.startY) > 3) portChartDidPan = true;
     const dx = (ev.clientX - portChartDragState.startX) * portChartDragState.scaleX;
     const dy = (ev.clientY - portChartDragState.startY) * portChartDragState.scaleY;
     const next = clampPortChartPan(
@@ -7171,6 +7285,7 @@ function renderMapLibrary(){
   const chartMeta = document.getElementById('port-chart-meta');
   const chartZoomLabel = document.getElementById('port-chart-zoom-label');
   if(!files || !chartSvg || !chartTitle || !chartMeta) return;
+  ensureTaskPort(getCurrentMapTask());
   const active = ensureSelectedPortChart();
   const entries = getPortChartEntries();
   files.innerHTML = entries.map(port=>`
@@ -7196,9 +7311,11 @@ function renderMapLibrary(){
   chartTitle.textContent = `${active.name} · Liman Haritasi`;
   chartSvg.innerHTML = buildPortChartSvg(active);
   initPortChartInteractions(chartSvg);
+  chartSvg.onclick = (ev)=>handlePortChartTaskClick(chartSvg, ev, active);
   chartSvg.setAttribute('viewBox', getPortChartViewBox());
   if(chartZoomLabel) chartZoomLabel.textContent = `${Math.round(portChartZoom*100)}%`;
   chartMeta.innerHTML = `DOSYA: ${active.name.replace(/ /g,'_').toUpperCase()}.chart<br>YAYIN: ${profile.publication}<br>CHART NO: ${profile.chartNo} · ${profile.edition}<br>TIP: LIMAN YAKLASMA PLANI<br>BOLGE: ${region}<br>OLCEK: ${profile.scale}<br>YAKLASMA: ${profile.approach}<br>MAKS DRAFT: ${profile.maxDraft}<br>BERTH: ${profile.berth}<br>DATUM: ${profile.soundDatum}<br>MAG VAR: ${profile.magVar}<br>GELGIT/AKINTI: ${profile.tides}<br>DURUM: ${visitedPorts.has(active.name)?'UGRANAN LIMAN':'ARSIV HARITASI'}<br>NOT: ${profile.notes}`;
+  updateMapTaskBox(active);
 }
 
 function updateShipPosition(sceneLoc){

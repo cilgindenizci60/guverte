@@ -315,6 +315,13 @@ input[type=text]::placeholder{color:var(--text3);}
 #port-chart-svg{width:100%;border-radius:8px;background:#030d1a;border:1px solid rgba(74,112,152,.25);display:block;cursor:grab;touch-action:none;}
 #port-chart-svg.dragging{cursor:grabbing;}
 #port-chart-meta{margin-top:8px;color:var(--text3);font-size:10px;line-height:1.6;font-family:'Share Tech Mono',monospace;}
+#port-chart-taskbox{margin-top:10px;border:1px solid var(--border2);border-radius:8px;background:rgba(8,22,40,.95);padding:9px 10px;}
+#port-chart-taskhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px;font-size:10px;color:var(--gold);font-family:'Share Tech Mono',monospace;}
+#port-chart-tasktitle{font-size:11px;color:var(--text);font-weight:600;margin-bottom:4px;}
+#port-chart-taskdesc{font-size:10px;color:var(--text3);line-height:1.55;}
+#port-chart-taskstatus{margin-top:7px;font-size:10px;color:#8fd8ab;min-height:16px;font-family:'Share Tech Mono',monospace;}
+#port-chart-taskstatus.warn{color:#ffd78a;}
+#port-chart-taskstatus.bad{color:#ffb0b0;}
 @media (max-width: 760px){
   #map-library-view{grid-template-columns:1fr;}
   #map-files{max-height:180px;}
