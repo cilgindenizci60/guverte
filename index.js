@@ -4495,6 +4495,78 @@ En dogru yorumun ne olur?`,
   {text:"Pilotaj, lokal raporlama, nehir trafigi ve operasyon baskisini birlikte yonetirim",tag:"kritik",effect:{bilgi:19,sayginlik:13}},
   {text:"Pilot varken yerel kural yogunlugunu ikinci planda tutarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
   {text:"Nehir hattinda anons ve lokal kural kalabaligini cok da onemli gormem",tag:"korkak",effect:{bilgi:-11,sayginlik:-10}}]},
+  {id:"s332",gfx:"harbor",alert:false,day:"Gun 17",time:"07:05",loc:"Ambarlı - Konteyner Terminali",sub:"Marmara trafigi ile terminal baskisi ust uste biniyor",who:"z1",
+  text:`Ambarli yaklasmasinda VHF neredeyse susmuyor. VTS, pilot, terminal, römorkor... herkesin ayri bir ritmi var.
+
+1. Zabiti tableti sana uzatti:
+
+"Burada mesele sadece yanaşmak degil. Slot saati var, konteyner akisi var, Marmara trafigi var. Hizli olacagim derken resmi kaybeden zabit terminale degil strese yanaşir."
+
+Ilk odagin ne olur?`,
+  choices:[
+  {text:"Pilotaj, VTS/VHF akisi, berth plani ve terminal baskisini birlikte takip ederim",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
+  {text:"Terminale gec kalmamak icin once yanaşma hizini, sonra ayrintiyi dusunurum",tag:"cesur",effect:{cesaret:6,sayginlik:-4,bilgi:3}},
+  {text:"Kisa liman yaklasmalarinda trafik ve terminal akisinin bu kadar fark yaratmayacagini sanirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-10}}]},
+  {id:"s333",gfx:"cargo",alert:false,day:"Gun 17",time:"10:40",loc:"Aliağa - Endustriyel Iskele",sub:"Terminal kurali, PPE ve operasyon ayni cizgide",who:"suvari",
+  text:`Aliaga tarafinda iskele baska kokuyor: sicak metal, boru hatti ve terminal disiplini.
+
+Suvari sana dondu:
+
+"Bazi limanlar klasik rıhtım gibi davranmaz. Endustriyel iskelede restricted area, PPE, terminal talimati ve gemi proseduru birbirine karisir. Birini hafife alirsan oteki de kayar."
+
+En saglam refleks hangisi?`,
+  choices:[
+  {text:"Terminal kurali, PPE, restricted area ve operasyon akisina birlikte odaklanirim",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
+  {text:"Gemi proseduru gucluyse terminal detaylarini ikinci planda tutarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Endustriyel iskele ile normal liman arasinda buyuk fark olmadigini sanirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-11}}]},
+  {id:"s334",gfx:"storm",alert:true,day:"Gun 18",time:"05:50",loc:"Samsun Yaklasmasi - Karadeniz",sub:"Swell mendirek agzinda baska calisiyor",who:"z2",
+  text:`Samsun onlerinde deniz firtina degil ama rahat da degil. Disarida uzun periodlu swell mendirek agzinda duz deniz gibi davranmiyor.
+
+2. Zabiti camdan disari bakti:
+
+"Karadeniz bazen insani hemen terbiye eder. Hava raporu bir sey soyler, mendirek agzi sana baska bir sey hissettirir. Swell, capraz ruzgar ve pilot ihtiyaci birlikte okunmazsa yanaşma eziyete doner."
+
+Sen once neyi dusunursun?`,
+  choices:[
+  {text:"Mendirek agzindaki swell, capraz ruzgar ve pilot/römorkor ihtiyacini birlikte degerlendiririm",tag:"kritik",effect:{bilgi:19,sayginlik:14}},
+  {text:"Mendirek icine girince denizin kendiliginden tamamen duzelecegini varsayarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Swell'i sadece acik deniz problemi sanip liman yaklasmasinda onemsiz gorurum",tag:"korkak",effect:{bilgi:-13,sayginlik:-11}}]},
+  {id:"s335",gfx:"bridge",alert:false,day:"Gun 18",time:"14:35",loc:"İskenderun Korfezi - Berth Bekleme",sub:"Sicak hava, terminal sirasi ve korfez disiplini",who:"z1",
+  text:`İskenderun Korfezi icinde trafik daginik ama bitmiyor. Hava sicak, terminal programi degisken, radyoda yeni bir ses hep var.
+
+1. Zabiti sakin konustu:
+
+"Berth beklemek bos durmak degil. Demir sahasi, traffic lane, sicak hava yorgunlugu ve hazirlik seviyesi ayakta tutulur. Korfez icinde gevseme en pahali hatalardan biridir."
+
+En profesyonel dusunce hangisi?`,
+  choices:[
+  {text:"Demir sahasi, terminal updates, VHF disiplini ve sicak hava kaynakli yorgunlugu birlikte yonetirim",tag:"kritik",effect:{bilgi:18,sayginlik:13,dinclik:4}},
+  {text:"Bekleme uzarsa vardiya baskisi da azalir diye disiplinin gevseyebilecegini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Korfez icinde beklemenin aktif seyir kadar dikkat istemedigini sanirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-10}}]},
+  {id:"s336",gfx:"harbor",alert:false,day:"Gun 19",time:"08:10",loc:"Derince - Sanayi Rıhtımı",sub:"İzmit Korfezi icinde mooring disiplini",who:"lostromo",
+  text:`Derince tarafinda hava bile calisiyor gibi. Rıhtım kisa, hareket cok, her tarafta sanayi hissi var.
+
+Lostromo eliyle halat acilarini gosterdi:
+
+"Buralarda baba, fairlead, spring ve insan akisi ayni anda dusunulur. Yanaşma sadece kopruustunun isi degil; guverte de saniye saniye duzgun olacak."
+
+Ne yaparsin?`,
+  choices:[
+  {text:"Mooring station duzenini, spring onceligini ve sanayi limani disiplinini birlikte takip ederim",tag:"kritik",effect:{bilgi:17,sayginlik:14}},
+  {text:"Kopruden komut geldikce guvertedeki resmi o an anlamanin yeterli olacagini dusunurum",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Sanayi rıhtımında en onemli seyin sadece halati cabuk vermek oldugunu sanirim",tag:"korkak",effect:{bilgi:-12,sayginlik:-10}}]},
+  {id:"s337",gfx:"harbor",alert:false,day:"Gun 19",time:"17:25",loc:"Trabzon - Mendirek Girisi",sub:"Karadeniz limaninda mendirek tek basina yetmez",who:"suvari",
+  text:`Trabzon yaklaşmasinda mendirek bir koruma gibi duruyor ama ruzgar onu tek basina yeterli kilmiyor.
+
+Suvari liman agzini eliyle cizdi:
+
+"Haritada cizgi duzdur ama denizde ruzgar duz degildir. Burada mendirek acisi, dalga kirilmasi ve donus anı birlikte dusunulur. Kaptanlik bazen tam da bu farki onceden gormektir."
+
+En yerinde dusunce hangisi?`,
+  choices:[
+  {text:"Mendirek korumasini abartmadan, ruzgar ve dalga kirilmasini da hesaba katarim",tag:"kritik",effect:{bilgi:18,sayginlik:13}},
+  {text:"Mendirek icine bir kez girince geri kalan her seyin kolaylasacagini varsayarim",tag:"itaatkar",effect:{bilgi:5,sayginlik:4}},
+  {text:"Karadeniz limanlarinda liman agzinin hava ve dalga acisindan ciddi fark yaratmayacagini sanirim",tag:"korkak",effect:{bilgi:-13,sayginlik:-11}}]},
   {id:"s237",gfx:"bridge",alert:true,day:"Gun 6",time:"05:55",loc:"Koprustu - Sabah Vardiyasi",sub:"MOB proseduru ilk dakikalar",who:"z2",
   text:`Sancak taraftan bir cisim denize dustu. 2. Zabiti sesi sertlestirdi:
 
