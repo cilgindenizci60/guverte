@@ -7713,7 +7713,7 @@ const STUDENT_NOTES = [
   {head:"DEMIR ZINCIRI / KILIT MARKALARI", body:"Bir kilit / shackle genelde <b>15 fathom</b> yani yaklasik <b>27.5 metre</b> kabul edilir.<br>Zincir marking sisteminde joining shackle cevresindeki boyali baklalar ve tel sargilari hangi kilidin suda oldugunu hizlica anlamak icin kullanilir.<br>Gemiden gemiye renk ve tel duzeni degisebilir; esas olan geminin kendi <b>chain marking plan</b>ini bilmektir.<br>Pruva ustunde rapor verirken 'birinci kilit suya girdi', 'ucuncu kilit suya girdi' gibi net ve yuksek sesli ifade kullanilir.<br>Kaloma verirken sadece sayi degil; zincirin hizi, fren durumu ve davranisi da izlenir.", tip:"Ezber renk degil, gemide uygulanan marking sistemi esastir."},
   {head:"ACIL HABERLESME", body:"MAYDAY distress, PAN-PAN urgency, SECURITE emniyet yayini icindir.<br>Mesajda gemi adi, callsign, pozisyon, tehlikenin cinsi, yardim ihtiyaci ve kisi sayisi acik verilir.<br>GMDSS, EPIRB, SART, NAVTEX, DSC, handheld VHF ve emergency battery kayitlari bilinir.", tip:"Netlik hiz kadar onemlidir."},
   {head:"GMDSS / HABERLESME CIHAZLARI", body:"<b>VHF DSC</b> kisa mesafe distress / urgency / safety ve CH16 nobet disiplininin temelidir.<br><b>MF/HF DSC</b> daha uzak mesafe haberlesme ve uygun frekans secimiyle dusunulur.<br><b>NAVTEX</b> navigational ve meteorological warning alir; baski / printer / mesaj secimi onemlidir.<br><b>EGC / SafetyNET</b> genelde Inmarsat-C uzerinden MSI ve safety message alir.<br><b>Inmarsat-C</b> text tabanli haberlesme, distress, reporting ve mesajlasmada kullanilir.<br><b>EPIRB</b> acil durumda COSPAS-SARSAT uydu sistemine distress beacon gonderir.<br><b>SART</b> arama-kurtarmada radar cevaplayici olarak hedef bulunurlugunu artirir.<br><b>AIS</b> trafik farkindaligi ve hedef tanimlamada yardimcidir; radar ve gorsel teyidin yerine gecmez.<br><br><b>GMDSS Sea Areas</b>:<br><b>A1</b> VHF DSC kapsamasinda yakin denizler<br><b>A2</b> MF DSC kapsamasina kadar uzayan bolgeler<br><b>A3</b> Inmarsat kapsamasindaki acik denizler<br><b>A4</b> kutup / Inmarsat disi yuksek enlem alanlari; HF dusuncesi agir basar.<br><br><b>RCC/MRCC</b> distress sonrasinda arama-kurtarma koordinasyon zincirini yurutur.<br><b>Pratik mantik:</b> Hangi cihazin ne zaman, hangi menzilde ve hangi maksatla kullanilacagini bilmek gerekir.", tip:"Cihazi tanimak yetmez; hangi acilde hangisine uzanacagini da bil."},
-  {head:"METEOROLOJI / BULUTLAR", body:"<b>Cumulus</b> gun icinde dikey gelisebilen pamuksu buluttur; hava iyi de olabilir ama buyurse shower'a gider.<br><b>Cirrus</b> ince ve tuy gibi ust seviye buz bulutudur; yaklasan front'un habercisi olabilir.<br><b>Stratus</b> alcak, yaygin ve tek katman gibi gorunur; gorus ve drizzle etkisi yaratabilir.<br><b>Nimbostratus</b> uzun sureli ve yaygin yagisin bulutudur.<br><b>Cumulonimbus (CB)</b> dikey gelisimi cok guclu firtina bulutudur; saganak, yildirim, squall ve ani ruzgar bekletir.<br><b>Altocumulus</b> orta seviyede pamuksu-katmanli gorunur; hava degisiminin habercisi olabilir.<br><b>Altostratus</b> gunesi solduran gri tabaka gibidir; front yaklasmasinda sik gorulur.<br><b>Fog / mist</b> sadece yatay gorusu degil, ses ve radar yorumunu da etkiler.<br><b>Barometer trendi</b>, ruzgar donusu, swell ve bulut tipi birlikte okunur; tek bir buluta bakip kesin hukum verilmez.<br><br>"+buildCloudGallery(), tip:"Bulut gormek yetmez; hangi seviyede oldugunu ve neye donusebilecegini de dusun."},
+  {head:"METEOROLOJI / BULUTLAR", body:"<b>Cumulus</b> gun icinde dikey gelisebilen pamuksu buluttur; hava iyi de olabilir ama buyurse shower'a gider.<br><b>Cirrus</b> ince ve tuy gibi ust seviye buz bulutudur; yaklasan front'un habercisi olabilir.<br><b>Stratus</b> alcak, yaygin ve tek katman gibi gorunur; gorus ve drizzle etkisi yaratabilir.<br><b>Nimbostratus</b> uzun sureli ve yaygin yagisin bulutudur.<br><b>Cumulonimbus (CB)</b> dikey gelisimi cok guclu firtina bulutudur; saganak, yildirim, squall ve ani ruzgar bekletir.<br><b>Altocumulus</b> orta seviyede parcali-kumeli gorunum. Hava degisimi ve dengesizlik ipucu verebilir.<br><b>Altostratus</b> gunesi solduran gri tabaka gibidir; front yaklasmasinda sik gorulur.<br><b>Fog / mist</b> sadece yatay gorusu degil, ses ve radar yorumunu da etkiler.<br><b>Barometer trendi</b>, ruzgar donusu, swell ve bulut tipi birlikte okunur; tek bir buluta bakip kesin hukum verilmez.<br><br>"+buildCloudGallery()+buildSeaStateGallery()+buildFogGallery(), tip:"Bulut gormek yetmez; hangi seviyede oldugunu ve neye donusebilecegini de dusun."},
   {head:"RUZGAR YONLERI / DERECELER", body:"Ruzgar denizde <b>nereye gittigine gore degil</b>, <b>nereden geldigine gore</b> adlandirilir.<br><b>Pruvadan</b> gelen ruzgar 000°/360°, <b>pupadan</b> gelen ruzgar 180° kabul edilir.<br><b>Kemere</b> tam bordadan gelen ruzgardir; sancak kemere 090°, iskele kemere 270° diye okunur.<br><b>Bas omuzluk</b> 45°'lik on ceyrek, <b>kic omuzluk</b> ise 135° / 225° taraflaridir.<br><b>Geleneksel adlar</b>: 000° Yildiz, 045° Poyraz, 090° Gundogusu, 135° Kesishleme, 180° Kible, 225° Lodos, 270° Gunbatisi, 315° Karayel.<br>Brifinglerde 'ruzgar sancak bas omuzluktan 4 bofor' gibi kisa ve net ifade kullanilir.<br><br>"+buildWindRoseDiagram(), tip:"Ruzgar yonu rapor ederken once gemi referansini dusun: pruva, pupa, iskele, sancak."},
   {head:"FORMULLER - HIZ / MESAFE / ZAMAN", body:"Mesafe = Hiz x Zaman<br>Hiz = Mesafe / Zaman<br>Zaman = Mesafe / Hiz<br>1 knot = 1 deniz mili / saat<br>Gece ETA hesaplari icin once kalan mesafe, sonra mevcut SOG kullanilir.<br><br><b>Ornek:</b> 48 mil yol, 12 knot hizla yaklasik 4 saatte biter.", tip:"Basit formuller vardiyada en cok kullanilanlardir."},
   {head:"FORMULLER - SET / DRIFT / CTS", body:"Course to Steer mantigi: istenen COG icin akinti vektorunu hesaba kat.<br>Drift = akintinin hizi<br>Set = akintinin yonu<br>Gercek iz = verilen rota + akinti etkisi<br>Yaklasik kapanis mantigi: Verilen HDG + akinti vektoru = gercek COG/SOG<br>Running fix / DR duzeltmelerinde set-drift sure ile birlikte okunur.<br><b>Yaklasik akis:</b> Akinti mesafesi = drift x zaman<br><b>ETA</b> icin kalan mesafe / gercek SOG mantigi kullanilir.<br><b>Kullanilan tablo / kaynaklar:</b> Tidal stream atlas, current tables, pilot book, chart notlari, ECDIS current overlay, sailing directions.<br><br><b>Ornek:</b> 090 rota tutmak isterken akinti seni kuzeye 2 knot itiyorsa bir miktar guneye pruva verip CTS duzeltmesi yaparsin.", tip:"Pruva baska, iz baska olabilir."},
@@ -8619,6 +8619,55 @@ function buildCloudGallery(){
     {name:'Fog / Mist', type:'fog', desc:'Bulut gibi degil ama yatay gorusu kapatan su damlacigi tabakasi. Radar ve ses disiplini etkilenir.'}
   ];
   return `<div class="cloud-grid">${items.map(item=>`<div class="cloud-card">${cloudSvg(item.type)}<div class="cloud-name">${item.name}</div><div class="cloud-desc">${item.desc}</div></div>`).join('')}</div>`;
+}
+
+function seaStateSvg(type){
+  const waves = {
+    calm:`<path d="M0 78 Q18 74 36 78 T72 78 T108 78 T144 78 T180 78 T216 78 T252 78 T288 78 T320 78" stroke="#6fa8dc" stroke-width="2.2" fill="none"/>`,
+    moderate:`<path d="M0 82 Q18 68 36 82 T72 82 T108 82 T144 82 T180 82 T216 82 T252 82 T288 82 T320 82" stroke="#6fa8dc" stroke-width="3.4" fill="none"/>
+      <path d="M0 98 Q18 84 36 98 T72 98 T108 98 T144 98 T180 98 T216 98 T252 98 T288 98 T320 98" stroke="#8fd8ab" stroke-width="2" fill="none" opacity=".7"/>`,
+    rough:`<path d="M0 86 Q14 58 28 86 T56 86 T84 86 T112 86 T140 86 T168 86 T196 86 T224 86 T252 86 T280 86 T308 86" stroke="#7bc9ef" stroke-width="4.6" fill="none"/>
+      <path d="M0 106 Q14 80 28 106 T56 106 T84 106 T112 106 T140 106 T168 106 T196 106 T224 106 T252 106 T280 106 T308 106" stroke="#dceaf4" stroke-width="2.2" fill="none" opacity=".8"/>`
+  }[type] || '';
+  return `<svg class="meteo-svg" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" aria-label="${type} deniz durumu">
+    <defs><linearGradient id="seaStateBg_${type}" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#163a5a"/><stop offset="100%" stop-color="#081828"/></linearGradient></defs>
+    <rect width="320" height="140" rx="8" fill="url(#seaStateBg_${type})"/>
+    <circle cx="254" cy="28" r="11" fill="rgba(244,209,114,.18)"/>
+    <path d="M0 90 Q54 84 108 90 T216 90 T320 90 V140 H0 Z" fill="#0b2b47"/>
+    ${waves}
+  </svg>`;
+}
+
+function buildSeaStateGallery(){
+  const items = [
+    {name:'Calm Sea', type:'calm', desc:'Deniz yuzeyi sakin; kucuk dalga ve az yalpa. Gorsel aldanma yaratip ruzgarin etkisini gizleyebilir.'},
+    {name:'Moderate Sea', type:'moderate', desc:'Operasyonlari zorlamaya baslayan ama rutin seyirde halen yonetilebilir deniz hali.'},
+    {name:'Rough Sea / Swell', type:'rough', desc:'Yuk, lashing, deck cargo ve personel hareketini dogrudan etkileyen belirgin dalga davranisi.'}
+  ];
+  return `<div class="meteo-gallery-card"><div class="meteo-gallery-head">Deniz Durumu / Swell</div><div class="cloud-grid">${items.map(item=>`<div class="cloud-card">${seaStateSvg(item.type)}<div class="cloud-name">${item.name}</div><div class="cloud-desc">${item.desc}</div></div>`).join('')}</div></div>`;
+}
+
+function fogSvg(type){
+  const layers = {
+    radiation:`<circle cx="246" cy="26" r="12" fill="rgba(244,209,114,.16)"/><rect x="0" y="68" width="320" height="44" fill="rgba(220,230,238,.18)"/><rect x="0" y="82" width="320" height="24" fill="rgba(220,230,238,.28)"/><path d="M22 88 h64 M112 88 h82 M220 88 h70" stroke="#dceaf4" stroke-width="5" stroke-linecap="round"/>`,
+    advection:`<rect x="0" y="44" width="320" height="70" fill="rgba(210,223,236,.22)"/><path d="M18 70 h92 M132 70 h88 M242 70 h58" stroke="#e6eef8" stroke-width="6" stroke-linecap="round"/><path d="M10 92 h110 M144 92 h92 M250 92 h52" stroke="#dbe7f3" stroke-width="6" stroke-linecap="round"/><path d="M48 34 l20 0 l-8 10" stroke="#8fd8ab" stroke-width="2" fill="none"/>`,
+    patchy:`<path d="M28 76 h66 M122 72 h54 M214 78 h72" stroke="#dceaf4" stroke-width="6" stroke-linecap="round"/><path d="M54 94 h48 M164 94 h56 M244 92 h36" stroke="#cfdcea" stroke-width="5" stroke-linecap="round"/>`
+  }[type] || '';
+  return `<svg class="meteo-svg" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" aria-label="${type} sis ornegi">
+    <defs><linearGradient id="fogBg_${type}" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#173650"/><stop offset="100%" stop-color="#0a1828"/></linearGradient></defs>
+    <rect width="320" height="140" rx="8" fill="url(#fogBg_${type})"/>
+    <path d="M0 102 Q54 96 108 102 T216 102 T320 102 V140 H0 Z" fill="#0b2238"/>
+    ${layers}
+  </svg>`;
+}
+
+function buildFogGallery(){
+  const items = [
+    {name:'Radiation Fog', type:'radiation', desc:'Gece yer sogumasi ile olusur; sabaha karsi bogaz ve liman girislerinde surpriz yapabilir.'},
+    {name:'Advection Fog', type:'advection', desc:'Nemli hava daha soguk yuzeye gelince olusur; denizde ve liman yaklasmasinda inatci olabilir.'},
+    {name:'Patchy Fog / Mist', type:'patchy', desc:'Yer yer kapanan gorus yapisi; gozu ve radari bir arada disiplinli kullanmak gerekir.'}
+  ];
+  return `<div class="meteo-gallery-card"><div class="meteo-gallery-head">Fog / Mist Tipleri</div><div class="cloud-grid">${items.map(item=>`<div class="cloud-card">${fogSvg(item.type)}<div class="cloud-name">${item.name}</div><div class="cloud-desc">${item.desc}</div></div>`).join('')}</div></div>`;
 }
 
 function buildShipPartsDiagram(){
