@@ -3413,6 +3413,14 @@ const START_PORTS=[
   {name:"İzmir", dock:"İzmir Limanı — İskele", office:"İzmir Limanı — Limancı Ofisi", departureLine:"İzmir Körfezi geride kaldı", x:85, y:130},
   {name:"İstanbul", dock:"İstanbul Limanı — Rıhtım", office:"İstanbul Limanı — Limancı Ofisi", departureLine:"Marmara ufku geride kaldı", x:180, y:85},
   {name:"Çanakkale", dock:"Çanakkale Limanı — Rıhtım", office:"Çanakkale Limanı — Limancı Ofisi", departureLine:"Boğaz geride kaldı", x:130, y:100},
+  {name:"Ambarlı", dock:"Ambarlı Limanı — Konteyner Rıhtımı", office:"Ambarlı Limanı — Acenta Ofisi", departureLine:"Marmara trafik hattı kıçta kaldı", x:172, y:92},
+  {name:"Aliağa", dock:"Aliağa Limanı — Endüstriyel İskele", office:"Aliağa Limanı — Limancı Ofisi", departureLine:"Çandarlı Körfezi geride kaldı", x:90, y:122},
+  {name:"İskenderun", dock:"İskenderun Limanı — Yük Rıhtımı", office:"İskenderun Limanı — Acenta Ofisi", departureLine:"İskenderun Körfezi geride kaldı", x:192, y:184},
+  {name:"Gemlik", dock:"Gemlik Limanı — Terminal", office:"Gemlik Limanı — Limancı Ofisi", departureLine:"Marmara iç hattı açılmaya başladı", x:162, y:98},
+  {name:"Samsun", dock:"Samsun Limanı — Ticari Rıhtım", office:"Samsun Limanı — Acenta Ofisi", departureLine:"Karadeniz kıyısı kıç omuzlukta kaldı", x:206, y:40},
+  {name:"Trabzon", dock:"Trabzon Limanı — Rıhtım", office:"Trabzon Limanı — Limancı Ofisi", departureLine:"Doğu Karadeniz kıyıları geride kaldı", x:252, y:50},
+  {name:"Tekirdag", dock:"Tekirdag Limanı — Asyaport Terminali", office:"Tekirdag Limanı — Acenta Ofisi", departureLine:"Marmara batı hattı geride kaldı", x:152, y:90},
+  {name:"Derince", dock:"Derince Limanı — Sanayi Rıhtımı", office:"Derince Limanı — Limancı Ofisi", departureLine:"İzmit Körfezi kıçta kaldı", x:174, y:82},
   {name:"Pire", dock:"Pire Limanı — Terminal", office:"Pire Limanı — Limancı Ofisi", departureLine:"Pire rıhtımı geride kaldı", x:120, y:160},
   {name:"İskenderiye", dock:"İskenderiye Limanı — Yük İskelesi", office:"İskenderiye Limanı — Limancı Ofisi", departureLine:"İskenderiye mendireği geride kaldı", x:200, y:210},
   {name:"Cenova", dock:"Cenova Limanı — Konteyner Rıhtımı", office:"Cenova Limanı — Limancı Ofisi", departureLine:"Ligurya kıyısı geride kaldı", x:60, y:80},
@@ -6428,6 +6436,14 @@ const ROUTE_PORTS = [
   {name:"Suveys", x:245, y:212, visited:false, kind:"waterway"},
   {name:"Rotterdam", x:25, y:18, visited:false, kind:"port"},
   {name:"Mersin", x:180, y:180, visited:false, kind:"port"},
+  {name:"Ambarlı", x:172, y:92, visited:false, kind:"port"},
+  {name:"Aliağa", x:90, y:122, visited:false, kind:"port"},
+  {name:"İskenderun", x:192, y:184, visited:false, kind:"port"},
+  {name:"Gemlik", x:162, y:98, visited:false, kind:"port"},
+  {name:"Samsun", x:206, y:40, visited:false, kind:"port"},
+  {name:"Trabzon", x:252, y:50, visited:false, kind:"port"},
+  {name:"Tekirdag", x:152, y:90, visited:false, kind:"port"},
+  {name:"Derince", x:174, y:82, visited:false, kind:"port"},
   {name:"Marsilya", x:40, y:92, visited:false, kind:"port"},
   {name:"Napoli", x:88, y:120, visited:false, kind:"port"},
   {name:"Hamburg", x:42, y:10, visited:false, kind:"port"},
@@ -6649,6 +6665,9 @@ function ensureSelectedPortChart(){
 
 function getPortChartHint(name, region){
   const hay = `${name} ${region}`.toLowerCase();
+  if(/ambarlı|tekirdag|derince|gemlik|al[aı]ğa/.test(hay)) return 'Konteyner, sanayi iskeleleri, pilotaj ve Marmara trafik disiplini birlikte okunur.';
+  if(/samsun|trabzon/.test(hay)) return 'Karadeniz hava degisimi, mendirek girisi ve swell etkisi birlikte dusunulur.';
+  if(/iskenderun|mersin/.test(hay)) return 'Akdeniz yaklasmasi, terminal yogunlugu ve rüzgar altı etkileri one cikar.';
   if(/rotterdam|anvers|hamburg/.test(hay)) return 'Pilotaj, nehir/kanal disiplini ve ticari trafik yogunlugu dusunulur.';
   if(/dubai|abu dhabi|doha|basra/.test(hay)) return 'Draft, sicak hava, traffic lane ve VHF raporlama birlikte okunur.';
   if(/port said|suveys|iskenderiye|haifa|limasol|mersin/.test(hay)) return 'Konvoy, reporting point ve pilotaj zinciri burada one cikabilir.';
@@ -6663,6 +6682,7 @@ function getPortChartProfile(port){
   const hay = `${port.name} ${region}`.toLowerCase();
   const latBase = (8 + (260-port.y)*0.18);
   const lonBase = (-14 + port.x*0.9);
+  const isTurkishPort = /izmir|istanbul|çanakkale|canakkale|ambarlı|ambarli|aliağa|aliaga|iskenderun|gemlik|samsun|trabzon|tekirdag|derince|mersin/.test(hay);
   const profile = {
     region,
     maxDraft: port.y > 185 ? '14.5m' : port.y < 40 ? '12.8m' : '13.6m',
@@ -6679,12 +6699,16 @@ function getPortChartProfile(port){
     edition:`Ed. ${2026 - (Math.round(port.x+port.y)%4)}`,
     soundDatum:'Chart Datum',
     scale: port.x > 340 || port.x < 30 ? '1:75 000' : '1:50 000',
+    magVar: `${(2.1 + ((port.x+port.y)%7)*0.3).toFixed(1)}°E`,
     latA:`${Math.abs(latBase).toFixed(1)}°${latBase>=0?'N':'S'}`,
     latB:`${Math.abs(latBase-0.4).toFixed(1)}°${latBase>=0?'N':'S'}`,
     lonA:`${Math.abs(lonBase).toFixed(1)}°${lonBase>=0?'E':'W'}`,
     lonB:`${Math.abs(lonBase+0.5).toFixed(1)}°${lonBase+0.5>=0?'E':'W'}`,
     template:'default'
   };
+  if(isTurkishPort) profile.publication = 'Turkiye Liman Yaklasma Haritasi';
+  if(/ambarlı|ambarli|tekirdag|derince|gemlik/.test(hay)) profile.template = 'terminal';
+  else if(/samsun|trabzon/.test(hay)) profile.template = 'blacksea';
   if(/panama/.test(hay)) profile.template = 'river';
   else if(/ras tanura/.test(hay)) profile.template = 'oil';
   else if(/rotterdam/.test(hay)) profile.template = 'canal';
@@ -6693,11 +6717,16 @@ function getPortChartProfile(port){
   if(profile.template==='oil') profile.scale = '1:35 000';
   if(profile.template==='canal') profile.scale = '1:45 000';
   if(profile.template==='traffic') profile.scale = '1:60 000';
+  if(profile.template==='terminal') profile.scale = '1:25 000';
+  if(profile.template==='blacksea') profile.scale = '1:32 000';
   if(/singapur|yokohama|sanghay|rotterdam|anvers|hamburg/.test(hay)) profile.hazard = 'TSS / yogun trafik';
   if(/dubai|abu dhabi|doha|basra/.test(hay)) profile.hazard = 'Draft / sicak hava / traffic lane';
   if(/marsilya|napoli|pire|valensiya|malta|barselona|cenova/.test(hay)) profile.hazard = 'Breakwater / ferry traffic';
   if(/panama|new orleans|santos/.test(hay)) profile.hazard = 'Akinti / turning basin';
   if(/port said|suveys|iskenderiye|haifa|limasol|mersin/.test(hay)) profile.hazard = 'Pilot / convoy / reporting';
+  if(/ambarlı|ambarli|tekirdag|derince|gemlik/.test(hay)) profile.hazard = 'Pilot / terminal traffic / berth swing';
+  if(/samsun|trabzon/.test(hay)) profile.hazard = 'Breakwater / swell / crosswind';
+  if(/iskenderun|aliağa|aliaga/.test(hay)) profile.hazard = 'Industrial jetty / tug traffic';
   return profile;
 }
 
@@ -6746,6 +6775,25 @@ function buildPortChartSvg(port){
   const islandLabels = coastLeft
     ? `<text x="214" y="44" fill="#7ea0bd" font-size="7" font-family="monospace">ISLET</text><text x="250" y="222" fill="#7ea0bd" font-size="7" font-family="monospace">ROCKS</text>`
     : `<text x="196" y="44" fill="#7ea0bd" font-size="7" font-family="monospace">ISLET</text><text x="166" y="222" fill="#7ea0bd" font-size="7" font-family="monospace">ROCKS</text>`;
+  const berthNumbers = coastLeft
+    ? `<text x="${berthX+8}" y="${channelY-10}" fill="#dce8fc" font-size="7" font-family="monospace">B-1</text>
+       <text x="${berthX+8}" y="${channelY+10}" fill="#dce8fc" font-size="7" font-family="monospace">B-2</text>
+       <text x="${berthX+8}" y="${channelY+30}" fill="#dce8fc" font-size="7" font-family="monospace">B-3</text>`
+    : `<text x="${berthX-28}" y="${channelY-10}" fill="#dce8fc" font-size="7" font-family="monospace">B-1</text>
+       <text x="${berthX-28}" y="${channelY+10}" fill="#dce8fc" font-size="7" font-family="monospace">B-2</text>
+       <text x="${berthX-28}" y="${channelY+30}" fill="#dce8fc" font-size="7" font-family="monospace">B-3</text>`;
+  const dredgedOverlay = `
+    <path d="M${coastLeft ? 156 : 284} ${channelY-20} Q220 ${channelY-42} ${coastLeft ? 318 : 122} ${channelY-16} L${coastLeft ? 302 : 138} ${channelY+24} Q220 ${channelY+4} ${coastLeft ? 170 : 270} ${channelY+28} Z"
+      fill="rgba(111,168,220,.10)" stroke="#5f92bf" stroke-width=".9" stroke-dasharray="3,3"/>
+    <text x="${coastLeft ? 204 : 170}" y="${channelY-46}" fill="#8ab0c8" font-size="7" font-family="monospace">DREDGED AREA</text>`;
+  const cableOverlay = `
+    <path d="M${coastLeft ? 94 : 346} ${southFacing ? 150 : 108} Q220 ${southFacing ? 132 : 94} ${coastLeft ? 320 : 120} ${southFacing ? 158 : 116}"
+      fill="none" stroke="#c97070" stroke-width="1" stroke-dasharray="2,3" opacity=".75"/>
+    <text x="${coastLeft ? 112 : 270}" y="${southFacing ? 144 : 102}" fill="#e1a2a2" font-size="7" font-family="monospace">SUBMARINE CABLE</text>`;
+  const reportingOverlay = `
+    <circle cx="${coastLeft ? 356 : 88}" cy="${channelY-46}" r="8" fill="none" stroke="#5dbf8a" stroke-width="1.1"/>
+    <text x="${coastLeft ? 350 : 82}" y="${channelY-43}" fill="#5dbf8a" font-size="7" font-family="monospace">R</text>
+    <text x="${coastLeft ? 334 : 64}" y="${channelY-58}" fill="#8fd8ab" font-size="7" font-family="monospace">REPORTING PT</text>`;
   const pilotGroundOverlay = `
     <circle cx="${coastLeft ? 330 : 112}" cy="${southFacing ? 92 : 178}" r="15" fill="none" stroke="#d4a017" stroke-width="1.2" stroke-dasharray="4,3" opacity=".85"/>
     <circle cx="${coastLeft ? 330 : 112}" cy="${southFacing ? 92 : 178}" r="4" fill="#d4a017"/>
@@ -6804,6 +6852,19 @@ function buildPortChartSvg(port){
       <circle cx="${shipX+118}" cy="${channelY+20}" r="3.6" fill="#d24c4c"/>
       <rect x="${coastLeft ? 242 : 134}" y="${channelY-70}" width="84" height="16" rx="4" fill="#081929" stroke="#d4a017" stroke-width="1"/>
       <text x="${coastLeft ? 250 : 142}" y="${channelY-59}" fill="#f0d59b" font-size="7" font-family="monospace">TSS / VTIS REPORT</text>`
+    : profile.template==='terminal'
+    ? `
+      <rect x="${coastLeft ? berthX+20 : berthX-96}" y="${channelY-58}" width="88" height="16" rx="4" fill="#081929" stroke="#5f92bf" stroke-width="1"/>
+      <text x="${coastLeft ? berthX+28 : berthX-88}" y="${channelY-47}" fill="#8ab0c8" font-size="7" font-family="monospace">CONTAINER / INDUSTRIAL</text>
+      <path d="M${coastLeft ? berthX+72 : berthX-72} ${channelY-34} v70" stroke="#6f93b5" stroke-width="1.2"/>
+      <path d="M${coastLeft ? berthX+68 : berthX-68} ${channelY-28} h18" stroke="#6f93b5" stroke-width="1.2"/>
+      <path d="M${coastLeft ? berthX+56 : berthX-56} ${channelY-16} h18" stroke="#6f93b5" stroke-width="1.2"/>`
+    : profile.template==='blacksea'
+    ? `
+      <path d="M${coastLeft ? 62 : 378} ${channelY-72} q18 18 0 36 q-18 18 0 36" fill="none" stroke="#7ea0bd" stroke-width="1.1" opacity=".7"/>
+      <text x="${coastLeft ? 32 : 336}" y="${channelY-78}" fill="#9cc8ef" font-size="7" font-family="monospace">SWELL SET</text>
+      <path d="M${coastLeft ? 84 : 356} ${channelY+60} l18 -8 l-8 18 z" fill="#5dbf8a" opacity=".8"/>
+      <text x="${coastLeft ? 64 : 330}" y="${channelY+82}" fill="#8fd8ab" font-size="7" font-family="monospace">LEE SIDE</text>`
     : '';
   return `
   <defs>
@@ -6828,10 +6889,13 @@ function buildPortChartSvg(port){
   <path d="M${channelStartX} ${channelY-14} Q${(channelStartX+channelEndX)/2} ${channelY-32} ${channelEndX} ${channelY-14}" fill="none" stroke="#1d5d95" stroke-width="1" stroke-dasharray="4,4" opacity=".45"/>
   <path d="M${channelStartX} ${channelY+14} Q${(channelStartX+channelEndX)/2} ${channelY-4} ${channelEndX} ${channelY+14}" fill="none" stroke="#1d5d95" stroke-width="1" stroke-dasharray="4,4" opacity=".45"/>
   <path d="M${coastLeft ? 170 : 270} ${channelY-44} L${berthX} ${channelY-20} L${berthX} ${channelY+36} L${coastLeft ? 176 : 264} ${channelY+18} Z" fill="#17324c" opacity=".72"/>
+  ${dredgedOverlay}
+  ${cableOverlay}
   <path d="M${berthX} ${channelY-26} V${channelY+42}" stroke="#cfd8e4" stroke-width="4"/>
   <path d="M${berthX + (coastLeft?-24:24)} ${channelY-18} V${channelY+32}" stroke="#7ea0bd" stroke-width="1" opacity=".7"/>
   <path d="M${berthX + (coastLeft?-36:36)} ${channelY-10} V${channelY+24}" stroke="#7ea0bd" stroke-width="1" opacity=".55"/>
   <path d="M${berthX + (coastLeft?-18:18)} ${channelY-10} V${channelY+26}" stroke="#8eb2d1" stroke-width="1.4" stroke-dasharray="3,3" opacity=".8"/>
+  ${berthNumbers}
   <circle cx="${turningBasinX}" cy="${channelY}" r="22" fill="none" stroke="#2f6ea5" stroke-width="1.2" opacity=".4"/>
   <circle cx="${turningBasinX}" cy="${channelY}" r="14" fill="none" stroke="#2f6ea5" stroke-width="1" opacity=".25" stroke-dasharray="5,4"/>
   <circle cx="${channelEndX}" cy="${channelY}" r="5" fill="${harborColor}"/>
@@ -6865,13 +6929,14 @@ function buildPortChartSvg(port){
   <text x="16" y="34" fill="#6fa8dc" font-size="8" font-family="monospace">${region} · SCALE ${profile.scale}</text>
   <text x="282" y="20" fill="#8ab0c8" font-size="7.5" font-family="monospace">${profile.publication}</text>
   <text x="316" y="32" fill="#8ab0c8" font-size="7.5" font-family="monospace">${profile.chartNo} · ${profile.edition}</text>
-  <text x="322" y="44" fill="#6fa8dc" font-size="7" font-family="monospace">${profile.soundDatum}</text>
+  <text x="296" y="44" fill="#6fa8dc" font-size="7" font-family="monospace">${profile.soundDatum} · VAR ${profile.magVar}</text>
   <text x="${coastLeft ? 178 : 140}" y="${channelY-32}" fill="#d4a017" font-size="8" font-family="monospace">${profile.pilot.toUpperCase()}</text>
   <text x="${coastLeft ? 168 : 238}" y="${channelY+56}" fill="#cfd8e4" font-size="8" font-family="monospace">${profile.berth.toUpperCase()}</text>
   <text x="${coastLeft ? 222 : 130}" y="${channelY+84}" fill="#5dbf8a" font-size="8" font-family="monospace">ANCHORAGE</text>
   <text x="${coastLeft ? 286 : 42}" y="${channelY-14}" fill="#6fa8dc" font-size="8" font-family="monospace">APPROACH CHANNEL</text>
   <text x="${shipX-20}" y="${channelY+54}" fill="#d4a017" font-size="8" font-family="monospace">OWN SHIP</text>
   <text x="${turningBasinX-24}" y="${channelY+4}" fill="#5f92bf" font-size="7" font-family="monospace">TURN</text>
+  ${reportingOverlay}
   <circle cx="394" cy="44" r="22" fill="none" stroke="#204a72" stroke-width="1.4"/>
   <path d="M394 28 V60 M378 44 H410" stroke="#204a72" stroke-width="1"/>
   <text x="391" y="26" fill="#8ab0c8" font-size="7" font-family="monospace">N</text>
@@ -6928,7 +6993,7 @@ function renderMapLibrary(){
   initPortChartInteractions(chartSvg);
   chartSvg.setAttribute('viewBox', getPortChartViewBox());
   if(chartZoomLabel) chartZoomLabel.textContent = `${Math.round(portChartZoom*100)}%`;
-  chartMeta.innerHTML = `DOSYA: ${active.name.replace(/ /g,'_').toUpperCase()}.chart<br>YAYIN: ${profile.chartNo} · ${profile.edition}<br>TIP: LIMAN YAKLASMA PLANI<br>BOLGE: ${region}<br>OLCEK: ${profile.scale}<br>YAKLASMA: ${profile.approach}<br>MAKS DRAFT: ${profile.maxDraft}<br>BERTH: ${profile.berth}<br>DATUM: ${profile.soundDatum}<br>GELGIT/AKINTI: ${profile.tides}<br>DURUM: ${visitedPorts.has(active.name)?'UGRANAN LIMAN':'ARSIV HARITASI'}<br>NOT: ${profile.notes}`;
+  chartMeta.innerHTML = `DOSYA: ${active.name.replace(/ /g,'_').toUpperCase()}.chart<br>YAYIN: ${profile.publication}<br>CHART NO: ${profile.chartNo} · ${profile.edition}<br>TIP: LIMAN YAKLASMA PLANI<br>BOLGE: ${region}<br>OLCEK: ${profile.scale}<br>YAKLASMA: ${profile.approach}<br>MAKS DRAFT: ${profile.maxDraft}<br>BERTH: ${profile.berth}<br>DATUM: ${profile.soundDatum}<br>MAG VAR: ${profile.magVar}<br>GELGIT/AKINTI: ${profile.tides}<br>DURUM: ${visitedPorts.has(active.name)?'UGRANAN LIMAN':'ARSIV HARITASI'}<br>NOT: ${profile.notes}`;
 }
 
 function updateShipPosition(sceneLoc){
@@ -6941,6 +7006,9 @@ function updateShipPosition(sceneLoc){
     'Kıbrıs':{x:170,y:170},
     'Cenova':{x:60,y:80}, 'Barselona':{x:30,y:100}, 'Trieste':{x:102,y:52},
     'Haifa':{x:212,y:188}, 'Rotterdam':{x:25,y:18}, 'Mersin':{x:180,y:180},
+    'Ambarlı':{x:172,y:92}, 'Aliağa':{x:90,y:122}, 'İskenderun':{x:192,y:184},
+    'Gemlik':{x:162,y:98}, 'Samsun':{x:206,y:40}, 'Trabzon':{x:252,y:50},
+    'Tekirdag':{x:152,y:90}, 'Derince':{x:174,y:82},
     'Aden':{x:300,y:230}, 'Süveyş':{x:250,y:195}, 'Suveys':{x:245,y:212},
     'Marsilya':{x:40,y:92}, 'Napoli':{x:88,y:120}, 'Hamburg':{x:42,y:10},
     'Limasol':{x:176,y:172}, 'Cidde':{x:260,y:210}, 'Dubai':{x:336,y:218},
