@@ -6049,6 +6049,138 @@ function renderCalcPanel(sc, ch){
   input.addEventListener('keydown',e=>{ if(e.key==='Enter') tryResolve(); });
 }
 
+const DOCUMENT_FORM_CONFIGS = {
+  s194:{
+    title:'Pilot Card Mini Formu',
+    hint:'Bosluklari kisaca doldur. Burada kusursuz evrak dili degil, dogru operatif bilgi bekleniyor.',
+    fields:[
+      {id:'loa', label:'LOA / gemi boyu', placeholder:'Orn: 182 m', keywords:['m','loa','boy']},
+      {id:'draft', label:'Mevcut draft', placeholder:'Orn: 9.8 m', keywords:['m','draft']},
+      {id:'maneuver', label:'Manevra notu', placeholder:'Orn: bow thruster yok / right handed propeller', keywords:['thruster','pervane','rudder','manevra','bow']}
+    ]
+  },
+  s309:{
+    title:'NOR Taslagi',
+    hint:'NOR verirken once hazirlik durumunu ve formaliteleri netlestir.',
+    fields:[
+      {id:'readiness', label:'Geminin hazirlik durumu', placeholder:'Orn: Cargo ops icin hazir', keywords:['hazir','ready','cargo','operasyon']},
+      {id:'formalities', label:'Kontrol edilen formaliteler', placeholder:'Orn: free pratique / customs / berth', keywords:['free pratique','custom','formal','berth','liman']},
+      {id:'notice', label:'Verilis mantigi', placeholder:'Orn: Charter party sartlari teyit edilerek', keywords:['charter','teyit','sart','notice','nor']}
+    ]
+  },
+  s310:{
+    title:'SOF Satirlari',
+    hint:'SOF yuvarlak degil izlenebilir olur; olay-saat akisi ister.',
+    fields:[
+      {id:'allfast', label:'Bir olay satiri', placeholder:'Orn: All fast 13:20', keywords:['all fast','hose','rain stop','hatch','surveyor','notice']},
+      {id:'time', label:'Saat disiplini', placeholder:'Orn: Logbook ile uyumlu tam saat', keywords:['saat','time','logbook','uyum']},
+      {id:'source', label:'Teyit kaynagi', placeholder:'Orn: operasyon akisi ve tanik kaydi', keywords:['tanik','operasyon','logbook','teyit','uyum']}
+    ]
+  },
+  s311:{
+    title:'Mate’s Receipt Cekincesi',
+    hint:'Cekince tarafsiz ve gozleme dayali yazilir.',
+    fields:[
+      {id:'condition', label:'Gorulen durum', placeholder:'Orn: wet / torn bags / damaged packing', keywords:['wet','islak','damage','hasar','torn','zayif']},
+      {id:'tone', label:'Yazim dili', placeholder:'Orn: apparent / observed / partly wet', keywords:['observed','apparent','gorulen','tarafsiz','cekince']},
+      {id:'risk', label:'Neden onemli?', placeholder:'Orn: Clean receipt sonradan ihtilaf dogurur', keywords:['clean','receipt','ihtilaf','sorumluluk','claim']}
+    ]
+  },
+  s312:{
+    title:'Cargo Manifest Kontrolu',
+    hint:'Manifest tek basina yetmez; fiili yuk ve stowage planiyla uyum aranir.',
+    fields:[
+      {id:'items', label:'Neleri capraz kontrol edersin?', placeholder:'Orn: paket / miktar / hold / DG', keywords:['miktar','paket','hold','dg','container','tehlike']},
+      {id:'plan', label:'Hangi belgeyle karsilastirirsin?', placeholder:'Orn: stowage plan', keywords:['stowage','plan','fiili','yuk']},
+      {id:'why', label:'Uyumsuzluk riski', placeholder:'Orn: gumruk ve emniyet sorunu', keywords:['gumruk','emniyet','uyumsuz','yanlis']}
+    ]
+  },
+  s313:{
+    title:'Sea Protest Notu',
+    hint:'Sea protest kotu hava ve ileride hak ihtilafi dogurabilecek olaylar icin dusunulur.',
+    fields:[
+      {id:'event', label:'Olay / neden', placeholder:'Orn: severe weather / heavy sea / delay', keywords:['weather','hava','heavy','delay','gecik','hasar']},
+      {id:'records', label:'Dayanak kayitlar', placeholder:'Orn: logbook / weather / course records', keywords:['logbook','weather','kayit','barometer','seyir']},
+      {id:'purpose', label:'Amaç', placeholder:'Orn: future claim and rights protection', keywords:['hak','claim','protest','koruma','ihtilaf']}
+    ]
+  },
+  s314:{
+    title:'Letter of Protest',
+    hint:'Duygusal degil; saat, mahal ve itiraz konusu net olur.',
+    fields:[
+      {id:'subject', label:'Itiraz konusu', placeholder:'Orn: slow loading / terminal delay', keywords:['delay','slow','terminal','shore','loading','hasar']},
+      {id:'facts', label:'Somut bilgi', placeholder:'Orn: date / time / berth / operation', keywords:['date','time','berth','mahal','saat','olay']},
+      {id:'style', label:'Dil / ton', placeholder:'Orn: official and factual', keywords:['official','factual','resmi','net','somut']}
+    ]
+  },
+  s129:{
+    title:'Near-Miss Report',
+    hint:'Olayi hafifletme; ne oldu, ne olabilirdi, nasil tekrar etmez sorularini yaz.',
+    fields:[
+      {id:'event', label:'Olay tanimi', placeholder:'Orn: Sling slackened, load swung to port', keywords:['load','sling','halat','salindi','savrul','olay']},
+      {id:'potential', label:'Potansiyel sonuc', placeholder:'Orn: personnel injury / cargo damage', keywords:['injury','yaralan','damage','hasar','risk']},
+      {id:'action', label:'Duzeltici faaliyet', placeholder:'Orn: stop job / re-brief / inspect gear', keywords:['stop','brief','inspect','kontrol','duzeltici','ppe']}
+    ]
+  }
+};
+
+function getDocumentOutcomeChoice(sc, values){
+  const cfg = DOCUMENT_FORM_CONFIGS[sc?.id];
+  if(!cfg) return sc?.choices?.[0];
+  let score = 0;
+  cfg.fields.forEach(field => {
+    const raw = (values[field.id] || '').toLowerCase();
+    if(raw.length >= 3 && field.keywords.some(k => raw.includes(k))) score++;
+  });
+  if(score >= Math.max(2, cfg.fields.length-1)) return sc.choices.find(c=>c.tag==='kritik') || sc.choices[0];
+  if(score >= 1) return sc.choices.find(c=>c.tag==='itaatkar' || c.tag==='akilli') || sc.choices[1] || sc.choices[0];
+  return sc.choices.find(c=>c.tag==='korkak') || sc.choices[sc.choices.length-1] || sc.choices[0];
+}
+
+function renderDocumentPanel(sc, ch){
+  const panel = document.getElementById('calc-panel');
+  if(!panel) return false;
+  const cfg = DOCUMENT_FORM_CONFIGS[sc?.id];
+  if(!cfg) return false;
+  panel.className='calc-panel show';
+  panel.innerHTML = `<div class="doc-box">
+    <div class="doc-title">${cfg.title}</div>
+    <div class="doc-hint">${cfg.hint}</div>
+    <div class="doc-grid">
+      ${cfg.fields.map(f=>`<label class="doc-field"><span class="doc-label">${f.label}</span><input class="doc-input ${f.mono?'mono':''}" data-doc-field="${f.id}" type="text" placeholder="${f.placeholder}"></label>`).join('')}
+    </div>
+    <div class="doc-actions">
+      <span class="doc-meta">Kisa ve operatif yaz. Anahtar fikirler yeterli.</span>
+      <button id="doc-submit" class="doc-submit">Belgeyi Tamamla</button>
+    </div>
+    <div id="doc-feedback" class="doc-feedback"></div>
+  </div>`;
+  const submit = document.getElementById('doc-submit');
+  const feedback = document.getElementById('doc-feedback');
+  const resolve = ()=>{
+    const values = {};
+    panel.querySelectorAll('[data-doc-field]').forEach(input => { values[input.dataset.docField] = input.value.trim(); });
+    const filledCount = Object.values(values).filter(Boolean).length;
+    if(filledCount < Math.max(2, cfg.fields.length-1)){
+      feedback.className='doc-feedback bad';
+      feedback.textContent='En azindan ana alanlari doldur; bos gecme bu belgeyi zayiflatir.';
+      return;
+    }
+    const picked = getDocumentOutcomeChoice(sc, values);
+    const isCritical = picked && picked.tag==='kritik';
+    feedback.className = isCritical ? 'doc-feedback' : 'doc-feedback warn';
+    feedback.textContent = isCritical ? 'Belge daha profesyonel durdu. Amir bunu dosyaya koyabilir.' : 'Belge tamamlandi ama dilini ve icerigini biraz daha netlestirmek gerekirdi.';
+    submit.disabled = true;
+    panel.querySelectorAll('[data-doc-field]').forEach(input => input.disabled = true);
+    setTimeout(()=>handleSceneChoice(sc, picked, ch), 800);
+  };
+  submit.onclick = resolve;
+  panel.querySelectorAll('[data-doc-field]').forEach(input=>{
+    input.addEventListener('keydown',e=>{ if(e.key==='Enter') resolve(); });
+  });
+  return true;
+}
+
 // ===== RASTGELE SENARYO SIRASI =====
 function buildSceneQueue(pool, totalDays, yr=selYear){
   const extraRouteScenes = getExtraRouteScenesForYear(yr);
@@ -6193,13 +6325,14 @@ function renderScene(idx){
 
   const ch=document.getElementById('choices');ch.innerHTML='';
   renderCalcPanel(sc, ch);
+  const hasDocPanel = renderDocumentPanel(sc, ch);
   getSceneRenderChoices(sc).forEach(c2=>{
     const b=document.createElement('button');b.className='cbtn';
     b.innerHTML='<span class="ctag tag-'+(c2.tag||'akilli')+'">'+tagL[c2.tag||'akilli']+'</span>'+c2.text;
     b.onclick=()=>handleSceneChoice(sc,c2,ch);
     ch.appendChild(b);
   });
-  if(sc.calc){
+  if(sc.calc || hasDocPanel){
     ch.style.display='none';
   }else{
     ch.style.display='';
