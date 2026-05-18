@@ -386,6 +386,15 @@ input[type=text]::placeholder{color:var(--text3);}
 .lightchar-body{display:flex;flex-direction:column;gap:2px;}
 .lightchar-name{font-size:12px;color:var(--text);font-weight:600;}
 .lightchar-desc{font-size:11px;line-height:1.5;color:var(--text2);}
+.sectorlight-card{margin-top:10px;border:1px solid var(--border2);border-radius:8px;background:rgba(6,16,28,0.72);padding:10px;}
+.sectorlight-head{font-size:11px;color:var(--gold);font-family:'Share Tech Mono',monospace;margin-bottom:4px;}
+.sectorlight-sub{font-size:11px;line-height:1.5;color:var(--text2);margin-bottom:8px;}
+.sectorlight-svg{width:100%;height:auto;display:block;border-radius:8px;border:1px solid rgba(74,112,152,.25);background:linear-gradient(180deg, rgba(13,34,56,.92), rgba(7,20,34,.98));}
+.sectorlight-legend{display:grid;grid-template-columns:1fr;gap:6px;margin-top:8px;}
+.sectorlight-pill{border-radius:999px;padding:6px 10px;font-size:10px;font-family:'Share Tech Mono',monospace;border:1px solid rgba(111,146,178,0.22);background:rgba(9,22,37,0.72);color:var(--text2);}
+.sectorlight-pill.red{border-color:rgba(255,120,120,.35);color:#ffb0b0;}
+.sectorlight-pill.white{border-color:rgba(255,245,200,.35);color:#f6efc4;}
+.sectorlight-pill.green{border-color:rgba(120,255,170,.35);color:#a8f5c2;}
 .shipparts-hotspot{cursor:pointer;transition:transform .16s ease, opacity .16s ease;}
 .shipparts-hotspot:hover,.shipparts-hotspot:focus-visible,.shipparts-hotspot.active{transform:scale(1.06);}
 .shipparts-hotspot:focus-visible{outline:none;}
