@@ -6904,7 +6904,7 @@ function selectPortChart(name){
   renderMap();
 }
 function adjustPortChartZoom(delta){
-  portChartZoom = Math.max(1, Math.min(2.5, +(portChartZoom + delta).toFixed(2)));
+  portChartZoom = Math.max(1, Math.min(4.5, +(portChartZoom + delta).toFixed(2)));
   if(mapView === 'library') renderMapLibrary();
 }
 
@@ -7213,6 +7213,21 @@ function buildPortChartSvg(port){
     <path d="M${coastLeft ? 176 : 264} 120 Q224 134 ${coastLeft ? 292 : 148} 162" fill="none" stroke="#4aa6db" stroke-width=".9" opacity=".28"/>
     <path d="M${coastLeft ? 192 : 248} 146 Q228 158 ${coastLeft ? 272 : 168} 184" fill="none" stroke="#7bc9ef" stroke-width=".8" opacity=".24"/>`;
   const scaleBarX = coastLeft ? 270 : 44;
+  const extendedSoundings = coastLeft
+    ? `
+      <text x="286" y="86" fill="#bfe4ff" font-size="6.8" font-family="monospace">18.6</text>
+      <text x="314" y="102" fill="#bfe4ff" font-size="6.8" font-family="monospace">19.4</text>
+      <text x="338" y="118" fill="#bfe4ff" font-size="6.8" font-family="monospace">17.8</text>
+      <text x="356" y="138" fill="#bfe4ff" font-size="6.8" font-family="monospace">15.9</text>
+      <text x="126" y="170" fill="#bfe4ff" font-size="6.8" font-family="monospace">9.8</text>
+      <text x="106" y="192" fill="#bfe4ff" font-size="6.8" font-family="monospace">7.6</text>`
+    : `
+      <text x="148" y="84" fill="#bfe4ff" font-size="6.8" font-family="monospace">18.6</text>
+      <text x="120" y="102" fill="#bfe4ff" font-size="6.8" font-family="monospace">19.4</text>
+      <text x="96" y="118" fill="#bfe4ff" font-size="6.8" font-family="monospace">17.8</text>
+      <text x="78" y="138" fill="#bfe4ff" font-size="6.8" font-family="monospace">15.9</text>
+      <text x="318" y="170" fill="#bfe4ff" font-size="6.8" font-family="monospace">9.8</text>
+      <text x="338" y="192" fill="#bfe4ff" font-size="6.8" font-family="monospace">7.6</text>`;
   const islandLabels = coastLeft
     ? `<text x="214" y="44" fill="#7ea0bd" font-size="7" font-family="monospace">ISLET</text><text x="250" y="222" fill="#7ea0bd" font-size="7" font-family="monospace">ROCKS</text>`
     : `<text x="196" y="44" fill="#7ea0bd" font-size="7" font-family="monospace">ISLET</text><text x="166" y="222" fill="#7ea0bd" font-size="7" font-family="monospace">ROCKS</text>`;
@@ -7223,6 +7238,12 @@ function buildPortChartSvg(port){
     : `<text x="${berthX-28}" y="${channelY-10}" fill="#dce8fc" font-size="7" font-family="monospace">B-1</text>
        <text x="${berthX-28}" y="${channelY+10}" fill="#dce8fc" font-size="7" font-family="monospace">B-2</text>
        <text x="${berthX-28}" y="${channelY+30}" fill="#dce8fc" font-size="7" font-family="monospace">B-3</text>`;
+  const outerContours = `
+    <path d="M${coastLeft ? 116 : 324} 28 Q220 62 ${coastLeft ? 376 : 64} 92" fill="none" stroke="#0f3d63" stroke-width="1.1" opacity=".38"/>
+    <path d="M${coastLeft ? 102 : 338} 18 Q220 48 ${coastLeft ? 394 : 46} 82" fill="none" stroke="#0d3150" stroke-width="1" opacity=".28" stroke-dasharray="6,5"/>
+    <path d="M${coastLeft ? 132 : 308} 176 Q220 154 ${coastLeft ? 364 : 76} 196" fill="none" stroke="#14507f" stroke-width="1" opacity=".26"/>
+    <text x="${coastLeft ? 302 : 92}" y="78" fill="#6fa8dc" font-size="6.6" font-family="monospace">20m contour</text>
+    <text x="${coastLeft ? 284 : 112}" y="194" fill="#6fa8dc" font-size="6.6" font-family="monospace">10m contour</text>`;
   const dredgedOverlay = `
     <path d="M${coastLeft ? 156 : 284} ${channelY-20} Q220 ${channelY-42} ${coastLeft ? 318 : 122} ${channelY-16} L${coastLeft ? 302 : 138} ${channelY+24} Q220 ${channelY+4} ${coastLeft ? 170 : 270} ${channelY+28} Z"
       fill="rgba(111,168,220,.10)" stroke="#5f92bf" stroke-width=".9" stroke-dasharray="3,3"/>
@@ -7235,6 +7256,33 @@ function buildPortChartSvg(port){
     <circle cx="${coastLeft ? 356 : 88}" cy="${channelY-46}" r="8" fill="none" stroke="#5dbf8a" stroke-width="1.1"/>
     <text x="${coastLeft ? 350 : 82}" y="${channelY-43}" fill="#5dbf8a" font-size="7" font-family="monospace">R</text>
     <text x="${coastLeft ? 334 : 64}" y="${channelY-58}" fill="#8fd8ab" font-size="7" font-family="monospace">REPORTING PT</text>`;
+  const tidalOverlay = `
+    <path d="M${coastLeft ? 296 : 144} ${channelY-70} l10 0 l-5 10 z" fill="#d4a017" opacity=".95"/>
+    <text x="${coastLeft ? 286 : 134}" y="${channelY-76}" fill="#f0d59b" font-size="6.8" font-family="monospace">TIDAL DIAMOND</text>
+    <text x="${coastLeft ? 286 : 134}" y="${channelY-64}" fill="#f0d59b" font-size="6.4" font-family="monospace">045° / 1.2kt</text>`;
+  const shoalOverlay = `
+    <path d="M${coastLeft ? 118 : 322} ${channelY+52} q6 -8 12 0 q-6 8 -12 0 z" fill="none" stroke="#d8a257" stroke-width="1"/>
+    <path d="M${coastLeft ? 126 : 314} ${channelY+48} q6 -8 12 0 q-6 8 -12 0 z" fill="none" stroke="#d8a257" stroke-width="1"/>
+    <text x="${coastLeft ? 98 : 300}" y="${channelY+72}" fill="#e3bb7a" font-size="6.8" font-family="monospace">SHOAL PATCH</text>`;
+  const leadingLineOverlay = `
+    <path d="M${coastLeft ? 184 : 256} ${channelY-8} L${coastLeft ? 244 : 196} ${channelY-46}" stroke="#f4e9c6" stroke-width="1.2" opacity=".65"/>
+    <path d="M${coastLeft ? 176 : 264} ${channelY+8} L${coastLeft ? 236 : 204} ${channelY-30}" stroke="#f4e9c6" stroke-width=".9" opacity=".45"/>
+    <text x="${coastLeft ? 210 : 188}" y="${channelY-54}" fill="#f4e9c6" font-size="6.6" font-family="monospace">LEADING LINE</text>`;
+  const overviewInset = `
+    <g transform="translate(${coastLeft ? 306 : 18},${southFacing ? 18 : 172})">
+      <rect x="0" y="0" width="116" height="70" rx="6" fill="rgba(5,16,28,.92)" stroke="#385f86" stroke-width="1"/>
+      <text x="8" y="12" fill="#8ab0c8" font-size="6.6" font-family="monospace">OVERVIEW / OUTER APPROACH</text>
+      <path d="M6 18 H108 M6 32 H108 M6 46 H108 M6 60 H108" stroke="#14314d" stroke-width=".7" stroke-dasharray="3,3" opacity=".6"/>
+      <path d="M18 8 V62 M44 8 V62 M70 8 V62 M96 8 V62" stroke="#14314d" stroke-width=".7" stroke-dasharray="3,3" opacity=".6"/>
+      <path d="${coastLeft ? 'M0 10 L34 10 L52 28 L52 70 L0 70 Z' : 'M116 10 L82 10 L64 28 L64 70 L116 70 Z'}" fill="#0d2237" opacity=".95"/>
+      <path d="M12 ${southFacing ? 46 : 28} Q58 ${southFacing ? 30 : 20} 104 ${southFacing ? 44 : 34}" fill="none" stroke="#4f8fc7" stroke-width="1.8" stroke-dasharray="5,3"/>
+      <circle cx="${coastLeft ? 78 : 38}" cy="${southFacing ? 42 : 32}" r="6" fill="none" stroke="#d4a017" stroke-width="1"/>
+      <circle cx="${coastLeft ? 58 : 58}" cy="${southFacing ? 52 : 40}" r="3.5" fill="#5dbf8a"/>
+      <circle cx="${coastLeft ? 92 : 24}" cy="${southFacing ? 38 : 28}" r="3.5" fill="#f4e9c6"/>
+      <text x="${coastLeft ? 71 : 31}" y="${southFacing ? 44 : 34}" fill="#d4a017" font-size="6.2" font-family="monospace">TURN</text>
+      <text x="${coastLeft ? 48 : 48}" y="${southFacing ? 64 : 52}" fill="#8fd8ab" font-size="6.2" font-family="monospace">ANCH</text>
+      <text x="${coastLeft ? 84 : 16}" y="${southFacing ? 28 : 18}" fill="#f4e9c6" font-size="6.2" font-family="monospace">PILOT</text>
+    </g>`;
   const pilotGroundOverlay = `
     <circle cx="${coastLeft ? 330 : 112}" cy="${southFacing ? 92 : 178}" r="15" fill="none" stroke="#d4a017" stroke-width="1.2" stroke-dasharray="4,3" opacity=".85"/>
     <circle cx="${coastLeft ? 330 : 112}" cy="${southFacing ? 92 : 178}" r="4" fill="#d4a017"/>
@@ -7326,6 +7374,7 @@ function buildPortChartSvg(port){
   <path d="${coastLeft ? 'M84 210 L112 218 L108 234 L76 232 Z' : 'M356 210 L328 218 L332 234 L364 232 Z'}" fill="#0d2337" opacity=".72"/>
   ${islandLabels}
   ${contourOverlay}
+  ${outerContours}
   <path d="M${channelStartX} ${channelY} Q${(channelStartX+channelEndX)/2} ${channelY-18} ${channelEndX} ${channelY}" fill="none" stroke="#4f8fc7" stroke-width="2.2" stroke-dasharray="7,5" opacity=".9"/>
   <path d="M${channelStartX} ${channelY-14} Q${(channelStartX+channelEndX)/2} ${channelY-32} ${channelEndX} ${channelY-14}" fill="none" stroke="#1d5d95" stroke-width="1" stroke-dasharray="4,4" opacity=".45"/>
   <path d="M${channelStartX} ${channelY+14} Q${(channelStartX+channelEndX)/2} ${channelY-4} ${channelEndX} ${channelY+14}" fill="none" stroke="#1d5d95" stroke-width="1" stroke-dasharray="4,4" opacity=".45"/>
@@ -7378,6 +7427,9 @@ function buildPortChartSvg(port){
   <text x="${shipX-20}" y="${channelY+54}" fill="#d4a017" font-size="8" font-family="monospace">OWN SHIP</text>
   <text x="${turningBasinX-24}" y="${channelY+4}" fill="#5f92bf" font-size="7" font-family="monospace">TURN</text>
   ${reportingOverlay}
+  ${tidalOverlay}
+  ${shoalOverlay}
+  ${leadingLineOverlay}
   <circle cx="394" cy="44" r="22" fill="none" stroke="#204a72" stroke-width="1.4"/>
   <path d="M394 28 V60 M378 44 H410" stroke="#204a72" stroke-width="1"/>
   <text x="391" y="26" fill="#8ab0c8" font-size="7" font-family="monospace">N</text>
@@ -7387,6 +7439,7 @@ function buildPortChartSvg(port){
   <text x="96" y="252" fill="#7ea0bd" font-size="7" font-family="monospace">${profile.lonA}</text>
   <text x="264" y="252" fill="#7ea0bd" font-size="7" font-family="monospace">${profile.lonB}</text>
   ${soundingText}
+  ${extendedSoundings}
   <rect x="${scaleBarX}" y="236" width="108" height="10" rx="3" fill="#081929" stroke="#385f86" stroke-width="1"/>
   <path d="M${scaleBarX+8} 241 H${scaleBarX+28} M${scaleBarX+28} 241 H${scaleBarX+48} M${scaleBarX+48} 241 H${scaleBarX+68} M${scaleBarX+68} 241 H${scaleBarX+88}" stroke="#cfd8e4" stroke-width="3"/>
   <text x="${scaleBarX+4}" y="233" fill="#7ea0bd" font-size="7" font-family="monospace">0</text>
@@ -7397,6 +7450,7 @@ function buildPortChartSvg(port){
   ${trafficArrowOverlay}
   ${sectorLightOverlay}
   ${specialOverlay}
+  ${overviewInset}
   `;
 }
 
